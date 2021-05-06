@@ -1,0 +1,76 @@
+Saisie OK/KO;Typologie de la demande
+,KO;Adhésion
+,KO;Adhésion
+,KO;Adhésion
+,KO;Adhésion
+,OK;Adhésion
+,OK;Adhésion
+,KO;Adhésion
+,KO;Adhésion
+,KO;Adhésion
+,OK;Adhésion
+,OK;Adhésion
+,OK;Adhésion
+,KO;Autres
+,OK;Adhésion
+,KO;Adhésion
+,OK;MAJ Régime / Caisse
+,KO;Prestations
+,KO;Autres
+,KO;Prestations
+,KO;Adhésion
+,KO;Prestations
+,KO;Espace adhérent
+,OK;MAJ Régime / Caisse
+,KO;Cotisations
+,KO;Cotisations
+,KO;Cotisations
+,KO;MAJ N1
+,KO;Cotisations
+,KO;Adhésion
+,KO;Cotisations
+,KO;Prestations
+,KO;Autres
+,KO;Prestations
+,KO;Prestations
+,KO;Prestations
+,KO;Prestations
+,OK;MAJ Régime / Caisse
+,KO;Cotisations
+,OK;MAJ Régime / Caisse
+,KO;Demande attestation
+,KO;Cotisations
+,KO;Cotisations
+,KO;Cotisations
+,OK;Demande attestation
+,KO;MAJ Régime / Caisse
+,KO;Prestations
+,KO;MAJ N1
+,KO;MAJ N1
+,OK;MAJ Régime / Caisse
+,OK;MAJ N1
+,KO;MAJ Régime / Caisse
+,OK;MAJ Régime / Caisse
+,KO;Cotisations
+,OK;MAJ N1
+,KO;Cotisations
+,KO;Demande attestation
+,OK;Carte TP
+,KO;Ajout d'Ayant droit
+,OK;MAJ N1
+,KO;Résiliation
+,KO;Carte TP
+,KO;Adhésion
+,KO;Résiliation
+,KO;Résiliation
+,KO;Résiliation
+,KO;Cotisations
+,KO;Résiliation
+,KO;Résiliation
+,KO;Demande attestation
+,KO;Résiliation
+,KO;Résiliation
+,KO;Résiliation
+,KO;Résiliation
+,KO;Résiliation
+,KO;Cotisations

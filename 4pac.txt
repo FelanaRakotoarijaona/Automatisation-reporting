@@ -1,0 +1,1636 @@
+OK/KO;Libellé rejet
+,OK;CHEVAUCHEMENT CONTRATS 01072020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 01042020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 01042020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 01012020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 01012020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 03072020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 03052020/30042021                                        
+,KO;ANNULATION INFO OC PAR CPAM                                                     
+,OK;CHEVAUCHEMENT CONTRATS 13022020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 08062020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 01082020/31072021                                        
+,OK;CHEVAUCHEMENT CONTRATS 01082020/31072021                                        
+,OK;CHEVAUCHEMENT CONTRATS 01082020/31072021                                        
+,OK;CHEVAUCHEMENT CONTRATS 01082020/31072021                                        
+,KO;MODIF IMPOSSIBLE: RUB OC/CT NON TROUVEE                                         
+,OK;CHEVAUCHEMENT CONTRATS 01032020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 01012020/31122024                                        
+,OK;BENEFICIAIRE INCONNU AU FICHIER                                                 
+,OK;CHEVAUCHEMENT CONTRATS 01062020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 01012020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 01012020/31122024                                        
+,OK;CHANGT.DE CAISSE 751 VERS 921 -AVEC CONV                                        
+,OK;CHEVAUCHEMENT CONTRATS 30072020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 06012020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 01082020/31072021                                        
+,OK;CHEVAUCHEMENT CONTRATS 01082020/31072021                                        
+,OK;CHEVAUCHEMENT CONTRATS 01082020/31072021                                        
+,OK;CHEVAUCHEMENT CONTRATS 01082020/31072021                                        
+,OK;CHEVAUCHEMENT CONTRATS 29022020/31072021                                        
+,OK;CHEVAUCHEMENT CONTRATS 01082020/31072021                                        
+,OK;CHEVAUCHEMENT CONTRATS 01012020/31072021                                        
+,OK;CHEVAUCHEMENT CONTRATS 01092020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 01012020/31122024                                        
+,OK;CHANGT.DE CAISSE 311 VERS 811 -AVEC CONV                                        
+,OK;CHEVAUCHEMENT CONTRATS 01072020/31122024                                        
+,OK;PUMA BASCULE AD/OD 102075935070171                                              
+,OK;PUMA BASCULE AD/OD 102055932923073                                              
+,OK;CHEVAUCHEMENT CONTRATS 22082020/31122024                                        
+,OK;CHANGT.DE CAISSE 751 VERS 921 -AVEC CONV                                        
+,KO;ANNUL IMPOSSIBLE: RUB OC/CT NON TROUVEE                                         
+,OK;BENEFICIAIRE INCONNU AU FICHIER                                                 
+,OK;CHEVAUCHEMENT CONTRATS 06012020/31122024                                        
+,OK;PUMA BASCULE AD/OD 102069741689061                                              
+,OK;CHEVAUCHEMENT CONTRATS 29022020/31072021                                        
+,OK;CHEVAUCHEMENT CONTRATS 29022020/31072021                                        
+,OK;CHEVAUCHEMENT CONTRATS 15012020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 01012020/31122024                                        
+,KO;ANNULATION INFO OC PAR CPAM                                                     
+,OK;CHEVAUCHEMENT CONTRATS 02032020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 01082020/31122024                                        
+,KO;ANNULATION INFO OC PAR CPAM                                                     
+,KO;ANNULATION INFO OC PAR CPAM                                                     
+,OK;CHEVAUCHEMENT CONTRATS 08072020/31122024                                        
+,KO;MODIFICATION INFO OC PAR CPAM                                                   
+,OK;CHEVAUCHEMENT CONTRATS 01012020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 01012020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 13022020/22112020                                        
+,OK;CHEVAUCHEMENT CONTRATS 13022020/22112020                                        
+,OK;CHEVAUCHEMENT CONTRATS 13022020/22112020                                        
+,OK;CHEVAUCHEMENT CONTRATS 01012020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 06012020/31122024                                        
+,KO;ANNUL IMPOSSIBLE: RUB OC/CT NON TROUVEE                                         
+,KO;ANNUL IMPOSSIBLE: RUB OC/CT NON TROUVEE                                         
+,OK;CHEVAUCHEMENT CONTRATS 01092020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 01062020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 01012020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 13082020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 01012020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 15062020/31122024                                        
+,OK;ASSURE INCONNU AU FICHIER                                                       
+,OK;CHANGT.DE CAISSE 764 VERS 763 -AVEC CONV                                        
+,OK;CHEVAUCHEMENT CONTRATS 01092020/31082021                                        
+,OK;BENEFICIAIRE NON MUTUALISTE                                                     
+,OK;BENEFICIAIRE INCONNU AU FICHIER                                                 
+,OK;BENEFICIAIRE INCONNU AU FICHIER                                                 
+,OK;CHEVAUCHEMENT CONTRATS 06012020/31122024                                        
+,OK;Chevauchement contrat 01012020/31122024                                         
+,OK;CHEVAUCHEMENT CONTRATS 01072020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 17082020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 15022020/31122024                                        
+,Ok;CHEVAUCHEMENT CONTRATS 01042020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 01042020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 01012020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 01012020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 03072020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 03052020/30042021                                        
+,OK;CHEVAUCHEMENT CONTRATS 13022020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 08062020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 29052020/31122020                                        
+,OK;CHEVAUCHEMENT CONTRATS 28082020/31122024                                        
+,KO;MODIFICATION INFO OC PAR CPAM                                                   
+,OK;CHEVAUCHEMENT CONTRATS 01012020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 28082020/31122024                                        
+,KO;ANNUL IMPOSSIBLE: RUB OC/CT NON TROUVEE                                         
+,KO;MODIFICATION INFO OC PAR CPAM                                                   
+,KO;MODIFICATION INFO OC PAR CPAM                                                   
+,KO;ANNULATION INFO OC PAR CPAM                                                     
+,OK;CHEVAUCHEMENT CONTRATS 01062020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 01022020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 01032019/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 23072020/22072021                                        
+,OK;CHEVAUCHEMENT CONTRATS 10062020/09062021                                        
+,OK;CHEVAUCHEMENT CONTRATS 06012020/31122024                                        
+,KO;MODIFICATION INFO OC PAR CPAM                                                   
+,KO;MODIFICATION INFO OC PAR CPAM                                                   
+,KO;MODIFICATION INFO OC PAR CPAM                                                   
+,KO;MODIFICATION INFO OC PAR CPAM                                                   
+,OK;CHEVAUCHEMENT CONTRATS 01012020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 01092020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 01092020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 01092020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 01092020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 01052020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 27012020/31122024                                        
+,OK;BENEFICIAIRE INCONNU AU FICHIER                                                 
+,OK;CHEVAUCHEMENT CONTRATS 06012020/31122024                                        
+,KO;ANNUL IMPOSSIBLE: RUB OC/CT NON TROUVEE                                         
+,OK;CHEVAUCHEMENT CONTRATS 01012020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 05062020/31122024                                        
+,KO;CHEVAUCHEMENT CONTRATS 01082020/31122024                                        
+,KO;CHEVAUCHEMENT CONTRATS 01012020/31122024                                        
+,KO;CONTRAT CMU OU C2S DEJA EN COURS                                                
+,OK;CHEVAUCHEMENT CONTRATS 08072020/31122024                                        
+,KO;CHEVAUCHEMENT CONTRATS 01082020/31072021                                        
+,KO;BENEFICIAIRE INCONNU AU FICHIER                                                 
+,OK;CHEVAUCHEMENT CONTRATS 31082020/31122024                                        
+,KO;ANNULATION INFO OC PAR CPAM                                                     
+,KO;ANNULATION INFO OC PAR CPAM                                                     
+,KO;ANNUL IMPOSSIBLE: RUB OC/CT NON TROUVEE                                         
+,OK;CHEVAUCHEMENT CONTRATS 01072020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 06012020/31122024                                        
+,KO;BENEFICIAIRE INCONNU AU FICHIER                                                 
+,OK;CHEVAUCHEMENT CONTRATS 01092020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 01092020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 01062020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 01012020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 04092020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 01022020/31122024                                        
+,KO;MODIFICATION INFO OC PAR CPAM                                                   
+,KO;MODIFICATION INFO OC PAR CPAM                                                   
+,KO;MODIFICATION INFO OC PAR CPAM                                                   
+,KO;MODIFICATION INFO OC PAR CPAM                                                   
+,OK;CHEVAUCHEMENT CONTRATS 06092020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 01092020/31122024                                        
+,KO;MODIFICATION INFO OC PAR CPAM                                                   
+,OK;CHEVAUCHEMENT CONTRATS 02092020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 01092020/31122024                                        
+,KO;CONTRAT CMU OU C2S DEJA EN COURS                                                
+,KO;CONTRAT CMU OU C2S DEJA EN COURS                                                
+,OK;CHEVAUCHEMENT CONTRATS 01012020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 02092020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 06012020/31122024                                        
+,KO;CHEVAUCHEMENT CONTRATS 01082020/31072021                                        
+,KO;CHEVAUCHEMENT CONTRATS 01082020/31072021                                        
+,KO;CHEVAUCHEMENT CONTRATS 01082020/31072021                                        
+,OK;Chevauchement contrat 01012020/31122024                                         
+,OK;CHEVAUCHEMENT CONTRATS 01072020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 13082020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 01072020/31122024                                        
+,KO;CHEVAUCHEMENT CONTRATS 01012020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 01012020/31122024                                        
+,OK;MODIFICATION INFO OC PAR CPAM                                                   
+,OK;CHEVAUCHEMENT CONTRATS 03072020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 03052020/30042021                                        
+,OK;CHEVAUCHEMENT CONTRATS 13022020/31122024                                        
+,KO;CHEVAUCHEMENT CONTRATS 15052020/31122024                                        
+,KO;CHEVAUCHEMENT CONTRATS 01012020/31122024                                        
+,KO;CONTRAT CMU OU C2S DEJA EN COURS                                                
+,KO;MODIFICATION INFO OC PAR CPAM                                                   
+,KO;MODIFICATION INFO OC PAR CPAM                                                   
+,KO;MODIFICATION INFO OC PAR CPAM                                                   
+,KO;MODIFICATION INFO OC PAR CPAM                                                   
+,OK;CHEVAUCHEMENT CONTRATS 31082020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 04092020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 01092020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 06012020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 01092020/31082021                                        
+,KO;CHEVAUCHEMENT CONTRATS 01012020/31122024                                        
+,KO;CHEVAUCHEMENT CONTRATS 01092020/31122024                                        
+,KO;ANNULATION INFO OC PAR CPAM                                                     
+,OK;CHEVAUCHEMENT CONTRATS 01082020/31072021                                        
+,KO;CHANGT.DE CAISSE 931 VERS 941 -AVEC CONV                                        
+,Ok;CHEVAUCHEMENT CONTRATS 08072020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 08072020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 01102020/31122024                                        
+,KO;ANNUL IMPOSSIBLE: RUB OC/CT NON TROUVEE                                         
+,KO;ANNUL IMPOSSIBLE: RUB OC/CT NON TROUVEE                                         
+,KO;ANNUL IMPOSSIBLE: RUB OC/CT NON TROUVEE                                         
+,KO;CHEVAUCHEMENT CONTRATS 01012020/31122024                                        
+,KO;MODIFICATION INFO OC PAR CPAM                                                   
+,OK;CHEVAUCHEMENT CONTRATS 09092020/31122024                                        
+,KO;ANNUL IMPOSSIBLE: RUB OC/CT NON TROUVEE                                         
+,OK;ASSURE GERE PAR UNE AUTRE CAISSE                                                
+,OK;CHEVAUCHEMENT CONTRATS 08092020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 08092020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 01092020/31122024                                        
+,OK;INFORMATION REFUSEE: 2 CT DEJA EN COURS                                         
+,OK;CHEVAUCHEMENT CONTRATS 01092020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 06012020/31122024                                        
+,KO;Chevauchement contrat 01012020/31082020                                         
+,KO;ANNUL IMPOSSIBLE: RUB OC/CT NON TROUVEE                                         
+,KO;CONTRAT CMU OU C2S DEJA EN COURS                                                
+,OK;CHEVAUCHEMENT CONTRATS 01092020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 01062020/31122024                                        
+,KO;ANNUL IMPOSSIBLE: RUB OC/CT NON TROUVEE                                         
+,KO;CHEVAUCHEMENT CONTRATS 01012020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 17082020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 18092020/31122024                                        
+,KO;MODIFICATION INFO OC PAR CPAM                                                   
+,KO;MODIFICATION INFO OC PAR CPAM                                                   
+,OK;BENEFICIAIRE INCONNU AU FICHIER                                                 
+,OK;ASSURE GERE PAR UNE AUTRE CAISSE                                                
+,KO;ANNUL IMPOSSIBLE: RUB OC/CT NON TROUVEE                                         
+,KO;CHEVAUCHEMENT CONTRATS 11092020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 12032020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 11092020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 01092020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 10062020/09062021                                        
+,OK;CHEVAUCHEMENT CONTRATS 06012020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 01082020/31072021                                        
+,OK;CHEVAUCHEMENT CONTRATS 01092020/31082021                                        
+,OK;CHEVAUCHEMENT CONTRATS 01092020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 01072020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 01072020/31122024                                        
+,OK;CHANGT.DE CAISSE 841 VERS 061 -AVEC CONV                                        
+,OK;PERIODE DE RATTACHEMENT A ANNULER/MODIFIER NON TROUVEE EN BASE                  
+,OK;Chevauchement contrat 01012020/31122024                                         
+,KO;Chevauchement contrat 01092020/31122024                                         
+,KO;ANNULATION INFO OC PAR CPAM                                                     
+,OK;CHEVAUCHEMENT CONTRATS 01072020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 01012020/31122024                                        
+,OK;ASSURE INCONNU AU FICHIER                                                       
+,OK;CHEVAUCHEMENT CONTRATS 15092020/31122024                                        
+,OK;BENEFICIAIRE INCONNU AU FICHIER                                                 
+,OK;CHEVAUCHEMENT CONTRATS 03072020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 03052020/30042021                                        
+,OK;CHEVAUCHEMENT CONTRATS 01092020/31082021                                        
+,OK;CHANGT.DE CAISSE 751 VERS 921 -AVEC CONV                                        
+,OK;CHEVAUCHEMENT CONTRATS 13022020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 01092020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 14092020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 06012020/31122024                                        
+,KO;ANNUL IMPOSSIBLE: RUB OC/CT NON TROUVEE                                         
+,KO;ANNUL IMPOSSIBLE: RUB OC/CT NON TROUVEE                                         
+,KO;BENEFICIAIRE NON MUTUALISTE                                                     
+,KO;BENEFICIAIRE NON MUTUALISTE                                                     
+,OK;CHEVAUCHEMENT CONTRATS 01092020/31122024                                        
+,KO;CHEVAUCHEMENT CONTRATS 01012020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 17032020/31122024                                        
+,KO;MODIFICATION INFO OC PAR CPAM                                                   
+,KO;ANNULATION INFO OC PAR CPAM                                                     
+,KO;MODIFICATION INFO OC PAR CPAM                                                   
+,KO;MODIFICATION INFO OC PAR CPAM                                                   
+,OK;CHEVAUCHEMENT CONTRATS 01012020/31122024                                        
+,KO;CHANGT IDT. MATRICULAIRE 289069923404856                                        
+,KO;CHANGT. DATE NAISSANCE BENEF. 070689                                            
+,OK;CHEVAUCHEMENT CONTRATS 01012020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 01022020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 01022020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 10092020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 01092020/31122024                                        
+,KO;CHEVAUCHEMENT CONTRATS 01012020/31122024                                        
+,KO;CHEVAUCHEMENT CONTRATS 01012020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 01092020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 01012020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 01012020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 01062019/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 15092020/31122024                                        
+,OK;BENEFICIAIRE INCONNU AU FICHIER                                                 
+,OK;CHEVAUCHEMENT CONTRATS 01092020/31122024                                        
+,KO;ANNUL IMPOSSIBLE: RUB OC/CT NON TROUVEE                                         
+,KO;CHEVAUCHEMENT CONTRATS 01012020/31122024                                        
+,KO;CHEVAUCHEMENT CONTRATS 01012020/31122024                                        
+,KO;CHEVAUCHEMENT CONTRATS 01012020/31122024                                        
+,KO;CHEVAUCHEMENT CONTRATS 01012020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 16012020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 01092020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 01082020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 01092020/31082021                                        
+,OK;CHEVAUCHEMENT CONTRATS 01092020/31082021                                        
+,OK;CHEVAUCHEMENT CONTRATS 01082020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 06012020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 01012020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 01012020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 01012020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 01012020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 01012020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 01072020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 11032019/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 01102020/31122024                                        
+,KO;ANNUL IMPOSSIBLE: RUB OC/CT NON TROUVEE                                         
+,OK;CHEVAUCHEMENT CONTRATS 01092020/31122020                                        
+,KO;ANNULATION INFO OC PAR CPAM                                                     
+,KO;ANNULATION BENEFICIAIRE MUTUALISTE                                              
+,KO;ANNULATION INFO OC PAR CPAM                                                     
+,OK;ASSURE GERE PAR UNE AUTRE CAISSE                                                
+,OK;CHEVAUCHEMENT CONTRATS 08092020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 08092020/31122024                                        
+,OK;CHANGT.DE CAISSE 921 VERS 781 -AVEC CONV                                        
+,OK;CHEVAUCHEMENT CONTRATS 01092020/31122024                                        
+,OK;INFORMATION REFUSEE: 2 CT DEJA EN COURS                                         
+,OK;CHEVAUCHEMENT CONTRATS 17092020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 06012020/31122024                                        
+,KO;ANNUL IMPOSSIBLE: RUB OC/CT NON TROUVEE                                         
+,OK;ASSURE GERE PAR UNE AUTRE CAISSE                                                
+,OK;CHEVAUCHEMENT CONTRATS 01092020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 01102020/30092021                                        
+,KO;ANNUL IMPOSSIBLE: RUB OC/CT NON TROUVEE                                         
+,OK;BENEFICIAIRE INCONNU AU FICHIER                                                 
+,OK;CHEVAUCHEMENT CONTRATS 01092020/31082021                                        
+,KO;ANNULATION INFO OC PAR CPAM                                                     
+,OK;CHEVAUCHEMENT CONTRATS 01102020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 01102020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 06092020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 06092020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 31082020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 01092020/31122024                                        
+,OK;BENEFICIAIRE INCONNU AU FICHIER                                                 
+,OK;CHEVAUCHEMENT CONTRATS 06012020/31122024                                        
+,OK;Chevauchement contrat 01012020/31122024                                         
+,OK;CHEVAUCHEMENT CONTRATS 01072020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 07022020/31122024                                        
+,OK;PUMA BASCULE AD/OD 202061634130883                                              
+,OK;CHEVAUCHEMENT CONTRATS 01022020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 01012020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 07092020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 18092020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 18092020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 18092020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 03072020/31122024                                        
+,KO;ANNULATION INFO OC PAR CPAM                                                     
+,OK;CHEVAUCHEMENT CONTRATS 03052020/30042021                                        
+,OK;CHEVAUCHEMENT CONTRATS 13022020/31122024                                        
+,KO;CHEVAUCHEMENT CONTRATS 30072020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 01092020/31122024                                        
+,KO;CHEVAUCHEMENT CONTRATS 01092020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 10062020/09062021                                        
+,OK;CHEVAUCHEMENT CONTRATS 01012020/31122024                                        
+,KO;ANNULATION INFO OC PAR CPAM                                                     
+,OK;BENEFICIAIRE INCONNU AU FICHIER                                                 
+,OK;CHEVAUCHEMENT CONTRATS 01012020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 19092020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 01092020/31122024                                        
+,OK;PUMA BASCULE AD/OD 202073155589361                                              
+,OK;CHEVAUCHEMENT CONTRATS 01072020/31122024                                        
+,KO;CHEVAUCHEMENT CONTRATS 01092020/31082021                                        
+,KO;ASSURE NON MUTUALISTE                                                           
+,OK;CHEVAUCHEMENT CONTRATS 06012020/31122024                                        
+,OK;Chevauchement contrat 23092020/31122024                                         
+,OK;CHEVAUCHEMENT CONTRATS 03082020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 01092020/31122024                                        
+,KO;ANNUL IMPOSSIBLE: RUB OC/CT NON TROUVEE                                         
+,OK;CHEVAUCHEMENT CONTRATS 15022020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 06012020/31122024                                        
+,KO;ANNUL IMPOSSIBLE: RUB OC/CT NON TROUVEE                                         
+,OK;CHEVAUCHEMENT CONTRATS 01102020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 01102020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 01102020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 01092020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 14092020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 01092020/31122024                                        
+,KO;INCOMP DATE DEBUT DATE FIN DE CONTRAT                                           
+,OK;CHEVAUCHEMENT CONTRATS 25092020/31122020                                        
+,KO;ANNUL IMPOSSIBLE: RUB OC/CT NON TROUVEE                                         
+,OK;CHEVAUCHEMENT CONTRATS 01012020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 01012020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 01012020/31122024                                        
+,KO;ANNULATION INFO OC PAR CPAM                                                     
+,OK;BENEFICIAIRE INCONNU AU FICHIER                                                 
+,OK;CHEVAUCHEMENT CONTRATS 01092020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 01092020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 01102020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 01092020/31122024                                        
+,KO;MODIFICATION INFO OC PAR CPAM                                                   
+,OK;CHEVAUCHEMENT CONTRATS 18092020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 01092020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 06012020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 01102020/30092021                                        
+,OK;CHEVAUCHEMENT CONTRATS 07092020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 01102020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 03092020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 01102020/30092021                                        
+,KO;ANNUL IMPOSSIBLE: RUB OC/CT NON TROUVEE                                         
+,OK;CHEVAUCHEMENT CONTRATS 01102020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 24092020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 24082020/31122024                                        
+,KO;CHEVAUCHEMENT CONTRATS 01012020/31122024                                        
+,OK;BENEFICIAIRE INCONNU AU FICHIER                                                 
+,OK;CHEVAUCHEMENT CONTRATS 01102020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 06012020/31122024                                        
+,KO;ANNULATION INFO OC PAR CPAM                                                     
+,OK;CHEVAUCHEMENT CONTRATS 01092020/31072021                                        
+,KO;PERIODE A CREER EN CHEVAUCHEMENT AVEC PERIODE CONNUE EN BASE                    
+,KO;CHEVAUCHEMENT CONTRATS 12092020/11092021                                        
+,KO;CHEVAUCHEMENT CONTRATS 12092020/11092021                                        
+,KO;ANNUL IMPOSSIBLE: RUB OC/CT NON TROUVEE                                         
+,OK;CHEVAUCHEMENT CONTRATS 28092020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 01012020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 05062020/31122024                                        
+,KO;CHEVAUCHEMENT CONTRATS 15012020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 01092020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 02032020/31122024                                        
+,OK;PUMA BASCULE AD/OD 202124221829081                                              
+,OK;CHEVAUCHEMENT CONTRATS 27092020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 01102020/31122024                                        
+,KO;CHEVAUCHEMENT CONTRATS 01012020/07072021                                        
+,KO;MODIFICATION INFO OC PAR CPAM                                                   
+,OK;CHEVAUCHEMENT CONTRATS 14092020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 01022020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 01102020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 01092020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 01032019/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 01012020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 11062020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 22072020/21072021                                        
+,OK;CHEVAUCHEMENT CONTRATS 13022020/22112020                                        
+,OK;CHEVAUCHEMENT CONTRATS 13022020/22112020                                        
+,OK;CHEVAUCHEMENT CONTRATS 13022020/22112020                                        
+,OK;CHEVAUCHEMENT CONTRATS 01012020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 01102020/31122024                                        
+,KO;ANNUL IMPOSSIBLE: RUB OC/CT NON TROUVEE                                         
+,KO;CHEVAUCHEMENT CONTRATS 10062020/09062021                                        
+,OK;CHEVAUCHEMENT CONTRATS 18092020/30092021                                        
+,OK;CHEVAUCHEMENT CONTRATS 06012020/31122024                                        
+,KO;ANNUL IMPOSSIBLE: RUB OC/CT NON TROUVEE                                         
+,OK;CHEVAUCHEMENT CONTRATS 01112020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 01112020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 01102020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 01102020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 01102020/31122024                                        
+,KO;ANNUL IMPOSSIBLE: RUB OC/CT NON TROUVEE                                         
+,OK;ASSURE GERE PAR UNE AUTRE CAISSE                                                
+,KO;ANNULATION INFO OC PAR CPAM                                                     
+,KO;ANNULATION INFO OC PAR CPAM                                                     
+,KO;ANNULATION INFO OC PAR CPAM                                                     
+,OK;CHEVAUCHEMENT CONTRATS 01102020/31122024                                        
+,OK;ASSURE NON MUTUALISTE                                                           
+,OK;CHEVAUCHEMENT CONTRATS 30092020/31122024                                        
+,OK;ASSURE GERE PAR UNE AUTRE CAISSE                                                
+,OK;CHEVAUCHEMENT CONTRATS 01102020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 02042020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 08092020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 08092020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 28092020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 28092020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 28092020/31122024                                        
+,KO;ASSURE GERE PAR UNE AUTRE CAISSE                                                
+,KO;CHANGT.DE CAISSE 941 VERS 911 -AVEC CONV                                        
+,OK;CHEVAUCHEMENT CONTRATS 06012020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 01102020/30092021                                        
+,OK;CHEVAUCHEMENT CONTRATS 01102020/30092021                                        
+,OK;CHEVAUCHEMENT CONTRATS 01102020/30092021                                        
+,OK;Chevauchement contrat 01012020/31122024                                         
+,OK;CHEVAUCHEMENT CONTRATS 01072020/31122024                                        
+,OK;ANNUL IMPOSSIBLE: RUB OC/CT NON TROUVEE                                         
+,KO;ANNULATION INFO OC PAR CPAM                                                     
+,OK;CHEVAUCHEMENT CONTRATS 01092020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 01012020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 03092020/30072021                                        
+,OK;CHEVAUCHEMENT CONTRATS 03092020/30072021                                        
+,OK;CHEVAUCHEMENT CONTRATS 03092020/30072021                                        
+,OK;CHEVAUCHEMENT CONTRATS 03092020/30072021                                        
+,OK;CHEVAUCHEMENT CONTRATS 03092020/30072021                                        
+,OK;CHEVAUCHEMENT CONTRATS 01102020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 01102020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 03072020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 01092020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 01092020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 01092020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 13022020/31122024                                        
+,KO;ANNULATION INFO OC PAR CPAM                                                     
+,OK;CHEVAUCHEMENT CONTRATS 01102020/31082022                                        
+,OK;CHEVAUCHEMENT CONTRATS 02072020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 01072020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 01082020/31122024                                        
+,OK;BENEFICIAIRE INCONNU AU FICHIER                                                 
+,OK;BENEFICIAIRE INCONNU AU FICHIER                                                 
+,OK;BENEFICIAIRE INCONNU AU FICHIER                                                 
+,KO;ANNUL IMPOSSIBLE: RUB OC/CT NON TROUVEE                                         
+,OK;CHEVAUCHEMENT CONTRATS 17092020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 01082020/31122024                                        
+,OK;BENEFICIAIRE INCONNU AU FICHIER                                                 
+,KO;BENEFICIAIRE INCONNU AU FICHIER                                                 
+,OK;CHEVAUCHEMENT CONTRATS 03022020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 01012020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 06012020/31122024                                        
+,KO;PERIODE A CREER EN CHEVAUCHEMENT AVEC PERIODE CONNUE EN BASE                    
+,OK;CHEVAUCHEMENT CONTRATS 01102020/31122024                                        
+,KO;CONTRAT CMU OU C2S DEJA EN COURS                                                
+,OK;CHEVAUCHEMENT CONTRATS 01102020/31122024                                        
+,KO;CREATION INFO OC PAR CPAM                                                       
+,OK;CHEVAUCHEMENT CONTRATS 01092020/31082021                                        
+,KO;ANNULATION INFO OC PAR CPAM                                                     
+,KO;ANNULATION INFO OC PAR CPAM                                                     
+,OK;CHEVAUCHEMENT CONTRATS 01072020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 01072020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 01072020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 14092020/31122024                                        
+,KO;MODIFICATION INFO OC PAR CPAM                                                   
+,OK;CHEVAUCHEMENT CONTRATS 01092020/31122024                                        
+,KO;ANNULATION INFO OC PAR CPAM                                                     
+,KO;CONTRAT CMU OU C2S DEJA EN COURS                                                
+,KO;CONTRAT CMU OU C2S DEJA EN COURS                                                
+,OK;CHEVAUCHEMENT CONTRATS 06102020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 01102020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 06012020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 01102020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 01102020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 01102020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 01102020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 01012020/31122020                                        
+,OK;CHEVAUCHEMENT CONTRATS 30092020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 30092020/31122024                                        
+,OK;BENEFICIAIRE INCONNU AU FICHIER                                                 
+,OK;CHEVAUCHEMENT CONTRATS 01052020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 22102020/31122024                                        
+,KO;BENEFICIAIRE INCONNU AU FICHIER                                                 
+,OK;BENEFICIAIRE INCONNU AU FICHIER                                                 
+,OK;BENEFICIAIRE INCONNU AU FICHIER                                                 
+,OK;CHEVAUCHEMENT CONTRATS 07102020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 01092020/31122024                                        
+,OK;ASSURE GERE PAR UNE AUTRE CAISSE                                                
+,OK;CHEVAUCHEMENT CONTRATS 06012020/31122024                                        
+,OK;BENEFICIAIRE INCONNU AU FICHIER                                                 
+,OK;CHEVAUCHEMENT CONTRATS 08102020/31122020                                        
+,OK;CHEVAUCHEMENT CONTRATS 01012021/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 01012021/31122024                                        
+,OK;INFORMATION REFUSEE: 2 CT DEJA EN COURS                                         
+,KO;Annulation impossible Rub O.C./CT inconnue                                      
+,OK;Chevauchement contrat 01012020/31122024                                         
+,OK;CHEVAUCHEMENT CONTRATS 01102020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 01092020/31122024                                        
+,KO;CONTRAT CMU OU C2S DEJA EN COURS                                                
+,OK;CHEVAUCHEMENT CONTRATS 08102020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 01082020/31122024                                        
+,OK;INFORMATION REFUSEE: 2 CT DEJA EN COURS                                         
+,KO;ANNUL IMPOSSIBLE: RUB OC/CT NON TROUVEE                                         
+,KO;ANNUL IMPOSSIBLE: RUB OC/CT NON TROUVEE                                         
+,KO;INCOMP DATE DEBUT DATE FIN DE CONTRAT                                           
+,KO;ANNULATION INFO OC PAR CPAM                                                     
+,OK;BENEFICIAIRE INCONNU AU FICHIER                                                 
+,OK;CHEVAUCHEMENT CONTRATS 08092020/06112020                                        
+,OK;CHEVAUCHEMENT CONTRATS 08092020/06112020                                        
+,OK;BENEFICIAIRE INCONNU AU FICHIER                                                 
+,OK;CHEVAUCHEMENT CONTRATS 05102020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 01102020/31082022                                        
+,KO;CHEVAUCHEMENT CONTRATS 01102020/30092021                                        
+,OK;CHEVAUCHEMENT CONTRATS 06012020/31122024                                        
+,OK;Chevauchement contrat 01012020/31122024                                         
+,KO;ANNULATION INFO OC PAR CPAM                                                     
+,OK;CHEVAUCHEMENT CONTRATS 01072020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 01102020/30092021                                        
+,OK;CHEVAUCHEMENT CONTRATS 01012020/31122024                                        
+,KO;ANNULATION INFO OC PAR CPAM                                                     
+,KO;MODIFICATION INFO OC PAR CPAM                                                   
+,OK;CHEVAUCHEMENT CONTRATS 03072020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 01092020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 01092020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 01092020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 03082020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 13022020/31122024                                        
+,KO;ANNUL IMPOSSIBLE: RUB OC/CT NON TROUVEE                                         
+,KO;ANNULATION INFO OC PAR CPAM                                                     
+,KO;ANNULATION INFO OC PAR CPAM                                                     
+,OK;CHEVAUCHEMENT CONTRATS 10092020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 01102020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 13102020/31072021                                        
+,KO;MODIFICATION INFO OC PAR CPAM                                                   
+,OK;CHEVAUCHEMENT CONTRATS 18092020/30092021                                        
+,OK;CHEVAUCHEMENT CONTRATS 06012020/31122024                                        
+,OK;BENEFICIAIRE INCONNU AU FICHIER                                                 
+,KO;ANNULATION INFO OC PAR CPAM                                                     
+,OK;CHANGT.DE CAISSE 061 VERS 831 -AVEC CONV                                        
+,OK;CHEVAUCHEMENT CONTRATS 13012020/31122024                                        
+,KO;MODIFICATION INFO OC PAR CPAM                                                   
+,OK;CHEVAUCHEMENT CONTRATS 21092020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 01102020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 01042020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 01052020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 01102020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 01112020/31122024                                        
+,OK;PUMA BASCULE AD/OD 202087840124797                                              
+,OK;CHEVAUCHEMENT CONTRATS 01102020/31122024                                        
+,KO;ANNUL IMPOSSIBLE: RUB OC/CT NON TROUVEE                                         
+,OK;CHEVAUCHEMENT CONTRATS 06012020/31122024                                        
+,KO;ANNULATION INFO OC PAR CPAM                                                     
+,KO;CREATION INFO OC PAR CPAM                                                       
+,KO;ANNULATION INFO OC PAR CPAM                                                     
+,OK;CHEVAUCHEMENT CONTRATS 14102020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 01112020/31122024                                        
+,KO;CONTRAT CMU OU C2S DEJA EN COURS                                                
+,KO;INCOMP DATE DEBUT DATE FIN DE CONTRAT                                           
+,KO;BENEFICIAIRE INCONNU AU FICHIER                                                 
+,KO;ANNUL IMPOSSIBLE: RUB OC/CT NON TROUVEE                                         
+,OK;CHEVAUCHEMENT CONTRATS 01102020/30092021                                        
+,OK;CHEVAUCHEMENT CONTRATS 01102020/31122020                                        
+,KO;ANNUL IMPOSSIBLE: RUB OC/CT NON TROUVEE                                         
+,KO;CHEVAUCHEMENT CONTRATS 30072020/31122024                                        
+,KO;CHEVAUCHEMENT CONTRATS 01092020/31082021                                        
+,KO;CHEVAUCHEMENT CONTRATS 01092020/31082021                                        
+,OK;CHEVAUCHEMENT CONTRATS 06012020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 14102020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 01092020/31122024                                        
+,KO;ANNULATION INFO OC PAR CPAM                                                     
+,KO;ANNUL IMPOSSIBLE: RUB OC/CT NON TROUVEE                                         
+,KO;ANNULATION INFO OC PAR CPAM                                                     
+,OK;CHEVAUCHEMENT CONTRATS 05102020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 12102020/31122020                                        
+,OK;CHEVAUCHEMENT CONTRATS 12102020/31122020                                        
+,OK;CHEVAUCHEMENT CONTRATS 12102020/31122020                                        
+,KO;ANNUL IMPOSSIBLE: RUB OC/CT NON TROUVEE                                         
+,OK;CHEVAUCHEMENT CONTRATS 01092020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 18102020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 01102020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 06012020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 01082020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 15022020/31122024                                        
+,OK;CHANGT.DE CAISSE 595 VERS 597 -AVEC CONV                                        
+,OK;CHEVAUCHEMENT CONTRATS 01102020/30062021                                        
+,OK;CHEVAUCHEMENT CONTRATS 13102020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 13102020/31122024                                        
+,KO;ANNULATION INFO OC PAR CPAM                                                     
+,KO;ANNULATION INFO OC PAR CPAM                                                     
+,KO;ANNULATION INFO OC PAR CPAM                                                     
+,KO;ANNULATION BENEFICIAIRE MUTUALISTE                                              
+,OK;CHEVAUCHEMENT CONTRATS 14092020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 14092020/31122024                                        
+,KO;ANNULATION INFO OC PAR CPAM                                                     
+,OK;CHEVAUCHEMENT CONTRATS 01092020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 15102020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 01102020/31122024                                        
+,KO;MODIFICATION INFO OC PAR CPAM                                                   
+,OK;CHEVAUCHEMENT CONTRATS 15092020/31122024                                        
+,OK;CHANGT.DE CAISSE 751 VERS 921 -AVEC CONV                                        
+,OK;CHEVAUCHEMENT CONTRATS 19102020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 06012020/31122024                                        
+,KO;PAS DE BENEFICIAIRE A CETTE DATE DE NAISSANCE                                   
+,OK;Chevauchement contrat 01012020/31122024                                         
+,KO;ANNULATION INFO OC PAR CPAM                                                     
+,OK;CHEVAUCHEMENT CONTRATS 01012020/31122024                                        
+,KO;ANNUL IMPOSSIBLE: RUB OC/CT NON TROUVEE                                         
+,OK;CHEVAUCHEMENT CONTRATS 13022020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 18092020/30092021                                        
+,KO;CHEVAUCHEMENT CONTRATS 01092020/31122024                                        
+,KO;CHEVAUCHEMENT CONTRATS 01092020/31122024                                        
+,OK;PUMA BASCULE AD/OD 278079935275451                                              
+,OK;CHEVAUCHEMENT CONTRATS 03072020/31122024                                        
+,KO;CONTRAT CMU OU C2S DEJA EN COURS                                                
+,OK;CHEVAUCHEMENT CONTRATS 05102020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 03082020/24102020                                        
+,OK;CHEVAUCHEMENT CONTRATS 03082020/24102020                                        
+,OK;BENEFICIAIRE INCONNU AU FICHIER                                                 
+,OK;BENEFICIAIRE INCONNU AU FICHIER                                                 
+,OK;BENEFICIAIRE INCONNU AU FICHIER                                                 
+,OK;CHEVAUCHEMENT CONTRATS 30102020/31122024                                        
+,OK;BENEFICIAIRE INCONNU AU FICHIER                                                 
+,OK;CHEVAUCHEMENT CONTRATS 01072020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 28092020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 28092020/31122024                                        
+,KO;ANNULATION INFO OC PAR CPAM                                                     
+,KO;ANNULATION INFO OC PAR CPAM                                                     
+,KO;CREATION INFO OC PAR CPAM                                                       
+,OK;CHEVAUCHEMENT CONTRATS 01012020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 06012020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 22102020/31122020                                        
+,OK;CHEVAUCHEMENT CONTRATS 12102020/31122024                                        
+,KO;ANNUL IMPOSSIBLE: RUB OC/CT NON TROUVEE                                         
+,OK;BENEFICIAIRE INCONNU AU FICHIER                                                 
+,OK;BENEFICIAIRE INCONNU AU FICHIER                                                 
+,OK;CHEVAUCHEMENT CONTRATS 28092020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 07092020/31102020                                        
+,KO;CHEVAUCHEMENT CONTRATS 01112020/31122024                                        
+,OK;PUMA BASCULE AD/OD 225090411300173                                              
+,OK;PUMA BASCULE AD/OD 229030904300197                                              
+,OK;PUMA BASCULE AD/OD 234077507700619                                              
+,OK;PUMA BASCULE AD/OD 235019190033432                                              
+,OK;CHEVAUCHEMENT CONTRATS 01102020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 01102020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 01102020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 01102020/31122024                                        
+,KO;CHEVAUCHEMENT CONTRATS 01102020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 06012020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 01102020/31122024                                        
+,OK;PUMA BASCULE AD/OD 202098938727613                                              
+,OK;CHEVAUCHEMENT CONTRATS 12102020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 12102020/31122024                                        
+,KO;MODIFICATION INFO OC PAR CPAM                                                   
+,KO;MODIFICATION INFO OC PAR CPAM                                                   
+,KO;MODIFICATION INFO OC PAR CPAM                                                   
+,OK;CHEVAUCHEMENT CONTRATS 25102020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 01092020/31122024                                        
+,KO;ANNULATION INFO OC PAR CPAM                                                     
+,OK;CHANGT.DE CAISSE 381 VERS 691 -AVEC CONV                                        
+,OK;CHEVAUCHEMENT CONTRATS 06012020/31122024                                        
+,OK;PUMA BASCULE AD/OD 255059720947546                                              
+,OK;Chevauchement contrat 01012020/31122024                                         
+,OK;CHEVAUCHEMENT CONTRATS 26102020/31122024                                        
+,KO;CHEVAUCHEMENT CONTRATS 01092020/31122024                                        
+,KO;CHEVAUCHEMENT CONTRATS 01092020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 13022020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 08092020/06112020                                        
+,OK;CHEVAUCHEMENT CONTRATS 08092020/06112020                                        
+,OK;BENEFICIAIRE INCONNU AU FICHIER                                                 
+,OK;BENEFICIAIRE INCONNU AU FICHIER                                                 
+,KO;INCOMP DATE DEBUT DATE FIN DE CONTRAT                                           
+,KO;BENEFICIAIRE INCONNU AU FICHIER                                                 
+,OK;CHEVAUCHEMENT CONTRATS 01102020/31122020                                        
+,OK;CHEVAUCHEMENT CONTRATS 01102020/30092021                                        
+,OK;BENEFICIAIRE INCONNU AU FICHIER                                                 
+,OK;PUMA BASCULE AD/OD 263087401003639                                              
+,OK;CHEVAUCHEMENT CONTRATS 03072020/31122024                                        
+,OK;PUMA BASCULE AD/OD 246072636202641                                              
+,OK;BENEFICIAIRE INCONNU AU FICHIER                                                 
+,OK;CHEVAUCHEMENT CONTRATS 01072020/31122024                                        
+,KO;ANNUL IMPOSSIBLE: RUB OC/CT NON TROUVEE                                         
+,KO;ANNULATION INFO OC PAR CPAM                                                     
+,OK;CHEVAUCHEMENT CONTRATS 01012021/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 01112020/31102021                                        
+,KO;ANNULATION INFO OC PAR CPAM                                                     
+,OK;CHEVAUCHEMENT CONTRATS 26102020/31102020                                        
+,KO;CHEVAUCHEMENT CONTRATS 26102020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 22102020/31122024                                        
+,OK;ASSURE NON MUTUALISTE                                                           
+,OK;CHEVAUCHEMENT CONTRATS 20102020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 01012020/31122024                                        
+,OK;ASSURE NON MUTUALISTE                                                           
+,OK;CHEVAUCHEMENT CONTRATS 01102020/30092021                                        
+,OK;CHEVAUCHEMENT CONTRATS 01102020/30092021                                        
+,OK;CHEVAUCHEMENT CONTRATS 01102020/30092021                                        
+,OK;BENEFICIAIRE INCONNU AU FICHIER                                                 
+,OK;CHEVAUCHEMENT CONTRATS 01112020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 16102020/31122024                                        
+,KO;ANNUL IMPOSSIBLE: RUB OC/CT NON TROUVEE                                         
+,KO;ANNULATION INFO OC PAR CPAM                                                     
+,KO;MODIFICATION INFO OC PAR CPAM                                                   
+,OK;CHEVAUCHEMENT CONTRATS 06102020/31122024                                        
+,OK;CHANGT.DE CAISSE 061 VERS 831 -AVEC CONV                                        
+,OK;INFORMATION REFUSEE: 2 CT DEJA EN COURS                                         
+,KO;CHEVAUCHEMENT CONTRATS 26102020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 01092020/31122024                                        
+,OK;BENEFICIAIRE INCONNU AU FICHIER                                                 
+,OK;CHEVAUCHEMENT CONTRATS 06012020/31122024                                        
+,KO;CONTRAT CMU OU C2S DEJA EN COURS                                                
+,KO;CONTRAT CMU OU C2S DEJA EN COURS                                                
+,KO;ANNUL IMPOSSIBLE: RUB OC/CT NON TROUVEE                                         
+,OK;INFORMATION REFUSEE: 2 CT DEJA EN COURS                                         
+,OK;CHANGT.DE CAISSE 931 VERS 771 -AVEC CONV                                        
+,OK;CHANGT.DE CAISSE 691 VERS 381 -AVEC CONV                                        
+,KO;ANNUL IMPOSSIBLE: RUB OC/CT NON TROUVEE                                         
+,OK;CHEVAUCHEMENT CONTRATS 01012021/31122024                                        
+,OK;ANNUL IMPOSSIBLE: RUB OC/CT NON TROUVEE                                         
+,OK;CHEVAUCHEMENT CONTRATS 01102020/31122024                                        
+,KO;ANNULATION INFO OC PAR CPAM                                                     
+,KO;ANNULATION INFO OC PAR CPAM                                                     
+,OK;CHEVAUCHEMENT CONTRATS 01102020/31122024                                        
+,KO;ANNUL IMPOSSIBLE: RUB OC/CT NON TROUVEE                                         
+,OK;CHEVAUCHEMENT CONTRATS 06012020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 03022020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 01012020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 01102020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 01102020/31122024                                        
+,OK;BENEFICIAIRE INCONNU AU FICHIER                                                 
+,OK;CHEVAUCHEMENT CONTRATS 01012020/31122024                                        
+,OK;ASSURE GERE PAR UNE AUTRE CAISSE                                                
+,KO;ANNUL IMPOSSIBLE: RUB OC/CT NON TROUVEE                                         
+,KO;CHEVAUCHEMENT CONTRATS 22072020/21072021                                        
+,KO;ANNUL IMPOSSIBLE: RUB OC/CT NON TROUVEE                                         
+,OK;CHEVAUCHEMENT CONTRATS 01102020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 01102020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 01102020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 01102020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 01012020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 15012020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 01012020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 13022020/22112020                                        
+,OK;CHEVAUCHEMENT CONTRATS 13022020/22112020                                        
+,OK;CHEVAUCHEMENT CONTRATS 13022020/22112020                                        
+,OK;CHEVAUCHEMENT CONTRATS 01012021/31122024                                        
+,OK;CHANGT.DE CAISSE 941 VERS 911 -AVEC CONV                                        
+,OK;CHANGT.DE CAISSE 941 VERS 911 -AVEC CONV                                        
+,OK;CHEVAUCHEMENT CONTRATS 05102020/31122024                                        
+,OK;BENEFICIAIRE INCONNU AU FICHIER                                                 
+,KO;CHEVAUCHEMENT CONTRATS 01112020/31122024                                        
+,KO;CHEVAUCHEMENT CONTRATS 01112020/31122024                                        
+,KO;CHEVAUCHEMENT CONTRATS 01112020/31122024                                        
+,KO;CHEVAUCHEMENT CONTRATS 01112020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 06012020/31122024                                        
+,KO;ANNUL IMPOSSIBLE: RUB OC/CT NON TROUVEE                                         
+,KO;CHEVAUCHEMENT CONTRATS 02032020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 02072020/31122024                                        
+,OK;PUMA BASCULE AD/OD 102109720991901                                              
+,KO;ANNUL IMPOSSIBLE: RUB OC/CT NON TROUVEE                                         
+,OK;CHEVAUCHEMENT CONTRATS 01032021/31122024                                        
+,KO;MODIFICATION INFO OC PAR CPAM                                                   
+,KO;ASSURE GERE PAR UNE AUTRE CAISSE                                                
+,OK;CHEVAUCHEMENT CONTRATS 01012021/31122024                                        
+,KO;ANNUL IMPOSSIBLE: RUB OC/CT NON TROUVEE                                         
+,OK;CHEVAUCHEMENT CONTRATS 29102020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 01012021/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 01012021/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 01012021/31122024                                        
+,KO;ASSURE NON MUTUALISTE                                                           
+,OK;CHEVAUCHEMENT CONTRATS 01112020/12032021                                        
+,OK;CHEVAUCHEMENT CONTRATS 01092020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 01012021/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 01092020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 01012021/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 01012021/31122024                                        
+,KO;ANNUL IMPOSSIBLE: RUB OC/CT NON TROUVEE                                         
+,OK;CHEVAUCHEMENT CONTRATS 01112020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 01112020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 06012020/31122024                                        
+,KO;MODIFICATION INFO OC PAR CPAM                                                   
+,OK;Chevauchement contrat 01112020/31122024                                         
+,OK;Chevauchement contrat 01012020/31122024                                         
+,OK;Chevauchement contrat 22102020/31122024                                         
+,KO;CHEVAUCHEMENT CONTRATS 01092020/31122024                                        
+,KO;CHEVAUCHEMENT CONTRATS 01092020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 03072020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 01112020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 01112020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 01112020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 01102020/31122020                                        
+,OK;CHEVAUCHEMENT CONTRATS 01102020/30092021                                        
+,OK;CHEVAUCHEMENT CONTRATS 13022020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 18092020/30092021                                        
+,KO;ANNULATION INFO OC PAR CPAM                                                     
+,OK;CHEVAUCHEMENT CONTRATS 01012020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 01112020/31122024                                        
+,KO;CHEVAUCHEMENT CONTRATS 01092020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 01022020/31122024                                        
+,KO;CHEVAUCHEMENT CONTRATS 01112020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 01012021/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 01092020/31082021                                        
+,OK;CHEVAUCHEMENT CONTRATS 01112020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 30102020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 01012021/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 10012021/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 01112020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 01112020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 01112020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 02112020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 01012021/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 01012021/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 01012021/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 01112020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 01112020/31122024                                        
+,KO;CHEVAUCHEMENT CONTRATS 01112020/31102021                                        
+,KO;CHEVAUCHEMENT CONTRATS 01112020/31102021                                        
+,OK;CHEVAUCHEMENT CONTRATS 01112020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 03112020/31122024                                        
+,OK;CHANGT.DE CAISSE 951 VERS 781 -AVEC CONV                                        
+,KO;CHEVAUCHEMENT CONTRATS 01012021/31122024                                        
+,KO;CHEVAUCHEMENT CONTRATS 01012021/31122024                                        
+,KO;CHEVAUCHEMENT CONTRATS 01012021/31122024                                        
+,KO;CHEVAUCHEMENT CONTRATS 01012021/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 06012020/31122024                                        
+,KO;BENEFICIAIRE INCONNU AU FICHIER                                                 
+,KO;MODIFICATION INFO OC PAR CPAM                                                   
+,KO;CHEVAUCHEMENT CONTRATS 30102020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 01112020/31122024                                        
+,KO;CHANGT IDT. MATRICULAIRE 299079931224651                                        
+,KO;ANNUL IMPOSSIBLE: RUB OC/CT NON TROUVEE                                         
+,OK;CHEVAUCHEMENT CONTRATS 01012021/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 01012021/31122024                                        
+,KO;BENEFICIAIRE INCONNU AU FICHIER                                                 
+,OK;ASSURE GERE PAR UNE AUTRE CAISSE                                                
+,KO;ANNULATION INFO OC PAR CPAM                                                     
+,OK;BENEFICIAIRE INCONNU AU FICHIER                                                 
+,OK;CHEVAUCHEMENT CONTRATS 01012021/31122024                                        
+,KO;INCOMP DATE DEBUT DATE FIN DE CONTRAT                                           
+,OK;CHEVAUCHEMENT CONTRATS 01122020/31122020                                        
+,OK;CHEVAUCHEMENT CONTRATS 06012020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 05112020/31122020                                        
+,OK;CHEVAUCHEMENT CONTRATS 01022021/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 01102020/30092021                                        
+,OK;CHEVAUCHEMENT CONTRATS 01102020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 01102020/31122024                                        
+,KO;BENEFICIAIRE INCONNU AU FICHIER                                                 
+,KO;ANNUL IMPOSSIBLE: RUB OC/CT NON TROUVEE                                         
+,OK;CHEVAUCHEMENT CONTRATS 01012021/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 14092020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 14092020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 01092020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 01012021/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 01112020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 15112020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 12102020/31122024                                        
+,KO;ANNULATION INFO OC PAR CPAM                                                     
+,KO;CHEVAUCHEMENT CONTRATS 03112020/31122024                                        
+,KO;BENEFICIAIRE INCONNU AU FICHIER                                                 
+,OK;CHEVAUCHEMENT CONTRATS 03022020/31122024                                        
+,KO;ASSURE GERE PAR UNE AUTRE CAISSE                                                
+,KO;ANNUL IMPOSSIBLE: RUB OC/CT NON TROUVEE                                         
+,OK;BENEFICIAIRE INCONNU AU FICHIER                                                 
+,KO;ANNUL IMPOSSIBLE: RUB OC/CT NON TROUVEE                                         
+,OK;CHEVAUCHEMENT CONTRATS 01012020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 01102020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 06012020/31122024                                        
+,OK;Chevauchement contrat 01012021/31122024                                         
+,KO;CHEVAUCHEMENT CONTRATS 01112020/31122020                                        
+,OK;CHEVAUCHEMENT CONTRATS 01112020/31102021                                        
+,KO;ANNUL IMPOSSIBLE: RUB OC/CT NON TROUVEE                                         
+,KO;BENEFICIAIRE INCONNU AU FICHIER                                                 
+,OK;CHEVAUCHEMENT CONTRATS 01012021/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 01092020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 01102020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 04112020/31122024                                        
+,KO;ANNULATION INFO OC PAR CPAM                                                     
+,OK;CHEVAUCHEMENT CONTRATS 06012020/31122024                                        
+,KO;ANNUL IMPOSSIBLE: RUB OC/CT NON TROUVEE                                         
+,OK;Chevauchement contrat 01012020/31122024                                         
+,OK;CHEVAUCHEMENT CONTRATS 03072020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 01102020/31122020                                        
+,OK;CHEVAUCHEMENT CONTRATS 01102020/30092021                                        
+,OK;CHEVAUCHEMENT CONTRATS 12102020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 12102020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 01102020/30122020                                        
+,OK;CHEVAUCHEMENT CONTRATS 13022020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 01012020/31122024                                        
+,KO;CHEVAUCHEMENT CONTRATS 01092020/31122024                                        
+,KO;CHEVAUCHEMENT CONTRATS 01092020/31122024                                        
+,OK;PUMA BASCULE AD/OD 237029742012244                                              
+,KO;CONTRAT CMU OU C2S DEJA EN COURS                                                
+,OK;BENEFICIAIRE INCONNU AU FICHIER                                                 
+,OK;CHEVAUCHEMENT CONTRATS 09112020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 01112020/31122024                                        
+,KO;MODIFICATION INFO OC PAR CPAM                                                   
+,OK;CHEVAUCHEMENT CONTRATS 06012020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 01102020/31122024                                        
+,OK;PUMA BASCULE AD/OD 102099122811986                                              
+,OK;CHEVAUCHEMENT CONTRATS 30072020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 02112020/31122024                                        
+,OK;BENEFICIAIRE INCONNU AU FICHIER                                                 
+,OK;CHEVAUCHEMENT CONTRATS 01012020/31122024                                        
+,OK;CHANGT.DE CAISSE 311 VERS 821 -AVEC CONV                                        
+,KO;MODIFICATION INFO OC PAR CPAM                                                   
+,KO;ANNUL IMPOSSIBLE: RUB OC/CT NON TROUVEE                                         
+,OK;CHEVAUCHEMENT CONTRATS 08102020/31082021                                        
+,OK;CHEVAUCHEMENT CONTRATS 12102020/31122024                                        
+,KO;ANNUL IMPOSSIBLE: RUB OC/CT NON TROUVEE                                         
+,OK;CHEVAUCHEMENT CONTRATS 01072020/31122024                                        
+,KO;ANNUL IMPOSSIBLE: RUB OC/CT NON TROUVEE                                         
+,KO;MODIFICATION INFO OC PAR CPAM                                                   
+,OK;CHEVAUCHEMENT CONTRATS 06012020/31122024                                        
+,KO;CHEVAUCHEMENT CONTRATS 12112020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 01112019/31122024                                        
+,KO;ANNULATION INFO OC PAR CPAM                                                     
+,OK;CHEVAUCHEMENT CONTRATS 01072020/31122021                                        
+,OK;CHEVAUCHEMENT CONTRATS 01012020/31122021                                        
+,OK;CHEVAUCHEMENT CONTRATS 01072020/31122021                                        
+,KO;CONTRAT CMU OU C2S DEJA EN COURS                                                
+,KO;CONTRAT CMU OU C2S DEJA EN COURS                                                
+,KO;CONTRAT CMU OU C2S DEJA EN COURS                                                
+,OK;CHEVAUCHEMENT CONTRATS 06112020/31122024                                        
+,KO;MODIFICATION INFO OC PAR CPAM                                                   
+,OK;CHEVAUCHEMENT CONTRATS 18092020/30092021                                        
+,KO;BENEFICIAIRE INCONNU AU FICHIER                                                 
+,KO;NOM DU CHEF CPL DIFFERENT DU NOM CONNU DANS NOTRE BASE                          
+,OK;BENEFICIAIRE INCONNU AU FICHIER                                                 
+,KO;ANNUL IMPOSSIBLE: RUB OC/CT NON TROUVEE                                         
+,OK;CHEVAUCHEMENT CONTRATS 01122020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 01122020/31122024                                        
+,KO;CHEVAUCHEMENT CONTRATS 01012021/31122024                                        
+,OK;Beneficiaire inconnu au fichier                                                 
+,OK;CHEVAUCHEMENT CONTRATS 21112020/31122024                                        
+,KO;MODIFICATION INFO OC PAR CPAM                                                   
+,KO;MODIFICATION INFO OC PAR CPAM                                                   
+,OK;CHEVAUCHEMENT CONTRATS 02112020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 02112020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 13112020/31122024                                        
+,KO;ANNUL IMPOSSIBLE: RUB OC/CT NON TROUVEE                                         
+,KO;ANNUL IMPOSSIBLE: RUB OC/CT NON TROUVEE                                         
+,OK;BENEFICIAIRE INCONNU AU FICHIER                                                 
+,KO;ANNUL IMPOSSIBLE: RUB OC/CT NON TROUVEE                                         
+,OK;Chevauchement contrat 01012020/31122024                                         
+,KO;ANNULATION INFO OC PAR CPAM                                                     
+,KO;ANNULATION INFO OC PAR CPAM                                                     
+,KO;ANNULATION INFO OC PAR CPAM                                                     
+,KO;ANNULATION INFO OC PAR CPAM                                                     
+,OK;CHEVAUCHEMENT CONTRATS 01122020/30112021                                        
+,OK;CHEVAUCHEMENT CONTRATS 08092020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 01102020/31122020                                        
+,OK;CHEVAUCHEMENT CONTRATS 01102020/30092021                                        
+,OK;CHANGT.DE CAISSE 751 VERS 921 -AVEC CONV                                        
+,KO;MODIFICATION INFO OC PAR CPAM                                                   
+,KO;MODIFICATION INFO OC PAR CPAM                                                   
+,KO;ANNULATION INFO OC PAR CPAM                                                     
+,KO;CHEVAUCHEMENT CONTRATS 01092020/31122024                                        
+,KO;CHEVAUCHEMENT CONTRATS 01092020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 13022020/31122024                                        
+,KO;CHEVAUCHEMENT CONTRATS 10112020/31122024                                        
+,KO;MODIFICATION INFO OC PAR CPAM                                                   
+,OK;CHEVAUCHEMENT CONTRATS 03072020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 01012020/31122024                                        
+,KO;ANNULATION INFO OC PAR CPAM                                                     
+,OK;CHEVAUCHEMENT CONTRATS 01012021/31122024                                        
+,KO;CHEVAUCHEMENT CONTRATS 16112020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 01012021/31122024                                        
+,OK;PUMA BASCULE AD/OD 201122505650593                                              
+,OK;CHEVAUCHEMENT CONTRATS 09112020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 01102020/30092021                                        
+,KO;ANNUL IMPOSSIBLE: RUB OC/CT NON TROUVEE                                         
+,KO;CHEVAUCHEMENT CONTRATS 01102020/30092021                                        
+,KO;ANNUL IMPOSSIBLE: RUB OC/CT NON TROUVEE                                         
+,KO;ANNUL IMPOSSIBLE: RUB OC/CT NON TROUVEE                                         
+,KO;ANNULATION INFO OC PAR CPAM                                                     
+,OK;CHEVAUCHEMENT CONTRATS 01012021/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 01112020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 01112020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 06012020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 10112020/31122024                                        
+,OK;BENEFICIAIRE INCONNU AU FICHIER                                                 
+,OK;CHEVAUCHEMENT CONTRATS 09112020/31122024                                        
+,OK;PUMA BASCULE AD/OD 201098902433232                                              
+,OK;CHEVAUCHEMENT CONTRATS 01012021/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 01012021/31122024                                        
+,OK;INFORMATION REFUSEE: 2 CT DEJA EN COURS                                         
+,OK;BENEFICIAIRE INCONNU AU FICHIER                                                 
+,OK;CHEVAUCHEMENT CONTRATS 01012021/31122024                                        
+,KO;CHEVAUCHEMENT CONTRATS 01072020/31122020                                        
+,OK;CHEVAUCHEMENT CONTRATS 10112020/31122024                                        
+,KO;ANNULATION INFO OC PAR CPAM                                                     
+,KO;CHEVAUCHEMENT CONTRATS 01042019/31122024                                        
+,KO;CHEVAUCHEMENT CONTRATS 01042019/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 14112020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 01012021/31012021                                        
+,OK;CHEVAUCHEMENT CONTRATS 01012021/31012021                                        
+,OK;CHEVAUCHEMENT CONTRATS 01092020/31122024                                        
+,OK;BENEFICIAIRE INCONNU AU FICHIER                                                 
+,KO;CONTRAT CMU OU C2S DEJA EN COURS                                                
+,KO;CONTRAT CMU OU C2S DEJA EN COURS                                                
+,OK;CHEVAUCHEMENT CONTRATS 01012020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 17032020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 01012021/31122024                                        
+,KO;CHEVAUCHEMENT CONTRATS 01012021/31122024                                        
+,KO;CHEVAUCHEMENT CONTRATS 01012021/31122024                                        
+,KO;CHEVAUCHEMENT CONTRATS 01012021/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 06012020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 19112020/31122020                                        
+,OK;CHEVAUCHEMENT CONTRATS 01012021/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 19112020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 01112020/31102021                                        
+,OK;CHEVAUCHEMENT CONTRATS 01112020/31102021                                        
+,OK;CHEVAUCHEMENT CONTRATS 01122020/30112021                                        
+,OK;CHEVAUCHEMENT CONTRATS 01012021/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 01012021/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 04112020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 04112020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 04112020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 01012021/31122024                                        
+,KO;MODIFICATION INFO OC PAR CPAM                                                   
+,OK;CHEVAUCHEMENT CONTRATS 06012020/31122024                                        
+,undefined;undefined
+,OK;CHEVAUCHEMENT CONTRATS 09112020/30112021                                        
+,OK;CHEVAUCHEMENT CONTRATS 01092020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 01012020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 01112020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 01122020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 01012021/30122024                                        
+,KO;ANNUL IMPOSSIBLE: RUB OC/CT NON TROUVEE                                         
+,KO;CONTRAT CMU OU C2S DEJA EN COURS                                                
+,OK;INFORMATION REFUSEE: 2 CT DEJA EN COURS                                         
+,OK;INFORMATION REFUSEE: 2 CT DEJA EN COURS                                         
+,OK;CHEVAUCHEMENT CONTRATS 11112020/31122020                                        
+,KO;ANNUL IMPOSSIBLE: RUB OC/CT NON TROUVEE                                         
+,OK;CHEVAUCHEMENT CONTRATS 01012021/31122024                                        
+,KO;CONTRAT ACS DEJA EN COURS                                                       
+,KO;INCOMP DATE DEBUT DATE FIN DE CONTRAT                                           
+,KO;CONTRAT CMU OU C2S DEJA EN COURS                                                
+,KO;CONTRAT CMU OU C2S DEJA EN COURS                                                
+,OK;BENEFICIAIRE INCONNU AU FICHIER                                                 
+,OK;CHEVAUCHEMENT CONTRATS 09112020/31122024                                        
+,KO;ASSURE NON MUTUALISTE                                                           
+,KO;ANNUL IMPOSSIBLE: RUB OC/CT NON TROUVEE                                         
+,OK;CHEVAUCHEMENT CONTRATS 01012021/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 01012021/31122024                                        
+,KO;ANNUL IMPOSSIBLE: RUB OC/CT NON TROUVEE                                         
+,KO;BENEFICIAIRE INCONNU AU FICHIER                                                 
+,OK;BENEFICIAIRE INCONNU AU FICHIER                                                 
+,OK;CHEVAUCHEMENT CONTRATS 06112020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 10112020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 01122020/30112021                                        
+,KO;ANNUL IMPOSSIBLE: RUB OC/CT NON TROUVEE                                         
+,KO;ANNUL IMPOSSIBLE: RUB OC/CT NON TROUVEE                                         
+,KO;ANNUL IMPOSSIBLE: RUB OC/CT NON TROUVEE                                         
+,KO;BENEFICIAIRE INCONNU AU FICHIER                                                 
+,KO;ANNUL IMPOSSIBLE: RUB OC/CT NON TROUVEE                                         
+,KO;ANNUL IMPOSSIBLE: RUB OC/CT NON TROUVEE                                         
+,OK;CHEVAUCHEMENT CONTRATS 01012020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 06012020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 01122020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 01122020/31122024                                        
+,OK;Chevauchement contrat 01012020/31122024                                         
+,OK;CHEVAUCHEMENT CONTRATS 01012020/31122024                                        
+,KO;ANNULATION INFO OC PAR CPAM                                                     
+,OK;CHEVAUCHEMENT CONTRATS 18092020/30092021                                        
+,KO;CHEVAUCHEMENT CONTRATS 21052020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 03072020/30112020                                        
+,OK;PUMA BASCULE AD/OD 103036938816356                                              
+,KO;CHEVAUCHEMENT CONTRATS 01092020/31122024                                        
+,KO;CHEVAUCHEMENT CONTRATS 01092020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 01102020/31122020                                        
+,OK;CHEVAUCHEMENT CONTRATS 01102020/30092021                                        
+,KO;ANNULATION INFO OC PAR CPAM                                                     
+,KO;CHEVAUCHEMENT CONTRATS 09112020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 01122020/31122020                                        
+,KO;CONTRAT CMU OU C2S DEJA EN COURS                                                
+,KO;CONTRAT CMU OU C2S DEJA EN COURS                                                
+,KO;ANNUL IMPOSSIBLE: RUB OC/CT NON TROUVEE                                         
+,KO;MODIFICATION INFO OC PAR CPAM                                                   
+,KO;CHEVAUCHEMENT CONTRATS 01112020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 06012020/31122024                                        
+,KO;CHEVAUCHEMENT CONTRATS 25112020/01112021                                        
+,OK;CHEVAUCHEMENT CONTRATS 01012021/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 02112020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 01012021/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 24092020/31122020                                        
+,KO;ASSURE GERE PAR UNE AUTRE CAISSE                                                
+,OK;CHEVAUCHEMENT CONTRATS 01012021/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 11112020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 01012021/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 01122020/31122024                                        
+,KO;ANNUL IMPOSSIBLE: RUB OC/CT NON TROUVEE                                         
+,OK;CHEVAUCHEMENT CONTRATS 20112020/31122024                                        
+,KO;CHEVAUCHEMENT CONTRATS 01102020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 01012021/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 01012021/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 01012021/31122024                                        
+,KO;ANNUL IMPOSSIBLE: RUB OC/CT NON TROUVEE                                         
+,OK;CHEVAUCHEMENT CONTRATS 06012020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 01012021/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 01012021/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 15112020/07092021                                        
+,OK;CHEVAUCHEMENT CONTRATS 01012020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 01012021/31122024                                        
+,OK;BENEFICIAIRE INCONNU AU FICHIER                                                 
+,OK;CHEVAUCHEMENT CONTRATS 01012021/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 01012021/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 01012021/31122024                                        
+,KO;CHEVAUCHEMENT CONTRATS 15012020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 01122020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 01012020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 10102020/09102021                                        
+,OK;BENEFICIAIRE INCONNU AU FICHIER                                                 
+,OK;CHEVAUCHEMENT CONTRATS 06012020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 22112020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 01012021/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 01012021/31122024                                        
+,KO;MODIFICATION INFO OC PAR CPAM                                                   
+,OK;CHEVAUCHEMENT CONTRATS 01012021/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 01012021/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 27112020/31122020                                        
+,OK;BENEFICIAIRE INCONNU AU FICHIER                                                 
+,OK;BENEFICIAIRE INCONNU AU FICHIER                                                 
+,OK;CHEVAUCHEMENT CONTRATS 01122020/30112021                                        
+,KO;CHANGT IDT. MATRICULAIRE 289079932807043                                        
+,OK;CHEVAUCHEMENT CONTRATS 29112020/31122024                                        
+,KO;ANNUL IMPOSSIBLE: RUB OC/CT NON TROUVEE                                         
+,OK;CHEVAUCHEMENT CONTRATS 01012021/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 01092020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 01012020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 01012021/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 06012020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 19112020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 01012021/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 01012021/31122024                                        
+,OK;Chevauchement contrat 01012021/31122024                                         
+,OK;Chevauchement contrat 01012020/31122024                                         
+,OK;CHEVAUCHEMENT CONTRATS 01102020/31122020                                        
+,OK;CHEVAUCHEMENT CONTRATS 01102020/30092021                                        
+,KO;MODIFICATION INFO OC PAR CPAM                                                   
+,OK;CHANGT.DE CAISSE 041 VERS 061 -AVEC CONV                                        
+,OK;CHEVAUCHEMENT CONTRATS 28112020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 11112020/31122020                                        
+,KO;CHEVAUCHEMENT CONTRATS 01122020/31122024                                        
+,KO;CHEVAUCHEMENT CONTRATS 01012020/31122020                                        
+,KO;CONTRAT CMU OU C2S DEJA EN COURS                                                
+,KO;CONTRAT CMU OU C2S DEJA EN COURS                                                
+,OK;CHEVAUCHEMENT CONTRATS 01012020/31122024                                        
+,KO;CHEVAUCHEMENT CONTRATS 01122020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 01122020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 01122020/31122024                                        
+,KO;ANNUL IMPOSSIBLE: RUB OC/CT NON TROUVEE                                         
+,KO;ANNUL IMPOSSIBLE: RUB OC/CT NON TROUVEE                                         
+,OK;CHEVAUCHEMENT CONTRATS 01012020/31122024                                        
+,KO;INCOMP DATE DEBUT DATE FIN DE CONTRAT                                           
+,KO;CONTRAT CMU OU C2S DEJA EN COURS                                                
+,KO;CONTRAT CMU OU C2S DEJA EN COURS                                                
+,OK;CHEVAUCHEMENT CONTRATS 18092020/30092021                                        
+,OK;CHEVAUCHEMENT CONTRATS 01122020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 01022020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 01122020/31122024                                        
+,KO;ANNUL IMPOSSIBLE: RUB OC/CT NON TROUVEE                                         
+,OK;CHEVAUCHEMENT CONTRATS 06012020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 01012021/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 01012021/31122024                                        
+,KO;ANNUL IMPOSSIBLE: RUB OC/CT NON TROUVEE                                         
+,OK;CHEVAUCHEMENT CONTRATS 01112020/31122024                                        
+,KO;ANNULATION INFO OC PAR CPAM                                                     
+,KO;ANNULATION INFO OC PAR CPAM                                                     
+,KO;ANNUL IMPOSSIBLE: RUB OC/CT NON TROUVEE                                         
+,KO;CONTRAT CMU OU C2S DEJA EN COURS                                                
+,OK;CHEVAUCHEMENT CONTRATS 01012021/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 01012021/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 06012020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 03122020/31122020                                        
+,KO;BENEFICIAIRE INCONNU AU FICHIER                                                 
+,OK;CHANGT.DE CAISSE 751 VERS 781 -AVEC CONV                                        
+,KO;CHEVAUCHEMENT CONTRATS 02062020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 01122020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 01122020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 01122020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 01112020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 01112020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 01082020/31122024                                        
+,KO;CHEVAUCHEMENT CONTRATS 01012021/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 01122020/31122020                                        
+,OK;CHEVAUCHEMENT CONTRATS 01012021/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 18022020/31122020                                        
+,OK;CHEVAUCHEMENT CONTRATS 01012018/31122020                                        
+,OK;CHEVAUCHEMENT CONTRATS 06012020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 03122020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 01012021/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 01012021/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 01012021/31122024                                        
+,KO;MODIFICATION INFO OC PAR CPAM                                                   
+,OK;CHEVAUCHEMENT CONTRATS 01092020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 01012021/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 01012021/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 01012021/31122024                                        
+,KO;ANNUL IMPOSSIBLE: RUB OC/CT NON TROUVEE                                         
+,KO;MODIFICATION INFO OC PAR CPAM                                                   
+,OK;CHEVAUCHEMENT CONTRATS 01012021/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 06012020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 01122020/31122020                                        
+,OK;Chevauchement contrat 01012020/31122024                                         
+,OK;Chevauchement contrat 01012021/31122024                                         
+,OK;CHEVAUCHEMENT CONTRATS 01012021/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 01012021/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 01092020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 01072020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 01012020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 01012021/31122024                                        
+,KO;MODIFICATION INFO OC PAR CPAM                                                   
+,KO;MODIFICATION INFO OC PAR CPAM                                                   
+,OK;CHEVAUCHEMENT CONTRATS 01062020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 01062020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 01012021/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 01102020/31122020                                        
+,OK;CHEVAUCHEMENT CONTRATS 01102020/30092021                                        
+,OK;CHEVAUCHEMENT CONTRATS 01122020/31122024                                        
+,KO;ANNUL IMPOSSIBLE: RUB OC/CT NON TROUVEE                                         
+,OK;CHEVAUCHEMENT CONTRATS 01012021/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 01112020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 01112020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 11112020/31122020                                        
+,OK;CHEVAUCHEMENT CONTRATS 14092020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 14092020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 01012021/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 30072020/31122024                                        
+,OK;CHANGT.DE CAISSE 911 VERS 931 -AVEC CONV                                        
+,KO;ASSURE GERE PAR UNE AUTRE CAISSE                                                
+,KO;ANNUL IMPOSSIBLE: RUB OC/CT NON TROUVEE                                         
+,OK;CHEVAUCHEMENT CONTRATS 01012020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 01102020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 01012021/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 01012020/31072021                                        
+,OK;CHEVAUCHEMENT CONTRATS 01012021/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 01012021/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 03122020/31122024                                        
+,KO;ANNUL IMPOSSIBLE: RUB OC/CT NON TROUVEE                                         
+,KO;ANNULATION INFO OC PAR CPAM                                                     
+,KO;ANNULATION INFO OC PAR CPAM                                                     
+,KO;ANNULATION INFO OC PAR CPAM                                                     
+,OK;CHEVAUCHEMENT CONTRATS 05012021/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 01012021/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 15022020/31122024                                        
+,KO;CHEVAUCHEMENT CONTRATS 01122020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 01012021/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 06012020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 01122020/31122020                                        
+,OK;CHEVAUCHEMENT CONTRATS 01012021/31122024                                        
+,KO;ANNULATION INFO OC PAR CPAM                                                     
+,OK;PUMA BASCULE AD/OD 220056909109931                                              
+,KO;CONTRAT CMU OU C2S DEJA EN COURS                                                
+,OK;CHEVAUCHEMENT CONTRATS 01122020/31122024                                        
+,OK;BENEFICIAIRE INCONNU AU FICHIER                                                 
+,OK;BENEFICIAIRE INCONNU AU FICHIER                                                 
+,OK;CHEVAUCHEMENT CONTRATS 01012021/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 16012020/31122020                                        
+,OK;CHEVAUCHEMENT CONTRATS 01112020/31122024                                        
+,KO;CREATION INFO OC PAR CPAM                                                       
+,OK;PUMA BASCULE AD/OD 239072123105951                                              
+,OK;CHEVAUCHEMENT CONTRATS 06012020/31122024                                        
+,OK;PUMA BASCULE AD/OD 117086909103846                                              
+,KO;ANNULATION INFO OC PAR CPAM                                                     
+,OK;CHEVAUCHEMENT CONTRATS 01012021/31122021                                        
+,OK;CHEVAUCHEMENT CONTRATS 01012021/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 09122020/31122024                                        
+,OK;CHANGT.DE CAISSE 331 VERS 641 -AVEC CONV                                        
+,OK;CHEVAUCHEMENT CONTRATS 01012021/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 01012021/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 01012021/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 01012021/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 04012021/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 04012021/31122024                                        
+,KO;ANNULATION INFO OC PAR CPAM                                                     
+,OK;CHEVAUCHEMENT CONTRATS 01012021/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 01022021/30042021                                        
+,KO;MODIFICATION INFO OC PAR CPAM                                                   
+,KO;MODIFICATION INFO OC PAR CPAM                                                   
+,OK;CHEVAUCHEMENT CONTRATS 01112020/31102021                                        
+,OK;CHEVAUCHEMENT CONTRATS 01122020/30112021                                        
+,OK;CHEVAUCHEMENT CONTRATS 01122020/30112021                                        
+,OK;CHEVAUCHEMENT CONTRATS 01122020/30112021                                        
+,KO;ANNUL IMPOSSIBLE: RUB OC/CT NON TROUVEE                                         
+,undefined;CHEVAUCHEMENT CONTRATS 06012020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 01012021/31122024                                        
+,OK;BENEFICIAIRE INCONNU AU FICHIER                                                 
+,OK;CHEVAUCHEMENT CONTRATS 04012021/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 04012021/31122024                                        
+,KO;CHEVAUCHEMENT CONTRATS 01022021/30042021                                        
+,OK;CHEVAUCHEMENT CONTRATS 01012021/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 06102020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 01012021/31122024                                        
+,OK;BENEFICIAIRE INCONNU AU FICHIER                                                 
+,OK;CHEVAUCHEMENT CONTRATS 01122020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 01012020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 01012021/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 01012021/31122024                                        
+,KO;CHEVAUCHEMENT CONTRATS 01012021/31122024                                        
+,KO;CHEVAUCHEMENT CONTRATS 09122020/31122024                                        
+,OK;BENEFICIAIRE INCONNU AU FICHIER                                                 
+,KO;ANNULATION INFO OC PAR CPAM                                                     
+,KO;ANNULATION INFO OC PAR CPAM                                                     
+,OK;BENEFICIAIRE INCONNU AU FICHIER                                                 
+,OK;CHEVAUCHEMENT CONTRATS 01012021/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 16112020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 18092020/30092021                                        
+,OK;CHEVAUCHEMENT CONTRATS 01092020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 06012020/31122024                                        
+,KO;ANNUL IMPOSSIBLE: RUB OC/CT NON TROUVEE                                         
+,OK;CHEVAUCHEMENT CONTRATS 01012021/31122021                                        
+,OK;CHEVAUCHEMENT CONTRATS 01012021/31122021                                        
+,OK;CHEVAUCHEMENT CONTRATS 01012021/31122021                                        
+,OK;CHEVAUCHEMENT CONTRATS 01012021/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 01012021/31122021                                        
+,OK;CHEVAUCHEMENT CONTRATS 01012021/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 01012021/31122024                                        
+,KO;ANNUL IMPOSSIBLE: RUB OC/CT NON TROUVEE                                         
+,OK;CHEVAUCHEMENT CONTRATS 10112020/31122024                                        
+,OK;BENEFICIAIRE INCONNU AU FICHIER                                                 
+,KO;ANNUL IMPOSSIBLE: RUB OC/CT NON TROUVEE                                         
+,OK;Chevauchement contrat 01012020/31122024                                         
+,OK;CHEVAUCHEMENT CONTRATS 21072020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 21072020/31122024                                        
+,OK;PUMA BASCULE AD/OD 102127401205754                                              
+,KO;CHEVAUCHEMENT CONTRATS 01012021/31122024                                        
+,KO;ANNUL IMPOSSIBLE: RUB OC/CT NON TROUVEE                                         
+,OK;CHEVAUCHEMENT CONTRATS 18092020/30092021                                        
+,KO;CHEVAUCHEMENT CONTRATS 01012021/31122024                                        
+,KO;CHEVAUCHEMENT CONTRATS 01012021/31122024                                        
+,KO;CHEVAUCHEMENT CONTRATS 01012021/31122024                                        
+,KO;CHEVAUCHEMENT CONTRATS 01012021/31122024                                        
+,KO;CHEVAUCHEMENT CONTRATS 01012021/31122024                                        
+,KO;CHEVAUCHEMENT CONTRATS 01012021/31122024                                        
+,KO;CHEVAUCHEMENT CONTRATS 01012021/31122024                                        
+,KO;MUJ130014R
+,OK;CHEVAUCHEMENT CONTRATS 30102020/31122020                                        
+,OK;CHEVAUCHEMENT CONTRATS 03122020/31122024                                        
+,OK;CHANGT.DE CAISSE 291 VERS 221 -AVEC CONV                                        
+,OK;CHEVAUCHEMENT CONTRATS 08072020/30122020                                        
+,OK;CHANGT.DE CAISSE 331 VERS 642 -AVEC CONV                                        
+,KO;CHEVAUCHEMENT CONTRATS 21122020/31122024                                        
+,KO;ANNUL IMPOSSIBLE: RUB OC/CT NON TROUVEE                                         
+,KO;CONTRAT CMU OU C2S DEJA EN COURS                                                
+,KO;CONTRAT CMU OU C2S DEJA EN COURS                                                
+,OK;CHEVAUCHEMENT CONTRATS 01112020/31122024                                        
+,KO;CONTRAT CMU OU C2S DEJA EN COURS                                                
+,KO;CONTRAT CMU OU C2S DEJA EN COURS                                                
+,OK;CHEVAUCHEMENT CONTRATS 01012020/31122024                                        
+,KO;CHEVAUCHEMENT CONTRATS 06012020/31122024                                        
+,KO;ANNUL IMPOSSIBLE: RUB OC/CT NON TROUVEE                                         
+,OK;BENEFICIAIRE INCONNU AU FICHIER                                                 
+,OK;BENEFICIAIRE INCONNU AU FICHIER                                                 
+,OK;CHEVAUCHEMENT CONTRATS 01012021/31122024                                        
+,KO;CREATION INFO OC PAR CPAM                                                       
+,KO;ANNUL IMPOSSIBLE: RUB OC/CT NON TROUVEE                                         
+,OK;BENEFICIAIRE INCONNU AU FICHIER                                                 
+,OK;CHEVAUCHEMENT CONTRATS 03112020/31122020                                        
+,OK;CHEVAUCHEMENT CONTRATS 01012021/31122021                                        
+,KO;CHEVAUCHEMENT CONTRATS 01012020/31122020                                        
+,OK;CHEVAUCHEMENT CONTRATS 01012021/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 01012021/31072021                                        
+,OK;CHEVAUCHEMENT CONTRATS 01012021/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 25052020/31012021                                        
+,KO;CHEVAUCHEMENT CONTRATS 01012021/31122024                                        
+,KO;CHEVAUCHEMENT CONTRATS 01012021/31122024                                        
+,KO;CHEVAUCHEMENT CONTRATS 01122020/30112021                                        
+,KO;ANNUL IMPOSSIBLE: RUB OC/CT NON TROUVEE                                         
+,OK;CHEVAUCHEMENT CONTRATS 01012021/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 01012021/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 01012021/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 01012021/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 01042019/31122020                                        
+,OK;CHEVAUCHEMENT CONTRATS 01042019/31122020                                        
+,OK;CHEVAUCHEMENT CONTRATS 01122020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 01012021/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 01032021/31122024                                        
+,OK;BENEFICIAIRE INCONNU AU FICHIER                                                 
+,OK;CHEVAUCHEMENT CONTRATS 01012021/31122024                                        
+,OK;BENEFICIAIRE INCONNU AU FICHIER                                                 
+,OK;BENEFICIAIRE INCONNU AU FICHIER                                                 
+,KO;CHEVAUCHEMENT CONTRATS 06012020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 01012021/31122024                                        
+,KO;CHEVAUCHEMENT CONTRATS 01012021/31082021                                        
+,OK;CHEVAUCHEMENT CONTRATS 01012021/31122021                                        
+,OK;CHEVAUCHEMENT CONTRATS 01012020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 21072020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 21072020/31122024                                        
+,OK;PUMA BASCULE AD/OD 102073523846844                                              
+,KO;CHEVAUCHEMENT CONTRATS 15012020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 11112020/31122020                                        
+,OK;CHEVAUCHEMENT CONTRATS 01012021/31122024                                        
+,KO;CHEVAUCHEMENT CONTRATS 01012021/31122024                                        
+,KO;CHEVAUCHEMENT CONTRATS 01012021/31122024                                        
+,OK;PUMA BASCULE AD/OD 202115975011916                                              
+,OK;CHEVAUCHEMENT CONTRATS 01122020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 01012021/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 10102020/31122020                                        
+,OK;CHEVAUCHEMENT CONTRATS 01012021/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 01122020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 01012021/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 02112020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 02112020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 01012020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 01012020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 01012020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 01122020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 01122020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 01012021/11012021                                        
+,KO;CHEVAUCHEMENT CONTRATS 15122020/31122024                                        
+,KO;CHEVAUCHEMENT CONTRATS 15122020/31122024                                        
+,KO;CHEVAUCHEMENT CONTRATS 15122020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 01012021/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 01012021/31122024                                        
+,KO;ANNULATION INFO OC PAR CPAM                                                     
+,OK;PUMA BASCULE AD/OD 102115975014441                                              
+,KO;CHEVAUCHEMENT CONTRATS 01012021/31122024                                        
+,KO;CHEVAUCHEMENT CONTRATS 01012021/31122024                                        
+,KO;CHEVAUCHEMENT CONTRATS 01012021/31122021                                        
+,OK;CHEVAUCHEMENT CONTRATS 01012021/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 01012021/31122024                                        
+,KO;CHEVAUCHEMENT CONTRATS 06012020/31122024                                        
+,KO;PERIODE DE RATTACHEMENT A ANNULER/MODIFIER NON TROUVEE EN BASE                  
+,OK;CHEVAUCHEMENT CONTRATS 01012021/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 01012021/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 01012021/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 01012021/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 01012021/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 01012021/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 01012021/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 01012021/31122024                                        
+,KO;MODIFICATION INFO OC PAR CPAM                                                   
+,OK;CHANGT.DE CAISSE 711 VERS 211 -AVEC CONV                                        
+,OK;CHANGT.DE CAISSE 711 VERS 211 -AVEC CONV                                        
+,OK;CHEVAUCHEMENT CONTRATS 01012021/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 01012021/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 01012021/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 01012021/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 01082020/31072021                                        
+,KO;MODIFICATION INFO OC PAR CPAM                                                   
+,OK;CHEVAUCHEMENT CONTRATS 01012021/31122024                                        
+,OK;ANNUL IMPOSSIBLE: RUB OC/CT NON TROUVEE                                         
+,OK;CHEVAUCHEMENT CONTRATS 01122020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 01012021/31122024                                        
+,KO;CHEVAUCHEMENT CONTRATS 31122020/31122024                                        
+,KO;CHEVAUCHEMENT CONTRATS 31122020/31122024                                        
+,KO;CHEVAUCHEMENT CONTRATS 06012020/31122024                                        
+,OK;BENEFICIAIRE INCONNU AU FICHIER                                                 
+,OK;Chevauchement contrat 01012020/31122024                                         
+,KO;CHEVAUCHEMENT CONTRATS 01012021/31122024                                        
+,KO;CHEVAUCHEMENT CONTRATS 01012021/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 01012021/14012021                                        
+,OK;BENEFICIAIRE INCONNU AU FICHIER                                                 
+,OK;CHEVAUCHEMENT CONTRATS 30112020/31122024                                        
+,KO;CHEVAUCHEMENT CONTRATS 01012021/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 01012021/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 01122020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 01012021/31122024                                        
+,KO;CHEVAUCHEMENT CONTRATS 06012020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 01122020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 01012021/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 01012021/14012021                                        
+,OK;BENEFICIAIRE INCONNU AU FICHIER                                                 
+,KO;CHEVAUCHEMENT CONTRATS 01012021/31122024                                        
+,KO;CHEVAUCHEMENT CONTRATS 01012021/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 01012021/31122024                                        
+,KO;CHEVAUCHEMENT CONTRATS 01012021/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 01122020/31122024                                        
+,KO;CHEVAUCHEMENT CONTRATS 21072020/31122024                                        
+,KO;CHEVAUCHEMENT CONTRATS 21072020/31122024                                        
+,KO;CHEVAUCHEMENT CONTRATS 01012021/31122024                                        
+,KO;CHEVAUCHEMENT CONTRATS 01012021/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 01012021/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 01012021/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 01012021/31122024                                        
+,KO;CHEVAUCHEMENT CONTRATS 01012021/31122024                                        
+,KO;CHEVAUCHEMENT CONTRATS 01012021/31122024                                        
+,KO;CHEVAUCHEMENT CONTRATS 01012021/31122024                                        
+,KO;ANNULATION INFO OC PAR CPAM                                                     
+,OK;CHEVAUCHEMENT CONTRATS 01012021/31122024                                        
+,KO;CHEVAUCHEMENT CONTRATS 01012021/31122024                                        
+,KO;ANNULATION INFO OC PAR CPAM                                                     
+,OK;CHEVAUCHEMENT CONTRATS 01012021/31122024                                        
+,KO;CHEVAUCHEMENT CONTRATS 01012021/31122024                                        
+,KO;MODIFICATION INFO OC PAR CPAM                                                   
+,OK;CHEVAUCHEMENT CONTRATS 01012021/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 01012021/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 01012021/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 01022020/31122024                                        
+,KO;CHEVAUCHEMENT CONTRATS 01012021/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 02112020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 02112020/31122024                                        
+,KO;CHEVAUCHEMENT CONTRATS 01012021/31122024                                        
+,OK;Chevauchement contrat 01012021/31122024                                         
+,KO;CHEVAUCHEMENT CONTRATS 01012021/31122024                                        
+,KO;CHEVAUCHEMENT CONTRATS 01012021/31122024                                        
+,KO;CHEVAUCHEMENT CONTRATS 01012021/31122024                                        
+,KO;CHEVAUCHEMENT CONTRATS 01012021/31122024                                        
+,KO;CHEVAUCHEMENT CONTRATS 01012021/31122024                                        
+,KO;CHEVAUCHEMENT CONTRATS 01012021/31122024                                        
+,KO;CHEVAUCHEMENT CONTRATS 01012021/31122024                                        
+,KO;CHEVAUCHEMENT CONTRATS 01012021/31122024                                        
+,KO;CHEVAUCHEMENT CONTRATS 01012021/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 01012021/31122024                                        
+,KO;ANNULATION INFO OC PAR CPAM                                                     
+,KO;ANNULATION INFO OC PAR CPAM                                                     
+,KO;ANNULATION INFO OC PAR CPAM                                                     
+,KO;CHANGT.DE CAISSE 911 VERS 941 -AVEC CONV                                        
+,OK;CHEVAUCHEMENT CONTRATS 01012021/31122024                                        
+,KO;CHEVAUCHEMENT CONTRATS 02012021/31122024                                        
+,KO;CHEVAUCHEMENT CONTRATS 02012021/31122024                                        
+,KO;CHEVAUCHEMENT CONTRATS 04012021/31122024                                        
+,KO;CHEVAUCHEMENT CONTRATS 01012021/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 04012021/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 01012021/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 01012021/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 01012021/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 01012021/31122024                                        
+,KO;CHEVAUCHEMENT CONTRATS 01012021/31122024                                        
+,KO;CHEVAUCHEMENT CONTRATS 01012021/31122024                                        
+,OK;BENEFICIAIRE INCONNU AU FICHIER                                                 
+,OK;CHEVAUCHEMENT CONTRATS 07122020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 07122020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 07122020/31122024                                        
+,KO;MODIFICATION INFO OC PAR CPAM                                                   
+,KO;CHEVAUCHEMENT CONTRATS 01012021/31032021                                        
+,OK;CHEVAUCHEMENT CONTRATS 01012021/31122024                                        
+,KO;CHEVAUCHEMENT CONTRATS 01012021/31122024                                        
+,KO;CHEVAUCHEMENT CONTRATS 01012021/31122024                                        
+,KO;ANNUL IMPOSSIBLE: RUB OC/CT NON TROUVEE                                         
+,OK;CHEVAUCHEMENT CONTRATS 01012021/28022021                                        
+,OK;CHEVAUCHEMENT CONTRATS 01012021/31122024                                        
+,KO;CHEVAUCHEMENT CONTRATS 01012021/31122024                                        
+,KO;CHEVAUCHEMENT CONTRATS 01012021/31122024                                        
+,KO;CHEVAUCHEMENT CONTRATS 01012021/31122024                                        
+,KO;CHEVAUCHEMENT CONTRATS 01012021/31122024                                        
+,KO;CHEVAUCHEMENT CONTRATS 01012021/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 01012021/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 01012021/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 01092020/31122024                                        
+,KO;CHEVAUCHEMENT CONTRATS 01012021/17012021                                        
+,OK;CHEVAUCHEMENT CONTRATS 05012021/31122024                                        
+,KO;CHEVAUCHEMENT CONTRATS 06012020/31122024                                        
+,KO;CHEVAUCHEMENT CONTRATS 02012021/31122024                                        
+,KO;CHEVAUCHEMENT CONTRATS 01012021/31122024                                        
+,KO;CHEVAUCHEMENT CONTRATS 01012021/31122024                                        
+,KO;CONTRAT CMU OU C2S DEJA EN COURS                                                
+,OK;CHEVAUCHEMENT CONTRATS 01012021/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 01092020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 05012021/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 01012021/31122024                                        
+,OK;CHANGT.DE CAISSE 271 VERS 764 -AVEC CONV                                        
+,KO;CHEVAUCHEMENT CONTRATS 01012021/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 01012020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 01012020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 01012020/31122024                                        
+,KO;CHEVAUCHEMENT CONTRATS 01012021/31122024                                        
+,KO;CHEVAUCHEMENT CONTRATS 01012021/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 01112020/31102021                                        
+,OK;CHEVAUCHEMENT CONTRATS 01092020/31072021                                        
+,OK;CHEVAUCHEMENT CONTRATS 01012021/31122021                                        
+,KO;CHEVAUCHEMENT CONTRATS 01012021/31122024                                        
+,KO;CHEVAUCHEMENT CONTRATS 01012021/31122024                                        
+,KO;ANNUL IMPOSSIBLE: RUB OC/CT NON TROUVEE                                         
+,OK;CHEVAUCHEMENT CONTRATS 05012021/31122024                                        
+,KO;CHEVAUCHEMENT CONTRATS 01012021/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 05012021/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 30072020/31122024                                        
+,KO;ANNUL IMPOSSIBLE: RUB OC/CT NON TROUVEE                                         
+,OK;CHEVAUCHEMENT CONTRATS 03012021/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 01082020/31072021                                        
+,KO;CHEVAUCHEMENT CONTRATS 01012021/31122024                                        
+,OK;BENEFICIAIRE INCONNU AU FICHIER                                                 
+,KO;CHEVAUCHEMENT CONTRATS 15022020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 01122020/31122024                                        
+,KO;ANNUL IMPOSSIBLE: RUB OC/CT NON TROUVEE                                         
+,OK;CHEVAUCHEMENT CONTRATS 01012021/31122024                                        
+,KO;ANNUL IMPOSSIBLE: RUB OC/CT NON TROUVEE                                         
+,KO;CHEVAUCHEMENT CONTRATS 01012021/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 01012020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 01012021/31122024                                        
+,KO;CHEVAUCHEMENT CONTRATS 06012020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 01032021/28022022                                        
+,OK;CHEVAUCHEMENT CONTRATS 01032021/28022022                                        
+,KO;MODIFICATION INFO OC PAR CPAM                                                   
+,OK;CHEVAUCHEMENT CONTRATS 01012021/31012021                                        
+,KO;ANNULATION INFO OC PAR CPAM                                                     
+,OK;CHEVAUCHEMENT CONTRATS 01012021/31122024                                        
+,KO;ANNUL IMPOSSIBLE: RUB OC/CT NON TROUVEE                                         
+,OK;CHEVAUCHEMENT CONTRATS 22012021/31122024                                        
+,KO;MODIFICATION INFO OC PAR CPAM                                                   
+,KO;BENEFICIAIRE NON MUTUALISTE                                                     
+,OK;CHANGT.DE CAISSE 751 VERS 781 -AVEC CONV                                        
+,OK;CHEVAUCHEMENT CONTRATS 01012021/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 01012021/31032021                                        
+,KO;ANNULATION INFO OC PAR CPAM                                                     
+,OK;ASSURE INCONNU AU FICHIER                                                       
+,OK;BENEFICIAIRE INCONNU AU FICHIER                                                 
+,OK;CHEVAUCHEMENT CONTRATS 01012020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 01012020/31122024                                        
+,OK;CHEVAUCHEMENT CONTRATS 01012020/31122024                                        
+,KO;CHEVAUCHEMENT CONTRATS 06012020/31122024                                        
