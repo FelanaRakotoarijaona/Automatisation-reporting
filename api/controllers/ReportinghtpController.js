@@ -122,30 +122,9 @@ module.exports = {
   },
   Essaii : function(req,res)
   {
-    /*var Sails = require('sails').constructor;
-    var sailsApp = new Sails();
-    
-    sailsApp.lift({
-      log: { level: 'warn' }
-    }, function (err) {
-      if (err) {
-        console.log('Error occurred lifting Sails app:', err);
-        return;
-      }
-    
-      // --•
-      console.log('Sails app lifted successfully!');
-    
-    });*/
     var Excel = require('exceljs');
     var workbook = new Excel.Workbook();
-    //var table = ['\\\\10.128.1.2\\almerys-out\\Retour_Easytech_'];
-    //var table = ['//10.128.1.2/almerys-out/Retour_Easytech_'];
-    var table = ['//10.128.1.2'];
-    var table1 = ['\\\\10.128.1.2'];
-    var table2 = ['10.128.1.2'];
-    var table3 =['D:/Reporting/Reporting'];
-    var table4 = ['D:\\Reporting\\Reporting'];
+    var table = ['\\\\10.128.1.2\\almerys-out\\Retour_Easytech_'];
     var datetest = req.param("date",0);
     var annee = datetest.substr(0, 4);
     var mois = datetest.substr(5, 2);
@@ -175,16 +154,16 @@ module.exports = {
                     Reportinghtp.importEssai(table,cheminp,date,MotCle,0,cb);
                   },
                function(cb){
-                    Reportinghtp.importEssai(table1,cheminp,date,MotCle,1,cb);
+                    Reportinghtp.importEssai(table,cheminp,date,MotCle,1,cb);
                   },
                   function(cb){
-                    Reportinghtp.importEssai(table2,cheminp,date,MotCle,2,cb);
+                    Reportinghtp.importEssai(table,cheminp,date,MotCle,2,cb);
                   },
                 function(cb){
-                    Reportinghtp.importEssai(table3,cheminp,date,MotCle,3,cb);
+                    Reportinghtp.importEssai(table,cheminp,date,MotCle,3,cb);
                   },
                   function(cb){
-                    Reportinghtp.importEssai(table4,cheminp,date,MotCle,4,cb);
+                    Reportinghtp.importEssai(table,cheminp,date,MotCle,4,cb);
                   },
             ],
             function(err, resultat){
