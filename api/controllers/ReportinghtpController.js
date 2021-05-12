@@ -125,7 +125,8 @@ module.exports = {
 
     var Excel = require('exceljs');
     var workbook = new Excel.Workbook();
-    var table = ['\\dev\\prod\\almerys-out\\Retour_Easytech_'];
+   // var table = ['\\dev\\prod\\almerys-out\\Retour_Easytech_'];
+    var table = ['/dev/prod/Retour_Easytech_20210114/RETOUR_ADHESION_LAMIE/']
     var datetest = req.param("date",0);
     var annee = datetest.substr(0, 4);
     var mois = datetest.substr(5, 2);
