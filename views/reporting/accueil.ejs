@@ -20,7 +20,7 @@
   display: block;
   background-color: black;
   color: whitesmoke;
-  padding: 34px 24px;
+  padding: 26.7px 18px;
   width: 100%;
   border: none;
   outline: none;
@@ -47,21 +47,22 @@
   height: 441px;
   display: none;
 }
-
-
-    </style>
+ </style>
     <title>Document</title>
 </head>
 <body>
-    <div class="container">
+    <div class="container" >
+      <br><br><br><br><br>
         <div class="row">
-            <br><br><br><br><br>
+            <br><br><br><br><br><br><br><br><br><br>
             <div class="tab">
+              
                 <button class="tablinks" onclick="openCity(event, 'London')" id="defaultOpen">Reporting HTP</button>
-                <button class="tablinks" onclick="openCity(event, 'Paris')">Reporting INOVCOM</button>
-                <button class="tablinks" onclick="openCity(event, 'Tokyo')">Reporting RETOUR</button>
-                <button class="tablinks" onclick="openCity(event, 'Indu')">Reporting INDU</button>
-                <button class="tablinks" onclick="openCity(event, 'Contetieux')">Reporting CONTETIEUX</button>
+                <button class="tablinks">Reporting INOVCOM</button>
+                <button class="tablinks">Reporting RETOUR</button>
+                <button class="tablinks">Reporting INDU</button>
+                <button class="tablinks">Reporting CONTETIEUX</button>
+                <button class="tablinks"> <a href="/logout" style="margin-bottom: 5px;">Se déconnecter</a></button>
               </div>
               
               <div id="London" class="tabcontent">
@@ -85,7 +86,7 @@
                         <form  style="background-color: white;" method="POST" action="/reportinghtp">
                             <div class="form-group" >
                               <h4>Choisir une date pour votre reporting</h4><br><br>
-                              <input type="date" class="form-control" value="<%- date %>" name="date" required >
+                              <input type="date" class="form-control" value="<%- date %>" name="date" readonly>
                             </div>
                             <br>
                             <button type="submit" class="btn btn-default">Importer</button>
@@ -93,158 +94,7 @@
                     </div>
                 </div>
                 </div>
-              <div id="Paris" class="tabcontent">
-                <br>
-                  <br>
-                  <br>
-                  <br>
-                 
-                  <div class="row" style="background-color: white;margin-left: 20px;margin-right: 20px;margin-bottom: 20px;border-radius: 10px;box-shadow:10px 5px 5px green;"> 
-                    <div class="col-md-4">
-                        <br><br>
-                        <br>
-                        <div class="row" style="border-radius: 100px;background-color:whitesmoke;height:200px;width:200px;margin-left: 10px;box-shadow: 5px 5px 5px 5px green;">
-                            <br><br>
-                            <h3 style="margin-left: 45px;">Reporting</h3>
-                            <h2  style="margin-left: 25px;">INOVCOM</h2>
-                        </div>
-                       
-                        
-                        <br><br>
-                    </div>
-                    <div class="col-md-8" style="background-color: white;">
-                        <br><br><br>
-                        <form  style="background-color: white;" method="POST" action="/reportinginovcom">
-                            <div class="form-group" >
-                              <h4>Choisir une date pour votre reporting</h4><br><br>
-                              <input type="date" class="form-control" name="date">
-                            </div>
-                            <br>
-                            <button type="submit" class="btn btn-default">Importer</button>
-                            <br><br>
-                            <br><br>
-                            
-                            
-                        </form>
-                    </div>
-                </div>
-                
-              </div>
               
-              <div id="Tokyo" class="tabcontent">
-                <br>
-                <br>
-                <br>
-                <br>
-               
-                <div class="row" style="background-color: white;margin-left: 20px;margin-right: 20px;margin-bottom: 20px;border-radius: 10px;box-shadow:10px 5px 5px green;"> 
-                  <div class="col-md-4">
-                      <br><br>
-                      <br>
-                      <div class="row" style="border-radius: 100px;background-color:whitesmoke;height:200px;width:200px;margin-left: 10px;box-shadow: 5px 5px 5px 5px green;">
-                          <br><br>
-                          <h3 style="margin-left: 45px;">Reporting</h3>
-                          <h2  style="margin-left: 35px;">RETOUR</h2>
-                      </div>
-                     
-                      
-                      <br><br>
-                  </div>
-                  <div class="col-md-8" style="background-color: white;">
-                      <br><br><br>
-                      <form  style="background-color: white;" method="POST" action="/reportinghtp">
-                          <div class="form-group" >
-                            <h4>Choisir une date pour votre reporting</h4><br><br>
-                            <input type="date" class="form-control" name="date">
-                          </div>
-                          <br>
-                          <button type="submit" class="btn btn-default">Importer</button>
-                          <br><br>
-                          <br><br>
-                          
-                          
-                      </form>
-                  </div>
-              </div>
-              
-              </div>
-
-              <div id="Indu" class="tabcontent">
-                <br>
-                <br>
-                <br>
-                <br>
-               
-                <div class="row" style="background-color: white;margin-left: 20px;margin-right: 20px;margin-bottom: 20px;border-radius: 10px;box-shadow:10px 5px 5px green;"> 
-                  <div class="col-md-4">
-                      <br><br>
-                      <br>
-                      <div class="row" style="border-radius: 100px;background-color:whitesmoke;height:200px;width:200px;margin-left: 10px;box-shadow: 5px 5px 5px 5px green;">
-                          <br><br>
-                          <h3 style="margin-left: 45px;">Reporting</h3>
-                          <h2  style="margin-left: 60px;">INDU</h2>
-                      </div>
-                     
-                      
-                      <br><br>
-                  </div>
-                  <div class="col-md-8" style="background-color: white;">
-                      <br><br><br>
-                      <form  style="background-color: white;" method="POST" action="/reportinghtp">
-                          <div class="form-group" >
-                            <h4>Choisir une date pour votre reporting</h4><br><br>
-                            <input type="date" class="form-control" name="date">
-                          </div>
-                          <br>
-                          <button type="submit" class="btn btn-default">Importer</button>
-                          <br><br>
-                          <br><br>
-                          
-                          
-                      </form>
-                  </div>
-              </div>
-              
-              </div>
-
-              <div id="Contetieux" class="tabcontent">
-                <br>
-                <br>
-                <br>
-                <br>
-               
-                <div class="row" style="background-color: white;margin-left: 20px;margin-right: 20px;margin-bottom: 20px;border-radius: 10px;box-shadow:10px 5px 5px green;"> 
-                  <div class="col-md-4">
-                      <br><br>
-                      <br>
-                      <div class="row" style="border-radius: 100px;background-color:whitesmoke;height:200px;width:200px;margin-left: 10px;box-shadow: 5px 5px 5px 5px green;">
-                          <br><br>
-                          <h3 style="margin-left: 45px;">Reporting</h3>
-                          <h3  style="margin-left: 10px;">CONTENTIEUX</h3>
-                      </div>
-                     
-                      
-                      <br><br>
-                  </div>
-                  <div class="col-md-8" style="background-color: white;">
-                      <br><br><br>
-                      <form  style="background-color: white;" method="POST" action="/reportinghtp">
-                          <div class="form-group" >
-                            <h4>Choisir une date pour votre reporting</h4><br><br>
-                            <input type="date" class="form-control" name="date">
-                          </div>
-                          <br>
-                          <button type="submit" class="btn btn-default">Importer</button>
-                          <br><br>
-                          <br><br>
-                          
-                          
-                      </form>
-                  </div>
-              </div>
-              
-              </div>
-
         </div>
     </div>
     

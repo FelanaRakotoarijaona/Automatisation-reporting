@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <title>Document</title>
+    <style>
+        * {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Open Sans', sans-serif;
+  height: 90vh;
+}
+
+.slider-container {
+  position: relative;
+  overflow: hidden;
+  width: 100vw;
+  height: 100vh;
+}
+
+.left-slide {
+  height: 100%;
+  width: 35%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  transition: transform 3.5s ease-in-out;
+}
+
+.left-slide > div {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+}
+
+.left-slide h1 {
+  font-size: 40px;
+  margin-bottom: 10px;
+  margin-top: -30px;
+}
+
+.right-slide {
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 35%;
+  width: 65%;
+  transition: transform 0.5s ease-in-out;
+}
+
+.right-slide > div {
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+  height: 100%;
+  width: 100%;
+}
+
+button {
+  background-color: #fff;
+  border: none;
+  color: #aaa;
+  cursor: pointer;
+  font-size: 16px;
+  padding: 15px;
+}
+
+button:hover {
+  color: #222;
+}
+
+button:focus {
+  outline: none;
+}
+
+.slider-container .action-buttons button {
+  position: absolute;
+  left: 35%;
+  top: 50%;
+  z-index: 100;
+}
+
+.slider-container .action-buttons .down-button {
+  transform: translateX(-100%);
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+}
+
+.slider-container .action-buttons .up-button {
+  transform: translateY(-100%);
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+    </style>
+</head>
+<body>
+    <div class="container-fluid">
+
+        <div class="slider-container">
+            <div class="left-slide">
+            <div style="background-color: rgb(88, 155, 88)">
+                <h1>REPORTING HTP</h1>
+                <p>This is slide 1</p>
+            </div>
+            <div style="background-color: #e4e260">
+                <h1>REPORTING INOVCOM</h1>
+                <p>This is slide 2</p>
+            </div>
+            <div style="background-color: #252e33">
+                <h1>REPORTING RETOUR</h1>
+                <p>This is slide 3</p>
+            </div>
+            <div style="background-color: #ffb866">
+                <h1>REPORTING INDU</h1>
+                <p>This is slide 4</p>
+            </div>
+            <div style="background-color: #ffb866">
+                <h1>REPORTING CONTENTIEUX</h1>
+                <p>This is slide 5</p>
+            </div>
+            </div>
+            <div class="right-slide">
+            <div style="background-image: url('/images/1.jpg');">HTP</div>
+            <div style="background-image: url('/images/2.jpg');">INOVCOM</div>
+            <div style="background-image: url('/images/3.jpg');">RETOUR</div>
+            <div style="background-image: url('/images/4.jpg');">INDU</div>
+            <div style="background-image: url('/images/2.jpg');">
+                
+                <br><br><br>
+                    <form method="POST" action="/reportinghtp" style="background-color: whitesmoke;height: 400px; width:700px;margin-left: 50px;">
+                        <br><br><br><br><br><br>
+                        <input type="date" name="date">
+                        <button type="submit">Importer</button>
+                    </form>
+                
+                
+            </div>
+            </div>
+            <div class="action-buttons">
+            <button class="down-button">
+                <i class="fas fa-arrow-down">||</i>
+            </button>
+            <button class="up-button">
+                <i class="fas fa-arrow-up">||</i>
+            </button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+<script>
+    const sliderContainer = document.querySelector('.slider-container')
+const slideRight = document.querySelector('.right-slide')
+const slideLeft = document.querySelector('.left-slide')
+const upButton = document.querySelector('.up-button')
+const downButton = document.querySelector('.down-button')
+const slidesLength = slideRight.querySelectorAll('div').length
+let activeSlideIndex = 0
+slideLeft.style.top = `-${(slidesLength - 1) * 100}vh`
+upButton.addEventListener('click', () => changeSlide('up'))
+downButton.addEventListener('click', () => changeSlide('down'))
+const changeSlide = (direction) => {
+  const sliderHeight = sliderContainer.clientHeight
+  if (direction === 'up') {
+    activeSlideIndex++
+    if (activeSlideIndex > slidesLength - 1) {
+      activeSlideIndex = 0
+    }
+  } else if (direction === 'down') {
+    activeSlideIndex--
+    if (activeSlideIndex < 0) {
+      activeSlideIndex = slidesLength - 1
+    }
+  }
+  slideRight.style.transform = `translateY(-${
+    activeSlideIndex * sliderHeight
+  }px)`
+  slideLeft.style.transform = `translateY(${activeSlideIndex * sliderHeight}px)`
+}
+</script>

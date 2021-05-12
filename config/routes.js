@@ -9,25 +9,49 @@
  */
 
 module.exports.routes = {
-
-  /***************************************************************************
-  *                                                                          *
-  * Make the view located at `views/homepage.ejs` your home page.            *
-  *                                                                          *
-  * (Alternatively, remove this and add an `index.html` file in your         *
-  * `assets` directory)                                                      *
-  *                                                                          *
-  ***************************************************************************/
-  '/accueil/:date' : 'ReportinghtpController.accueil',
-  '/accueil1' : 'ReportinghtpController.accueil1',
-  '/reportinghtp' : 'ReportinghtpController.essaiExcel',
-  '/compterExcel' : 'ReportinghtpController.CompterExcel',
-  '/reportinginovcom' : 'ReportinghtpController.ReportingInovcom',
-  '/essai' : 'ReportinghtpController.Essaii',
+  //Route Login
   '/': 'AuthentificationController.loginSimple',
-  '/exportReporting/:jour/:mois/:annee' : 'ReportingExcelController.rechercheColonne',
+  '/login' : 'AuthentificationController.loginLdap',
+  '/logout' : 'AuthentificationController.logout',
+  
+  //Route HTP
+  '/accueil1' : 'ReportinghtpController.accueil1',
+  '/essai' : 'ReportinghtpController.Essaii',
+  '/accueil/:date' : 'ReportinghtpController.accueil',
+  '/import' : 'ReportinghtpController.import',
+  '/reportinghtp' : 'ReportinghtpController.essaiExcel',
+  //Route HTP Export
   '/export/:jour/:mois/:annee/:html' : 'ReportingExcelController.accueil',
+  '/exportReporting/:jour/:mois/:annee' : 'ReportingExcelController.rechercheColonne',
+ 
 
+  //Route INOVCOM
+  '/accueilInovcom' : 'ReportingInovcomController.accueil1',
+  '/essaiInovcom' : 'ReportingInovcomController.Essaii',
+  '/accueil2Inovcom/:date' : 'ReportingInovcomController.accueil',
+  '/reportinginovcom' : 'ReportingInovcomController.essaiExcel',
+  //Route INOVCOM Export
+  '/exportInovcom/:jour/:mois/:annee/:html' : 'ReportingInovcomExportController.accueil',
+  '/exportReportingInovcom/:jour/:mois/:annee' : 'ReportingInovcomExportController.rechercheColonne',
+
+   //Route INDU
+   '/accueilIndu' : 'ReportingInduController.accueil1',
+   '/essaiIndu' : 'ReportingInduController.Essaii',
+   '/accueil2Indu/:date' : 'ReportingInduController.accueil',
+   '/reportingindu' : 'ReportingInduController.essaiExcel',
+   //Route INDU Export mbola tsy traité
+   '/exportIndu/:jour/:mois/:annee/:html' : 'ReportingInovcomExportController.accueil',
+   '/exportReportingIndu:jour/:mois/:annee' : 'ReportingInovcomExportController.rechercheColonne',
+
+   //Route RETOUR
+   '/accueilRetour' : 'ReportingRetourController.accueil1',
+   '/essaiRetour' : 'ReportingRetourController.Essaii',
+   '/accueil2Retour/:date' : 'ReportingRetourController.accueil',
+   '/reportingretour' : 'ReportingRetourController.essaiExcel',
+   //Route RETOUR Export mbola tsy traité
+   '/exportRetour/:jour/:mois/:annee/:html' : 'ReportingInovcomExportController.accueil',
+   '/exportReportingIndu:jour/:mois/:annee' : 'ReportingInovcomExportController.rechercheColonne',
+ 
   
 
 

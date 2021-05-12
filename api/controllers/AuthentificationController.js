@@ -52,16 +52,20 @@ module.exports = {
         });
   
         client.on('error', function(err) { });
+        var email = req.param('email',null);
+       // var x = parseInt(email);
+        var sql = "select * from r_personnel where ldap_name = '"+email+"' " ;
   
-        User.findOne({
+        /*User.findOne({
             where: {
                 or:[
                 {id: email},
                 {ldap_name: req.param('email',null)},
                 {appelation: req.param('email',null)}
                 ]
-            }
-        },function (err, user){
+            }*/
+      
+            User.query(sql,function (err, user){
             if (err)  console.log(err);
 
             if (!user)
@@ -75,7 +79,8 @@ module.exports = {
             }
             if(req.param('password',null)=='admin@2020')
             {
-      //connected
+                console.log("tonga ato v?");
+                //connected
                 User.query("select r_personnel.id_pers, transport_droit_user.droit from r_personnel join transport_droit_user on r_personnel.id_pers = transport_droit_user.matricule where r_personnel.id_pers ='"+user.id+"'", function(error, found){
                     if (error) return res.send(error);
                     if(found.rows.length == 0 ) {
@@ -92,9 +97,11 @@ module.exports = {
             }
             else
             {
+                console.log("sa ato?");
         //test ldapServer
             client.bind('EASYTECH\\'+req.param('email',null), req.param('password',null), function(err) {
                 if(err){
+                    console.log("erreur");
                     var retVal = [];
                     req.session.modalEmail = "";
                     retVal["display"] = "";
@@ -106,11 +113,12 @@ module.exports = {
                 else
                 {
             //connected
+            console.log("bonne direction");
                     var lstIdDossier =[];
                     async.parallel([
                     function (callback) {
                         console.log("----------------------- ");
-                            User.query("select r_personnel.id_pers, transport_droit_user.droit from r_personnel join transport_droit_user on r_personnel.id_pers = transport_droit_user.matricule where r_personnel.id_pers ='"+user.id+"'", function(error, found){
+                            User.query("select r_personnel.id_pers from r_personnel where r_personnel.ldap_name ='"+email+"'", function(error, found){
                                 if (error) return res.send(error);
                                 if(found.rows.length == 0 ) {
                                     req.session.droit = 0;
@@ -126,7 +134,7 @@ module.exports = {
                         req.session.user = user.id;
                         req.session.nom = user.appelation;
                         req.session.authenticated = true;
-                        res.view('reporting/index');
+                        res.view('reporting/accueil1');
                     });
                     }
                 });

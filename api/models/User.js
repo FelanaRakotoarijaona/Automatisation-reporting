@@ -6,27 +6,13 @@
  */
 
 module.exports = {
-  /*connection: 'ConnexionPostgresql',
-  tableName: 'r_personnel',
+  //connection: 'reporting',
+  //datastore : 'default',
+  /*tableName: 'r_personnel',
   autoCreatedAt: false,
   autoUpdatedAt: false,
   autoPK: false,
   attributes: {
-
-    //  ╔═╗╦═╗╦╔╦╗╦╔╦╗╦╦  ╦╔═╗╔═╗
-    //  ╠═╝╠╦╝║║║║║ ║ ║╚╗╔╝║╣ ╚═╗
-    //  ╩  ╩╚═╩╩ ╩╩ ╩ ╩ ╚╝ ╚═╝╚═╝
-
-
-    //  ╔═╗╔╦╗╔╗ ╔═╗╔╦╗╔═╗
-    //  ║╣ ║║║╠╩╗║╣  ║║╚═╗
-    //  ╚═╝╩ ╩╚═╝╚═╝═╩╝╚═╝
-
-
-    //  ╔═╗╔═╗╔═╗╔═╗╔═╗╦╔═╗╔╦╗╦╔═╗╔╗╔╔═╗
-    //  ╠═╣╚═╗╚═╗║ ║║  ║╠═╣ ║ ║║ ║║║║╚═╗
-    //  ╩ ╩╚═╝╚═╝╚═╝╚═╝╩╩ ╩ ╩ ╩╚═╝╝╚╝╚═╝
-
     id: { 
       type: 'integer',
       required: true,
@@ -79,7 +65,7 @@ module.exports = {
       var obj = this.toObject();
       return obj;
     }
-  },*/
-
+  },
+*/
 };
 
