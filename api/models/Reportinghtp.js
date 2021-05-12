@@ -106,7 +106,8 @@ module.exports = {
     var tab = [];
     const Excel = require('exceljs');
     const newWorkbook = new Excel.Workbook();
-    var a = table[0]+date+table2[nb];
+    //var a = table[0]+date+table2[nb];
+    var a = table[0];
     var b = option[nb];
     //console.log(a);
     var c = Reportinghtp.existenceFichier(a);
