@@ -7,110 +7,6 @@
 const { table } = require("console");
 const { setMaxListeners } = require("process");
 module.exports = {
-  /*import : function(req,res)
-  {
-    var sql= 'select * from chemin limit 5;';
-    Reportinghtp.getDatastore().sendNativeQuery(sql,function(err, nc) {
-      if (err){
-        console.log(err);
-        return next(err);
-      }
-      else
-      {
-          nc = nc.rows;
-          sails.log(nc[0].typologiedelademande);
-          var Excel = require('exceljs');
-          var workbook = new Excel.Workbook();
-          var cheminc = [];
-          var cheminp = [];
-          var dernierl = [];
-          var feuil = [];
-          var cellule = [];
-          var cellule2 = [];
-          var table = [];
-          var numligne = [];
-          var trameflux = [];
-          var datetest = req.param("date",0);
-          var annee = datetest.substr(0, 4);
-          var mois = datetest.substr(5, 2);
-          var jour = datetest.substr(8, 2);
-          var date = annee+mois+jour;
-          var dateexport = jour + '/' + mois + '/' +annee;
-          var nb = 5;
-          workbook.xlsx.readFile('ex.xlsx')
-              .then(function() {
-                var newworksheet = workbook.getWorksheet('Feuil1');
-                var chemincommun = newworksheet.getColumn(1);
-                var cheminparticulier = newworksheet.getColumn(2);
-                var dernierligne = newworksheet.getColumn(3);
-                var feuille = newworksheet.getColumn(4);
-                var cel = newworksheet.getColumn(5);
-                var tab = newworksheet.getColumn(6);
-                var cel2 = newworksheet.getColumn(7);
-                var numeroligne = newworksheet.getColumn(8);
-                  chemincommun.eachCell(function(cell, rowNumber) {
-                    cheminc.push(cell.value);
-                  });
-                  cheminparticulier.eachCell(function(cell, rowNumber) {
-                    cheminp.push(cell.value);
-                  });
-                  dernierligne.eachCell(function(cell, rowNumber) {
-                    dernierl.push(cell.value);
-                  });
-                  feuille.eachCell(function(cell, rowNumber) {
-                    feuil.push(cell.value);
-                  });
-                  cel.eachCell(function(cell, rowNumber) {
-                    cellule.push(cell.value);
-                  });
-                  cel2.eachCell(function(cell, rowNumber) {
-                    cellule2.push(cell.value);
-                  });
-                  tab.eachCell(function(cell, rowNumber) {
-                    table.push(cell.value);
-                  });
-                  numeroligne.eachCell(function(cell, rowNumber) {
-                    numligne.push(cell.value);
-                  });
-                  for(var i=0;i<nb;i++)
-                  {
-                    var a = cheminc[i]+date+cheminp[i]+nc[i].typologiedelademande;
-                    trameflux.push(a);
-                  };
-                  console.log(trameflux);
-                  console.log(table);
-                  console.log(nb);
-                  async.series([
-                   function(cb){
-                        Reportinghtp.importInovcom(trameflux,feuil,cellule,table,cellule2,numligne,nb,cb);
-                        },
-                   function(cb){
-                    Reportinghtp.importFinal(table,0,cb);
-                      },
-                  function(cb){
-                    Reportinghtp.importFinal(table,1,cb);
-                      },
-                  function(cb){
-                    Reportinghtp.importFinal(table,2,cb);
-                      },
-                  function(cb){
-                      Reportinghtp.importFinal(table,3,cb);
-                      },
-                  function(cb){
-                      Reportinghtp.importFinal(table,4,cb);
-                        },
-                      
-                  ],
-                  function(err, resultat){
-                    if (err) { return res.view('reporting/erreur'); }
-                    return res.redirect('/export/'+dateexport +'/'+'<h1><h1>');
-                })
-              });
-      }
-      
-  })
-    
-  },*/
   EssaiExcel : function(req,res)
   {
     var sql= 'select * from chemin limit 5;';
@@ -243,7 +139,8 @@ module.exports = {
     });*/
     var Excel = require('exceljs');
     var workbook = new Excel.Workbook();
-    var table = ['\\\\10.128.1.2\\almerys-out\\Retour_Easytech_'];
+    //var table = ['\\\\10.128.1.2\\almerys-out\\Retour_Easytech_'];
+    var table = ['////10.128.1.2//almerys-out//Retour_Easytech_'];
     var datetest = req.param("date",0);
     var annee = datetest.substr(0, 4);
     var mois = datetest.substr(5, 2);
