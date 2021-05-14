@@ -37,6 +37,7 @@ module.exports = {
           var date = annee+mois+jour;
           var dateexport = jour + '/' + mois + '/' +annee;
           var nb = 5;
+          //workbook.xlsx.readFile('htp.xlsx')
           workbook.xlsx.readFile('ex.xlsx')
               .then(function() {
                 var newworksheet = workbook.getWorksheet('Feuil1');
@@ -122,10 +123,9 @@ module.exports = {
   },
   Essaii : function(req,res)
   {
-
     var Excel = require('exceljs');
     var workbook = new Excel.Workbook();
-   // var table = ['\\dev\\prod\\almerys-out\\Retour_Easytech_'];
+    //var table = ['\\\\10.128.1.2\\almerys-out\\Retour_Easytech_'];
     var table = ['/dev/prod/Retour_Easytech_']
     var datetest = req.param("date",0);
     var annee = datetest.substr(0, 4);
@@ -135,6 +135,9 @@ module.exports = {
     console.log(date);
     var cheminp = [];
     var MotCle= [];
+    var nb = 5;
+    var essai = "essai";
+    //workbook.xlsx.readFile('htp.xlsx')
     workbook.xlsx.readFile('ex.xlsx')
         .then(function() {
           var newworksheet = workbook.getWorksheet('Feuil1');
@@ -167,10 +170,26 @@ module.exports = {
                 function(cb){
                     Reportinghtp.importEssai(table,cheminp,date,MotCle,4,cb);
                   },
-                
+                function(cb){
+                    Reportinghtp.existenceRoute(essai,cb);
+                  },
             ],
             function(err, resultat){
+              let val = resultat[6].rows;
+              console.log(val[0].ok);
+              /*if(val[0].ok == 0)
+              {
+                console.log('non');
+              }
+              else
+              {
+                console.log('ok');
+              }*/
               if (err) { return res.view('reporting/erreur'); }
+              if(val[0].ok != 0)
+              {
+                return res.view('reporting/erreur');
+              }
               else
               {
                 return res.view('reporting/accueil', {date : datetest});

@@ -5,6 +5,7 @@
  * @docs        :: https://sailsjs.com/docs/concepts/models-and-orm/models
  */
 const path_reporting = '/dev/prod/Nouveau_Dossier/REPORTING HTP  Type.xlsx';
+//const path_reporting = 'D:/Reporting/Reporting/REPORTING HTP  Type.xlsx';
 module.exports = {
   attributes: {
   },

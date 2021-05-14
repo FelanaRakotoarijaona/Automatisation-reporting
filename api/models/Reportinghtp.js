@@ -68,17 +68,7 @@ module.exports = {
                   if(err) return console.log(err);
                   else return callback(null, true);        
                                       })
-
-      /*tab.push(desired_value2);
-      tabl.push(desired_value1);*/
     }
-    /*var com = [];
-    for(var i=0;i<tab.length;i++)
-    {
-        com.push(tab[i]+';'+tabl[i]+'\n');
-    };
-    console.log(com);
-    return com;*/
   },
   deleteFromChemin : function (table,callback) {
     var sql = "delete from chemin ";
@@ -278,6 +268,35 @@ module.exports = {
                             })      
     });
   },
+  existenceRoute : function (trameflux,callback) {
+    var sql= "SELECT count(typologiedelademande) as ok FROM chemin where typologiedelademande='k' ";
+    Reportinghtp.getDatastore().sendNativeQuery(sql ,function(err, nc) {
+          if (err){
+            console.log(err);
+            return callback(err);
+          }
+          else
+          {
+            return callback(null, nc);
+          }
+      })
+    /*var tab = [];
+    tab = Reportinghtp.totalFichierExistant(trameflux,nb,callback);
+    console.log(tab);
+    if(tab.length==0)
+    {
+      console.log('Aucune reporting pour ce date');
+      Reportinghtp.deleteToutHtp(table,3,callback);
+    }
+    else{
+      for(var y=0;y<tab.length;y++) //parcours anle dossier rehetra
+    {
+      var j = parseInt(tab[y]);
+      console.log(j);
+      Reportinghtp.insertTrameFlux(trameflux,callback)
+    }
+    };*/
+  },
   importTrameFlux929 : function (trameflux,feuil,cellule,table,cellule2,nb,callback) {
     var tab = [];
     tab = Reportinghtp.totalFichierExistant(trameflux,nb,callback);
@@ -455,7 +474,6 @@ module.exports = {
       return callback(null, true);
       });
   },
- 
   deleteHtp : function (table,nb,callback) {
     var j;
     var i = parseInt(j);
@@ -465,7 +483,7 @@ module.exports = {
     };
   },
   insertTrameFlux : function (param,callback) {
-    var sql = "insert into trameFlux (okko) values ('"+param+"') ";
+    var sql = "insert into trame(okko) values ('k') ";
     Reportinghtp.getDatastore().sendNativeQuery(sql, function(err, res){
       if (err) { return callback(err); }
       return callback(null, true);

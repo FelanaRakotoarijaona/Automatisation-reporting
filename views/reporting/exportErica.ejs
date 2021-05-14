@@ -36,7 +36,7 @@
   <br> <br>
     <div class="container" style=" background-color:whitesmoke;">
      
-      <h2 id="miafina">Veuillez terminer votre reporting s'il vous plait</h2>
+      <h2 id="miafina">REPORTING HTP</h2>
       <br><br>
         <div class="row" style=" background-color:whitesmoke;">
           <div class="col-md-4">
@@ -52,13 +52,16 @@
           </div>
           <div class="col-md-2">
             <br><br><br><br>
-            <button style="background-color:whitesmoke;height:200px;width:300px;margin-left: 10px;box-shadow: 5px 5px 5px 5px green;">
+            <button style="background-color:whitesmoke;height:200px;width:300px;margin-left: 10px;box-shadow: 5px 5px 5px 5px green;" onclick="affiche()">
                 <a href="/exportReporting/<%- date %>" style="color:black">
                   Veuillez cliquer ici pour terminer votre reporting
                 </a>
             </button>
           </div>
           <div class="col-md-2">
+            <div class="spinner-border" role="status" style="display: none;" id="snip">
+              <span class="visually-hidden"></span>
+            </div>
             <div aria-live="polite" aria-atomic="true" class="d-flex justify-content-center align-items-center" style="min-height: 400px;">
               <div class="toast" role="alert" aria-live="assertive" aria-atomic="true" id="toastd" style="background-color:white;">
                 <div class="toast-header">
@@ -72,6 +75,7 @@
                 </div>
               </div>
            </div>
+           
           </div>
           <div class="col-md-2">
             <br><br><br><br>
@@ -133,6 +137,8 @@
   $( document ).ready(function() {
       $('#miafina').hide(10000);
   });
-
+  function affiche(){
+      document.getElementById("snip").style.display = "block";
+    };
 </script>
 </html>
