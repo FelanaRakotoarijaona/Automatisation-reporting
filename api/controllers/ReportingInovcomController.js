@@ -6,7 +6,6 @@
  */
 
 const ReportingInovcom = require('../models/ReportingInovcom');
-
 module.exports = {
   
     accueil1 : function(req,res)

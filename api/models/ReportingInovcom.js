@@ -6,7 +6,6 @@
  */
  module.exports = {
   attributes: {},
-
   lectureEtInsertion2:function(trameflux,feuil,cellule,table,cellule2,nb,numligne,callback){
     XLSX = require('xlsx');
     var workbook = XLSX.readFile(trameflux[nb]);
@@ -47,7 +46,6 @@
           }
         };
       console.log('colonne cible2' +col2);
-
       if(col!=undefined && col2!=undefined)
       {
         for(var a=0;a<=range.e.r;a++)

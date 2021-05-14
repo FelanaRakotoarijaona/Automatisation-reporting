@@ -35,8 +35,6 @@
 <body>
   <br> <br>
     <div class="container" style=" background-color:whitesmoke;">
-     
-      <h2 id="miafina">REPORTING HTP</h2>
       <br><br>
         <div class="row" style=" background-color:whitesmoke;">
           <div class="col-md-4">
@@ -52,16 +50,20 @@
           </div>
           <div class="col-md-2">
             <br><br><br><br>
-            <button style="background-color:whitesmoke;height:200px;width:300px;margin-left: 10px;box-shadow: 5px 5px 5px 5px green;" onclick="affiche()">
+           <div class="spinner-border" role="status" style="display: none;width: 3rem; height: 3rem;" id="snip">
+              <span class="visually-hidden"></span> 
+            </div>
+            <div class="spinner-grow" style="width: 3rem; height: 3rem;display: none;" role="status" id="snipe">
+              <span class="sr-only">Loading...</span>
+            </div>
+            <button style="background-color:whitesmoke;height:200px;width:300px;margin-left: 10px;box-shadow: 5px 5px 5px 5px green;" onclick="affiche()" class="miafina">
                 <a href="/exportReporting/<%- date %>" style="color:black">
                   Veuillez cliquer ici pour terminer votre reporting
                 </a>
             </button>
           </div>
           <div class="col-md-2">
-            <div class="spinner-border" role="status" style="display: none;" id="snip">
-              <span class="visually-hidden"></span>
-            </div>
+            <div id="soratra"></div>
             <div aria-live="polite" aria-atomic="true" class="d-flex justify-content-center align-items-center" style="min-height: 400px;">
               <div class="toast" role="alert" aria-live="assertive" aria-atomic="true" id="toastd" style="background-color:white;">
                 <div class="toast-header">
@@ -79,66 +81,34 @@
           </div>
           <div class="col-md-2">
             <br><br><br><br>
-                  <button style="background-color:whitesmoke;height:200px;width:300px;margin-left: 10px;box-shadow: 5px 5px 5px 5px green;">
+                  <button class="miafina" style="background-color:whitesmoke;height:200px;width:300px;margin-left: 10px;box-shadow: 5px 5px 5px 5px green;">
                     <a href="/accueil1" style="color: black;">Veuillez cliquer ici pour retourner au page précédent</a>
                   </button>
           </div>
-
-          <!-- 
-         <div class="col-md-2">
-            <br><br>
-              <div class="vertical-menu">
-                  <a href="#" class="active">REPORTING HTP</a>
-                  <a href="#">REPORTING INOVCOM</a>
-                  <a href="#">REPORTING INDU</a>
-                  <a href="#">REPORTING CONTETIEUX</a>
-                  <a href="#">REPORTING RETOUR</a>
-                  <a href="/logout">Se déconnecter</a>
-                </div>
-            </div>
-            <div class="col-md-2">
-                <br><br><br><br>
-                <button style="background-color:whitesmoke;height:200px;width:300px;margin-left: 10px;box-shadow: 5px 5px 5px 5px green;">
-                    <a href="/exportReporting/<%- date %>" style="color:black">
-                      Veuillez cliquer ici pour terminer votre reporting
-                    </a>
-                </button>
-            </div>
-            <div class="col-md-3">
-              <div aria-live="polite" aria-atomic="true" class="d-flex justify-content-center align-items-center" style="min-height: 400px;">
-                <div class="toast" role="alert" aria-live="assertive" aria-atomic="true" id="toastd" style="background-color:white;">
-                  <div class="toast-header">
-                    <strong class="mr-auto">SUCCES</strong>
-                    <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
-                      <span aria-hidden="true">&times;</span>
-                    </button>
-                  </div>
-                  <div class="toast-body">
-                    <h2>Traitement terminé avec succès</h2>
-                  </div>
-                </div>
-             </div>
-            </div>
-            <div class="col-md-offset-3 col-md-2">
-                <div>
-                  <br><br><br><br>
-                  
-                  <button style="background-color:whitesmoke;height:200px;width:300px;margin-left: 10px;box-shadow: 5px 5px 5px 5px green;">
-                    <a href="/accueil1" style="color: black;">Veuillez cliquer ici pour retourner au page précédent</a>
-                  </button>
-                </div>
-            </div>
-          </div>--->
           <br><br>
     </div>
     <%- html %>
 </body>
 <script>
+  function aff()
+  {
+    $( ".miafina" ).fadeIn( 6000, function() {
+      
+  });
+  };
   $( document ).ready(function() {
-      $('#miafina').hide(10000);
+    $( ".miafina" ).hide();
+    setTimeout(function(){ aff(); }, 800);
+   
   });
   function affiche(){
-      document.getElementById("snip").style.display = "block";
+      $( "#snip" ).css("display", "block");
+      $( "#snipe" ).css("display", "block");
+      $( "#soratra" ).html("<p><br><br><br><br><br><strong>Veuillez attendre s'il vous plait</strong><p>");
+      $( ".miafina" ).hide();
+      /*document.getElementById("snip").style.display = "block";
+      document.getElementsByClassName("miafina").hidden = true;*/
+      //document.getElementById("snipe").style.display = "block";
     };
 </script>
 </html>

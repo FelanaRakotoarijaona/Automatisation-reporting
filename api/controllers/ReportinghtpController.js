@@ -186,7 +186,7 @@ module.exports = {
                 console.log('ok');
               }*/
               if (err) { return res.view('reporting/erreur'); }
-              if(val[0].ok != 0)
+              if(val[0].ok == 5)
               {
                 return res.view('reporting/erreur');
               }

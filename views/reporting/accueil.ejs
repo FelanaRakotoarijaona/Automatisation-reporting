@@ -52,7 +52,7 @@
     <title>Document</title>
 </head>
 <body>
-    <div class="container" >
+    <div class="container" id="contenu">
       <br><br><br><br><br>
         <div class="row">
             <br><br><br><br><br><br><br><br><br><br>
@@ -87,13 +87,15 @@
                         <form  style="background-color: white;" method="POST" action="/reportinghtp">
                             <div class="form-group" >
                               <h4>Choisir une date pour votre reporting</h4><br><br>
-                              <div class="spinner-border" role="status" style="display: none;" id="snip">
-                                <span class="visually-hidden"></span>
-                              </div>
+                       
+                                <div class="spinner-border" role="status" style="display: none;" id="snip">
+                                  <span class="visually-hidden"></span>
+                                </div>
+                             
                               <input type="date" class="form-control" value="<%- date %>" name="date" readonly>
                             </div>
                             <br>
-                            <button type="submit" class="btn btn-default" style="background-color: green;" onclick="affiche()">Importer</button>
+                            <button type="submit" class="btn btn-default" style="background-color: green;" onclick="affiche()" id="ok">Importer</button>
                             <br>
                             <br>
                           </form>
@@ -110,6 +112,8 @@
 <script>
     function affiche(){
       document.getElementById("snip").style.display = "block";
+      //document.getElementById("contenu").style.backgroundColor= "grey";
+      //$('#ok').prop(disabled, true);
     };
     function openCity(evt, cityName) {
         document.getElementById("defaultOpen").click();
