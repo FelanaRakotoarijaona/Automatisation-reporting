@@ -51,10 +51,10 @@ module.exports = {
                  function(cb){
                       ReportingInovcom.importEssai(table,cheminp,date,MotCle,2,cb);
                     },
-                  /*function(cb){
-                      Reportinghtp.importEssai(table,cheminp,date,MotCle,3,cb);
+                 function(cb){
+                      ReportingInovcom.importEssai(table,cheminp,date,MotCle,3,cb);
                     },
-                    function(cb){
+                   /* function(cb){
                       Reportinghtp.importEssai(table,cheminp,date,MotCle,4,cb);
                     },*/
               ],
@@ -73,7 +73,7 @@ module.exports = {
     },
     EssaiExcel : function(req,res)
     {
-      var sql= 'select * from chemininovcom limit 3;';
+      var sql= 'select * from chemininovcom limit 4;';
       Reportinghtp.query(sql,function(err, nc) {
         if (err){
           console.log(err);
@@ -100,7 +100,7 @@ module.exports = {
             var jour = datetest.substr(8, 2);
             var date = annee+mois+jour;
             var dateexport = jour + '/' + mois + '/' +annee;
-            var nb = 3;
+            var nb = 1;
             workbook.xlsx.readFile('Inovcom.xlsx')
                 .then(function() {
                   var newworksheet = workbook.getWorksheet('Feuil1');
