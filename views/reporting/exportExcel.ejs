@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
     <title>Document</title>
     <style>
@@ -34,7 +34,7 @@
     <br><br>
     <div class="container"  style=" background-color:whitesmoke;"> 
         <div class="row">
-            <div class="col-md-2">
+            <div class="col-md-3">
                 <br><br>
                 <div class="vertical-menu">
                     <a href="#" class="active">REPORTING HTP</a>
@@ -46,16 +46,19 @@
                   </div>
             </div>
             <br><br>
-            <div class="col-md-offset-3 col-md-6"  style=" background-color:whitesmoke;">
+            <div class="col-md-offset-4 col-md-5"  style=" background-color:whitesmoke;">
                 <br><br><br><br><br><br>
                 <form method="POST" action="/exportExcel" style="background-color:white;height:300px;width:400px;margin-left: 80px;box-shadow: 5px 5px 5px 5px green;" class="miafina">
                     <div class="form-group">
-                        <br><br>
+                        <br>
                         <h4 style="margin-left: 50px;">Veuillez choisir une date pour l'export de votre reporting</h4><br><br>
                         <input type="date" class="form-control" name="date"  style="margin-left: 5px;width: 390px;" required >
                     </div>
-                    <br><br>
-                    <button type="submit" style="margin-left: 200px;" class="btn btn-success">Terminer votre reporting</button>
+                    <div class="spinner-border" role="status" style="display: none;" id="snip">
+                        <span class="visually-hidden"></span>
+                    </div>
+                    <br>
+                    <button type="submit" style="margin-left: 200px;" class="btn btn-success" id="ok" onclick="affiche()">Terminer votre reporting</button>
                 </form>
                 <br><br><br>
                 <br><br><br>
@@ -65,6 +68,10 @@
     
 </body>
 <script>
+    function affiche(){
+      $( "#snip" ).css("display", "block");
+      $( "#ok" ).hide();
+    };
     function aff()
   {
     $( ".miafina" ).fadeIn( 12000, function() {

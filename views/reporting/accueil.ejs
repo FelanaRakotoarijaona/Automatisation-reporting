@@ -111,7 +111,10 @@
 </body>
 <script>
     function affiche(){
-      document.getElementById("snip").style.display = "block";
+      $( "#snip" ).css("display", "block");
+      $( "#ok" ).hide();
+      //document.getElementById("snip").style.display = "block";
+      //document.getElementById("ok").hidden;
       //document.getElementById("contenu").style.backgroundColor= "grey";
       //$('#ok').prop(disabled, true);
     };
