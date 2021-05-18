@@ -113,13 +113,13 @@ module.exports = {
                   ],
                   function(err, resultat){
                     if (err) { return res.view('reporting/erreur'); }
-                    return res.redirect('/export/'+dateexport +'/'+'<h1><h1>');
+                    return res.view('reporting/exportExcel');
+                    //return res.redirect('/export/'+dateexport +'/'+'<h1><h1>');
                 })
               });
       }
       
   })
-    
   },
   Essaii : function(req,res)
   {
@@ -135,7 +135,7 @@ module.exports = {
     console.log(date);
     var cheminp = [];
     var MotCle= [];
-    var nb = 5;
+    var nb = 3;
     var essai = "essai";
     //workbook.xlsx.readFile('htp.xlsx')
     workbook.xlsx.readFile('ex.xlsx')
@@ -164,7 +164,7 @@ module.exports = {
                   function(cb){
                     Reportinghtp.importEssai(table,cheminp,date,MotCle,2,cb);
                   },
-                function(cb){
+               function(cb){
                     Reportinghtp.importEssai(table,cheminp,date,MotCle,3,cb);
                   },
                 function(cb){
@@ -177,14 +177,6 @@ module.exports = {
             function(err, resultat){
               let val = resultat[6].rows;
               console.log(val[0].ok);
-              /*if(val[0].ok == 0)
-              {
-                console.log('non');
-              }
-              else
-              {
-                console.log('ok');
-              }*/
               if (err) { return res.view('reporting/erreur'); }
               if(val[0].ok == 5)
               {

@@ -42,9 +42,14 @@ module.exports = {
     //res.view('reporting/exportErica')
   },
   rechercheColonne : function (req, res) {
-    var jour = req.param("jour");
+    var datetest = req.param("date",0);
+    var annee = datetest.substr(0, 4);
+    var mois = datetest.substr(5, 2);
+    var jour = datetest.substr(8, 2);
+    //var date_export = annee+mois+jour;
+    /*var jour = req.param("jour");
     var mois = req.param("mois");
-    var annee = req.param("annee");
+    var annee = req.param("annee");*/
     var mois1 = 'Janvier' ;
     if(mois==01)
     {
@@ -68,6 +73,7 @@ module.exports = {
     };
     console.log(mois1);
     var date_export = jour + '/' + mois + '/' +annee;
+    //var date_export = '14/01/2021';
     console.log("RECHERCHE COLONNE");
     async.series([
       function (callback) {
@@ -79,7 +85,7 @@ module.exports = {
       function (callback) {
         ReportingExcel.countOkKo("suivisaisiemgas",callback);
       },
-      function (callback) {
+     function (callback) {
         ReportingExcel.countOkKo("suivisaisieprodite",callback);
       },
       function (callback) {
@@ -106,7 +112,7 @@ module.exports = {
         function (callback) {
           ReportingExcel.ecritureOkKo(result[2],"suivisaisiemgas",date_export,mois1,callback);
         },
-        function (callback) {
+       function (callback) {
           ReportingExcel.ecritureOkKo(result[3],"suivisaisieprodite",date_export,mois1,callback);
         },
         function (callback) {
@@ -124,7 +130,7 @@ module.exports = {
           }
           if(resultExcel[0]=='OK')
           {
-            res.redirect('/export/'+date_export+'/x')
+            res.view('reporting/succes');
           }
 
 

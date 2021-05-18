@@ -259,6 +259,8 @@ module.exports = {
       var dateExcel = ReportingExcel.convertDate(cell.text);
       if(dateExcel==date_export)
       {
+        console.log(dateExcel);
+        console.log(date_export);
         ligneDate1 = parseInt(rowNumber);
         var line = newworksheet.getRow(ligneDate1);
         var f = line.getCell(3).value;

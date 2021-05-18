@@ -18,11 +18,12 @@ module.exports.routes = {
   '/accueil1' : 'ReportinghtpController.accueil1',
   '/essai' : 'ReportinghtpController.Essaii',
   '/accueil/:date' : 'ReportinghtpController.accueil',
-  '/import' : 'ReportinghtpController.import',
+  //'/import' : 'ReportinghtpController.import',
   '/reportinghtp' : 'ReportinghtpController.essaiExcel',
   //Route HTP Export
-  '/export/:jour/:mois/:annee/:html' : 'ReportingExcelController.accueil',
-  '/exportReporting/:jour/:mois/:annee' : 'ReportingExcelController.rechercheColonne',
+  //'/export/:jour/:mois/:annee/:html' : 'ReportingExcelController.accueil',
+  //'/exportReporting/:jour/:mois/:annee' : 'ReportingExcelController.rechercheColonne',
+  '/exportExcel' : 'ReportingExcelController.rechercheColonne',
  
 
   //Route INOVCOM
