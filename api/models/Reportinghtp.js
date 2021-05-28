@@ -269,7 +269,7 @@ module.exports = {
     });
   },
   existenceRoute : function (trameflux,callback) {
-    var sql= "SELECT count(typologiedelademande) as ok FROM chemin where typologiedelademande='k' ";
+    var sql= "SELECT count(typologiedelademande) as FROM chemin where typologiedelademande='k' ";
     Reportinghtp.getDatastore().sendNativeQuery(sql ,function(err, nc) {
           if (err){
             console.log(err);

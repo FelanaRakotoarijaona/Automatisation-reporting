@@ -31,6 +31,48 @@ module.exports.routes = {
   '/essaiInovcom' : 'ReportingInovcomController.Essaii',
   '/accueil2Inovcom/:date' : 'ReportingInovcomController.accueil',
   '/reportinginovcom' : 'ReportingInovcomController.essaiExcel',
+
+  //type2
+  '/accueilInovcomtype2' : 'ReportingInovcomController.accueil1type2',
+  '/essaiInovcomtype2' : 'ReportingInovcomController.Essaiitype2',
+  
+   //type4
+   '/accueilInovcomtype4' : 'ReportingInovcomController.accueil1type4',
+   '/essaiInovcomtype4' : 'ReportingInovcomController.Essaiitype4',
+   '/reportinginovcomtype4' : 'ReportingInovcomController.essaiExceltype4',
+
+   //type5
+   '/accueilInovcomtype5' : 'ReportingInovcomController.accueil1type5',
+   '/essaiInovcomtype5' : 'ReportingInovcomController.Essaiitype5',
+   '/reportinginovcomtype5' : 'ReportingInovcomController.essaiExceltype5',
+
+    //type6
+    '/accueilInovcomtype6' : 'ReportingInovcomController.accueil1type6',
+    '/essaiInovcomtype6' : 'ReportingInovcomController.Essaiitype6',
+    '/reportinginovcomtype6' : 'ReportingInovcomController.essaiExceltype6',
+
+   //type3
+   '/accueilInovcomtype3' : 'ReportingInovcomController.accueil1type3',
+   '/essaiInovcomtype3' : 'ReportingInovcomController.Essaiitype3',
+   '/reportinginovcomtype3' : 'ReportingInovcomController.essaiExceltype3',
+
+    //type7
+    '/accueilInovcomtype7' : 'ReportingInovcomController.accueil1type7',
+    '/essaiInovcomtype7' : 'ReportingInovcomController.Essaiitype7',
+    '/reportinginovcomtype7' : 'ReportingInovcomController.essaiExceltype7',
+
+     //type8
+     '/accueilInovcomtype8' : 'ReportingInovcomController.accueil1type8',
+     '/essaiInovcomtype8' : 'ReportingInovcomController.Essaiitype8',
+     '/reportinginovcomtype8' : 'ReportingInovcomController.essaiExceltype8',
+
+     //type9
+     '/accueilInovcomtype9' : 'ReportingInovcomController.accueil1type9',
+     '/essaiInovcomtype9' : 'ReportingInovcomController.Essaiitype9',
+     '/reportinginovcomtype8' : 'ReportingInovcomController.essaiExceltype8',
+   
+
+  '/reportinginovcomtype2' : 'ReportingInovcomController.essaiExceltype2',
   //Route INOVCOM Export
   '/exportInovcom/:jour/:mois/:annee/:html' : 'ReportingInovcomExportController.accueil',
   '/exportReportingInovcom/:jour/:mois/:annee' : 'ReportingInovcomExportController.rechercheColonne',

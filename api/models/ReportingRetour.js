@@ -5,78 +5,15 @@
  * @docs        :: https://sailsjs.com/docs/concepts/models-and-orm/models
  */
 
+const { parse } = require('path');
+
 module.exports = {
 
   attributes: {
   },
-  lectureEtInsertion2:function(trameflux,feuil,cellule,table,cellule2,nb,numligne,callback){
-    XLSX = require('xlsx');
-    var workbook = XLSX.readFile(trameflux[nb]);
-    var numerofeuille = feuil[nb];
-    var numeroligne = numligne[nb];
-    try{
-      const sheet = workbook.Sheets[workbook.SheetNames[numerofeuille]];
-      var range = XLSX.utils.decode_range(sheet['!ref']);
-      var col ;
-      console.log('Nombre de colonne' + range.e.c);
-      console.log('Nombre de ligne' + range.e.r);
-      for(var ra=0;ra<=range.e.c;ra++)
-      {
-        var address_of_cell = {c:ra, r:numeroligne};
-        var cell_ref = XLSX.utils.encode_cell(address_of_cell);
-        var desired_cell = sheet[cell_ref];
-        var desired_value = (desired_cell ? desired_cell.v : undefined);
-        if(desired_value==cellule[nb])
-        {
-          col=ra;
-        }
-      };
-      console.log('colonne cible' +col);
-      var tab = [];
-      var tabl = [];
-      var col2;
-      for(var ra=0;ra<=range.e.c;ra++)
-        {
-          var address_of_cell = {c:ra, r:numeroligne};
-          var cell_ref = XLSX.utils.encode_cell(address_of_cell);
-          var desired_cell = sheet[cell_ref];
-          var desired_value = (desired_cell ? desired_cell.v : undefined);
-          if(desired_value==cellule2[nb])
-          {
-            col2=ra;
-          }
-        };
-      console.log('colonne cible2' +col2);
-      if(col!=undefined && col2!=undefined)
-      {
-        for(var a=0;a<=range.e.r;a++)
-          {
-            var address_of_cell = {c:col, r:a};
-            var cell_ref = XLSX.utils.encode_cell(address_of_cell);
-            var desired_cell = sheet[cell_ref];
-            var desired_value1 = (desired_cell ? desired_cell.v : undefined);
-            var address_of_cell2 = {c:col2, r:a};
-            var cell_ref2 = XLSX.utils.encode_cell(address_of_cell2);
-            var desired_cell2 = sheet[cell_ref2];
-            var desired_value2 = (desired_cell2 ? desired_cell2.v : undefined);
-            var sql = "insert into "+table[nb]+" (typologiedelademande,okko) values ('"+desired_value2+"','"+desired_value1+"') ";
-                      ReportingRetour.getDatastore().sendNativeQuery(sql, function(err,res){
-                        if(err) return console.log(err);
-                        else return callback(null, true);        
-                                            })
-          }
-      }
-      else
-      {
-        console.log('Colonne non trouvé');
-      }
-    }
-    catch
-    {
-      console.log("erreur absolu haaha");
-    }
-  },
-  importTrameFlux929 : function (trameflux,feuil,cellule,table,cellule2,nb,numligne,callback) {
+
+
+  importTrameFlux929type2 : function (trameflux,feuil,cellule,table,cellule2,nb,numligne,callback) {
     var tab = [];
     tab = ReportingRetour.totalFichierExistant(trameflux,nb,callback);
     console.log(tab);
@@ -90,12 +27,57 @@ module.exports = {
     {
       var j = parseInt(tab[y]);
       console.log(j);
-      ReportingRetour.lectureEtInsertion2( trameflux,feuil,cellule,table,cellule2,j,numligne,callback)
+      ReportingRetour.lectureEtInsertiontype2( trameflux,feuil,cellule,table,cellule2,j,numligne,callback);
     }
     };
   },
+  lectureEtInsertiontype2:function(trameflux,feuil,cellule,table,cellule2,nb,numligne,callback){
+    XLSX = require('xlsx');
+    var workbook = XLSX.readFile(trameflux[nb]);
+    var numerofeuille = feuil[nb];
+    var numeroligne = parseInt(numligne[nb]);
+    try{
+      var nbr = 0;
+      const sheet = workbook.Sheets[workbook.SheetNames[numerofeuille]];
+      var range = XLSX.utils.decode_range(sheet['!ref']);
+      var col = 0;
+      var nbe = parseInt(nb);
+      if(col!=undefined)
+      {
+        var debutligne = numeroligne + 1;
+        for(var a=debutligne;a<=range.e.r;a++)
+          {
+            var address_of_cell = {c:col, r:a};
+            var cell_ref = XLSX.utils.encode_cell(address_of_cell);
+            var desired_cell = sheet[cell_ref];
+            var desired_value1 = (desired_cell ? desired_cell.v : undefined);
+            if(desired_value1!=undefined)
+            {
+              nbr=nbr + 1;
+            }
+          };
+         
+          var sql = "insert into "+table[nbe]+" (nb) values ('"+nbr+"') ";
+                      ReportingInovcom.getDatastore().sendNativeQuery(sql, function(err,res){
+                        if(err) return console.log(err);
+                        else return callback(null, true);        
+                                            });
+          console.log("nombreeeeebr"+ nbr);
+      }
+      else
+      {
+        console.log('Colonne non trouvé');
+      }
+      
+    }
+    catch
+    {
+      console.log("erreur absolu haaha");
+    }
+    
+  },
 deleteFromChemin : function (table,callback) {
-      var sql = "delete from cheminretour ";
+      var sql = "delete from cheminretourvrai ";
       ReportingRetour.getDatastore().sendNativeQuery(sql, function(err, res){
         if (err) { return callback(err); }
         return callback(null, true);
@@ -114,13 +96,23 @@ deleteFromChemin : function (table,callback) {
         }
         return existe;
     },
-    importEssai: function (table,table2,date,option,nb,callback) {
-       const fs = require('fs');
+    importEssai: function (table,table2,date,option,nb,nomtable,numligne,numfeuille,nomcolonne,callback) {
+
+
+      const fs = require('fs');
       var re  = 'a';
       var tab = [];
       var a = table[0]+date+table2[nb];
+      //var a ='\\\\10.128.1.2\\almerys-out\\Retour_Easytech_20210512\\TRAITEMENT_RETOUR_OTD_N2\\' ;
       var b = option[nb];
-      var c = ReportingRetour.existenceFichier(a);
+      //var b = 'OTD_ALMERYS SATD';
+      //var c = 'vrai';
+      //console.log(a);
+      var nomTable = nomtable;
+      var numLigne= numligne;
+      var numFeuille = numfeuille;
+      var nomColonne = nomcolonne;
+      var c = ReportingInovcom.existenceFichier(a);
       console.log(c);
       if(c=='vrai')
       {
@@ -130,22 +122,34 @@ deleteFromChemin : function (table,callback) {
                 const regex = new RegExp(b+'*');
                 if(regex.test(file))
                 {
-                   re = file;
-                   console.log(re);  
+                   re = a+'\\'+file;
+                   //console.log(re);  
+                   var sql = "insert into cheminretourvrai (chemin,nomtable,numligne,numfeuile,colonnecible) values ('"+re+"','"+nomTable+"','"+numLigne+"','"+numFeuille+"','"+nomColonne+"') ";
+                   ReportingInovcom.getDatastore().sendNativeQuery(sql, function(err,res){
+                     if(err) return console.log(err);
+                     else return callback(null, true);        
+                                         }) 
+                     
                 } 
+                else
+                {
+                 var sql = "insert into chemintsisy (typologiedelademande) values ('"+re+"') ";
+                   ReportingInovcom.getDatastore().sendNativeQuery(sql, function(err,res){
+                     if(err) return console.log(err);
+                     else return callback(null, true);        
+                                         }) 
+                }
+               
+               
             });
-            var sql = "insert into cheminretour (typologiedelademande) values ('"+re+"') ";
-                    ReportingRetour.getDatastore().sendNativeQuery(sql, function(err,res){
-                      if(err) return console.log(err);
-                      else return callback(null, true);        
-                                          })  
-            console.log('ato anatiny'+re);
+            
+           
           });
       }
       else
       {
-        var sql = "insert into cheminretour (typologiedelademande) values ('k') ";
-        ReportingRetour.getDatastore().sendNativeQuery(sql, function(err,res){
+        var sql = "insert into chemintsisy(typologiedelademande) values ('k') ";
+        ReportingInovcom.getDatastore().sendNativeQuery(sql, function(err,res){
           if(err) return console.log(err);
           else return callback(null, true);        
                               })   
@@ -205,7 +209,7 @@ deleteFromChemin : function (table,callback) {
     deleteHtp : function (table,nb,callback) {
       var j;
       var i = parseInt(j);
-      for(i=0;i<5;i++)
+      for(i=0;i<nb;i++)
       {
         ReportingRetour.deleteReportingHtp(table,i,callback);
       };
