@@ -345,11 +345,11 @@
     }
     
   },
-  lectureEtInsertiontype8:function(trameflux,feuil,cellule,table,cellule2,nb,numligne,dernierl,callback){
+  lectureEtInsertiontype8:function(trameflux,feuil,cellule,table,cellule2,nb,numligne,callback){
     XLSX = require('xlsx');
     var workbook = XLSX.readFile(trameflux[nb]);
     var numerofeuille = feuil[nb];
-    var numeroligne = numligne[nb];
+    var numeroligne = parseInt(numligne[nb]);
     try{
       var nbr = 0;
       const sheet = workbook.Sheets[workbook.SheetNames[numerofeuille]];
@@ -671,7 +671,7 @@
       console.log("erreur absolu haaha");
     }
   },
-  importTrameFlux929type8 : function (trameflux,feuil,cellule,table,cellule2,nb,numligne,dernierl,callback) {
+  importTrameFlux929type8 : function (trameflux,feuil,cellule,table,cellule2,nb,numligne,callback) {
     var tab = [];
     tab = ReportingInovcom.totalFichierExistant(trameflux,nb,callback);
     console.log(tab);
@@ -685,7 +685,7 @@
     {
       var j = parseInt(tab[y]);
       console.log(j);
-      ReportingInovcom.lectureEtInsertiontype8( trameflux,feuil,cellule,table,cellule2,j,numligne,dernierl,callback)
+      ReportingInovcom.lectureEtInsertiontype8( trameflux,feuil,cellule,table,cellule2,j,numligne,callback)
     // ReportingInovcom.lectureEtInsertion(trameflux,feuil,cellule,table,cellule2,j,callback)
     }
     };
@@ -824,7 +824,7 @@
       }
       else
       {
-        var sql = "insert into recherchefactureinteriale (typologiedelademande,okko) values (0,0)";
+        var sql = "insert into chemintsisy (typologiedelademande,okko) values (0,0)";
         ReportingInovcom.getDatastore().sendNativeQuery(sql, function(err,res){
           if(err) return console.log(err);
           else return callback(null, true);        
@@ -1140,10 +1140,11 @@ importEssaitype7: function (table,table2,date,option,nb,nomtable,numligne,numfeu
                          })   
  }   
 },
-importEssaitype8: function (table,table2,date,option,nb,type,type2,callback) {
+importEssaitype8: function (table,table2,date,option,nb,type,type2,nomtable,numligne,numfeuille,nomcolonne,callback) {
   const fs = require('fs');
   var re  = 'a';
   var tab = [];
+  var chemin = table[0]+date;
   var ab = table[0]+date+table2[nb];
   var b = option[nb];
   //console.log(a);
@@ -1173,22 +1174,21 @@ importEssaitype8: function (table,table2,date,option,nb,type,type2,callback) {
                     console.log(file +" " +  files1[files1.length-1]);
                     console.log('ok');
     
-                    var a = file  + type2[nb] + files1[files1.length-1];  
+                    var a = chemin+ "\\RETOUR_HOSPI\\RETOUR_AVIS D''ANNULATION\\" + file  + type2[nb] + files1[files1.length-1];  
                     console.log("haha"+a);
-                    var sql = "insert into chemininovcomtype8 (typologiedelademande) values ('"+a+"') ";
+                    var sql = "insert into chemininovcomtype8 (chemin,nomtable,numligne,numfeuile,colonnecible) values ('"+a+"','"+nomtable+"','"+numligne+"','"+numfeuille+"','"+nomcolonne+"') ";
                     ReportingInovcom.getDatastore().sendNativeQuery(sql, function(err,res){
                       if(err) return console.log(err);
                       else return callback(null, true);        
-                                          }) 
+                                          }) ;
     
                   }
-                  //console.log("haha"+a);
                  
                 })
               }
               else
               {
-                var sql = "insert into chemininovcomtype8 (typologiedelademande) values ('k') ";
+                var sql = "insert into chemintsisy (typologiedelademande) values ('k') ";
                 ReportingInovcom.getDatastore().sendNativeQuery(sql, function(err,res){
                   if(err) return console.log(err);
                   else return callback(null, true);        
@@ -1201,7 +1201,7 @@ importEssaitype8: function (table,table2,date,option,nb,type,type2,callback) {
              
             }
             
-        }
+        };
 
       })
     }
@@ -1209,7 +1209,7 @@ importEssaitype8: function (table,table2,date,option,nb,type,type2,callback) {
 }
  else
  {
-   var sql = "insert into chemininovcomtype8 (typologiedelademande) values ('k') ";
+   var sql = "insert into chemintsisy (typologiedelademande) values ('k') ";
    ReportingInovcom.getDatastore().sendNativeQuery(sql, function(err,res){
      if(err) return console.log(err);
      else return callback(null, true);        
