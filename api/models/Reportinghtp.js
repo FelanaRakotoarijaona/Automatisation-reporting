@@ -356,8 +356,8 @@ importEssai: function (table,table2,date,option,nb,nomtable,numligne,numfeuille,
               const regex = new RegExp(b+'*');
               if(regex.test(file))
               {
-                 re = a+'\\'+file;
-                 //console.log(re);  
+                 //re = a+'\\'+file;
+                 re = a+'/'+file;
                  var sql = "insert into cheminhtp (chemin,nomtable,numligne,numfeuile,colonnecible,colonnecible2) values ('"+re+"','"+nomTable+"','"+numLigne+"','"+numFeuille+"','"+nomColonne+"','"+colonnecible2+"') ";
                  Reportinghtp.getDatastore().sendNativeQuery(sql, function(err,res){
                   if (err) { 
@@ -436,8 +436,8 @@ importEssai: function (table,table2,date,option,nb,nomtable,numligne,numfeuille,
               const regex = new RegExp(b+'*');
               if(regex.test(file))
               {
-                 re = a+'\\'+file;
-                 //console.log(re);  
+                 //re = a+'\\'+file;
+                 re = a+'/'+file;  
                  var sql = "insert into cheminhtp2 (chemin,nomtable,numligne,numfeuile,colonnecible,colonnecible2) values ('"+re+"','"+nomTable+"','"+numLigne+"','"+numFeuille+"','"+nomColonne+"','"+colonnecible2+"') ";
                  Reportinghtp.getDatastore().sendNativeQuery(sql, function(err,res){
                   if (err) { 
