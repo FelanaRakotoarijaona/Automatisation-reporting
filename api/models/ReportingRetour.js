@@ -11,8 +11,6 @@ module.exports = {
 
   attributes: {
   },
-
-
   importTrameFlux929type2 : function (trameflux,feuil,cellule,table,cellule2,nb,numligne,callback) {
     var tab = [];
     tab = ReportingRetour.totalFichierExistant(trameflux,nb,callback);

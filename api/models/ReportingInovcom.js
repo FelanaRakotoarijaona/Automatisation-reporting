@@ -20,37 +20,21 @@
     {
       var j = parseInt(tab[y]);
       console.log(j);
-      ReportingInovcom.lectureEtInsertiontype2( trameflux,feuil,cellule,table,cellule2,j,numligne,callback)
-    // ReportingInovcom.lectureEtInsertion(trameflux,feuil,cellule,table,cellule2,j,callback)
-    }
+      ReportingInovcom.lectureEtInsertiontype2( trameflux,feuil,cellule,table,cellule2,j,numligne,callback);
+    };
     };
   },
   lectureEtInsertiontype2:function(trameflux,feuil,cellule,table,cellule2,nb,numligne,callback){
     XLSX = require('xlsx');
     var workbook = XLSX.readFile(trameflux[nb]);
     var numerofeuille = feuil[nb];
-    var numeroligne = numligne[nb];
+    var numeroligne = parseInt(numligne[nb]);
     try{
       var nbr = 0;
       const sheet = workbook.Sheets[workbook.SheetNames[numerofeuille]];
       var range = XLSX.utils.decode_range(sheet['!ref']);
-      var col ;
-      console.log('Nombre de colonne' + range.e.c);
-      console.log('Nombre de ligne' + range.e.r);
-      for(var ra=0;ra<=range.e.c;ra++)
-      {
-        var address_of_cell = {c:ra, r:numeroligne};
-        var cell_ref = XLSX.utils.encode_cell(address_of_cell);
-        var desired_cell = sheet[cell_ref];
-        var desired_value = (desired_cell ? desired_cell.v : undefined);
-        /*console.log('cc' + cellule[nb]);
-        console.log('dv'+ desired_value);*/
-        if(desired_value==cellule[nb])
-        {
-          col=ra;
-        }
-      };
-      console.log('colonne cible' +col);
+      var col = 0;
+      var nbe = parseInt(nb);
       if(col!=undefined)
       {
         var debutligne = numeroligne + 1;
@@ -64,13 +48,14 @@
             {
               nbr=nbr + 1;
             }
-          }
-          console.log("nombreeeeebr"+ nbr);
-          var sql = "insert into "+table[nb]+" (typologiedelademande,okko) values ('"+nbr+"','"+nbr+"') ";
+          };
+         
+          var sql = "insert into "+table[nbe]+" (okko) values ('"+nbr+"') ";
                       ReportingInovcom.getDatastore().sendNativeQuery(sql, function(err,res){
                         if(err) return console.log(err);
                         else return callback(null, true);        
-                                            })
+                                            });
+          console.log("nombreeeeebr"+ nbr);
       }
       else
       {
@@ -84,12 +69,11 @@
     }
     
   },
-
   lectureEtInsertion2:function(trameflux,feuil,cellule,table,cellule2,nb,numligne,callback){
     XLSX = require('xlsx');
     var workbook = XLSX.readFile(trameflux[nb]);
     var numerofeuille = feuil[nb];
-    var numeroligne = numligne[nb];
+    var numeroligne = parseint(numligne[nb]);
     try{
       const sheet = workbook.Sheets[workbook.SheetNames[numerofeuille]];
       var range = XLSX.utils.decode_range(sheet['!ref']);
@@ -151,9 +135,9 @@
                       ReportingInovcom.getDatastore().sendNativeQuery(sql, function(err,res){
                         if(err) return console.log(err);
                         else return callback(null, true);        
-                                            })
+                                            });
             }
-          }
+          };
       }
       else
       {
@@ -167,104 +151,104 @@
     }
     
   },
-  lectureEtInsertiontype4:function(trameflux,feuil,cellule,table,cellule2,nb,numligne,callback){
-    XLSX = require('xlsx');
-    var workbook = XLSX.readFile(trameflux[nb]);
-    var numerofeuille = feuil[0];
-    var numeroligne = numligne[0];
-    console.log(trameflux[nb]);
-    console.log(numeroligne);
-    console.log(numerofeuille);
-    try{
-      const sheet = workbook.Sheets[workbook.SheetNames[numerofeuille]];
-      var range = XLSX.utils.decode_range(sheet['!ref']);
-      var col ;
-      console.log('Nombre de colonne' + range.e.c);
-      console.log('Nombre de ligne' + range.e.r);
-      for(var ra=0;ra<=range.e.c;ra++)
+/* type 4 */
+
+
+importTrameFlux929type4 : function (trameflux,feuil,cellule,table,cellule2,nb,numligne,callback) {
+  var tab = [];
+  tab = ReportingInovcom.totalFichierExistant(trameflux,nb,callback);
+  console.log(tab);
+  if(tab.length==0)
+  {
+    console.log('Aucune reporting pour ce date');
+    ReportingInovcom.deleteToutHtp(table,3,callback);
+  }
+  else{
+    for(var y=0;y<tab.length;y++) //parcours anle dossier rehetra
+  {
+    var j = parseInt(tab[y]);
+    console.log(j);
+    ReportingInovcom.lectureEtInsertiontype4( trameflux,feuil,cellule,table,cellule2,j,numligne,callback);
+  }
+  };
+},
+lectureEtInsertiontype4:function(trameflux,feuil,cellule,table,cellule2,nb,numligne,callback){
+  XLSX = require('xlsx');
+  var workbook = XLSX.readFile(trameflux[nb]);
+  var numerofeuille = feuil[nb];
+  var numeroligne = parseInt(numligne[nb]);
+  try{
+    var nbr = 0;
+    var nbrko = 0;
+    var nbrtsisy = 0;
+    const sheet = workbook.Sheets[workbook.SheetNames[numerofeuille]];
+    var range = XLSX.utils.decode_range(sheet['!ref']);
+    var col = 0;
+    //var col = 16;
+    var nbe = parseInt(nb);
+    for(var ra=0;ra<=range.e.c;ra++)
       {
         var address_of_cell = {c:ra, r:numeroligne};
         var cell_ref = XLSX.utils.encode_cell(address_of_cell);
         var desired_cell = sheet[cell_ref];
         var desired_value = (desired_cell ? desired_cell.v : undefined);
-        if(desired_value==cellule[0])
+        if(desired_value==cellule[nb])
         {
           col=ra;
-        }
+        };
       };
-      console.log('colonne cible' +col);
-      var tab = [];
-      var tabl = [];
-      //console.log('table1' + tab);
-      /*var col2;
-      for(var ra=0;ra<=range.e.c;ra++)
+      console.log("colonne"+col);
+   if(col!=undefined)
+    {
+      var debutligne = numeroligne + 1;
+      for(var a=debutligne;a<=range.e.r;a++)
         {
-          var address_of_cell = {c:ra, r:numeroligne};
+          var address_of_cell = {c:col, r:a};
           var cell_ref = XLSX.utils.encode_cell(address_of_cell);
           var desired_cell = sheet[cell_ref];
-          var desired_value = (desired_cell ? desired_cell.v : undefined);
-          //console.log(desired_cell.v);
-          if(desired_value==cellule2[nb])
+          var desired_value1 = (desired_cell ? desired_cell.v : undefined);
+          //console.log(desired_value1);
+          if(desired_value1=='OK' || desired_value1=='ok')
           {
-            col2=ra;
+            nbr=nbr + 1;
           }
+          if(desired_value1=='KO' || desired_value1=='ko')
+          {
+            nbrko=nbrko + 1;
+          }
+          else
+          {
+            nbrtsisy = 1;
+          };
         };
-      console.log('colonne cible2' +col2);*/
-      if(col!=undefined)
-      {
-        for(var a=0;a<=range.e.r;a++)
-          {
-            var address_of_cell = {c:col, r:a};
-            var cell_ref = XLSX.utils.encode_cell(address_of_cell);
-            var desired_cell = sheet[cell_ref];
-            var desired_value1 = (desired_cell ? desired_cell.v : undefined);
-          
-
-           /* var address_of_cell2 = {c:col2, r:a};
-            var cell_ref2 = XLSX.utils.encode_cell(address_of_cell2);
-            var desired_cell2 = sheet[cell_ref2];
-            var desired_value2 = (desired_cell2 ? desired_cell2.v : undefined);*/
-
-            console.log(desired_value1);
-
-            var sql = "insert into extractionrcforce (typologiedelademande,okko) values ('"+desired_value1+"','"+desired_value1+"') ";
-                      ReportingInovcom.getDatastore().sendNativeQuery(sql, function(err,res){
-                        if(err) return console.log(err);
-                        else return callback(null, true);        
-                                            })
-          }
-      }
-      else
-      {
-        console.log('Colonne non trouvé');
-      }
-      
+       
+       var sql = "insert into "+table[nbe]+" (nbok,nbko) values ('"+nbr+"','"+nbrko+"') ";
+                    ReportingInovcom.getDatastore().sendNativeQuery(sql, function(err,res){
+                      if(err) return console.log(err);
+                      else return callback(null, true);        
+                                          });
+        console.log("nombreeeeebr"+ nbr);
     }
-    catch
+    else
     {
-      console.log("erreur absolu haaha");
+      console.log('Colonne non trouvé');
     }
     
-  },
-  importTrameFlux929type4 : function (trameflux,feuil,cellule,table,cellule2,nb,numligne,callback) {
-    var tab = [];
-    tab = ReportingInovcom.totalFichierExistant(trameflux,nb,callback);
-    console.log(tab);
-    if(tab.length==0)
-    {
-      console.log('Aucune reporting pour ce date');
-      ReportingInovcom.deleteToutHtp(table,3,callback);
-    }
-    else{
-      for(var y=0;y<tab.length;y++) //parcours anle dossier rehetra
-    {
-      var j = parseInt(tab[y]);
-      console.log(j);
-      ReportingInovcom.lectureEtInsertiontype4( trameflux,feuil,cellule,table,cellule2,j,numligne,callback)
-    // ReportingInovcom.lectureEtInsertion(trameflux,feuil,cellule,table,cellule2,j,callback)
-    }
-    };
-  },
+  }
+  catch
+  {
+    console.log("erreur absolu haaha");
+  }
+  
+},
+
+
+
+/* type fin 4 */
+
+
+
+ 
 
   lectureEtInsertiontype5:function(trameflux,feuil,cellule,table,cellule2,nb,numligne,callback){
     XLSX = require('xlsx');
@@ -685,8 +669,7 @@
     {
       var j = parseInt(tab[y]);
       console.log(j);
-      ReportingInovcom.lectureEtInsertiontype8( trameflux,feuil,cellule,table,cellule2,j,numligne,callback)
-    // ReportingInovcom.lectureEtInsertion(trameflux,feuil,cellule,table,cellule2,j,callback)
+      ReportingInovcom.lectureEtInsertiontype8( trameflux,feuil,cellule,table,cellule2,j,numligne,callback);
     }
     };
   },
@@ -704,8 +687,26 @@
     {
       var j = parseInt(tab[y]);
       console.log(j);
-      ReportingInovcom.lectureEtInsertion2( trameflux,feuil,cellule,table,cellule2,j,numligne,callback)
-    // ReportingInovcom.lectureEtInsertion(trameflux,feuil,cellule,table,cellule2,j,callback)
+      ReportingInovcom.lectureEtInsertion2( trameflux,feuil,cellule,table,cellule2,j,numligne,callback);
+   
+    }
+    };
+  },
+  importTrameFlux929type3 : function (trameflux,feuil,cellule,table,cellule2,nb,numligne,callback) {
+    var tab = [];
+    tab = ReportingInovcom.totalFichierExistant(trameflux,nb,callback);
+    console.log(tab);
+    if(tab.length==0)
+    {
+      console.log('Aucune reporting pour ce date');
+      ReportingInovcom.deleteToutHtp(table,3,callback);
+    }
+    else{
+      for(var y=0;y<tab.length;y++) //parcours anle dossier rehetra
+    {
+      var j = parseInt(tab[y]);
+      console.log(j);
+      ReportingInovcom.lectureEtInsertiontype3( trameflux,feuil,cellule,table,cellule2,j,numligne,callback);
     }
     };
   },
@@ -947,46 +948,58 @@
                            })   
    }   
  },
-   importEssaitype4: function (table,table2,date,option,nb,callback) {
-    const fs = require('fs');
-   var re  = 'a';
-   var tab = [];
-   var a = table[0]+date+table2[nb];
-   var b = option[nb];
-   //console.log(a);
-   var c = ReportingInovcom.existenceFichier(a);
-   console.log(c);
-   if(c=='vrai')
-   {
-     fs.readdir(a, (err, files) => {
-       console.log(a);
-           files.forEach(file => {
-             const regex = new RegExp(b+'*');
-             if(regex.test(file))
-             {
-                re = file;
-                console.log(re);  
-             } 
-             var sql = "insert into chemininovcomtype4 (typologiedelademande) values ('"+re+"') ";
-             ReportingInovcom.getDatastore().sendNativeQuery(sql, function(err,res){
-               if(err) return console.log(err);
-               else return callback(null, true);        
-                                   })  
-             console.log('ato anatiny'+re);
-         });
-         
+ importEssaitype4: function (table,table2,date,option,nb,nomtable,numligne,numfeuille,nomcolonne,nomBase,callback) {
+  const fs = require('fs');
+  var re  = 'a';
+  var tab = [];
+  var a = table[0]+date+table2[nb];
+  var b = option[nb];
+  var nomTable = nomtable;
+  var numLigne= numligne;
+  var numFeuille = numfeuille;
+  var nomColonne = nomcolonne;
+  var c = ReportingInovcom.existenceFichier(a);
+  console.log(c);
+  if(c=='vrai')
+  {
+    fs.readdir(a, (err, files) => {
+      console.log(a);
+          files.forEach(file => {
+            const regex = new RegExp(b+'*');
+            if(regex.test(file))
+            {
+               re = a+'\\'+file;
+               var sql = "insert into "+nomBase+" (chemin,nomtable,numligne,numfeuile,colonnecible) values ('"+re+"','"+nomTable+"','"+numLigne+"','"+numFeuille+"','"+nomColonne+"') ";
+               ReportingInovcom.getDatastore().sendNativeQuery(sql, function(err,res){
+                 if(err) return console.log(err);
+                 else return callback(null, true);        
+                                     }) ;    
+            } 
+            else
+            {
+             var sql = "insert into chemintsisy (typologiedelademande) values ('"+re+"') ";
+               ReportingInovcom.getDatastore().sendNativeQuery(sql, function(err,res){
+                 if(err) return console.log(err);
+                 else return callback(null, true);        
+                                     }) ;
+            };
+           
+           
+        });
         
-       });
-   }
-   else
-   {
-     var sql = "insert into chemininovcomtype4 (typologiedelademande) values ('k') ";
-     ReportingInovcom.getDatastore().sendNativeQuery(sql, function(err,res){
-       if(err) return console.log(err);
-       else return callback(null, true);        
-                           })   
-   }   
- },
+       
+      });
+  }
+  else
+  {
+    var sql = "insert into chemintsisy(typologiedelademande) values ('k') ";
+    ReportingInovcom.getDatastore().sendNativeQuery(sql, function(err,res){
+      if(err) return console.log(err);
+      else return callback(null, true);        
+                          })   
+  }   
+},
+  
  importEssaitype5: function (table,table2,date,option,nb,callback) {
   const fs = require('fs');
  var re  = 'a';
@@ -1408,6 +1421,70 @@ importEssaitype8: function (table,table2,date,option,nb,type,type2,nomtable,numl
     {
       console.log('ko');
     }
+      
+    },
+
+    lectureEtInsertiontype3:function(trameflux,feuil,cellule,table,cellule2,nb,numligne,callback){
+      XLSX = require('xlsx');
+      var workbook = XLSX.readFile(trameflux[nb]);
+      var numerofeuille = feuil[nb];
+      var numeroligne = parseInt(numligne[nb]);
+      try{
+        var nbr = 0;
+        const sheet = workbook.Sheets[workbook.SheetNames[numerofeuille]];
+        var range = XLSX.utils.decode_range(sheet['!ref']);
+        var col ;
+        console.log('Nombre de colonne' + range.e.c);
+        console.log('Nombre de ligne' + range.e.r);
+        for(var ra=0;ra<=range.e.c;ra++)
+        {
+          var address_of_cell = {c:ra, r:numeroligne};
+          var cell_ref = XLSX.utils.encode_cell(address_of_cell);
+          var desired_cell = sheet[cell_ref];
+          var desired_value = (desired_cell ? desired_cell.v : undefined);
+          if(desired_value==cellule[nb])
+          {
+            col=ra;
+          }
+        };
+        console.log('colonne cible' +col);
+        if(col!=undefined)
+        {
+          var debutligne = numeroligne + 1;
+          for(var a=debutligne;a<=range.e.r;a++)
+            {
+              var address_of_cell = {c:col, r:a};
+              var cell_ref = XLSX.utils.encode_cell(address_of_cell);
+              var desired_cell = sheet[cell_ref];
+              var desired_value1 = (desired_cell ? desired_cell.v : undefined);
+              if(desired_value1!=undefined)
+              {
+                nbr=nbr + 1;
+              }
+              else
+              {
+                console.log('non trouvé');
+              }
+            }
+           
+           /* */
+        }
+  
+        else
+        {
+          console.log('Colonne non trouvé');
+        }
+        console.log("nombreeeeebr"+ nbr);
+        var sql = "insert into "+table[nb]+" (typologiedelademande,okko) values ('"+nbr+"','"+nbr+"') ";
+                        ReportingInovcom.getDatastore().sendNativeQuery(sql, function(err,res){
+                          if(err) return console.log(err);
+                          else return callback(null, true);        
+                                              })
+      }
+      catch
+      {
+        console.log("erreur absolu haaha");
+      }
       
     },
 };

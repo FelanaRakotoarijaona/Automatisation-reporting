@@ -24,6 +24,17 @@ module.exports.routes = {
   //'/export/:jour/:mois/:annee/:html' : 'ReportingExcelController.accueil',
   //'/exportReporting/:jour/:mois/:annee' : 'ReportingExcelController.rechercheColonne',
   '/exportExcel' : 'ReportingExcelController.rechercheColonne',
+
+  //Route HTP2
+  '/accueil2' : 'ReportinghtpController.accueiltype2',
+  '/essai2' : 'ReportinghtpController.Essaiitype2',
+  '/accueil2/:date' : 'ReportinghtpController.accueiltype2',
+  //'/import' : 'ReportinghtpController.import',
+  '/reportinghtp2' : 'ReportinghtpController.essaiExcel2',
+  //Route HTP Export
+  //'/export/:jour/:mois/:annee/:html' : 'ReportingExcelController.accueil',
+  //'/exportReporting/:jour/:mois/:annee' : 'ReportingExcelController.rechercheColonne',
+  '/exportExcel' : 'ReportingExcelController.rechercheColonne',
  
 
   //Route INOVCOM
@@ -95,6 +106,14 @@ module.exports.routes = {
    '/exportRetour/:jour/:mois/:annee/:html' : 'ReportingInovcomExportController.accueil',
    '/exportReportingIndu:jour/:mois/:annee' : 'ReportingInovcomExportController.rechercheColonne',
  
+    //Route CONTETIEUX
+    '/accueilContetieux' : 'ReportingContetieuxController.accueil1',
+    '/essaiContetieux' : 'ReportingContetieuxController.Essaii',
+    '/accueil2Retour/:date' : 'ReportingRetourController.accueil',
+    '/reportingcontetieux' : 'ReportingContetieuxController.essaiExcel',
+    //Route RETOUR Export mbola tsy traité
+    '/exportRetour/:jour/:mois/:annee/:html' : 'ReportingInovcomExportController.accueil',
+    '/exportReportingIndu:jour/:mois/:annee' : 'ReportingInovcomExportController.rechercheColonne',
   
 
 
