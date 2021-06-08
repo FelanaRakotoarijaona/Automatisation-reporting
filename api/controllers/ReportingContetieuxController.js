@@ -8,19 +8,6 @@
 module.exports = {
     accueil1 : function(req,res)
     {
-     /* var file= "rakotoarisoa.xlsx";
-      var b = "rakoto";
-      //const regex = new RegExp(b);
-      const regex = new RegExp(b+'*.xlsx');
-      //const regex = new RegExp(b+'*' + '.xlsx');
-            if(regex.test(file))
-            {
-              console.log('ok');
-            }
-            else
-            {
-              console.log('lo');
-            };*/
       return res.view('Contentieux/accueil1');
     },
     Essaii : function(req,res)
@@ -95,8 +82,25 @@ module.exports = {
                   },
                     function(err)
                     {
-                      console.log('vofafa ddol');
-                       return res.view('Contentieux/accueil', {date : datetest});
+                      var sql4= "select count(chemin) as ok from "+nomBase+" ";
+                      console.log(sql4);
+                      Reportinghtp.getDatastore().sendNativeQuery(sql4 ,function(err, nc) {
+                         nc = nc.rows;
+                         console.log('nc'+nc[0].ok);
+                         var f = parseInt(nc[0].ok);
+                            if (err){
+                              return res.view('reporting/erreur');
+                            }
+                           if(f==0)
+                            {
+                              return res.view('reporting/erreur');
+                            }
+                            else
+                            {
+                              return res.view('Inovcom/accueil', {date : datetest});
+                              
+                            };
+                        });
                     });
                  
                 }

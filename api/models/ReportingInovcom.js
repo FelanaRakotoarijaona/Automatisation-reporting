@@ -1113,6 +1113,21 @@ lectureEtInsertiontype4:function(trameflux,feuil,cellule,table,cellule2,nb,numli
         return callback(null, true);
         });
     },
+    existenceRoute : function (trameflux,callback) {
+      var sql= "select count(chemin) as ok from "+trameflux+" ";
+      Reportinghtp.getDatastore().sendNativeQuery(sql ,function(err, nc) {
+            if (err){
+              //console.log(err);
+              //return callback(err);
+              console.log('erreur trouvé dans existenceRoute');
+            }
+            else
+            {
+              return callback(null, nc);
+            };
+        });
+    },
+   
     existenceFichier : function (pathparam) {
       const fs = require('fs');
   

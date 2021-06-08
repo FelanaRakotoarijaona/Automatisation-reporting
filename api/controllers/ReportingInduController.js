@@ -92,8 +92,25 @@ module.exports = {
                   },
                     function(err)
                     {
-                      console.log('vofafa ddol');
-                      return res.view('Indu/accueil', {date : datetest});
+                      var sql4= "select count(chemin) as ok from "+nomBase+" ";
+                      console.log(sql4);
+                      Reportinghtp.getDatastore().sendNativeQuery(sql4 ,function(err, nc) {
+                         nc = nc.rows;
+                         console.log('nc'+nc[0].ok);
+                         var f = parseInt(nc[0].ok);
+                            if (err){
+                              return res.view('reporting/erreur');
+                            }
+                           if(f==0)
+                            {
+                              return res.view('reporting/erreur');
+                            }
+                            else
+                            {
+                              return res.view('Inovcom/accueil', {date : datetest});
+                              
+                            };
+                        });
                     });
                 }
             });
@@ -290,8 +307,25 @@ module.exports = {
                   },
                     function(err)
                     {
-                      console.log('vofafa ddol');
-                      return res.view('Indu/accueil2', {date : datetest});
+                      var sql4= "select count(chemin) as ok from "+nomBase+" ";
+                      console.log(sql4);
+                      Reportinghtp.getDatastore().sendNativeQuery(sql4 ,function(err, nc) {
+                         nc = nc.rows;
+                         console.log('nc'+nc[0].ok);
+                         var f = parseInt(nc[0].ok);
+                            if (err){
+                              return res.view('reporting/erreur');
+                            }
+                           if(f==0)
+                            {
+                              return res.view('reporting/erreur');
+                            }
+                            else
+                            {
+                              return res.view('Inovcom/accueil', {date : datetest});
+                              
+                            };
+                        });
                     });
                 }
             });

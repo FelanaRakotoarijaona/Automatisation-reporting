@@ -4,55 +4,59 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <title>Document</title>
 </head>
 <body>
-    <h1>Export Nc</h1>
-    <div id="page-wrapper">
-        <div class="row">
-            <div class="col-md-12">
-                <div class=" row ">
-                    <div  class="">
-                        <div class="panel panel-primary">
-                            <div class="panel-heading">
-                                <h3 class="panel-title"></h3>
-                                <div class="row">
-                                    <div class="form-group">
-                                        <div class="col-xs-2 col-md-2 col-lg-2">
-                                            <input type="date" id="calendrier" name="calendrier"  min="2021-01-01" max="2100-12-31" required>
-                                            <button type="submit" style="margin-top:-1px"  class="btn btn-info" onclick="ciblage()">Lancer</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+    <div class="w3-sidebar w3-bar-block w3-collapse w3-card" style="width:200px;" id="mySidebar">
+
+        <br><br><br><br><br><br><br><br>
+        <button class="w3-bar-item w3-button w3-hide-large"
+        onclick="w3_close()">Close &times;</button>
+        <a href="/accueil1" class="w3-bar-item w3-button">HTP</a>
+        <a href="/accueilRetour" class="w3-bar-item w3-button">RETOUR</a>
+        <a href="/accueilContetieux" class="w3-bar-item w3-button">CONTENTIEUX</a>
+        <div class="w3-dropdown-hover">
+            <button class="w3-button">INOVCOM</button>
+            <div class="w3-dropdown-content w3-bar-block w3-card-4">
+              <a href="/accueilInovcom" class="w3-bar-item w3-button">Type 1</a>
+              <a href="/accueilInovcomtype2" class="w3-bar-item w3-button">Type 2</a>
+              <a href="/accueilInovcomtype3" class="w3-bar-item w3-button">Type 3</a>
+              <a href="/accueilInovcomtype4" class="w3-bar-item w3-button">Type 4</a>
+              <a href="/accueilInovcomtype5" class="w3-bar-item w3-button">Type 5</a>
+              <a href="/accueilInovcomtype6" class="w3-bar-item w3-button">Type 6</a>
+              <a href="/accueilInovcomtype7" class="w3-bar-item w3-button">Type 7</a>
+              <a href="/accueilInovcomtype8" class="w3-bar-item w3-button">Type 8</a>
+              <a href="/accueilInovcomtype9" class="w3-bar-item w3-button">Type 9</a>
+            </div>
+          </div>
+          <div class="w3-dropdown-hover">
+            <button class="w3-button">INDU</button>
+            <div class="w3-dropdown-content w3-bar-block w3-card-4">
+              <a href="/accueilIndu" class="w3-bar-item w3-button">Type 1</a>
+              <a href="/accueilIndu2" class="w3-bar-item w3-button">Type 2</a>
+            </div>
+          </div>
+    </div>
+      
+    <div class="w3-main" style="margin-left:200px">
+      
+        <div class="w3-teal">
+            <button class="w3-button w3-teal w3-xlarge" onclick="w3_open()">&#9776;</button>
+            <div class="w3-container">
+            <h1>REPORTING ALMERYS</h1>
             </div>
         </div>
     </div>
-    
-    <div id="data_recherche"></div>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script>
-        function ciblage(){
-           var calendrier = $("#calendrier").val();
-                 
-           if(calendrier){
-               $("#data_recherche").empty();
-               $.ajax({
-               url : '/compterExcel', // La ressource ciblée
-               type : 'GET', // Le type de la requête HTTP.
-               data : '&calendrier='+calendrier,
-               dataType : 'html', // On désire recevoir du HTML
-               success : function(code_html, statut){ // code_html contient le HTML renvoyé
-                   $("#data_recherche").append(code_html);
-               }
-           });
-         }  
-       }
-    
-       </script>
     </body>
-    
+      <script>
+      function w3_open() {
+        document.getElementById("mySidebar").style.display = "block";
+      }
+      
+      function w3_close() {
+        document.getElementById("mySidebar").style.display = "none";
+      }
+      </script>
+
 </html>
