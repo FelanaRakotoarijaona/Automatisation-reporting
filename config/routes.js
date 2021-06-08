@@ -24,6 +24,9 @@ module.exports.routes = {
   //'/export/:jour/:mois/:annee/:html' : 'ReportingExcelController.accueil',
   //'/exportReporting/:jour/:mois/:annee' : 'ReportingExcelController.rechercheColonne',
   '/exportExcel' : 'ReportingExcelController.rechercheColonne',
+
+  '/exportExcelHTP' : 'ReportingExcelController.rechercheColonne',
+  '/exportExcelH' : 'ReportingExcelController.accueilHTP',
  
 
   //Route INOVCOM
@@ -74,8 +77,37 @@ module.exports.routes = {
 
   '/reportinginovcomtype2' : 'ReportingInovcomController.essaiExceltype2',
   //Route INOVCOM Export
-  '/exportInovcom/:jour/:mois/:annee/:html' : 'ReportingInovcomExportController.accueil',
-  '/exportReportingInovcom/:jour/:mois/:annee' : 'ReportingInovcomExportController.rechercheColonne',
+  // '/exportInovcom/:jour/:mois/:annee/:html' : 'ReportingInovcomExportController.accueil',
+  // '/exportReportingInovcom/:jour/:mois/:annee' : 'ReportingInovcomExportController.rechercheColonne',
+
+  '/exportExcelInovcom1' : 'ReportingInovcomExportController.rechercheColonne1',
+  '/exportExcelInov1' : 'ReportingInovcomExportController.accueilInov1',
+
+  '/exportExcelInovcom2' : 'ReportingInovcomExportController.rechercheColonne2',
+  '/exportExcelInov2' : 'ReportingInovcomExportController.accueilInov2',
+  
+  '/exportExcelInovcom3' : 'ReportingInovcomExportController.rechercheColonne3',
+  '/exportExcelInov3' : 'ReportingInovcomExportController.accueilInov3',
+
+  '/exportExcelInovcom4' : 'ReportingInovcomExportController.rechercheColonne4',
+  '/exportExcelInov4' : 'ReportingInovcomExportController.accueilInov4',
+
+  '/exportExcelInovcom5' : 'ReportingInovcomExportController.rechercheColonne5',
+  '/exportExcelInov5' : 'ReportingInovcomExportController.accueilInov5',
+
+  '/exportExcelInovcom6' : 'ReportingInovcomExportController.rechercheColonne6',
+  '/exportExcelInov6' : 'ReportingInovcomExportController.accueilInov6',
+
+  '/exportExcelInovcom7' : 'ReportingInovcomExportController.rechercheColonne7',
+  '/exportExcelInov7' : 'ReportingInovcomExportController.accueilInov7',
+
+  '/exportExcelInovcom8' : 'ReportingInovcomExportController.rechercheColonne8',
+  '/exportExcelInov8' : 'ReportingInovcomExportController.accueilInov8',
+
+  '/exportExcelInovcom9' : 'ReportingInovcomExportController.rechercheColonne9',
+  '/exportExcelInov9' : 'ReportingInovcomExportController.accueilInov9',
+
+
 
    //Route INDU
    '/accueilIndu' : 'ReportingInduController.accueil1',
@@ -83,19 +115,39 @@ module.exports.routes = {
    '/accueil2Indu/:date' : 'ReportingInduController.accueil',
    '/reportingindu' : 'ReportingInduController.essaiExcel',
    //Route INDU Export mbola tsy traité
-   '/exportIndu/:jour/:mois/:annee/:html' : 'ReportingInovcomExportController.accueil',
-   '/exportReportingIndu:jour/:mois/:annee' : 'ReportingInovcomExportController.rechercheColonne',
+  //  '/exportIndu/:jour/:mois/:annee/:html' : 'ReportingInovcomExportController.accueil',
+  //  '/exportReportingIndu:jour/:mois/:annee' : 'ReportingInovcomExportController.rechercheColonne',
+   '/exportExcelIndu' : 'ReportingInduController.rechercheColonne',
+   '/exportExcelI' : 'ReportingInduController.accueilI',
 
-   //Route RETOUR
-   '/accueilRetour' : 'ReportingRetourController.accueil1',
-   '/essaiRetour' : 'ReportingRetourController.Essaii',
-   '/accueil2Retour/:date' : 'ReportingRetourController.accueil',
-   '/reportingretour' : 'ReportingRetourController.essaiExcel',
-   //Route RETOUR Export mbola tsy traité
-   '/exportRetour/:jour/:mois/:annee/:html' : 'ReportingInovcomExportController.accueil',
-   '/exportReportingIndu:jour/:mois/:annee' : 'ReportingInovcomExportController.rechercheColonne',
- 
+   '/exportExcelIndu2' : 'ReportingInduController.rechercheColonne2',
+   '/exportExcelI2' : 'ReportingInduController.accueilI2',
+
   
+   //Route RETOUR
+   '/accueilRetour' : 'ReportingRetourController.accueil1',//1
+   '/essaiRetour' : 'ReportingRetourController.Essaii',//2
+   '/accueil2Retour/:date' : 'ReportingRetourController.accueil',
+   '/reportingretour' : 'ReportingRetourController.essaiExcel',//3
+   //Route RETOUR Export mbola tsy traité
+  //  '/exportRetour/:jour/:mois/:annee/:html' : 'ReportingInovcomExportController.accueil',
+  //  '/exportReportingIndu:jour/:mois/:annee' : 'ReportingInovcomExportController.rechercheColonne',
+   //ajout routes pour RETOUR
+   '/exportExcelRetour' : 'ReportingRetourController.rechercheColonne',//5
+   '/exportExcel' : 'ReportingRetourController.accueilR',//4
+
+ 
+     //Route CONTENTIEUX
+     '/accueilContentieux' : 'ReportingContetieuxController.accueil1',
+     '/essaiContentieux' : 'ReportingContetieuxController.Essaii',
+     '/accueil2Contentieux/:date' : 'ReportingContetieuxController.accueil',
+     '/reportingContentieux' : 'ReportingContetieuxController.essaiExcel',
+     //Route CONTENTIEUX Export mbola tsy traité
+    //  '/exportRetour/:jour/:mois/:annee/:html' : 'ReportingInovcomExportController.accueil',
+    //  '/exportReportingIndu:jour/:mois/:annee' : 'ReportingInovcomExportController.rechercheColonne',
+     //ajout routes pour RETOUR
+     '/exportExcelContentieux' : 'ReportingContetieuxController.rechercheColonne',
+     '/exportExcelCont' : 'ReportingContetieuxController.accueilCont',
 
 
   /***************************************************************************

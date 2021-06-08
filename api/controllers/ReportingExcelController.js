@@ -31,6 +31,10 @@ module.exports = {
     var dateexport = jour + '/' + mois + '/' +annee;
     return res.view('reporting/exportErica', {date : dateexport , html : html});
   },
+  accueilHTP: function(req,res)
+    {
+      return res.view('reporting/exportExcelHTP');
+  },
   rechercheColonne1 : function (req, res) {
    var html= '<script>'+
     '$( document ).ready(function() {'+

@@ -24,8 +24,14 @@
             }
 
             .vertical-menu a.active {
-            background-color: green; /* Add a green color to the "active/current" link */
-            color: white;
+            background-color:  rgb(21, 235, 21); /* Add a green color to the "active/current" link */
+            color: green;
+            }
+
+            .btn-primary {
+            color: #212529;
+            background-color: rgb(21, 235, 21); 
+            border-color:  rgb(21, 235, 21); 
             }
     </style>
 </head>
@@ -40,7 +46,7 @@
                     <a href="#" class="active">REPORTING HTP</a>
                     <a href="#">REPORTING INOVCOM</a>
                     <a href="#">REPORTING INDU</a>
-                    <a href="#">REPORTING CONTETIEUX</a>
+                    <a href="#">REPORTING CONTENTIEUX</a>
                     <a href="#">REPORTING RETOUR</a>
                     <a href="/logout">Se déconnecter</a>
                   </div>
@@ -48,23 +54,24 @@
             <br><br>
             <div class="col-md-offset-4 col-md-5"  style=" background-color:whitesmoke;">
                 <br><br><br><br><br><br>
-                <form method="POST" action="/exportExcelHTP" style="background-color:white;height:300px;width:400px;margin-left: 80px;box-shadow: 5px 5px 5px 5px green;" class="miafina">
+                <!--EFA NOVAIKO ARY AM VOALOHANY ARY E (reporting/accueil1)-->
+                <form method="POST" action="/exportExcelInovcom9" style="background-color:white;height:300px;width:400px;margin-left: 80px;box-shadow: 5px 5px 5px 5px  rgb(21, 235, 21);" class="miafina">
                     <div class="form-group">
                         <br>
-                        <h4 style="margin-left: 50px;">Veuillez choisir une date pour l'export de votre reporting</h4><br><br>
+                        <h4 style="margin-left: 50px;">Export Inovcom 9</h4><br><br>
                         <input type="date" class="form-control" name="date"  style="margin-left: 5px;width: 390px;" required >
                     </div>
                     <div class="spinner-border" role="status" style="display: none;" id="snip">
                         <span class="visually-hidden"></span>
                     </div>
                     <br>
-                    <button type="submit" style="margin-left: 200px;" class="btn btn-success" id="ok" onclick="affiche()">Terminer votre reporting</button>
+                    <button type="submit" style="margin-left: 200px;" class="btn btn-primary" id="ok" onclick="affiche()">Terminer votre reporting</button>
                 </form>
                 <br><br><br>
                 <br><br><br>
             </div>
     </div>
-   
+
     
 </body>
 <script>
