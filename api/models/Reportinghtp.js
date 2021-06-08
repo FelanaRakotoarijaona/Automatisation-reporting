@@ -43,23 +43,6 @@ module.exports = {
 
       });
     };
-
-   /* var tab = [];
-    tab = Reportinghtp.totalFichierExistant(trameflux,nb,callback);
-    console.log(tab);
-    if(tab.length==0)
-    {
-      console.log('Aucune reporting pour ce date');
-      Reportinghtp.deleteToutHtp(table,3,callback);
-    }
-    else{
-      for(var y=0;y<tab.length;y++) //parcours anle dossier rehetra
-    {
-      var j = parseInt(tab[y]);
-      console.log(j);
-      Reportinghtp.lectureEtInsertion2( trameflux,feuil,cellule,table,cellule2,j,numligne,callback);
-    }
-    };*/
   },
   lectureEtInsertion2:function(trameflux,feuil,cellule,table,cellule2,nb,numligne,callback){
     console.log('ok v');
@@ -149,13 +132,11 @@ module.exports = {
       {
         console.log('Colonne non trouvé');
       };
-      
     }
     catch
     {
       console.log("erreur absolu haaha");
     }
-    
   },
   importTrameFlux929type4 : function (trameflux,feuil,cellule,table,cellule2,nb,numligne,dateexport,callback) {
     if(trameflux[nb]==undefined)
@@ -164,7 +145,7 @@ module.exports = {
       Reportinghtp.getDatastore().sendNativeQuery(sql, function(err,res){
         if (err) { 
           console.log("Une erreur ve ok?");
-          return callback(err);
+          //return callback(err);
          }
         else
         {
@@ -436,7 +417,6 @@ importEssai: function (table,table2,date,option,nb,nomtable,numligne,numfeuille,
               const regex = new RegExp(b+'*');
               if(regex.test(file))
               {
-                 //re = a+'\\'+file;
                  re = a+'/'+file;  
                  var sql = "insert into cheminhtp2 (chemin,nomtable,numligne,numfeuile,colonnecible,colonnecible2) values ('"+re+"','"+nomTable+"','"+numLigne+"','"+numFeuille+"','"+nomColonne+"','"+colonnecible2+"') ";
                  Reportinghtp.getDatastore().sendNativeQuery(sql, function(err,res){

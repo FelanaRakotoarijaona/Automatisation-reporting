@@ -93,6 +93,11 @@ module.exports.routes = {
    '/essaiIndu' : 'ReportingInduController.Essaii',
    '/accueil2Indu/:date' : 'ReportingInduController.accueil',
    '/reportingindu' : 'ReportingInduController.essaiExcel',
+
+   '/accueilIndu2' : 'ReportingInduController.accueiltype2',
+   '/essaiIndu2' : 'ReportingInduController.Essaii2',
+   '/accueil2Indu/:date' : 'ReportingInduController.accueil2',
+   '/reportingindu2' : 'ReportingInduController.essaiExcel2',
    //Route INDU Export mbola tsy traité
    '/exportIndu/:jour/:mois/:annee/:html' : 'ReportingInovcomExportController.accueil',
    '/exportReportingIndu:jour/:mois/:annee' : 'ReportingInovcomExportController.rechercheColonne',

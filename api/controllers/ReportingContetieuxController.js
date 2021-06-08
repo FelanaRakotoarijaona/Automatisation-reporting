@@ -8,6 +8,19 @@
 module.exports = {
     accueil1 : function(req,res)
     {
+     /* var file= "rakotoarisoa.xlsx";
+      var b = "rakoto";
+      //const regex = new RegExp(b);
+      const regex = new RegExp(b+'*.xlsx');
+      //const regex = new RegExp(b+'*' + '.xlsx');
+            if(regex.test(file))
+            {
+              console.log('ok');
+            }
+            else
+            {
+              console.log('lo');
+            };*/
       return res.view('Contentieux/accueil1');
     },
     Essaii : function(req,res)
@@ -27,6 +40,7 @@ module.exports = {
       console.log(date);
       var cheminp = [];
       var MotCle= [];
+      var r = [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22];
       workbook.xlsx.readFile('ReportingContetieux.xlsx')
           .then(function() {
             var newworksheet = workbook.getWorksheet('Feuil2');
@@ -54,87 +68,37 @@ module.exports = {
               motcle.eachCell(function(cell, rowNumber) {
                 MotCle.push(cell.value);
               });
+              var nomBase = "chemincontetieux";
               console.log(cheminp[0]);
               console.log(MotCle[0]);
               async.series([  
-                  function(cb){
-                      ReportingContetieux.deleteFromChemin(table,cb);
-                    },
-                 function(cb){
-                      ReportingContetieux.importEssai(table,cheminp,date,MotCle,0,nomtable[0],numligne[0],numfeuille[0],nomcolonne[0],cb);
-                    },
-                 function(cb){
-                      ReportingContetieux.importEssai(table,cheminp,date,MotCle,1,nomtable[1],numligne[1],numfeuille[1],nomcolonne[1],cb);
-                    },
-                  function(cb){
-                      ReportingContetieux.importEssai(table,cheminp,date,MotCle,2,nomtable[2],numligne[2],numfeuille[2],nomcolonne[2],cb);
-                    },
-                  function(cb){
-                      ReportingContetieux.importEssai(table,cheminp,date,MotCle,3,nomtable[3],numligne[3],numfeuille[3],nomcolonne[3],cb);
-                    },
-                  function(cb){
-                      ReportingContetieux.importEssai(table,cheminp,date,MotCle,4,nomtable[4],numligne[4],numfeuille[4],nomcolonne[4],cb);
-                    },
-                 function(cb){
-                      ReportingContetieux.importEssai(table,cheminp,date,MotCle,5,nomtable[5],numligne[5],numfeuille[5],nomcolonne[5],cb);
-                    },
-                  function(cb){
-                      ReportingContetieux.importEssai(table,cheminp,date,MotCle,6,nomtable[6],numligne[6],numfeuille[6],nomcolonne[6],cb);
-                    },
-                  function(cb){
-                      ReportingContetieux.importEssai(table,cheminp,date,MotCle,7,nomtable[7],numligne[7],numfeuille[7],nomcolonne[7],cb);
-                    },
-                    function(cb){
-                      ReportingContetieux.importEssai(table,cheminp,date,MotCle,8,nomtable[8],numligne[8],numfeuille[8],nomcolonne[8],cb);
-                    },
-                    function(cb){
-                      ReportingContetieux.importEssai(table,cheminp,date,MotCle,9,nomtable[9],numligne[9],numfeuille[9],nomcolonne[9],cb);
-                    },
-                 function(cb){
-                      ReportingContetieux.importEssai(table,cheminp,date,MotCle,10,nomtable[10],numligne[10],numfeuille[10],nomcolonne[10],cb);
-                    },
-                  function(cb){
-                      ReportingContetieux.importEssai(table,cheminp,date,MotCle,11,nomtable[11],numligne[11],numfeuille[11],nomcolonne[11],cb);
-                    },
-                  function(cb){
-                      ReportingContetieux.importEssai(table,cheminp,date,MotCle,12,nomtable[12],numligne[12],numfeuille[12],nomcolonne[12],cb);
-                    },
-                    function(cb){
-                      ReportingContetieux.importEssai(table,cheminp,date,MotCle,13,nomtable[13],numligne[13],numfeuille[13],nomcolonne[13],cb);
-                    },
-                    function(cb){
-                      ReportingContetieux.importEssai(table,cheminp,date,MotCle,14,nomtable[14],numligne[14],numfeuille[14],nomcolonne[14],cb);
-                    },
-                  function(cb){
-                      ReportingContetieux.importEssai(table,cheminp,date,MotCle,15,nomtable[15],numligne[15],numfeuille[15],nomcolonne[15],cb);
-                    },
-                  function(cb){
-                      ReportingContetieux.importEssai(table,cheminp,date,MotCle,16,nomtable[16],numligne[16],numfeuille[16],nomcolonne[16],cb);
-                    },
-                    function(cb){
-                      ReportingContetieux.importEssai(table,cheminp,date,MotCle,17,nomtable[17],numligne[17],numfeuille[17],nomcolonne[17],cb);
-                    },
-                    function(cb){
-                      ReportingContetieux.importEssai(table,cheminp,date,MotCle,18,nomtable[18],numligne[18],numfeuille[18],nomcolonne[18],cb);
-                    },
-                    function(cb){
-                      ReportingContetieux.importEssai(table,cheminp,date,MotCle,19,nomtable[19],numligne[19],numfeuille[19],nomcolonne[19],cb);
-                    },
-                    function(cb){
-                      ReportingContetieux.importEssai(table,cheminp,date,MotCle,20,nomtable[20],numligne[20],numfeuille[20],nomcolonne[20],cb);
-                    },
-                    function(cb){
-                      ReportingContetieux.importEssai(table,cheminp,date,MotCle,21,nomtable[21],numligne[21],numfeuille[21],nomcolonne[21],cb);
-                    },
-                    function(cb){
-                      ReportingContetieux.importEssai(table,cheminp,date,MotCle,22,nomtable[22],numligne[22],numfeuille[22],nomcolonne[22],cb);
-                    },
+                function(cb){
+                  ReportingInovcom.deleteFromChemin(nomBase,cb);
+                  },
               ],
               function(err, resultat){
                 if (err) { return res.view('Contentieux/erreur'); }
                 else
                 {
-                  return res.view('Contentieux/accueil', {date : datetest});
+                  async.forEachSeries(r, function(lot, callback_reporting_suivant) {
+                    async.series([
+                      function(cb){
+                        ReportingInovcom.delete(nomtable,lot,cb);
+                      },
+                      function(cb){
+                        ReportingInovcom.importEssaitype4(table,cheminp,date,MotCle,lot,nomtable,numligne,numfeuille,nomcolonne,nomBase,cb);
+                      },
+                    ],function(erroned, lotValues){
+                      if(erroned) return res.badRequest(erroned);
+                      return callback_reporting_suivant();
+                    });
+                  },
+                    function(err)
+                    {
+                      console.log('vofafa ddol');
+                       return res.view('Contentieux/accueil', {date : datetest});
+                    });
+                 
                 }
             });
           });
@@ -144,6 +108,90 @@ module.exports = {
       return res.view('Contentieux/accueil');
     },
     EssaiExcel : function(req,res)
+    {
+      var sql1= 'select count(*) as nb from chemincontetieux;';
+      Reportinghtp.query(sql1,function(err, nc1) {
+        if (err){
+          console.log(err);
+          return next(err);
+        }
+        else
+        {
+          nc1 = nc1.rows;
+          var nbs = nc1[0].nb;
+          var x = parseInt(nbs);
+          var sql='select * from chemincontetieux limit' + " " + x ;
+          Reportinghtp.query(sql,function(err, nc) {
+            if (err){
+              console.log(err);
+              return next(err);
+            }
+            else
+            {
+            nc = nc.rows;
+            sails.log(nc[0].chemin);
+            var feuil = [];
+            var cellule = [];
+            var cellule2 = [];
+            var table = [];
+            var trameflux = [];
+            var numligne = [];
+            var nb = x;
+            for(var i=0;i<nb;i++)
+            {
+              var a = nc[i].chemin;
+              trameflux.push(a);
+            };
+            for(var i=0;i<nb;i++)
+            {
+              var a = nc[i].numfeuile;
+              feuil.push(a);
+            };
+            for(var i=0;i<nb;i++)
+            {
+              var a = nc[i].numligne;
+              numligne.push(a);
+            };
+            for(var i=0;i<nb;i++)
+            {
+              var a = nc[i].colonnecible;
+              cellule.push(a);
+            };
+            for(var i=0;i<nb;i++)
+            {
+              var a = nc[i].colonnecible;
+              cellule2.push(a);
+            };
+            var nbre = [];
+            for(var i=0;i<nb;i++)
+            {
+              var a = nc[i].nomtable;
+              table.push(a);
+              nbre.push(i);
+            };
+                    console.log(table);
+                    async.forEachSeries(nbre, function(lot, callback_reporting_suivant) {
+                      async.series([
+                        function(cb){
+                          ReportingRetour.importTrameFlux929type2(trameflux,feuil,cellule,table,cellule2,lot,numligne,cb);
+                        },
+                      ],function(erroned, lotValues){
+                        if(erroned) return res.badRequest(erroned);
+                        return callback_reporting_suivant();
+                      });
+                    },
+                      function(err)
+                      {
+                        console.log('vofafa ddol');
+                        return res.view('Retour/exportExcel');
+                      }); 
+             }
+             })
+        }
+    });
+  },
+
+    /*EssaiExcel : function(req,res)
     {
       var sql1= 'select count(*) as nb from chemincontetieux;';
       Reportinghtp.query(sql1,function(err, nc1) {
@@ -209,7 +257,8 @@ module.exports = {
                         ReportingContetieux.deleteHtp(table,nb,cb);
                       }, 
                       function(cb){
-                        ReportingContetieux.importTrameFlux929type2(trameflux,feuil,cellule,table,cellule2,nb,numligne,cb);
+                        //ReportingContetieux.importTrameFlux929type2(trameflux,feuil,cellule,table,cellule2,nb,numligne,cb);
+                        ReportingRetour.importTrameFlux929type2(trameflux,feuil,cellule,table,cellule2,lot,numligne,cb);
                       }, 
                     ],
                     function(err, resultat){
@@ -220,7 +269,7 @@ module.exports = {
              })
         }
     });
-  },
+  },*/
 
 
 };
