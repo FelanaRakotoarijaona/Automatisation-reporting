@@ -12,84 +12,26 @@ module.exports = {
   // Récuperer nombre OK ou KO
   countOkKo : function (table, callback) {
     const Excel = require('exceljs');
-    var sqlOk ="select count(okko) as ok from "+table+" where okko='OK'"; //trameFlux
-    var sqlKo ="select count(okko) as ko from "+table+" where okko='KO'";
-    console.log(sqlOk);
-    console.log(sqlKo);
+    var sqlOk ="select sum(nbok) as ok from "+table+" "; //trameFlux
+    var sqlKo ="select sum(nbko) as ko from "+table+" ";
+    /*console.log(sqlOk);
+    console.log(sqlKo);*/
     async.series([
       function (callback) {
-        ReportingExcel.query(sqlOk, function(err, res){
+        ReportingExcel.getDatastore().sendNativeQuery(sqlOk, function(err, res){
           if (err) return res.badRequest(err);
           callback(null, res.rows[0].ok);
         });
       },
       function (callback) {
-        ReportingExcel.query(sqlKo, function(err, resKo){
+        ReportingExcel.getDatastore().sendNativeQuery(sqlKo, function(err, resKo){
           if (err) return res.badRequest(err);
           callback(null, resKo.rows[0].ko);
         });
       },
     ],function(err,result){
       if(err) return res.badRequest(err);
-      console.log("Count OK ==> " + result[0]);
-      console.log("Count KO ==> " + result[1]);
-      var okko = {};
-      okko.ok = result[0];
-      okko.ko = result[1];
-      return callback(null, okko);
-    })
-  },
-  countOkKoTrameLamie2 : function (table, callback) {
-    const Excel = require('exceljs');
-    var sqlOk ="select count(okko) as ok from "+table+" where okko='OK' "; //trameFlux
-    var sqlKo ="select count(okko) as ko from "+table+" where okko='KO' ";
-    console.log(sqlOk);
-    console.log(sqlKo);
-    async.series([
-      function (callback) {
-        ReportingExcel.query(sqlOk, function(err, res){
-          if (err) return res.badRequest(err);
-          callback(null, res.rows[0].ok);
-        });
-      },
-      function (callback) {
-        ReportingExcel.query(sqlKo, function(err, resKo){
-          if (err) return res.badRequest(err);
-          callback(null, resKo.rows[0].ko);
-        });
-      },
-    ],function(err,result){
-      if(err) return res.badRequest(err);
-      console.log("Count OK ==> " + result[0]);
-      console.log("Count KO ==> " + result[1]);
-      var okko = {};
-      okko.ok = result[0];
-      okko.ko = result[1];
-      return callback(null, okko);
-    })
-  },
-  countOkKoTrameLamie : function (table, callback) {
-    const Excel = require('exceljs');
-    var sqlOk ="select count(okko) as ok from "+table+" where okko='OK' AND typologiedelademande!='Résiliation'"; //trameFlux
-    var sqlKo ="select count(okko) as ko from "+table+" where okko='KO'  AND typologiedelademande!='Résiliation' ";
-    console.log(sqlOk);
-    console.log(sqlKo);
-    async.series([
-      function (callback) {
-        ReportingExcel.query(sqlOk, function(err, res){
-          if (err) return res.badRequest(err);
-          callback(null, res.rows[0].ok);
-        });
-      },
-      function (callback) {
-        ReportingExcel.query(sqlKo, function(err, resKo){
-          if (err) return res.badRequest(err);
-          callback(null, resKo.rows[0].ko);
-        });
-      },
-    ],function(err,result){
-      if(err) return res.badRequest(err);
-      console.log("Count OK ==> " + result[0]);
+     // console.log("Count OK ==> " + result[0]);
       console.log("Count KO ==> " + result[1]);
       var okko = {};
       okko.ok = result[0];
@@ -99,19 +41,48 @@ module.exports = {
   },
   countOkKoTrameLamieResiliation : function (table, callback) {
     const Excel = require('exceljs');
-    var sqlOk ="select count(okko) as ok from "+table+" where okko='OK' AND typologiedelademande='Résiliation' "; //trameFlux
-    var sqlKo ="select count(okko) as ko from "+table+" where okko='KO'  AND typologiedelademande='Résiliation' ";
-    console.log(sqlOk);
-    console.log(sqlKo);
+    var sqlOk ="select sum(nbokresiliation) as ok from "+table+" "; //trameFlux
+    var sqlKo ="select sum(nbkoresiliation) as ko from "+table+" ";
+    /*console.log(sqlOk);
+    console.log(sqlKo);*/
     async.series([
       function (callback) {
-        ReportingExcel.query(sqlOk, function(err, res){
+        ReportingExcel.getDatastore().sendNativeQuery(sqlOk, function(err, res){
           if (err) return res.badRequest(err);
           callback(null, res.rows[0].ok);
         });
       },
       function (callback) {
-        ReportingExcel.query(sqlKo, function(err, resKo){
+        ReportingExcel.getDatastore().sendNativeQuery(sqlKo, function(err, resKo){
+          if (err) return res.badRequest(err);
+          callback(null, resKo.rows[0].ko);
+        });
+      },
+    ],function(err,result){
+      if(err) return res.badRequest(err);
+      //console.log("Count OK ==> " + result[0]);
+      console.log("Count KO ==> " + result[1]);
+      var okko = {};
+      okko.ok = result[0];
+      okko.ko = result[1];
+      return callback(null, okko);
+    })
+  },
+  countOkKoTrameLamie : function (table, callback) {
+    const Excel = require('exceljs');
+    var sqlOk ="select sum(nbok) as ok from "+table+" "; //trameFlux
+    var sqlKo ="select sum(nbko) as ko from "+table+" ";
+    console.log(sqlOk);
+    console.log(sqlKo);
+    async.series([
+      function (callback) {
+        ReportingExcel.getDatastore().sendNativeQuery(sqlOk, function(err, res){
+          if (err) return res.badRequest(err);
+          callback(null, res.rows[0].ok);
+        });
+      },
+      function (callback) {
+        ReportingExcel.getDatastore().sendNativeQuery(sqlKo, function(err, resKo){
           if (err) return res.badRequest(err);
           callback(null, resKo.rows[0].ko);
         });
@@ -130,24 +101,24 @@ module.exports = {
     const Excel = require('exceljs');
     var sqlOk ="select count(okko) as ok from "+table+" where okko='OK' AND typologiedelademande='Résiliation' "; //trameFlux
     var sqlKo ="select count(okko) as ko from "+table+" where okko='KO'  AND typologiedelademande='Résiliation' ";
-    console.log(sqlOk);
-    console.log(sqlKo);
+    /*console.log(sqlOk);
+    console.log(sqlKo);*/
     async.series([
       function (callback) {
-        ReportingExcel.query(sqlOk, function(err, res){
+        ReportingExcel.getDatastore().sendNativeQuery(sqlOk, function(err, res){
           if (err) return res.badRequest(err);
           callback(null, res.rows[0].ok);
         });
       },
       function (callback) {
-        ReportingExcel.query(sqlKo, function(err, resKo){
+        ReportingExcel.getDatastore().sendNativeQuery(sqlKo, function(err, resKo){
           if (err) return res.badRequest(err);
           callback(null, resKo.rows[0].ko);
         });
       },
     ],function(err,result){
       if(err) return res.badRequest(err);
-      console.log("Count OK ==> " + result[0]);
+      //console.log("Count OK ==> " + result[0]);
       console.log("Count KO ==> " + result[1]);
       var okko = {};
       okko.ok = result[0];
@@ -259,8 +230,8 @@ module.exports = {
       var dateExcel = ReportingExcel.convertDate(cell.text);
       if(dateExcel==date_export)
       {
-        console.log(dateExcel);
-        console.log(date_export);
+        /*console.log(dateExcel);
+        console.log(date_export);*/
         ligneDate1 = parseInt(rowNumber);
         var line = newworksheet.getRow(ligneDate1);
         var f = line.getCell(3).value;
@@ -271,7 +242,7 @@ module.exports = {
         }
       }
     });
-    console.log("LIGNE DATE ===> "+ ligneDate);
+    //console.log("LIGNE DATE ===> "+ ligneDate);
     var rowDate = newworksheet.getRow(ligneDate);
     var numeroLigne = rowDate;
     var iniValue = ReportingExcel.getIniValue(table);
@@ -311,7 +282,7 @@ module.exports = {
         }
       }
     });
-    console.log(" Colnumber2"+collonne);
+    //console.log(" Colnumber2"+collonne);
     numeroLigne.getCell(colonnne).value = nombre_ok_ko.ok;
     numeroLigne.getCell(collonne).value = nombre_ok_ko.ko;
     await newWorkbook.xlsx.writeFile(path_reporting);
@@ -329,7 +300,7 @@ module.exports = {
     const fs = require('fs');
     const ini = require('ini');
     const config = ini.parse(fs.readFileSync('./config_excel.ini', 'utf-8'));
-    console.log(config);
+    //console.log(config);
     return config;
   },
 

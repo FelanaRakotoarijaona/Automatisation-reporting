@@ -25,8 +25,16 @@ module.exports.routes = {
   //'/exportReporting/:jour/:mois/:annee' : 'ReportingExcelController.rechercheColonne',
   '/exportExcel' : 'ReportingExcelController.rechercheColonne',
 
-  '/exportExcelHTP' : 'ReportingExcelController.rechercheColonne',
-  '/exportExcelH' : 'ReportingExcelController.accueilHTP',
+  //Route HTP2
+  '/accueil2' : 'ReportinghtpController.accueiltype2',
+  '/essai2' : 'ReportinghtpController.Essaiitype2',
+  '/accueil2/:date' : 'ReportinghtpController.accueiltype2',
+  //'/import' : 'ReportinghtpController.import',
+  '/reportinghtp2' : 'ReportinghtpController.essaiExcel2',
+  //Route HTP Export
+  //'/export/:jour/:mois/:annee/:html' : 'ReportingExcelController.accueil',
+  //'/exportReporting/:jour/:mois/:annee' : 'ReportingExcelController.rechercheColonne',
+  '/exportExcel' : 'ReportingExcelController.rechercheColonne',
  
 
   //Route INOVCOM
@@ -114,6 +122,11 @@ module.exports.routes = {
    '/essaiIndu' : 'ReportingInduController.Essaii',
    '/accueil2Indu/:date' : 'ReportingInduController.accueil',
    '/reportingindu' : 'ReportingInduController.essaiExcel',
+
+   '/accueilIndu2' : 'ReportingInduController.accueiltype2',
+   '/essaiIndu2' : 'ReportingInduController.Essaii2',
+   '/accueil2Indu/:date' : 'ReportingInduController.accueil2',
+   '/reportingindu2' : 'ReportingInduController.essaiExcel2',
    //Route INDU Export mbola tsy traité
   //  '/exportIndu/:jour/:mois/:annee/:html' : 'ReportingInovcomExportController.accueil',
   //  '/exportReportingIndu:jour/:mois/:annee' : 'ReportingInovcomExportController.rechercheColonne',
@@ -138,16 +151,25 @@ module.exports.routes = {
 
  
      //Route CONTENTIEUX
-     '/accueilContentieux' : 'ReportingContetieuxController.accueil1',
-     '/essaiContentieux' : 'ReportingContetieuxController.Essaii',
-     '/accueil2Contentieux/:date' : 'ReportingContetieuxController.accueil',
-     '/reportingContentieux' : 'ReportingContetieuxController.essaiExcel',
+    //  '/accueilContentieux' : 'ReportingContetieuxController.accueil1',
+    //  '/essaiContentieux' : 'ReportingContetieuxController.Essaii',
+    //  '/accueil2Contentieux/:date' : 'ReportingContetieuxController.accueil',
+    //  '/reportingContentieux' : 'ReportingContetieuxController.essaiExcel',
      //Route CONTENTIEUX Export mbola tsy traité
     //  '/exportRetour/:jour/:mois/:annee/:html' : 'ReportingInovcomExportController.accueil',
     //  '/exportReportingIndu:jour/:mois/:annee' : 'ReportingInovcomExportController.rechercheColonne',
      //ajout routes pour RETOUR
      '/exportExcelContentieux' : 'ReportingContetieuxController.rechercheColonne',
      '/exportExcelCont' : 'ReportingContetieuxController.accueilCont',
+    //Route CONTETIEUX
+    '/accueilContetieux' : 'ReportingContetieuxController.accueil1',
+    '/essaiContetieux' : 'ReportingContetieuxController.Essaii',
+    '/accueil2Retour/:date' : 'ReportingRetourController.accueil',
+    '/reportingcontetieux' : 'ReportingContetieuxController.essaiExcel',
+    //Route RETOUR Export mbola tsy traité
+    // '/exportRetour/:jour/:mois/:annee/:html' : 'ReportingInovcomExportController.accueil',
+    // '/exportReportingIndu:jour/:mois/:annee' : 'ReportingInovcomExportController.rechercheColonne',
+  
 
 
   /***************************************************************************

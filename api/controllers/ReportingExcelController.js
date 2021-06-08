@@ -50,10 +50,6 @@ module.exports = {
     var annee = datetest.substr(0, 4);
     var mois = datetest.substr(5, 2);
     var jour = datetest.substr(8, 2);
-    //var date_export = annee+mois+jour;
-    /*var jour = req.param("jour");
-    var mois = req.param("mois");
-    var annee = req.param("annee");*/
     var mois1 = 'Janvier' ;
     if(mois==01)
     {
@@ -75,7 +71,35 @@ module.exports = {
     {
       mois1= 'Mai';
     };
-    console.log(mois1);
+    if(mois==06)
+    {
+      mois1= 'Juin';
+    };
+    if(mois==07)
+    {
+      mois1= 'Juillet';
+    };
+    if(mois==08)
+    {
+      mois1= 'Aout';
+    };
+    if(mois==09)
+    {
+      mois1= 'Septembre';
+    };
+    if(mois==10)
+    {
+      mois1= 'Octobre';
+    };
+    if(mois==11)
+    {
+      mois1= 'Novembre';
+    };
+    if(mois==12)
+    {
+      mois1= 'Decembre';
+    };
+    //console.log(mois1);
     var date_export = jour + '/' + mois + '/' +annee;
     //var date_export = '14/01/2021';
     console.log("RECHERCHE COLONNE");
@@ -100,6 +124,36 @@ module.exports = {
       }
     ],function(err,result){
       if(err) return res.badRequest(err);
+      if(result[0].ok==null &&  result[0].ko==null )
+      {
+        result[0].ok=0;
+        result[0].ko=0;
+      };
+      if(result[1].ok==null &&  result[1].ko==null )
+      {
+        result[1].ok=0;
+        result[1].ko=0;
+      };
+      if(result[2].ok==null &&  result[2].ko==null )
+      {
+        result[2].ok=0;
+        result[2].ko=0;
+      };
+      if(result[3].ok==null &&  result[3].ko==null )
+      {
+        result[3].ok=0;
+        result[3].ko=0;
+      };
+      if(result[4].ok==null &&  result[4].ko==null )
+      {
+        result[4].ok=0;
+        result[4].ko=0;
+      };
+      if(result[5].ok==null &&  result[5].ko==null )
+      {
+        result[5].ok=0;
+        result[5].ko=0;
+      };
       console.log("Count OK trameFlux ==> " + result[0].ok + " / " + result[0].ko);
       console.log("Count OK suivisaisielmde ==> " + result[1].ok + " / " + result[1].ko);
       console.log("Count OK suivisaisiemgas ==> " + result[2].ok + " / " + result[2].ko);
@@ -135,19 +189,8 @@ module.exports = {
           if(resultExcel[0]=='OK')
           {
             res.view('reporting/succes');
-          }
-
-
-          /*console.log("Traitement terminé ===> "+ resultExcel[0]);
-          console.log("Traitement terminé ===> "+ resultExcel[1]);
-          console.log("Traitement terminé ===> "+ resultExcel[2]);
-          console.log("Traitement terminé ===> "+ resultExcel[3]);
-          console.log("Traitement terminé ===> "+ resultExcel[4]);
-          var html = "Echec d'enregistrement";
-          return res.redirect('/accueil');*/
+          };
           
-        
-        
       })
     })
   },

@@ -11,24 +11,40 @@ module.exports = {
 
   attributes: {
   },
-
-
   importTrameFlux929type2 : function (trameflux,feuil,cellule,table,cellule2,nb,numligne,callback) {
-    var tab = [];
-    tab = ReportingRetour.totalFichierExistant(trameflux,nb,callback);
-    console.log(tab);
-    if(tab.length==0)
+    if(trameflux[nb]==undefined)
     {
-      console.log('Aucune reporting pour ce date');
-      ReportingRetour.deleteToutHtp(table,3,callback);
+      console.log('trame undefined');
+      var sql = "insert into chemintsisy(typologiedelademande) values ('ko') ";
+      Reportinghtp.getDatastore().sendNativeQuery(sql, function(err,res){
+        if (err) { 
+          console.log("Une erreur ve ok?");
+          return callback(err);
+         }
+        else
+        {
+          console.log(sql);
+          return callback(null, true);
+        };
+      });
     }
     else{
-      for(var y=0;y<tab.length;y++) //parcours anle dossier rehetra
-    {
-      var j = parseInt(tab[y]);
-      console.log(j);
-      ReportingRetour.lectureEtInsertiontype2( trameflux,feuil,cellule,table,cellule2,j,numligne,callback);
-    }
+      var tab = [];
+      tab=ReportingRetour.lectureEtInsertiontype2( trameflux,feuil,cellule,table,cellule2,nb,numligne,callback);
+      var nbe= parseInt(nb);
+      console.log(tab);
+      var sql = "insert into "+table[nbe]+" (nb) values ('"+tab[0]+"') ";
+      ReportingInovcom.getDatastore().sendNativeQuery(sql, function(err,res){
+        if (err) { 
+          console.log("Une erreur ve ok?");
+          //return callback(err);
+         }
+        else
+        {
+          console.log(sql);
+          return callback(null, true);
+        };
+                            });
     };
   },
   lectureEtInsertiontype2:function(trameflux,feuil,cellule,table,cellule2,nb,numligne,callback){
@@ -57,12 +73,14 @@ module.exports = {
             }
           };
          
-          var sql = "insert into "+table[nbe]+" (nb) values ('"+nbr+"') ";
+         /* var sql = "insert into "+table[nbe]+" (nb) values ('"+nbr+"') ";
                       ReportingInovcom.getDatastore().sendNativeQuery(sql, function(err,res){
                         if(err) return console.log(err);
                         else return callback(null, true);        
-                                            });
+                                            });*/
           console.log("nombreeeeebr"+ nbr);
+          var tab = [nbr];
+          return tab;
       }
       else
       {
@@ -119,8 +137,13 @@ deleteFromChemin : function (table,callback) {
         fs.readdir(a, (err, files) => {
           console.log(a);
               files.forEach(file => {
+                
                 const regex = new RegExp(b+'*');
-                if(regex.test(file))
+                var m1 = '.xlsx|.xls|.xlsm|.xlsb$';
+                var m2 = '^[^~]';
+                const regex1 = new RegExp(m1,'i');
+                const regex2 = new RegExp(m2);
+                if(regex.test(file) && regex1.test(file) && regex2.test(file))
                 {
                    re = a+'\\'+file;
                    //console.log(re);  
