@@ -9,20 +9,6 @@ const ReportingRetour = require('../models/ReportingRetour');
 module.exports = {
     accueil1 : function(req,res)
     {
-     /*// var a = "~Trame_Tableau retours PEC Optique.xlsx";
-      var a = "~Trame_Tableau retours PEC Optique.xls";
-      //var m = '.xlsx|.xls|.xlsm|.xlsb$';
-      var m = '^[^~]';
-      const regex = new RegExp(m);
-
-            if(regex.test(a))
-            {
-              console.log('ok');
-            }
-            else
-            {
-              console.log('ko');
-            };*/
       return res.view('Retour/accueil1');
     },
     Essaii : function(req,res)
@@ -106,15 +92,15 @@ module.exports = {
                          console.log('nc'+nc[0].ok);
                          var f = parseInt(nc[0].ok);
                             if (err){
-                              return res.view('reporting/erreur');
+                              return res.view('Retour/erreur');
                             }
                            if(f==0)
                             {
-                              return res.view('reporting/erreur');
+                              return res.view('Retour/erreur');
                             }
                             else
                             {
-                              return res.view('Inovcom/accueil', {date : datetest});
+                              return res.view('Retour/accueil', {date : datetest});
                               
                             };
                         });

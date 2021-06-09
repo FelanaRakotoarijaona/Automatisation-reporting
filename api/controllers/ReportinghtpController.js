@@ -266,6 +266,8 @@ module.exports = {
                   ],
                   function(err, resultat){
                     if (err) { return res.view('reporting/erreur'); }
+                    // return res.view('reporting/exportExcelHTP');
+                    //return res.redirect('/export/'+dateexport +'/'+'<h1><h1>');
                     return res.view('reporting/accueil2', {date : datetest});
                 })
               

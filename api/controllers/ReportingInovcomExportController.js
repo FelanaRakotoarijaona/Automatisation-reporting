@@ -5,6 +5,42 @@
  * @help        :: See https://sailsjs.com/docs/concepts/actions
  */
 module.exports = {
+    accueilInov1 : function(req,res)
+    {
+      return res.view('Inovcom/exportexcelinovcom1');
+    },
+    accueilInov2 : function(req,res)
+    {
+      return res.view('Inovcom/exportexcelinovcom2');
+    },
+    accueilInov3 : function(req,res)
+    {
+      return res.view('Inovcom/exportexcelinovcom3');
+    },
+    accueilInov4 : function(req,res)
+    {
+      return res.view('Inovcom/exportexcelinovcom4');
+    },
+    accueilInov5 : function(req,res)
+    {
+      return res.view('Inovcom/exportexcelinovcom5');
+    },
+    accueilInov6 : function(req,res)
+    {
+      return res.view('Inovcom/exportexcelinovcom6');
+    },
+    accueilInov7 : function(req,res)
+    {
+      return res.view('Inovcom/exportexcelinovcom7');
+    },
+    accueilInov8 : function(req,res)
+    {
+      return res.view('Inovcom/exportexcelinovcom8');
+    },
+    accueilInov9 : function(req,res)
+    {
+      return res.view('Inovcom/exportexcelinovcom9');
+    },
     accueil : function(req,res)
     {
       var html= req.param("html");
@@ -30,10 +66,295 @@ module.exports = {
       var dateexport = jour + '/' + mois + '/' +annee;
       return res.view('Inovcom/exportErica', {date : dateexport , html : html});
     },
-    rechercheColonne : function (req, res) {
-      var jour = req.param("jour");
-      var mois = req.param("mois");
-      var annee = req.param("annee");
+    rechercheColonne1: function (req, res) {
+      var datetest = req.param("date",0);
+      var annee = datetest.substr(0, 4);
+      var mois = datetest.substr(5, 2);
+      var jour = datetest.substr(8, 2);
+      // var jour = req.param("jour");
+      // var mois = req.param("mois");
+      // var annee = req.param("annee");
+      var mois1 = 'Janvier' ;
+      if(mois==01)
+      {
+        mois1= 'Janvier';
+      };
+      if(mois==02)
+      {
+        mois1= 'Fevrier';
+      };
+      if(mois==03)
+      {
+        mois1= 'Mars';
+      };
+      if(mois==04)
+      {
+        mois1= 'Avril';
+      };
+      if(mois==05)
+      {
+        mois1= 'Mai';
+      };
+      console.log(mois1);
+      var date_export = jour + '/' + mois + '/' +annee;
+      console.log("RECHERCHE COLONNE");
+      async.series([
+        // function (callback) {
+        //   ReportingInovcomExport.countOkKo("extractionrcforce",callback);
+        // },
+        // function (callback) {
+        //   ReportingInovcomExport.countOkKo("favmgefi",callback);
+        // },
+        function (callback) {
+          ReportingInovcomExport.countOkKo("retourconventionsaisiedesconventions",callback);
+        },
+        function (callback) {
+          ReportingInovcomExport.countOkKo("ribtpmep",callback);
+        },
+        function (callback) {
+          ReportingInovcomExport.countOkKo("curethermale",callback);
+        },
+  /*      function (callback) {
+          ReportingInovcomExport.countOkKoTrameLamieResiliation("tramelamiestock",callback);
+        }*/
+      ],function(err,result){
+        if(err) return res.badRequest(err);
+        console.log("Count OK 0 ==> " + result[0].ok + " / " + result[0].ko);
+        console.log("Count OK 1 ==> " + result[1].ok + " / " + result[1].ko);
+        console.log("Count OK 2 ==> " + result[2].ok + " / " + result[2].ko);
+        async.series([
+          // function (callback) {
+          //   ReportingInovcomExport.ecritureOkKo(result[0],"extractionrcforce",date_export,mois1,callback);
+          // },
+          // function (callback) {
+          //   ReportingInovcomExport.ecritureOkKo(result[1],"favmgefi",date_export,mois1,callback);
+          // },
+          function (callback) {
+            ReportingInovcomExport.ecritureOkKo(result[0],"retourconventionsaisiedesconventions",date_export,mois1,callback);
+          },
+          function (callback) {
+            ReportingInovcomExport.ecritureOkKo(result[1],"ribtpmep",date_export,mois1,callback);
+          },
+          function (callback) {
+            ReportingInovcomExport.ecritureOkKo(result[2],"curethermale",date_export,mois1,callback);
+          },
+
+        ],function(err,resultExcel){
+       
+            if(resultExcel[0]==true)
+            {
+              console.log("true zn");
+              res.view('Inovcom/erera');
+            }
+            if(resultExcel[0]=='OK')
+            {
+              // res.redirect('/exportInovcom/'+date_export+'/x')
+              res.view('reporting/succes');
+            }
+        })
+      })
+    },
+    /******************************************************************************/
+    rechercheColonne2: function (req, res) {
+      var datetest = req.param("date",0);
+      var annee = datetest.substr(0, 4);
+      var mois = datetest.substr(5, 2);
+      var jour = datetest.substr(8, 2);
+      // var jour = req.param("jour");
+      // var mois = req.param("mois");
+      // var annee = req.param("annee");
+      var mois1 = 'Janvier' ;
+      if(mois==01)
+      {
+        mois1= 'Janvier';
+      };
+      if(mois==02)
+      {
+        mois1= 'Fevrier';
+      };
+      if(mois==03)
+      {
+        mois1= 'Mars';
+      };
+      if(mois==04)
+      {
+        mois1= 'Avril';
+      };
+      if(mois==05)
+      {
+        mois1= 'Mai';
+      };
+      console.log(mois1);
+      var date_export = jour + '/' + mois + '/' +annee;
+      console.log("RECHERCHE COLONNE");
+      async.series([
+        // function (callback) {
+        //   ReportingInovcomExport.countOkKo("extractionrcforce",callback);
+        // },
+        // function (callback) {
+        //   ReportingInovcomExport.countOkKo("favmgefi",callback);
+        // },
+        // function (callback) {
+        //   ReportingInovcomExport.countOkKo("retourconventionsaisiedesconventions",callback);
+        // },
+        // function (callback) {
+        //   ReportingInovcomExport.countOkKo("ribtpmep",callback);
+        // },
+        // function (callback) {
+        //   ReportingInovcomExport.countOkKo("curethermale",callback);
+        // },
+        function (callback) {
+          ReportingInovcomExport.countOkKo("dentaireretourfacturedentaireetcds",callback);
+        },
+        function (callback) {
+          ReportingInovcomExport.countOkKo("optiqueretourpublipostage",callback);
+        },
+        function (callback) {
+          ReportingInovcomExport.countOkKo("factureaudio",callback);
+        },
+        function (callback) {
+          ReportingInovcomExport.countOkKo("retourhospipec",callback);
+        },
+        function (callback) {
+          ReportingInovcomExport.countOkKo("retourpecdentaire",callback);
+        },
+        function (callback) {
+          ReportingInovcomExport.countOkKo("retourpecoptique",callback);
+        },
+        function (callback) {
+          ReportingInovcomExport.countOkKo("retourpecaudio",callback);
+        },
+        function (callback) {
+          ReportingInovcomExport.countOkKo("santeclairtableauretourgeneral",callback);
+        },
+        function (callback) {
+          ReportingInovcomExport.countOkKo("santeclairoptique",callback);
+        },
+        function (callback) {
+          ReportingInovcomExport.countOkKo("noemiehtpmgefi",callback);
+        },
+        function (callback) {
+          ReportingInovcomExport.countOkKo("mgefigtomgefirejetsaisienoemiehtp",callback);
+        },
+        function (callback) {
+          ReportingInovcomExport.countOkKo("retourreclamtramereclamationtiers",callback);
+        },
+        function (callback) {
+          ReportingInovcomExport.countOkKo("reclamsetramereclamationse",callback);
+        },
+        function (callback) {
+          ReportingInovcomExport.countOkKo("reclamhospi",callback);
+        },
+        function (callback) {
+          ReportingInovcomExport.countOkKo("dentairereclamationdentaire",callback);
+        },
+        function (callback) {
+          ReportingInovcomExport.countOkKo("optiquetramereclamationoptique",callback);
+        },
+        function (callback) {
+          ReportingInovcomExport.countOkKo("reclamationaudio",callback);
+        },
+      ],function(err,result){
+        if(err) return res.badRequest(err);
+        console.log("Count OK 0 ==> " + result[0].ok + " / " + result[0].ko);
+        console.log("Count OK 1 ==> " + result[1].ok + " / " + result[1].ko);
+        console.log("Count OK 2 ==> " + result[2].ok + " / " + result[2].ko);
+        console.log("Count OK 3 ==> " + result[3].ok + " / " + result[3].ko);
+        console.log("Count OK 4 ==> " + result[4].ok + " / " + result[4].ko);
+        console.log("Count OK 5 ==> " + result[5].ok + " / " + result[5].ko);
+        console.log("Count OK 6 ==> " + result[6].ok + " / " + result[6].ko);
+        async.series([
+          // function (callback) {
+          //   ReportingInovcomExport.ecritureOkKo(result[0],"extractionrcforce",date_export,mois1,callback);
+          // },
+          // function (callback) {
+          //   ReportingInovcomExport.ecritureOkKo(result[1],"favmgefi",date_export,mois1,callback);
+          // },
+          // function (callback) {
+          //   ReportingInovcomExport.ecritureOkKo(result[0],"retourconventionsaisiedesconventions",date_export,mois1,callback);
+          // },
+          // function (callback) {
+          //   ReportingInovcomExport.ecritureOkKo(result[1],"ribtpmep",date_export,mois1,callback);
+          // },
+          // function (callback) {
+          //   ReportingInovcomExport.ecritureOkKo(result[2],"curethermale",date_export,mois1,callback);
+          // },
+         function (callback) {
+            ReportingInovcomExport.ecritureOkKo2(result[0],"dentaireretourfacturedentaireetcds",date_export,mois1,callback);
+          },
+          function (callback) {
+            ReportingInovcomExport.ecritureOkKo2(result[1],"optiqueretourpublipostage",date_export,mois1,callback);
+          },
+          function (callback) {
+            ReportingInovcomExport.ecritureOkKo2(result[2],"factureaudio",date_export,mois1,callback);
+          },
+          function (callback) {
+            ReportingInovcomExport.ecritureOkKo2(result[3],"retourhospipec",date_export,mois1,callback);
+          },
+          function (callback) {
+            ReportingInovcomExport.ecritureOkKo2(result[4],"retourpecdentaire",date_export,mois1,callback);
+          },
+          function (callback) {
+            ReportingInovcomExport.ecritureOkKo2(result[5],"retourpecoptique",date_export,mois1,callback);
+          },
+          function (callback) {
+            ReportingInovcomExport.ecritureOkKo2(result[6],"retourpecaudio",date_export,mois1,callback);
+          },
+          function (callback) {
+            ReportingInovcomExport.ecritureOkKo21(result[7],"santeclairtableauretourgeneral",date_export,mois1,callback);
+          },
+          function (callback) {
+            ReportingInovcomExport.ecritureOkKo21(result[8],"santeclairoptique",date_export,mois1,callback);
+          },
+          function (callback) {
+            ReportingInovcomExport.ecritureOkKo22(result[9],"noemiehtpmgefi",date_export,mois1,callback);
+          },
+          function (callback) {
+            ReportingInovcomExport.ecritureOkKo22(result[10],"mgefigtomgefirejetsaisienoemiehtp",date_export,mois1,callback);
+          },
+          function (callback) {
+            ReportingInovcomExport.ecritureOkKo23(result[11],"retourreclamtramereclamationtiers",date_export,mois1,callback);
+          },
+          function (callback) {
+            ReportingInovcomExport.ecritureOkKo23(result[12],"reclamsetramereclamationse",date_export,mois1,callback);
+          },
+          function (callback) {
+            ReportingInovcomExport.ecritureOkKo23(result[13],"reclamhospi",date_export,mois1,callback);
+          },
+          function (callback) {
+            ReportingInovcomExport.ecritureOkKo23(result[14],"dentairereclamationdentaire",date_export,mois1,callback);
+          },
+          function (callback) {
+            ReportingInovcomExport.ecritureOkKo23(result[15],"optiquetramereclamationoptique",date_export,mois1,callback);
+          },
+          function (callback) {
+            ReportingInovcomExport.ecritureOkKo23(result[16],"reclamationaudio",date_export,mois1,callback);
+          },
+
+        ],function(err,resultExcel){
+       
+            if(resultExcel[0]==true)
+            {
+              console.log("true zn");
+              res.view('Inovcom/erera');
+            }
+            if(resultExcel[0]=='OK')
+            {
+              // res.redirect('/exportInovcom/'+date_export+'/x')
+              res.view('reporting/succes');
+            }
+        })
+      })
+    },
+    /*********************************************************************************/
+    rechercheColonne3: function (req, res) {
+      var datetest = req.param("date",0);
+      var annee = datetest.substr(0, 4);
+      var mois = datetest.substr(5, 2);
+      var jour = datetest.substr(8, 2);
+      // var jour = req.param("jour");
+      // var mois = req.param("mois");
+      // var annee = req.param("annee");
       var mois1 = 'Janvier' ;
       if(mois==01)
       {
@@ -60,46 +381,29 @@ module.exports = {
       console.log("RECHERCHE COLONNE");
       async.series([
         function (callback) {
-          ReportingInovcomExport.countOkKo("extractionrcforce",callback);
+          ReportingInovcomExport.countOkKo("majribcbtp",callback);
         },
         function (callback) {
-          ReportingInovcomExport.countOkKo("favmgefi",callback);
-        },
-       /* function (callback) {
-          ReportingInovcomExport.countOkKo("suivisaisiemgas",callback);
+          ReportingInovcomExport.countOkKo("majagapsinteramc",callback);
         },
         function (callback) {
-          ReportingInovcomExport.countOkKo("suivisaisieprodite",callback);
+          ReportingInovcomExport.countOkKo("hospidemat",callback);
         },
-        function (callback) {
-          ReportingInovcomExport.countOkKoTrameLamie("tramelamiestock",callback);
-        },
-        function (callback) {
-          ReportingInovcomExport.countOkKoTrameLamieResiliation("tramelamiestock",callback);
-        }*/
       ],function(err,result){
         if(err) return res.badRequest(err);
-        console.log("Count OK extractionrcforce ==> " + result[0].ok + " / " + result[0].ko);
-        console.log("Count OK favmgefi ==> " + result[1].ok + " / " + result[1].ko);
-        async.series([
+        console.log("Count OK 0 ==> " + result[0].ok + " / " + result[0].ko);
+        console.log("Count OK 1 ==> " + result[1].ok + " / " + result[1].ko);
+        console.log("Count OK 2 ==> " + result[2].ok + " / " + result[2].ko);
+        async.series([          
           function (callback) {
-            ReportingInovcomExport.ecritureOkKo(result[0],"extractionrcforce",date_export,mois1,callback);
+            ReportingInovcomExport.ecritureOkKo3(result[0],"majribcbtp",date_export,mois1,callback);
           },
           function (callback) {
-            ReportingInovcomExport.ecritureOkKo(result[1],"favmgefi",date_export,mois1,callback);
-          },
-         /* function (callback) {
-            ReportingInovcomExport.ecritureOkKo(result[2],"suivisaisiemgas",date_export,mois1,callback);
+            ReportingInovcomExport.ecritureOkKo3(result[1],"majagapsinteramc",date_export,mois1,callback);
           },
           function (callback) {
-            ReportingInovcomExport.ecritureOkKo(result[3],"suivisaisieprodite",date_export,mois1,callback);
+            ReportingInovcomExport.ecritureOkKo31(result[2],"hospidemat",date_export,mois1,callback);
           },
-          function (callback) {
-            ReportingInovcomExport.ecritureOkKo(result[4],"tramelamiestocknr",date_export,mois1,callback);
-          },
-          function (callback) {
-            ReportingInovcomExport.ecritureOkKo(result[5],"tramelamiestock",date_export,mois1,callback);
-          },*/
 
         ],function(err,resultExcel){
        
@@ -110,10 +414,414 @@ module.exports = {
             }
             if(resultExcel[0]=='OK')
             {
-              res.redirect('/exportInovcom/'+date_export+'/x')
+              // res.redirect('/exportInovcom/'+date_export+'/x')
+              res.view('reporting/succes');
             }
         })
       })
     },
+/***********************************************************************/
+rechercheColonne4: function (req, res) {
+  var datetest = req.param("date",0);
+  var annee = datetest.substr(0, 4);
+  var mois = datetest.substr(5, 2);
+  var jour = datetest.substr(8, 2);
+  // var jour = req.param("jour");
+  // var mois = req.param("mois");
+  // var annee = req.param("annee");
+  var mois1 = 'Janvier' ;
+  if(mois==01)
+  {
+    mois1= 'Janvier';
+  };
+  if(mois==02)
+  {
+    mois1= 'Fevrier';
+  };
+  if(mois==03)
+  {
+    mois1= 'Mars';
+  };
+  if(mois==04)
+  {
+    mois1= 'Avril';
+  };
+  if(mois==05)
+  {
+    mois1= 'Mai';
+  };
+  console.log(mois1);
+  var date_export = jour + '/' + mois + '/' +annee;
+  console.log("RECHERCHE COLONNE");
+  async.series([
+    function (callback) {
+      ReportingInovcomExport.countOkKofll4("extractionrcforce",callback);
+    },
+    function (callback) {
+      ReportingInovcomExport.countOkKofll4("faveole",callback);
+    },
+    function (callback) {
+      ReportingInovcomExport.countOkKofll4("favmgefi",callback);
+    },
+    function (callback) {
+      ReportingInovcomExport.countOkKofll4("favbalma",callback);
+    },
+    function (callback) {
+      ReportingInovcomExport.countOkKofll4("rcindeterminable",callback);
+    },
+  ],function(err,result){
+    if(err) return res.badRequest(err);
+    console.log("Count OK 0 ==> " + result[0].ok + " / " + result[0].ko);
+    console.log("Count OK 1 ==> " + result[1].ok + " / " + result[1].ko);
+    console.log("Count OK 2 ==> " + result[2].ok + " / " + result[2].ko);
+    async.series([          
+      function (callback) {
+        ReportingInovcomExport.ecritureOkKo4(result[0],"extractionrcforce",date_export,mois1,callback);
+      },
+      function (callback) {
+        ReportingInovcomExport.ecritureOkKo4(result[1],"faveole",date_export,mois1,callback);
+      },
+      function (callback) {
+        ReportingInovcomExport.ecritureOkKo4(result[2],"favmgefi",date_export,mois1,callback);
+      },
+      function (callback) {
+        ReportingInovcomExport.ecritureOkKo4(result[3],"favbalma",date_export,mois1,callback);
+      },
+      function (callback) {
+        ReportingInovcomExport.ecritureOkKo4(result[4],"rcindeterminable",date_export,mois1,callback);
+      },
+      // function (callback) {
+      //   ReportingInovcomExport.ecritureOkKo4(result[0].ko,"extractionrcforce",date_export,mois1,callback);
+      // // },
+      // function (callback) {
+      //   ReportingInovcomExport.ecritureOkKo4(result[1].ko,"faveole",date_export,mois1,callback);
+      // },
+      // function (callback) {
+      //   ReportingInovcomExport.ecritureOkKo4(result[2].ko,"favmgefi",date_export,mois1,callback);
+      // },
+      // function (callback) {
+      //   ReportingInovcomExport.ecritureOkKo4(result[3].ko,"favbalma",date_export,mois1,callback);
+      // },
+      // function (callback) {
+      //   ReportingInovcomExport.ecritureOkKo4(result[4].ko,"rcindeterminable",date_export,mois1,callback);
+      // },
+
+    ],function(err,resultExcel){
+   
+        if(resultExcel[0]==true)
+        {
+          console.log("true zn");
+          res.view('Inovcom/erera');
+        }
+        if(resultExcel[0]=='OK')
+        {
+          // res.redirect('/exportInovcom/'+date_export+'/x')
+          res.view('reporting/succes');
+        }
+    })
+  })
+},
+/**********************************************************************/
+rechercheColonne5: function (req, res) {
+  var datetest = req.param("date",0);
+  var annee = datetest.substr(0, 4);
+  var mois = datetest.substr(5, 2);
+  var jour = datetest.substr(8, 2);
+  // var jour = req.param("jour");
+  // var mois = req.param("mois");
+  // var annee = req.param("annee");
+  var mois1 = 'Janvier' ;
+  if(mois==01)
+  {
+    mois1= 'Janvier';
+  };
+  if(mois==02)
+  {
+    mois1= 'Fevrier';
+  };
+  if(mois==03)
+  {
+    mois1= 'Mars';
+  };
+  if(mois==04)
+  {
+    mois1= 'Avril';
+  };
+  if(mois==05)
+  {
+    mois1= 'Mai';
+  };
+  console.log(mois1);
+  var date_export = jour + '/' + mois + '/' +annee;
+  console.log("RECHERCHE COLONNE");
+  async.series([
+    function (callback) {
+      ReportingInovcomExport.countOkKo("fav",callback);
+    },
+  ],function(err,result){
+    if(err) return res.badRequest(err);
+    console.log("Count OK 0 ==> " + result[0].ok + " / " + result[0].ko);
+    async.series([          
+      function (callback) {
+        ReportingInovcomExport.ecritureOkKo5(result[0],"fav",date_export,mois1,callback);
+      },
+    ],function(err,resultExcel){
+   
+        if(resultExcel[0]==true)
+        {
+          console.log("true zn");
+          res.view('Inovcom/erera');
+        }
+        if(resultExcel[0]=='OK')
+        {
+          // res.redirect('/exportInovcom/'+date_export+'/x')
+          res.view('reporting/succes');
+        }
+    })
+  })
+},
+/**********************************************************************/
+rechercheColonne6: function (req, res) {
+  var datetest = req.param("date",0);
+  var annee = datetest.substr(0, 4);
+  var mois = datetest.substr(5, 2);
+  var jour = datetest.substr(8, 2);
+  // var jour = req.param("jour");
+  // var mois = req.param("mois");
+  // var annee = req.param("annee");
+  var mois1 = 'Janvier' ;
+  if(mois==01)
+  {
+    mois1= 'Janvier';
+  };
+  if(mois==02)
+  {
+    mois1= 'Fevrier';
+  };
+  if(mois==03)
+  {
+    mois1= 'Mars';
+  };
+  if(mois==04)
+  {
+    mois1= 'Avril';
+  };
+  if(mois==05)
+  {
+    mois1= 'Mai';
+  };
+  console.log(mois1);
+  var date_export = jour + '/' + mois + '/' +annee;
+  console.log("RECHERCHE COLONNE");
+  async.series([
+    function (callback) {
+      ReportingInovcomExport.countOkKo("retourcmuc",callback);
+    },
+  ],function(err,result){
+    if(err) return res.badRequest(err);
+    console.log("Count OK 0 ==> " + result[0].ok + " / " + result[0].ko);
+    async.series([          
+      function (callback) {
+        ReportingInovcomExport.ecritureOkKo6(result[0],"retourcmuc",date_export,mois1,callback);
+      },
+    ],function(err,resultExcel){
+   
+        if(resultExcel[0]==true)
+        {
+          console.log("true zn");
+          res.view('Inovcom/erera');
+        }
+        if(resultExcel[0]=='OK')
+        {
+          // res.redirect('/exportInovcom/'+date_export+'/x')
+          res.view('reporting/succes');
+        }
+    })
+  })
+},
+/**********************************************************************/
+rechercheColonne7: function (req, res) {
+  var datetest = req.param("date",0);
+  var annee = datetest.substr(0, 4);
+  var mois = datetest.substr(5, 2);
+  var jour = datetest.substr(8, 2);
+  // var jour = req.param("jour");
+  // var mois = req.param("mois");
+  // var annee = req.param("annee");
+  var mois1 = 'Janvier' ;
+  if(mois==01)
+  {
+    mois1= 'Janvier';
+  };
+  if(mois==02)
+  {
+    mois1= 'Fevrier';
+  };
+  if(mois==03)
+  {
+    mois1= 'Mars';
+  };
+  if(mois==04)
+  {
+    mois1= 'Avril';
+  };
+  if(mois==05)
+  {
+    mois1= 'Mai';
+  };
+  console.log(mois1);
+  var date_export = jour + '/' + mois + '/' +annee;
+  console.log("RECHERCHE COLONNE");
+  async.series([
+    function (callback) {
+      ReportingInovcomExport.countOkKofll7("hospidematrejetprive",callback);
+    },
+  ],function(err,result){
+    if(err) return res.badRequest(err);
+    console.log("Count OK 0 ==> " + result[0].ok + " / " + result[0].ko);
+    async.series([          
+      function (callback) {
+        ReportingInovcomExport.ecritureOkKo7(result[0],"hospidematrejetprive",date_export,mois1,callback);
+      },
+    ],function(err,resultExcel){
+   
+        if(resultExcel[0]==true)
+        {
+          console.log("true zn");
+          res.view('Inovcom/erera');
+        }
+        if(resultExcel[0]=='OK')
+        {
+          // res.redirect('/exportInovcom/'+date_export+'/x')
+          res.view('reporting/succes');
+        }
+    })
+  })
+},
+/**********************************************************************/
+rechercheColonne8: function (req, res) {
+  var datetest = req.param("date",0);
+  var annee = datetest.substr(0, 4);
+  var mois = datetest.substr(5, 2);
+  var jour = datetest.substr(8, 2);
+  // var jour = req.param("jour");
+  // var mois = req.param("mois");
+  // var annee = req.param("annee");
+  var mois1 = 'Janvier' ;
+  if(mois==01)
+  {
+    mois1= 'Janvier';
+  };
+  if(mois==02)
+  {
+    mois1= 'Fevrier';
+  };
+  if(mois==03)
+  {
+    mois1= 'Mars';
+  };
+  if(mois==04)
+  {
+    mois1= 'Avril';
+  };
+  if(mois==05)
+  {
+    mois1= 'Mai';
+  };
+  console.log(mois1);
+  var date_export = jour + '/' + mois + '/' +annee;
+  console.log("RECHERCHE COLONNE");
+  async.series([
+    function (callback) {
+      ReportingInovcomExport.countOkKofll8("retouravisannulationtramealmerys",callback);
+    },
+    function (callback) {
+      ReportingInovcomExport.countOkKofll8("retouravisannulationcbtp",callback);
+    },
+  ],function(err,result){
+    if(err) return res.badRequest(err);
+    console.log("Count OK 0 ==> " + result[0].ok + " / " + result[0].ko);
+    console.log("Count OK 1 ==> " + result[1].ok + " / " + result[1].ko);
+    async.series([          
+      function (callback) {
+        ReportingInovcomExport.ecritureOkKo8(result[0],"retouravisannulationtramealmerys",date_export,mois1,callback);
+      },
+      function (callback) {
+        ReportingInovcomExport.ecritureOkKo81(result[1],"retouravisannulationcbtp",date_export,mois1,callback);
+      },
+    ],function(err,resultExcel){
+   
+        if(resultExcel[0]==true)
+        {
+          console.log("true zn");
+          res.view('Inovcom/erera');
+        }
+        if(resultExcel[0]=='OK')
+        {
+          // res.redirect('/exportInovcom/'+date_export+'/x')
+          res.view('reporting/succes');
+        }
+    })
+  })
+},
+/**********************************************************************/
+rechercheColonne9: function (req, res) {
+  var datetest = req.param("date",0);
+  var annee = datetest.substr(0, 4);
+  var mois = datetest.substr(5, 2);
+  var jour = datetest.substr(8, 2);
+  // var jour = req.param("jour");
+  // var mois = req.param("mois");
+  // var annee = req.param("annee");
+  var mois1 = 'Janvier' ;
+  if(mois==01)
+  {
+    mois1= 'Janvier';
+  };
+  if(mois==02)
+  {
+    mois1= 'Fevrier';
+  };
+  if(mois==03)
+  {
+    mois1= 'Mars';
+  };
+  if(mois==04)
+  {
+    mois1= 'Avril';
+  };
+  if(mois==05)
+  {
+    mois1= 'Mai';
+  };
+  console.log(mois1);
+  var date_export = jour + '/' + mois + '/' +annee;
+  console.log("RECHERCHE COLONNE");
+  async.series([
+    function (callback) {
+      ReportingInovcomExport.countOkKofll9("recherchefactureinteriale",callback);
+    },
+  ],function(err,result){
+    if(err) return res.badRequest(err);
+    console.log("Count OK 0 ==> " + result[0].ok + " / " + result[0].ko);
+    async.series([          
+      function (callback) {
+        ReportingInovcomExport.ecritureOkKo9(result[0],"recherchefactureinteriale",date_export,mois1,callback);
+      },
+    ],function(err,resultExcel){
+   
+        if(resultExcel[0]==true)
+        {
+          console.log("true zn");
+          res.view('Inovcom/erera');
+        }
+        if(resultExcel[0]=='OK')
+        {
+          // res.redirect('/exportInovcom/'+date_export+'/x')
+          res.view('reporting/succes');
+        }
+    })
+  })
+},
 };
 
