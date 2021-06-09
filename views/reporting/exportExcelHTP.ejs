@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <title>Document</title>
+    <style>
+        .vertical-menu {
+            width: 300px; /* Set a width if you like */
+            }
+            .vertical-menu a {
+            background-color: white; /* Grey background color */
+            color: black; /* Black text color */
+            display: block; /* Make the links appear below each other */
+            padding: 28px; /* Add some padding */
+            text-decoration: none; /* Remove underline from links */
+            }
+
+            .vertical-menu a:hover {
+            background-color: #ccc; /* Dark grey background on mouse-over */
+            }
+
+            .vertical-menu a.active {
+            background-color: green; /* Add a green color to the "active/current" link */
+            color: white;
+            }
+    </style>
+</head>
+
+<body>
+    <br><br>
+    <div class="container"  style=" background-color:whitesmoke;"> 
+        <div class="row">
+            <div class="col-md-3">
+                <br><br>
+                <div class="vertical-menu">
+                    <a href="#" class="active">REPORTING HTP</a>
+                    <a href="#">REPORTING INOVCOM</a>
+                    <a href="#">REPORTING INDU</a>
+                    <a href="#">REPORTING CONTETIEUX</a>
+                    <a href="#">REPORTING RETOUR</a>
+                    <a href="/logout">Se déconnecter</a>
+                  </div>
+            </div>
+            <br><br>
+            <div class="col-md-offset-4 col-md-5"  style=" background-color:whitesmoke;">
+                <br><br><br><br><br><br>
+                <form method="POST" action="/exportExcelHTP" style="background-color:white;height:300px;width:400px;margin-left: 80px;box-shadow: 5px 5px 5px 5px green;" class="miafina">
+                    <div class="form-group">
+                        <br>
+                        <h4 style="margin-left: 50px;">Veuillez choisir une date pour l'export de votre reporting</h4><br><br>
+                        <input type="date" class="form-control" name="date"  style="margin-left: 5px;width: 390px;" required >
+                    </div>
+                    <div class="spinner-border" role="status" style="display: none;" id="snip">
+                        <span class="visually-hidden"></span>
+                    </div>
+                    <br>
+                    <button type="submit" style="margin-left: 200px;" class="btn btn-success" id="ok" onclick="affiche()">Terminer votre reporting</button>
+                </form>
+                <br><br><br>
+                <br><br><br>
+            </div>
+    </div>
+   
+    
+</body>
+<script>
+    function affiche(){
+      $( "#snip" ).css("display", "block");
+      $( "#ok" ).hide();
+    };
+    function aff()
+  {
+    $( ".miafina" ).fadeIn( 12000, function() {
+      
+  });
+  };
+  $( document ).ready(function() {
+    $( ".miafina" ).hide();
+    setTimeout(function(){ aff(); }, 1000);
+   
+  });
+</script>
+
+</html>
