@@ -187,7 +187,8 @@ module.exports = {
                       function(err)
                       {
                         console.log('vofafa ddol');
-                        return res.redirect('/exportInovcom/'+dateexport +'/'+'<h1><h1>');
+                        // return res.redirect('/exportInovcom/'+dateexport +'/'+'<h1><h1>');
+                        return res.view('reporting/accueil1');
                       });
                     
                

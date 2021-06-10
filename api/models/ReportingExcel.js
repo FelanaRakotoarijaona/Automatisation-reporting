@@ -14,20 +14,59 @@ module.exports = {
     const Excel = require('exceljs');
     var sqlOk ="select sum(nbok) as ok from "+table+" "; //trameFlux
     var sqlKo ="select sum(nbko) as ko from "+table+" ";
-    /*console.log(sqlOk);
-    console.log(sqlKo);*/
+    console.log(sqlOk);
+    console.log(sqlKo);
     async.series([
       function (callback) {
         ReportingExcel.getDatastore().sendNativeQuery(sqlOk, function(err, res){
           if (err) return res.badRequest(err);
           callback(null, res.rows[0].ok);
-        });
+        }); 
+        //   if (err) {
+        //     console.log(err);
+        //     //return null;
+        //   }
+        //   else
+        //   {
+        //     if(res.rows[0])
+        //     {
+        //       console.log('ok');
+        //       callback(null, res.rows[0].ok);
+        //     }
+        //     else
+        //     {
+        //       console.log("null");
+        //       callback(null, 0);
+        //     }
+        //   }
+                   
+        // });
+
       },
       function (callback) {
         ReportingExcel.getDatastore().sendNativeQuery(sqlKo, function(err, resKo){
           if (err) return res.badRequest(err);
           callback(null, resKo.rows[0].ko);
         });
+      //   if (err) {
+      //     console.log(err);
+      //     //return null;
+      //   }
+      //   else
+      //   {
+      //     if(resko.rows[0])
+      //     {
+      //       console.log('ok');
+      //       callback(null, res.rows[0].ko);
+      //     }
+      //     else
+      //     {
+      //       console.log("null");
+      //       callback(null, 0);
+      //     }
+      //   }
+                 
+      // });
       },
     ],function(err,result){
       if(err) return res.badRequest(err);
@@ -51,12 +90,50 @@ module.exports = {
           if (err) return res.badRequest(err);
           callback(null, res.rows[0].ok);
         });
+      //   if (err) {
+      //     console.log(err);
+      //     //return null;
+      //   }
+      //   else
+      //   {
+      //     if(res.rows[0])
+      //     {
+      //       console.log('ok');
+      //       callback(null, res.rows[0].ok);
+      //     }
+      //     else
+      //     {
+      //       console.log("null");
+      //       callback(null, 0);
+      //     }
+      //   }
+                 
+      // });
       },
       function (callback) {
         ReportingExcel.getDatastore().sendNativeQuery(sqlKo, function(err, resKo){
           if (err) return res.badRequest(err);
           callback(null, resKo.rows[0].ko);
         });
+      //   if (err) {
+      //     console.log(err);
+      //     //return null;
+      //   }
+      //   else
+      //   {
+      //     if(resko.rows[0])
+      //     {
+      //       console.log('ok');
+      //       callback(null, resko.rows[0].ko);
+      //     }
+      //     else
+      //     {
+      //       console.log("null");
+      //       callback(null, 0);
+      //     }
+      //   }
+                 
+      // });
       },
     ],function(err,result){
       if(err) return res.badRequest(err);
@@ -80,12 +157,50 @@ module.exports = {
           if (err) return res.badRequest(err);
           callback(null, res.rows[0].ok);
         });
+      //   if (err) {
+      //     console.log(err);
+      //     //return null;
+      //   }
+      //   else
+      //   {
+      //     if(res.rows[0])
+      //     {
+      //       console.log('ok');
+      //       callback(null, res.rows[0].ok);
+      //     }
+      //     else
+      //     {
+      //       console.log("null");
+      //       callback(null, 0);
+      //     }
+      //   }
+                 
+      // });
       },
       function (callback) {
         ReportingExcel.getDatastore().sendNativeQuery(sqlKo, function(err, resKo){
           if (err) return res.badRequest(err);
           callback(null, resKo.rows[0].ko);
         });
+      //   if (err) {
+      //     console.log(err);
+      //     //return null;
+      //   }
+      //   else
+      //   {
+      //     if(resko.rows[0])
+      //     {
+      //       console.log('ok');
+      //       callback(null, resko.rows[0].ko);
+      //     }
+      //     else
+      //     {
+      //       console.log("null");
+      //       callback(null, 0);
+      //     }
+      //   }
+                 
+      // });
       },
     ],function(err,result){
       if(err) return res.badRequest(err);

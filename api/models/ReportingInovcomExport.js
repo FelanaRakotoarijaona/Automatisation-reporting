@@ -9,24 +9,196 @@ module.exports = {
 
   attributes: {
   },
+  countok : function (table, callback) {
+    const Excel = require('exceljs');
+    var sqlOk ="select okko from "+table; 
+    // var sqlKo ="select count(okko) as ko from "+table+" where okko='KO'";
+    console.log(sqlOk);
+    // console.log(sqlKo);
+    async.series([
+      function (callback) {
+        ReportingInovcomExport.query(sqlOk, function(err, res){
+          // if (err) return res.badRequest(err);
+          // callback(null, res.rows[0].nbok);
+          if (err) {
+            console.log(err);
+            //return null;
+          }
+          else
+          {
+            if(res.rows[0])
+            {
+              console.log('ok');
+              callback(null, res.rows[0].okko);
+            }
+            else
+            {
+              console.log("null");
+              callback(null, 0);
+            }
+          }
+        });
+      },
+      // function (callback) {
+      //   ReportingInovcomExport.query(sqlKo, function(err, resKo){
+      //     if (err) return res.badRequest(err);
+      //     callback(null, resKo.rows[0].ko);
+      //   });
+      // },
+    ],function(err,result){
+      if(err) return res.badRequest(err);
+      console.log("Count OK ==> " + result[0]);
+      // console.log("Count KO ==> " + result[1]);
+      var okko = {};
+      okko.ok = result[0];
+      // okko.ko = result[1];
+      return callback(null, okko);
+    })
+  },
   // Récuperer nombre OK ou KO
   countOkKo : function (table, callback) {
     const Excel = require('exceljs');
-    var sqlOk ="select count(okko) as ok from "+table+" where okko='OK'"; //trameFlux
-    var sqlKo ="select count(okko) as ko from "+table+" where okko='KO'";
+    var sqlOk ="select nbok from "+table; 
+    // var sqlKo ="select count(okko) as ko from "+table+" where okko='KO'";
+    console.log(sqlOk);
+    // console.log(sqlKo);
+    async.series([
+      function (callback) {
+        ReportingInovcomExport.query(sqlOk, function(err, res){
+          // if (err) return res.badRequest(err);
+          // callback(null, res.rows[0].nbok);
+          if (err) {
+            console.log(err);
+            //return null;
+          }
+          else
+          {
+            if(res.rows[0])
+            {
+              console.log('ok');
+              callback(null, res.rows[0].nbok);
+            }
+            else
+            {
+              console.log("null");
+              callback(null, 0);
+            }
+          }
+        });
+      },
+      // function (callback) {
+      //   ReportingInovcomExport.query(sqlKo, function(err, resKo){
+      //     if (err) return res.badRequest(err);
+      //     callback(null, resKo.rows[0].ko);
+      //   });
+      // },
+    ],function(err,result){
+      if(err) return res.badRequest(err);
+      console.log("Count OK ==> " + result[0]);
+      // console.log("Count KO ==> " + result[1]);
+      var okko = {};
+      okko.ok = result[0];
+      // okko.ko = result[1];
+      return callback(null, okko);
+    })
+  },
+  countOkKo11 : function (table, callback) {
+    const Excel = require('exceljs');
+    // var sqlOk ="select count(okko) as ok from "+table+" where okko='OK'"; //trameFlux
+    var sqlKo ="select nbko from "+table;
+    // console.log(sqlOk);
+    console.log(sqlKo);
+    async.series([
+      // function (callback) {
+      //   ReportingInovcomExport.query(sqlOk, function(err, res){
+      //     if (err) return res.badRequest(err);
+      //     callback(null, res.rows[0].ok);
+      //   });
+      // },
+      function (callback) {
+        ReportingInovcomExport.query(sqlKo, function(err, resKo){
+          // if (err) return res.badRequest(err);
+          // callback(null, resKo.rows[0].nbko);
+          if (err) {
+            console.log(err);
+            //return null;
+          }
+          else
+          {
+            if(resKo.rows[0])
+            {
+              console.log('ok');
+              callback(null, resKo.rows[0].nbko);
+            }
+            else
+            {
+              console.log("null");
+              callback(null, 0);
+            }
+          }
+        });
+      },
+    ],function(err,result){
+      if(err) return res.badRequest(err);
+      console.log("Count OK ==> " + result[0]);
+      // console.log("Count KO ==> " + result[1]);
+      var okko = {};
+      okko.ko = result[0];
+      // okko.ko = result[1];
+      return callback(null, okko);
+    })
+  },
+  countOkKofll1 : function (table, callback) {
+    const Excel = require('exceljs');
+    var sqlOk ="select nbok from "+table; 
+    var sqlKo ="select nbko from "+table;
     console.log(sqlOk);
     console.log(sqlKo);
     async.series([
       function (callback) {
         ReportingInovcomExport.query(sqlOk, function(err, res){
-          if (err) return res.badRequest(err);
-          callback(null, res.rows[0].ok);
+          // if (err) return res.badRequest(err);
+          // callback(null, res.rows[0].nbok);
+          if (err) {
+            console.log(err);
+            //return null;
+          }
+          else
+          {
+            if(res.rows[0])
+            {
+              console.log('ok');
+              callback(null, res.rows[0].nbok);
+            }
+            else
+            {
+              console.log("null");
+              callback(null, 0);
+            }
+          }  
         });
       },
       function (callback) {
         ReportingInovcomExport.query(sqlKo, function(err, resKo){
-          if (err) return res.badRequest(err);
-          callback(null, resKo.rows[0].ko);
+          // if (err) return res.badRequest(err);
+          // callback(null, resKo.rows[0].nbko);
+          if (err) {
+            console.log(err);
+            //return null;
+          }
+          else
+          {
+            if(resKo.rows[0])
+            {
+              console.log('ok');
+              callback(null, resKo.rows[0].nbko);
+            }
+            else
+            {
+              console.log("null");
+              callback(null, 0);
+            }
+          }
         });
       },
     ],function(err,result){
@@ -39,6 +211,52 @@ module.exports = {
       return callback(null, okko);
     })
   },
+  countOkKofll11 : function (table, callback) {
+    const Excel = require('exceljs');
+    var sqlOk ="select nbrokrib from "+table; 
+    // var sqlKo ="select nbko from "+table;
+    console.log(sqlOk);
+    // console.log(sqlKo);
+    async.series([
+      function (callback) {
+        ReportingInovcomExport.query(sqlOk, function(err, res){
+          // if (err) return res.badRequest(err);
+          // callback(null, res.rows[0].nbrokrib);
+          if (err) {
+            console.log(err);
+            //return null;
+          }
+          else
+          {
+            if(res.rows[0])
+            {
+              console.log('ok');
+              callback(null, res.rows[0].nbrokrib);
+            }
+            else
+            {
+              console.log("null");
+              callback(null, 0);
+            }
+          }
+        });
+       },
+      // function (callback) {
+      //   ReportingInovcomExport.query(sqlKo, function(err, resKo){
+      //     if (err) return res.badRequest(err);
+      //     callback(null, resKo.rows[0].nbko);
+      //   });
+      // },
+    ],function(err,result){
+      if(err) return res.badRequest(err);
+      console.log("Count OK ==> " + result[0]);
+      // console.log("Count KO ==> " + result[1]);
+      var okko = {};
+      okko.ok = result[0];
+      // okko.ko = result[1];
+      return callback(null, okko);
+    })
+  },
   countOkKofll4 : function (table, callback) {
     const Excel = require('exceljs');
     var sqlOk ="select nbok from "+table; //trameFlux
@@ -48,14 +266,48 @@ module.exports = {
     async.series([
       function (callback) {
         ReportingInovcomExport.query(sqlOk, function(err, res){
-          if (err) return res.badRequest(err);
-          callback(null, res.rows[0].nbok);
+          // if (err) return res.badRequest(err);
+          // callback(null, res.rows[0].nbok);
+          if (err) {
+            console.log(err);
+            //return null;
+          }
+          else
+          {
+            if(res.rows[0])
+            {
+              console.log('ok');
+              callback(null, res.rows[0].nbok);
+            }
+            else
+            {
+              console.log("null");
+              callback(null, 0);
+            }
+          }
         });
       },
       function (callback) {
         ReportingInovcomExport.query(sqlKo, function(err, resKo){
-          if (err) return res.badRequest(err);
-          callback(null, resKo.rows[0].nbko);
+          // if (err) return res.badRequest(err);
+          // callback(null, resKo.rows[0].nbko);
+          if (err) {
+            console.log(err);
+            //return null;
+          }
+          else
+          {
+            if(resKo.rows[0])
+            {
+              console.log('ok');
+              callback(null, resKo.rows[0].nbko);
+            }
+            else
+            {
+              console.log("null");
+              callback(null, 0);
+            }
+          }
         });
       },
     ],function(err,result){
@@ -77,14 +329,48 @@ module.exports = {
     async.series([
       function (callback) {
         ReportingInovcomExport.query(sqlOk, function(err, res){
-          if (err) return res.badRequest(err);
-          callback(null, res.rows[0].sum);
+          // if (err) return res.badRequest(err);
+          // callback(null, res.rows[0].sum);
+          if (err) {
+            console.log(err);
+            //return null;
+          }
+          else
+          {
+            if(res.rows[0])
+            {
+              console.log('ok');
+              callback(null, res.rows[0].sum);
+            }
+            else
+            {
+              console.log("null");
+              callback(null, 0);
+            }
+          }
         });
       },
       function (callback) {
         ReportingInovcomExport.query(sqlKo, function(err, resKo){
-          if (err) return res.badRequest(err);
-          callback(null, resKo.rows[0].sum);
+          // if (err) return res.badRequest(err);
+          // callback(null, resKo.rows[0].sum);
+          if (err) {
+            console.log(err);
+            //return null;
+          }
+          else
+          {
+            if(resKo.rows[0])
+            {
+              console.log('ok');
+              callback(null, resKo.rows[0].sum);
+            }
+            else
+            {
+              console.log("null");
+              callback(null, 0);
+            }
+          }
         });
       },
     ],function(err,result){
@@ -106,8 +392,25 @@ module.exports = {
     async.series([
       function (callback) {
         ReportingInovcomExport.query(sqlOk, function(err, res){
-          if (err) return res.badRequest(err);
-          callback(null, res.rows[0].sum);
+          // if (err) return res.badRequest(err);
+          // callback(null, res.rows[0].sum);
+          if (err) {
+            console.log(err);
+            //return null;
+          }
+          else
+          {
+            if(res.rows[0])
+            {
+              console.log('ok');
+              callback(null, res.rows[0].sum);
+            }
+            else
+            {
+              console.log("null");
+              callback(null, 0);
+            }
+          }
         });
       },
       // function (callback) {
@@ -135,8 +438,25 @@ module.exports = {
     async.series([
       function (callback) {
         ReportingInovcomExport.query(sqlOk, function(err, res){
-          if (err) return res.badRequest(err);
-          callback(null, res.rows[0].okko);
+          // if (err) return res.badRequest(err);
+          // callback(null, res.rows[0].okko);
+          if (err) {
+            console.log(err);
+            //return null;
+          }
+          else
+          {
+            if(res.rows[0])
+            {
+              console.log('ok');
+              callback(null, res.rows[0].okko);
+            }
+            else
+            {
+              console.log("null");
+              callback(null, 0);
+            }
+          }
         });
       },
       // function (callback) {
@@ -334,7 +654,7 @@ module.exports = {
         }
     });
     console.log(" Colnumber"+colonnne);
-    /*var collonne;
+    var collonne;
     var colDate2;
     rowm.eachCell(function(cell, colNumber) {
       if(cell.value == 'DOCUMENTS TRAITES NON SAISIS (RETOURS)')
@@ -348,9 +668,165 @@ module.exports = {
         }
       }
     });
-    console.log(" Colnumber2"+collonne);*/
+    console.log(" Colnumber2"+collonne);
     numeroLigne.getCell(colonnne).value = nombre_ok_ko.ok;
-    //numeroLigne.getCell(collonne).value = nombre_ok_ko.ko;
+    numeroLigne.getCell(collonne).value = nombre_ok_ko.ko;
+    await newWorkbook.xlsx.writeFile(path_reporting);
+    sails.log("Ecriture OK KO terminé"); 
+    return callback(null, "OK");
+  
+    }
+    catch
+    {
+      console.log("Une erreur s'est produite");
+      Reportinghtp.deleteToutHtp(table,3,callback);
+    }
+    },
+  /***********************************************************/  
+  ecritureOkKo1 : async function (nombre_ok_ko, table,date_export,mois1,callback) {
+    const Excel = require('exceljs');
+    const newWorkbook = new Excel.Workbook();
+    try{
+    await newWorkbook.xlsx.readFile(path_reporting);
+    const newworksheet = newWorkbook.getWorksheet(mois1);
+    var colonneDate = newworksheet.getColumn('A');
+    var ligneDate1;
+    var ligneDate;
+    colonneDate.eachCell(function(cell, rowNumber) {
+      var dateExcel = ReportingInovcomExport.convertDate(cell.text);
+      if(dateExcel==date_export)
+      {
+        ligneDate1 = parseInt(rowNumber);
+        var line = newworksheet.getRow(ligneDate1);
+        var f = line.getCell(3).value;
+        //console.log();
+        if(f == "ALMERYS")
+        {
+          ligneDate = parseInt(rowNumber);
+        }
+      }
+    });
+    console.log("LIGNE DATE ===> "+ ligneDate);
+    var rowDate = newworksheet.getRow(ligneDate);
+    var numeroLigne = rowDate;
+    var iniValue = ReportingInovcomExport.getIniValue(table);
+    
+    var a5;
+
+    var rowm = newworksheet.getRow(1);
+    var colonnne;
+    var colDate1;
+    rowm.eachCell(function(cell, colNumber) {
+      if(cell.value == 'DOCUMENTS SAISIS')
+      {
+        colDate1 = parseInt(colNumber);
+        //var col = newworksheet.getColumn(colDate1);
+        var man = newworksheet.getRow(3);
+        var f = man.getCell(colDate1).value;
+        //console.log();
+        //console.log(iniValue.ok);
+        if(f == iniValue.ok)
+        {
+          colonnne = parseInt(colNumber);
+        }
+        }
+    });
+    console.log(" Colnumber"+colonnne);
+    // var collonne;
+    // var colDate2;
+    // rowm.eachCell(function(cell, colNumber) {
+    //   if(cell.value == 'DOCUMENTS TRAITES NON SAISIS (RETOURS)')
+    //   {
+    //     colDate2 = parseInt(colNumber);
+    //     var man = newworksheet.getRow(3);
+    //     var f = man.getCell(colDate2).value;
+    //     if(f == iniValue.ok)
+    //     {
+    //       collonne = parseInt(colNumber);
+    //     }
+    //   }
+    // });
+    // console.log(" Colnumber2"+collonne);
+    numeroLigne.getCell(colonnne).value = nombre_ok_ko.ok;
+    // numeroLigne.getCell(collonne).value = nombre_ok_ko.ko;
+    await newWorkbook.xlsx.writeFile(path_reporting);
+    sails.log("Ecriture OK KO terminé"); 
+    return callback(null, "OK");
+  
+    }
+    catch
+    {
+      console.log("Une erreur s'est produite");
+      Reportinghtp.deleteToutHtp(table,3,callback);
+    }
+    },
+  /***********************************************************/  
+  ecritureOkKo11 : async function (nombre_ok_ko, table,date_export,mois1,callback) {
+    const Excel = require('exceljs');
+    const newWorkbook = new Excel.Workbook();
+    try{
+    await newWorkbook.xlsx.readFile(path_reporting);
+    const newworksheet = newWorkbook.getWorksheet(mois1);
+    var colonneDate = newworksheet.getColumn('A');
+    var ligneDate1;
+    var ligneDate;
+    colonneDate.eachCell(function(cell, rowNumber) {
+      var dateExcel = ReportingInovcomExport.convertDate(cell.text);
+      if(dateExcel==date_export)
+      {
+        ligneDate1 = parseInt(rowNumber);
+        var line = newworksheet.getRow(ligneDate1);
+        var f = line.getCell(3).value;
+        //console.log();
+        if(f == "ALMERYS")
+        {
+          ligneDate = parseInt(rowNumber);
+        }
+      }
+    });
+    console.log("LIGNE DATE ===> "+ ligneDate);
+    var rowDate = newworksheet.getRow(ligneDate);
+    var numeroLigne = rowDate;
+    var iniValue = ReportingInovcomExport.getIniValue(table);
+    
+    var a5;
+
+    var rowm = newworksheet.getRow(1);
+    var colonnne;
+    var colDate1;
+    rowm.eachCell(function(cell, colNumber) {
+      if(cell.value == 'DOCUMENTS SAISIS')
+      {
+        colDate1 = parseInt(colNumber);
+        //var col = newworksheet.getColumn(colDate1);
+        var man = newworksheet.getRow(3);
+        var f = man.getCell(colDate1).value;
+        //console.log();
+        //console.log(iniValue.ok);
+        if(f == iniValue.ok)
+        {
+          colonnne = parseInt(colNumber);
+        }
+        }
+    });
+    console.log(" Colnumber"+colonnne);
+    // var collonne;
+    // var colDate2;
+    // rowm.eachCell(function(cell, colNumber) {
+    //   if(cell.value == 'DOCUMENTS TRAITES NON SAISIS (RETOURS)')
+    //   {
+    //     colDate2 = parseInt(colNumber);
+    //     var man = newworksheet.getRow(3);
+    //     var f = man.getCell(colDate2).value;
+    //     if(f == iniValue.ok)
+    //     {
+    //       collonne = parseInt(colNumber);
+    //     }
+    //   }
+    // });
+    // console.log(" Colnumber2"+collonne);
+    // numeroLigne.getCell(colonnne).value = nombre_ok_ko.ok;
+    numeroLigne.getCell(colonnne).value = nombre_ok_ko.ko;
     await newWorkbook.xlsx.writeFile(path_reporting);
     sails.log("Ecriture OK KO terminé"); 
     return callback(null, "OK");
@@ -1351,7 +1827,12 @@ module.exports = {
         colDate2 = parseInt(colNumber);
         var man = newworksheet.getRow(3);
         var f = man.getCell(colDate2).value;
-        if(f == iniValue.ok)
+        var getko_ini = man.getCell(colDate2).address;
+          // console.log(getko_ini);
+          // console.log(iniValue.ko);
+        //   console.log(f);
+        if(getko_ini == iniValue.ko+3 && f == iniValue.ok)
+        // if(f == iniValue.ok)
         {
           collonne = parseInt(colNumber);
         }
@@ -1389,9 +1870,17 @@ module.exports = {
       numeroColonneOk = iniValue.retourconventionsaisiedesconventions.ok;
       numeroColonneKo = iniValue.retourconventionsaisiedesconventions.ko;
     }
+    if(table == "conventions"){
+      numeroColonneOk = iniValue.conventions.ok;
+      numeroColonneKo = iniValue.conventions.ko;
+    }
     if(table == "ribtpmep"){
       numeroColonneOk = iniValue.ribtpmep.ok;
       numeroColonneKo = iniValue.ribtpmep.ko;
+    }
+    if(table == "tpmep"){
+      numeroColonneOk = iniValue.tpmep.ok;
+      numeroColonneKo = iniValue.tpmep.ko;
     }
     if(table == "curethermale"){
       numeroColonneOk = iniValue.curethermale.ok;

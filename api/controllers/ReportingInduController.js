@@ -439,6 +439,34 @@ module.exports = {
     {
       mois1= 'Mai';
     };
+    if(mois==06)
+    {
+      mois1= 'Juin';
+    };
+    if(mois==07)
+    {
+      mois1= 'Juillet';
+    };
+    if(mois==08)
+    {
+      mois1= 'Aout';
+    };
+    if(mois==09)
+    {
+      mois1= 'Septembre';
+    };
+    if(mois==10)
+    {
+      mois1= 'Octobre';
+    };
+    if(mois==11)
+    {
+      mois1= 'Novembre';
+    };
+    if(mois==12)
+    {
+      mois1= 'Decembre';
+    };
     console.log(mois1);
     var date_export = jour + '/' + mois + '/' +annee;
     console.log("RECHERCHE COLONNE");
@@ -482,14 +510,21 @@ module.exports = {
       function (callback) {
         ReportingIndu.countOkKoSum("induinterialeaudio",callback);
       },
+      function (callback) {
+        ReportingIndu.countOkKoContest("inducontestation",callback);
+      },
+      function (callback) {
+        ReportingIndu.countOkKoDouble("indufactstc",callback);
+      },
+      
     ],function(err,result){
       if(err) return res.badRequest(err);
       console.log("Count OK 1==> " + result[0].ok + " / " + result[0].ko);
       console.log("Count OK 2 ==> " + result[1].ok + " / " + result[1].ko);
       console.log("Count OK 3 ==> " + result[2].ok + " / " + result[2].ko);
       console.log("Count OK 4 ==> " + result[3].ok + " / " + result[3].ko);
-      // console.log("Count OK tramelamiestock ==> " + result[4].ok + " / " + result[4].ko);
-      // console.log("Count OK tramelamiestockResiliation ==> " + result[5].ok + " / " + result[5].ko);
+      console.log("Count OK INDUCONTESTSATION ==> " + result[13].ok + " / " + result[13].ko);
+      console.log("Count OK SANTE ==> " + result[14].ok + " / " + result[14].ko);
       async.series([
         function (callback) {
           ReportingIndu.ecritureOkKoDouble(result[0],"induse",date_export,mois1,callback);
@@ -530,6 +565,13 @@ module.exports = {
         function (callback) {
           ReportingIndu.ecritureOkKo(result[12],"induinterialeaudio",date_export,mois1,callback);
         },
+        function (callback) {
+          ReportingIndu.ecritureOkKoContest(result[13],"inducontestation",date_export,mois1,callback);
+        },
+        function (callback) {
+          ReportingIndu.ecritureOkKoSante(result[14],"indufactstc",date_export,mois1,callback);
+        },
+        
       ],function(err,resultExcel){
      console.log(resultExcel[0]);
           if(resultExcel[0]==true)
@@ -585,6 +627,34 @@ module.exports = {
     if(mois==05)
     {
       mois1= 'Mai';
+    };
+    if(mois==06)
+    {
+      mois1= 'Juin';
+    };
+    if(mois==07)
+    {
+      mois1= 'Juillet';
+    };
+    if(mois==08)
+    {
+      mois1= 'Aout';
+    };
+    if(mois==09)
+    {
+      mois1= 'Septembre';
+    };
+    if(mois==10)
+    {
+      mois1= 'Octobre';
+    };
+    if(mois==11)
+    {
+      mois1= 'Novembre';
+    };
+    if(mois==12)
+    {
+      mois1= 'Decembre';
     };
     console.log(mois1);
     var date_export = jour + '/' + mois + '/' +annee;

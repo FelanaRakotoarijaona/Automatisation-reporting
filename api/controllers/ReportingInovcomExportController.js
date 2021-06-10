@@ -95,6 +95,34 @@ module.exports = {
       {
         mois1= 'Mai';
       };
+      if(mois==06)
+      {
+        mois1= 'Juin';
+      };
+      if(mois==07)
+      {
+        mois1= 'Juillet';
+      };
+      if(mois==08)
+      {
+        mois1= 'Aout';
+      };
+      if(mois==09)
+      {
+        mois1= 'Septembre';
+      };
+      if(mois==10)
+      {
+        mois1= 'Octobre';
+      };
+      if(mois==11)
+      {
+        mois1= 'Novembre';
+      };
+      if(mois==12)
+      {
+        mois1= 'Decembre';
+     };
       console.log(mois1);
       var date_export = jour + '/' + mois + '/' +annee;
       console.log("RECHERCHE COLONNE");
@@ -109,10 +137,16 @@ module.exports = {
           ReportingInovcomExport.countOkKo("retourconventionsaisiedesconventions",callback);
         },
         function (callback) {
-          ReportingInovcomExport.countOkKo("ribtpmep",callback);
+          ReportingInovcomExport.countOkKofll1("ribtpmep",callback);
         },
         function (callback) {
-          ReportingInovcomExport.countOkKo("curethermale",callback);
+          ReportingInovcomExport.countOkKofll11("ribtpmep",callback);
+        },
+        function (callback) {
+          ReportingInovcomExport.countOkKofll1("curethermale",callback);
+        },
+        function (callback) {
+          ReportingInovcomExport.countOkKo11("retourconventionsaisiedesconventions",callback);
         },
   /*      function (callback) {
           ReportingInovcomExport.countOkKoTrameLamieResiliation("tramelamiestock",callback);
@@ -122,6 +156,7 @@ module.exports = {
         console.log("Count OK 0 ==> " + result[0].ok + " / " + result[0].ko);
         console.log("Count OK 1 ==> " + result[1].ok + " / " + result[1].ko);
         console.log("Count OK 2 ==> " + result[2].ok + " / " + result[2].ko);
+        console.log("Count OK 4==> " + result[4].ok + " / " + result[4].ko);
         async.series([
           // function (callback) {
           //   ReportingInovcomExport.ecritureOkKo(result[0],"extractionrcforce",date_export,mois1,callback);
@@ -130,15 +165,20 @@ module.exports = {
           //   ReportingInovcomExport.ecritureOkKo(result[1],"favmgefi",date_export,mois1,callback);
           // },
           function (callback) {
-            ReportingInovcomExport.ecritureOkKo(result[0],"retourconventionsaisiedesconventions",date_export,mois1,callback);
+            ReportingInovcomExport.ecritureOkKo1(result[0],"retourconventionsaisiedesconventions",date_export,mois1,callback);
           },
           function (callback) {
             ReportingInovcomExport.ecritureOkKo(result[1],"ribtpmep",date_export,mois1,callback);
           },
           function (callback) {
-            ReportingInovcomExport.ecritureOkKo(result[2],"curethermale",date_export,mois1,callback);
+            ReportingInovcomExport.ecritureOkKo(result[2],"tpmep",date_export,mois1,callback);
           },
-
+          function (callback) {
+            ReportingInovcomExport.ecritureOkKo(result[3],"curethermale",date_export,mois1,callback);
+          },
+          function (callback) {
+            ReportingInovcomExport.ecritureOkKo11(result[4],"conventions",date_export,mois1,callback);
+          },
         ],function(err,resultExcel){
        
             if(resultExcel[0]==true)
@@ -184,6 +224,34 @@ module.exports = {
       {
         mois1= 'Mai';
       };
+      if(mois==06)
+      {
+        mois1= 'Juin';
+      };
+      if(mois==07)
+      {
+        mois1= 'Juillet';
+      };
+      if(mois==08)
+      {
+        mois1= 'Aout';
+      };
+      if(mois==09)
+      {
+        mois1= 'Septembre';
+      };
+      if(mois==10)
+      {
+        mois1= 'Octobre';
+      };
+      if(mois==11)
+      {
+        mois1= 'Novembre';
+      };
+      if(mois==12)
+      {
+        mois1= 'Decembre';
+      };
       console.log(mois1);
       var date_export = jour + '/' + mois + '/' +annee;
       console.log("RECHERCHE COLONNE");
@@ -204,55 +272,55 @@ module.exports = {
         //   ReportingInovcomExport.countOkKo("curethermale",callback);
         // },
         function (callback) {
-          ReportingInovcomExport.countOkKo("dentaireretourfacturedentaireetcds",callback);
+          ReportingInovcomExport.countok("dentaireretourfacturedentaireetcds",callback);
         },
         function (callback) {
-          ReportingInovcomExport.countOkKo("optiqueretourpublipostage",callback);
+          ReportingInovcomExport.countok("optiqueretourpublipostage",callback);
         },
         function (callback) {
-          ReportingInovcomExport.countOkKo("factureaudio",callback);
+          ReportingInovcomExport.countok("factureaudio",callback);
         },
         function (callback) {
-          ReportingInovcomExport.countOkKo("retourhospipec",callback);
+          ReportingInovcomExport.countok("retourhospipec",callback);
         },
         function (callback) {
-          ReportingInovcomExport.countOkKo("retourpecdentaire",callback);
+          ReportingInovcomExport.countok("retourpecdentaire",callback);
         },
         function (callback) {
-          ReportingInovcomExport.countOkKo("retourpecoptique",callback);
+          ReportingInovcomExport.countok("retourpecoptique",callback);
         },
         function (callback) {
-          ReportingInovcomExport.countOkKo("retourpecaudio",callback);
+          ReportingInovcomExport.countok("retourpecaudio",callback);
         },
         function (callback) {
-          ReportingInovcomExport.countOkKo("santeclairtableauretourgeneral",callback);
+          ReportingInovcomExport.countok("santeclairtableauretourgeneral",callback);
         },
         function (callback) {
-          ReportingInovcomExport.countOkKo("santeclairoptique",callback);
+          ReportingInovcomExport.countok("santeclairoptique",callback);
         },
         function (callback) {
-          ReportingInovcomExport.countOkKo("noemiehtpmgefi",callback);
+          ReportingInovcomExport.countok("noemiehtpmgefi",callback);
         },
         function (callback) {
-          ReportingInovcomExport.countOkKo("mgefigtomgefirejetsaisienoemiehtp",callback);
+          ReportingInovcomExport.countok("mgefigtomgefirejetsaisienoemiehtp",callback);
         },
         function (callback) {
-          ReportingInovcomExport.countOkKo("retourreclamtramereclamationtiers",callback);
+          ReportingInovcomExport.countok("retourreclamtramereclamationtiers",callback);
         },
         function (callback) {
-          ReportingInovcomExport.countOkKo("reclamsetramereclamationse",callback);
+          ReportingInovcomExport.countok("reclamsetramereclamationse",callback);
         },
         function (callback) {
-          ReportingInovcomExport.countOkKo("reclamhospi",callback);
+          ReportingInovcomExport.countok("reclamhospi",callback);
         },
         function (callback) {
-          ReportingInovcomExport.countOkKo("dentairereclamationdentaire",callback);
+          ReportingInovcomExport.countok("dentairereclamationdentaire",callback);
         },
         function (callback) {
-          ReportingInovcomExport.countOkKo("optiquetramereclamationoptique",callback);
+          ReportingInovcomExport.countok("optiquetramereclamationoptique",callback);
         },
         function (callback) {
-          ReportingInovcomExport.countOkKo("reclamationaudio",callback);
+          ReportingInovcomExport.countok("reclamationaudio",callback);
         },
       ],function(err,result){
         if(err) return res.badRequest(err);
@@ -376,18 +444,46 @@ module.exports = {
       {
         mois1= 'Mai';
       };
+      if(mois==06)
+      {
+        mois1= 'Juin';
+      };
+      if(mois==07)
+      {
+        mois1= 'Juillet';
+      };
+      if(mois==08)
+      {
+        mois1= 'Aout';
+      };
+      if(mois==09)
+      {
+        mois1= 'Septembre';
+      };
+      if(mois==10)
+      {
+        mois1= 'Octobre';
+      };
+      if(mois==11)
+      {
+        mois1= 'Novembre';
+      };
+      if(mois==12)
+      {
+        mois1= 'Decembre';
+    };
       console.log(mois1);
       var date_export = jour + '/' + mois + '/' +annee;
       console.log("RECHERCHE COLONNE");
       async.series([
         function (callback) {
-          ReportingInovcomExport.countOkKo("majribcbtp",callback);
+          ReportingInovcomExport.countok("majribcbtp",callback);
         },
         function (callback) {
-          ReportingInovcomExport.countOkKo("majagapsinteramc",callback);
+          ReportingInovcomExport.countok("majagapsinteramc",callback);
         },
         function (callback) {
-          ReportingInovcomExport.countOkKo("hospidemat",callback);
+          ReportingInovcomExport.countok("hospidemat",callback);
         },
       ],function(err,result){
         if(err) return res.badRequest(err);
@@ -430,26 +526,54 @@ rechercheColonne4: function (req, res) {
   // var mois = req.param("mois");
   // var annee = req.param("annee");
   var mois1 = 'Janvier' ;
-  if(mois==01)
-  {
-    mois1= 'Janvier';
-  };
-  if(mois==02)
-  {
-    mois1= 'Fevrier';
-  };
-  if(mois==03)
-  {
-    mois1= 'Mars';
-  };
-  if(mois==04)
-  {
-    mois1= 'Avril';
-  };
-  if(mois==05)
-  {
-    mois1= 'Mai';
-  };
+      if(mois==01)
+      {
+        mois1= 'Janvier';
+      };
+      if(mois==02)
+      {
+        mois1= 'Fevrier';
+      };
+      if(mois==03)
+      {
+        mois1= 'Mars';
+      };
+      if(mois==04)
+      {
+        mois1= 'Avril';
+      };
+      if(mois==05)
+      {
+        mois1= 'Mai';
+      };
+      if(mois==06)
+      {
+        mois1= 'Juin';
+      };
+      if(mois==07)
+      {
+        mois1= 'Juillet';
+      };
+      if(mois==08)
+      {
+        mois1= 'Aout';
+      };
+      if(mois==09)
+      {
+        mois1= 'Septembre';
+      };
+      if(mois==10)
+      {
+        mois1= 'Octobre';
+      };
+      if(mois==11)
+      {
+        mois1= 'Novembre';
+      };
+      if(mois==12)
+      {
+        mois1= 'Decembre';
+    };
   console.log(mois1);
   var date_export = jour + '/' + mois + '/' +annee;
   console.log("RECHERCHE COLONNE");
@@ -531,26 +655,54 @@ rechercheColonne5: function (req, res) {
   // var mois = req.param("mois");
   // var annee = req.param("annee");
   var mois1 = 'Janvier' ;
-  if(mois==01)
-  {
-    mois1= 'Janvier';
-  };
-  if(mois==02)
-  {
-    mois1= 'Fevrier';
-  };
-  if(mois==03)
-  {
-    mois1= 'Mars';
-  };
-  if(mois==04)
-  {
-    mois1= 'Avril';
-  };
-  if(mois==05)
-  {
-    mois1= 'Mai';
-  };
+      if(mois==01)
+      {
+        mois1= 'Janvier';
+      };
+      if(mois==02)
+      {
+        mois1= 'Fevrier';
+      };
+      if(mois==03)
+      {
+        mois1= 'Mars';
+      };
+      if(mois==04)
+      {
+        mois1= 'Avril';
+      };
+      if(mois==05)
+      {
+        mois1= 'Mai';
+      };
+      if(mois==06)
+      {
+        mois1= 'Juin';
+      };
+      if(mois==07)
+      {
+        mois1= 'Juillet';
+      };
+      if(mois==08)
+      {
+        mois1= 'Aout';
+      };
+      if(mois==09)
+      {
+        mois1= 'Septembre';
+      };
+      if(mois==10)
+      {
+        mois1= 'Octobre';
+      };
+      if(mois==11)
+      {
+        mois1= 'Novembre';
+      };
+      if(mois==12)
+      {
+        mois1= 'Decembre';
+    };
   console.log(mois1);
   var date_export = jour + '/' + mois + '/' +annee;
   console.log("RECHERCHE COLONNE");
@@ -590,26 +742,54 @@ rechercheColonne6: function (req, res) {
   // var mois = req.param("mois");
   // var annee = req.param("annee");
   var mois1 = 'Janvier' ;
-  if(mois==01)
-  {
-    mois1= 'Janvier';
-  };
-  if(mois==02)
-  {
-    mois1= 'Fevrier';
-  };
-  if(mois==03)
-  {
-    mois1= 'Mars';
-  };
-  if(mois==04)
-  {
-    mois1= 'Avril';
-  };
-  if(mois==05)
-  {
-    mois1= 'Mai';
-  };
+      if(mois==01)
+      {
+        mois1= 'Janvier';
+      };
+      if(mois==02)
+      {
+        mois1= 'Fevrier';
+      };
+      if(mois==03)
+      {
+        mois1= 'Mars';
+      };
+      if(mois==04)
+      {
+        mois1= 'Avril';
+      };
+      if(mois==05)
+      {
+        mois1= 'Mai';
+      };
+      if(mois==06)
+      {
+        mois1= 'Juin';
+      };
+      if(mois==07)
+      {
+        mois1= 'Juillet';
+      };
+      if(mois==08)
+      {
+        mois1= 'Aout';
+      };
+      if(mois==09)
+      {
+        mois1= 'Septembre';
+      };
+      if(mois==10)
+      {
+        mois1= 'Octobre';
+      };
+      if(mois==11)
+      {
+        mois1= 'Novembre';
+      };
+      if(mois==12)
+      {
+        mois1= 'Decembre';
+    };
   console.log(mois1);
   var date_export = jour + '/' + mois + '/' +annee;
   console.log("RECHERCHE COLONNE");
@@ -649,26 +829,54 @@ rechercheColonne7: function (req, res) {
   // var mois = req.param("mois");
   // var annee = req.param("annee");
   var mois1 = 'Janvier' ;
-  if(mois==01)
-  {
-    mois1= 'Janvier';
-  };
-  if(mois==02)
-  {
-    mois1= 'Fevrier';
-  };
-  if(mois==03)
-  {
-    mois1= 'Mars';
-  };
-  if(mois==04)
-  {
-    mois1= 'Avril';
-  };
-  if(mois==05)
-  {
-    mois1= 'Mai';
-  };
+      if(mois==01)
+      {
+        mois1= 'Janvier';
+      };
+      if(mois==02)
+      {
+        mois1= 'Fevrier';
+      };
+      if(mois==03)
+      {
+        mois1= 'Mars';
+      };
+      if(mois==04)
+      {
+        mois1= 'Avril';
+      };
+      if(mois==05)
+      {
+        mois1= 'Mai';
+      };
+      if(mois==06)
+      {
+        mois1= 'Juin';
+      };
+      if(mois==07)
+      {
+        mois1= 'Juillet';
+      };
+      if(mois==08)
+      {
+        mois1= 'Aout';
+      };
+      if(mois==09)
+      {
+        mois1= 'Septembre';
+      };
+      if(mois==10)
+      {
+        mois1= 'Octobre';
+      };
+      if(mois==11)
+      {
+        mois1= 'Novembre';
+      };
+      if(mois==12)
+      {
+        mois1= 'Decembre';
+    };
   console.log(mois1);
   var date_export = jour + '/' + mois + '/' +annee;
   console.log("RECHERCHE COLONNE");
@@ -708,26 +916,54 @@ rechercheColonne8: function (req, res) {
   // var mois = req.param("mois");
   // var annee = req.param("annee");
   var mois1 = 'Janvier' ;
-  if(mois==01)
-  {
-    mois1= 'Janvier';
-  };
-  if(mois==02)
-  {
-    mois1= 'Fevrier';
-  };
-  if(mois==03)
-  {
-    mois1= 'Mars';
-  };
-  if(mois==04)
-  {
-    mois1= 'Avril';
-  };
-  if(mois==05)
-  {
-    mois1= 'Mai';
-  };
+      if(mois==01)
+      {
+        mois1= 'Janvier';
+      };
+      if(mois==02)
+      {
+        mois1= 'Fevrier';
+      };
+      if(mois==03)
+      {
+        mois1= 'Mars';
+      };
+      if(mois==04)
+      {
+        mois1= 'Avril';
+      };
+      if(mois==05)
+      {
+        mois1= 'Mai';
+      };
+      if(mois==06)
+      {
+        mois1= 'Juin';
+      };
+      if(mois==07)
+      {
+        mois1= 'Juillet';
+      };
+      if(mois==08)
+      {
+        mois1= 'Aout';
+      };
+      if(mois==09)
+      {
+        mois1= 'Septembre';
+      };
+      if(mois==10)
+      {
+        mois1= 'Octobre';
+      };
+      if(mois==11)
+      {
+        mois1= 'Novembre';
+      };
+      if(mois==12)
+      {
+        mois1= 'Decembre';
+    };
   console.log(mois1);
   var date_export = jour + '/' + mois + '/' +annee;
   console.log("RECHERCHE COLONNE");
@@ -774,26 +1010,54 @@ rechercheColonne9: function (req, res) {
   // var mois = req.param("mois");
   // var annee = req.param("annee");
   var mois1 = 'Janvier' ;
-  if(mois==01)
-  {
-    mois1= 'Janvier';
-  };
-  if(mois==02)
-  {
-    mois1= 'Fevrier';
-  };
-  if(mois==03)
-  {
-    mois1= 'Mars';
-  };
-  if(mois==04)
-  {
-    mois1= 'Avril';
-  };
-  if(mois==05)
-  {
-    mois1= 'Mai';
-  };
+      if(mois==01)
+      {
+        mois1= 'Janvier';
+      };
+      if(mois==02)
+      {
+        mois1= 'Fevrier';
+      };
+      if(mois==03)
+      {
+        mois1= 'Mars';
+      };
+      if(mois==04)
+      {
+        mois1= 'Avril';
+      };
+      if(mois==05)
+      {
+        mois1= 'Mai';
+      };
+      if(mois==06)
+      {
+        mois1= 'Juin';
+      };
+      if(mois==07)
+      {
+        mois1= 'Juillet';
+      };
+      if(mois==08)
+      {
+        mois1= 'Aout';
+      };
+      if(mois==09)
+      {
+        mois1= 'Septembre';
+      };
+      if(mois==10)
+      {
+        mois1= 'Octobre';
+      };
+      if(mois==11)
+      {
+        mois1= 'Novembre';
+      };
+      if(mois==12)
+      {
+        mois1= 'Decembre';
+    };
   console.log(mois1);
   var date_export = jour + '/' + mois + '/' +annee;
   console.log("RECHERCHE COLONNE");

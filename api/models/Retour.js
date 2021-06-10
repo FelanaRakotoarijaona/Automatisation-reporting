@@ -1,3 +1,5 @@
+const { exists } = require('grunt');
+
 /**
  * Retour.js
  *
@@ -13,24 +15,32 @@ module.exports = {
     const Excel = require('exceljs');
     // var sqlOk ="select count(okko) as ok from "+table+" where okko='OK'"; //trameFlux
     // var sqlKo ="select count(okko) as ko from "+table+" where okko='KO'";
-    var sql ="select * from "+table; 
+    var sql ="select * from "+table ; 
    
     console.log(sql);
     // console.log(sqlOk);
     // console.log(sqlKo);
     async.series([
       function (callback) {
-        Retour.query(sql, function(err, res){
-          if (err) return res.badRequest(err);
-          // callback(null, res.rows[0].ok);
-          console.log(res.rows[0].nb);
-          if(res.rows[0].nb != undefined){
-            callback(null, res.rows[0].nb);
+        Retour.query(sql, function(err, res){          
+          if (err) {
+            console.log(err);
+            //return null;
           }
-          else{
-            return res.rows[0].nb = 0;
+          else
+          {
+            if(res.rows[0])
+            {
+              console.log('ok');
+              callback(null, res.rows[0].nb);
+            }
+            else
+            {
+              console.log("null");
+              callback(null, 0);
+            }
           }
-          
+                   
         });
       },
       // function (callback) {
@@ -64,14 +74,21 @@ module.exports = {
     async.series([
       function (callback) {
         Retour.query(sql, function(err, res){
-          if (err) return res.badRequest(err);
-          // callback(null, res.rows[0].ok);
-          console.log(res.rows[0].sum);
-          if(res.rows[0].sum != undefined){
-            callback(null, res.rows[0].sum);
+          if (err) {
+            console.log(err);
           }
-          else{
-            return res.rows[0].sum = 0;
+          else
+          {
+            if(res.rows[0])
+            {
+              console.log('ok');
+              callback(null, res.rows[0].sum);
+            }
+            else
+            {
+              console.log("null");
+              callback(null, 0);
+            }
           }
           
         });

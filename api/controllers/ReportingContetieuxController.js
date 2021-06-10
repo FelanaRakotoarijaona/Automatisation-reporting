@@ -418,6 +418,34 @@ module.exports = {
       {
         mois1= 'Mai';
       };
+      if(mois==06)
+      {
+        mois1= 'Juin';
+      };
+      if(mois==07)
+      {
+        mois1= 'Juillet';
+      };
+      if(mois==08)
+      {
+        mois1= 'Aout';
+      };
+      if(mois==09)
+      {
+        mois1= 'Septembre';
+      };
+      if(mois==10)
+      {
+        mois1= 'Octobre';
+      };
+      if(mois==11)
+      {
+        mois1= 'Novembre';
+      };
+      if(mois==12)
+      {
+        mois1= 'Decembre';
+      };
       console.log(mois1);
       var date_export = jour + '/' + mois + '/' +annee;
       console.log("RECHERCHE COLONNE");

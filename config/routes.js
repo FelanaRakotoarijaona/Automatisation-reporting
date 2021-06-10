@@ -13,6 +13,7 @@ module.exports.routes = {
   '/': 'AuthentificationController.loginSimple',
   '/login' : 'AuthentificationController.loginLdap',
   '/logout' : 'AuthentificationController.logout',
+  '/test': { view: 'pages/navbar' },
   
   //Route HTP
   '/accueil1' : 'ReportinghtpController.accueil1',
@@ -24,6 +25,8 @@ module.exports.routes = {
   //'/export/:jour/:mois/:annee/:html' : 'ReportingExcelController.accueil',
   //'/exportReporting/:jour/:mois/:annee' : 'ReportingExcelController.rechercheColonne',
   '/exportExcel' : 'ReportingExcelController.rechercheColonne',
+  '/exportExcelHTP' : 'ReportingExcelController.rechercheColonne',
+  '/exportExcelH' : 'ReportingExcelController.accueilHTP',
 
   //Route HTP2
   '/accueil2' : 'ReportinghtpController.accueiltype2',
@@ -131,10 +134,10 @@ module.exports.routes = {
   //  '/exportIndu/:jour/:mois/:annee/:html' : 'ReportingInovcomExportController.accueil',
   //  '/exportReportingIndu:jour/:mois/:annee' : 'ReportingInovcomExportController.rechercheColonne',
    '/exportExcelIndu' : 'ReportingInduController.rechercheColonne',
-   '/exportExcelI' : 'ReportingInduController.accueilI',
+   '/exportExcelin' : 'ReportingInduController.accueilI',
 
    '/exportExcelIndu2' : 'ReportingInduController.rechercheColonne2',
-   '/exportExcelI2' : 'ReportingInduController.accueilI2',
+   '/exportExcelin2' : 'ReportingInduController.accueilI2',
 
   
    //Route RETOUR
@@ -147,7 +150,7 @@ module.exports.routes = {
   //  '/exportReportingIndu:jour/:mois/:annee' : 'ReportingInovcomExportController.rechercheColonne',
    //ajout routes pour RETOUR
    '/exportExcelRetour' : 'ReportingRetourController.rechercheColonne',//5
-   '/exportExcel' : 'ReportingRetourController.accueilR',//4
+   '/exportExcelRet' : 'ReportingRetourController.accueilR',//4
 
  
      //Route CONTENTIEUX
