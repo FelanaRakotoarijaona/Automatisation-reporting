@@ -323,7 +323,7 @@ module.exports = {
                         function(err)
                         {
                           console.log('vofafa ddol');
-                          return res.view('Retour/exportExcel');
+                          return res.view('Contentieux/exportExcelContentieux');
                         }); 
                }
                })

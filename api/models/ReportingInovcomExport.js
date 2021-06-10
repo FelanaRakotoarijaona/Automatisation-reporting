@@ -1,12 +1,10 @@
-<<<<<<< HEAD
-=======
-/**
+/*
  * ReportingInovcomExport.js
  *
  * @description :: A model definition represents a database table/collection.
  * @docs        :: https://sailsjs.com/docs/concepts/models-and-orm/models
  */
-const path_reporting = 'D:/LDR8_1421_nouv/PROJET_FELANA/REPORTING INOVCOM Type.xlsx';
+const path_reporting = 'D:/Reporting/Reporting/Nouveau dossier/REPORTING INOVCOM Type.xlsx';
 module.exports = {
 
   attributes: {
@@ -2023,4 +2021,3 @@ module.exports = {
   },
 };
 
->>>>>>> 4b0bfa35d1adc88a8b5a222b3343b1e04deed709
