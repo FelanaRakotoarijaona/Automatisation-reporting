@@ -8,6 +8,14 @@
 const ReportingIndu = require('../models/ReportingIndu');
 
 module.exports = {
+    accueilI : function(req,res)
+    {
+      return res.view('Indu/exportExcelIndu');
+    },
+    accueilI2 : function(req,res)
+    {
+      return res.view('Indu/exportExcelIndu2');
+    },
     accueil1 : function(req,res)
     {
       return res.view('Indu/accueil1');
@@ -214,10 +222,10 @@ module.exports = {
                         return res.view('Retour/exportExcel');
                         //return res.redirect('/exportInovcom/'+dateexport +'/'+'<h1><h1>');
                       });
+            };
+          })
         };
-    })
-    };
-  });
+    });
 },
 
 // type 2
@@ -434,11 +442,306 @@ module.exports = {
                         return res.view('Retour/exportExcel');
                         //return res.redirect('/exportInovcom/'+dateexport +'/'+'<h1><h1>');
                       });
-        };
+              };
+          })
+        }
     })
+  },
+    //AJOUT FONCTION RECHERCHECOLONNE POUR RETOUR
+  rechercheColonne : function (req, res) {
+    var datetest = req.param("date",0);
+    var annee = datetest.substr(0, 4);
+    var mois = datetest.substr(5, 2);
+    var jour = datetest.substr(8, 2);
+    // var jour = req.param("jour");
+    // var mois = req.param("mois");
+    // var annee = req.param("annee");
+    var mois1 = 'Janvier' ;
+    if(mois==01)
+    {
+      mois1= 'Janvier';
     };
-  });
+    if(mois==02)
+    {
+      mois1= 'Fevrier';
+    };
+    if(mois==03)
+    {
+      mois1= 'Mars';
+    };
+    if(mois==04)
+    {
+      mois1= 'Avril';
+    };
+    if(mois==05)
+    {
+      mois1= 'Mai';
+    };
+    if(mois==06)
+    {
+      mois1= 'Juin';
+    };
+    if(mois==07)
+    {
+      mois1= 'Juillet';
+    };
+    if(mois==08)
+    {
+      mois1= 'Aout';
+    };
+    if(mois==09)
+    {
+      mois1= 'Septembre';
+    };
+    if(mois==10)
+    {
+      mois1= 'Octobre';
+    };
+    if(mois==11)
+    {
+      mois1= 'Novembre';
+    };
+    if(mois==12)
+    {
+      mois1= 'Decembre';
+    };
+    console.log(mois1);
+    var date_export = jour + '/' + mois + '/' +annee;
+    console.log("RECHERCHE COLONNE");
+    async.series([
+      function (callback) {
+        ReportingIndu.countOkKoDouble("induse",callback);
+      },
+     function (callback) {
+        ReportingIndu.countOkKoDouble("induhospi",callback);
+      },
+      function (callback) {
+        ReportingIndu.countOkKoDoubleSum("indusansnotif",callback);
+      },
+      function (callback) {
+        ReportingIndu.countOkKo("indutiers",callback);
+      },
+     function (callback) {
+        ReportingIndu.countOkKoDoubleSum("indufraudelmg",callback);
+      }, 
+      function (callback) {
+        ReportingIndu.countOkKoSum("induinterialepre",callback);
+      },  
+      function (callback) {
+        ReportingIndu.countOkKo("induinterialepost",callback);
+      }, 
+      function (callback) {
+        ReportingIndu.countOkKo("inducodelisftp",callback);
+      }, 
+      function (callback) {
+        ReportingIndu.countOkKoSum("inducodelismail",callback);
+      }, 
+      function (callback) {
+        ReportingIndu.countOkKo("inducodelisappel",callback);
+      }, 
+      function (callback) {
+        ReportingIndu.countOkKoDoubleSum("inducheque",callback);
+      }, 
+      function (callback) {
+        ReportingIndu.countOkKoSum("indupecrefus",callback);
+      }, 
+      function (callback) {
+        ReportingIndu.countOkKoSum("induinterialeaudio",callback);
+      },
+      function (callback) {
+        ReportingIndu.countOkKoContest("inducontestation",callback);
+      },
+      function (callback) {
+        ReportingIndu.countOkKoDouble("indufactstc",callback);
+      },
+      
+    ],function(err,result){
+      if(err) return res.badRequest(err);
+      console.log("Count OK 1==> " + result[0].ok + " / " + result[0].ko);
+      console.log("Count OK 2 ==> " + result[1].ok + " / " + result[1].ko);
+      console.log("Count OK 3 ==> " + result[2].ok + " / " + result[2].ko);
+      console.log("Count OK 4 ==> " + result[3].ok + " / " + result[3].ko);
+      console.log("Count OK INDUCONTESTSATION ==> " + result[13].ok + " / " + result[13].ko);
+      console.log("Count OK SANTE ==> " + result[14].ok + " / " + result[14].ko);
+      async.series([
+        function (callback) {
+          ReportingIndu.ecritureOkKoDouble(result[0],"induse",date_export,mois1,callback);
+        },
+       function (callback) {
+          ReportingIndu.ecritureOkKoDouble(result[1],"induhospi",date_export,mois1,callback);
+        },
+        function (callback) {
+          ReportingIndu.ecritureOkKoDouble(result[2],"indusansnotif",date_export,mois1,callback);
+        },
+        function (callback) {
+          ReportingIndu.ecritureOkKo(result[3],"indutiers",date_export,mois1,callback);
+        },
+        function (callback) {
+          ReportingIndu.ecritureOkKoDouble(result[4],"indufraudelmg",date_export,mois1,callback);
+        },
+       function (callback) {
+          ReportingIndu.ecritureOkKo(result[5],"induinterialepre",date_export,mois1,callback);
+        },
+        function (callback) {
+          ReportingIndu.ecritureOkKo(result[6],"induinterialepost",date_export,mois1,callback);
+        },
+        function (callback) {
+          ReportingIndu.ecritureOkKo(result[7],"inducodelisftp",date_export,mois1,callback);
+        },
+        function (callback) {
+          ReportingIndu.ecritureOkKo(result[8],"inducodelismail",date_export,mois1,callback);
+        },
+        function (callback) {
+          ReportingIndu.ecritureOkKo(result[9],"inducodelisappel",date_export,mois1,callback);
+        },
+       function (callback) {
+          ReportingIndu.ecritureOkKoDouble(result[10],"inducheque",date_export,mois1,callback);
+        },
+        function (callback) {
+          ReportingIndu.ecritureOkKo(result[11],"indupecrefus",date_export,mois1,callback);
+        },
+        function (callback) {
+          ReportingIndu.ecritureOkKo(result[12],"induinterialeaudio",date_export,mois1,callback);
+        },
+        function (callback) {
+          ReportingIndu.ecritureOkKoContest(result[13],"inducontestation",date_export,mois1,callback);
+        },
+        function (callback) {
+          ReportingIndu.ecritureOkKoSante(result[14],"indufactstc",date_export,mois1,callback);
+        },
+        
+      ],function(err,resultExcel){
+     console.log(resultExcel[0]);
+          if(resultExcel[0]==true)
+          {
+            console.log("true zn");
+            res.view('reporting/erera');
+          }
+          if(resultExcel[0]=='OK')
+          {
+            // res.redirect('/exportRetour/'+date_export+'/x')
+            res.view('reporting/succes');
+          }
+
+
+          /*console.log("Traitement terminé ===> "+ resultExcel[0]);
+          console.log("Traitement terminé ===> "+ resultExcel[1]);
+          console.log("Traitement terminé ===> "+ resultExcel[2]);
+          console.log("Traitement terminé ===> "+ resultExcel[3]);
+          console.log("Traitement terminé ===> "+ resultExcel[4]);
+          var html = "Echec d'enregistrement";
+          return res.redirect('/accueil');*/
+          
+        
+        
+      })
+    });  
 },
+  rechercheColonne2 : function (req, res) {
+    var datetest = req.param("date",0);
+    var annee = datetest.substr(0, 4);
+    var mois = datetest.substr(5, 2);
+    var jour = datetest.substr(8, 2);
+    // var jour = req.param("jour");
+    // var mois = req.param("mois");
+    // var annee = req.param("annee");
+    var mois1 = 'Janvier' ;
+    if(mois==01)
+    {
+      mois1= 'Janvier';
+    };
+    if(mois==02)
+    {
+      mois1= 'Fevrier';
+    };
+    if(mois==03)
+    {
+      mois1= 'Mars';
+    };
+    if(mois==04)
+    {
+      mois1= 'Avril';
+    };
+    if(mois==05)
+    {
+      mois1= 'Mai';
+    };
+    if(mois==06)
+    {
+      mois1= 'Juin';
+    };
+    if(mois==07)
+    {
+      mois1= 'Juillet';
+    };
+    if(mois==08)
+    {
+      mois1= 'Aout';
+    };
+    if(mois==09)
+    {
+      mois1= 'Septembre';
+    };
+    if(mois==10)
+    {
+      mois1= 'Octobre';
+    };
+    if(mois==11)
+    {
+      mois1= 'Novembre';
+    };
+    if(mois==12)
+    {
+      mois1= 'Decembre';
+    };
+    console.log(mois1);
+    var date_export = jour + '/' + mois + '/' +annee;
+    console.log("RECHERCHE COLONNE");
+    async.series([
+      function (callback) {
+        ReportingIndu.countOkKoIndu2("indurelevedecomptealmerys",callback);
+      },
+      function (callback) {
+        ReportingIndu.countOkKoIndu2("indurelevedecomptecbtp",callback);
+      },
+    ],function(err,result){
+      if(err) return res.badRequest(err);
+      console.log("Count OK 0==> " + result[0].ok + " / " + result[0].ko);
+      console.log("Count OK 1==> " + result[1].ok + " / " + result[1].ko);
+      async.series([
+        function (callback) {
+          ReportingIndu.ecritureOkKoIndu2(result[0],"indurelevedecomptealmerys",date_export,mois1,callback);
+        },
+        function (callback) {
+          ReportingIndu.ecritureOkKoIndu2cbtp(result[1],"indurelevedecomptecbtp",date_export,mois1,callback);
+        },
+      ],function(err,resultExcel){
+     console.log(resultExcel[0]);
+          if(resultExcel[0]==true)
+          {
+            console.log("true zn");
+            res.view('reporting/erera');
+          }
+          if(resultExcel[0]=='OK')
+          {
+            // res.redirect('/exportRetour/'+date_export+'/x')
+            res.view('reporting/succes');
+          }
+
+
+          /*console.log("Traitement terminé ===> "+ resultExcel[0]);
+          console.log("Traitement terminé ===> "+ resultExcel[1]);
+          console.log("Traitement terminé ===> "+ resultExcel[2]);
+          console.log("Traitement terminé ===> "+ resultExcel[3]);
+          console.log("Traitement terminé ===> "+ resultExcel[4]);
+          var html = "Echec d'enregistrement";
+          return res.redirect('/accueil');*/
+          
+        
+        
+      })
+    })
+  },
 
 };
 

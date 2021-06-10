@@ -22,14 +22,31 @@ module.exports = {
     async.series([
       function (callback) {
         ReportingContetieux.query(sql, function(err, res){
-          if (err) return res.badRequest(err);
-          // callback(null, res.rows[0].ok);
-          console.log(res.rows[0].nb);
-          if(res.rows[0].nb != undefined){
-            callback(null, res.rows[0].nb);
+          // if (err) return res.badRequest(err);
+          // // callback(null, res.rows[0].ok);
+          // console.log(res.rows[0].nb);
+          // if(res.rows[0].nb != undefined){
+          //   callback(null, res.rows[0].nb);
+          // }
+          // else{
+          //   return res.rows[0].nb = 0;
+          // }
+          if (err) {
+            console.log(err);
+            //return null;
           }
-          else{
-            return res.rows[0].nb = 0;
+          else
+          {
+            if(res.rows[0])
+            {
+              console.log('ok');
+              callback(null, res.rows[0].nb);
+            }
+            else
+            {
+              console.log("null");
+              callback(null, 0);
+            }
           }
           
         });
@@ -65,14 +82,31 @@ module.exports = {
     async.series([
       function (callback) {
         Retour.query(sql, function(err, res){
-          if (err) return res.badRequest(err);
-          // callback(null, res.rows[0].ok);
-          console.log(res.rows[0].sum);
-          if(res.rows[0].sum != undefined){
-            callback(null, res.rows[0].sum);
+          // if (err) return res.badRequest(err);
+          // // callback(null, res.rows[0].ok);
+          // console.log(res.rows[0].sum);
+          // if(res.rows[0].sum != undefined){
+          //   callback(null, res.rows[0].sum);
+          // }
+          // else{
+          //   return res.rows[0].sum = 0;
+          // }
+          if (err) {
+            console.log(err);
+            //return null;
           }
-          else{
-            return res.rows[0].sum = 0;
+          else
+          {
+            if(res.rows[0])
+            {
+              console.log('ok');
+              callback(null, res.rows[0].sum);
+            }
+            else
+            {
+              console.log("null");
+              callback(null, 0);
+            }
           }
           
         });
