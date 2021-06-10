@@ -1,3 +1,5 @@
+const { error } = require('toastr');
+
 /**
  * ReportingInovcom.js
  *
@@ -6,6 +8,66 @@
  */
  module.exports = {
   attributes: {},
+  insert2ko : function (table,nb,callback) {
+    //var nbr = parseInt(nb);
+    var sql = "insert into indufactstc VALUES (0, 0); ";
+    ReportingInovcom.getDatastore().sendNativeQuery(sql, function(err, res){
+      if (err) { 
+        console.log(err);
+        //return callback(err);
+       }
+      else
+      {
+        console.log(sql);
+        return callback(null, true);
+      };
+      });
+  },
+  insert2 : function (table,nb,callback) {
+    var nbr = parseInt(nb);
+    var sql = "insert into "+table[nbr]+" VALUES (0, 0); ";
+    ReportingInovcom.getDatastore().sendNativeQuery(sql, function(err, res){
+      if (err) { 
+        console.log("Une erreur supprooo?");
+        return callback(err);
+       }
+      else
+      {
+        console.log(sql);
+        return callback(null, true);
+      };
+      });
+  },
+  insert2text : function (table,nb,callback) {
+    var nbr = parseInt(nb);
+    var sql = "insert into "+table[nbr]+" VALUES ('0', '0'); ";
+    ReportingInovcom.getDatastore().sendNativeQuery(sql, function(err, res){
+      if (err) { 
+        console.log("Une erreur insert?");
+        //return callback(err);
+       }
+      else
+      {
+        console.log(sql);
+        return callback(null, true);
+      };
+      });
+  },
+  insert3text : function (table,nb,callback) {
+    var nbr = parseInt(nb);
+    var sql = "insert into ribtpmep VALUES ('0', '0', '0'); ";
+    ReportingInovcom.getDatastore().sendNativeQuery(sql, function(err, res){
+      if (err) { 
+        console.log("Une erreur supprooo?");
+        return callback(err);
+       }
+      else
+      {
+        console.log(sql);
+        return callback(null, true);
+      };
+      });
+  },
   importTrameFlux929type2 : function (trameflux,feuil,cellule,table,cellule2,nb,numligne,callback) {
     if(trameflux[nb]==undefined)
     {
@@ -14,7 +76,7 @@
       Reportinghtp.getDatastore().sendNativeQuery(sql, function(err,res){
         if (err) { 
           console.log("Une erreur ve ok?");
-          return callback(err);
+          //return callback(err);
          }
         else
         {
@@ -32,7 +94,7 @@
       ReportingInovcom.getDatastore().sendNativeQuery(sql, function(err,res){
         if (err) { 
           console.log("Une erreur ve ok?");
-          return callback(err);
+          //return callback(err);
          }
         else
         {
@@ -51,7 +113,7 @@
       var nbr = 0;
       const sheet = workbook.Sheets[workbook.SheetNames[numerofeuille]];
       var range = XLSX.utils.decode_range(sheet['!ref']);
-      var col = 0;
+      var col=0;
       var nbe = parseInt(nb);
       if(col!=undefined)
       {
@@ -68,15 +130,16 @@
             }
           };
          
-          var tab = [nbr];
-          return tab;
-          console.log("nombreeeeebr"+ nbr);
+          
+         
       }
       else
       {
         console.log('Colonne non trouvé');
       }
-      
+      var tab = [nbr];
+          console.log("nombreeeeebr"+ nbr);
+          return tab;
     }
     catch
     {
@@ -95,7 +158,7 @@
     var nbrtsisy = 0;
     const sheet = workbook.Sheets[workbook.SheetNames[numerofeuille]];
     var range = XLSX.utils.decode_range(sheet['!ref']);
-    var col = 0;
+    var col ;
     var nbe = parseInt(nb);
     for(var ra=0;ra<=range.e.c;ra++)
       {
@@ -170,7 +233,7 @@
     var nbrtsisy = 0;
     const sheet = workbook.Sheets[workbook.SheetNames[numerofeuille]];
     var range = XLSX.utils.decode_range(sheet['!ref']);
-    var col = 0;
+    var col ;
     //var col = 16;
     var nbe = parseInt(nb);
     for(var ra=0;ra<=range.e.c;ra++)
@@ -233,7 +296,7 @@
     var nbrtsisy = 0;
     const sheet = workbook.Sheets[workbook.SheetNames[numerofeuille]];
     var range = XLSX.utils.decode_range(sheet['!ref']);
-    var col = 0;
+    var col ;
     //var col = 16;
     var nbe = parseInt(nb);
     for(var ra=0;ra<=range.e.c;ra++)
@@ -326,7 +389,7 @@ importTrameFlux929type4 : function (trameflux,feuil,cellule,table,cellule2,nb,nu
       Reportinghtp.getDatastore().sendNativeQuery(sql, function(err,res){
         if (err) { 
           console.log("Une erreur ve ok?");
-          return callback(err);
+          //return callback(err);
          }
         else
         {
@@ -344,7 +407,7 @@ importTrameFlux929type4 : function (trameflux,feuil,cellule,table,cellule2,nb,nu
     ReportingInovcom.getDatastore().sendNativeQuery(sql, function(err,res){
       if (err) { 
         console.log("Une erreur ve ok?");
-        return callback(err);
+        //return callback(err);
        }
       else
       {
@@ -365,7 +428,7 @@ lectureEtInsertiontype4:function(trameflux,feuil,cellule,table,cellule2,nb,numli
     var nbrtsisy = 0;
     const sheet = workbook.Sheets[workbook.SheetNames[numerofeuille]];
     var range = XLSX.utils.decode_range(sheet['!ref']);
-    var col = 0;
+    var col ;
     //var col = 16;
     var nbe = parseInt(nb);
     for(var ra=0;ra<=range.e.c;ra++)
@@ -409,16 +472,16 @@ lectureEtInsertiontype4:function(trameflux,feuil,cellule,table,cellule2,nb,numli
                       if(err) return console.log(err);
                       else return callback(null, true);        
                                           });*/
-        console.log("nombreeeeebr"+ nbr);
-        var tab = [nbr,nbrko];
-        return tab;
-
+        
     }
     else
     {
       console.log('Colonne non trouvé');
     }
-    
+    console.log("nombreeeeebr"+ nbr);
+        var tab = [nbr,nbrko];
+        return tab;
+
   }
   catch
   {
@@ -452,7 +515,7 @@ lectureEtInsertiontype4:function(trameflux,feuil,cellule,table,cellule2,nb,numli
         var cell_ref = XLSX.utils.encode_cell(address_of_cell);
         var desired_cell = sheet[cell_ref];
         var desired_value = (desired_cell ? desired_cell.v : undefined);
-        if(desired_value==cellule[0] || desired_value=='COMMENTAIRE')
+        if(desired_value==cellule[0])
         {
           col=ra;
         }
@@ -460,21 +523,6 @@ lectureEtInsertiontype4:function(trameflux,feuil,cellule,table,cellule2,nb,numli
       console.log('colonne cible' +col);
       var tab = [];
       var tabl = [];
-      //console.log('table1' + tab);
-      /*var col2;
-      for(var ra=0;ra<=range.e.c;ra++)
-        {
-          var address_of_cell = {c:ra, r:numeroligne};
-          var cell_ref = XLSX.utils.encode_cell(address_of_cell);
-          var desired_cell = sheet[cell_ref];
-          var desired_value = (desired_cell ? desired_cell.v : undefined);
-          //console.log(desired_cell.v);
-          if(desired_value==cellule2[0])
-          {
-            col2=ra;
-          }
-        };
-      console.log('colonne cible2' +col2);*/
       if(col!=undefined)
       {
         for(var a=0;a<=range.e.r;a++)
@@ -563,7 +611,7 @@ lectureEtInsertiontype4:function(trameflux,feuil,cellule,table,cellule2,nb,numli
             }
             else
             {
-              console.log('non trouvé');
+              var amp = 8;
             }
           };
       }
@@ -696,7 +744,7 @@ lectureEtInsertiontype4:function(trameflux,feuil,cellule,table,cellule2,nb,numli
             var sql = "insert into retourcmuc (typologiedelademande,okko) values ('"+ok+"','"+ko+"') ";
                     ReportingInovcom.getDatastore().sendNativeQuery(sql, function(err,res){
                       if (err) { 
-                        console.log("Une erreur ve fav?");
+                        console.log("Une erreur ve retourcmuc?");
                         //return callback(err);
                        }
                       else
@@ -1032,84 +1080,120 @@ lectureEtInsertiontype4:function(trameflux,feuil,cellule,table,cellule2,nb,numli
   deletealmerys : function (table,callback) {
     var sql = "delete from retouravisannulationcbtp ";
     ReportingInovcom.getDatastore().sendNativeQuery(sql, function(err, res){
-      if (err) { return callback(err); }
+      if (err) { 
+        //return callback(err); 
+        console.log('une erreur de suppression');
+      }
       return callback(null, true);
       });
   },
   deletecbtp : function (table,callback) {
     var sql = "delete from retouravisannulationtramealmerys ";
     ReportingInovcom.getDatastore().sendNativeQuery(sql, function(err, res){
-      if (err) { return callback(err); }
+      if (err) { 
+        //return callback(err); 
+        console.log('une erreur de suppression');
+      }
       return callback(null, true);
       });
   },
  deleteFromChemin : function (table,callback) {
       var sql = "delete from "+table+" ";
       ReportingInovcom.getDatastore().sendNativeQuery(sql, function(err, res){
-        if (err) { return callback(err); }
+        if (err) { 
+          console.log('une erreur de suppression');
+          //return callback(err); 
+        }
         return callback(null, true);
         });
     },
     deleteFromChemin2 : function (table,callback) {
       var sql = "delete from chemininovcomtype2 ";
       ReportingInovcom.getDatastore().sendNativeQuery(sql, function(err, res){
-        if (err) { return callback(err); }
+        if (err) {
+           //return callback(err); 
+           console.log('une erreur de suppression');
+          }
         return callback(null, true);
         });
     },
     deleteFromChemin3 : function (table,callback) {
       var sql = "delete from chemininovcomtype3 ";
       ReportingInovcom.getDatastore().sendNativeQuery(sql, function(err, res){
-        if (err) { return callback(err); }
+        if (err) { 
+          //return callback(err); 
+          console.log('une erreur de suppression');
+        }
         return callback(null, true);
         });
     },
     deleteFromChemin4 : function (table,callback) {
       var sql = "delete from chemininovcomtype4";
       ReportingInovcom.getDatastore().sendNativeQuery(sql, function(err, res){
-        if (err) { return callback(err); }
+        if (err) {
+          // return callback(err); 
+          console.log('une erreur de suppression');
+        }
         return callback(null, true);
         });
     },
     deleteFromChemin5 : function (table,callback) {
       var sql = "delete from chemininovcomtype5 ";
       ReportingInovcom.getDatastore().sendNativeQuery(sql, function(err, res){
-        if (err) { return callback(err); }
+        if (err) { 
+          console.log('une erreur de suppression');
+          //return callback(err); 
+        }
         return callback(null, true);
         });
     },
     deleteFromChemin6 : function (table,callback) {
       var sql = "delete from chemininovcomtype6 ";
       ReportingInovcom.getDatastore().sendNativeQuery(sql, function(err, res){
-        if (err) { return callback(err); }
+        if (err) { 
+          //return callback(err); 
+          console.log('une erreur de suppression');
+        }
         return callback(null, true);
         });
     },
     deleteFromChemin7 : function (table,callback) {
       var sql = "delete from chemininovcomtype7 ";
       ReportingInovcom.getDatastore().sendNativeQuery(sql, function(err, res){
-        if (err) { return callback(err); }
+        if (err) { 
+          //return callback(err); 
+          console.log('une erreur de suppression');
+        }
         return callback(null, true);
         });
     },
     deleteFromChemin8 : function (table,callback) {
       var sql = "delete from chemininovcomtype8 ";
       ReportingInovcom.getDatastore().sendNativeQuery(sql, function(err, res){
-        if (err) { return callback(err); }
+        if (err) { 
+          //return callback(err); 
+          console.log('une erreur de suppression');
+        }
         return callback(null, true);
         });
     },
     deleteFromChemin9 : function (table,callback) {
       var sql = "delete from chemininovcomtype9 ";
       ReportingInovcom.getDatastore().sendNativeQuery(sql, function(err, res){
-        if (err) { return callback(err); }
+        if (err) { 
+          //return callback(err); 
+          console.log('une erreur de suppression');
+        }
         return callback(null, true);
         });
     },
     deletetype9 : function (table,callback) {
       var sql = "delete from recherchefactureinteriale ";
       ReportingInovcom.getDatastore().sendNativeQuery(sql, function(err, res){
-        if (err) { return callback(err); }
+        if (err) { 
+          //return callback(err); 
+          console.log('une erreur de suppression');
+        }
         return callback(null, true);
         });
     },
@@ -1455,13 +1539,11 @@ lectureEtInsertiontype4:function(trameflux,feuil,cellule,table,cellule2,nb,numli
               re = file;
               console.log(re);  
            } 
-         
-          
        });
        var sql = "insert into chemininovcomtype5 (typologiedelademande) values ('"+re+"') ";
        ReportingInovcom.getDatastore().sendNativeQuery(sql, function(err,res){
         if (err) { 
-          console.log("Une erreur ve? import 1");
+          console.log(err);
           //return callback(err);
          }
         else
@@ -1922,8 +2004,6 @@ importEssaitype8: function (table,table2,date,option,nb,type,type2,nomtable,numl
     },
     delete : function (table,nb,callback) {
       var nbr = parseInt(nb);
-      console.log('tonga ato v' + nb);
-      console.log('ehe' + table[nb]);
       var sql = "delete from "+table[nbr]+" ";
       ReportingInovcom.getDatastore().sendNativeQuery(sql, function(err, res){
         if (err) { 

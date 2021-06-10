@@ -226,7 +226,7 @@ module.exports = {
                       };     
                                           });
       }
-      else if(table[nbe]=="indudentaire" || table[nbe]=="induoptique" || table[nbe]=="induaudio" ||table[nbe]=="induhospi" ||table[nbe]=="induse")
+      else if(table[nbe]=="indudentaire" || table[nbe]=="induoptique" || table[nbe]=="induaudio" ||table[nbe]=="induhospi" ||table[nbe]=="induse" ||table[nbe]=="indutiers")
       {
         console.log('type2');
         tab = ReportingIndu.lectureEtInsertion4(trameflux,feuil,cellule,table,cellule2,nb,numligne,callback);
@@ -235,7 +235,8 @@ module.exports = {
                    ReportingInovcom.getDatastore().sendNativeQuery(sql, function(err,res){
                       if (err) { 
                         console.log("Une erreur ve insertion?");
-                        return callback(err);
+                        console.log(err);
+                        //return callback(err);
                        }
                       else
                       {
@@ -253,7 +254,7 @@ module.exports = {
                    ReportingInovcom.getDatastore().sendNativeQuery(sql, function(err,res){
                       if (err) { 
                         console.log("Une erreur ve insertion?");
-                        return callback(err);
+                        //return callback(err);
                        }
                       else
                       {
@@ -314,6 +315,7 @@ module.exports = {
                      ReportingInovcom.getDatastore().sendNativeQuery(sql, function(err,res){
                         if (err) { 
                           console.log("Une erreur ve insertion?");
+                          console.log(err);
                           //return callback(err);
                          }
                         else
@@ -394,7 +396,7 @@ module.exports = {
       Reportinghtp.getDatastore().sendNativeQuery(sql, function(err,res){
         if (err) { 
           console.log("Une erreur ve ok?");
-          return callback(err);
+          //return callback(err);
          }
          
         else
@@ -417,7 +419,7 @@ module.exports = {
                    ReportingInovcom.getDatastore().sendNativeQuery(sql, function(err,res){
                       if (err) { 
                         console.log("Une erreur ve insertion?");
-                        return callback(err);
+                        //return callback(err);
                        }
                       else
                       {
@@ -454,7 +456,7 @@ module.exports = {
     var nbrtsisy = 0;
     const sheet = workbook.Sheets[workbook.SheetNames[numerofeuille]];
     var range = XLSX.utils.decode_range(sheet['!ref']);
-    var col = 0;
+    var col;
     var nbe = parseInt(nb);
    if(col!=undefined)
     {
@@ -485,15 +487,16 @@ module.exports = {
             var an = 1;
           };
         };
-        console.log("nombreeeeebr"+ nbr + 'et' + nbrko );
-        var tab = [nbr,nbrko];
-        return tab;
+        
           
     }
     else
     {
       console.log('Colonne non trouvé');
     };
+    console.log("nombreeeeebr"+ nbr + 'et' + nbrko );
+        var tab = [nbr,nbrko];
+        return tab;
     
   }
   catch
@@ -514,19 +517,7 @@ module.exports = {
     const sheet = workbook.Sheets[workbook.SheetNames[numerofeuille]];
     var range = XLSX.utils.decode_range(sheet['!ref']);
     var col = 6;
-    //var col = 16;
     var nbe = parseInt(nb);
-    /*for(var ra=0;ra<=range.e.c;ra++)
-      {
-        var address_of_cell = {c:ra, r:numeroligne};
-        var cell_ref = XLSX.utils.encode_cell(address_of_cell);
-        var desired_cell = sheet[cell_ref];
-        var desired_value = (desired_cell ? desired_cell.v : undefined);
-        if(desired_value==cellule[nb])
-        {
-          col=ra;
-        };
-      };*/
       console.log("colonne"+col);
    if(col!=undefined )
     {
@@ -583,7 +574,7 @@ module.exports = {
     var nbrtsisy = 0;
     const sheet = workbook.Sheets[workbook.SheetNames[numerofeuille]];
     var range = XLSX.utils.decode_range(sheet['!ref']);
-    var col = 0;
+    var col;
     //var col = 16;
     var nbe = parseInt(nb);
     for(var ra=0;ra<=range.e.c;ra++)
@@ -642,7 +633,7 @@ module.exports = {
     var nbrtsisy = 0;
     const sheet = workbook.Sheets[workbook.SheetNames[numerofeuille]];
     var range = XLSX.utils.decode_range(sheet['!ref']);
-    var col = 0;
+    var col;
     //var col = 16;
     var nbe = parseInt(nb);
     for(var ra=0;ra<=range.e.c;ra++)
@@ -712,7 +703,7 @@ module.exports = {
     var nbrtsisy = 0;
     const sheet = workbook.Sheets[workbook.SheetNames[numerofeuille]];
     var range = XLSX.utils.decode_range(sheet['!ref']);
-    var col = 0;
+    var col;
     //var col = 16;
     var nbe = parseInt(nb);
     for(var ra=0;ra<=range.e.c;ra++)
@@ -775,7 +766,7 @@ module.exports = {
     var nbrtsisy = 0;
     const sheet = workbook.Sheets[workbook.SheetNames[numerofeuille]];
     var range = XLSX.utils.decode_range(sheet['!ref']);
-    var col = 0;
+    var col;
     //var col = 16;
     var nbe = parseInt(nb);
     for(var ra=0;ra<=range.e.c;ra++)
@@ -838,7 +829,7 @@ module.exports = {
     var nbrtsisy = 0;
     const sheet = workbook.Sheets[workbook.SheetNames[numerofeuille]];
     var range = XLSX.utils.decode_range(sheet['!ref']);
-    var col = 0;
+    var col;
     //var col = 16;
     var nbe = parseInt(nb);
     for(var ra=0;ra<=range.e.c;ra++)
@@ -913,7 +904,7 @@ module.exports = {
     var nbrtsisy = 0;
     const sheet = workbook.Sheets[workbook.SheetNames[numerofeuille]];
     var range = XLSX.utils.decode_range(sheet['!ref']);
-    var col = 0;
+    var col;
     //var col = 16;
     var nbe = parseInt(nb);
     for(var ra=0;ra<=range.e.c;ra++)
@@ -937,7 +928,6 @@ module.exports = {
           var cell_ref = XLSX.utils.encode_cell(address_of_cell);
           var desired_cell = sheet[cell_ref];
           var desired_value1 = (desired_cell ? desired_cell.v : undefined);
-
           //console.log(desired_value1);
           if(desired_value1!=undefined)
           {
@@ -980,7 +970,7 @@ module.exports = {
     var nbrtsisy = 0;
     const sheet = workbook.Sheets[workbook.SheetNames[numerofeuille]];
     var range = XLSX.utils.decode_range(sheet['!ref']);
-    var col = 0;
+    var col;
     //var col = 16;
     var nbe = parseInt(nb);
     for(var ra=0;ra<=range.e.c;ra++)
@@ -1008,10 +998,14 @@ module.exports = {
           var address_of_cell2 = {c:13, r:a};
           var cell_ref2 = XLSX.utils.encode_cell(address_of_cell2);
           var desired_cell2 = sheet[cell_ref2];
-          var desired_value2 = (desired_cell2 ? desired_cell2.w : undefined);
+          var desired_value2 = (desired_cell2 ? desired_cell2.v : undefined);
           if(desired_value1==date2 && (desired_value2=="OUI" || desired_value2=='oui'))
           {
             nbr=nbr + 1;
+          }
+          else if(desired_value1==date2 && (desired_value2=="NON" || desired_value2=='non'))
+          {
+            nbrko=nbrko + 1;
           }
           else
           {
@@ -1050,7 +1044,7 @@ module.exports = {
     var nbrtsisy = 0;
     const sheet = workbook.Sheets[workbook.SheetNames[numerofeuille]];
     var range = XLSX.utils.decode_range(sheet['!ref']);
-    var col = 0;
+    var col;
     //var col = 16;
     var nbe = parseInt(nb);
     for(var ra=0;ra<=range.e.c;ra++)
@@ -1112,7 +1106,10 @@ module.exports = {
 deleteFromChemin : function (table,callback) {
       var sql = "delete from chemininovcom ";
       ReportingIndu.getDatastore().sendNativeQuery(sql, function(err, res){
-        if (err) { return callback(err); }
+        if (err) { //
+          //return callback(err); 
+          console.log("erreur de suppression");
+        }
         return callback(null, true);
         });
     },
@@ -1173,7 +1170,10 @@ deleteFromChemin : function (table,callback) {
     deleteToutHtp : function (table,nb,callback) {
       var sql = "delete from "+table+" ";
       ReportingIndu.getDatastore().sendNativeQuery(sql, function(err, res){
-        if (err) { return callback(err); }
+        if (err) { 
+          //return callback(err);
+          console.log("erreur de suppression");
+         }
         return callback(null, true);
         });
     },

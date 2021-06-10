@@ -81,8 +81,6 @@ module.exports.routes = {
      '/accueilInovcomtype9' : 'ReportingInovcomController.accueil1type9',
      '/essaiInovcomtype9' : 'ReportingInovcomController.Essaiitype9',
      '/reportinginovcomtype8' : 'ReportingInovcomController.essaiExceltype8',
-   
-
   '/reportinginovcomtype2' : 'ReportingInovcomController.essaiExceltype2',
   //Route INOVCOM Export
   // '/exportInovcom/:jour/:mois/:annee/:html' : 'ReportingInovcomExportController.accueil',
@@ -146,8 +144,11 @@ module.exports.routes = {
   //  '/exportRetour/:jour/:mois/:annee/:html' : 'ReportingInovcomExportController.accueil',
   //  '/exportReportingIndu:jour/:mois/:annee' : 'ReportingInovcomExportController.rechercheColonne',
    //ajout routes pour RETOUR
-   '/exportExcelRetour' : 'ReportingRetourController.rechercheColonne',//5
-   '/exportExcel' : 'ReportingRetourController.accueilR',//4
+   '/exportExcelRetour' : 'ReportingRetourController.rechercheColonne',
+   '/exportExcelRet' : 'ReportingRetourController.accueilR',
+
+   //'/exportExcelRetour' : 'RetourController.rechercheColonne',//5
+  // '/exportExcel' : 'ReportingRetourController.accueilR',//4
 
  
      //Route CONTENTIEUX

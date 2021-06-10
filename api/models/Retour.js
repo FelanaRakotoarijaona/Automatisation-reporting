@@ -4,8 +4,9 @@
  * @description :: A model definition represents a database table/collection.
  * @docs        :: https://sailsjs.com/docs/concepts/models-and-orm/models
  */
-const path_reporting = 'D:/LDR8_1421_nouv/PROJET_FELANA/REPORTING RETOUR Type.xlsx';
-module.exports = {
+ const path_reporting = 'D:/Reporting/Reporting/Nouveau dossier/REPORTING RETOUR Type.xlsx';
+ module.exports = {
+   
   attributes: {
   },
   // Récuperer nombre OK ou KO
@@ -13,24 +14,32 @@ module.exports = {
     const Excel = require('exceljs');
     // var sqlOk ="select count(okko) as ok from "+table+" where okko='OK'"; //trameFlux
     // var sqlKo ="select count(okko) as ko from "+table+" where okko='KO'";
-    var sql ="select * from "+table; 
+    var sql ="select * from "+table ; 
    
     console.log(sql);
     // console.log(sqlOk);
     // console.log(sqlKo);
     async.series([
       function (callback) {
-        Retour.query(sql, function(err, res){
-          if (err) return res.badRequest(err);
-          // callback(null, res.rows[0].ok);
-          console.log(res.rows[0].nb);
-          if(res.rows[0].nb != undefined){
-            callback(null, res.rows[0].nb);
+        Retour.query(sql, function(err, res){          
+          if (err) {
+            console.log(err);
+            //return null;
           }
-          else{
-            return res.rows[0].nb = 0;
+          else
+          {
+            if(res.rows[0])
+            {
+              console.log('ok');
+              callback(null, res.rows[0].nb);
+            }
+            else
+            {
+              console.log("null");
+              callback(null, 0);
+            }
           }
-          
+                   
         });
       },
       // function (callback) {
@@ -54,34 +63,39 @@ module.exports = {
   },
   countOkKoSum : function (table, callback) {
     const Excel = require('exceljs');
-    // var sqlOk ="select count(okko) as ok from "+table+" where okko='OK'"; //trameFlux
-    // var sqlKo ="select count(okko) as ko from "+table+" where okko='KO'";
     var sql ="select sum(nb::integer) from "+table; 
    
     console.log(sql);
-    // console.log(sqlOk);
-    // console.log(sqlKo);
     async.series([
       function (callback) {
         Retour.query(sql, function(err, res){
-          if (err) return res.badRequest(err);
-          // callback(null, res.rows[0].ok);
-          console.log(res.rows[0].sum);
-          if(res.rows[0].sum != undefined){
-            callback(null, res.rows[0].sum);
+          if (err) {
+            console.log(err);
           }
-          else{
-            return res.rows[0].sum = 0;
+          else
+          {
+            if(res.rows[0])
+            {
+              console.log('ok');
+              if(res.rows[0].sum==null)
+              {
+                callback(null, 0);
+              }
+              else
+              {
+                callback(null, res.rows[0].sum);
+              }
+              
+            }
+            else
+            {
+              console.log("null");
+              callback(null, 0);
+            }
           }
           
         });
       },
-      // function (callback) {
-      //   Retour.query(sqlKo, function(err, resKo){
-      //     if (err) return res.badRequest(err);
-      //     callback(null, resKo.rows[0].ko);
-      //   });
-      // },
     ],function(err,result){
       if(err) return res.badRequest(err);
       console.log("Count OK ==> " + result[0]);
@@ -232,8 +246,6 @@ module.exports = {
     const newWorkbook = new Excel.Workbook();
     
     try{
-    
-     
       await newWorkbook.xlsx.readFile(path_reporting);
     const newworksheet = newWorkbook.getWorksheet(mois1);
     var colonneDate = newworksheet.getColumn('A');
@@ -758,172 +770,173 @@ module.exports = {
         Reportinghtp.deleteToutHtp(table,3,callback);
       }
       },
-    /***************************************************************/
-
-  getConfigIni : function() {
-    const fs = require('fs');
-    const ini = require('ini');
-    const config = ini.parse(fs.readFileSync('./config_excel_retour.ini', 'utf-8'));
-    console.log(config);
-    return config;
-  },
-
-  getIniValue : function(table) {
-    var iniValue = Retour.getConfigIni();
-    var numeroColonneOk,numeroColonneKo;
-    if(table == "trhospimulti"){
-      numeroColonneOk = iniValue.suivi_saisie_trhospimulti.ok;
-      numeroColonneKo = iniValue.suivi_saisie_trhospimulti.ko;
-    }
-    if(table == "trstcdentaire"){
-      numeroColonneOk = iniValue.suivi_saisie_trstcdentaire.ok;
-      numeroColonneKo = iniValue.suivi_saisie_trstcdentaire.ko;
-    }
-    if(table == "trstcoptique"){
-      numeroColonneOk = iniValue.suivi_saisie_trstcoptique.ok;
-      numeroColonneKo = iniValue.suivi_saisie_trstcoptique.ko;
-    }
-    if(table == "trstcaudio"){
-      numeroColonneOk = iniValue.suivi_saisie_trstcaudio.ok;
-      numeroColonneKo = iniValue.suivi_saisie_trstcaudio.ko;
-    }
-   if(table == "trretourfacttiers"){
-      numeroColonneOk = iniValue.suivi_saisie_trretourfacttiers.ok;
-      numeroColonneKo = iniValue.suivi_saisie_trretourfacttiers.ko;
-    }
-    // if(table == "retouralmgto2"){
-    //   numeroColonneOk = iniValue.suivi_saisie_retouralmgto2.ok;
-    //   numeroColonneKo = iniValue.suivi_saisie_retouralmgto2.ko;
-    // }
-    if(table == "trffacturehospi"){
-      numeroColonneOk = iniValue.suivi_saisie_trffacturehospi.ok;
-      numeroColonneKo = iniValue.suivi_saisie_trffacturehospi.ko;
-    }
-    if(table == "trffacturedentaire"){
-      numeroColonneOk = iniValue.suivi_saisie_trffacturedentaire.ok;
-      numeroColonneKo = iniValue.suivi_saisie_trffacturedentaire.ko;
-    }
-    if(table == "trfactureoptique"){
-      numeroColonneOk = iniValue.suivi_saisie_trfactureoptique.ok;
-      numeroColonneKo = iniValue.suivi_saisie_trfactureoptique.ko;
-    }
-    // if(table == "retouralmgto6"){
-    //   numeroColonneOk = iniValue.suivi_saisie_retouralmgto6.ok;
-    //   numeroColonneKo = iniValue.suivi_saisie_retouralmgto6.ko;
-    // }
-    if(table == "trhospi"){
-      numeroColonneOk = iniValue.suivi_saisie_trhospi.ok;
-      numeroColonneKo = iniValue.suivi_saisie_trhospi.ko;
-    }
-    if(table == "trtramepecdentaire"){
-      numeroColonneOk = iniValue.suivi_saisie_trtramepecdentaire.ok;
-      numeroColonneKo = iniValue.suivi_saisie_trtramepecdentaire.ko;
-    }
-    // if(table == "retouralmgto9"){
-    //   numeroColonneOk = iniValue.suivi_saisie_retouralmgto9.ok;
-    //   numeroColonneKo = iniValue.suivi_saisie_retouralmgto9.ko;
-    // }
-   if(table == "trpecaudio"){
-      numeroColonneOk = iniValue.suivi_saisie_trpecaudio.ok;
-      numeroColonneKo = iniValue.suivi_saisie_trpecaudio.ko;
-    }
-    if(table == "trldralmerys"){
-      numeroColonneOk = iniValue.suivi_saisie_trldralmerys.ok;
-      numeroColonneKo = iniValue.suivi_saisie_trldralmerys.ko;
-    }
-    // if(table == "retouralmftp1"){
-    //   numeroColonneOk = iniValue.suivi_saisie_retouralmftp1.ok;
-    //   numeroColonneKo = iniValue.suivi_saisie_retouralmftp1.ko;
-    // }
-    if(table == "trretourotdn2"){
-      numeroColonneOk = iniValue.suivi_saisie_trretourotdn2.ok;
-      numeroColonneKo = iniValue.suivi_saisie_trretourotdn2.ko;
-    }
-    if(table == "trtre"){
-      numeroColonneOk = iniValue.suivi_saisie_trtre.ok;
-      numeroColonneKo = iniValue.suivi_saisie_trtre.ko;
-    }
-    // if(table == "retouralmftp4"){
-    //   numeroColonneOk = iniValue.suivi_saisie_retouralmftp4.ok;
-    //   numeroColonneKo = iniValue.suivi_saisie_retouralmftp4.ko;
-    // }
-    // if(table == "retouralmpackspe1"){
-    //   numeroColonneOk = iniValue.suivi_saisie_retouralmpackspe1.ok;
-    //   numeroColonneKo = iniValue.suivi_saisie_retouralmpackspe1.ko;
-    // }
-    // if(table == "retouralmpackspe2"){
-    //   numeroColonneOk = iniValue.suivi_saisie_retouralmpackspe2.ok;
-    //   numeroColonneKo = iniValue.suivi_saisie_retouralmpackspe2.ko;
-    // }
-    // if(table == "retouralmpackspe3"){
-    //   numeroColonneOk = iniValue.suivi_saisie_retouralmpackspe3.ok;
-    //   numeroColonneKo = iniValue.suivi_saisie_retouralmpackspe3.ko;
-    // }
-    if(table == "trindunoehtp"){
-      numeroColonneOk = iniValue.suivi_saisie_trindunoehtp.ok;
-      numeroColonneKo = iniValue.suivi_saisie_trindunoehtp.ko;
-    }
-    // if(table == "retouralmcbtpgto"){
-    //   numeroColonneOk = iniValue.suivi_saisie_retouralmcbtpGTO.ok;
-    //   numeroColonneKo = iniValue.suivi_saisie_retouralmcbtpGTO.ko;
-    // }
-    // if(table == "retouretat1"){
-    //   numeroColonneOk = iniValue.suivi_saisie_retouretat1.ok;
-    //   numeroColonneKo = iniValue.suivi_saisie_retouretat1.ko;
-    // }
-    if(table == "trcentredesoin"){
-      numeroColonneOk = iniValue.suivi_saisie_trcentredesoin.ok;
-      numeroColonneKo = iniValue.suivi_saisie_trcentredesoin.ko;
-    }
-    // if(table == "retouretat3"){
-    //   numeroColonneOk = iniValue.suivi_saisie_retouretat3.ok;
-    //   numeroColonneKo = iniValue.suivi_saisie_retouretat3.ko;
-    // }
-    // if(table == "retouretat4"){
-    //   numeroColonneOk = iniValue.suivi_saisie_retouretat4.ok;
-    //   numeroColonneKo = iniValue.suivi_saisie_retouretat4.ko;
-    // }
-    // if(table == "retouretat5"){
-    //   numeroColonneOk = iniValue.suivi_saisie_retouretat5.ok;
-    //   numeroColonneKo = iniValue.suivi_saisie_retouretat5.ko;
-    // }
-    // if(table == "retourpublipostage1"){
-    //   numeroColonneOk = iniValue.suivi_saisie_retourpublipostage1.ok;
-    //   numeroColonneKo = iniValue.suivi_saisie_retourpublipostage1.ko;
-    // }
-    // if(table == "retourpublipostage2"){
-    //   numeroColonneOk = iniValue.suivi_saisie_retourpublipostage2.ok;
-    //   numeroColonneKo = iniValue.suivi_saisie_retourpublipostage2.ko;
-    // }
-    if(table == "trhospimulti"){
-      numeroColonneOk = iniValue.suivi_saisie_trhospimulti.ok;
-      numeroColonneKo = iniValue.suivi_saisie_trhospimulti.ko;
-    }
-    // if(table == "retourpublipostage4"){
-    //   numeroColonneOk = iniValue.suivi_saisie_retourpublipostage4.ok;
-    //   numeroColonneKo = iniValue.suivi_saisie_retourpublipostage4.ko;
-    // }
-    // if(table == "retourpublipostage5"){
-    //   numeroColonneOk = iniValue.suivi_saisie_retourpublipostage5.ok;
-    //   numeroColonneKo = iniValue.suivi_saisie_retourpublipostage5.ko;
-    // }
-    // if(table == "retourpublipostage6"){
-    //   numeroColonneOk = iniValue.suivi_saisie_retourpublipostage6.ok;
-    //   numeroColonneKo = iniValue.suivi_saisie_retourpublipostage6.ko;
-    // }
-   
-    var ok_ko = {};
-    ok_ko.ok = numeroColonneOk;
-    ok_ko.ko = numeroColonneKo;
-
-    console.log("INI OK = "+ok_ko.ok);
-    console.log("INI KO = "+ok_ko.ko);
-    return ok_ko;
-  },
-
-
-
-};
-
-
-
+     /***************************************************************/
+ 
+   getConfigIni : function() {
+     const fs = require('fs');
+     const ini = require('ini');
+     const config = ini.parse(fs.readFileSync('./config_excel_retour.ini', 'utf-8'));
+     //console.log(config);
+     return config;
+   },
+ 
+   getIniValue : function(table) {
+     var iniValue = Retour.getConfigIni();
+     var numeroColonneOk,numeroColonneKo;
+     if(table == "trhospimulti"){
+       numeroColonneOk = iniValue.suivi_saisie_trhospimulti.ok;
+       numeroColonneKo = iniValue.suivi_saisie_trhospimulti.ko;
+     }
+     if(table == "trstcdentaire"){
+       numeroColonneOk = iniValue.suivi_saisie_trstcdentaire.ok;
+       numeroColonneKo = iniValue.suivi_saisie_trstcdentaire.ko;
+     }
+     if(table == "trstcoptique"){
+       numeroColonneOk = iniValue.suivi_saisie_trstcoptique.ok;
+       numeroColonneKo = iniValue.suivi_saisie_trstcoptique.ko;
+     }
+     if(table == "trstcaudio"){
+       numeroColonneOk = iniValue.suivi_saisie_trstcaudio.ok;
+       numeroColonneKo = iniValue.suivi_saisie_trstcaudio.ko;
+     }
+    if(table == "trretourfacttiers"){
+       numeroColonneOk = iniValue.suivi_saisie_trretourfacttiers.ok;
+       numeroColonneKo = iniValue.suivi_saisie_trretourfacttiers.ko;
+     }
+     // if(table == "retouralmgto2"){
+     //   numeroColonneOk = iniValue.suivi_saisie_retouralmgto2.ok;
+     //   numeroColonneKo = iniValue.suivi_saisie_retouralmgto2.ko;
+     // }
+     if(table == "trffacturehospi"){
+       numeroColonneOk = iniValue.suivi_saisie_trffacturehospi.ok;
+       numeroColonneKo = iniValue.suivi_saisie_trffacturehospi.ko;
+     }
+     if(table == "trffacturedentaire"){
+       numeroColonneOk = iniValue.suivi_saisie_trffacturedentaire.ok;
+       numeroColonneKo = iniValue.suivi_saisie_trffacturedentaire.ko;
+     }
+     if(table == "trfactureoptique"){
+       numeroColonneOk = iniValue.suivi_saisie_trfactureoptique.ok;
+       numeroColonneKo = iniValue.suivi_saisie_trfactureoptique.ko;
+     }
+     // if(table == "retouralmgto6"){
+     //   numeroColonneOk = iniValue.suivi_saisie_retouralmgto6.ok;
+     //   numeroColonneKo = iniValue.suivi_saisie_retouralmgto6.ko;
+     // }
+     if(table == "trhospi"){
+       numeroColonneOk = iniValue.suivi_saisie_trhospi.ok;
+       numeroColonneKo = iniValue.suivi_saisie_trhospi.ko;
+     }
+     if(table == "trtramepecdentaire"){
+       numeroColonneOk = iniValue.suivi_saisie_trtramepecdentaire.ok;
+       numeroColonneKo = iniValue.suivi_saisie_trtramepecdentaire.ko;
+     }
+     // if(table == "retouralmgto9"){
+     //   numeroColonneOk = iniValue.suivi_saisie_retouralmgto9.ok;
+     //   numeroColonneKo = iniValue.suivi_saisie_retouralmgto9.ko;
+     // }
+    if(table == "trpecaudio"){
+       numeroColonneOk = iniValue.suivi_saisie_trpecaudio.ok;
+       numeroColonneKo = iniValue.suivi_saisie_trpecaudio.ko;
+     }
+     if(table == "trldralmerys"){
+       numeroColonneOk = iniValue.suivi_saisie_trldralmerys.ok;
+       numeroColonneKo = iniValue.suivi_saisie_trldralmerys.ko;
+     }
+     // if(table == "retouralmftp1"){
+     //   numeroColonneOk = iniValue.suivi_saisie_retouralmftp1.ok;
+     //   numeroColonneKo = iniValue.suivi_saisie_retouralmftp1.ko;
+     // }
+     if(table == "trretourotdn2"){
+       numeroColonneOk = iniValue.suivi_saisie_trretourotdn2.ok;
+       numeroColonneKo = iniValue.suivi_saisie_trretourotdn2.ko;
+     }
+     if(table == "trtre"){
+       numeroColonneOk = iniValue.suivi_saisie_trtre.ok;
+       numeroColonneKo = iniValue.suivi_saisie_trtre.ko;
+     }
+     // if(table == "retouralmftp4"){
+     //   numeroColonneOk = iniValue.suivi_saisie_retouralmftp4.ok;
+     //   numeroColonneKo = iniValue.suivi_saisie_retouralmftp4.ko;
+     // }
+     // if(table == "retouralmpackspe1"){
+     //   numeroColonneOk = iniValue.suivi_saisie_retouralmpackspe1.ok;
+     //   numeroColonneKo = iniValue.suivi_saisie_retouralmpackspe1.ko;
+     // }
+     // if(table == "retouralmpackspe2"){
+     //   numeroColonneOk = iniValue.suivi_saisie_retouralmpackspe2.ok;
+     //   numeroColonneKo = iniValue.suivi_saisie_retouralmpackspe2.ko;
+     // }
+     // if(table == "retouralmpackspe3"){
+     //   numeroColonneOk = iniValue.suivi_saisie_retouralmpackspe3.ok;
+     //   numeroColonneKo = iniValue.suivi_saisie_retouralmpackspe3.ko;
+     // }
+     if(table == "trindunoehtp"){
+       numeroColonneOk = iniValue.suivi_saisie_trindunoehtp.ok;
+       numeroColonneKo = iniValue.suivi_saisie_trindunoehtp.ko;
+     }
+     // if(table == "retouralmcbtpgto"){
+     //   numeroColonneOk = iniValue.suivi_saisie_retouralmcbtpGTO.ok;
+     //   numeroColonneKo = iniValue.suivi_saisie_retouralmcbtpGTO.ko;
+     // }
+     // if(table == "retouretat1"){
+     //   numeroColonneOk = iniValue.suivi_saisie_retouretat1.ok;
+     //   numeroColonneKo = iniValue.suivi_saisie_retouretat1.ko;
+     // }
+     if(table == "trcentredesoin"){
+       numeroColonneOk = iniValue.suivi_saisie_trcentredesoin.ok;
+       numeroColonneKo = iniValue.suivi_saisie_trcentredesoin.ko;
+     }
+     // if(table == "retouretat3"){
+     //   numeroColonneOk = iniValue.suivi_saisie_retouretat3.ok;
+     //   numeroColonneKo = iniValue.suivi_saisie_retouretat3.ko;
+     // }
+     // if(table == "retouretat4"){
+     //   numeroColonneOk = iniValue.suivi_saisie_retouretat4.ok;
+     //   numeroColonneKo = iniValue.suivi_saisie_retouretat4.ko;
+     // }
+     // if(table == "retouretat5"){
+     //   numeroColonneOk = iniValue.suivi_saisie_retouretat5.ok;
+     //   numeroColonneKo = iniValue.suivi_saisie_retouretat5.ko;
+     // }
+     // if(table == "retourpublipostage1"){
+     //   numeroColonneOk = iniValue.suivi_saisie_retourpublipostage1.ok;
+     //   numeroColonneKo = iniValue.suivi_saisie_retourpublipostage1.ko;
+     // }
+     // if(table == "retourpublipostage2"){
+     //   numeroColonneOk = iniValue.suivi_saisie_retourpublipostage2.ok;
+     //   numeroColonneKo = iniValue.suivi_saisie_retourpublipostage2.ko;
+     // }
+     if(table == "trhospimulti"){
+       numeroColonneOk = iniValue.suivi_saisie_trhospimulti.ok;
+       numeroColonneKo = iniValue.suivi_saisie_trhospimulti.ko;
+     }
+     // if(table == "retourpublipostage4"){
+     //   numeroColonneOk = iniValue.suivi_saisie_retourpublipostage4.ok;
+     //   numeroColonneKo = iniValue.suivi_saisie_retourpublipostage4.ko;
+     // }
+     // if(table == "retourpublipostage5"){
+     //   numeroColonneOk = iniValue.suivi_saisie_retourpublipostage5.ok;
+     //   numeroColonneKo = iniValue.suivi_saisie_retourpublipostage5.ko;
+     // }
+     // if(table == "retourpublipostage6"){
+     //   numeroColonneOk = iniValue.suivi_saisie_retourpublipostage6.ok;
+     //   numeroColonneKo = iniValue.suivi_saisie_retourpublipostage6.ko;
+     // }
+    
+     var ok_ko = {};
+     ok_ko.ok = numeroColonneOk;
+     ok_ko.ko = numeroColonneKo;
+ 
+     console.log("INI OK = "+ok_ko.ok);
+     console.log("INI KO = "+ok_ko.ko);
+     return ok_ko;
+   },
+ 
+ 
+ 
+ };
+ 
+ 
+ 
+ 

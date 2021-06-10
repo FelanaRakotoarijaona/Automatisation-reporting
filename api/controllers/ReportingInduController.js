@@ -30,7 +30,7 @@ module.exports = {
       //console.log(date);
       var cheminp = [];
       var MotCle= [];
-      var r = [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18];
+      var r = [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19];
       //var r = [0];
       var nomBase = "cheminindu";
       workbook.xlsx.readFile('ReportingIndu.xlsx')
@@ -99,15 +99,15 @@ module.exports = {
                          console.log('nc'+nc[0].ok);
                          var f = parseInt(nc[0].ok);
                             if (err){
-                              return res.view('reporting/erreur');
+                              return res.view('Indu/erreur');
                             }
                            if(f==0)
                             {
-                              return res.view('reporting/erreur');
+                              return res.view('Indu/erreur');
                             }
                             else
                             {
-                              return res.view('Inovcom/accueil', {date : datetest});
+                              return res.view('Indu/accueil', {date : datetest});
                               
                             };
                         });
@@ -282,10 +282,17 @@ module.exports = {
               });
              /* console.log(cheminp[0]);
               console.log(MotCle[0]);*/
+              var nomtables = ['indurelevedecomptealmerys','indurelevedecomptecbtp'];
               console.log(nomtable);
               async.series([ 
                    function(cb){
                       ReportingInovcom.deleteFromChemin(nomBase,cb);
+                    },
+                    function(cb){
+                      ReportingInovcom.delete(nomtables,0,cb);
+                    },
+                    function(cb){
+                      ReportingInovcom.delete(nomtables,1,cb);
                     },
               ],
               function(err, resultat){
@@ -294,9 +301,6 @@ module.exports = {
                 {
                   async.forEachSeries(r, function(lot, callback_reporting_suivant) {
                     async.series([
-                      function(cb){
-                        ReportingInovcom.delete(nomtable,lot,cb);
-                      },
                       function(cb){
                         ReportingIndu.importEssaitype7(table,cheminp,date,MotCle,lot,nomtable,numligne,numfeuille,nomcolonne,nomcolonne2,cb);
                       },
@@ -314,15 +318,15 @@ module.exports = {
                          console.log('nc'+nc[0].ok);
                          var f = parseInt(nc[0].ok);
                             if (err){
-                              return res.view('reporting/erreur');
+                              return res.view('Indu/erreur');
                             }
                            if(f==0)
                             {
-                              return res.view('reporting/erreur');
+                              return res.view('Indu/erreur');
                             }
                             else
                             {
-                              return res.view('Inovcom/accueil', {date : datetest});
+                              return res.view('Indu/accueil2', {date : datetest});
                               
                             };
                         });

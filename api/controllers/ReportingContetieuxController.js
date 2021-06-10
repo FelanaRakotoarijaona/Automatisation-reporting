@@ -89,15 +89,15 @@ module.exports = {
                          console.log('nc'+nc[0].ok);
                          var f = parseInt(nc[0].ok);
                             if (err){
-                              return res.view('reporting/erreur');
+                              return res.view('Contentieux/erreur');
                             }
                            if(f==0)
                             {
-                              return res.view('reporting/erreur');
+                              return res.view('Contentieux/erreur');
                             }
                             else
                             {
-                              return res.view('Inovcom/accueil', {date : datetest});
+                              return res.view('Contentieux/accueil', {date : datetest});
                               
                             };
                         });

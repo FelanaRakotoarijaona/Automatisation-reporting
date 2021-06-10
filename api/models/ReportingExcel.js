@@ -20,7 +20,18 @@ module.exports = {
       function (callback) {
         ReportingExcel.getDatastore().sendNativeQuery(sqlOk, function(err, res){
           if (err) return res.badRequest(err);
-          callback(null, res.rows[0].ok);
+          else
+          {
+            if(exist(res.rows[0].ok))
+            {
+              console.log('ok');
+            }
+            else
+            {
+              callback(null, res.rows[0].ok);
+            }
+          }
+         
         });
       },
       function (callback) {

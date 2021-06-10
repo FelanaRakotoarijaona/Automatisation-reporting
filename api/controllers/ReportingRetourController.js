@@ -119,6 +119,10 @@ module.exports = {
     },
     EssaiExcel : function(req,res)
     {
+      var datetest = req.param("date",0);
+      var annee = datetest.substr(0, 4);
+      var mois = datetest.substr(5, 2);
+      var jour = datetest.substr(8, 2);
       var sql1= 'select count(*) as nb from cheminretourvrai;';
       Reportinghtp.query(sql1,function(err, nc1) {
         if (err){
@@ -193,13 +197,318 @@ module.exports = {
                       function(err)
                       {
                         console.log('vofafa ddol');
-                        return res.view('Retour/exportExcel');
+                        return res.view('Retour/exportExcel', {date : datetest});
                       }); 
              }
              })
         }
     });
   },
+
+
+  /* EXPORT */
+
+   //AJOUT FONCTION RECHERCHECOLONNE POUR RETOUR
+   rechercheColonne : function (req, res) {
+    var datetest = req.param("date",0);
+    var annee = datetest.substr(0, 4);
+    var mois = datetest.substr(5, 2);
+    var jour = datetest.substr(8, 2);
+    // var jour = req.param("jour");
+    // var mois = req.param("mois");
+    // var annee = req.param("annee");
+    var mois1 = 'Janvier' ;
+    if(mois==01)
+    {
+      mois1= 'Janvier';
+    };
+    if(mois==02)
+    {
+      mois1= 'Fevrier';
+    };
+    if(mois==03)
+    {
+      mois1= 'Mars';
+    };
+    if(mois==04)
+    {
+      mois1= 'Avril';
+    };
+    if(mois==05)
+    {
+      mois1= 'Mai';
+    };
+    console.log(mois1);
+    var date_export = jour + '/' + mois + '/' +annee;
+    console.log("RECHERCHE COLONNE");
+    async.series([
+      function (callback) {
+        Retour.countOkKoSum("trhospimulti",callback);
+      },
+   function (callback) {
+        Retour.countOkKoSum("trstcdentaire",callback);
+      },
+      function (callback) {
+        Retour.countOkKoSum("trstcoptique",callback);
+      },
+      function (callback) {
+        Retour.countOkKoSum("trstcaudio",callback);
+      },
+     function (callback) {
+        Retour.countOkKoSum("trretourfacttiers",callback);
+      },
+      // function (callback) {
+      //   Retour.countOkKoSum("retouralmgto2",callback);
+      // },
+      function (callback) {
+        Retour.countOkKoSum("trffacturehospi",callback);
+      },
+      function (callback) {
+        Retour.countOkKoSum("trffacturedentaire",callback);
+      },
+      function (callback) {
+        Retour.countOkKoSum("trfactureoptique",callback);
+      },
+      // function (callback) {
+      //   Retour.countOkKoSum("retouralmgto6",callback);
+      // },
+      function (callback) {
+        Retour.countOkKoSum("trhospi",callback);
+      },
+      function (callback) {
+        Retour.countOkKoSum("trtramepecdentaire",callback);
+      },
+      // function (callback) {
+      //   Retour.countOkKoSum("retouralmgto9",callback);
+      // },
+      function (callback) {
+        Retour.countOkKoSum("trpecaudio",callback);
+      },
+      function (callback) {
+        Retour.countOkKoSum("trldralmerys",callback);
+      },
+    //  function (callback) {
+    //     Retour.countOkKoSum("retouralmftp1",callback);
+    //   },
+      function (callback) {
+        Retour.countOkKoSum("trretourotdn2",callback);
+      },
+      function (callback) {
+        Retour.countOkKoSum("trtre",callback);
+      },
+      // function (callback) {
+      //   Retour.countOkKoSum("retouralmftp4",callback);
+      // },
+      // function (callback) {
+      //   Retour.countOkKoSum("retouralmpackspe1",callback);
+      // },
+      // function (callback) {
+      //   Retour.countOkKoSum("retouralmpackspe2",callback);
+      // },
+      // function (callback) {
+      //   Retour.countOkKoSum("retouralmpackspe3",callback);
+      // },
+      function (callback) {
+        Retour.countOkKoSum("trindunoehtp",callback);
+      },
+      // function (callback) {
+      //   Retour.countOkKoSum("retouralmcbtpgto",callback);
+      // },
+      // function (callback) {
+      //   Retour.countOkKoSum("retouretat1",callback);
+      // },
+      function (callback) {
+        Retour.countOkKoSum("trcentredesoin",callback);
+      },
+      // function (callback) {
+      //   Retour.countOkKoSum("retouretat3",callback);
+      // },
+      // function (callback) {
+      //   Retour.countOkKoSum("retouretat4",callback);
+      // },
+      // function (callback) {
+      //   Retour.countOkKoSum("retouretat5",callback);
+      // },
+      // function (callback) {
+      //   Retour.countOkKoSum("retourpublipostage1",callback);
+      // },
+      // function (callback) {
+      //   Retour.countOkKoSum("retourpublipostage2",callback);
+      // },
+      function (callback) {
+        Retour.countOkKoSum("trhospimulti",callback);
+      },
+      // function (callback) {
+      //   Retour.countOkKoSum("retourpublipostage4",callback);
+      // },
+      // function (callback) {
+      //   Retour.countOkKoSum("retourpublipostage5",callback);
+      // },
+      // function (callback) {
+      //   Retour.countOkKoSum("retourpublipostage6",callback);
+      // },
+     
+    ],function(err,result){
+      if(err) return res.badRequest(err);
+      console.log("Count OK 1==> " + result[0].ok);
+      console.log("Count OK 2 ==> " + result[1].ok );
+      console.log("Count OK 3 ==> " + result[2].ok );
+      console.log("Count OK 4 ==> " + result[3].ok );
+      console.log("Count OK 1==> " + result[4].ok);
+      console.log("Count OK 2 ==> " + result[5].ok );
+      console.log("Count OK 3 ==> " + result[6].ok );
+      console.log("Count OK 4 ==> " + result[7].ok );
+      console.log("Count OK 1==> " + result[8].ok);
+      console.log("Count OK 2 ==> " + result[9].ok );
+      console.log("Count OK 3 ==> " + result[10].ok );
+      console.log("Count OK 4 ==> " + result[11].ok );
+      console.log("Count OK 1==> " + result[12].ok);
+      console.log("Count OK 2 ==> " + result[13].ok );
+      console.log("Count OK 3 ==> " + result[14].ok );
+      console.log("Count OK 4 ==> " + result[15].ok );
+      console.log("Count OK 4 ==> " + result[16].ok );
+      // console.log("Count OK tramelamiestock ==> " + result[4].ok + " / " + result[4].ko);
+      // console.log("Count OK tramelamiestockResiliation ==> " + result[5].ok + " / " + result[5].ko);
+      async.series([
+        function (callback) {
+          Retour.ecritureOkKo(result[0],"trhospimulti",date_export,mois1,callback);
+        },
+       function (callback) {
+          Retour.ecritureOkKo2(result[1],"trstcdentaire",date_export,mois1,callback);
+        },
+        function (callback) {
+          Retour.ecritureOkKo2(result[2],"trstcoptique",date_export,mois1,callback);
+        },
+        function (callback) {
+          Retour.ecritureOkKo2(result[3],"trstcaudio",date_export,mois1,callback);
+        },
+      function (callback) {
+          Retour.ecritureOkKo3(result[4],"trretourfacttiers",date_export,mois1,callback);
+        },
+        // function (callback) {
+        //    Retour.ecritureOkKo3(result[5],"retouralmgto2",date_export,mois1,callback);
+        // },
+        function (callback) {
+          Retour.ecritureOkKo3(result[5],"trffacturehospi",date_export,mois1,callback);
+        },
+        function (callback) {
+          Retour.ecritureOkKo3(result[6],"trffacturedentaire",date_export,mois1,callback);
+        },
+        function (callback) {
+          Retour.ecritureOkKo3(result[7],"trfactureoptique",date_export,mois1,callback);
+        },
+        // function (callback) {
+        //   Retour.ecritureOkKo3(result[9],"retouralmgto6",date_export,mois1,callback);
+        // },
+        function (callback) {
+          Retour.ecritureOkKo3(result[8],"trhospi",date_export,mois1,callback);
+        },
+        function (callback) {
+          Retour.ecritureOkKo3(result[9],"trtramepecdentaire",date_export,mois1,callback);
+        },
+        // function (callback) {
+        //   Retour.ecritureOkKo3(result[12],"retouralmgto9",date_export,mois1,callback);
+        // },
+        function (callback) {
+          Retour.ecritureOkKo3(result[10],"trpecaudio",date_export,mois1,callback);
+        },
+        function (callback) {
+          Retour.ecritureOkKo3(result[11],"trldralmerys",date_export,mois1,callback);
+        },
+      //  function (callback) {
+      //     Retour.ecritureOkKo4(result[12],"retouralmftp1",date_export,mois1,callback);
+      //   },
+        function (callback) {
+          Retour.ecritureOkKo4(result[12],"trretourotdn2",date_export,mois1,callback);
+        },
+        function (callback) {
+          Retour.ecritureOkKo4(result[13],"trtre",date_export,mois1,callback);
+        },
+        // function (callback) {
+        //   Retour.ecritureOkKo4(result[15],"retouralmftp4",date_export,mois1,callback);
+        // },
+        // function (callback) {
+        //  Retour.ecritureOkKo5(result[19],"retouralmpackspe1",date_export,mois1,callback);
+        // },
+        // function (callback) {
+        //   Retour.ecritureOkKo5(result[20],"retouralmpackspe2",date_export,mois1,callback);
+        // },
+        // function (callback) {
+        //   Retour.ecritureOkKo5(result[21],"retouralmpackspe3",date_export,mois1,callback);
+        // },
+        function (callback) {
+          Retour.ecritureOkKo5(result[14],"trindunoehtp",date_export,mois1,callback);
+        },
+      //  function (callback) {
+      //     Retour.ecritureOkKo6(result[23],"retouralmcbtpgto",date_export,mois1,callback);
+      //   },
+      //  function (callback) {
+      //     Retour.ecritureOkKo7(result[24],"retouretat1",date_export,mois1,callback);
+      //   },
+        function (callback) {
+          Retour.ecritureOkKo7(result[15],"trcentredesoin",date_export,mois1,callback);
+        },
+        // function (callback) {
+        //   Retour.ecritureOkKo7(result[26],"retouretat3",date_export,mois1,callback);
+        // },
+        // function (callback) {
+        //   Retour.ecritureOkKo7(result[27],"retouretat4",date_export,mois1,callback);
+        // },
+        // function (callback) {
+        //   Retour.ecritureOkKo7(result[28],"retouretat5",date_export,mois1,callback);
+        // },
+        // function (callback) {
+        //   Retour.ecritureOkKo8(result[29],"retourpublipostage1",date_export,mois1,callback);
+        // },
+        // function (callback) {
+        //   Retour.ecritureOkKo8(result[30],"retourpublipostage2",date_export,mois1,callback);
+        // },
+        function (callback) {
+          Retour.ecritureOkKo8(result[16],"trhospimulti",date_export,mois1,callback);
+        },
+        // function (callback) {
+        //   Retour.ecritureOkKo8(result[32],"retourpublipostage4",date_export,mois1,callback);
+        // },
+        // function (callback) {
+        //   Retour.ecritureOkKo8(result[33],"retourpublipostage5",date_export,mois1,callback);
+        // },
+        // function (callback) {
+        //   Retour.ecritureOkKo8(result[34],"retourpublipostage6",date_export,mois1,callback);
+        // },
+      
+      ],function(err,resultExcel){
+     console.log(resultExcel[0]);
+          if(resultExcel[0]==true)
+          {
+            console.log("true zn");
+            res.view('Retour/erera');
+          }
+          if(resultExcel[0]=='OK')
+          {
+            // res.redirect('/exportRetour/'+date_export+'/x')
+            res.view('Retour/succes');
+          }
+
+
+          /*console.log("Traitement terminé ===> "+ resultExcel[0]);
+          console.log("Traitement terminé ===> "+ resultExcel[1]);
+          console.log("Traitement terminé ===> "+ resultExcel[2]);
+          console.log("Traitement terminé ===> "+ resultExcel[3]);
+          console.log("Traitement terminé ===> "+ resultExcel[4]);
+          var html = "Echec d'enregistrement";
+          return res.redirect('/accueil');*/
+          
+        
+        
+      })
+    })
+  },
+
+  accueilR : function(req,res)
+  {
+    return res.view('Retour/exportExcel');
+  },
+
 
 };
 
