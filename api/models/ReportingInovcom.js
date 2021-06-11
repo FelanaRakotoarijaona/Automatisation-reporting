@@ -1,5 +1,3 @@
-const { error } = require('toastr');
-
 /**
  * ReportingInovcom.js
  *

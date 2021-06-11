@@ -7,94 +7,38 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
     <title>Document</title>
-    <style>
-        .vertical-menu {
-            width: 300px; /* Set a width if you like */
-            }
-            .vertical-menu a {
-            background-color: white; /* Grey background color */
-            color: black; /* Black text color */
-            display: block; /* Make the links appear below each other */
-            padding: 28px; /* Add some padding */
-            text-decoration: none; /* Remove underline from links */
-            }
-
-            .vertical-menu a:hover {
-            background-color: #ccc; /* Dark grey background on mouse-over */
-            }
-
-            .vertical-menu a.active {
-            background-color:  rgb(21, 235, 21); /* Add a green color to the "active/current" link */
-            color: green;
-            }
-
-            .btn-primary {
-            color: #212529;
-            background-color: rgb(21, 235, 21); 
-            border-color:  rgb(21, 235, 21); 
-            }
-    </style>
 </head>
-
 <body>
-    <br><br>
-    <div class="container"  style=" background-color:whitesmoke;"> 
-        <div class="row">
-            <div class="col-md-3">
-                <br><br>
-                <div class="vertical-menu">
-<<<<<<< HEAD
-                    <a href="#" class="active">REPORTING HTP</a>
-                    <a href="#">REPORTING INOVCOM</a>
-=======
-                    <a href="#">REPORTING HTP</a>
-                    <a href="#" class="active">REPORTING INOVCOM</a>
->>>>>>> 4b0bfa35d1adc88a8b5a222b3343b1e04deed709
-                    <a href="#">REPORTING INDU</a>
-                    <a href="#">REPORTING CONTENTIEUX</a>
-                    <a href="#">REPORTING RETOUR</a>
-                    <a href="/logout">Se déconnecter</a>
-                  </div>
-            </div>
+    <%- include ../pages/navbar2.ejs %>
+    <div class="container"> 
+        <div class="row" style="margin-left: 250px;">
             <br><br>
-            <div class="col-md-offset-4 col-md-5"  style=" background-color:whitesmoke;">
-                <br><br><br><br><br><br>
-                <!--EFA NOVAIKO ARY AM VOALOHANY ARY E (reporting/accueil1)-->
-                <form method="POST" action="/exportExcelInovcom1" style="background-color:white;height:300px;width:400px;margin-left: 80px;box-shadow: 5px 5px 5px 5px  rgb(21, 235, 21);" class="miafina">
+            <div class="col-md-offset-6 col-md-5">
+                <br><br><br><br><br>
+                <form method="POST" action="/exportExcelInovcom1" style="background-color:white;height:300px;width:600px;margin-left: 80px;box-shadow: 5px 5px 5px 5px grey;">
                     <div class="form-group">
-                        <br>
-                        <h4 style="margin-left: 50px;">Export Inovcom 1</h4><br><br>
-                        <input type="date" class="form-control" name="date"  style="margin-left: 5px;width: 390px;" required >
+                        <br><br>
+                        <h4 style="margin-left: 50px;">Veuillez cliquer sur exporter pour terminer votre reporting</h4><br><br>
+                        <input type="date" class="form-control" name="date" value="<%- date %>" style="margin-left: 5px;width: 390px;"  >
+                        <div class="spinner-border" role="status" style="display: none;" id="snip">
+                            <span class="visually-hidden"></span>
+                          </div>
                     </div>
-                    <div class="spinner-border" role="status" style="display: none;" id="snip">
-                        <span class="visually-hidden"></span>
-                    </div>
-                    <br>
-                    <button type="submit" style="margin-left: 200px;" class="btn btn-primary" id="ok" onclick="affiche()">Terminer votre reporting</button>
+                    <br><br>
+                    <button type="submit" style="margin-left: 200px;"  style="background-color: grey;border-radius: 5px;"  onclick="affiche()" id="ok">Exporter</button>
                 </form>
                 <br><br><br>
                 <br><br><br>
             </div>
     </div>
-
+   
     
 </body>
 <script>
     function affiche(){
-      $( "#snip" ).css("display", "block");
-      $( "#ok" ).hide();
-    };
-    function aff()
-  {
-    $( ".miafina" ).fadeIn( 12000, function() {
-      
-  });
-  };
-  $( document ).ready(function() {
-    $( ".miafina" ).hide();
-    setTimeout(function(){ aff(); }, 1000);
-   
-  });
+        $( "#snip" ).css("display", "block");
+        $( "#ok" ).hide();
+      };
 </script>
 
 </html>

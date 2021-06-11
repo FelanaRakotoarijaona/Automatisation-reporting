@@ -4,7 +4,7 @@
  * @description :: A model definition represents a database table/collection.
  * @docs        :: https://sailsjs.com/docs/concepts/models-and-orm/models
  */
-const path_reporting = 'D:/Reporting/Reporting/Nouveau dossier/REPORTING INOVCOM Type.xlsx';
+const path_reporting = 'D:/Reporting/Reporting/REPORTING INOVCOM Type.xlsx';
 module.exports = {
 
   attributes: {
@@ -998,7 +998,10 @@ module.exports = {
       Reportinghtp.deleteToutHtp(table,3,callback);
     }
     },
+
+
   /**********************************************************/
+ 
   ecritureOkKo22 : async function (nombre_ok_ko, table,date_export,mois1,callback) {
     const Excel = require('exceljs');
     const newWorkbook = new Excel.Workbook();
@@ -1077,7 +1080,8 @@ module.exports = {
       console.log("Une erreur s'est produite");
       Reportinghtp.deleteToutHtp(table,3,callback);
     }
-    },
+  },
+
   /**********************************************************/
   ecritureOkKo23 : async function (nombre_ok_ko, table,date_export,mois1,callback) {
     const Excel = require('exceljs');
@@ -1158,6 +1162,8 @@ module.exports = {
       Reportinghtp.deleteToutHtp(table,3,callback);
     }
     },
+  /**********************************************************/
+  
   /**********************************************************/
   ecritureOkKo3 : async function (nombre_ok_ko, table,date_export,mois1,callback) {
     const Excel = require('exceljs');

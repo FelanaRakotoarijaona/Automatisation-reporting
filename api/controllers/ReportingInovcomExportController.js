@@ -189,7 +189,7 @@ module.exports = {
             if(resultExcel[0]=='OK')
             {
               // res.redirect('/exportInovcom/'+date_export+'/x')
-              res.view('reporting/succes');
+              res.view('Contentieux/succes');
             }
         })
       })
