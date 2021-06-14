@@ -488,8 +488,6 @@ lectureEtInsertiontype4:function(trameflux,feuil,cellule,table,cellule2,nb,numli
   
 },
 
-
-
 /* type fin 4 */
   lectureEtInsertiontype5:function(trameflux,feuil,cellule,table,cellule2,nb,numligne,callback){
     XLSX = require('xlsx');
@@ -545,7 +543,7 @@ lectureEtInsertiontype4:function(trameflux,feuil,cellule,table,cellule2,nb,numli
             
           };
           console.log(nbr + 'et' + nbrko);
-          var sql = "insert into fav (typologiedelademande,okko) values ('"+nbr+"','"+nbrko+"') ";
+          var sql = "insert into fav (nbok,nbko) values ('"+nbr+"','"+nbrko+"') ";
                       ReportingInovcom.getDatastore().sendNativeQuery(sql, function(err,res){
                         if (err) { 
                           console.log("Une erreur ve fav?");
@@ -739,10 +737,10 @@ lectureEtInsertiontype4:function(trameflux,feuil,cellule,table,cellule2,nb,numli
             
             console.log('ok' + ok.text);
             console.log('ko' + ko.text);
-            var sql = "insert into retourcmuc (typologiedelademande,okko) values ('"+ok+"','"+ko+"') ";
+            var sql = "insert into retourcmuc (nbok,nbko) values ('"+ok+"','"+ko+"') ";
                     ReportingInovcom.getDatastore().sendNativeQuery(sql, function(err,res){
                       if (err) { 
-                        console.log("Une erreur ve retourcmuc?");
+                        console.log(err);
                         //return callback(err);
                        }
                       else

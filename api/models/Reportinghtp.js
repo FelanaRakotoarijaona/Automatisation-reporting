@@ -216,7 +216,8 @@ module.exports = {
             col=ra;
           }
           else{
-            console.log('colonne introuvable');
+            var a=10;
+            //console.log('colonne introuvable');
           };
         };
         for(var ra=0;ra<=range.e.c;ra++)
@@ -230,7 +231,8 @@ module.exports = {
             col2=ra;
           }
           else{
-            console.log('colonne introuvable');
+            var a=10;
+            //console.log('colonne introuvable');
           };
         };
         console.log("colonne"+col);

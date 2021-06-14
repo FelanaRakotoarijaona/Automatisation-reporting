@@ -411,8 +411,8 @@ module.exports = {
               // res.redirect('/exportInovcom/'+date_export+'/x')
               res.view('reporting/succes');
             }
-        })
-      })
+        });
+      });
     },
     /*********************************************************************************/
     rechercheColonne3: function (req, res) {

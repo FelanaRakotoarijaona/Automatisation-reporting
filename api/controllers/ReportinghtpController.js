@@ -7,6 +7,10 @@
 const { table } = require("console");
 const { setMaxListeners } = require("process");
 module.exports = {
+  accueil1 : async function(req,res)
+    {
+      return res.view('reporting/accueilreporting');
+    },
   EssaiExcel2 : function(req,res)
   {
     var sql1= 'select count(*) as nb from cheminhtp2;';

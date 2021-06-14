@@ -16,7 +16,7 @@ module.exports.routes = {
   '/test': { view: 'pages/navbar' },
   
   //Route HTP
-  '/accueil1' : 'ReportinghtpController.accueil1',
+  '/accueilhtp' : 'ReportinghtpController.accueil1',
   '/essai' : 'ReportinghtpController.Essaii',
   '/accueil/:date' : 'ReportinghtpController.accueil',
   //'/import' : 'ReportinghtpController.import',
