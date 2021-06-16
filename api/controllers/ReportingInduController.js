@@ -503,34 +503,34 @@ rechercheColonne : function (req, res) {
   console.log("RECHERCHE COLONNE");
   async.series([
     function (callback) {
-      ReportingIndu.countOkKoDouble("induse",callback);
+      ReportingIndu.countOkKoDoubleSum("induse",callback);
     },
    function (callback) {
-      ReportingIndu.countOkKoDouble("induhospi",callback);
+      ReportingIndu.countOkKoDoubleSum("induhospi",callback);
     },
     function (callback) {
       ReportingIndu.countOkKoDoubleSum("indusansnotif",callback);
     },
     function (callback) {
-      ReportingIndu.countOkKo("indutiers",callback);
+      ReportingIndu.countOkKoDoubleSum("indutiers",callback);
     },
    function (callback) {
-      ReportingIndu.countOkKoDoubleSum("indufraudelmg",callback);
+      ReportingIndu.countOkKoSum("indufraudelmg",callback);
     }, 
     function (callback) {
       ReportingIndu.countOkKoSum("induinterialepre",callback);
     },  
     function (callback) {
-      ReportingIndu.countOkKo("induinterialepost",callback);
+      ReportingIndu.countOkKoSum("induinterialepost",callback);
     }, 
     function (callback) {
-      ReportingIndu.countOkKo("inducodelisftp",callback);
+      ReportingIndu.countOkKoSum("inducodelisftp",callback);
     }, 
     function (callback) {
       ReportingIndu.countOkKoSum("inducodelismail",callback);
     }, 
     function (callback) {
-      ReportingIndu.countOkKo("inducodelisappel",callback);
+      ReportingIndu.countOkKoSum("inducodelisappel",callback);
     }, 
     function (callback) {
       ReportingIndu.countOkKoDoubleSum("inducheque",callback);
@@ -545,9 +545,11 @@ rechercheColonne : function (req, res) {
       ReportingIndu.countOkKoContest("inducontestation",callback);
     },
     function (callback) {
-      ReportingIndu.countOkKoDouble("indufactstc",callback);
+      ReportingIndu.countOkKoDoubleSum("indufactstc",callback);
     },
-    
+    function (callback) {
+      ReportingIndu.countOkKoSumko("indufraudelmg",callback);
+    }, 
   ],function(err,result){
     if(err) return res.badRequest(err);
     console.log("Count OK 1==> " + result[0].ok + " / " + result[0].ko);
@@ -570,7 +572,7 @@ rechercheColonne : function (req, res) {
         ReportingIndu.ecritureOkKo(result[3],"indutiers",date_export,mois1,callback);
       },
       function (callback) {
-        ReportingIndu.ecritureOkKoDouble(result[4],"indufraudelmg",date_export,mois1,callback);
+        ReportingIndu.ecritureOkKo(result[4],"indufraudelmg",date_export,mois1,callback);
       },
      function (callback) {
         ReportingIndu.ecritureOkKo(result[5],"induinterialepre",date_export,mois1,callback);
@@ -602,7 +604,9 @@ rechercheColonne : function (req, res) {
       function (callback) {
         ReportingIndu.ecritureOkKoSante(result[14],"indufactstc",date_export,mois1,callback);
       },
-      
+      function (callback) {
+        ReportingIndu.ecritureOkKoko(result[15],"indufraudelmgdent",date_export,mois1,callback);
+      },
     ],function(err,resultExcel){
    console.log(resultExcel[0]);
         if(resultExcel[0]==true)

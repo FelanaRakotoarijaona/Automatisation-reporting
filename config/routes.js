@@ -171,6 +171,12 @@ module.exports.routes = {
     // '/exportRetour/:jour/:mois/:annee/:html' : 'ReportingInovcomExportController.accueil',
     // '/exportReportingIndu:jour/:mois/:annee' : 'ReportingInovcomExportController.rechercheColonne',
   
+  // ROUTES REPORTING ALMERYS ENGAGEMENT
+  '/accueilengagement' : 'GarantieController.accueilGarantie',
+  '/essaiGarantie' : 'GarantieController.essaieGarantie',
+
+
+
 
 
   /***************************************************************************

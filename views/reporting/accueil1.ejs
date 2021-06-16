@@ -6,6 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <!--NAV BAR W3SCHOOL-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <!---->
     <title>Document</title>
     <style>
         .vertical-menu {
@@ -28,6 +33,7 @@
             color: white;
             }
             /**************** CSS BOUTTON **********/
+            /**************** HTP **********/
             #htp{
                 width: 215px;
                 height: 100px;
@@ -42,7 +48,7 @@
             color: #fff;
             text-shadow: 1px 1px 1px #000;
             border-radius: 10px;
-            background-color:green;
+            background-color:rgb(154,205,50);
             background-image: linear-gradient(to top left,
                                             rgba(0, 0, 0, .2),
                                             rgba(0, 0, 0, .2) 30%,
@@ -214,6 +220,37 @@
                 box-shadow: inset -2px -2px 3px rgba(255, 255, 255, .6),
                             inset 2px 2px 3px rgba(0, 0, 0, .6);
             }
+            /*************ENGAGEMENT******************/
+            #retour{
+                width: 215px;
+                height: 100px;
+            }
+            .styledengagement {
+            border: 0;
+            line-height: 2.5;
+            padding: 0 20px;
+            font-size: 2rem;
+            text-align: center;
+            color: #fff;
+            text-shadow: 1px 1px 1px #000;
+            border-radius: 10px;
+            background-color: rgb(131, 225, 231);
+            background-image: linear-gradient(to top left,
+                                            rgba(0, 0, 0, .2),
+                                            rgba(0, 0, 0, .2) 30%,
+                                            rgba(0, 0, 0, 0));
+            box-shadow: inset 2px 2px 3px rgba(255, 255, 255, .6),
+                        inset -2px -2px 3px rgba(0, 0, 0, .6);
+            }
+
+            .styledengagement:hover {
+                background-color: rgb(25, 58, 25);
+            }
+
+            .styledengagement:active {
+                box-shadow: inset -2px -2px 3px rgba(255, 255, 255, .6),
+                            inset 2px 2px 3px rgba(0, 0, 0, .6);
+            }
             /**********************************************/
             /*CSS BAR DE NAVIGATION*/
             * {
@@ -313,17 +350,23 @@
                     overflow-y: auto;
                 }
                 }
-            /**********************************************/
+               
+           /********************************************************************/
     </style>
 </head>
 <!-- <%- include ../pages/navbar.ejs %> -->
 <body>
     <!-- BAR DE NAVIGATION -->
-    <div class="nav">
+      <div class="nav">
         <input type="checkbox" id="nav-check">
         <div class="nav-header">
           <div class="nav-title">
-            <img src="images/Logo_bewys.png" alt="logo" />
+            <img src="images/Logo_bewys.png" alt="logo" /> 
+                
+                
+            <!-- <a href="/logout" target="_blank" class="glyphicon glyphicon-log-in" style="float:right; text-decoration: none; margin-left: 1350px; margin-top:15px">
+                    <button class="btn btn-danger navbar-btn">Se deconnecter</button>
+            </a> -->
           </div>
         </div>
         <div class="nav-btn">
@@ -335,9 +378,29 @@
         </div>
         
          <div class="nav-links">
+            
         </div> 
-      </div>
-
+      </div>      
+    
+ <!---------------------------------->
+<!--   <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <a class="navbar-brand" href="#">WebSiteName</a>
+          </div>
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="#">Home</a></li>
+            <li><a href="#">Page 1</a></li>
+            <li><a href="#">Page 2</a></li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+            <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+          </ul>
+        </div>
+      </nav>
+      <button class="btn btn-danger navbar-btn">Button</button>
+   --> 
     <!---------------------------------->
     <a href="/logout" target="_blank" style="font-size: 20px; float:right; text-decoration: none;margin-right: 50px;" >Se deconnecter</a>
     <br>
@@ -387,6 +450,10 @@
                 <a href="/accueilRetour" class="active">
                     <input id="retour" class="favorite styledretour" type="button" value="RETOUR">
                 </a>
+                <a href="/accueilEngagement" class="active">
+                    <input id="retour" class="favorite styledengagement" type="button" value="ENGAGEMENT">
+                </a>
+                <br><br><br>
           <!-- <a href="#" target="_blank" style="color: green; font-size: 18px; ">Se deconnecter</a> -->
           <!-- <a href="http://stackoverflow.com/users/4084003/" target="_blank">Stackoverflow</a>
           <a href="https://in.linkedin.com/in/jonesvinothjoseph" target="_blank">LinkedIn</a>

@@ -4,14 +4,16 @@
  * @description :: A model definition represents a database table/collection.
  * @docs        :: https://sailsjs.com/docs/concepts/models-and-orm/models
  */
-const path_reporting = 'D:/Reporting/Reporting/REPORTING INOVCOM Type.xlsx';
+// const path_reporting = 'D:/Reporting/Reporting/REPORTING INOVCOM Type.xlsx';
+const path_reporting = 'D:/LDR8_1421_nouv/PROJET_FELANA/REPORTING INOVCOM Type.xlsx';
 module.exports = {
 
   attributes: {
   },
   countok : function (table, callback) {
     const Excel = require('exceljs');
-    var sqlOk ="select okko from "+table; 
+    // var sqlOk ="select okko from "+table; 
+    var sqlOk ="select sum(okko::integer) from "+table;
     // var sqlKo ="select count(okko) as ko from "+table+" where okko='KO'";
     console.log(sqlOk);
     // console.log(sqlKo);
@@ -29,7 +31,7 @@ module.exports = {
             if(res.rows[0])
             {
               console.log('ok');
-              callback(null, res.rows[0].okko);
+              callback(null, res.rows[0].sum);
             }
             else
             {
@@ -58,7 +60,8 @@ module.exports = {
   // Récuperer nombre OK ou KO
   countOkKo : function (table, callback) {
     const Excel = require('exceljs');
-    var sqlOk ="select nbok from "+table; 
+    // var sqlOk ="select nbok from "+table; 
+    var sqlOk ="select sum(nbok::integer) from "+table;
     // var sqlKo ="select count(okko) as ko from "+table+" where okko='KO'";
     console.log(sqlOk);
     // console.log(sqlKo);
@@ -76,7 +79,7 @@ module.exports = {
             if(res.rows[0])
             {
               console.log('ok');
-              callback(null, res.rows[0].nbok);
+              callback(null, res.rows[0].sum);
             }
             else
             {
@@ -105,7 +108,8 @@ module.exports = {
   countOkKo11 : function (table, callback) {
     const Excel = require('exceljs');
     // var sqlOk ="select count(okko) as ok from "+table+" where okko='OK'"; //trameFlux
-    var sqlKo ="select nbko from "+table;
+    // var sqlKo ="select nbko from "+table;
+    var sqlKo ="select sum(nbko::integer) from "+table; 
     // console.log(sqlOk);
     console.log(sqlKo);
     async.series([
@@ -128,7 +132,7 @@ module.exports = {
             if(resKo.rows[0])
             {
               console.log('ok');
-              callback(null, resKo.rows[0].nbko);
+              callback(null, resKo.rows[0].sum);
             }
             else
             {
@@ -150,8 +154,10 @@ module.exports = {
   },
   countOkKofll1 : function (table, callback) {
     const Excel = require('exceljs');
-    var sqlOk ="select nbok from "+table; 
-    var sqlKo ="select nbko from "+table;
+    // var sqlOk ="select nbok from "+table; 
+    // var sqlKo ="select nbko from "+table;
+    var sqlOk ="select sum(nbok::integer) from "+table; 
+    var sqlKo ="select sum(nbko::integer) from  "+table;
     console.log(sqlOk);
     console.log(sqlKo);
     async.series([
@@ -168,7 +174,7 @@ module.exports = {
             if(res.rows[0])
             {
               console.log('ok');
-              callback(null, res.rows[0].nbok);
+              callback(null, res.rows[0].sum);
             }
             else
             {
@@ -191,7 +197,7 @@ module.exports = {
             if(resKo.rows[0])
             {
               console.log('ok');
-              callback(null, resKo.rows[0].nbko);
+              callback(null, resKo.rows[0].sum);
             }
             else
             {
@@ -213,7 +219,8 @@ module.exports = {
   },
   countOkKofll11 : function (table, callback) {
     const Excel = require('exceljs');
-    var sqlOk ="select nbrokrib from "+table; 
+    // var sqlOk ="select nbrokrib from "+table; 
+    var sqlOk ="select sum(nbrokrib::integer) from "+table;
     // var sqlKo ="select nbko from "+table;
     console.log(sqlOk);
     // console.log(sqlKo);
@@ -231,7 +238,7 @@ module.exports = {
             if(res.rows[0])
             {
               console.log('ok');
-              callback(null, res.rows[0].nbrokrib);
+              callback(null, res.rows[0].sum);
             }
             else
             {
@@ -259,8 +266,10 @@ module.exports = {
   },
   countOkKofll4 : function (table, callback) {
     const Excel = require('exceljs');
-    var sqlOk ="select nbok from "+table; //trameFlux
-    var sqlKo ="select nbko from "+table;
+    // var sqlOk ="select nbok from "+table; //trameFlux
+    // var sqlKo ="select nbko from "+table;
+    var sqlOk ="select sum(nbok::integer) from "+table; 
+    var sqlKo ="select sum(nbko::integer) from  "+table;
     console.log(sqlOk);
     console.log(sqlKo);
     async.series([
@@ -277,7 +286,7 @@ module.exports = {
             if(res.rows[0])
             {
               console.log('ok');
-              callback(null, res.rows[0].nbok);
+              callback(null, res.rows[0].sum);
             }
             else
             {
@@ -300,7 +309,7 @@ module.exports = {
             if(resKo.rows[0])
             {
               console.log('ok');
-              callback(null, resKo.rows[0].nbko);
+              callback(null, resKo.rows[0].sum);
             }
             else
             {
@@ -432,7 +441,8 @@ module.exports = {
   countOkKofll9 : function (table, callback) {
     const Excel = require('exceljs');
     // var sqlKo ="select sum(typologiedelademande::integer) from "+table;
-    var sqlOk ="select okko from "+table;
+    // var sqlOk ="select okko from "+table;
+    var sqlOk ="select sum(okko::integer) from "+table;
     console.log(sqlOk);
     // console.log(sqlKo);
     async.series([
@@ -449,7 +459,7 @@ module.exports = {
             if(res.rows[0])
             {
               console.log('ok');
-              callback(null, res.rows[0].okko);
+              callback(null, res.rows[0].sum);
             }
             else
             {

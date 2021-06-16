@@ -4,7 +4,8 @@
  * @description :: A model definition represents a database table/collection.
  * @docs        :: https://sailsjs.com/docs/concepts/models-and-orm/models
  */
-const path_reporting = 'D:/Reporting/Reporting/REPORTING INDU Type.xlsx';
+// const path_reporting = 'D:/Reporting/Reporting/REPORTING INDU Type.xlsx';
+const path_reporting = 'D:/LDR8_1421_nouv/PROJET_FELANA/REPORTING INDU Type.xlsx';
 module.exports = {
 
   attributes: {
@@ -1482,14 +1483,22 @@ countOkKoSumko : function (table, callback) {
   async.series([
     function (callback) {
       ReportingIndu.query(sql, function(err, res){
-        if (err) return res.badRequest(err);
-        // callback(null, res.rows[0].ok);
-        console.log(res.rows[0].sum);
-        if(res.rows[0].sum != undefined){
-          callback(null, res.rows[0].sum);
+        if (err) {
+          console.log(err);
+          //return null;
         }
-        else{
-          return res.rows[0].sum = 0;
+        else
+        {
+          if(res.rows[0])
+          {
+            console.log('ok');
+            callback(null, res.rows[0].sum);
+          }
+          else
+          {
+            console.log("null");
+            callback(null, 0);
+          }
         }
         
       });
@@ -1516,9 +1525,11 @@ countOkKoSumko : function (table, callback) {
 /***************************************************************************/
 countOkKoIndu2 : function (table, callback) {
   const Excel = require('exceljs');
-  var sqlOk ="select nbok from "+table; 
-  var sqlKo ="select nbko from "+table;
- 
+  // var sqlOk ="select nbok from "+table; 
+  // var sqlKo ="select nbko from "+table;
+  var sqlOk ="select sum(nbok::integer) from "+table; 
+  var sqlKo ="select sum(nbko::integer) from  "+table;
+
   console.log(sqlOk);
   console.log(sqlKo);
   async.series([
@@ -1535,7 +1546,7 @@ countOkKoIndu2 : function (table, callback) {
           if(res.rows[0])
           {
             console.log('ok');
-            callback(null, res.rows[0].nbok);
+            callback(null, res.rows[0].sum);
           }
           else
           {
@@ -1558,7 +1569,7 @@ countOkKoIndu2 : function (table, callback) {
           if(resKo.rows[0])
           {
             console.log('ok');
-            callback(null, resKo.rows[0].nbko);
+            callback(null, resKo.rows[0].sum);
           }
           else
           {
@@ -1725,6 +1736,75 @@ ecritureOkKo : async function (nombre_ok_ko, table,date_export,mois1,callback) {
   }
   },
   /***************************************************************/
+  ecritureOkKoko : async function (nombre_ok_ko, table,date_export,mois1,callback) {
+    const Excel = require('exceljs');
+    const cmd=require('node-cmd');
+    const newWorkbook = new Excel.Workbook();
+    
+    try{
+    
+     
+      await newWorkbook.xlsx.readFile(path_reporting);
+    const newworksheet = newWorkbook.getWorksheet(mois1);
+    var colonneDate = newworksheet.getColumn('A');
+    var ligneDate1;
+    var ligneDate;
+    colonneDate.eachCell(function(cell, rowNumber) {
+      var dateExcel = ReportingIndu.convertDate(cell.text);
+      // var andro = "Wed May 12 2021 03:00:00 GMT+0300 (heure normale de l’Arabie)";
+      // var valiny = Retour.convertDate(andro);
+      // console.log(valiny);
+      if(dateExcel==date_export)
+      {
+        ligneDate1 = parseInt(rowNumber);
+        var line = newworksheet.getRow(ligneDate1);
+        var f = line.getCell(3).value;
+        // console.log(f);
+        if(f == "almerys")
+        {
+          ligneDate = parseInt(rowNumber);
+        }
+      }
+    });
+    console.log("LIGNE DATE ===> "+ ligneDate);
+    var rowDate = newworksheet.getRow(ligneDate);
+    var numeroLigne = rowDate;
+    var iniValue = ReportingIndu.getIniValue(table);
+    
+    var a5;
+  
+    var rowm = newworksheet.getRow(1);
+   
+  
+    var collonne;
+    var colDate2;
+    rowm.eachCell(function(cell, colNumber) {
+      if(cell.value == 'DOCUMENTS SAISIS')
+      {
+        colDate2 = parseInt(colNumber);
+        var man = newworksheet.getRow(3);
+        var f = man.getCell(colDate2).value;
+        if(f == iniValue.ok)
+        {
+          collonne = parseInt(colNumber);
+        }
+      }
+    });
+    console.log(" Colnumber2"+collonne);
+    numeroLigne.getCell(collonne).value = nombre_ok_ko.ko;
+    
+    await newWorkbook.xlsx.writeFile(path_reporting);
+    sails.log("Ecriture OK KO terminé"); 
+    return callback(null, "OK");
+  
+    }
+    catch
+    {
+      console.log("Une erreur s'est produite");
+      Reportinghtp.deleteToutHtp(table,3,callback);
+    }
+    },
+    /***************************************************************/
   ecritureOkKoDouble : async function (nombre_ok_ko, table,date_export,mois1,callback) {
     const Excel = require('exceljs');
     const cmd=require('node-cmd');
@@ -2228,6 +2308,10 @@ ecritureOkKo : async function (nombre_ok_ko, table,date_export,mois1,callback) {
     if(table == "indufactstc"){
       numeroColonneOk = iniValue.indufactstc.ok;
       numeroColonneKo = iniValue.indufactstc.ko;
+    }
+    if(table == "indufraudelmgdent"){
+      numeroColonneOk = iniValue.indufraudelmgdent.ok;
+      numeroColonneKo = iniValue.indufraudelmgdent.ko;
     }
     
     // if(table == ""){

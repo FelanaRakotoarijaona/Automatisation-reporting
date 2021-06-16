@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <%- include ../pages/navbar4.ejs %>
+    <div class="container"> 
+        <div class="row" style="margin-left: 250px;">
+            <br><br>
+            <div class="col-md-offset-6 col-md-5">
+                <br><br><br><br><br>
+                <form method="POST" action="/exportExcelContentieux" style="background-color:white;height:300px;width:600px;margin-left: 80px;box-shadow: 5px 5px 5px 5px grey;">
+                    <div class="form-group">
+                        <br><br>
+                        <h4 style="margin-left: 50px;">Veuillez cliquer sur exporter pour terminer votre reporting</h4><br><br>
+                        <input type="date" class="form-control" name="date" value="<%- date %>" style="margin-left: 5px;width: 390px;"  >
+                        <div class="spinner-border" role="status" style="display: none;" id="snip">
+                            <span class="visually-hidden"></span>
+                          </div>
+                    </div>
+                    <br><br>
+                    <button type="submit" style="margin-left: 200px;"  style="background-color: grey;border-radius: 5px;"  onclick="affiche()" id="ok">Exporter</button>
+                </form>
+                <br><br><br>
+                <br><br><br>
+            </div>
+    </div>
+   
+    
+</body>
+<script>
+    function affiche(){
+        $( "#snip" ).css("display", "block");
+        $( "#ok" ).hide();
+      };
+</script>
+
+</html>
+
+
+
+

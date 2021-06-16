@@ -4,7 +4,8 @@
  * @description :: A model definition represents a database table/collection.
  * @docs        :: https://sailsjs.com/docs/concepts/models-and-orm/models
  */
- const path_reporting = 'D:/Reporting/Reporting/Nouveau dossier/REPORTING RETOUR Type.xlsx';
+//  const path_reporting = 'D:/Reporting/Reporting/Nouveau dossier/REPORTING RETOUR Type.xlsx';
+ const path_reporting = 'D:/LDR8_1421_nouv/PROJET_FELANA/REPORTING RETOUR Type.xlsx';
  module.exports = {
    
   attributes: {
@@ -246,6 +247,7 @@
     const newWorkbook = new Excel.Workbook();
     
     try{
+      // console.log('miditra izy eeeeeeeeeeee');
       await newWorkbook.xlsx.readFile(path_reporting);
     const newworksheet = newWorkbook.getWorksheet(mois1);
     var colonneDate = newworksheet.getColumn('A');
@@ -294,8 +296,8 @@
     });
     console.log(" Colnumber2"+collonne);
     numeroLigne.getCell(collonne).value = nombre_ok_ko.ok;
-    
     await newWorkbook.xlsx.writeFile(path_reporting);
+
     sails.log("Ecriture OK KO terminé"); 
     return callback(null, "OK");
   
