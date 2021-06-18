@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <!--NAV BAR W3SCHOOL-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <!---->
+    <!--DEBUT CSS-->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="fonts/css/font-awesome.min.css" rel="stylesheet">
+    <script src="js/jquery.min.js"></script>
+    <!---->
+    <title>Document</title>
+    <style>
+        .vertical-menu {
+            width: 300px; /* Set a width if you like */
+            }
+            .vertical-menu a {
+            background-color: white; /* Grey background color */
+            color: black; /* Black text color */
+            display: block; /* Make the links appear below each other */
+            padding: 28px; /* Add some padding */
+            text-decoration: none; /* Remove underline from links */
+            }
+
+            .vertical-menu a:hover {
+            background-color: #ccc; /* Dark grey background on mouse-over */
+            }
+
+            .vertical-menu a.active {
+            background-color: rgb(28, 248, 28); /* Add a green color to the "active/current" link */
+            color: white;
+            }
+            /**************** CSS BOUTTON **********/
+            /**************** HTP **********/
+            #htp{
+                width: 215px;
+                height: 100px;
+                padding: 10px;
+            }
+            .styledhtp {
+            border: 0;
+            line-height: 2.5;
+            padding: 0 20px;
+            font-size: 2rem;
+            text-align: center;
+            color:#012F2D;
+            text-shadow: 1px 1px 1px #000;
+            border-radius: 10px;
+            background-color:#00D975;
+            background-image: linear-gradient(to top left,
+                                            rgba(0, 0, 0, .2),
+                                            rgba(0, 0, 0, .2) 30%,
+                                            rgba(0, 0, 0, 0));
+            box-shadow: inset 2px 2px 3px rgba(255, 255, 255, .6),
+                        inset -2px -2px 3px rgba(0, 0, 0, .6);
+            }
+
+            .styledhtp:hover {
+                background-color: silver;
+            }
+
+            .styledhtp:active {
+                box-shadow: inset -2px -2px 3px rgba(255, 255, 255, .6),
+                            inset 2px 2px 3px rgba(0, 0, 0, .6);
+            }
+ 
+            /*************ENGAGEMENT******************/
+            #engagement{
+                width: 215px;
+                height: 100px;
+            }
+            .styledengagement {
+            border: 0;
+            line-height: 2.5;
+            padding: 0 20px;
+            font-size: 2rem;
+            text-align: center;
+            color: #00D975;;
+            text-shadow: 1px 1px 1px #000;
+            border-radius: 10px;
+            background-color: #012F2D;
+            background-image: linear-gradient(to top left,
+                                            rgba(0, 0, 0, .2),
+                                            rgba(0, 0, 0, .2) 30%,
+                                            rgba(0, 0, 0, 0));
+            box-shadow: inset 2px 2px 3px rgba(255, 255, 255, .6),
+                        inset -2px -2px 3px rgba(0, 0, 0, .6);
+            }
+
+            .styledengagement:hover {
+                background-color: silver;
+            }
+
+            .styledengagement:active {
+                box-shadow: inset -2px -2px 3px rgba(255, 255, 255, .6),
+                            inset 2px 2px 3px rgba(0, 0, 0, .6);
+            }
+            /**********************************************/
+            /*CSS BAR DE NAVIGATION*/
+            * {
+                box-sizing: border-box;
+                }
+
+                body {
+                margin: 0px;
+                font-family: 'segoe ui';
+                }
+
+                .nav {
+                height: 100px;
+                width: 100%;
+                background-color: #252424;
+                position: relative;
+                }
+
+                .nav > .nav-header {
+                display: inline;
+                }
+
+                .nav > .nav-header > .nav-title {
+                display: inline-block;
+                font-size: 22px;
+                color: #fff;
+                padding: 10px 10px 10px 10px;
+                }
+
+                .nav > .nav-btn {
+                display: none;
+                }
+
+                .nav > .nav-links {
+                display: inline;
+                float: right;
+                font-size: 18px;
+                }
+
+                .nav > .nav-links > a {
+                display: inline-block;
+                padding: 13px 10px 13px 10px;
+                text-decoration: none;
+                color: #efefef;
+                }
+
+                .nav > .nav-links > a:hover {
+                background-color: rgba(0, 0, 0, 0.3);
+                }
+
+                .nav > #nav-check {
+                display: none;
+                }
+
+                @media (max-width:600px) {
+                .nav > .nav-btn {
+                    display: inline-block;
+                    position: absolute;
+                    right: 0px;
+                    top: 0px;
+                }
+                .nav > .nav-btn > label {
+                    display: inline-block;
+                    width: 50px;
+                    height: 50px;
+                    padding: 13px;
+                }
+                .nav > .nav-btn > label:hover,.nav  #nav-check:checked ~ .nav-btn > label {
+                    background-color: rgba(0, 0, 0, 0.3);
+                }
+                .nav > .nav-btn > label > span {
+                    display: block;
+                    width: 25px;
+                    height: 10px;
+                    border-top: 2px solid #eee;
+                }
+                .nav > .nav-links {
+                    position: absolute;
+                    display: block;
+                    width: 100%;
+                    background-color: #333;
+                    height: 0px;
+                    transition: all 0.3s ease-in;
+                    overflow-y: hidden;
+                    top: 50px;
+                    left: 0px;
+                }
+                .nav > .nav-links > a {
+                    display: block;
+                    width: 100%;
+                }
+                .nav > #nav-check:not(:checked) ~ .nav-links {
+                    height: 0px;
+                }
+                .nav > #nav-check:checked ~ .nav-links {
+                    height: calc(100vh - 50px);
+                    overflow-y: auto;
+                }
+                }
+               
+           /********************************************************************/
+    </style>
+</head>
+<!-- <%- include ../pages/navbar.ejs %> -->
+<body>
+    
+      <div class="container">
+        <div class="container">
+            <div id="loginbox" style="margin-top:20px;" class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
+            <br><br><br><br><br><br><br>
+                <div class="panel panel-success" >
+                
+                    <div class="panel-heading">
+                        <div class="panel-title" style="text-align : center;">
+                            <h3>
+                                <img src="images/Logo_bewys.png" alt="logo" />
+                            </h3>
+                        </div>
+                    </div>
+
+                    <div style="padding-top:30px; margin:20px;" class="panel-body" >
+                            <a href="/accueildebut1" class="active">
+                                <input id="htp" class="favorite styledhtp" type="button" value="ALMERYS REPORTING">
+                            </a>
+                            <a href="/accueildebut2" class="active">
+                                <input id="engagement" class="favorite styledengagement" type="button" value="ENGAGEMENT">
+                            </a>
+                        </br>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+      <!--------------SCRIPT DEBUT------>
+      <script src="/js/base.min.js"></script>
+      <script src="/js/project.min.js"></script>
+      <script src="js/bootstrap.min.js"></script>
+      <script src="js/scripts.js"></script>
+    <!---------------------------------->
+    
+</body>
+
+</html>

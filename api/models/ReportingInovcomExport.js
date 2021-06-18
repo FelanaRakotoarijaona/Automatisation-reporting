@@ -1202,7 +1202,6 @@ module.exports = {
     var rowDate = newworksheet.getRow(ligneDate);
     var numeroLigne = rowDate;
     var iniValue = ReportingInovcomExport.getIniValue(table);
-    
     var a5;
 
     var rowm = newworksheet.getRow(1);
@@ -1213,9 +1212,14 @@ module.exports = {
       {
         colDate1 = parseInt(colNumber);
         //var col = newworksheet.getColumn(colDate1);
-        var man = newworksheet.getRow(3);
+        var man = newworksheet.getRow(3);        
         var f = man.getCell(colDate1).value;
-        if(f == iniValue.ok)
+        var a = iniValue.ok;
+        // console.log('a'+a);
+        // console.log('f'+f);
+        const regex = new RegExp(a,'i');
+        if(regex.test(f) == true)
+        // if(f == iniValue.ok)
         {
           colonnne = parseInt(colNumber);
         }
@@ -1309,9 +1313,10 @@ module.exports = {
         colDate2 = parseInt(colNumber);
         var man = newworksheet.getRow(3);
         var f = man.getCell(colDate2).value;
+        var a = iniValue.ok;
+        const regex = new RegExp(a,'i');
         var getko_ini = man.getCell(colDate2).address;
-          // console.log(getko_ini);
-        if(getko_ini == iniValue.ko+3 && f == iniValue.ok)
+        if(getko_ini == iniValue.ko+3 && regex.test(f) == true)
         {
           collonne = parseInt(colNumber);
         }
@@ -1843,12 +1848,10 @@ module.exports = {
         colDate2 = parseInt(colNumber);
         var man = newworksheet.getRow(3);
         var f = man.getCell(colDate2).value;
+        var a = iniValue.ok;
+        const regex = new RegExp(a,'i');
         var getko_ini = man.getCell(colDate2).address;
-          // console.log(getko_ini);
-          // console.log(iniValue.ko);
-        //   console.log(f);
-        if(getko_ini == iniValue.ko+3 && f == iniValue.ok)
-        // if(f == iniValue.ok)
+        if(getko_ini == iniValue.ko+3 && regex.test(f) == true)
         {
           collonne = parseInt(colNumber);
         }
@@ -1873,7 +1876,7 @@ module.exports = {
     const fs = require('fs');
     const ini = require('ini');
     const config = ini.parse(fs.readFileSync('./config_excelInovcom.ini', 'utf-8'));
-    console.log(config);
+    // console.log(config);
     return config;
   },
 

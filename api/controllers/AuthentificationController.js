@@ -134,7 +134,8 @@ module.exports = {
                         req.session.user = user.id;
                         req.session.nom = user.appelation;
                         req.session.authenticated = true;
-                        res.view('reporting/accueil1');
+                        // res.view('reporting/accueil1');
+                        res.view('reporting/debut');
                     });
                     }
                 });

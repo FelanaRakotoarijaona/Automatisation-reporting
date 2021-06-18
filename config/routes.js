@@ -14,6 +14,10 @@ module.exports.routes = {
   '/login' : 'AuthentificationController.loginLdap',
   '/logout' : 'AuthentificationController.logout',
   '/test': { view: 'pages/navbar' },
+
+  //AJOUT PAGES DEBUT
+  '/accueildebut1': { view: 'reporting/accueil1' },
+  '/accueildebut2': { view: 'reporting/accueilG' },
   
   //Route HTP
   '/accueilhtp' : 'ReportinghtpController.accueil1',
@@ -172,8 +176,8 @@ module.exports.routes = {
     // '/exportReportingIndu:jour/:mois/:annee' : 'ReportingInovcomExportController.rechercheColonne',
   
   // ROUTES REPORTING ALMERYS ENGAGEMENT
-  '/accueilengagement' : 'GarantieController.accueilGarantie',
-  '/essaiGarantie' : 'GarantieController.essaieGarantie',
+  '/accueilGarantie' : 'GarantieController.accueilGarantie',//accueilGarantie
+  '/essaiGarantie' : 'GarantieController.essaiGarantie',
 
 
 

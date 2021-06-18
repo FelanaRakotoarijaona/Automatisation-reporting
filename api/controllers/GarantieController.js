@@ -30,7 +30,7 @@ module.exports = {
       var nomcolonne = [];
       var colonnecible2 = [];
       var essai = 'essai';
-      workbook.xlsx.readFile('htp.xlsx')
+      workbook.xlsx.readFile('Garantie.xlsx')
       //workbook.xlsx.readFile('ex.xlsx')
           .then(function() {
             var newworksheet = workbook.getWorksheet('Feuil1');
@@ -66,31 +66,31 @@ module.exports = {
               console.log(MotCle[0]);
               async.series([  
                   function(cb){
-                      Reportinghtp.deleteFromChemin(table,cb);
+                      Garantie.deleteFromChemin(table,cb);
                     },
                   function(cb){
-                      Reportinghtp.deleteFromChemin2(table,cb);
+                      Garantie.deleteFromChemin2(table,cb);
                     },
                  function(cb){
-                      Reportinghtp.importEssai(table,cheminp,date,MotCle,0,nomtable[0],numligne[0],numfeuille[0],nomcolonne[0],colonnecible2[0],cb);
+                      Garantie.importEssai(table,cheminp,date,MotCle,0,nomtable[0],numligne[0],numfeuille[0],nomcolonne[0],colonnecible2[0],cb);
                     },
                     function(cb){
-                      Reportinghtp.importEssai(table,cheminp,date,MotCle,1,nomtable[1],numligne[1],numfeuille[1],nomcolonne[1],colonnecible2[1],cb);
+                      Garantie.importEssai(table,cheminp,date,MotCle,1,nomtable[1],numligne[1],numfeuille[1],nomcolonne[1],colonnecible2[1],cb);
                     },
                     function(cb){
-                      Reportinghtp.importEssai(table,cheminp,date,MotCle,2,nomtable[2],numligne[2],numfeuille[2],nomcolonne[2],colonnecible2[2],cb);
+                      Garantie.importEssai(table,cheminp,date,MotCle,2,nomtable[2],numligne[2],numfeuille[2],nomcolonne[2],colonnecible2[2],cb);
                     },
                     function(cb){
-                      Reportinghtp.importEssai(table,cheminp,date,MotCle,3,nomtable[3],numligne[3],numfeuille[3],nomcolonne[3],colonnecible2[3],cb);
+                      Garantie.importEssai(table,cheminp,date,MotCle,3,nomtable[3],numligne[3],numfeuille[3],nomcolonne[3],colonnecible2[3],cb);
                     },
                     function(cb){
-                      Reportinghtp.importEssaitype2(table,cheminp,date,MotCle,4,nomtable[4],numligne[4],numfeuille[4],nomcolonne[4],colonnecible2[4],cb);
+                      Garantie.importEssaitype2(table,cheminp,date,MotCle,4,nomtable[4],numligne[4],numfeuille[4],nomcolonne[4],colonnecible2[4],cb);
                     },
                     function(cb){
-                      Reportinghtp.existenceRoute(essai,cb);
+                      Garantie.existenceRoute(essai,cb);
                       },
                     function(cb){
-                      Reportinghtp.existenceRoute2(essai,cb);
+                      Garantie.existenceRoute2(essai,cb);
                       },
               ],
               function(err, resultat){

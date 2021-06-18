@@ -263,8 +263,10 @@
         ligneDate1 = parseInt(rowNumber);
         var line = newworksheet.getRow(ligneDate1);
         var f = line.getCell(3).value;
-        // console.log(f);
-        if(f == "Publispostage")
+        var a = "Publispostage";        
+        const regex = new RegExp(a,'i');
+        // if(f == "Publispostage")
+        if(regex.test(f) == true)
         {
           ligneDate = parseInt(rowNumber);
         }
@@ -727,8 +729,10 @@
           ligneDate1 = parseInt(rowNumber);
           var line = newworksheet.getRow(ligneDate1);
           var f = line.getCell(3).value;
-          //console.log();
-          if(f == "Publispostage")
+          var a = "Publispostage";        
+          const regex = new RegExp(a,'i');
+          // if(f == "Publispostage")
+          if(regex.test(f) == true)         
           {
             ligneDate = parseInt(rowNumber);
           }

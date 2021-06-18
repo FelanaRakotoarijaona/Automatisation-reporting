@@ -2229,7 +2229,7 @@ ecritureOkKo : async function (nombre_ok_ko, table,date_export,mois1,callback) {
     const fs = require('fs');
     const ini = require('ini');
     const config = ini.parse(fs.readFileSync('./config_excelIndu.ini', 'utf-8'));
-    console.log(config);
+    // console.log(config);
     return config;
   },
 
