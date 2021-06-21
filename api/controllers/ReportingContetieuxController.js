@@ -38,6 +38,8 @@ module.exports = {
       console.log(date);
       var cheminp = [];
       var MotCle= [];
+      var chem2 = [];
+      var option2 = [];
       var r = [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22];
       workbook.xlsx.readFile('ReportingContetieux.xlsx')
           .then(function() {
@@ -48,6 +50,8 @@ module.exports = {
             var numLigne = newworksheet.getColumn(8);
             var cheminparticulier = newworksheet.getColumn(9);
             var motcle = newworksheet.getColumn(10);
+            var chemin2 = newworksheet.getColumn(11);
+            var opt2 = newworksheet.getColumn(12);
               numFeuille.eachCell(function(cell, rowNumber) {
                 numfeuille.push(cell.value);
               });
@@ -65,6 +69,12 @@ module.exports = {
               });
               motcle.eachCell(function(cell, rowNumber) {
                 MotCle.push(cell.value);
+              });
+              chemin2.eachCell(function(cell, rowNumber) {
+                chem2.push(cell.value);
+              });
+              opt2.eachCell(function(cell, rowNumber) {
+                option2.push(cell.value);
               });
               var nomBase = "chemincontetieux";
               console.log(cheminp[0]);
@@ -84,7 +94,7 @@ module.exports = {
                         ReportingInovcom.delete(nomtable,lot,cb);
                       },
                       function(cb){
-                        ReportingInovcom.importEssaitype4(table,cheminp,date,MotCle,lot,nomtable,numligne,numfeuille,nomcolonne,nomBase,cb);
+                        ReportingInovcom.importEssaitype4(table,cheminp,date,MotCle,lot,nomtable,numligne,numfeuille,nomcolonne,nomBase,chem2,option2,cb);
                       },
                     ],function(erroned, lotValues){
                       if(erroned) return res.badRequest(erroned);

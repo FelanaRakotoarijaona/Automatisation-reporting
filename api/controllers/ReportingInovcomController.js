@@ -26,6 +26,8 @@ module.exports = {
       var numfeuille = [];
       var nomcolonne = [];
       var nomcolonne2 = [];
+      var chem2 = [];
+      var option2 = [];
       console.log(date);
       var cheminp = [];
       var MotCle= [];
@@ -41,6 +43,8 @@ module.exports = {
             var numLigne = newworksheet.getColumn(8);
             var cheminparticulier = newworksheet.getColumn(9);
             var motcle = newworksheet.getColumn(10);
+            var chemin2 = newworksheet.getColumn(11);
+            var opt2 = newworksheet.getColumn(12);
             numFeuille.eachCell(function(cell, rowNumber) {
               numfeuille.push(cell.value);
             });
@@ -62,21 +66,18 @@ module.exports = {
               motcle.eachCell(function(cell, rowNumber) {
                 MotCle.push(cell.value);
               });
+              chemin2.eachCell(function(cell, rowNumber) {
+                chem2.push(cell.value);
+              });
+              opt2.eachCell(function(cell, rowNumber) {
+                option2.push(cell.value);
+              });
               console.log(cheminp[0]);
               console.log(MotCle[0]);
               async.series([  
                   function(cb){
                       ReportingInovcom.deleteFromChemin(nomBase,cb);
                     },
-                   /* function(cb){
-                      ReportingInovcom.insert2text(nomtable,1,cb);
-                    },
-                    function(cb){
-                      ReportingInovcom.insert2text(nomtable,2,cb);
-                    },
-                    function(cb){
-                      ReportingInovcom.insert3text(nomtable,0,cb);
-                    },*/
               ],
               function(err, resultat){
                 if (err) { return res.view('Inovcom/erreur'); }
@@ -89,7 +90,7 @@ module.exports = {
                       },
                        
                       function(cb){
-                        ReportingInovcom.importEssai(table,cheminp,date,MotCle,lot,nomtable,numligne,numfeuille,nomcolonne,nomcolonne2,nomBase,cb);
+                        ReportingInovcom.importEssai(table,cheminp,date,MotCle,lot,nomtable,numligne,numfeuille,nomcolonne,nomcolonne2,nomBase,chem2,option2,cb);
                       },
                     ],function(erroned, lotValues){
                       if(erroned) return res.badRequest(erroned);
@@ -246,7 +247,9 @@ module.exports = {
       console.log(date);
       var cheminp = [];
       var MotCle= [];
-      var r = [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16];
+      var chem2 = [];
+      var option2 = [];
+      var r = [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18];
       var nomBase = "chemininovcomtype2";
       workbook.xlsx.readFile('Inovcom.xlsx')
           .then(function() {
@@ -257,6 +260,8 @@ module.exports = {
             var numLigne = newworksheet.getColumn(8);
             var cheminparticulier = newworksheet.getColumn(9);
             var motcle = newworksheet.getColumn(10);
+            var chemin2 = newworksheet.getColumn(2);
+            var opt2 = newworksheet.getColumn(11);
             numFeuille.eachCell(function(cell, rowNumber) {
               numfeuille.push(cell.value);
             });
@@ -275,6 +280,12 @@ module.exports = {
               motcle.eachCell(function(cell, rowNumber) {
                 MotCle.push(cell.value);
               });
+              chemin2.eachCell(function(cell, rowNumber) {
+                chem2.push(cell.value);
+              });
+              opt2.eachCell(function(cell, rowNumber) {
+                option2.push(cell.value);
+              });
               console.log(cheminp[0]);
               console.log(MotCle[0]);
               async.series([  
@@ -292,7 +303,7 @@ module.exports = {
                         ReportingInovcom.delete(nomtable,lot,cb);
                       },
                       function(cb){
-                        ReportingInovcom.importEssaitype4(table,cheminp,date,MotCle,lot,nomtable,numligne,numfeuille,nomcolonne,nomBase,cb);
+                        ReportingInovcom.importEssaitype4(table,cheminp,date,MotCle,lot,nomtable,numligne,numfeuille,nomcolonne,nomBase,chem2,option2,cb);
                       },
                     ],function(erroned, lotValues){
                       if(erroned) return res.badRequest(erroned);
@@ -451,6 +462,8 @@ module.exports = {
       var cheminp = [];
       var MotCle= [];
       var r = [0,1,2];
+      var chem2 = [];
+      var option2 = [];
       var nomBase = "chemininovcomtype3";
       workbook.xlsx.readFile('Inovcom.xlsx')
           .then(function() {
@@ -461,6 +474,8 @@ module.exports = {
             var numLigne = newworksheet.getColumn(8);
             var cheminparticulier = newworksheet.getColumn(9);
             var motcle = newworksheet.getColumn(10);
+            var chemin2 = newworksheet.getColumn(2);
+            var opt2 = newworksheet.getColumn(11);
             numFeuille.eachCell(function(cell, rowNumber) {
               numfeuille.push(cell.value);
             });
@@ -479,6 +494,12 @@ module.exports = {
               motcle.eachCell(function(cell, rowNumber) {
                 MotCle.push(cell.value);
               });
+              chemin2.eachCell(function(cell, rowNumber) {
+                chem2.push(cell.value);
+              });
+              opt2.eachCell(function(cell, rowNumber) {
+                option2.push(cell.value);
+              });
               console.log(cheminp[0]);
               console.log(MotCle[0]);
               async.series([  
@@ -496,7 +517,7 @@ module.exports = {
                         ReportingInovcom.delete(nomtable,lot,cb);
                       },
                       function(cb){
-                        ReportingInovcom.importEssaitype4(table,cheminp,date,MotCle,lot,nomtable,numligne,numfeuille,nomcolonne,nomBase,cb);
+                        ReportingInovcom.importEssaitype4(table,cheminp,date,MotCle,lot,nomtable,numligne,numfeuille,nomcolonne,nomBase,chem2,option2,cb);
                       },
                     ],function(erroned, lotValues){
                       if(erroned) return res.badRequest(erroned);
@@ -647,6 +668,8 @@ module.exports = {
       var numligne = [];
       var numfeuille = [];
       var nomcolonne = [];
+      var chem2 = [];
+      var option2 = [];
       console.log(date);
       var cheminp = [];
       var MotCle= [];
@@ -661,6 +684,8 @@ module.exports = {
             var numLigne = newworksheet.getColumn(8);
             var cheminparticulier = newworksheet.getColumn(9);
             var motcle = newworksheet.getColumn(10);
+            var chemin2 = newworksheet.getColumn(2);
+            var opt2 = newworksheet.getColumn(11);
             numFeuille.eachCell(function(cell, rowNumber) {
               numfeuille.push(cell.value);
             });
@@ -678,6 +703,12 @@ module.exports = {
               });
               motcle.eachCell(function(cell, rowNumber) {
                 MotCle.push(cell.value);
+              });
+              chemin2.eachCell(function(cell, rowNumber) {
+                chem2.push(cell.value);
+              });
+              opt2.eachCell(function(cell, rowNumber) {
+                option2.push(cell.value);
               });
               console.log(cheminp[0]);
               console.log(MotCle[0]);
@@ -697,7 +728,7 @@ module.exports = {
                       },
                       function(cb){
                         console.log('lot' + lot);
-                        ReportingInovcom.importEssaitype4(table,cheminp,date,MotCle,lot,nomtable,numligne,numfeuille,nomcolonne,nomBase,cb);
+                        ReportingInovcom.importEssaitype4(table,cheminp,date,MotCle,lot,nomtable,numligne,numfeuille,nomcolonne,nomBase,chem2,option2,cb);
                       },
                     ],function(erroned, lotValues){
                       if(erroned) return res.badRequest(erroned);
@@ -790,7 +821,7 @@ module.exports = {
             };
             for(var i=0;i<nb;i++)
             {
-              var a = nc[i].colonnecible;
+              var a = nc[i].colonnecible2;
               cellule2.push(a);
             };
             for(var i=0;i<nb;i++)
@@ -859,17 +890,27 @@ module.exports = {
       console.log(date);
       var cheminp = [];
       var MotCle= [];
+      var chem2 = [];
+      var option2 = [];
       var nomBase = "chemininovcomtype5";
       workbook.xlsx.readFile('Inovcom.xlsx')
           .then(function() {
             var newworksheet = workbook.getWorksheet('Feuil5');
             var cheminparticulier = newworksheet.getColumn(9);
             var motcle = newworksheet.getColumn(10);
+            var chemin2 = newworksheet.getColumn(11);
+            var opt2 = newworksheet.getColumn(12);
               cheminparticulier.eachCell(function(cell, rowNumber) {
                 cheminp.push(cell.value);
               });
               motcle.eachCell(function(cell, rowNumber) {
                 MotCle.push(cell.value);
+              });
+              chemin2.eachCell(function(cell, rowNumber) {
+                chem2.push(cell.value);
+              });
+              opt2.eachCell(function(cell, rowNumber) {
+                option2.push(cell.value);
               });
               console.log(cheminp[0]);
               console.log(MotCle[0]);
@@ -878,7 +919,7 @@ module.exports = {
                       ReportingInovcom.deleteFromChemin5(table,cb);
                     },
                   function(cb){
-                      ReportingInovcom.importEssaitype5(table,cheminp,date,MotCle,0,cb);
+                      ReportingInovcom.importEssaitype5(table,cheminp,date,MotCle,0,chem2,option2,cb);
                     },
               ],                                                                                                                                                                                   
               function(err, resultat){
@@ -1185,6 +1226,8 @@ module.exports = {
     console.log(date);
     var cheminp = [];
     var MotCle= [];
+    var chem2 = [];
+    var option2 = [];
     var nomBase = "chemininovcomtype7";
     workbook.xlsx.readFile('Inovcom.xlsx')
         .then(function() {
@@ -1195,9 +1238,10 @@ module.exports = {
           var nomTable = newworksheet.getColumn(6);
           var nomColonne2 = newworksheet.getColumn(7);
           var numLigne = newworksheet.getColumn(8);
-         
           var cheminparticulier = newworksheet.getColumn(9);
           var motcle = newworksheet.getColumn(10);
+          var chemin2 = newworksheet.getColumn(11);
+            var opt2 = newworksheet.getColumn(12);
           numFeuille.eachCell(function(cell, rowNumber) {
             numfeuille.push(cell.value);
           });
@@ -1222,6 +1266,12 @@ module.exports = {
             motcle.eachCell(function(cell, rowNumber) {
               MotCle.push(cell.value);
             });
+            chemin2.eachCell(function(cell, rowNumber) {
+              chem2.push(cell.value);
+            });
+            opt2.eachCell(function(cell, rowNumber) {
+              option2.push(cell.value);
+            });
             console.log(cheminp[0]);
             console.log(MotCle[0]);
             async.series([  
@@ -1229,7 +1279,7 @@ module.exports = {
                     ReportingInovcom.deleteFromChemin7(table,cb);
                   },
                 function(cb){
-                    ReportingInovcom.importEssaitype7(table,cheminp,date,MotCle,0,nomtable[0],numligne[0],numfeuille[0],nomcolonne[0],nomcolonne2[0],nomcolonne3[0],cb);
+                    ReportingInovcom.importEssaitype7(table,cheminp,date,MotCle,0,nomtable[0],numligne[0],numfeuille[0],nomcolonne[0],nomcolonne2[0],nomcolonne3[0],chem2,option2,cb);
                   },
             ],
             function(err, resultat){
