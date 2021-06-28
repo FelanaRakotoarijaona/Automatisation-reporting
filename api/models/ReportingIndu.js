@@ -5,7 +5,8 @@
  * @docs        :: https://sailsjs.com/docs/concepts/models-and-orm/models
  */
 //const path_reporting = 'D:/Reporting/Reporting/REPORTING INDU Type.xlsx';
-const path_reporting = 'D:/LDR8_1421_nouv/PROJET_FELANA/REPORTING INDU Type.xlsx';
+//const path_reporting = 'D:/LDR8_1421_nouv/PROJET_FELANA/REPORTING INDU Type.xlsx';
+const path_reporting = '/dev/prod/00-TOUS/TestReporting/REPORTING INDU Type.xlsx';
 module.exports = {
 
   attributes: {
