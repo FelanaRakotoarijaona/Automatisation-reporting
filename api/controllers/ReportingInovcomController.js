@@ -34,8 +34,8 @@ module.exports = {
       var MotCle= [];
       var nomBase = "chemininovcom";
       var r = [0,1,2];
-      //workbook.xlsx.readFile('Inovcom.xlsx')
-      workbook.xlsx.readFile('Inovcomserveur.xlsx')
+      workbook.xlsx.readFile('Inovcom.xlsx')
+      //workbook.xlsx.readFile('Inovcomserveur.xlsx')
           .then(function() {
             var newworksheet = workbook.getWorksheet('Feuil1');
             var numFeuille = newworksheet.getColumn(4);
