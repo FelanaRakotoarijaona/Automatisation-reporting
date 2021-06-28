@@ -4,7 +4,7 @@
  * @description :: A model definition represents a database table/collection.
  * @docs        :: https://sailsjs.com/docs/concepts/models-and-orm/models
  */
-const path_reporting = '/dev/prod/Nouveau_Dossier/REPORTING HTP  Type.xlsx';
+const path_reporting = '/dev/prod/00-TOUS/TestReporting/REPORTING HTP  Type.xlsx';
 //const path_reporting = 'D:/Reporting/Reporting/Nouveau dossier/REPORTING HTP.xlsx';
 //const path_reporting = 'D:/LDR8_1421_nouv/PROJET_FELANA/REPORTING HTP Type.xlsx';
 
