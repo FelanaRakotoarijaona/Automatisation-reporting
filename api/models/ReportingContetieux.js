@@ -4,8 +4,8 @@
  * @description :: A model definition represents a database table/collection.
  * @docs        :: https://sailsjs.com/docs/concepts/models-and-orm/models
  */
-const path_reporting = 'D:/Reporting/Reporting/REPORTING CONTENTIEUX type.xlsx';
-//const path_reporting = 'D:/LDR8_1421_nouv/PROJET_FELANA/REPORTING CONTENTIEUX type.xlsx';
+//const path_reporting = 'D:/Reporting/Reporting/REPORTING CONTENTIEUX type.xlsx';
+const path_reporting = 'D:/LDR8_1421_nouv/PROJET_FELANA/REPORTING CONTENTIEUX type.xlsx';
 
 module.exports = {
   attributes: {
@@ -131,6 +131,83 @@ module.exports = {
       // return callback(null, intro);
     })
   },
+  /****************************************************/
+  countOkKoDoubleSum : function (table, callback) {
+    const Excel = require('exceljs');
+    var sqlOk ="select sum(nbok::integer) from "+table; 
+    var sqlKo ="select sum(nbko::integer) from  "+table;
+   
+    console.log(sqlOk);
+    console.log(sqlKo);
+    async.series([
+      function (callback) {
+        ReportingContetieux.query(sqlOk, function(err, res){
+          // if (err) return res.badRequest(err);
+          // callback(null, res.rows[0].sum);
+          if (err) {
+            console.log(err);
+            //return null;
+          }
+          else
+          {
+            if(res.rows[0])
+            {
+              console.log('ok');
+              if(res.rows[0].sum == null){
+                callback(null, 0);
+              }
+              else{
+                callback(null, res.rows[0].sum);
+              }
+              
+            }
+            else
+            {
+              console.log("null");
+              callback(null, 0);
+            }
+          }
+        });
+      },
+      function (callback) {
+        ReportingContetieux.query(sqlKo, function(err, resKo){
+          // if (err) return res.badRequest(err);
+          // callback(null, resKo.rows[0].sum);
+          if (err) {
+            console.log(err);
+            //return null;
+          }
+          else
+          {
+            if(resKo.rows[0])
+            {
+              console.log('ok');
+              if(resKo.rows[0].sum == null){
+                callback(null, 0);
+              }
+              else{
+                callback(null, resKo.rows[0].sum);
+              }
+            }
+            else
+            {
+              console.log("null");
+              callback(null, 0);
+            }
+          }
+        });
+      },
+    ],function(err,result){
+      if(err) return res.badRequest(err);
+      console.log("Count OK ==> " + result[0]);
+      console.log("Count KO ==> " + result[1]);
+      var okko = {};
+      okko.ok = result[0];
+      okko.ko = result[1];      
+      return callback(null, okko);
+    })
+  },
+  /*****************************************************/
    
   // Convert date
   convertDate : function (dateExcel){
@@ -284,8 +361,92 @@ module.exports = {
         Reportinghtp.deleteToutHtp(table,3,callback);
       }
       },
+  
+   /***************************************************************/
+   ecritureOkKoDouble : async function (nombre_ok_ko, table,date_export,mois1,callback) {
+    const Excel = require('exceljs');
+    const cmd=require('node-cmd');
+    const newWorkbook = new Excel.Workbook();
+    
+    try{
+    
+     
+      await newWorkbook.xlsx.readFile(path_reporting);
+    const newworksheet = newWorkbook.getWorksheet(mois1);
+    var colonneDate = newworksheet.getColumn('A');
+    var ligneDate1;
+    var ligneDate;
+    colonneDate.eachCell(function(cell, rowNumber) {
+      var dateExcel = ReportingContetieux.convertDate(cell.text);
+      // var andro = "Wed May 12 2021 03:00:00 GMT+0300 (heure normale de l’Arabie)";
+      // var valiny = Retour.convertDate(andro);
+      // console.log(valiny);
+      if(dateExcel==date_export)
+      {
+        ligneDate1 = parseInt(rowNumber);
+        var line = newworksheet.getRow(ligneDate1);
+        var f = line.getCell(3).value;
+        // console.log(f);
+        if(f == "CBTP")
+        {
+          ligneDate = parseInt(rowNumber);
+        }
+      }
+    });
+    console.log("LIGNE DATE ===> "+ ligneDate);
+    var rowDate = newworksheet.getRow(ligneDate);
+    var numeroLigne = rowDate;
+    var iniValue = ReportingContetieux.getIniValue(table);
+    
+    var a5;
+  
+    var rowm = newworksheet.getRow(1);
+    var colonnne;
+    var colDate1;
+    rowm.eachCell(function(cell, colNumber) {
+      if(cell.value == 'DOCUMENTS SAISIS')
+      {
+        colDate1 = parseInt(colNumber);
+        //var col = newworksheet.getColumn(colDate1);
+        var man = newworksheet.getRow(3);
+        var f = man.getCell(colDate1).value;
+        if(f == iniValue.ok)
+        {
+          colonnne = parseInt(colNumber);
+        }
+        }
+    });
+    console.log(" Colnumber"+colonnne);
+  
+    var collonne;
+    var colDate2;
+    rowm.eachCell(function(cell, colNumber) {
+      if(cell.value == 'DOCUMENTS TRAITES NON SAISIS (RETOURS)')
+      {
+        colDate2 = parseInt(colNumber);
+        var man = newworksheet.getRow(3);
+        var f = man.getCell(colDate2).value;
+        if(f == iniValue.ok)
+        {
+          collonne = parseInt(colNumber);
+        }
+      }
+    });
+    console.log(" Colnumber2"+collonne);
+    numeroLigne.getCell(colonnne).value = nombre_ok_ko.ok;
+    numeroLigne.getCell(collonne).value = nombre_ok_ko.ko;
+    await newWorkbook.xlsx.writeFile(path_reporting);
+    sails.log("Ecriture OK KO terminé"); 
+    return callback(null, "OK");
+  
+    }
+    catch
+    {
+      console.log("Une erreur s'est produite");
+      Reportinghtp.deleteToutHtp(table,3,callback);
+    }
+    },
     /***************************************************************/
-
   getConfigIni : function() {
     const fs = require('fs');
     const ini = require('ini');

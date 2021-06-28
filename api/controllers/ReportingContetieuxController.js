@@ -310,9 +310,9 @@ module.exports = {
         function (callback) {
             ReportingContetieux.countOkKo("coaaotdcbtp",callback);
         },
-        /*function (callback) {
-        ReportingContetieux.countOkKo("coldrcbtppublic",callback);
-        },*/
+        function (callback) {
+        ReportingContetieux.countOkKoDoubleSum("coldrcbtppublic",callback);
+        },
         function (callback) {
         ReportingContetieux.countOkKo("cootdcbtp",callback);
         },
@@ -336,6 +336,7 @@ module.exports = {
         console.log("Count OK 2 ==> " + result[1].ok + " / " + result[1].ko);
         console.log("Count OK 3 ==> " + result[2].ok + " / " + result[2].ko);
         console.log("Count OK 4 ==> " + result[3].ok + " / " + result[3].ko);
+        console.log("Count OK 9 ==> " + result[9].ok + " / " + result[9].ko);
         // console.log("Count OK tramelamiestock ==> " + result[4].ok + " / " + result[4].ko);
         // console.log("Count OK tramelamiestockResiliation ==> " + result[5].ok + " / " + result[5].ko);
         async.series([
@@ -366,9 +367,9 @@ module.exports = {
         function (callback) {
             ReportingContetieux.ecritureOkKo2(result[8],"coaaotdcbtp",date_export,mois1,callback);
         },
-        /*function (callback) {
-            ReportingContetieux.ecritureOkKo2(result[9],"coldrcbtppublic",date_export,mois1,callback);
-        },*/
+        function (callback) {
+            ReportingContetieux.ecritureOkKoDouble(result[9],"coldrcbtppublic",date_export,mois1,callback);
+        },
         function (callback) {
             ReportingContetieux.ecritureOkKo2(result[10],"cootdcbtp",date_export,mois1,callback);
         },
