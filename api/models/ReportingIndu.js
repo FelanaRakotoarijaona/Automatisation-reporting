@@ -115,7 +115,8 @@ module.exports = {
                       const regex12 = new RegExp(m2);
                        if(regex.test(files1[i]) && regex11.test(files1[i]) && regex12.test(files1[i]))
                        {
-                         var a =ab + file +"\\" + files1[i];
+                         //var a =ab + file +"\\" + files1[i];
+                         var a =ab + file +"/" + files1[i];
                          console.log('*****************');
                          console.log(a);  
                          var sql = "insert into cheminindu2 (chemin,nomtable,numligne,numfeuile,colonnecible,colonnecible2) values ('"+a+"','indurelevedecomptealmerys','"+numligne[nb]+"','"+numfeuille[nb]+"','"+nomcolonne[nb]+"','"+nomcolonne2[nb]+"') ";
@@ -164,7 +165,8 @@ module.exports = {
                     for(var i = 0; i < files1.length; i++){
                       if(regex.test(files1[i]))
                       {
-                        var a =ab + file +"\\" + files1[i];
+                        //var a =ab + file +"\\" + files1[i];
+                        var a =ab + file +"/" + files1[i];
                         console.log('*****************');
                         console.log(a);  
                         var sql = "insert into cheminindu2 (chemin,nomtable,numligne,numfeuile,colonnecible,colonnecible2) values ('"+a+"','indurelevedecomptecbtp','"+numligne[nb]+"','"+numfeuille[nb]+"','"+nomcolonne[nb]+"','"+nomcolonne2[nb]+"') ";
