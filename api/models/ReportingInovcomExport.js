@@ -16,6 +16,7 @@ module.exports = {
     var sqlOk ="select sum(okko::integer) from "+table;
     // var sqlKo ="select count(okko) as ko from "+table+" where okko='KO'";
     console.log(sqlOk);
+    
     // console.log(sqlKo);
     async.series([
       function (callback) {
