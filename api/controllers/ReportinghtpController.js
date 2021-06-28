@@ -286,8 +286,8 @@ module.exports = {
   {
     var Excel = require('exceljs');
     var workbook = new Excel.Workbook();
-    var table = ['\\\\10.128.1.2\\almerys-out\\Retour_Easytech_'];
-    //var table = ['/dev/prod/Retour_Easytech_'];
+    //var table = ['\\\\10.128.1.2\\almerys-out\\Retour_Easytech_'];
+    var table = ['/dev/prod/Retour_Easytech_'];
     var datetest = req.param("date",0);
     var annee = datetest.substr(0, 4);
     var mois = datetest.substr(5, 2);
@@ -302,8 +302,8 @@ module.exports = {
     var nomcolonne = [];
     var colonnecible2 = [];
     var essai = 'essai';
-    workbook.xlsx.readFile('htp.xlsx')
-    //workbook.xlsx.readFile('ex.xlsx')
+    //workbook.xlsx.readFile('htp.xlsx')
+    workbook.xlsx.readFile('ex.xlsx')
         .then(function() {
           var newworksheet = workbook.getWorksheet('Feuil1');
           var numFeuille = newworksheet.getColumn(4);
