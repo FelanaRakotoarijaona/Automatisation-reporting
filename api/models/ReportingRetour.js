@@ -28,6 +28,11 @@ module.exports = {
         };
       });
     }
+    else if(table[nb]=="coldrcbtppublic")
+    {
+      console.log('hehe coldrcbtppublic');
+      ReportingContetieux.lectureEtInsertiontype21( trameflux,feuil,cellule,table,cellule2,nb,numligne,callback);
+    }
     else{
       var tab = [];
       tab=ReportingRetour.lectureEtInsertiontype2( trameflux,feuil,cellule,table,cellule2,nb,numligne,callback);

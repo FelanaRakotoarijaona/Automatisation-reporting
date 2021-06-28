@@ -809,10 +809,8 @@ lectureEtInsertiontype4:function(trameflux,feuil,cellule,table,cellule2,nb,numli
         var cell_ref = XLSX.utils.encode_cell(address_of_cell);
         var desired_cell = sheet[cell_ref];
         var desired_value = (desired_cell ? desired_cell.v : undefined);
-
-        var bi = dernierl[nb];
-        const regex = new RegExp(bi,'i');
-        if(regex.test(desired_value))
+        
+       
         {
           col=ra;
         }
@@ -823,9 +821,7 @@ lectureEtInsertiontype4:function(trameflux,feuil,cellule,table,cellule2,nb,numli
         var cell_ref = XLSX.utils.encode_cell(address_of_cell);
         var desired_cell = sheet[cell_ref];
         var desired_value = (desired_cell ? desired_cell.v : undefined);
-        var bi1 = cellule[nb];
-        const regex1 = new RegExp(bi1);
-        if(regex1.test(desired_value))
+       
         {
           col1=ra;
         }
@@ -836,9 +832,7 @@ lectureEtInsertiontype4:function(trameflux,feuil,cellule,table,cellule2,nb,numli
         var cell_ref = XLSX.utils.encode_cell(address_of_cell);
         var desired_cell = sheet[cell_ref];
         var desired_value = (desired_cell ? desired_cell.v : undefined);
-        var bi2 = cellule2[nb];
-        const regex2 = new RegExp(bi2,'i');
-        if(regex2.test(desired_value))
+      
         {
           col2=ra;
         }
@@ -2242,15 +2236,8 @@ importEssaitype8: function (table,table2,date,option,nb,type,type2,nomtable,numl
     deleteReportingHtp : function (table,nb,callback) {
       var sql = "delete from "+table[nb]+" ";
       ReportingInovcom.getDatastore().sendNativeQuery(sql, function(err, res){
-        if (err) { 
-          console.log("Une erreur supr");
-          //return callback(err);
-         }
-        else
-        {
-          console.log(sql);
-          return callback(null, true);
-        }; 
+        if (err) { return console.log(err); }
+        return callback(null, true);
         });
     },
     deleteHtp : function (table,nb,callback) {

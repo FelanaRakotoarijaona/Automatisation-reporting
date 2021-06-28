@@ -27,11 +27,12 @@ module.exports = {
       var numfeuille = [];
       var nomcolonne = [];
       var nomcolonne2 = [];
-      //console.log(date);
+      var chem2 = [];
+      var option2 = [];
       var cheminp = [];
       var MotCle= [];
       var r = [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19];
-      //var r = [0];
+     // var r = [0,1,2,3,4,5];
       var nomBase = "cheminindu";
       workbook.xlsx.readFile('ReportingIndu.xlsx')
           .then(function() {
@@ -43,6 +44,8 @@ module.exports = {
             var numLigne = newworksheet.getColumn(8);
             var cheminparticulier = newworksheet.getColumn(9);
             var motcle = newworksheet.getColumn(10);
+            var chemin2 = newworksheet.getColumn(11);
+            var opt2 = newworksheet.getColumn(12);
             numFeuille.eachCell(function(cell, rowNumber) {
               numfeuille.push(cell.value);
             });
@@ -64,8 +67,12 @@ module.exports = {
               motcle.eachCell(function(cell, rowNumber) {
                 MotCle.push(cell.value);
               });
-             /* console.log(cheminp[0]);
-              console.log(MotCle[0]);*/
+              chemin2.eachCell(function(cell, rowNumber) {
+                chem2.push(cell.value);
+              });
+              opt2.eachCell(function(cell, rowNumber) {
+                option2.push(cell.value);
+              });
               console.log(nomtable);
               async.series([ 
                    function(cb){
@@ -82,8 +89,7 @@ module.exports = {
                         ReportingInovcom.delete(nomtable,lot,cb);
                       },
                       function(cb){
-                        //console.log(lot + 'numero');
-                        ReportingInovcom.importEssai(table,cheminp,date,MotCle,lot,nomtable,numligne,numfeuille,nomcolonne,nomcolonne2,nomBase,cb);
+                        ReportingInovcom.importEssai(table,cheminp,date,MotCle,lot,nomtable,numligne,numfeuille,nomcolonne,nomcolonne2,nomBase,chem2,option2,cb);
                       },
                     ],function(erroned, lotValues){
                       if(erroned) return res.badRequest(erroned);
@@ -92,7 +98,7 @@ module.exports = {
                   },
                     function(err)
                     {
-                      var sql4= "select count(chemin) as ok from "+nomBase+" ";
+                      var sql4= "select count(*) as ok from "+nomBase+" ";
                       console.log(sql4);
                       Reportinghtp.getDatastore().sendNativeQuery(sql4 ,function(err, nc) {
                          nc = nc.rows;
@@ -158,12 +164,6 @@ module.exports = {
             var table = [];
             var trameflux = [];
             var numligne = [];
-            /*var datetest = req.param("date",0);
-            var annee = datetest.substr(0, 4);
-            var mois = datetest.substr(5, 2);
-            var jour = datetest.substr(8, 2);
-            var date = annee+mois+jour;
-            var dateexport = jour + '/' + mois + '/' +annee;*/
             var nb = x;
             var nbre = [];
             for(var i=0;i<nb;i++)

@@ -41,6 +41,7 @@ module.exports = {
       var chem2 = [];
       var option2 = [];
       var r = [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22];
+      //var r = [0,1];
       workbook.xlsx.readFile('ReportingContetieux.xlsx')
           .then(function() {
             var newworksheet = workbook.getWorksheet('Feuil2');
@@ -309,9 +310,9 @@ module.exports = {
         function (callback) {
             ReportingContetieux.countOkKo("coaaotdcbtp",callback);
         },
-        function (callback) {
+        /*function (callback) {
         ReportingContetieux.countOkKo("coldrcbtppublic",callback);
-        },
+        },*/
         function (callback) {
         ReportingContetieux.countOkKo("cootdcbtp",callback);
         },
@@ -365,9 +366,9 @@ module.exports = {
         function (callback) {
             ReportingContetieux.ecritureOkKo2(result[8],"coaaotdcbtp",date_export,mois1,callback);
         },
-        function (callback) {
+        /*function (callback) {
             ReportingContetieux.ecritureOkKo2(result[9],"coldrcbtppublic",date_export,mois1,callback);
-        },
+        },*/
         function (callback) {
             ReportingContetieux.ecritureOkKo2(result[10],"cootdcbtp",date_export,mois1,callback);
         },
