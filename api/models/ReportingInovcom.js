@@ -1529,7 +1529,8 @@ lectureEtInsertiontype4:function(trameflux,feuil,cellule,table,cellule2,nb,numli
             const regex4 = new RegExp(b2,'i');
             if((regex.test(file)  || regex4.test(file)) && regex1.test(file) && regex2.test(file))
             {
-               re = a+'\\'+file;
+               //re = a+'\\'+file;
+               re = a+'/'+file;
                var sql = "insert into "+nomBase+" (chemin,nomtable,numligne,numfeuile,colonnecible) values ('"+re+"','"+nomTable+"','"+numLigne+"','"+numFeuille+"','"+nomColonne+"') ";
                ReportingInovcom.getDatastore().sendNativeQuery(sql, function(err,res){
                 if (err) { 
@@ -1576,7 +1577,8 @@ lectureEtInsertiontype4:function(trameflux,feuil,cellule,table,cellule2,nb,numli
             const regex4 = new RegExp(b2,'i');
             if((regex.test(file)  || regex4.test(file)) && regex1.test(file) && regex2.test(file))
             {
-               re = a1+'\\'+file;
+               //re = a1+'\\'+file;
+               re = a+'/'+file;
                var sql = "insert into "+nomBase+" (chemin,nomtable,numligne,numfeuile,colonnecible) values ('"+re+"','"+nomTable+"','"+numLigne+"','"+numFeuille+"','"+nomColonne+"') ";
                ReportingInovcom.getDatastore().sendNativeQuery(sql, function(err,res){
                 if (err) { 
@@ -1826,7 +1828,8 @@ importEssaitype7: function (table,table2,date,option,nb,nomtable,numligne,numfeu
                     
                      if( ( regex.test(files1[i]) || regex4.test(files1[i]) ) && regex1.test(files1[i]) && regex2.test(files1[i]))
                      {
-                       var a =ab + file +"\\" + files1[i];
+                       //var a =ab + file +"\\" + files1[i];
+                       var a =ab + file +"/" + files1[i];
                        console.log('*****************');
                        console.log(a);  
                        var sql = "insert into chemininovcomtype7 (chemin,nomtable,numligne,numfeuile,colonnecible,colonnecible2,colonnecible3) values ('"+a+"','"+nomtable+"','"+numligne+"','"+numfeuille+"','"+nomcolonne+"','"+nomcolonne2+"','"+nomcolonne3+"') ";
@@ -1899,7 +1902,8 @@ importEssaitype7: function (table,table2,date,option,nb,nomtable,numligne,numfeu
                     
                      if( ( regex.test(files1[i]) || regex4.test(files1[i]) ) && regex1.test(files1[i]) && regex2.test(files1[i]))
                      {
-                       var a =ab1 + file +"\\" + files1[i];
+                       //var a =ab1 + file +"\\" + files1[i];
+                       var a =ab + file +"/" + files1[i];
                        console.log('*****************');
                        console.log(a);  
                        var sql = "insert into chemininovcomtype7 (chemin,nomtable,numligne,numfeuile,colonnecible,colonnecible2,colonnecible3) values ('"+a+"','"+nomtable+"','"+numligne+"','"+numfeuille+"','"+nomcolonne+"','"+nomcolonne2+"','"+nomcolonne3+"') ";
@@ -1993,8 +1997,8 @@ importEssaitype8: function (table,table2,date,option,nb,type,type2,nomtable,numl
                   else{
                     console.log(file +" " +  files1[files1.length-1]);
                     console.log('ok');
-    
-                    var a = chemin+ "\\RETOUR_HOSPI\\RETOUR_AVIS D''ANNULATION\\" + file  + type2[nb] + files1[files1.length-1];  
+                    var a = chemin+ "/RETOUR_HOSPI/RETOUR_AVIS D''ANNULATION/" + file  + type2[nb] + files1[files1.length-1];  
+                    //var a = chemin+ "\\RETOUR_HOSPI\\RETOUR_AVIS D''ANNULATION\\" + file  + type2[nb] + files1[files1.length-1];  
                     console.log("haha"+a);
                     var sql = "insert into chemininovcomtype8 (chemin,nomtable,numligne,numfeuile,colonnecible) values ('"+a+"','"+nomtable+"','"+numligne+"','"+numfeuille+"','"+nomcolonne+"') ";
                     ReportingInovcom.getDatastore().sendNativeQuery(sql, function(err,res){

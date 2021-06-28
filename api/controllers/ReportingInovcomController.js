@@ -236,7 +236,8 @@ module.exports = {
     {
       var Excel = require('exceljs');
       var workbook = new Excel.Workbook();
-      var table = ['\\\\10.128.1.2\\almerys-out\\Retour_Easytech_'];
+      //var table = ['\\\\10.128.1.2\\almerys-out\\Retour_Easytech_'];
+      var table = ['/dev/pro/Retour_Easytech_'];
       var datetest = req.param("date",0);
       var annee = datetest.substr(0, 4);
       var mois = datetest.substr(5, 2);
@@ -253,7 +254,8 @@ module.exports = {
       var option2 = [];
       var r = [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18];
       var nomBase = "chemininovcomtype2";
-      workbook.xlsx.readFile('Inovcom.xlsx')
+      //workbook.xlsx.readFile('Inovcom.xlsx')
+      workbook.xlsx.readFile('Inovcomserveur.xlsx')
           .then(function() {
             var newworksheet = workbook.getWorksheet('Feuil2');
             var numFeuille = newworksheet.getColumn(4);
@@ -450,7 +452,8 @@ module.exports = {
     {
       var Excel = require('exceljs');
       var workbook = new Excel.Workbook();
-      var table = ['\\\\10.128.1.2\\almerys-out\\Retour_Easytech_'];
+      //var table = ['\\\\10.128.1.2\\almerys-out\\Retour_Easytech_'];
+      var table = ['/dev/pro/Retour_Easytech_'];
       var datetest = req.param("date",0);
       var annee = datetest.substr(0, 4);
       var mois = datetest.substr(5, 2);
@@ -467,7 +470,8 @@ module.exports = {
       var chem2 = [];
       var option2 = [];
       var nomBase = "chemininovcomtype3";
-      workbook.xlsx.readFile('Inovcom.xlsx')
+      ///workbook.xlsx.readFile('Inovcom.xlsx')
+      workbook.xlsx.readFile('Inovcomserveur.xlsx')
           .then(function() {
             var newworksheet = workbook.getWorksheet('Feuil3');
             var numFeuille = newworksheet.getColumn(4);
@@ -660,7 +664,8 @@ module.exports = {
     {
       var Excel = require('exceljs');
       var workbook = new Excel.Workbook();
-      var table = ['\\\\10.128.1.2\\almerys-out\\Retour_Easytech_'];
+      //var table = ['\\\\10.128.1.2\\almerys-out\\Retour_Easytech_'];
+      var table = ['/dev/pro/Retour_Easytech_'];
       var datetest = req.param("date",0);
       var annee = datetest.substr(0, 4);
       var mois = datetest.substr(5, 2);
@@ -677,7 +682,8 @@ module.exports = {
       var MotCle= [];
       var r = [0,1,2,3,4,5];
       var nomBase = "chemininovcomtype4";
-      workbook.xlsx.readFile('Inovcom.xlsx')
+      //workbook.xlsx.readFile('Inovcom.xlsx')
+      workbook.xlsx.readFile('Inovcomserveur.xlsx')
           .then(function() {
             var newworksheet = workbook.getWorksheet('Feuil4');
             var numFeuille = newworksheet.getColumn(4);
@@ -883,7 +889,8 @@ module.exports = {
     {
       var Excel = require('exceljs');
       var workbook = new Excel.Workbook();
-      var table = ['\\\\10.128.1.2\\almerys-out\\Retour_Easytech_'];
+      //var table = ['\\\\10.128.1.2\\almerys-out\\Retour_Easytech_'];
+      var table = ['/dev/pro/Retour_Easytech_'];
       var datetest = req.param("date",0);
       var annee = datetest.substr(0, 4);
       var mois = datetest.substr(5, 2);
@@ -895,6 +902,7 @@ module.exports = {
       var chem2 = [];
       var option2 = [];
       var nomBase = "chemininovcomtype5";
+      //workbook.xlsx.readFile('Inovcom.xlsx')
       workbook.xlsx.readFile('Inovcom.xlsx')
           .then(function() {
             var newworksheet = workbook.getWorksheet('Feuil5');
@@ -992,7 +1000,8 @@ module.exports = {
             var date = annee+mois+jour;
             var dateexport = jour + '/' + mois + '/' +annee;
             var nb = x;
-            workbook.xlsx.readFile('Inovcom.xlsx')
+            //workbook.xlsx.readFile('Inovcom.xlsx')
+            workbook.xlsx.readFile('Inovcomserveur.xlsx')
                 .then(function() {
                   var newworksheet = workbook.getWorksheet('Feuil5');
                   var chemincommun = newworksheet.getColumn(1);
@@ -1058,7 +1067,8 @@ module.exports = {
   {
     var Excel = require('exceljs');
     var workbook = new Excel.Workbook();
-    var table = ['\\\\10.128.1.2\\almerys-out\\Retour_Easytech_'];
+    //var table = ['\\\\10.128.1.2\\almerys-out\\Retour_Easytech_'];
+    var table = ['/dev/pro/Retour_Easytech_'];
     var datetest = req.param("date",0);
     var annee = datetest.substr(0, 4);
     var mois = datetest.substr(5, 2);
@@ -1068,7 +1078,8 @@ module.exports = {
     var cheminp = [];
     var MotCle= [];
     var nomBase = "chemininovcomtype6";
-    workbook.xlsx.readFile('Inovcom.xlsx')
+    //workbook.xlsx.readFile('Inovcom.xlsx')
+    workbook.xlsx.readFile('Inovcomserveur.xlsx')
         .then(function() {
           var newworksheet = workbook.getWorksheet('Feuil6');
           var cheminparticulier = newworksheet.getColumn(9);
@@ -1146,7 +1157,8 @@ module.exports = {
             var date = annee+mois+jour;
             var dateexport = jour + '/' + mois + '/' +annee;
             var nb = 1;
-            workbook.xlsx.readFile('Inovcom.xlsx')
+            //workbook.xlsx.readFile('Inovcom.xlsx')
+            workbook.xlsx.readFile('Inovcomserveur.xlsx')
                 .then(function() {
                   var newworksheet = workbook.getWorksheet('Feuil6');
                   var chemincommun = newworksheet.getColumn(1);
@@ -1213,7 +1225,8 @@ module.exports = {
   {
     var Excel = require('exceljs');
     var workbook = new Excel.Workbook();
-    var table = ['\\\\10.128.1.2\\almerys-out\\Retour_Easytech_'];
+    //var table = ['\\\\10.128.1.2\\almerys-out\\Retour_Easytech_'];
+    var table = ['/dev/pro/Retour_Easytech_'];
     var datetest = req.param("date",0);
     var annee = datetest.substr(0, 4);
     var mois = datetest.substr(5, 2);
@@ -1231,7 +1244,8 @@ module.exports = {
     var chem2 = [];
     var option2 = [];
     var nomBase = "chemininovcomtype7";
-    workbook.xlsx.readFile('Inovcom.xlsx')
+    //workbook.xlsx.readFile('Inovcom.xlsx')
+    workbook.xlsx.readFile('Inovcomserveur.xlsx')
         .then(function() {
           var newworksheet = workbook.getWorksheet('Feuil7');
           var nomColonne3 = newworksheet.getColumn(3);
@@ -1420,7 +1434,8 @@ module.exports = {
    {
      var Excel = require('exceljs');
      var workbook = new Excel.Workbook();
-     var table = ['\\\\10.128.1.2\\almerys-out\\Retour_Easytech_'];
+     //var table = ['\\\\10.128.1.2\\almerys-out\\Retour_Easytech_'];
+     var table = ['/dev/pro/Retour_Easytech_'];
      var datetest = req.param("date",0);
      var annee = datetest.substr(0, 4);
      var mois = datetest.substr(5, 2);
@@ -1436,7 +1451,8 @@ module.exports = {
      var numfeuille = [];
      var nomcolonne = [];
      var nomBase = "chemininovcomtype8";
-     workbook.xlsx.readFile('Inovcom.xlsx')
+     //workbook.xlsx.readFile('Inovcom.xlsx')
+     workbook.xlsx.readFile('Inovcomserveur.xlsx')
          .then(function() {
            var newworksheet = workbook.getWorksheet('Feuil8');
            var numFeuille = newworksheet.getColumn(4);
@@ -1622,7 +1638,8 @@ module.exports = {
     {
       var Excel = require('exceljs');
       var workbook = new Excel.Workbook();
-      var table = ['\\\\10.128.1.2\\almerys-out\\Retour_Easytech_'];
+      //var table = ['\\\\10.128.1.2\\almerys-out\\Retour_Easytech_'];
+      var table = ['/dev/pro/Retour_Easytech_'];
       var datetest = req.param("date",0);
       var annee = datetest.substr(0, 4);
       var mois = datetest.substr(5, 2);
