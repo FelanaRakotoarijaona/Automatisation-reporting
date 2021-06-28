@@ -1,0 +1,171 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<title></title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;1,100;1,300;1,400&display=swap');
+*{
+ margin:0;
+ padding:0;
+}
+body{
+ font-family:'Roboto',sans-serif;
+  overflow-x:hidden;
+}
+nav{
+display:flex;
+background-color:#00D975;
+justify-content: space-around;
+padding:20px 0;
+color:#012F2D;
+/* color:rgb(255, 254, 254); */
+
+
+align-items: center;
+}
+nav.logo{
+letter-spacing: 3px;
+height: 20px;
+}
+nav ul{
+display:flex;
+list-style: none;
+width:40%;
+justify-content: space-between;
+}
+nav ul li a {
+  color:rgb(255, 254, 254);
+  text-decoration: none;
+  font-size: 1em;
+}
+
+.btn{
+border-radius: 40px;
+}
+/*Hamburger */
+.menu-bars{
+display:none;
+flex-direction: column;
+height:20px;
+justify-content: space-between;
+position:relative;
+  z-index:999;
+}
+.menu-bars input{
+position: absolute;
+width:40px;
+height:28px;
+left:-5px;
+top:-3px;
+opacity: 0;
+cursor:pointer;
+z-index: 2;
+}
+
+.menu-bars span{
+display:block;
+width:28px;
+height:3px;
+background-color:rgb(255, 254, 254);
+border-radius: 3px;
+transition: all 0.3s;
+}
+
+.menu-bars span:nth-child(2){
+transform-origin: 0 0 ;
+}
+
+.menu-bars span:nth-child(4){
+  transform-origin: 0 100% ;
+  }
+
+.menu-bars input:checked ~ span:nth-child(2){
+background-color: white;
+transform: rotate(45deg) translate(-1px, -1px);
+}
+.menu-bars input:checked ~ span:nth-child(4){
+  background-color: white;
+  transform: rotate(-45deg) translate(-1px,0); 
+  }
+
+  .menu-bars input:checked ~ span:nth-child(3){
+    opacity: 0;
+    transform: scale(0); 
+    }
+
+
+@media only screen and (max-width: 768px){
+nav ul{
+width:50%;
+}
+
+}
+
+@media only screen and (max-width: 576px){
+  .menu-bars{
+  display:flex;
+  }
+  nav ul{
+  position:absolute;
+  right:0;
+  top:0;
+  width:100%;
+  height:100vh;
+  justify-content: space-evenly;
+  flex-direction: column;
+  align-items: center;
+  background-color: hsl(342, 96%, 50%);
+  z-index: 1;
+  transform: translateY(-100%);
+  transition: all 1s;
+  }
+  }
+  nav ul.slide{
+    transform: translateY(0);
+  }
+  img{
+      margin-left: 0px;
+      width: 200px;
+      height: 75px;
+      background-color: transparent;
+  }
+</style>
+</head>
+
+<body class="bg-blue-500">
+
+  <nav>
+      <div class="logo">
+        <!-- <h3>
+            <img src="images/Logo_bewys.png" alt="bewys" />
+        </h3> -->
+    </div>
+
+<!-- <ul>
+<li><a href="#">Home</a></li>
+<li><a href="#">About</a></li>
+<li><a href="#">Portfolio</a></li>
+<li><a href="#">Contact1</a></li>
+<li><a href="#">Contact2</a></li>
+<li><a href="#">Contact3</a></li>
+<li><a href="#">Contact4</a></li>
+</ul> -->
+<div class="menu-bars" id="toggle">
+  <input type="checkbox">
+<span></span>
+<span></span>
+<span></span>
+</div>
+</nav>
+  
+</body>
+<script>
+const menuToggle= document.querySelector(".menu-bars");
+const nav = document.querySelector("nav ul");
+
+
+menuToggle.addEventListener("click", () => {
+  nav.classList.toggle("slide");
+  });
+</script>
+</html>

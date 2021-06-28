@@ -556,6 +556,7 @@ rechercheColonne : function (req, res) {
     console.log("Count OK 2 ==> " + result[1].ok + " / " + result[1].ko);
     console.log("Count OK 3 ==> " + result[2].ok + " / " + result[2].ko);
     console.log("Count OK 4 ==> " + result[3].ok + " / " + result[3].ko);
+    console.log("Count OK indufraudelmg ==> " + result[4].ok + " / " + result[4].ko);
     console.log("Count OK INDUCONTESTSATION ==> " + result[13].ok + " / " + result[13].ko);
     console.log("Count OK SANTE ==> " + result[14].ok + " / " + result[14].ko);
     async.series([
@@ -569,7 +570,7 @@ rechercheColonne : function (req, res) {
         ReportingIndu.ecritureOkKoDouble(result[2],"indusansnotif",date_export,mois1,callback);
       },
       function (callback) {
-        ReportingIndu.ecritureOkKo(result[3],"indutiers",date_export,mois1,callback);
+        ReportingIndu.ecritureOkKoDouble(result[3],"indutiers",date_export,mois1,callback);
       },
       function (callback) {
         ReportingIndu.ecritureOkKo(result[4],"indufraudelmg",date_export,mois1,callback);

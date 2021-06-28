@@ -178,7 +178,7 @@ module.exports.routes = {
   // ROUTES REPORTING ALMERYS ENGAGEMENT
   '/accueilGarantie' : 'GarantieController.accueilGarantie',//accueilGarantie
   '/essaiGarantie' : 'GarantieController.essaiGarantie',
-
+  '/reportingGarantie' : 'GarantieController.essaiExcelgarantie',
 
 
 

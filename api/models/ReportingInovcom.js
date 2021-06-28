@@ -785,6 +785,8 @@ lectureEtInsertiontype4:function(trameflux,feuil,cellule,table,cellule2,nb,numli
     XLSX = require('xlsx');
     var workbook = XLSX.readFile(trameflux[nb]);
     var numerofeuille = feuil[nb];
+    console.log('ito le numerofeuille');
+    console.log(numerofeuille);
     var numeroligne = parseInt(numligne[nb]);
     console.log('lign' +numeroligne);
     try{

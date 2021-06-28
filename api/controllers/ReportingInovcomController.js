@@ -1238,7 +1238,8 @@ module.exports = {
                       Reportinghtp.getDatastore().sendNativeQuery(sql4 ,function(err, nc) {
                          nc = nc.rows;
                          console.log('nc'+nc[0].ok);
-                         var f = parseInt(nc[0].ok);
+                         var f = parseInt(nc[0].ok);                         
+                         console.log('ito le f anaz :'+f);
                             if (err){
                               return res.view('Inovcom/erreur');
                             }
@@ -1264,6 +1265,7 @@ module.exports = {
     var datetest = req.param("date",0);
     var sql1= 'select count(*) as nb from chemininovcomtype7;';
       Reportinghtp.getDatastore().sendNativeQuery(sql1,function(err, nc1) {
+        console.log(nc1);
         if (err){
           console.log(err);
           return next(err);
