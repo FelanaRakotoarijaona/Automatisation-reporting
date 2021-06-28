@@ -1313,8 +1313,8 @@ lectureEtInsertiontype4:function(trameflux,feuil,cellule,table,cellule2,nb,numli
                 {
                   console.log(file);
                    var file1 = file.replace("'", "''");
-                   re = p + '\\' + file1;
-
+                   //re = p + '\\' + file1;
+                   re = p + '/' + file1;
                    //re=re.replace("'", "''");
                    console.log('ato'+re);
                    var sql = "insert into "+nomBase+" (chemin,nomtable,numligne,numfeuile,colonnecible,colonnecible2) values ('"+re+"','"+nomtable[nb]+"','"+numligne[nb]+"','"+numfeuille[nb]+"','"+nomCol+"','"+nomCol2+"') ";
@@ -1370,7 +1370,8 @@ lectureEtInsertiontype4:function(trameflux,feuil,cellule,table,cellule2,nb,numli
                 {
                   console.log(file);
                    var file1 = file.replace("'", "''");
-                   re = p + '\\' + file1;
+                   //re = p + '\\' + file1;
+                   re = p + '/' + file1;
 
                    //re=re.replace("'", "''");
                    console.log('ato'+re);
