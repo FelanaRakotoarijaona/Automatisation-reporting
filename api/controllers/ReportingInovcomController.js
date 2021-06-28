@@ -15,7 +15,8 @@ module.exports = {
     {
       var Excel = require('exceljs');
       var workbook = new Excel.Workbook();
-      var table = ['\\\\10.128.1.2\\almerys-out\\Retour_Easytech_'];
+      //var table = ['\\\\10.128.1.2\\almerys-out\\Retour_Easytech_'];
+      var table = ['/dev/pro/Retour_Easytech_'];
       var datetest = req.param("date",0);
       var annee = datetest.substr(0, 4);
       var mois = datetest.substr(5, 2);
@@ -33,7 +34,8 @@ module.exports = {
       var MotCle= [];
       var nomBase = "chemininovcom";
       var r = [0,1,2];
-      workbook.xlsx.readFile('Inovcom.xlsx')
+      //workbook.xlsx.readFile('Inovcom.xlsx')
+      workbook.xlsx.readFile('Inovcomserveur.xlsx')
           .then(function() {
             var newworksheet = workbook.getWorksheet('Feuil1');
             var numFeuille = newworksheet.getColumn(4);
