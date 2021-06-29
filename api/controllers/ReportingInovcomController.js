@@ -1425,7 +1425,6 @@ module.exports = {
   };
 });
   },
-
    //Type 8
    accueil1type8 : function(req,res)
    {
