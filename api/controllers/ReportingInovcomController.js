@@ -1511,10 +1511,10 @@ module.exports = {
                     if (err){
                       return res.view('Inovcom/erreur');
                     }
-                   if(f==0)
+                   /*if(f==0)
                     {
                       return res.view('Inovcom/erreur');
-                    }
+                    }*/
                     else
                     {
                       return res.view('Inovcom/accueiltype8', {date : datetest});
