@@ -412,7 +412,7 @@ module.exports = {
             {
               // res.redirect('/exportInovcom/'+date_export+'/x')
               // res.view('reporting/succes');
-              return res.view('Inovcom/exportsuivantinovcom2');
+              return res.view('Inovcom/exportsuivantinovcom2', {date: datetest});
 
             }
         });
