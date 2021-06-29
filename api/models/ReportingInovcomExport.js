@@ -5,8 +5,8 @@
  * @docs        :: https://sailsjs.com/docs/concepts/models-and-orm/models
  */
 //const path_reporting = 'D:/Reporting/Reporting/REPORTING INOVCOM Type.xlsx';
-const path_reporting = '/dev/prod/00-TOUS/TestReporting/REPORTING INOVCOM Type.xlsx';
-// const path_reporting = 'D:/LDR8_1421_nouv/PROJET_FELANA/REPORTING INOVCOM Type.xlsx';
+// const path_reporting = '/dev/prod/00-TOUS/TestReporting/REPORTING INOVCOM Type.xlsx';
+const path_reporting = 'D:/LDR8_1421_nouv/PROJET_FELANA/REPORTING INOVCOM Type.xlsx';
 module.exports = {
   attributes: {
   },
@@ -946,10 +946,11 @@ module.exports = {
         ligneDate1 = parseInt(rowNumber);
         var line = newworksheet.getRow(ligneDate1);
         var f = line.getCell(3).value;
-        var a = "SANTECLAIR";
-        const regex = new RegExp(a,'i');
-        if(regex.test(f) == true)
-        // if(f == "SANTECLAIR")
+        console.log(f);
+        // var a = "SANTECLAIR";
+        // const regex = new RegExp(a,'i');
+        // if(regex.test(f) == true)
+        if(f == "SANTECLAIR")
         {
           ligneDate = parseInt(rowNumber);
         }
@@ -999,6 +1000,13 @@ module.exports = {
     });
     console.log(" Colnumber2"+collonne);*/
     numeroLigne.getCell(colonnne).value = nombre_ok_ko.ok;
+    // console.log(nombre_ok_ko);
+    if(nombre_ok_ko == null){
+      nombre_ok_ko = 0;
+    }
+    else{
+      return nombre_ok_ko.ok;
+    }
     //numeroLigne.getCell(collonne).value = nombre_ok_ko.ko;
     await newWorkbook.xlsx.writeFile(path_reporting);
     sails.log("Ecriture OK KO terminé"); 
