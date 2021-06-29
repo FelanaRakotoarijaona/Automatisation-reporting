@@ -997,8 +997,8 @@ module.exports = {
       }
     });
     console.log(" Colnumber2"+collonne);*/
-    console.log(numeroLigne);
-    console.log(colonne);
+    // console.log(numeroLigne);
+    console.log(colonnne);
     console.log(nombre_ok_ko.ok);
     numeroLigne.getCell(colonnne).value = nombre_ok_ko.ok;
     //numeroLigne.getCell(collonne).value = nombre_ok_ko.ko;
