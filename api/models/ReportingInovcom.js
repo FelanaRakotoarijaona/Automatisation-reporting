@@ -812,7 +812,9 @@ lectureEtInsertiontype4:function(trameflux,feuil,cellule,table,cellule2,nb,numli
         var desired_cell = sheet[cell_ref];
         var desired_value = (desired_cell ? desired_cell.v : undefined);
         
-       
+        var mc1 = dernierl[nb];
+        const regex = new RegExp(mc1,'i');
+        if(regex.test(desired_value))
         {
           col=ra;
         }
@@ -823,7 +825,9 @@ lectureEtInsertiontype4:function(trameflux,feuil,cellule,table,cellule2,nb,numli
         var cell_ref = XLSX.utils.encode_cell(address_of_cell);
         var desired_cell = sheet[cell_ref];
         var desired_value = (desired_cell ? desired_cell.v : undefined);
-       
+        var mc1 = cellule[nb];
+        const regex = new RegExp(mc1,'i');
+        if(regex.test(desired_value))
         {
           col1=ra;
         }
@@ -834,7 +838,9 @@ lectureEtInsertiontype4:function(trameflux,feuil,cellule,table,cellule2,nb,numli
         var cell_ref = XLSX.utils.encode_cell(address_of_cell);
         var desired_cell = sheet[cell_ref];
         var desired_value = (desired_cell ? desired_cell.v : undefined);
-      
+        var mc1 = cellule2[nb];
+        const regex = new RegExp(mc1,'i');
+        if(regex.test(desired_value))
         {
           col2=ra;
         }
