@@ -10,7 +10,7 @@ module.exports = {
   attributes: {
 
   },
-  deleteFromChemin : function (table,callback) {
+  /*deleteFromChemin : function (table,callback) {
     var sql = "delete from chemingarantie ";
     console.log(sql);
     Garantie.getDatastore().sendNativeQuery(sql, function(err, res){
@@ -116,7 +116,7 @@ module.exports = {
    },
 /************************************************************************/
 
-  importEssaidemat1: function (table,table2,date,option,nb,nomtable,numligne,numfeuille,nomcolonne,colonnecible2,colonnecible3,callback) {
+ /* importEssaidemat1: function (table,table2,date,option,nb,nomtable,numligne,numfeuille,nomcolonne,colonnecible2,colonnecible3,callback) {
     const fs = require('fs');
     var re  = 'a';
     var tab = [];
@@ -200,7 +200,7 @@ module.exports = {
     }   
   },
   /*******************************************************/
-  importEssaidematbpo: function (table_1,table2,date,option,nb,nomtable,numligne,numfeuille,nomcolonne,colonnecible2,colonnecible3,callback) {
+ /* importEssaidematbpo: function (table_1,table2,date,option,nb,nomtable,numligne,numfeuille,nomcolonne,colonnecible2,colonnecible3,callback) {
     const fs = require('fs');
     var re  = 'a';
     var tab = [];
@@ -289,7 +289,7 @@ module.exports = {
     }   
   },
   /*******************************************************/ 
-  importEssaiavis: function (table,table2,date,option,nb,nomtable,numligne,numfeuille,nomcolonne,colonnecible2,colonnecible3,Sup,callback) {
+  /*importEssaiavis: function (table,table2,date,option,nb,nomtable,numligne,numfeuille,nomcolonne,colonnecible2,colonnecible3,Sup,callback) {
     const fs = require('fs');
     var re  = 'a';
     var tab = [];
@@ -382,7 +382,7 @@ module.exports = {
     }   
   },
   /*******************************************************/ 
-  importEssaidematconvention: function (table,table2,date,option,nb,nomtable,numligne,numfeuille,nomcolonne,colonnecible2,colonnecible3,callback) {
+ /* importEssaidematconvention: function (table,table2,date,option,nb,nomtable,numligne,numfeuille,nomcolonne,colonnecible2,colonnecible3,callback) {
     const fs = require('fs');
     var re  = 'a';
     var tab = [];
@@ -471,7 +471,7 @@ module.exports = {
     }   
   },
   /*******************************************************/ 
-  importEssaiencindus: function (table,table2,date,option,nb,nomtable,numligne,numfeuille,nomcolonne,colonnecible2,colonnecible3,Sup,date_indus,callback) {
+ /* importEssaiencindus: function (table,table2,date,option,nb,nomtable,numligne,numfeuille,nomcolonne,colonnecible2,colonnecible3,Sup,date_indus,callback) {
     const fs = require('fs');
     var re  = 'a';
     var tab = [];
@@ -562,7 +562,7 @@ module.exports = {
     }   
   },
   /*******************************************************/ 
-  importEssaidematretention: function (table,table2,date,option,nb,nomtable,numligne,numfeuille,nomcolonne,colonnecible2,colonnecible3,datej_1,callback) {
+ /* importEssaidematretention: function (table,table2,date,option,nb,nomtable,numligne,numfeuille,nomcolonne,colonnecible2,colonnecible3,datej_1,callback) {
     const fs = require('fs');
     var re  = 'a';
     var tab = [];
@@ -651,7 +651,7 @@ module.exports = {
     }   
   },
   /*******************************************************/ 
-  existenceFichier : function (pathparam) {
+  /*existenceFichier : function (pathparam) {
     const fs = require('fs');
 
       var existe ='vrai';
@@ -725,7 +725,7 @@ module.exports = {
     };
   },
 /****************************************************************************************/
-   importTrameDemat : function (trameflux,feuil,cellule,table,cellule2,nb,numligne,dernierl,callback) {
+   /*importTrameDemat : function (trameflux,feuil,cellule,table,cellule2,nb,numligne,dernierl,callback) {
     // var tab = [];
     // tab = Garantie.totalFichierExistant(trameflux,nb,callback);
     // console.log(tab);
@@ -947,7 +947,7 @@ module.exports = {
 
   },
   /***************************************************************************/
-  importTrameRcindeterminable : function (trameflux,feuil,cellule,table,cellule2,nb,numligne,dernierl,callback) {
+  /*importTrameRcindeterminable : function (trameflux,feuil,cellule,table,cellule2,nb,numligne,dernierl,callback) {
     var tab = [];
     tab = Garantie.totalFichierExistant(trameflux,nb,callback);
     console.log(tab);
@@ -968,7 +968,7 @@ module.exports = {
     };
   },
   /***************************************************************************/
-lectureEtInsertiongarantieRcindeterminable:function(trameflux,feuil,cellule,table,cellule2,nb,numligne,dernierl,callback){
+/*lectureEtInsertiongarantieRcindeterminable:function(trameflux,feuil,cellule,table,cellule2,nb,numligne,dernierl,callback){
   XLSX = require('xlsx');
   var workbook = XLSX.readFile(trameflux[0]);
   var numerofeuille = feuil[0];
@@ -1085,7 +1085,7 @@ catch
   console.log("erreur absolu haaha");
 }
 
- },
+ },*/
 
 };
 
