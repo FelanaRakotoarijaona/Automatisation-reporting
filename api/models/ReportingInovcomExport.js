@@ -1001,8 +1001,8 @@ module.exports = {
     console.log(" Colnumber2"+collonne);*/
     numeroLigne.getCell(colonnne).value = nombre_ok_ko.ok;
     // console.log(nombre_ok_ko);
-    if(nombre_ok_ko == null){
-      nombre_ok_ko = 0;
+    if(nombre_ok_ko.ok == null){
+      nombre_ok_ko.ok = 0;
     }
     else{
       return nombre_ok_ko.ok;
