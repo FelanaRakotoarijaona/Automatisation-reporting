@@ -857,11 +857,11 @@ lectureEtInsertiontype4:function(trameflux,feuil,cellule,table,cellule2,nb,numli
             var desired_cell = sheet[cell_ref];
             var desired_value1 = (desired_cell ? desired_cell.v : undefined);
             var bi = 'Total';
-            const regex = new RegExp(bi+'*');
+            const regex = new RegExp(bi,'i');
             if(regex.test(desired_value1))
             {
               var z = parseInt(a) - 1;
-              var address_of_cell2 = {c:col1, r:z};
+              var address_of_cell2 = {c:22, r:z};
               var cell_refs = XLSX.utils.encode_cell(address_of_cell2);
               var desired_cell2 = sheet[cell_refs];
               var desired_value2 = (desired_cell2 ? desired_cell2.v : undefined);
@@ -878,6 +878,7 @@ lectureEtInsertiontype4:function(trameflux,feuil,cellule,table,cellule2,nb,numli
               }
               else
               {
+                var mm =1;
                 //console.log('ko');
               };
 
@@ -888,6 +889,7 @@ lectureEtInsertiontype4:function(trameflux,feuil,cellule,table,cellule2,nb,numli
               }
               else
               {
+                var mm =1;
                 //console.log('ko2');
               };
 
