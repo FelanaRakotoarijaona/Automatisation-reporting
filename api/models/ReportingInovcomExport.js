@@ -946,8 +946,11 @@ module.exports = {
         ligneDate1 = parseInt(rowNumber);
         var line = newworksheet.getRow(ligneDate1);
         var f = line.getCell(3).value;
-        //console.log();
-        if(f == "SANTECLAIR")
+        var a = "SANTECLAIR";
+        const regex = new RegExp(a,'i');
+        var getko_ini = man.getCell(colDate2).address;
+        if(getko_ini == iniValue.ko+3 && regex.test(f) == true)
+        // if(f == "SANTECLAIR")
         {
           ligneDate = parseInt(rowNumber);
         }
@@ -1009,7 +1012,6 @@ module.exports = {
       Reportinghtp.deleteToutHtp(table,3,callback);
     }
     },
-
 
   /**********************************************************/
  
@@ -1098,6 +1100,7 @@ module.exports = {
     const Excel = require('exceljs');
     const newWorkbook = new Excel.Workbook();
     try{
+      console.log('ecriture ok ko 23');
     await newWorkbook.xlsx.readFile(path_reporting);
     const newworksheet = newWorkbook.getWorksheet(mois1);
     var colonneDate = newworksheet.getColumn('A');
