@@ -318,7 +318,9 @@ module.exports = {
           },
           
           ],function(err,resultExcel){
-       
+            console.log('**************');
+            console.log(resultExcel);
+            console.log('**************');
             if(resultExcel[0]==true)
             {
               console.log("true zn");
