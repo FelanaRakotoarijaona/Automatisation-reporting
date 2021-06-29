@@ -934,7 +934,6 @@ module.exports = {
     const Excel = require('exceljs');
     const newWorkbook = new Excel.Workbook();
     try{
-      console.log('mididtra ato am le 21 iz zao');
     await newWorkbook.xlsx.readFile(path_reporting);
     const newworksheet = newWorkbook.getWorksheet(mois1);
     var colonneDate = newworksheet.getColumn('A');
@@ -947,8 +946,11 @@ module.exports = {
         ligneDate1 = parseInt(rowNumber);
         var line = newworksheet.getRow(ligneDate1);
         var f = line.getCell(3).value;
-        //console.log();
-        if(f == "SANTECLAIR")
+        var a = "SANTECLAIR";
+        const regex = new RegExp(a,'i');
+        var getko_ini = man.getCell(colDate2).address;
+        if(getko_ini == iniValue.ko+3 && regex.test(f) == true)
+        // if(f == "SANTECLAIR")
         {
           ligneDate = parseInt(rowNumber);
         }
@@ -997,8 +999,6 @@ module.exports = {
       }
     });
     console.log(" Colnumber2"+collonne);*/
-    console.log('****************************');
-    console.log(numeroLigne.getCell(35));
     numeroLigne.getCell(colonnne).value = nombre_ok_ko.ok;
     //numeroLigne.getCell(collonne).value = nombre_ok_ko.ko;
     await newWorkbook.xlsx.writeFile(path_reporting);
@@ -1012,7 +1012,6 @@ module.exports = {
       Reportinghtp.deleteToutHtp(table,3,callback);
     }
     },
-
 
   /**********************************************************/
  
