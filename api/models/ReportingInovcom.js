@@ -1970,6 +1970,7 @@ importEssaitype8: function (table,table2,date,option,nb,type,type2,nomtable,numl
   var tab = [];
   var chemin = table[0]+date;
   var ab = table[0]+date+table2[nb];
+  console.log('chemin'+ab);
   var b = option[nb];
   //console.log(a);
   var c = ReportingInovcom.existenceFichier(ab);
