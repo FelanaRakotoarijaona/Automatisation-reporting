@@ -1800,7 +1800,9 @@ importEssaitype7: function (table,table2,date,option,nb,nomtable,numligne,numfeu
   var b = option[nb];
   var ab1 = table[0]+date+chem2[nb];
   var b1 = option2[nb];
-  //console.log(a);
+  
+  console.log('ch1' + ab);
+  console.log('ch2' + ab1);
   
   var c = ReportingInovcom.existenceFichier(ab);
   var d = ReportingInovcom.existenceFichier(ab1);
