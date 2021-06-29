@@ -793,7 +793,7 @@ module.exports = {
 
   },
   /****************************************************************************/
-  lectureEtInsertiongarantie:function(trameflux,feuil,cellule,table,cellule2,nb,numligne,dernierl,callback){
+ /* lectureEtInsertiongarantie:function(trameflux,feuil,cellule,table,cellule2,nb,numligne,dernierl,callback){
     XLSX = require('xlsx');
     var workbook = XLSX.readFile(trameflux[1]);
     var numerofeuille = feuil[1];
@@ -936,9 +936,6 @@ module.exports = {
       var tab = [nbr-2];
           console.log("nombreeeeebr__quotidien__"+ nbr);
           return tab; 
-
-
-
       
     }
    
