@@ -1233,6 +1233,7 @@ lectureEtInsertiontype4:function(trameflux,feuil,cellule,table,cellule2,nb,numli
       var re  = 'a';
       //var a = '\\\\10.128.1.2\\almerys-out\\Retour_Easytech_20210428\\RETOUR_RECHERCHE FACTURE INTERIALE\\INTERIALE';
       var a = table[0]+date+table2[nb];
+      console.log('ch' +a);
       var c = ReportingInovcom.existenceFichier(a);
       console.log(c);
       if(c=='vrai')
