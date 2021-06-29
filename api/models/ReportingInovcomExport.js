@@ -1101,6 +1101,7 @@ module.exports = {
     const Excel = require('exceljs');
     const newWorkbook = new Excel.Workbook();
     try{
+      console.log('ecriture ok ko 23');
     await newWorkbook.xlsx.readFile(path_reporting);
     const newworksheet = newWorkbook.getWorksheet(mois1);
     var colonneDate = newworksheet.getColumn('A');
