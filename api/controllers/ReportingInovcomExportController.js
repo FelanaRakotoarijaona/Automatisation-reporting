@@ -325,13 +325,13 @@ module.exports = {
         // },
       ],function(err,result){
         if(err) return res.badRequest(err);
-        console.log("Count OK 0 ==> " + result[0].ok + " / " + result[0].ko);
-        console.log("Count OK 1 ==> " + result[1].ok + " / " + result[1].ko);
-        console.log("Count OK 2 ==> " + result[2].ok + " / " + result[2].ko);
-        console.log("Count OK 3 ==> " + result[3].ok + " / " + result[3].ko);
-        console.log("Count OK 4 ==> " + result[4].ok + " / " + result[4].ko);
-        console.log("Count OK 5 ==> " + result[5].ok + " / " + result[5].ko);
-        console.log("Count OK 6 ==> " + result[6].ok + " / " + result[6].ko);
+        console.log("Count OK suivant 0 ==> " + result[0].ok + " / " + result[0].ko);
+        console.log("Count OK suivant 1 ==> " + result[1].ok + " / " + result[1].ko);
+        console.log("Count OK suivant 2 ==> " + result[2].ok + " / " + result[2].ko);
+        console.log("Count OK suivant 3 ==> " + result[3].ok + " / " + result[3].ko);
+        console.log("Count OK suivant 4 ==> " + result[4].ok + " / " + result[4].ko);
+        console.log("Count OK suivant 5 ==> " + result[5].ok + " / " + result[5].ko);
+        console.log("Count OK suivant 6 ==> " + result[6].ok + " / " + result[6].ko);
         async.series([
           // function (callback) {
           //   ReportingInovcomExport.ecritureOkKo(result[0],"extractionrcforce",date_export,mois1,callback);
@@ -408,7 +408,7 @@ module.exports = {
               console.log("true zn");
               res.view('Inovcom/erera');
             }
-            if(resultExcel[0]=='OK')
+            else
             {
               // res.redirect('/exportInovcom/'+date_export+'/x')
               // res.view('reporting/succes');
