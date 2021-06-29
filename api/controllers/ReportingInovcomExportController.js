@@ -632,7 +632,7 @@ module.exports = {
               console.log("true zn");
               res.view('Inovcom/erera');
             }
-            if(resultExcel[0]=='OK')
+            else
             {
               // res.redirect('/exportInovcom/'+date_export+'/x')
               res.view('reporting/succes');
