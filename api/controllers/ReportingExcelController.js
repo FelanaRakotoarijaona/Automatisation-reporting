@@ -180,7 +180,6 @@ module.exports = {
           ReportingExcel.ecritureOkKo(result[5],"tramelamiestock",date_export,mois1,callback);
         },
       ],function(err,resultExcel){
-     
           if(resultExcel[0]==true)
           {
             console.log("true zn");
