@@ -903,7 +903,7 @@ module.exports = {
       var option2 = [];
       var nomBase = "chemininovcomtype5";
       //workbook.xlsx.readFile('Inovcom.xlsx')
-      workbook.xlsx.readFile('Inovcom.xlsx')
+      workbook.xlsx.readFile('Inovcomserveur.xlsx')
           .then(function() {
             var newworksheet = workbook.getWorksheet('Feuil5');
             var cheminparticulier = newworksheet.getColumn(9);
@@ -1651,7 +1651,7 @@ module.exports = {
       var cheminp = [];
       var MotCle= [];
       var nomBase = "chemininovcomtype9";
-      workbook.xlsx.readFile('Inovcom.xlsx')
+      workbook.xlsx.readFile('Inovcomserveur.xlsx')
           .then(function() {
             var newworksheet = workbook.getWorksheet('Feuil9');
             var cheminparticulier = newworksheet.getColumn(9);
