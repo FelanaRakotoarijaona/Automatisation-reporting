@@ -1036,7 +1036,8 @@ module.exports = {
                     numeroligne.eachCell(function(cell, rowNumber) {
                         numligne.push(cell.value);
                       });
-                      var a = cheminc[0]+date+cheminp[0]+nc[0].typologiedelademande;
+                      //var a = cheminc[0]+date+cheminp[0]+nc[0].typologiedelademande;
+                      var a = '/dev/pro/Retour_Easytech_'+date+cheminp[0]+nc[0].typologiedelademande;
                       trameflux.push(a);
                     console.log("trameflux"+trameflux);
                     async.series([
