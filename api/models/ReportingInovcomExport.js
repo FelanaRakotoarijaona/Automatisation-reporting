@@ -948,8 +948,7 @@ module.exports = {
         var f = line.getCell(3).value;
         var a = "SANTECLAIR";
         const regex = new RegExp(a,'i');
-        var getko_ini = man.getCell(colDate2).address;
-        if(getko_ini == iniValue.ko+3 && regex.test(f) == true)
+        if(regex.test(f) == true)
         // if(f == "SANTECLAIR")
         {
           ligneDate = parseInt(rowNumber);
