@@ -1987,6 +1987,7 @@ importEssaitype8: function (table,table2,date,option,nb,type,type2,nomtable,numl
         for(var i = 0; i < files.length; i++){
               if(file == files[i]){
               const test1 = ab +files[i] + type[nb] ;
+              console.log('chemin2' + test1);
               var m = ReportingInovcom.existenceFichier(test1);
               if(m=='vrai')
               {
