@@ -313,9 +313,9 @@ module.exports = {
           function (callback) {
             ReportingInovcomExport.ecritureOkKo2(result[6],"retourpecaudio",date_export,mois1,callback);
           },
-          function (callback) {
-            ReportingInovcomExport.ecritureOkKo21(result[7],"santeclairtableauretourgeneral",date_export,mois1,callback);
-          },
+          // function (callback) {
+          //   ReportingInovcomExport.ecritureOkKo21(result[7],"santeclairtableauretourgeneral",date_export,mois1,callback);
+          // },
           
           ],function(err,resultExcel){
             console.log('**************');

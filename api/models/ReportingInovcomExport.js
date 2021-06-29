@@ -997,9 +997,8 @@ module.exports = {
       }
     });
     console.log(" Colnumber2"+collonne);*/
-    // console.log(numeroLigne);
-    console.log(colonnne);
-    console.log(nombre_ok_ko.ok);
+    console.log('****************************');
+    console.log(numeroLigne.getCell(35));
     numeroLigne.getCell(colonnne).value = nombre_ok_ko.ok;
     //numeroLigne.getCell(collonne).value = nombre_ok_ko.ko;
     await newWorkbook.xlsx.writeFile(path_reporting);
