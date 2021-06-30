@@ -309,14 +309,14 @@ module.exports = {
         if(err) return res.badRequest(err);
         
         else{
-          console.log("Count OK suivant 0 ==> " + result[0].ok + " / " + result[0].ko);
+        console.log("Count OK 1 ==> " + result[0].ok);  
         console.log("Count OK 1 ==> " + result[1].ok);
         console.log("Count OK 2 ==> " + result[2].ok);
         console.log("Count OK 3 ==> " + result[3].ok);
         console.log("Count OK 4 ==> " + result[4].ok);
         console.log("Count OK 5 ==> " + result[5].ok);
         console.log("Count OK 6 ==> " + result[6].ok);
-        console.log("Count OK 6 ==> " + result[7].ok);
+        console.log("Count OK 7 ==> " + result[7].ok);
        
         async.series([
          
@@ -344,12 +344,12 @@ module.exports = {
           // function (callback) {
           //   ReportingInovcomExport.ecritureOkKo21(result[7],"santeclairtableauretourgeneral",date_export,mois1,callback);
           // },  
-          function (callback) {
-            ReportingInovcomExport.ecritureOkKo2(result[7],"santeclairoptique",date_export,mois1,callback);
-          },
           // function (callback) {
-          //   ReportingInovcomExport.ecritureOkKo22(result[7],"noemiehtpmgefi",date_export,mois1,callback);
+          //   ReportingInovcomExport.ecritureOkKo21(result[7],"santeclairoptique",date_export,mois1,callback);
           // },
+          function (callback) {
+            ReportingInovcomExport.ecritureOkKo22(result[7],"noemiehtpmgefi",date_export,mois1,callback);
+          },
           // function (callback) {
           //   ReportingInovcomExport.ecritureOkKo22(result[8],"mgefigtomgefirejetsaisienoemiehtp",date_export,mois1,callback);
           // },

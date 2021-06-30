@@ -930,7 +930,7 @@ module.exports = {
     }
     },
   /**********************************************************/
-  ecritureOkKotest : async function (nombre_ok_ko, table,date_export,mois1,callback) {
+  ecritureOkKo21 : async function (nombre_ok_ko, table,date_export,mois1,callback) {
     const Excel = require('exceljs');
     const newWorkbook = new Excel.Workbook();
 
