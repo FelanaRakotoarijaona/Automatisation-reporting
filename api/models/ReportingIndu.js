@@ -2048,7 +2048,7 @@ ecritureOkKo : async function (nombre_ok_ko, table,date_export,mois1,callback) {
     
     try{
     
-     
+     console.log('miditra ato am ecritureOkkoko');
       await newWorkbook.xlsx.readFile(path_reporting);
     const newworksheet = newWorkbook.getWorksheet(mois1);
     var colonneDate = newworksheet.getColumn('A');
@@ -2096,7 +2096,7 @@ ecritureOkKo : async function (nombre_ok_ko, table,date_export,mois1,callback) {
       }
     });
     console.log(" Colnumber2"+collonne);
-    numeroLigne.getCell(collonne).value = nombre_ok_ko.ko;
+    numeroLigne.getCell(collonne).value = nombre_ok_ko.ok;
     
     await newWorkbook.xlsx.writeFile(path_reporting);
     sails.log("Ecriture OK KO terminé"); 
