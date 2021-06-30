@@ -5,7 +5,7 @@
  * @docs        :: https://sailsjs.com/docs/concepts/models-and-orm/models
  */
 //const path_reporting = 'D:/Reporting/Reporting/REPORTING INDU Type.xlsx';
-//const path_reporting = 'D:/LDR8_1421_nouv/PROJET_FELANA/REPORTING INDU Type.xlsx';
+// const path_reporting = 'D:/LDR8_1421_nouv/PROJET_FELANA/REPORTING INDU Type.xlsx';
 const path_reporting = '/dev/prod/00-TOUS/TestReporting/REPORTING INDU Type.xlsx';
 module.exports = {
 
@@ -2096,7 +2096,7 @@ ecritureOkKo : async function (nombre_ok_ko, table,date_export,mois1,callback) {
       }
     });
     console.log(" Colnumber2"+collonne);
-    numeroLigne.getCell(collonne).value = nombre_ok_ko.ok;
+    numeroLigne.getCell(collonne).value = nombre_ok_ko.ko;
     
     await newWorkbook.xlsx.writeFile(path_reporting);
     sails.log("Ecriture OK KO terminé"); 
