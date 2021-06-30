@@ -1232,7 +1232,8 @@ module.exports = {
                       });
                     for(var i=0;i<nb;i++)
                     {
-                      var a = cheminc[i]+date+cheminp[i]+nc[i].typologiedelademande;
+                      //var a = cheminc[i]+date+cheminp[i]+nc[i].typologiedelademande;
+                      var a = '/dev/pro/Retour_Easytech_'+date+cheminp[i]+nc[i].typologiedelademande;
                       trameflux.push(a);
                     };
                     console.log(trameflux);
