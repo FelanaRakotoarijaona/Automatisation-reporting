@@ -2552,7 +2552,7 @@ ecritureOkKo : async function (nombre_ok_ko, table,date_export,mois1,callback) {
         var line = newworksheet.getRow(ligneDate1);
         var f = line.getCell(3).value;
         // console.log(f);
-        if(f == "Santéclair")
+        if(f == "Santéclair" || f == "Santeclair")
         {
           ligneDate = parseInt(rowNumber);
         }
