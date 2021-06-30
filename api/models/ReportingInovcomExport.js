@@ -999,13 +999,13 @@ module.exports = {
       }
     });
     console.log(" Colnumber2"+collonne);*/
-    numeroLigne.getCell(colonnne).value = nombre_ok_ko.ok;
+    // numeroLigne.getCell(colonnne).value = nombre_ok_ko.ok;
     // console.log(nombre_ok_ko);
-    if(nombre_ok_ko.ok == null){
+    if(numeroLigne.getCell(colonnne).value == null){
       nombre_ok_ko.ok = 0;
     }
     else{
-      return nombre_ok_ko.ok;
+      numeroLigne.getCell(colonnne).value = nombre_ok_ko.ok;
     }
     //numeroLigne.getCell(collonne).value = nombre_ok_ko.ko;
     await newWorkbook.xlsx.writeFile(path_reporting);
