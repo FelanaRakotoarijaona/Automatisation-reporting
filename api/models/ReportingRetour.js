@@ -33,6 +33,26 @@ module.exports = {
       console.log('hehe coldrcbtppublic');
       ReportingContetieux.lectureEtInsertiontype21( trameflux,feuil,cellule,table,cellule2,nb,numligne,callback);
     }
+    else if(table[nb]=="trpecaudio" || table[nb]=="trpecdentaire")
+    {
+      console.log('hehe trpecdentaire');
+      var tab = [];
+      tab=ReportingRetour.lectureEtInsertiontype21( trameflux,feuil,cellule,table,cellule2,nb,numligne,callback);
+      var nbe= parseInt(nb);
+      console.log(tab);
+      var sql = "insert into "+table[nbe]+" (nb) values ('"+tab[0]+"') ";
+      ReportingInovcom.getDatastore().sendNativeQuery(sql, function(err,res){
+        if (err) { 
+          console.log("Une erreur ve ok?");
+          //return callback(err);
+         }
+        else
+        {
+          console.log(sql);
+          return callback(null, true);
+        };
+                            });
+    }
     else{
       var tab = [];
       tab=ReportingRetour.lectureEtInsertiontype2( trameflux,feuil,cellule,table,cellule2,nb,numligne,callback);
@@ -83,6 +103,69 @@ module.exports = {
                         if(err) return console.log(err);
                         else return callback(null, true);        
                                             });*/
+          console.log("nombreeeeebr"+ nbr);
+          var tab = [nbr];
+          return tab;
+      }
+      else
+      {
+        console.log('Colonne non trouvé');
+      }
+      
+    }
+    catch
+    {
+      console.log("erreur absolu haaha");
+    }
+    
+  },
+   lectureEtInsertiontype21:function(trameflux,feuil,cellule,table,cellule2,nb,numligne,callback){
+    XLSX = require('xlsx');
+    var workbook = XLSX.readFile(trameflux[nb]);
+    var numerofeuille = feuil[nb];
+    var numeroligne = parseInt(numligne[nb]);
+    try{
+      var nbr = 0;
+      const sheet = workbook.Sheets[workbook.SheetNames[numerofeuille]];
+      var range = XLSX.utils.decode_range(sheet['!ref']);
+      var col = 0;
+      var colnonvide;
+      var nbe = parseInt(nb);
+      var bi = 'fin de traitement';
+      const regex = new RegExp(bi,'i');
+      for(var ra=0;ra<=range.e.c;ra++)
+      {
+        var address_of_cell = {c:ra, r:numeroligne};
+        var cell_ref = XLSX.utils.encode_cell(address_of_cell);
+        var desired_cell = sheet[cell_ref];
+        var desired_value = (desired_cell ? desired_cell.v : undefined);
+        if(regex.test(desired_value))
+        {
+          colnonvide=ra;
+        };
+      };
+      console.log("colonnevide"+colnonvide);
+      if(col!=undefined && colnonvide!=undefined)
+      {
+        var debutligne = numeroligne + 1;
+        for(var a=debutligne;a<=range.e.r;a++)
+          {
+            var address_of_cell = {c:col, r:a};
+            var cell_ref = XLSX.utils.encode_cell(address_of_cell);
+            var desired_cell = sheet[cell_ref];
+            var desired_value1 = (desired_cell ? desired_cell.v : undefined);
+
+            var address_of_cell2 = {c:colnonvide, r:a};
+            var cell_ref2 = XLSX.utils.encode_cell(address_of_cell2);
+            var desired_cell2 = sheet[cell_ref2];
+            var desired_value2 = (desired_cell2 ? desired_cell2.v : undefined);
+
+
+            if(desired_value1!=undefined && desired_value2!=undefined )
+            {
+              nbr=nbr + 1;
+            }
+          };
           console.log("nombreeeeebr"+ nbr);
           var tab = [nbr];
           return tab;

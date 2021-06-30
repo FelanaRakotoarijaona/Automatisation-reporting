@@ -5,7 +5,7 @@
  * @help        :: See https://sailsjs.com/docs/concepts/actions
  */
 
-const ReportingIndu = require('../models/ReportingIndu');
+// const ReportingIndu = require('../models/ReportingIndu');
 
 module.exports = {
     accueil1 : function(req,res)

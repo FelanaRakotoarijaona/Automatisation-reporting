@@ -2095,7 +2095,12 @@ ecritureOkKo : async function (nombre_ok_ko, table,date_export,mois1,callback) {
         }
       }
     });
+<<<<<<< HEAD
     console.log(" Colnumber2"+collonne);    
+=======
+    console.log(" Colnumber2"+collonne);
+    //numeroLigne.getCell(collonne).value = nombre_ok_ko.ok;
+>>>>>>> 2dbb5a1e620cf1b5340509b41364e65cbadf3068
     if(numeroLigne.getCell(collonne).value == undefined || numeroLigne.getCell(collonne).value == undefined){
       nombre_ok_ko.ko = 0;
     }
