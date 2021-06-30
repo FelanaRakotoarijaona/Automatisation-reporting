@@ -1007,7 +1007,11 @@ module.exports = {
     else{
       numeroLigne.getCell(colonnne).value = nombre_ok_ko.ok;
     }
+    console.log("*******************************");
+    console.log(nombre_ok_ko.ok);
+    console.log("*******************************");
     //numeroLigne.getCell(collonne).value = nombre_ok_ko.ko;
+
     await newWorkbook.xlsx.writeFile(path_reporting);
     sails.log("Ecriture OK KO terminé"); 
     return callback(null, "OK");
