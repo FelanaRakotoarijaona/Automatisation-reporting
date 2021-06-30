@@ -950,7 +950,7 @@ module.exports = {
         // var a = "SANTECLAIR";
         // const regex = new RegExp(a,'i');
         // if(regex.test(f) == true)
-        if(f == "SANTECLAIR")
+        if(f == "SANTECLAIR" || f == "SANTECLAIR ")
         {
           ligneDate = parseInt(rowNumber);
         }
