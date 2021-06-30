@@ -106,13 +106,19 @@ module.exports = {
                   },
                     function(err)
                     {
-                      var sql4= "select count(chemin) as ok from "+nomBase+" ";
-                      console.log(sql4);
-                      Reportinghtp.getDatastore().sendNativeQuery(sql4 ,function(err, nc) {
+                      if (err){
+                        return res.view('Contentieux/erreur');
+                      }
+                      else
+                      {
+                        var sql4= "select count(chemin) as ok from "+nomBase+" ";
+                        console.log(sql4);
+                        Reportinghtp.getDatastore().sendNativeQuery(sql4 ,function(err, nc) {
                          nc = nc.rows;
                          console.log('nc'+nc[0].ok);
                          var f = parseInt(nc[0].ok);
-                            if (err){
+                         
+                           if (err){
                               return res.view('Contentieux/erreur');
                             }
                            if(f==0)
@@ -124,7 +130,9 @@ module.exports = {
                               return res.view('Contentieux/accueil', {date : datetest});
                               
                             };
-                        });
+                        });  
+                      };
+                      
                     });
                  
                 }
