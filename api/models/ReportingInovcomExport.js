@@ -933,106 +933,68 @@ module.exports = {
   ecritureOkKo21 : async function (nombre_ok_ko, table,date_export,mois1,callback) {
     const Excel = require('exceljs');
     const newWorkbook = new Excel.Workbook();
-    try{
-    await newWorkbook.xlsx.readFile(path_reporting);
-    const newworksheet = newWorkbook.getWorksheet(mois1);
-    var colonneDate = newworksheet.getColumn('A');
-    var ligneDate1;
-    var ligneDate;
-    colonneDate.eachCell(function(cell, rowNumber) {
-      var dateExcel = ReportingInovcomExport.convertDate(cell.text);
-      if(dateExcel==date_export)
-      {
-        ligneDate1 = parseInt(rowNumber);
-        var line = newworksheet.getRow(ligneDate1);
-        var f = line.getCell(3).value;
-        console.log(f);
-        // var a = "SANTECLAIR";
-        // const regex = new RegExp(a,'i');
-        // if(regex.test(f) == true)
-        if(f == "SANTECLAIR" || f == "SANTECLAIR ")
-        {
-          ligneDate = parseInt(rowNumber);
-        }
-      }
-    });
-    console.log("LIGNE DATE ===> "+ ligneDate);
-    var rowDate = newworksheet.getRow(ligneDate);
-    var numeroLigne = rowDate;
-    var iniValue = ReportingInovcomExport.getIniValue(table);
-    
-    var a5;
 
-    var rowm = newworksheet.getRow(1);
-    var colonnne;
-    var colDate1;
-    rowm.eachCell(function(cell, colNumber) {
-      if(cell.value == 'DOCUMENTS TRAITES NON SAISIS (RETOURS)')
-      {
-        colDate1 = parseInt(colNumber);
-        //var col = newworksheet.getColumn(colDate1);
-        var man = newworksheet.getRow(3);
-        var f = man.getCell(colDate1).value;
-        //console.log();
-        //console.log(iniValue.ok);
-        var getko_ini = man.getCell(colDate1).address;
-          // console.log(getko_ini);
-        if(getko_ini == iniValue.ko+3 && f == iniValue.ok)
-        {
-          colonnne = parseInt(colNumber);
-        }
-        }
-    });
-    console.log(" Colnumber "+colonnne);
-    /*var collonne;
-    var colDate2;
-    rowm.eachCell(function(cell, colNumber) {
-      if(cell.value == 'DOCUMENTS TRAITES NON SAISIS (RETOURS)')
-      {
-        colDate2 = parseInt(colNumber);
-        var man = newworksheet.getRow(3);
-        var f = man.getCell(colDate2).value;
-        if(f == iniValue.ok)
-        {
-          collonne = parseInt(colNumber);
-        }
-      }
-    });
-    console.log(" Colnumber2"+collonne);*/
-    if(nombre_ok_ko.ok == null || nombre_ok_ko.ok == undefined){
-      return callback(null, 0);
-    }
-    else{
-      numeroLigne.getCell(colonnne).value = nombre_ok_ko.ok;
-    }
-    
-    console.log("*****************nombreokko**************");
-    console.log(nombre_ok_ko.ok);
-    console.log("*******************************");
-    // // console.log(nombre_ok_ko);
-    // if(numeroLigne.getCell(colonnne).value == null || numeroLigne.getCell(colonnne).value == undefined){
-    //   nombre_ok_ko.ok = 0;
-    //   return nombre_ok_ko.ok;
-    // }
-    // else{
-    //   numeroLigne.getCell(colonnne).value = nombre_ok_ko.ok;
-    // }
-    // console.log("*******************************");
-    // console.log(nombre_ok_ko.ok);
-    // console.log("*******************************");
-    // //numeroLigne.getCell(collonne).value = nombre_ok_ko.ko;
+          try{
+            await newWorkbook.xlsx.readFile(path_reporting);
+            const newworksheet = newWorkbook.getWorksheet(mois1);
+            var colonneDate = newworksheet.getColumn('A');
+            var ligneDate1;
+            var ligneDate;
+            colonneDate.eachCell(function(cell, rowNumber) {
+                var dateExcel = ReportingInovcomExport.convertDate(cell.text);
+                if(dateExcel==date_export)
+                {
+                    ligneDate1 = parseInt(rowNumber);
+                    var line = newworksheet.getRow(ligneDate1);
+                    var f = line.getCell(3).value;
+                    console.log(f);
+                    // var a = "SANTECLAIR";
+                    // const regex = new RegExp(a,'i');
+                    // if(regex.test(f) == true)
+                    if(f == "SANTECLAIR" || f == "SANTECLAIR ")
+                    {
+                      ligneDate = parseInt(rowNumber);
+                    }
+                  }
+              });
+              console.log("LIGNE DATE ===> "+ ligneDate);
+              var rowDate = newworksheet.getRow(ligneDate);
+              var numeroLigne = rowDate;
+              var iniValue = ReportingInovcomExport.getIniValue(table);
+              var rowm = newworksheet.getRow(1);
+              var colonnne;
+              var colDate1;
+              rowm.eachCell(function(cell, colNumber) {
+                if(cell.value == 'DOCUMENTS TRAITES NON SAISIS (RETOURS)')
+                {
+                    colDate1 = parseInt(colNumber);
+                    //var col = newworksheet.getColumn(colDate1);
+                    var man = newworksheet.getRow(3);
+                    var f = man.getCell(colDate1).value;
+                    //console.log();
+                    //console.log(iniValue.ok);
+                    var getko_ini = man.getCell(colDate1).address;
+                      // console.log(getko_ini);
+                    if(getko_ini == iniValue.ko+3 && f == iniValue.ok)
+                    {
+                      colonnne = parseInt(colNumber);
+                    }
+                  }
+              });
+              console.log(" Colnumber "+colonnne);
+              numeroLigne.getCell(collonne).value = nombre_ok_ko.ok;
 
-    await newWorkbook.xlsx.writeFile(path_reporting);
-    sails.log("Ecriture OK KO terminé"); 
-    return callback(null, "OK");
-  
-    }
-    catch
-    {
-      console.log("Une erreur s'est produite");
-      Reportinghtp.deleteToutHtp(table,3,callback);
-    }
-    },
+              await newWorkbook.xlsx.writeFile(path_reporting);
+              sails.log("Ecriture OK KO terminé"); 
+              return callback(null, "OK");
+
+          }
+          catch
+          {
+            console.log("Une erreur s'est produite");
+            Reportinghtp.deleteToutHtp(table,3,callback);
+          }
+  },
 
   /**********************************************************/
  
