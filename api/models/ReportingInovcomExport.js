@@ -999,9 +999,15 @@ module.exports = {
       }
     });
     console.log(" Colnumber2"+collonne);*/
+    if(nombre_ok_ko.ok == null || nombre_ok_ko.ok == undefined){
+      nombre_ok_ko.ok = 0;
+    }
+    else{
+      nombre_ok_ko.ok;
+    }
     numeroLigne.getCell(colonnne).value = nombre_ok_ko.ok;
     console.log("*******************************");
-    console.log(numeroLigne.getCell(colonnne).value);
+    console.log(nombre_ok_ko.ok);
     console.log("*******************************");
     // // console.log(nombre_ok_ko);
     // if(numeroLigne.getCell(colonnne).value == null || numeroLigne.getCell(colonnne).value == undefined){

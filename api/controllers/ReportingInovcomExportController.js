@@ -371,11 +371,9 @@ module.exports = {
           //   ReportingInovcomExport.ecritureOkKo23(result[12],"reclamationaudio",date_export,mois1,callback);
           // },
 
-
-
           ],function(err,resultExcel){
             console.log('**************');
-            console.log(resultExcel);
+            console.log(resultExcel[0]);
             console.log('**************');
             if(resultExcel[0]==true)
             {
