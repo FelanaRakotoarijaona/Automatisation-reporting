@@ -530,9 +530,9 @@ rechercheColonne : function (req, res) {
     function (callback) {
       ReportingIndu.countOkKoDoubleSum("indutiers",callback);
     },
-   function (callback) {
-      ReportingIndu.countOkKoSum("indufraudelmg",callback);
-    }, 
+  //  function (callback) {
+  //     ReportingIndu.countOkKoSum("indufraudelmg",callback);
+  //   }, 
     function (callback) {
       ReportingIndu.countOkKoSum("induinterialepre",callback);
     },  
@@ -560,18 +560,18 @@ rechercheColonne : function (req, res) {
     function (callback) {
       ReportingIndu.countOkKoContest("inducontestation",callback);
     },
-    function (callback) {
-      ReportingIndu.countOkKoDoubleSum("indufactstc",callback);
-    },
+    // function (callback) {
+    //   ReportingIndu.countOkKoDoubleSum("indufactstc",callback);
+    // },
     // function (callback) {
     //   ReportingIndu.countOkKoSumko("indufraudelmg",callback);
     // }, 
-    function (callback) {
-      ReportingIndu.countOkKoDoubleSumcbtp("indutiers",callback);
-    },
-    function (callback) {
-      ReportingIndu.countOkKoDoubleSumcbtp("induse",callback);
-    },
+    // function (callback) {
+    //   ReportingIndu.countOkKoDoubleSumcbtp("indutiers",callback);
+    // },
+    // function (callback) {
+    //   ReportingIndu.countOkKoDoubleSumcbtp("induse",callback);
+    // },
   ],function(err,result){
     if(err) return res.badRequest(err);
     // console.log("Count OK InduseAlmerys ==> " + result[0].ok + " / " + result[0].ko);
@@ -626,18 +626,18 @@ rechercheColonne : function (req, res) {
       function (callback) {
         ReportingIndu.ecritureOkKoContest(result[13],"inducontestation",date_export,mois1,callback);
       },
-      function (callback) {
-        ReportingIndu.ecritureOkKoSante(result[14],"indufactstc",date_export,mois1,callback);
-      },
+      // function (callback) {
+      //   ReportingIndu.ecritureOkKoSante(result[14],"indufactstc",date_export,mois1,callback);
+      // },
       // function (callback) {
       //   ReportingIndu.ecritureOkKoko(result[15],"indufraudelmgdent",date_export,mois1,callback);
       // },
-      function (callback) {
-        ReportingIndu.ecritureOkKoDoublecbtp(result[15],"indutiers",date_export,mois1,callback);
-      },
-      function (callback) {
-        ReportingIndu.ecritureOkKoDoublecbtp(result[16],"induse",date_export,mois1,callback);
-      },
+      // function (callback) {
+      //   ReportingIndu.ecritureOkKoDoublecbtp(result[15],"indutiers",date_export,mois1,callback);
+      // },
+      // function (callback) {
+      //   ReportingIndu.ecritureOkKoDoublecbtp(result[16],"induse",date_export,mois1,callback);
+      // },
     ],function(err,resultExcel){
    console.log(resultExcel[0]);
         if(resultExcel[0]==true)
