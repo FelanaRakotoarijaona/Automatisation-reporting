@@ -563,9 +563,9 @@ rechercheColonne : function (req, res) {
     function (callback) {
       ReportingIndu.countOkKoDoubleSum("indufactstc",callback);
     },
-    function (callback) {
-      ReportingIndu.countOkKoSumko("indufraudelmg",callback);
-    }, 
+    // function (callback) {
+    //   ReportingIndu.countOkKoSumko("indufraudelmg",callback);
+    // }, 
     function (callback) {
       ReportingIndu.countOkKoDoubleSumcbtp("indutiers",callback);
     },
@@ -629,14 +629,14 @@ rechercheColonne : function (req, res) {
       function (callback) {
         ReportingIndu.ecritureOkKoSante(result[14],"indufactstc",date_export,mois1,callback);
       },
+      // function (callback) {
+      //   ReportingIndu.ecritureOkKoko(result[15],"indufraudelmgdent",date_export,mois1,callback);
+      // },
       function (callback) {
-        ReportingIndu.ecritureOkKoko(result[15],"indufraudelmgdent",date_export,mois1,callback);
+        ReportingIndu.ecritureOkKoDoublecbtp(result[15],"indutiers",date_export,mois1,callback);
       },
       function (callback) {
-        ReportingIndu.ecritureOkKoDoublecbtp(result[16],"indutiers",date_export,mois1,callback);
-      },
-      function (callback) {
-        ReportingIndu.ecritureOkKoDoublecbtp(result[17],"induse",date_export,mois1,callback);
+        ReportingIndu.ecritureOkKoDoublecbtp(result[16],"induse",date_export,mois1,callback);
       },
     ],function(err,resultExcel){
    console.log(resultExcel[0]);
