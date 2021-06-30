@@ -999,19 +999,22 @@ module.exports = {
       }
     });
     console.log(" Colnumber2"+collonne);*/
-    // numeroLigne.getCell(colonnne).value = nombre_ok_ko.ok;
-    // console.log(nombre_ok_ko);
-    if(numeroLigne.getCell(colonnne).value == null || numeroLigne.getCell(colonnne).value == undefined){
-      nombre_ok_ko.ok = 0;
-      return nombre_ok_ko.ok;
-    }
-    else{
-      numeroLigne.getCell(colonnne).value = nombre_ok_ko.ok;
-    }
+    numeroLigne.getCell(colonnne).value = nombre_ok_ko.ok;
     console.log("*******************************");
-    console.log(nombre_ok_ko.ok);
+    console.log(numeroLigne.getCell(colonnne).value);
     console.log("*******************************");
-    //numeroLigne.getCell(collonne).value = nombre_ok_ko.ko;
+    // // console.log(nombre_ok_ko);
+    // if(numeroLigne.getCell(colonnne).value == null || numeroLigne.getCell(colonnne).value == undefined){
+    //   nombre_ok_ko.ok = 0;
+    //   return nombre_ok_ko.ok;
+    // }
+    // else{
+    //   numeroLigne.getCell(colonnne).value = nombre_ok_ko.ok;
+    // }
+    // console.log("*******************************");
+    // console.log(nombre_ok_ko.ok);
+    // console.log("*******************************");
+    // //numeroLigne.getCell(collonne).value = nombre_ok_ko.ko;
 
     await newWorkbook.xlsx.writeFile(path_reporting);
     sails.log("Ecriture OK KO terminé"); 
