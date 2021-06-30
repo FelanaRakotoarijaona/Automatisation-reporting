@@ -310,13 +310,13 @@ module.exports = {
         
         else{
           console.log("Count OK suivant 0 ==> " + result[0].ok + " / " + result[0].ko);
-        console.log("Count OK 1 ==> " + result[1].ok + " / " + result[1].ko);
-        console.log("Count OK 2 ==> " + result[2].ok + " / " + result[2].ko);
-        console.log("Count OK 3 ==> " + result[3].ok + " / " + result[3].ko);
-        console.log("Count OK 4 ==> " + result[4].ok + " / " + result[4].ko);
-        console.log("Count OK 5 ==> " + result[5].ok + " / " + result[5].ko);
-        console.log("Count OK 6 ==> " + result[6].ok + " / " + result[6].ko);
-        console.log("Count OK 6 ==> " + result[7].ok + " / " + result[7].ko);
+        console.log("Count OK 1 ==> " + result[1].ok);
+        console.log("Count OK 2 ==> " + result[2].ok);
+        console.log("Count OK 3 ==> " + result[3].ok);
+        console.log("Count OK 4 ==> " + result[4].ok);
+        console.log("Count OK 5 ==> " + result[5].ok);
+        console.log("Count OK 6 ==> " + result[6].ok);
+        console.log("Count OK 6 ==> " + result[7].ok);
        
         async.series([
          
