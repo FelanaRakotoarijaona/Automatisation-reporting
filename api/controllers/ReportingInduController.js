@@ -100,6 +100,11 @@ module.exports = {
                   },
                     function(err)
                     {
+                      if (err){
+                        return res.view('Contentieux/erreur');
+                      }
+                      else
+                      {
                       var sql4= "select count(*) as ok from "+nomBase+" ";
                       console.log(sql4);
                       Reportinghtp.getDatastore().sendNativeQuery(sql4 ,function(err, nc) {
@@ -119,6 +124,7 @@ module.exports = {
                               
                             };
                         });
+                      }
                     });
                 }
             });
@@ -315,6 +321,11 @@ module.exports = {
                   },
                     function(err)
                     {
+                      if (err){
+                        return res.view('Contentieux/erreur');
+                      }
+                      else
+                      {
                       var sql4= "select count(chemin) as ok from "+nomBase+" ";
                       console.log(sql4);
                       Reportinghtp.getDatastore().sendNativeQuery(sql4 ,function(err, nc) {
@@ -334,6 +345,7 @@ module.exports = {
                               
                             };
                         });
+                      }
                     });
                 }
             });

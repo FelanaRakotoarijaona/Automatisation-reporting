@@ -90,7 +90,6 @@ module.exports = {
                       function(cb){
                         ReportingInovcom.delete(nomtable,lot,cb);
                       },
-                       
                       function(cb){
                         ReportingInovcom.importEssai(table,cheminp,date,MotCle,lot,nomtable,numligne,numfeuille,nomcolonne,nomcolonne2,nomBase,chem2,option2,cb);
                       },
@@ -101,6 +100,11 @@ module.exports = {
                   },
                     function(err)
                     {
+                      if (err){
+                        return res.view('Contentieux/erreur');
+                      }
+                      else
+                      {
                       var sql4= "select count(chemin) as ok from "+nomBase+" ";
                       console.log(sql4);
                       Reportinghtp.getDatastore().sendNativeQuery(sql4 ,function(err, nc) {
@@ -120,6 +124,7 @@ module.exports = {
                               
                             };
                         });
+                      }
                     });
 
                   
@@ -316,6 +321,11 @@ module.exports = {
                   },
                     function(err)
                     {
+                      if (err){
+                        return res.view('Contentieux/erreur');
+                      }
+                      else
+                      {
                       var sql4= "select count(chemin) as ok from "+nomBase+" ";
                       console.log(sql4);
                       Reportinghtp.getDatastore().sendNativeQuery(sql4 ,function(err, nc) {
@@ -335,6 +345,7 @@ module.exports = {
                               
                             };
                         });
+                      }
                     });
 
                 }
@@ -532,6 +543,11 @@ module.exports = {
                   },
                     function(err)
                     {
+                      if (err){
+                        return res.view('Contentieux/erreur');
+                      }
+                      else
+                      {
                       var sql4= "select count(chemin) as ok from "+nomBase+" ";
                       console.log(sql4);
                       Reportinghtp.getDatastore().sendNativeQuery(sql4 ,function(err, nc) {
@@ -551,6 +567,7 @@ module.exports = {
                               
                             };
                         });
+                      }
                     });
                   
                 }
@@ -745,6 +762,11 @@ module.exports = {
                   },
                     function(err)
                     {
+                      if (err){
+                        return res.view('Contentieux/erreur');
+                      }
+                      else
+                      {
                       var sql4= "select count(chemin) as ok from "+nomBase+" ";
                       console.log(sql4);
                       Reportinghtp.getDatastore().sendNativeQuery(sql4 ,function(err, nc) {
@@ -764,6 +786,7 @@ module.exports = {
                               
                             };
                         });
+                      }
                     });
                   
                 }
@@ -933,6 +956,11 @@ module.exports = {
                     },
               ],                                                                                                                                                                                   
               function(err, resultat){
+                if (err){
+                  return res.view('Contentieux/erreur');
+                }
+                else
+                {
                 var sql4= "select count(typologiedelademande) as ok from "+nomBase+" ";
                       console.log(sql4);
                       Reportinghtp.getDatastore().sendNativeQuery(sql4 ,function(err, nc) {
@@ -952,6 +980,7 @@ module.exports = {
                               
                             };
                         });
+                   }
             });
           });
     },
@@ -1102,6 +1131,11 @@ module.exports = {
                   },
             ],
             function(err, resultat){
+              if (err){
+                return res.view('Contentieux/erreur');
+              }
+              else
+              {
               var sql4= "select count(typologiedelademande) as ok from "+nomBase+" ";
                       console.log(sql4);
                       Reportinghtp.getDatastore().sendNativeQuery(sql4 ,function(err, nc) {
@@ -1121,6 +1155,8 @@ module.exports = {
                               
                             };
                         });
+                }
+              
           });
         });
   },
@@ -1300,6 +1336,11 @@ module.exports = {
                   },
             ],
             function(err, resultat){
+              if (err){
+                return res.view('Contentieux/erreur');
+              }
+              else
+              {
               var sql4= "select count(chemin) as ok from "+nomBase+" ";
                       console.log(sql4);
                       Reportinghtp.getDatastore().sendNativeQuery(sql4 ,function(err, nc) {
@@ -1320,6 +1361,7 @@ module.exports = {
                               
                             };
                         });
+                      }
           });
         });
   },
@@ -1501,6 +1543,11 @@ module.exports = {
                   },
              ],
              function(err, resultat){
+              if (err){
+                return res.view('Contentieux/erreur');
+              }
+              else
+              {
               var sql4= "select count(chemin) as ok from "+nomBase+" ";
               console.log(sql4);
               Reportinghtp.getDatastore().sendNativeQuery(sql4 ,function(err, nc) {
@@ -1510,16 +1557,17 @@ module.exports = {
                     if (err){
                       return res.view('Inovcom/erreur');
                     }
-                   /*if(f==0)
+                   if(f==0)
                     {
                       return res.view('Inovcom/erreur');
-                    }*/
+                    }
                     else
                     {
                       return res.view('Inovcom/accueiltype8', {date : datetest});
                       
                     };
                 });
+              }
            });
          });
    },
@@ -1683,7 +1731,13 @@ module.exports = {
                   
               ],
               function(err, resultat){
-                var sql4= "select count(typologiedelademande) as ok from "+nomBase+" ";
+                      if (err){
+                        return res.view('Contentieux/erreur');
+                      }
+                      else
+                      {
+                        return res.view('Inovcom/exportexcelinovcom9', {date : datetest});
+                /*var sql4= "select count(typologiedelademande) as ok from "+nomBase+" ";
                       console.log(sql4);
                       Reportinghtp.getDatastore().sendNativeQuery(sql4 ,function(err, nc) {
                          nc = nc.rows;
@@ -1697,7 +1751,8 @@ module.exports = {
                               return res.view('Inovcom/exportexcelinovcom9', {date : datetest});
                               
                             };
-                        });
+                        });*/
+                      }
             });
           });
     },
