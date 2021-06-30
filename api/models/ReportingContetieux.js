@@ -6,7 +6,7 @@
  */
  const path_reporting = '/dev/prod/00-TOUS/TestReporting/REPORTING CONTENTIEUX type.xlsx';
 //const path_reporting = 'D:/Reporting/Reporting/REPORTING CONTENTIEUX type.xlsx';
-//const path_reporting = 'D:/LDR8_1421_nouv/PROJET_FELANA/REPORTING CONTENTIEUX type.xlsx';
+// const path_reporting = 'D:/LDR8_1421_nouv/PROJET_FELANA/REPORTING CONTENTIEUX type.xlsx';
 
 module.exports = {
   attributes: {
@@ -223,16 +223,13 @@ module.exports = {
     }
     return dt +"/"+ month +"/"+year;
   },
- 
-  ecritureOkKo : async function (nombre_ok_ko, table,date_export,mois1,callback) {
+
+    ecritureOkKo : async function (nombre_ok_ko, table,date_export,mois1,callback) {
     const Excel = require('exceljs');
     const cmd=require('node-cmd');
     const newWorkbook = new Excel.Workbook();
-    
-    try{
-    
-            
-      await newWorkbook.xlsx.readFile(path_reporting);
+    try{      
+    await newWorkbook.xlsx.readFile(path_reporting);
     const newworksheet = newWorkbook.getWorksheet(mois1);
     var colonneDate = newworksheet.getColumn('A');
     var ligneDate1;
@@ -255,9 +252,7 @@ module.exports = {
     var rowDate = newworksheet.getRow(ligneDate);
     var numeroLigne = rowDate;
     var iniValue = ReportingContetieux.getIniValue(table);
-    
     var a5;
-  
     var rowm = newworksheet.getRow(1);
     var colonnne;
     var colDate1;
@@ -276,7 +271,7 @@ module.exports = {
         {
           colonnne = parseInt(colNumber);
         }
-        }
+     }
     });
     console.log(" Colnumber"+colonnne);
    
@@ -292,6 +287,7 @@ module.exports = {
       Reportinghtp.deleteToutHtp(table,3,callback);
     }
     },
+
     /****************************************************************/
     ecritureOkKo2 : async function (nombre_ok_ko, table,date_export,mois1,callback) {
       const Excel = require('exceljs');
