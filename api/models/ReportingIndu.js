@@ -2134,7 +2134,7 @@ ecritureOkKo : async function (nombre_ok_ko, table,date_export,mois1,callback) {
         var line = newworksheet.getRow(ligneDate1);
         var f = line.getCell(3).value;
         // console.log(f);
-        if(f == "almerys")
+        if(f == "almerys" || f == "Almerys")
         {
           ligneDate = parseInt(rowNumber);
         }
@@ -2301,7 +2301,7 @@ ecritureOkKo : async function (nombre_ok_ko, table,date_export,mois1,callback) {
         var line = newworksheet.getRow(ligneDate1);
         var f = line.getCell(3).value;
         // console.log(f);
-        if(f == "almerys")
+        if(f == "almerys" || f == "Almerys")
         {
           ligneDate = parseInt(rowNumber);
         }
@@ -2467,7 +2467,7 @@ ecritureOkKo : async function (nombre_ok_ko, table,date_export,mois1,callback) {
             var line = newworksheet.getRow(ligneDate1);
             var f = line.getCell(3).value;
             // console.log(f);
-            if(f == "almerys")
+            if(f == "almerys" || f == "Almerys")
             {
               ligneDate = parseInt(rowNumber);
             }
