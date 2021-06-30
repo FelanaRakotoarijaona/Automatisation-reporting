@@ -316,6 +316,7 @@ module.exports = {
         console.log("Count OK 4 ==> " + result[4].ok + " / " + result[4].ko);
         console.log("Count OK 5 ==> " + result[5].ok + " / " + result[5].ko);
         console.log("Count OK 6 ==> " + result[6].ok + " / " + result[6].ko);
+        console.log("Count OK 6 ==> " + result[7].ok + " / " + result[7].ko);
        
         async.series([
          

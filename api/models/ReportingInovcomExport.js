@@ -983,7 +983,7 @@ module.exports = {
         }
         }
     });
-    console.log(" Colnumber"+colonnne);
+    console.log(" Colnumber "+colonnne);
     /*var collonne;
     var colDate2;
     rowm.eachCell(function(cell, colNumber) {
@@ -1000,13 +1000,13 @@ module.exports = {
     });
     console.log(" Colnumber2"+collonne);*/
     if(nombre_ok_ko.ok == null || nombre_ok_ko.ok == undefined){
-      nombre_ok_ko.ok = 0;
+      return callback(null, 0);
     }
     else{
-      nombre_ok_ko.ok;
+      numeroLigne.getCell(colonnne).value = nombre_ok_ko.ok;
     }
-    numeroLigne.getCell(colonnne).value = nombre_ok_ko.ok;
-    console.log("*******************************");
+    
+    console.log("*****************nombreokko**************");
     console.log(nombre_ok_ko.ok);
     console.log("*******************************");
     // // console.log(nombre_ok_ko);
