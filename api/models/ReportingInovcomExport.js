@@ -982,7 +982,9 @@ module.exports = {
                   }
               });
               console.log(" Colnumber "+colonnne);
-              numeroLigne.getCell(colonnne).value = 11;
+              var row = newworksheet.getRow(8);
+              row.getCell(121).value = 11;
+              //numeroLigne.getCell(colonnne).value = 11;
               console.log('************nombre_ok_ko.ok*********************');
               console.log(nombre_ok_ko.ok);
               await newWorkbook.xlsx.writeFile(path_reporting);
