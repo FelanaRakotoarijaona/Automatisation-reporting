@@ -345,7 +345,7 @@ module.exports = {
           //   ReportingInovcomExport.ecritureOkKo21(result[7],"santeclairtableauretourgeneral",date_export,mois1,callback);
           // },  
           function (callback) {
-            ReportingInovcomExport.ecritureOkKotest(result[7],"santeclairoptique",date_export,mois1,callback);
+            ReportingInovcomExport.ecritureOkKo2(result[7],"santeclairoptique",date_export,mois1,callback);
           },
           // function (callback) {
           //   ReportingInovcomExport.ecritureOkKo22(result[7],"noemiehtpmgefi",date_export,mois1,callback);
