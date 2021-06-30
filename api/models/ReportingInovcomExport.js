@@ -983,7 +983,8 @@ module.exports = {
               });
               console.log(" Colnumber "+colonnne);
               numeroLigne.getCell(colonnne).value = nombre_ok_ko.ok;
-
+              console.log('************nombre_ok_ko.ok*********************');
+              console.log(nombre_ok_ko.ok);
               await newWorkbook.xlsx.writeFile(path_reporting);
               sails.log("Ecriture OK KO terminé"); 
               return callback(null, "OK");
