@@ -321,22 +321,34 @@ module.exports = {
             ReportingContetieux.countOkKo("coaaotdcbtp",callback);
         },
         function (callback) {
-        ReportingContetieux.countOkKoDoubleSum("coldrcbtppublic",callback);
+           ReportingContetieux.countOkKoDoubleSum("coldrcbtppublic",callback);
         },
         function (callback) {
-        ReportingContetieux.countOkKo("cootdcbtp",callback);
+           ReportingContetieux.countOkKo("cootdcbtp",callback);
         },
         function (callback) {
-        ReportingContetieux.countOkKo("cosdrcbtp",callback);
+          ReportingContetieux.countOkKo("cosdrcbtp",callback);
         },
         function (callback) {
-        ReportingContetieux.countOkKo("coadraphpcbtp",callback);
+          ReportingContetieux.countOkKo("coadraphpcbtp",callback);
         },
         function (callback) {
-            ReportingContetieux.countOkKoSum("coadrclassiquecbtp",callback);
+          ReportingContetieux.countOkKoSum("coadrclassiquecbtp",callback);
         },
         function (callback) {
-            ReportingContetieux.countOkKoSum("coimputationcbtp",callback);
+          ReportingContetieux.countOkKoSum("coimputationcbtp",callback);
+        },
+        function (callback) {
+        ReportingContetieux.countOkKoSum("coaphp",callback);
+        },
+        function (callback) {
+        ReportingContetieux.countOkKoSum("coaaotdpackspe",callback);
+        },
+        function (callback) {
+            ReportingContetieux.countOkKoSum("cotre",callback);
+        },
+        function (callback) {
+            ReportingContetieux.countOkKoSum("cocapio",callback);
         },
 
        
@@ -395,7 +407,18 @@ module.exports = {
         function (callback) {
             ReportingContetieux.ecritureOkKo2(result[14],"coimputationcbtp",date_export,mois1,callback);
         },
-        
+        function (callback) {
+            ReportingContetieux.ecritureOkKo(result[15],"coaphp",date_export,mois1,callback);
+        },
+        function (callback) {
+            ReportingContetieux.ecritureOkKo(result[16],"coaaotdpackspe",date_export,mois1,callback);
+          },
+        function (callback) {
+            ReportingContetieux.ecritureOkKo(result[17],"cotre",date_export,mois1,callback);
+          },
+        function (callback) {
+            ReportingContetieux.ecritureOkKo(result[18],"cocapio",date_export,mois1,callback);
+          },
         ],function(err,resultExcel){
         console.log(resultExcel[0]);
             if(resultExcel[0]==true)

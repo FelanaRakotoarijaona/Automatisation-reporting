@@ -224,7 +224,7 @@ module.exports = {
     return dt +"/"+ month +"/"+year;
   },
 
-    ecritureOkKo : async function (nombre_ok_ko, table,date_export,mois1,callback) {
+  ecritureOkKo : async function (nombre_ok_ko, table,date_export,mois1,callback) {
     const Excel = require('exceljs');
     const cmd=require('node-cmd');
     const newWorkbook = new Excel.Workbook();
@@ -513,6 +513,22 @@ module.exports = {
     if(table == "coimputationcbtp"){
       numeroColonneOk = iniValue.coimputationcbtp.ok;
       numeroColonneKo = iniValue.coimputationcbtp.ko;
+    }
+    if(table == "coaphp"){
+      numeroColonneOk = iniValue.coaphp.ok;
+      numeroColonneKo = iniValue.coaphp.ko;
+    }
+    if(table == "coaaotdpackspe"){
+      numeroColonneOk = iniValue.coaaotdpackspe.ok;
+      numeroColonneKo = iniValue.coaaotdpackspe.ko;
+    }
+    if(table == "cotre"){
+      numeroColonneOk = iniValue.cotre.ok;
+      numeroColonneKo = iniValue.cotre.ko;
+    }
+    if(table == "cocapio"){
+      numeroColonneOk = iniValue.cocapio.ok;
+      numeroColonneKo = iniValue.cocapio.ko;
     }
    
     var ok_ko = {};
