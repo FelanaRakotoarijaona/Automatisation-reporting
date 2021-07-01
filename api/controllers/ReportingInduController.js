@@ -581,8 +581,8 @@ rechercheColonne : function (req, res) {
     console.log("Count OK indufraudelmg ==> " + result[4].ok + " / " + result[4].ko);
     console.log("Count OK INDUCONTESTSATION ==> " + result[13].ok + " / " + result[13].ko);
     console.log("Count OK SANTE ==> " + result[14].ok + " / " + result[14].ko);
-    console.log("Count OK Indutierscbtp ==> " + result[16].ok + " / " + result[16].ko);
-    console.log("Count OK Indusecbtp ==> " + result[17].ok + " / " + result[17].ko);
+    // console.log("Count OK Indutierscbtp ==> " + result[16].ok + " / " + result[16].ko);
+    // console.log("Count OK Indusecbtp ==> " + result[17].ok + " / " + result[17].ko);
     async.series([
       function (callback) {
         ReportingIndu.ecritureOkKoDouble(result[0],"induse",date_export,mois1,callback);
