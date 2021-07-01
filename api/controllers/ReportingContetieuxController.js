@@ -297,7 +297,7 @@ module.exports = {
           ReportingContetieux.countOkKoSum("coaaotdalmerys",callback);
         },
         function (callback) {
-          ReportingContetieux.countOkKo("coldralmeryspublic",callback);
+          ReportingContetieux.countOkKoSum("coldralmeryspublic",callback);
         },
         function (callback) {
           ReportingContetieux.countOkKoSum("cootdalmerys",callback);
