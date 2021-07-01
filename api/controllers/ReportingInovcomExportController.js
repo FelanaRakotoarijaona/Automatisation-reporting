@@ -311,12 +311,12 @@ module.exports = {
         else{
         console.log("Count OK 1 ==> " + result[0].ok);  
         console.log("Count OK 1 ==> " + result[1].ok);
-        console.log("Count OK 2 ==> " + result[2].ok);
-        console.log("Count OK 3 ==> " + result[3].ok);
-        console.log("Count OK 4 ==> " + result[4].ok);
-        console.log("Count OK 5 ==> " + result[5].ok);
-        console.log("Count OK 6 ==> " + result[6].ok);
-        console.log("Count OK 7 ==> " + result[7].ok);
+        // console.log("Count OK 2 ==> " + result[2].ok);
+        // console.log("Count OK 3 ==> " + result[3].ok);
+        // console.log("Count OK 4 ==> " + result[4].ok);
+        // console.log("Count OK 5 ==> " + result[5].ok);
+        // console.log("Count OK 6 ==> " + result[6].ok);
+        // console.log("Count OK 7 ==> " + result[7].ok);
        
         async.series([
          
