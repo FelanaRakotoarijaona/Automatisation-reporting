@@ -274,9 +274,9 @@ module.exports = {
         function (callback) {
           ReportingInovcomExport.countok("retourpecaudio",callback);
         },*/
-        // function (callback) {
-        //   ReportingInovcomExport.countok("santeclairtableauretourgeneral",callback);
-        // },
+        function (callback) {
+          ReportingInovcomExport.countok("santeclairtableauretourgeneral",callback);
+        },
         function (callback) {
           ReportingInovcomExport.countok("santeclairoptique",callback);
         },
