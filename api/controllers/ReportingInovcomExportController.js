@@ -274,7 +274,7 @@ module.exports = {
         function (callback) {
           ReportingInovcomExport.countok("retourpecaudio",callback);
         },*/
-        function (callback) {
+    /*    function (callback) {
           ReportingInovcomExport.countok("santeclairtableauretourgeneral",callback);
         },
         function (callback) {
@@ -286,7 +286,7 @@ module.exports = {
         function (callback) {
           ReportingInovcomExport.countok("mgefigtomgefirejetsaisienoemiehtp",callback);
         },
-        function (callback) {
+    */    function (callback) {
           ReportingInovcomExport.countok("retourreclamtramereclamationtiers",callback);
         },
         function (callback) {
@@ -315,10 +315,10 @@ module.exports = {
         console.log("Count OK 3 ==> " + result[3].ok);
         console.log("Count OK 4 ==> " + result[4].ok);
         console.log("Count OK 5 ==> " + result[5].ok);
-        console.log("Count OK 6 ==> " + result[6].ok);
-        console.log("Count OK 7 ==> " + result[7].ok);
-        console.log("Count OK 8 ==> " + result[8].ok);
-        console.log("Count OK 9 ==> " + result[9].ok);
+        // console.log("Count OK 6 ==> " + result[6].ok);
+        // console.log("Count OK 7 ==> " + result[7].ok);
+        // console.log("Count OK 8 ==> " + result[8].ok);
+        // console.log("Count OK 9 ==> " + result[9].ok);
        
         async.series([
          
@@ -343,7 +343,7 @@ module.exports = {
           function (callback) {
             ReportingInovcomExport.ecritureOkKo2(result[6],"retourpecaudio",date_export,mois1,callback);
           },*/
-          function (callback) {
+      /*    function (callback) {
             ReportingInovcomExport.ecritureOkKo21(result[0],"santeclairtableauretourgeneral",date_export,mois1,callback);
           },  
           function (callback) {
@@ -355,23 +355,23 @@ module.exports = {
           function (callback) {
             ReportingInovcomExport.ecritureOkKo22(result[3],"mgefigtomgefirejetsaisienoemiehtp",date_export,mois1,callback);
           },
-          function (callback) {
-            ReportingInovcomExport.ecritureOkKo23(result[4],"retourreclamtramereclamationtiers",date_export,mois1,callback);
+      */    function (callback) {
+            ReportingInovcomExport.ecritureOkKo23(result[0],"retourreclamtramereclamationtiers",date_export,mois1,callback);
           },
           function (callback) {
-            ReportingInovcomExport.ecritureOkKo23(result[5],"reclamsetramereclamationse",date_export,mois1,callback);
+            ReportingInovcomExport.ecritureOkKo23(result[1],"reclamsetramereclamationse",date_export,mois1,callback);
           },
           function (callback) {
-            ReportingInovcomExport.ecritureOkKo23(result[6],"reclamhospi",date_export,mois1,callback);
+            ReportingInovcomExport.ecritureOkKo23(result[2],"reclamhospi",date_export,mois1,callback);
           },
           function (callback) {
-            ReportingInovcomExport.ecritureOkKo23(result[7],"dentairereclamationdentaire",date_export,mois1,callback);
+            ReportingInovcomExport.ecritureOkKo23(result[3],"dentairereclamationdentaire",date_export,mois1,callback);
           },
           function (callback) {
-            ReportingInovcomExport.ecritureOkKo23(result[8],"optiquetramereclamationoptique",date_export,mois1,callback);
+            ReportingInovcomExport.ecritureOkKo23(result[4],"optiquetramereclamationoptique",date_export,mois1,callback);
           },
           function (callback) {
-            ReportingInovcomExport.ecritureOkKo23(result[9],"reclamationaudio",date_export,mois1,callback);
+            ReportingInovcomExport.ecritureOkKo23(result[5],"reclamationaudio",date_export,mois1,callback);
           },
 
           ],function(err,resultExcel){
