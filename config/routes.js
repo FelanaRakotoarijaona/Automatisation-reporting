@@ -98,8 +98,9 @@ module.exports.routes = {
 
   '/exportExcelInovcom2' : 'ReportingInovcomExportController.rechercheColonne2',
   '/exportExcelInov2' : 'ReportingInovcomExportController.accueilInov2',
-  '/exportExcelInovcom2suivant' : 'ReportingInovcomExportController.rechercheColonne2suivant',//ajout suivant inov2
-  
+  '/exportExcelInovcom2suivant' : 'ReportingInovcomExportController.rechercheColonne2suivant1',//ajout suivant inov2
+  '/exportExcelInovcom2suivant2' : 'ReportingInovcomExportController.rechercheColonne2suivant2',
+
   '/exportExcelInovcom3' : 'ReportingInovcomExportController.rechercheColonne3',
   '/exportExcelInov3' : 'ReportingInovcomExportController.accueilInov3',
 
