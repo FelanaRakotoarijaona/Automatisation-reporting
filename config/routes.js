@@ -138,6 +138,7 @@ module.exports.routes = {
   //  '/exportIndu/:jour/:mois/:annee/:html' : 'ReportingInovcomExportController.accueil',
   //  '/exportReportingIndu:jour/:mois/:annee' : 'ReportingInovcomExportController.rechercheColonne',
    '/exportExcelIndu' : 'ReportingInduController.rechercheColonne',
+   '/exportExcelIndusuivant' : 'ReportingInduController.rechercheColonneindusuivant',
    '/exportExcelin' : 'ReportingInduController.accueilI',
 
    '/exportExcelIndu2' : 'ReportingInduController.rechercheColonne2',

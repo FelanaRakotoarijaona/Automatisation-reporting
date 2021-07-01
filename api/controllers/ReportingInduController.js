@@ -518,7 +518,7 @@ rechercheColonne : function (req, res) {
   var date_export = jour + '/' + mois + '/' +annee;
   console.log("RECHERCHE COLONNE");
   async.series([
-/*    function (callback) {
+    function (callback) {
       ReportingIndu.countOkKoDoubleSum("induse",callback);
     },
    function (callback) {
@@ -562,29 +562,26 @@ rechercheColonne : function (req, res) {
     },
     function (callback) {
       ReportingIndu.countOkKoDoubleSum("indufactstc",callback);
-    },*/
-    function (callback) {
-      ReportingIndu.countOkKoSumko("indufraudelmg",callback);
-    }, 
-    function (callback) {
-      ReportingIndu.countOkKoDoubleSumcbtp("indutiers",callback);
-    },
-    function (callback) {
-      ReportingIndu.countOkKoDoubleSumcbtp("induse",callback);
     },
   ],function(err,result){
     if(err) return res.badRequest(err);
     console.log("Count OK 0 ==> " + result[0].ok + " / " + result[0].ko);
-    console.log("Count OK 2 ==> " + result[1].ok + " / " + result[1].ko);
-    console.log("Count OK 3 ==> " + result[2].ok + " / " + result[2].ko);
-    // console.log("Count OK IndutiersAlmerys ==> " + result[3].ok + " / " + result[3].ko);
-    // console.log("Count OK indufraudelmg ==> " + result[4].ok);
-    // console.log("Count OK INDUCONTESTSATION ==> " + result[13].ok + " / " + result[13].ko);
-    // console.log("Count OK SANTE ==> " + result[14].ok + " / " + result[14].ko);
-    // console.log("Count OK Indutierscbtp ==> " + result[16].ok + " / " + result[16].ko);
-    // console.log("Count OK Indusecbtp ==> " + result[17].ok + " / " + result[17].ko);
+    console.log("Count OK 1 ==> " + result[1].ok + " / " + result[1].ko);
+    console.log("Count OK 2 ==> " + result[2].ok + " / " + result[2].ko);
+    console.log("Count OK 3 ==> " + result[3].ok + " / " + result[3].ko);
+    console.log("Count OK 4 ==> " + result[4].ok + " / " + result[4].ko);
+    console.log("Count OK 5 ==> " + result[5].ok + " / " + result[5].ko);
+    console.log("Count OK 6 ==> " + result[6].ok + " / " + result[6].ko);
+    console.log("Count OK 7 ==> " + result[7].ok + " / " + result[7].ko);
+    console.log("Count OK 8 ==> " + result[8].ok + " / " + result[8].ko);
+    console.log("Count OK 9 ==> " + result[9].ok + " / " + result[9].ko);
+    console.log("Count OK 10 ==> " + result[10].ok + " / " + result[10].ko);
+    console.log("Count OK 11 ==> " + result[11].ok + " / " + result[11].ko);
+    console.log("Count OK 12 ==> " + result[12].ok + " / " + result[12].ko);
+    console.log("Count OK 13 ==> " + result[13].ok + " / " + result[13].ko);
+    console.log("Count OK 14 ==> " + result[14].ok + " / " + result[14].ko);
     async.series([
-  /*    function (callback) {
+      function (callback) {
         ReportingIndu.ecritureOkKoDouble(result[0],"induse",date_export,mois1,callback);
       },
      function (callback) {
@@ -628,7 +625,107 @@ rechercheColonne : function (req, res) {
       },
       function (callback) {
         ReportingIndu.ecritureOkKoSante(result[14],"indufactstc",date_export,mois1,callback);
-      },*/
+      },
+      
+    ],function(err,resultExcel){
+   console.log(resultExcel[0]);
+        if(resultExcel[0]==true)
+        {
+          console.log("true zn");
+          res.view('reporting/erera');
+        }
+        if(resultExcel[0]=='OK')
+        {
+          // res.redirect('/exportRetour/'+date_export+'/x')
+          // res.view('reporting/succes');
+          return res.view('Indu/exportExcelIndusuivant',{date : datetest});
+        }
+
+        
+      
+      
+    })
+  });  
+},
+/*************************************************************************************/
+rechercheColonneindusuivant : function (req, res) {
+  var datetest = req.param("date",0);
+  var annee = datetest.substr(0, 4);
+  var mois = datetest.substr(5, 2);
+  var jour = datetest.substr(8, 2);
+  // var jour = req.param("jour");
+  // var mois = req.param("mois");
+  // var annee = req.param("annee");
+  var mois1 = 'Janvier' ;
+  if(mois==01)
+  {
+    mois1= 'Janvier';
+  };
+  if(mois==02)
+  {
+    mois1= 'Fevrier';
+  };
+  if(mois==03)
+  {
+    mois1= 'Mars';
+  };
+  if(mois==04)
+  {
+    mois1= 'Avril';
+  };
+  if(mois==05)
+  {
+    mois1= 'Mai';
+  };
+  if(mois==06)
+  {
+    mois1= 'Juin';
+  };
+  if(mois==07)
+  {
+    mois1= 'Juillet';
+  };
+  if(mois==08)
+  {
+    mois1= 'Aout';
+  };
+  if(mois==09)
+  {
+    mois1= 'Septembre';
+  };
+  if(mois==10)
+  {
+    mois1= 'Octobre';
+  };
+  if(mois==11)
+  {
+    mois1= 'Novembre';
+  };
+  if(mois==12)
+  {
+    mois1= 'Decembre';
+  };
+  console.log(mois1);
+  var date_export = jour + '/' + mois + '/' +annee;
+  console.log("RECHERCHE COLONNE");
+  async.series([
+
+    function (callback) {
+      ReportingIndu.countOkKoSumko("indufraudelmg",callback);
+    }, 
+    function (callback) {
+      ReportingIndu.countOkKoDoubleSumcbtp("indutiers",callback);
+    },
+    function (callback) {
+      ReportingIndu.countOkKoDoubleSumcbtp("induse",callback);
+    },
+  ],function(err,result){
+    if(err) return res.badRequest(err);
+    console.log("Count OK 0 ==> " + result[0].ok + " / " + result[0].ko);
+    console.log("Count OK 2 ==> " + result[1].ok + " / " + result[1].ko);
+    console.log("Count OK 3 ==> " + result[2].ok + " / " + result[2].ko);
+    async.series([
+ 
       function (callback) {
         ReportingIndu.ecritureOkKoko(result[0],"indufraudelmgdent",date_export,mois1,callback);
       },
@@ -657,6 +754,8 @@ rechercheColonne : function (req, res) {
     })
   });  
 },
+
+/****************************************************************************************/
 rechercheColonne2 : function (req, res) {
   var datetest = req.param("date",0);
   var annee = datetest.substr(0, 4);
