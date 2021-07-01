@@ -530,9 +530,9 @@ rechercheColonne : function (req, res) {
     function (callback) {
       ReportingIndu.countOkKoDoubleSum("indutiers",callback);
     },
-  //  function (callback) {
-  //     ReportingIndu.countOkKoSum("indufraudelmg",callback);
-  //   }, 
+   function (callback) {
+      ReportingIndu.countOkKoSum("indufraudelmg",callback);
+    }, 
     function (callback) {
       ReportingIndu.countOkKoSum("induinterialepre",callback);
     },  
@@ -651,14 +651,6 @@ rechercheColonne : function (req, res) {
           res.view('reporting/succes');
         }
 
-
-        /*console.log("Traitement terminé ===> "+ resultExcel[0]);
-        console.log("Traitement terminé ===> "+ resultExcel[1]);
-        console.log("Traitement terminé ===> "+ resultExcel[2]);
-        console.log("Traitement terminé ===> "+ resultExcel[3]);
-        console.log("Traitement terminé ===> "+ resultExcel[4]);
-        var html = "Echec d'enregistrement";
-        return res.redirect('/accueil');*/
         
       
       
@@ -756,14 +748,6 @@ rechercheColonne2 : function (req, res) {
           res.view('Contentieux/succes');
         }
 
-
-        /*console.log("Traitement terminé ===> "+ resultExcel[0]);
-        console.log("Traitement terminé ===> "+ resultExcel[1]);
-        console.log("Traitement terminé ===> "+ resultExcel[2]);
-        console.log("Traitement terminé ===> "+ resultExcel[3]);
-        console.log("Traitement terminé ===> "+ resultExcel[4]);
-        var html = "Echec d'enregistrement";
-        return res.redirect('/accueil');*/
         
       
       
