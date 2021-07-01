@@ -859,7 +859,7 @@ rechercheColonne5: function (req, res) {
   console.log("RECHERCHE COLONNE");
   async.series([
     function (callback) {
-      ReportingInovcomExport.countOkKo("fav",callback);
+      ReportingInovcomExport.countOkKo6("fav",callback);
     },
   ],function(err,result){
     if(err) return res.badRequest(err);
