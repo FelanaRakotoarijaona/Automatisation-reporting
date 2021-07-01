@@ -280,12 +280,12 @@ module.exports = {
         function (callback) {
           ReportingInovcomExport.countok("santeclairoptique",callback);
         },
-        // function (callback) {
-        //   ReportingInovcomExport.countok("noemiehtpmgefi",callback);
-        // },
-        // function (callback) {
-        //   ReportingInovcomExport.countok("mgefigtomgefirejetsaisienoemiehtp",callback);
-        // },
+        function (callback) {
+          ReportingInovcomExport.countok("noemiehtpmgefi",callback);
+        },
+        function (callback) {
+          ReportingInovcomExport.countok("mgefigtomgefirejetsaisienoemiehtp",callback);
+        },
         // function (callback) {
         //   ReportingInovcomExport.countok("retourreclamtramereclamationtiers",callback);
         // },
