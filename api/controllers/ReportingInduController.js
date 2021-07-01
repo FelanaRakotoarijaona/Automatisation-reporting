@@ -566,17 +566,17 @@ rechercheColonne : function (req, res) {
     function (callback) {
       ReportingIndu.countOkKoSumko("indufraudelmg",callback);
     }, 
-    // function (callback) {
-    //   ReportingIndu.countOkKoDoubleSumcbtp("indutiers",callback);
-    // },
-    // function (callback) {
-    //   ReportingIndu.countOkKoDoubleSumcbtp("induse",callback);
-    // },
+    function (callback) {
+      ReportingIndu.countOkKoDoubleSumcbtp("indutiers",callback);
+    },
+    function (callback) {
+      ReportingIndu.countOkKoDoubleSumcbtp("induse",callback);
+    },
   ],function(err,result){
     if(err) return res.badRequest(err);
-    console.log("Count OK InduseAlmerys ==> " + result[0].ok + " / " + result[0].ko);
-    // console.log("Count OK 2 ==> " + result[1].ok + " / " + result[1].ko);
-    // console.log("Count OK 3 ==> " + result[2].ok + " / " + result[2].ko);
+    console.log("Count OK 0 ==> " + result[0].ok + " / " + result[0].ko);
+    console.log("Count OK 2 ==> " + result[1].ok + " / " + result[1].ko);
+    console.log("Count OK 3 ==> " + result[2].ok + " / " + result[2].ko);
     // console.log("Count OK IndutiersAlmerys ==> " + result[3].ok + " / " + result[3].ko);
     // console.log("Count OK indufraudelmg ==> " + result[4].ok);
     // console.log("Count OK INDUCONTESTSATION ==> " + result[13].ok + " / " + result[13].ko);
@@ -632,12 +632,12 @@ rechercheColonne : function (req, res) {
       function (callback) {
         ReportingIndu.ecritureOkKoko(result[0],"indufraudelmgdent",date_export,mois1,callback);
       },
-      // function (callback) {
-      //   ReportingIndu.ecritureOkKoDoublecbtp(result[15],"indutiers",date_export,mois1,callback);
-      // },
-      // function (callback) {
-      //   ReportingIndu.ecritureOkKoDoublecbtp(result[16],"induse",date_export,mois1,callback);
-      // },
+      function (callback) {
+        ReportingIndu.ecritureOkKoDoublecbtp(result[1],"indutiers",date_export,mois1,callback);
+      },
+      function (callback) {
+        ReportingIndu.ecritureOkKoDoublecbtp(result[2],"induse",date_export,mois1,callback);
+      },
     ],function(err,resultExcel){
    console.log(resultExcel[0]);
         if(resultExcel[0]==true)
