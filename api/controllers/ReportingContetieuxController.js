@@ -303,13 +303,13 @@ module.exports = {
           ReportingContetieux.countOkKoSum("cootdalmerys",callback);
         },
         function (callback) {
-          ReportingContetieux.countOkKo("cosdralmerys",callback);
+          ReportingContetieux.countOkKoSum("cosdralmerys",callback);
         },
        function (callback) {
           ReportingContetieux.countOkKoSum("cootdclient",callback);
         },
         function (callback) {
-          ReportingContetieux.countOkKo("coadraphpalmerys",callback);
+          ReportingContetieux.countOkKoSum("coadraphpalmerys",callback);
         },
         function (callback) {
            ReportingContetieux.countOkKoSum("coadrclassiquealmerys",callback);
@@ -330,7 +330,7 @@ module.exports = {
           ReportingContetieux.countOkKo("cosdrcbtp",callback);
         },
         function (callback) {
-          ReportingContetieux.countOkKo("coadraphpcbtp",callback);
+          ReportingContetieux.countOkKoSum("coadraphpcbtp",callback);
         },
         function (callback) {
           ReportingContetieux.countOkKoSum("coadrclassiquecbtp",callback);
