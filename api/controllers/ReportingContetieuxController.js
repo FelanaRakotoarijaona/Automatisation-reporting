@@ -231,7 +231,7 @@ module.exports = {
       });
     },
   
-    //AJOUT FONCTION RECHERCHECOLONNE POUR RETOUR
+    //FONCTION RECHERCHE COLONNE POUR L'EXPORT CONTENTIEUX, (count___>requete du base/ecriture__>remplissage excel)
     rechercheColonne : function (req, res) {
       var datetest = req.param("date",0);
       var annee = datetest.substr(0, 4);
@@ -354,13 +354,25 @@ module.exports = {
        
       ],function(err,result){
         if(err) return res.badRequest(err);
-        console.log("Count OK 1==> " + result[0].ok + " / " + result[0].ko);
-        console.log("Count OK 2 ==> " + result[1].ok + " / " + result[1].ko);
-        console.log("Count OK 3 ==> " + result[2].ok + " / " + result[2].ko);
-        console.log("Count OK 4 ==> " + result[3].ok + " / " + result[3].ko);
+        console.log("Count OK 0 ==> " + result[0].ok);
+        console.log("Count OK 1 ==> " + result[1].ok);
+        console.log("Count OK 2 ==> " + result[2].ok);
+        console.log("Count OK 3 ==> " + result[3].ok);
+        console.log("Count OK 4 ==> " + result[4].ok);
+        console.log("Count OK 5 ==> " + result[5].ok);
+        console.log("Count OK 6 ==> " + result[6].ok);
+        console.log("Count OK 7 ==> " + result[7].ok);
+        console.log("Count OK 8 ==> " + result[8].ok);
         console.log("Count OK 9 ==> " + result[9].ok + " / " + result[9].ko);
-        // console.log("Count OK tramelamiestock ==> " + result[4].ok + " / " + result[4].ko);
-        // console.log("Count OK tramelamiestockResiliation ==> " + result[5].ok + " / " + result[5].ko);
+        console.log("Count OK 10 ==> " + result[10].ok);
+        console.log("Count OK 11 ==> " + result[11].ok);
+        console.log("Count OK 12 ==> " + result[12].ok);
+        console.log("Count OK 13 ==> " + result[13].ok);
+        console.log("Count OK 14 ==> " + result[14].ok);
+        console.log("Count OK 15 ==> " + result[15].ok);
+        console.log("Count OK 16 ==> " + result[16].ok);
+        console.log("Count OK 17 ==> " + result[17].ok);
+        console.log("Count OK 18 ==> " + result[18].ok);
         async.series([
         function (callback) {
             ReportingContetieux.ecritureOkKo(result[0],"coaaotdalmerys",date_export,mois1,callback);
