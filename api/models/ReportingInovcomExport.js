@@ -50,7 +50,7 @@ module.exports = {
       // },
     ],function(err,result){
       if(err) return res.badRequest(err);
-      console.log("Count OK ==> " + result[0]);
+      // console.log("Count OK ==> " + result[0]);
       // console.log("Count KO ==> " + result[1]);
       var okko = {};
       okko.ok = result[0];
@@ -1068,6 +1068,7 @@ module.exports = {
     });
     console.log(" Colnumber2"+collonne);*/
     numeroLigne.getCell(colonnne).value = nombre_ok_ko.ok;
+    console.log('manoratra izy eto, ecritureokko22 ty an');
     //numeroLigne.getCell(collonne).value = nombre_ok_ko.ko;
     await newWorkbook.xlsx.writeFile(path_reporting);
     sails.log("Ecriture OK KO terminé"); 
