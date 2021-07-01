@@ -514,6 +514,22 @@ module.exports = {
       numeroColonneOk = iniValue.coimputationcbtp.ok;
       numeroColonneKo = iniValue.coimputationcbtp.ko;
     }
+    if(table == "coaphp"){
+      numeroColonneOk = iniValue.coaphp.ok;
+      numeroColonneKo = iniValue.coaphp.ko;
+    }
+    if(table == "coaaotdpackspe"){
+      numeroColonneOk = iniValue.coaaotdpackspe.ok;
+      numeroColonneKo = iniValue.coaaotdpackspe.ko;
+    }
+    if(table == "cotre"){
+      numeroColonneOk = iniValue.cotre.ok;
+      numeroColonneKo = iniValue.cotre.ko;
+    }
+    if(table == "cocapio"){
+      numeroColonneOk = iniValue.cocapio.ok;
+      numeroColonneKo = iniValue.cocapio.ko;
+    }
    
     var ok_ko = {};
     ok_ko.ok = numeroColonneOk;
