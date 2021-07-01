@@ -557,12 +557,7 @@ rechercheColonne : function (req, res) {
     function (callback) {
       ReportingIndu.countOkKoSum("induinterialeaudio",callback);
     },
-    function (callback) {
-      ReportingIndu.countOkKoContest("inducontestation",callback);
-    },
-    function (callback) {
-      ReportingIndu.countOkKoDoubleSum("indufactstc",callback);
-    },
+   
   ],function(err,result){
     if(err) return res.badRequest(err);
     console.log("Count OK 0 ==> " + result[0].ok + " / " + result[0].ko);
@@ -578,8 +573,6 @@ rechercheColonne : function (req, res) {
     console.log("Count OK 10 ==> " + result[10].ok + " / " + result[10].ko);
     console.log("Count OK 11 ==> " + result[11].ok + " / " + result[11].ko);
     console.log("Count OK 12 ==> " + result[12].ok + " / " + result[12].ko);
-    console.log("Count OK 13 ==> " + result[13].ok + " / " + result[13].ko);
-    console.log("Count OK 14 ==> " + result[14].ok + " / " + result[14].ko);
     async.series([
       function (callback) {
         ReportingIndu.ecritureOkKoDouble(result[0],"induse",date_export,mois1,callback);
@@ -620,12 +613,7 @@ rechercheColonne : function (req, res) {
       function (callback) {
         ReportingIndu.ecritureOkKo(result[12],"induinterialeaudio",date_export,mois1,callback);
       },
-      function (callback) {
-        ReportingIndu.ecritureOkKoContest(result[13],"inducontestation",date_export,mois1,callback);
-      },
-      function (callback) {
-        ReportingIndu.ecritureOkKoSante(result[14],"indufactstc",date_export,mois1,callback);
-      },
+      
       
     ],function(err,resultExcel){
    console.log(resultExcel[0]);
@@ -709,7 +697,12 @@ rechercheColonneindusuivant : function (req, res) {
   var date_export = jour + '/' + mois + '/' +annee;
   console.log("RECHERCHE COLONNE");
   async.series([
-
+    function (callback) {
+      ReportingIndu.countOkKoContest("inducontestation",callback);
+    },
+    function (callback) {
+      ReportingIndu.countOkKoDoubleSum("indufactstc",callback);
+    },
     function (callback) {
       ReportingIndu.countOkKoSumko("indufraudelmg",callback);
     }, 
@@ -722,18 +715,25 @@ rechercheColonneindusuivant : function (req, res) {
   ],function(err,result){
     if(err) return res.badRequest(err);
     console.log("Count OK 0 ==> " + result[0].ok + " / " + result[0].ko);
-    console.log("Count OK 2 ==> " + result[1].ok + " / " + result[1].ko);
-    console.log("Count OK 3 ==> " + result[2].ok + " / " + result[2].ko);
+    console.log("Count OK 1 ==> " + result[1].ok + " / " + result[1].ko);
+    console.log("Count OK 2 ==> " + result[2].ok + " / " + result[2].ko);    
+    console.log("Count OK 3 ==> " + result[3].ok + " / " + result[3].ko);
+    console.log("Count OK 4 ==> " + result[4].ok + " / " + result[4].ko);
     async.series([
- 
       function (callback) {
-        ReportingIndu.ecritureOkKoko(result[0],"indufraudelmgdent",date_export,mois1,callback);
+        ReportingIndu.ecritureOkKoContest(result[0],"inducontestation",date_export,mois1,callback);
       },
       function (callback) {
-        ReportingIndu.ecritureOkKoDoublecbtp(result[1],"indutiers",date_export,mois1,callback);
+        ReportingIndu.ecritureOkKoSante(result[1],"indufactstc",date_export,mois1,callback);
       },
       function (callback) {
-        ReportingIndu.ecritureOkKoDoublecbtp(result[2],"induse",date_export,mois1,callback);
+        ReportingIndu.ecritureOkKoko(result[2],"indufraudelmgdent",date_export,mois1,callback);
+      },
+      function (callback) {
+        ReportingIndu.ecritureOkKoDoublecbtp(result[3],"indutiers",date_export,mois1,callback);
+      },
+      function (callback) {
+        ReportingIndu.ecritureOkKoDoublecbtp(result[4],"induse",date_export,mois1,callback);
       },
     ],function(err,resultExcel){
    console.log(resultExcel[0]);
