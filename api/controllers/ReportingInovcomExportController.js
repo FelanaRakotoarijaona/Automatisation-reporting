@@ -253,7 +253,7 @@ module.exports = {
       console.log("RECHERCHE COLONNE");
       async.series([
        
-      /*  function (callback) {
+        function (callback) {
           ReportingInovcomExport.countok("dentaireretourfacturedentaireetcds",callback);
         },
         function (callback) {
@@ -273,7 +273,7 @@ module.exports = {
         },
         function (callback) {
           ReportingInovcomExport.countok("retourpecaudio",callback);
-        },*/
+        },
      
 
       ],function(err,result){
