@@ -6,7 +6,7 @@
  */
 //const path_reporting = 'D:/Reporting/Reporting/REPORTING INDU Type.xlsx';
 // const path_reporting = 'D:/LDR8_1421_nouv/PROJET_FELANA/REPORTING INDU Type.xlsx';
-const path_reporting = '/dev/prod/00-TOUS/TestReporting/REPORTING INDU Type.xlsx';
+const path_reporting = '/dev/prod/00-TOUS/TestReporting/REPORTING INDU Type1.xlsx';
 module.exports = {
 
   attributes: {
@@ -2096,13 +2096,13 @@ ecritureOkKo : async function (nombre_ok_ko, table,date_export,mois1,callback) {
       }
     });
     console.log(" Colnumber2"+collonne);
-    //numeroLigne.getCell(collonne).value = nombre_ok_ko.ok;
-    if(numeroLigne.getCell(collonne).value == undefined || numeroLigne.getCell(collonne).value == undefined){
-      nombre_ok_ko.ko = 0;
-    }
-    else{
-      numeroLigne.getCell(collonne).value = nombre_ok_ko.ko;
-    }
+    numeroLigne.getCell(collonne).value = nombre_ok_ko.ok;
+    // if(numeroLigne.getCell(collonne).value == undefined || numeroLigne.getCell(collonne).value == undefined){
+    //   nombre_ok_ko.ok = 0;
+    // }
+    // else{
+    //   numeroLigne.getCell(collonne).value = nombre_ok_ko.ok;
+    // }
     await newWorkbook.xlsx.writeFile(path_reporting);
     sails.log("Ecriture OK KO terminé"); 
     return callback(null, "OK");

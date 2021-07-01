@@ -563,9 +563,9 @@ rechercheColonne : function (req, res) {
     function (callback) {
       ReportingIndu.countOkKoDoubleSum("indufactstc",callback);
     },
-    // function (callback) {
-    //   ReportingIndu.countOkKoSumko("indufraudelmg",callback);
-    // }, 
+    function (callback) {
+      ReportingIndu.countOkKoSumko("indufraudelmg",callback);
+    }, 
     // function (callback) {
     //   ReportingIndu.countOkKoDoubleSumcbtp("indutiers",callback);
     // },
@@ -578,7 +578,7 @@ rechercheColonne : function (req, res) {
     console.log("Count OK 2 ==> " + result[1].ok + " / " + result[1].ko);
     console.log("Count OK 3 ==> " + result[2].ok + " / " + result[2].ko);
     console.log("Count OK IndutiersAlmerys ==> " + result[3].ok + " / " + result[3].ko);
-    console.log("Count OK indufraudelmg ==> " + result[4].ok + " / " + result[4].ko);
+    console.log("Count OK indufraudelmg ==> " + result[4].ok);
     console.log("Count OK INDUCONTESTSATION ==> " + result[13].ok + " / " + result[13].ko);
     console.log("Count OK SANTE ==> " + result[14].ok + " / " + result[14].ko);
     // console.log("Count OK Indutierscbtp ==> " + result[16].ok + " / " + result[16].ko);
@@ -629,9 +629,9 @@ rechercheColonne : function (req, res) {
       function (callback) {
         ReportingIndu.ecritureOkKoSante(result[14],"indufactstc",date_export,mois1,callback);
       },
-      // function (callback) {
-      //   ReportingIndu.ecritureOkKoko(result[15],"indufraudelmgdent",date_export,mois1,callback);
-      // },
+      function (callback) {
+        ReportingIndu.ecritureOkKoko(result[15],"indufraudelmgdent",date_export,mois1,callback);
+      },
       // function (callback) {
       //   ReportingIndu.ecritureOkKoDoublecbtp(result[15],"indutiers",date_export,mois1,callback);
       // },
