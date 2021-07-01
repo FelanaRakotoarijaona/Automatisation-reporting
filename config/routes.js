@@ -9,6 +9,28 @@
  */
 
 module.exports.routes = {
+
+
+   //route tps-tpc
+   '/accueilrecherchefichier' : 'TpstpcController.accueilrecherchefichier',
+   '/recherchefichiertpstpc' : 'TpstpcController.recherchefichiertpstpc',
+   '/accueilTpstpc' : 'TpstpcController.accueil1',
+   '/accueilstocketbonj' : 'TpstpcController.accueil2',
+   '/accueiltachenontraite' : 'TpstpcController.accueil3',
+   '/accueiletp' : 'TpstpcController.accueil',
+   '/accueilecriture' : 'TpstpcController.accueil6',
+ 
+   '/traitementetp' : 'TpstpcController.selection',
+ 
+   '/traitementtachenontraite' : 'TpstpcController.traitementBonJ1',
+   '/accueilsanteclair' : 'TpstpcController.accueil4',
+   '/traitementSanteclair' : 'TpstpcController.traitementSanteclair',
+   '/accueilerreur' : 'TpstpcController.accueil5',
+   '/traitementerreureasy' : 'TpstpcController.traitementErreurEasy',
+   '/traitementTpstpc' : 'TpstpcController.traitementTacheTraite',
+   '/traitementJ2' : 'TpstpcController.traitementStocketBonJ',
+
+
   //Route Login
   '/': 'AuthentificationController.loginSimple',
   '/login' : 'AuthentificationController.loginLdap',
