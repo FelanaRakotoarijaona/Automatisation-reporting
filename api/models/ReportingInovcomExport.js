@@ -985,8 +985,7 @@ module.exports = {
               // var row = newworksheet.getRow(8);
               // row.getCell(121).value = 11;
               numeroLigne.getCell(colonnne).value = nombre_ok_ko.ok;
-              console.log('************nombre_ok_ko.ok*********************');
-              console.log(nombre_ok_ko.ok);
+              console.log('manoratra izy eto, ecritureokko21 ty an');
               await newWorkbook.xlsx.writeFile(path_reporting);
               sails.log("Ecriture OK KO terminé"); 
               return callback(null, "OK");
@@ -1152,6 +1151,7 @@ module.exports = {
     console.log(" Colnumber2"+collonne);*/
     numeroLigne.getCell(colonnne).value = nombre_ok_ko.ok;
     //numeroLigne.getCell(collonne).value = nombre_ok_ko.ko;
+    console.log('manoratra izy eto, ecritureokko23 ty an');
     await newWorkbook.xlsx.writeFile(path_reporting);
     sails.log("Ecriture OK KO terminé"); 
     return callback(null, "OK");

@@ -286,37 +286,39 @@ module.exports = {
         function (callback) {
           ReportingInovcomExport.countok("mgefigtomgefirejetsaisienoemiehtp",callback);
         },
-        // function (callback) {
-        //   ReportingInovcomExport.countok("retourreclamtramereclamationtiers",callback);
-        // },
-        // function (callback) {
-        //   ReportingInovcomExport.countok("reclamsetramereclamationse",callback);
-        // },
-        // function (callback) {
-        //   ReportingInovcomExport.countok("reclamhospi",callback);
-        // },
-        // function (callback) {
-        //   ReportingInovcomExport.countok("dentairereclamationdentaire",callback);
-        // },
-        // function (callback) {
-        //   ReportingInovcomExport.countok("optiquetramereclamationoptique",callback);
-        // },
-        // function (callback) {
-        //   ReportingInovcomExport.countok("reclamationaudio",callback);
-        // },
+        function (callback) {
+          ReportingInovcomExport.countok("retourreclamtramereclamationtiers",callback);
+        },
+        function (callback) {
+          ReportingInovcomExport.countok("reclamsetramereclamationse",callback);
+        },
+        function (callback) {
+          ReportingInovcomExport.countok("reclamhospi",callback);
+        },
+        function (callback) {
+          ReportingInovcomExport.countok("dentairereclamationdentaire",callback);
+        },
+        function (callback) {
+          ReportingInovcomExport.countok("optiquetramereclamationoptique",callback);
+        },
+        function (callback) {
+          ReportingInovcomExport.countok("reclamationaudio",callback);
+        },
 
       ],function(err,result){
         if(err) return res.badRequest(err);
         
         else{
-        console.log("Count OK 1 ==> " + result[0].ok);  
+        console.log("Count OK 0 ==> " + result[0].ok);  
         console.log("Count OK 1 ==> " + result[1].ok);
         console.log("Count OK 2 ==> " + result[2].ok);
         console.log("Count OK 3 ==> " + result[3].ok);
-        // console.log("Count OK 4 ==> " + result[4].ok);
-        // console.log("Count OK 5 ==> " + result[5].ok);
-        // console.log("Count OK 6 ==> " + result[6].ok);
-        // console.log("Count OK 7 ==> " + result[7].ok);
+        console.log("Count OK 4 ==> " + result[4].ok);
+        console.log("Count OK 5 ==> " + result[5].ok);
+        console.log("Count OK 6 ==> " + result[6].ok);
+        console.log("Count OK 7 ==> " + result[7].ok);
+        console.log("Count OK 8 ==> " + result[8].ok);
+        console.log("Count OK 9 ==> " + result[9].ok);
        
         async.series([
          
@@ -353,24 +355,24 @@ module.exports = {
           function (callback) {
             ReportingInovcomExport.ecritureOkKo22(result[3],"mgefigtomgefirejetsaisienoemiehtp",date_export,mois1,callback);
           },
-          // function (callback) {
-          //   ReportingInovcomExport.ecritureOkKo23(result[7],"retourreclamtramereclamationtiers",date_export,mois1,callback);
-          // },
-          // function (callback) {
-          //   ReportingInovcomExport.ecritureOkKo23(result[8],"reclamsetramereclamationse",date_export,mois1,callback);
-          // },
-          // function (callback) {
-          //   ReportingInovcomExport.ecritureOkKo23(result[9],"reclamhospi",date_export,mois1,callback);
-          // },
-          // function (callback) {
-          //   ReportingInovcomExport.ecritureOkKo23(result[10],"dentairereclamationdentaire",date_export,mois1,callback);
-          // },
-          // function (callback) {
-          //   ReportingInovcomExport.ecritureOkKo23(result[11],"optiquetramereclamationoptique",date_export,mois1,callback);
-          // },
-          // function (callback) {
-          //   ReportingInovcomExport.ecritureOkKo23(result[12],"reclamationaudio",date_export,mois1,callback);
-          // },
+          function (callback) {
+            ReportingInovcomExport.ecritureOkKo23(result[4],"retourreclamtramereclamationtiers",date_export,mois1,callback);
+          },
+          function (callback) {
+            ReportingInovcomExport.ecritureOkKo23(result[5],"reclamsetramereclamationse",date_export,mois1,callback);
+          },
+          function (callback) {
+            ReportingInovcomExport.ecritureOkKo23(result[6],"reclamhospi",date_export,mois1,callback);
+          },
+          function (callback) {
+            ReportingInovcomExport.ecritureOkKo23(result[7],"dentairereclamationdentaire",date_export,mois1,callback);
+          },
+          function (callback) {
+            ReportingInovcomExport.ecritureOkKo23(result[8],"optiquetramereclamationoptique",date_export,mois1,callback);
+          },
+          function (callback) {
+            ReportingInovcomExport.ecritureOkKo23(result[9],"reclamationaudio",date_export,mois1,callback);
+          },
 
           ],function(err,resultExcel){
             console.log('**************');
