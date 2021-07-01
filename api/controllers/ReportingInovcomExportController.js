@@ -253,7 +253,7 @@ module.exports = {
       console.log("RECHERCHE COLONNE");
       async.series([
        
-        function (callback) {
+      /*  function (callback) {
           ReportingInovcomExport.countok("dentaireretourfacturedentaireetcds",callback);
         },
         function (callback) {
@@ -273,7 +273,7 @@ module.exports = {
         },
         function (callback) {
           ReportingInovcomExport.countok("retourpecaudio",callback);
-        },
+        },*/
         // function (callback) {
         //   ReportingInovcomExport.countok("santeclairtableauretourgeneral",callback);
         // },
@@ -320,7 +320,7 @@ module.exports = {
        
         async.series([
          
-         function (callback) {
+      /*   function (callback) {
             ReportingInovcomExport.ecritureOkKo2(result[0],"dentaireretourfacturedentaireetcds",date_export,mois1,callback);
           },
           function (callback) {
@@ -340,16 +340,16 @@ module.exports = {
           },
           function (callback) {
             ReportingInovcomExport.ecritureOkKo2(result[6],"retourpecaudio",date_export,mois1,callback);
-          },
-          // function (callback) {
-          //   ReportingInovcomExport.ecritureOkKo21(result[7],"santeclairtableauretourgeneral",date_export,mois1,callback);
-          // },  
-          // function (callback) {
-          //   ReportingInovcomExport.ecritureOkKo21(result[7],"santeclairoptique",date_export,mois1,callback);
-          // },
+          },*/
           function (callback) {
-            ReportingInovcomExport.ecritureOkKo22(result[7],"noemiehtpmgefi",date_export,mois1,callback);
+            ReportingInovcomExport.ecritureOkKo21(result[1],"santeclairtableauretourgeneral",date_export,mois1,callback);
+          },  
+          function (callback) {
+            ReportingInovcomExport.ecritureOkKo21(result[2],"santeclairoptique",date_export,mois1,callback);
           },
+          // function (callback) {
+          //   ReportingInovcomExport.ecritureOkKo22(result[7],"noemiehtpmgefi",date_export,mois1,callback);
+          // },
           // function (callback) {
           //   ReportingInovcomExport.ecritureOkKo22(result[8],"mgefigtomgefirejetsaisienoemiehtp",date_export,mois1,callback);
           // },

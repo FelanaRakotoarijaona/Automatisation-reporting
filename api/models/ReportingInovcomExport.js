@@ -867,7 +867,7 @@ module.exports = {
         var line = newworksheet.getRow(ligneDate1);
         var f = line.getCell(3).value;
         //console.log();
-        if(f == "ALMERYS" || f == "SANTECLAIR" || f == "SANTECLAIR ")
+        if(f == "ALMERYS")
         {
           ligneDate = parseInt(rowNumber);
         }

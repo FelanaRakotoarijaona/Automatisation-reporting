@@ -224,7 +224,7 @@ module.exports = {
     return dt +"/"+ month +"/"+year;
   },
 
-    ecritureOkKo : async function (nombre_ok_ko, table,date_export,mois1,callback) {
+  ecritureOkKo : async function (nombre_ok_ko, table,date_export,mois1,callback) {
     const Excel = require('exceljs');
     const cmd=require('node-cmd');
     const newWorkbook = new Excel.Workbook();
