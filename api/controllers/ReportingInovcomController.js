@@ -1888,7 +1888,7 @@ module.exports = {
     EssaiExceltype11 : function(req,res)
     {
       var datetest = req.param("date",0);
-      var sql1= 'select count(*) as nb from chemininovcomtype2;';
+      var sql1= 'select count(*) as nb from chemininovcomtype11;';
       Reportinghtp.getDatastore().sendNativeQuery(sql1,function(err, nc1) {
         if (err){
           console.log(err);
@@ -1899,7 +1899,7 @@ module.exports = {
           nc1 = nc1.rows;
           var nbs = nc1[0].nb;
           var x = parseInt(nbs);
-          var sql='select * from chemininovcomtype2 limit' + " " + x ;
+          var sql='select * from chemininovcomtype11 limit' + " " + x ;
       Reportinghtp.getDatastore().sendNativeQuery(sql,function(err, nc) {
         if (err){
           console.log(err);
