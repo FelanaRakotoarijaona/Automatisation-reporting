@@ -1829,7 +1829,7 @@ module.exports = {
               console.log(MotCle[0]);
               async.series([  
                   function(cb){
-                      ReportingInovcom.deleteFromChemin2(table,cb);
+                      ReportingInovcom.deleteFromChemin11(table,cb);
                     },
               ],
               function(err, resultat){

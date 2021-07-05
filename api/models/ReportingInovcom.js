@@ -112,11 +112,44 @@
       const sheet = workbook.Sheets[workbook.SheetNames[numerofeuille]];
       var range = XLSX.utils.decode_range(sheet['!ref']);
       var col=0;
+      var col2;
       var nbe = parseInt(nb);
+      for(var ra=0;ra<=range.e.c;ra++)
+      {
+        var address_of_cell = {c:ra, r:numeroligne};
+        var cell_ref = XLSX.utils.encode_cell(address_of_cell);
+        var desired_cell = sheet[cell_ref];
+        var desired_value = (desired_cell ? desired_cell.v : undefined);
+
+        var motcle = cellule[nb];
+        const regex = new RegExp(motcle,'i');
+        
+        if(regex.test(desired_value1))
+        {
+          col2=ra;
+        };
+      };
       if(col!=undefined)
       {
         var debutligne = numeroligne + 1;
-        for(var a=debutligne;a<=range.e.r;a++)
+        if(col2!=undefined)
+        {
+ 
+          for(var a=debutligne;a<=range.e.r;a++)
+          {
+            var address_of_cell = {c:col2, r:a};
+            var cell_ref = XLSX.utils.encode_cell(address_of_cell);
+            var desired_cell = sheet[cell_ref];
+            var desired_value1 = (desired_cell ? desired_cell.v : undefined);
+            if(desired_value1!=undefined)
+            {
+              nbr=nbr + 1;
+            }
+          }; 
+        }
+        else
+        {
+          for(var a=debutligne;a<=range.e.r;a++)
           {
             var address_of_cell = {c:col, r:a};
             var cell_ref = XLSX.utils.encode_cell(address_of_cell);
@@ -127,6 +160,8 @@
               nbr=nbr + 1;
             }
           }; 
+        }
+       
       }
       else
       {
@@ -967,7 +1002,6 @@ lectureEtInsertiontype4:function(trameflux,feuil,cellule,table,cellule2,nb,numli
           console.log("Une erreur ve ok?");
           //return callback(err);
          }
-         
         else
         {
           console.log(sql);
@@ -1118,6 +1152,16 @@ lectureEtInsertiontype4:function(trameflux,feuil,cellule,table,cellule2,nb,numli
     },
     deleteFromChemin2 : function (table,callback) {
       var sql = "delete from chemininovcomtype2 ";
+      ReportingInovcom.getDatastore().sendNativeQuery(sql, function(err, res){
+        if (err) {
+           //return callback(err); 
+           console.log('une erreur de suppression');
+          }
+        return callback(null, true);
+        });
+    },
+    deleteFromChemin11 : function (table,callback) {
+      var sql = "delete from chemininovcomtype11 ";
       ReportingInovcom.getDatastore().sendNativeQuery(sql, function(err, res){
         if (err) {
            //return callback(err); 
