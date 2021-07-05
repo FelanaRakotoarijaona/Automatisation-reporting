@@ -797,6 +797,7 @@ rechercheColonne4: function (req, res) {
   })
 },
 /**********************************************************************/
+//RECHERCHE DU COLONNE DU RETOUR FAV
 rechercheColonne5: function (req, res) {
   var datetest = req.param("date",0);
   var annee = datetest.substr(0, 4);
@@ -859,7 +860,7 @@ rechercheColonne5: function (req, res) {
   console.log("RECHERCHE COLONNE");
   async.series([
     function (callback) {
-      ReportingInovcomExport.countOkKo("fav",callback);
+      ReportingInovcomExport.countOkKo6("fav",callback);
     },
   ],function(err,result){
     if(err) return res.badRequest(err);
@@ -884,6 +885,7 @@ rechercheColonne5: function (req, res) {
   })
 },
 /**********************************************************************/
+//RECHERCHE DU COLONNE DU RETOUR CMUC
 rechercheColonne6: function (req, res) {
   var datetest = req.param("date",0);
   var annee = datetest.substr(0, 4);
@@ -946,7 +948,7 @@ rechercheColonne6: function (req, res) {
   console.log("RECHERCHE COLONNE");
   async.series([
     function (callback) {
-      ReportingInovcomExport.countOkKo("retourcmuc",callback);
+      ReportingInovcomExport.countOkKo6("retourcmuc",callback);
     },
   ],function(err,result){
     if(err) return res.badRequest(err);

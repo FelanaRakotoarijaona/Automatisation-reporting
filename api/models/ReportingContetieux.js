@@ -4,6 +4,7 @@
  * @description :: A model definition represents a database table/collection.
  * @docs        :: https://sailsjs.com/docs/concepts/models-and-orm/models
  */
+//CHEMIN CIBLER DANS LE SERVEUR (emplacement de l'excel dans le serveur)
  const path_reporting = '/dev/prod/00-TOUS/TestReporting/REPORTING CONTENTIEUX type.xlsx';
 //const path_reporting = 'D:/Reporting/Reporting/REPORTING CONTENTIEUX type.xlsx';
 // const path_reporting = 'D:/LDR8_1421_nouv/PROJET_FELANA/REPORTING CONTENTIEUX type.xlsx';
@@ -11,7 +12,7 @@
 module.exports = {
   attributes: {
   },
-  // Récuperer nombre OK ou KO
+  // REQUETE POUR RECUPERER NB OK SEULEMENT 
   countOkKo : function (table, callback) {
     const Excel = require('exceljs');
     // var sqlOk ="select count(okko) as ok from "+table+" where okko='OK'"; //trameFlux
@@ -60,7 +61,7 @@ module.exports = {
       // },
     ],function(err,result){
       if(err) return res.badRequest(err);
-      console.log("Count OK ==> " + result[0]);
+      console.log("Countokka result ==> " + result[0]);
       // console.log("Count KO ==> " + result[1]);
       var okko = {};
       okko.ok = result[0];
@@ -71,6 +72,7 @@ module.exports = {
       // return callback(null, intro);
     })
   },
+  // REQUETE POUR RECUPERER LA SOMME OK SEULEMENT
   countOkKoSum : function (table, callback) {
     const Excel = require('exceljs');
     // var sqlOk ="select count(okko) as ok from "+table+" where okko='OK'"; //trameFlux
@@ -132,6 +134,7 @@ module.exports = {
     })
   },
   /****************************************************/
+  // REQUETE POUR RECUPERER LA SOMME OK KO
   countOkKoDoubleSum : function (table, callback) {
     const Excel = require('exceljs');
     var sqlOk ="select sum(nbok::integer) from "+table; 
@@ -209,7 +212,7 @@ module.exports = {
   },
   /*****************************************************/
    
-  // Convert date
+  // Convertion date
   convertDate : function (dateExcel){
     var date = new Date(dateExcel);
     var year = date.getFullYear();
@@ -223,7 +226,7 @@ module.exports = {
     }
     return dt +"/"+ month +"/"+year;
   },
-
+//ECRITURE DANS LE FICHIER EXCEL *************************************************************************
   ecritureOkKo : async function (nombre_ok_ko, table,date_export,mois1,callback) {
     const Excel = require('exceljs');
     const cmd=require('node-cmd');
@@ -442,7 +445,8 @@ module.exports = {
       Reportinghtp.deleteToutHtp(table,3,callback);
     }
     },
-    /***************************************************************/
+    /*******************************************************************************************************/
+  //CONFIGURATION DANS LE FICHIER INI  
   getConfigIni : function() {
     const fs = require('fs');
     const ini = require('ini');
@@ -450,7 +454,7 @@ module.exports = {
     // console.log(config);
     return config;
   },
-
+//PRENDRE LA CONFIGURATION DANS LE FICHIER INI 
   getIniValue : function(table) {
     var iniValue = ReportingContetieux.getConfigIni();
     var numeroColonneOk,numeroColonneKo;

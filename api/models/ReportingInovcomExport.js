@@ -4,6 +4,7 @@
  * @description :: A model definition represents a database table/collection.
  * @docs        :: https://sailsjs.com/docs/concepts/models-and-orm/models
  */
+//CHEMIN DU FICHIER EXCEL DANS LE SERVEUR
 //const path_reporting = 'D:/Reporting/Reporting/REPORTING INOVCOM Type.xlsx';
 const path_reporting = '/dev/prod/00-TOUS/TestReporting/REPORTING INOVCOM Type.xlsx';
 // const path_reporting = 'D:/LDR8_1421_nouv/PROJET_FELANA/REPORTING INOVCOM Type.xlsx';
@@ -58,7 +59,7 @@ module.exports = {
       return callback(null, okko);
     })
   },
-  // Récuperer nombre OK ou KO
+  // Récuperer nombre OK ou KO 
   countOkKo : function (table, callback) {
     const Excel = require('exceljs');
     // var sqlOk ="select nbok from "+table; 
@@ -106,6 +107,7 @@ module.exports = {
       return callback(null, okko);
     })
   },
+  // Récupereation fueille 1
   countOkKo11 : function (table, callback) {
     const Excel = require('exceljs');
     // var sqlOk ="select count(okko) as ok from "+table+" where okko='OK'"; //trameFlux
@@ -153,6 +155,7 @@ module.exports = {
       return callback(null, okko);
     })
   },
+  // Récupereation fueille 1
   countOkKofll1 : function (table, callback) {
     const Excel = require('exceljs');
     // var sqlOk ="select nbok from "+table; 
@@ -218,6 +221,7 @@ module.exports = {
       return callback(null, okko);
     })
   },
+  // Récupereation fueille 1
   countOkKofll11 : function (table, callback) {
     const Excel = require('exceljs');
     // var sqlOk ="select nbrokrib from "+table; 
@@ -265,6 +269,7 @@ module.exports = {
       return callback(null, okko);
     })
   },
+  // Récupereation fueille 4
   countOkKofll4 : function (table, callback) {
     const Excel = require('exceljs');
     // var sqlOk ="select nbok from "+table; //trameFlux
@@ -330,6 +335,69 @@ module.exports = {
       return callback(null, okko);
     })
   },
+  /*********************************************************************/
+  // Récuperer nombre okko dans inov 5 et 6
+  countOkKo6 : function (table, callback) {
+    const Excel = require('exceljs');
+    var sqlOk ="select sum(nbok::integer) from "+table;
+    var sqlKo ="select sum(nbko::integer) from "+table;
+    console.log(sqlOk);
+    console.log(sqlKo);
+    async.series([
+      function (callback) {
+        ReportingInovcomExport.query(sqlOk, function(err, res){
+          if (err) {
+            console.log(err);
+            //return null;
+          }
+          else
+          {
+            if(res.rows[0])
+            {
+              console.log('ok');
+              callback(null, res.rows[0].sum);
+            }
+            else
+            {
+              console.log("null");
+              callback(null, 0);
+            }
+          }
+        });
+      },
+      function (callback) {
+        ReportingInovcomExport.query(sqlKo, function(err, resKo){
+          if (err) {
+            console.log(err);
+            //return null;
+          }
+          else
+          {
+            if(resKo.rows[0])
+            {
+              console.log('ok');
+              callback(null, resKo.rows[0].sum);
+            }
+            else
+            {
+              console.log("null");
+              callback(null, 0);
+            }
+          }
+        });
+      },
+    ],function(err,result){
+      if(err) return res.badRequest(err);
+      console.log("Count OK ==> " + result[0]);
+      console.log("Count KO ==> " + result[1]);
+      var okko = {};
+      okko.ok = result[0];
+      okko.ko = result[1];
+      return callback(null, okko);
+    })
+  },
+  /************************************************************/
+  // Récupereation fueille 7
   countOkKofll7 : function (table, callback) {
     const Excel = require('exceljs');
     var sqlOk ="select sum(typologiedelademande::integer) from "+table;
@@ -393,6 +461,7 @@ module.exports = {
       return callback(null, okko);
     })
   },
+  // Récupereation fueille 8
   countOkKofll8 : function (table, callback) {
     const Excel = require('exceljs');
     // var sqlKo ="select sum(typologiedelademande::integer) from "+table;
@@ -439,6 +508,7 @@ module.exports = {
       return callback(null, okko);
     })
   },
+  // Récupereation fueille 9
   countOkKofll9 : function (table, callback) {
     const Excel = require('exceljs');
     // var sqlKo ="select sum(typologiedelademande::integer) from "+table;
@@ -602,7 +672,7 @@ module.exports = {
       return callback(null, okko);
     })
   },
-  // Convert date
+  // Convertion date
   convertDate : function (dateExcel){
     var date = new Date(dateExcel);
     var year = date.getFullYear();
@@ -616,6 +686,8 @@ module.exports = {
     }
     return dt +"/"+ month +"/"+year;
   },
+  /**********************************************************************************/
+  //FONCTION POUR REMPLIR LE FICHIER EXCEL INOVCOM 1
  ecritureOkKo : async function (nombre_ok_ko, table,date_export,mois1,callback) {
     const Excel = require('exceljs');
     const newWorkbook = new Excel.Workbook();
@@ -850,6 +922,7 @@ module.exports = {
     }
     },
   /***********************************************************/  
+  //FONCTION POUR REMPLIR LE FICHIER EXCEL INOVCOM 2
   ecritureOkKo2 : async function (nombre_ok_ko, table,date_export,mois1,callback) {
     const Excel = require('exceljs');
     const newWorkbook = new Excel.Workbook();
@@ -1121,6 +1194,7 @@ module.exports = {
     },
   
   /**********************************************************/
+  //FONCTION POUR REMPLIR LE FICHIER EXCEL INOVCOM 3
   ecritureOkKo3 : async function (nombre_ok_ko, table,date_export,mois1,callback) {
     const Excel = require('exceljs');
     const newWorkbook = new Excel.Workbook();
@@ -1283,6 +1357,7 @@ module.exports = {
     }
     },
   /**********************************************************/
+  //FONCTION POUR REMPLIR LE FICHIER EXCEL INOVCOM 4
   ecritureOkKo4 : async function (nombre_ok_ko, table,date_export,mois1,callback) {
     const Excel = require('exceljs');
     const newWorkbook = new Excel.Workbook();
@@ -1359,6 +1434,7 @@ module.exports = {
     }
     },
   /**********************************************************/
+  //FONCTION POUR REMPLIR LE FICHIER EXCEL INOVCOM 5
   ecritureOkKo5 : async function (nombre_ok_ko, table,date_export,mois1,callback) {
     const Excel = require('exceljs');
     const newWorkbook = new Excel.Workbook();
@@ -1435,6 +1511,7 @@ module.exports = {
     }
     },
   /**********************************************************/
+  //FONCTION POUR REMPLIR LE FICHIER EXCEL INOVCOM 6
   ecritureOkKo6 : async function (nombre_ok_ko, table,date_export,mois1,callback) {
     const Excel = require('exceljs');
     const newWorkbook = new Excel.Workbook();
@@ -1511,6 +1588,7 @@ module.exports = {
     }
     },
   /**********************************************************/
+  //FONCTION POUR REMPLIR LE FICHIER EXCEL INOVCOM 7
   ecritureOkKo7 : async function (nombre_ok_ko, table,date_export,mois1,callback) {
     const Excel = require('exceljs');
     const newWorkbook = new Excel.Workbook();
@@ -1587,6 +1665,7 @@ module.exports = {
     }
     },
   /**********************************************************/
+  //FONCTION POUR REMPLIR LE FICHIER EXCEL INOVCOM 8
   ecritureOkKo8 : async function (nombre_ok_ko, table,date_export,mois1,callback) {
     const Excel = require('exceljs');
     const newWorkbook = new Excel.Workbook();
@@ -1739,6 +1818,7 @@ module.exports = {
     }
     },
   /**********************************************************/
+  //FONCTION POUR REMPLIR LE FICHIER EXCEL INOVCOM 9
   ecritureOkKo9 : async function (nombre_ok_ko, table,date_export,mois1,callback) {
     const Excel = require('exceljs');
     const newWorkbook = new Excel.Workbook();
@@ -1818,6 +1898,7 @@ module.exports = {
     }
     },
   /**********************************************************/
+  //CONFIGURATION DU FICHIER INI
   getConfigIni : function() {
     const fs = require('fs');
     const ini = require('ini');
@@ -1826,6 +1907,7 @@ module.exports = {
     return config;
   },
 
+  //PRENDRE LA CONFIGURATION DU FICHIER INI
   getIniValue : function(table) {
     var iniValue = ReportingInovcomExport.getConfigIni();
     var numeroColonneOk,numeroColonneKo;
