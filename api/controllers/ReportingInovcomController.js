@@ -1765,7 +1765,7 @@ module.exports = {
     //Nombre de ligne type 2
     accueil1type11 : function(req,res)
     {
-      return res.view('Inovcom/accueilnombredeligne2');
+      return res.view('Inovcom/accueil1type11');
     },
     Essaiitype11 : function(req,res)
     {
