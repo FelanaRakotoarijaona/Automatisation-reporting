@@ -118,6 +118,16 @@ module.exports.routes = {
      '/accueilInovcomtype11' : 'ReportingInovcomController.accueil1type11',
      '/essaiInovcomtype11' : 'ReportingInovcomController.Essaiitype11',
      '/reportinginovcomtype11' : 'ReportingInovcomController.essaiExceltype11',
+
+      //type10
+      '/accueilInovcomtype10' : 'ReportingInovcomController.accueil1type10',
+      '/essaiInovcomtype10' : 'ReportingInovcomController.Essaiitype10',
+      '/reportinginovcomtype10' : 'ReportingInovcomController.essaiExceltype10',
+
+      //type12
+     '/accueilInovcomtype12' : 'ReportingInovcomController.accueil1type12',
+     '/essaiInovcomtype12' : 'ReportingInovcomController.Essaiitype12',
+     '/reportinginovcomtype12' : 'ReportingInovcomController.essaiExceltype12',
   
 
 
