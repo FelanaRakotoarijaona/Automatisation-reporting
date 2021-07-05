@@ -575,7 +575,7 @@ module.exports = {
   },
   countOkKoTrameLamie2 : function (table, callback) {
     const Excel = require('exceljs');
-    var sqlOk ="select count(okko) as ok from "+table+" where okko='OK' AND typologiedelademande='Résiliation' "; //trameFlux
+    var sqlOk ="select count(okko) as ok from "+table+" where okko='OK' AND typologiedelademande='Résiliation' "; 
     var sqlKo ="select count(okko) as ko from "+table+" where okko='KO'  AND typologiedelademande='Résiliation' ";
     console.log(sqlOk);
     console.log(sqlKo);

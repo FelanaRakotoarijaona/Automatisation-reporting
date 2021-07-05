@@ -10,7 +10,6 @@
 
 module.exports.routes = {
 
-
    //route tps-tpc
    '/accueilrecherchefichier' : 'TpstpcController.accueilrecherchefichier',
    '/recherchefichiertpstpc' : 'TpstpcController.recherchefichiertpstpc',
@@ -19,8 +18,9 @@ module.exports.routes = {
    '/accueiltachenontraite' : 'TpstpcController.accueil3',
    '/accueiletp' : 'TpstpcController.accueil',
    '/accueilecriture' : 'TpstpcController.accueil6',
- 
    '/traitementetp' : 'TpstpcController.selection',
+  /* 'traitement2' : 'TpstpcController.ecriture2',*/
+   '/traitementfinal' :'TpstpcController.ecriture3',
  
    '/traitementtachenontraite' : 'TpstpcController.traitementBonJ1',
    '/accueilsanteclair' : 'TpstpcController.accueil4',
@@ -28,6 +28,8 @@ module.exports.routes = {
    '/accueilerreur' : 'TpstpcController.accueil5',
    '/traitementerreureasy' : 'TpstpcController.traitementErreurEasy',
    '/traitementTpstpc' : 'TpstpcController.traitementTacheTraite',
+   '/traitementsuivant' : 'TpstpcController.ecritureExcel',
+   
    '/traitementJ2' : 'TpstpcController.traitementStocketBonJ',
 
 
@@ -110,7 +112,15 @@ module.exports.routes = {
      '/accueilInovcomtype9' : 'ReportingInovcomController.accueil1type9',
      '/essaiInovcomtype9' : 'ReportingInovcomController.Essaiitype9',
      '/reportinginovcomtype8' : 'ReportingInovcomController.essaiExceltype8',
-  '/reportinginovcomtype2' : 'ReportingInovcomController.essaiExceltype2',
+     '/reportinginovcomtype2' : 'ReportingInovcomController.essaiExceltype2',
+
+     //type11
+     '/accueilInovcomtype11' : 'ReportingInovcomController.accueil1type11',
+     '/essaiInovcomtype11' : 'ReportingInovcomController.Essaiitype11',
+     '/reportinginovcomtype11' : 'ReportingInovcomController.essaiExceltype11',
+  
+
+
   //Route INOVCOM Export
   // '/exportInovcom/:jour/:mois/:annee/:html' : 'ReportingInovcomExportController.accueil',
   // '/exportReportingInovcom/:jour/:mois/:annee' : 'ReportingInovcomExportController.rechercheColonne',

@@ -4,27 +4,10 @@
  * @description :: Server-side actions for handling incoming requests.
  * @help        :: See https://sailsjs.com/docs/concepts/actions
  */
-
-
-
  module.exports = {
-
    recherchefichiertpstpc: function(req,res)
    {
-    var sql1= 'select chemin from chemintpssuiviprod16h;';
-    Tpstpc.getDatastore().sendNativeQuery(sql1,function(err, nc1) {
-      if (err){
-        console.log('erreur');
-        console.log(err);
-      }
-      else
-      {
-        nc1 = nc1.rows;  
-        console.log('nc1'+nc1[0].chemin);
-        console.log('nc1'+nc1[1].chemin);
-      }
-      });
-        /* var Excel = require('exceljs');
+         var Excel = require('exceljs');
          var workbook = new Excel.Workbook();
          var dateFormat = require("dateformat");
          var datetest = req.param("date",0);
@@ -38,6 +21,7 @@
          var cheminpart = [];
          var motcle = [];
          var table = [];
+         var table2= []; // pour la suppression
          var cheminfinal = [];
          workbook.xlsx.readFile('cheminTpstpc.xlsx')
          .then(function() {
@@ -45,6 +29,7 @@
            var cheminparticulier = newworksheet.getColumn(1);
            var motcle1 = newworksheet.getColumn(2);
            var nomTable = newworksheet.getColumn(3);
+           var nomTable2 = newworksheet.getColumn(4);
            cheminparticulier.eachCell(function(cell, rowNumber) {
                 cheminpart.push(cell.value);
              });
@@ -54,6 +39,9 @@
            nomTable.eachCell(function(cell, rowNumber) {
                 table.push(cell.value);
              });
+           nomTable2.eachCell(function(cell, rowNumber) {
+              table2.push(cell.value);
+           });
             for (var i=0;i<table.length;i++)
             {
              var chem = cheminTotal  + cheminpart[i];
@@ -62,10 +50,10 @@
             console.log(cheminfinal);
                  async.forEachSeries(r, function(lot, callback_reporting_suivant) {
                    async.series([
-                     /*function(cb){
-                       ReportingInovcom.delete(table,lot,cb);
-                     },*/
-                     /*function(cb){
+                     function(cb){
+                       ReportingInovcom.delete(table2,lot,cb);
+                     },
+                     function(cb){
                        Tpstpc.importfichier(cheminfinal,motcle,table,lot,cb);
                      },
                    ],function(erroned, lotValues){
@@ -83,10 +71,83 @@
                         return res.view('Tpstpc/accueil');
                      };
                    });
-         });*/
+         });
          
    },
-
+   ecriture3: function(req,res)
+   {
+     var dateFormat = require("dateformat");
+     var datetest = req.param("date",0);
+     var j = dateFormat(datetest, "dd");
+     var m = dateFormat(datetest, "mm");
+     var an = dateFormat(datetest, "yyyy");
+     var date = j + '/' + m +'/' + an ;
+     //var r = [0,1,2,3,4,5,6];
+     var r = [0,1,2,3];
+     var table = [];
+     var motcle = [];
+     var Excel = require('exceljs');
+     var workbook = new Excel.Workbook();
+     workbook.xlsx.readFile('tps16h.xlsx')
+       .then(function() {
+         var newworksheet = workbook.getWorksheet('Feuil4');
+         var motcle1 = newworksheet.getColumn(8);
+         var tablem = newworksheet.getColumn(7);
+           motcle1.eachCell(function(cell, rowNumber) {
+             motcle.push(cell.value);
+           });
+           tablem.eachCell(function(cell, rowNumber) {
+             table.push(cell.value);
+           });
+                 async.series([
+                   function(cb){
+                     Tpstpc.countOkKo(table,0,cb);
+                   },
+                   function(cb){
+                     Tpstpc.countOkKo(table,1,cb);
+                   },
+                   function(cb){
+                     Tpstpc.countOkKo(table,2,cb);
+                   },
+                   function(cb){
+                     Tpstpc.countOkKo(table,3,cb);
+                   },
+ 
+                 ],function(err,result)
+                 {
+                         if (err){
+                           return res.view('Contentieux/erreur');
+                         }
+                         else
+                         {
+                           console.log('ok');
+ 
+                           async.forEachSeries(r, function(lot, callback_reporting_suivant) {
+                            var tab = result[lot];
+                             async.series([
+                               function(cb){
+                                 Tpstpc.ecriture(tab,date,motcle,lot,cb);
+                               },
+                             ],function(erroned, lotValues){
+                               if(erroned) return res.badRequest(erroned);
+                               return callback_reporting_suivant();
+                             });
+                           },
+                             function(err)
+                             {
+                                     if (err){
+                                       return res.view('Contentieux/erreur');
+                                     }
+                                     else
+                                     {
+                                       return res.view('Contentieux/succes');
+                                     };
+                             });
+                         };
+                 });
+               });
+           
+   },
    selection: function(req,res)
    {
      var dateFormat = require("dateformat");
@@ -95,7 +156,8 @@
      var m = dateFormat(datetest, "mm");
      var an = dateFormat(datetest, "yyyy");
      var date = j + '/' + m +'/' + an ;
-     var r = [0,1,2,3,4,5,6,7,8,9,10,11];
+     //var r = [0,1,2,3,4,5,6];
+     var r = [0,1,2,3];
      var table = [];
      var motcle = [];
      var Excel = require('exceljs');
@@ -124,31 +186,6 @@
                    function(cb){
                      Tpstpc.countOkKo(table,3,cb);
                    },
-                   function(cb){
-                     Tpstpc.countOkKo(table,4,cb);
-                   },
-                   function(cb){
-                     Tpstpc.countOkKo(table,5,cb);
-                   },
-                   function(cb){
-                     Tpstpc.countOkKo(table,6,cb);
-                   },
-                   function(cb){
-                     Tpstpc.countOkKo(table,7,cb);
-                   },
-                   function(cb){
-                     Tpstpc.countOkKo(table,8,cb);
-                   },
-                   function(cb){
-                     Tpstpc.countOkKo(table,9,cb);
-                   },
-                   function(cb){
-                     Tpstpc.countOkKo(table,10,cb);
-                   },
-                   function(cb){
-                     Tpstpc.countOkKo(table,11,cb);
-                   },
- 
                  ],function(err,result)
                  {
                          if (err){
@@ -156,10 +193,10 @@
                          }
                          else
                          {
-                           var tab = result[0];
                            console.log('ok');
  
                            async.forEachSeries(r, function(lot, callback_reporting_suivant) {
+                            var tab = result[lot];
                              async.series([
                                function(cb){
                                  Tpstpc.ecriture(tab,date,motcle,lot,cb);
@@ -176,7 +213,7 @@
                                      }
                                      else
                                      {
-                                       return res.view('Contentieux/succes');
+                                       return res.view('Tpstpc/ecrituresuivant', {date : datetest});
                                      };
                              });
                          };
@@ -186,40 +223,150 @@
    },
    ecritureExcel: function(req,res)
    {
-        var dateFormat = require("dateformat");
-         var datetest = req.param("date",0);
-         var j = dateFormat(datetest, "dd");
-         var m = dateFormat(datetest, "mm");
-         var an = dateFormat(datetest, "yyyy");
-         var date = j + '/' + m +'/' + an ;
-         console.log(date);
-         var table = "tpserreur";
-         var r = [0];
-               async.forEachSeries(r, function(lot, callback_reporting_suivant) {
+    var dateFormat = require("dateformat");
+     var datetest = req.param("date",0);
+     var j = dateFormat(datetest, "dd");
+     var m = dateFormat(datetest, "mm");
+     var an = dateFormat(datetest, "yyyy");
+     var date = j + '/' + m +'/' + an ;
+     //var r = [0,1,2,3,4,5,6];
+     var r = [0,1,2,3];
+     var table = [];
+     var motcle = [];
+     var Excel = require('exceljs');
+     var workbook = new Excel.Workbook();
+     workbook.xlsx.readFile('tps16h.xlsx')
+       .then(function() {
+         var newworksheet = workbook.getWorksheet('Feuil3');
+         var motcle1 = newworksheet.getColumn(8);
+         var tablem = newworksheet.getColumn(7);
+           motcle1.eachCell(function(cell, rowNumber) {
+             motcle.push(cell.value);
+           });
+           tablem.eachCell(function(cell, rowNumber) {
+             table.push(cell.value);
+           });
                  async.series([
                    function(cb){
-                     Tpstpc.ecriture(motcle,lot,date,table,cb);
+                     Tpstpc.countOkKo(table,0,cb);
                    },
-                 ],function(erroned, lotValues){
-                   if(erroned) return res.badRequest(erroned);
-                   return callback_reporting_suivant();
-                 });
-               },
-                 function(err)
+                   function(cb){
+                     Tpstpc.countOkKo(table,1,cb);
+                   },
+                   function(cb){
+                     Tpstpc.countOkKo(table,2,cb);
+                   },
+                   function(cb){
+                     Tpstpc.countOkKo(table,3,cb);
+                   },
+                 ],function(err,result)
                  {
                          if (err){
                            return res.view('Contentieux/erreur');
                          }
                          else
                          {
-                           return res.view('Contentieux/succes');
+                           console.log('ok');
+ 
+                           async.forEachSeries(r, function(lot, callback_reporting_suivant) {
+                            var tab = result[lot];
+                             async.series([
+                               function(cb){
+                                 Tpstpc.ecriture(tab,date,motcle,lot,cb);
+                               },
+                             ],function(erroned, lotValues){
+                               if(erroned) return res.badRequest(erroned);
+                               return callback_reporting_suivant();
+                             });
+                           },
+                             function(err)
+                             {
+                                     if (err){
+                                       return res.view('Contentieux/erreur');
+                                     }
+                                     else
+                                     {
+                                       return res.view('Tpstpc/ecrituresuivant2',{date : datetest});
+                                     };
+                             });
                          };
                  });
+               });
            
    },
-   traitementEtp: function(req,res)
+  /* traitementEtp: function(req,res)
    {
-         var nomtable = ['tpsfactaudio','tpsfactdentaire','tpsfacthospi','tpsfactoptique','tpsfactse','tpsfacttiers','tpspecaudio','tpspecdentaire','tpspechospi','tpspecoptique','tpssanteclair','tpssdm'];
+    var dateFormat = require("dateformat");
+    var datetest = req.param("date",0);
+    var j = dateFormat(datetest, "dd");
+    var m = dateFormat(datetest, "mm");
+    var an = dateFormat(datetest, "yyyy");
+    var date = j + '/' + m +'/' + an ;
+    //var r = [0,1,2,3,4,5,6];
+    var r = [0,1,2,3];
+    var table = [];
+    var motcle = [];
+    var Excel = require('exceljs');
+    var workbook = new Excel.Workbook();
+    workbook.xlsx.readFile('tps16h.xlsx')
+      .then(function() {
+        var newworksheet = workbook.getWorksheet('Feuil4');
+        var motcle1 = newworksheet.getColumn(8);
+        var tablem = newworksheet.getColumn(7);
+          motcle1.eachCell(function(cell, rowNumber) {
+            motcle.push(cell.value);
+          });
+          tablem.eachCell(function(cell, rowNumber) {
+            table.push(cell.value);
+          });
+                async.series([
+                  function(cb){
+                    Tpstpc.countOkKo(table,0,cb);
+                  },
+                  function(cb){
+                    Tpstpc.countOkKo(table,1,cb);
+                  },
+                  function(cb){
+                    Tpstpc.countOkKo(table,2,cb);
+                  },
+                  function(cb){
+                    Tpstpc.countOkKo(table,3,cb);
+                  },
+
+                ],function(err,result)
+                {
+                        if (err){
+                          return res.view('Contentieux/erreur');
+                        }
+                        else
+                        {
+                          console.log('ok');
+
+                          async.forEachSeries(r, function(lot, callback_reporting_suivant) {
+                           var tab = result[lot];
+                            async.series([
+                              function(cb){
+                                Tpstpc.ecriture(tab,date,motcle,lot,cb);
+                              },
+                            ],function(erroned, lotValues){
+                              if(erroned) return res.badRequest(erroned);
+                              return callback_reporting_suivant();
+                            });
+                          },
+                            function(err)
+                            {
+                                    if (err){
+                                      return res.view('Contentieux/erreur');
+                                    }
+                                    else
+                                    {
+                                      return res.view('Contentieux/succes');
+                                    };
+                            });
+                        };
+                });
+              });
+         /*var nomtable = ['tpsfactaudio','tpsfactdentaire','tpsfacthospi','tpsfactoptique','tpsfactse','tpsfacttiers','tpspecaudio','tpspecdentaire','tpspechospi','tpspecoptique','tpssanteclair','tpssdm'];
          var r = [0];
                async.forEachSeries(r, function(lot, callback_reporting_suivant) {
                  async.series([
@@ -245,15 +392,27 @@
                          };
                  });
            
-   },
+   },*/
    traitementErreurEasy: function(req,res)
    {
+    var sql1= 'select chemin from chemintpssuiviproderreur;';
+    Tpstpc.getDatastore().sendNativeQuery(sql1,function(err, nc1) {
+      if (err){
+        console.log('erreur');
+        console.log(err);
+      }
+      else
+      {
+        nc1 = nc1.rows;  
+        console.log('nc1'+nc1[0].chemin);
+        var chemintpserreur =nc1[0].chemin;
+
          var table = "tpserreur";
          var r = [0];
                async.forEachSeries(r, function(lot, callback_reporting_suivant) {
                  async.series([
                    function(cb){
-                     Tpstpc.traitementInsertionErreur(table,cb);
+                     Tpstpc.traitementInsertionErreur(table,chemintpserreur,cb);
                    },
                  ],function(erroned, lotValues){
                    if(erroned) return res.badRequest(erroned);
@@ -267,13 +426,29 @@
                          }
                          else
                          {
-                           return res.view('Contentieux/succes');
+                           return res.view('Tpstpc/ecriture');
                          };
                  });
+                }
+            });
            
    },
    traitementSanteclair : function(req,res)
    {
+    var sql1= 'select chemin from cheminsanteclairstock16h;';
+    Tpstpc.getDatastore().sendNativeQuery(sql1,function(err, nc1) {
+      if (err){
+        console.log('erreur');
+        console.log(err);
+      }
+      else
+      {
+        nc1 = nc1.rows;  
+        console.log('nc1'+nc1[0].chemin);
+        console.log('nc1'+nc1[1].chemin);
+        var chemintpsstockprod16h =nc1[0].chemin;
+        var chemintpsstockprod23h =nc1[1].chemin;
+
          var dateFormat = require("dateformat");
          var datetest = req.param("date",0);
          var jour = dateFormat(datetest, "dddd");
@@ -327,20 +502,20 @@
                async.forEachSeries(r, function(lot, callback_reporting_suivant) {
                  async.series([
                    function(cb){
-                     Tpstpc.traitementInsertionstocksanteclair(lot,jour,date,table,cb);
+                     Tpstpc.traitementInsertionstocksanteclair(lot,jour,date,table,chemintpsstockprod16h,cb);
                    },
                    function(cb){
-                     Tpstpc.traitementInsertionstocksanteclairJ(lot,jour,date,table,cb);
+                     Tpstpc.traitementInsertionstocksanteclairJ(lot,jour,date,table,chemintpsstockprod23h,cb);
                    },
                    function(cb){
-                     Tpstpc.traitementInsertionstocksanteclairJ1(lot,jour,date,table,cb);
+                     Tpstpc.traitementInsertionstocksanteclairJ1(lot,jour,date,table,chemintpsstockprod23h,cb);
                    },
                    function(cb){
-                     Tpstpc.traitementInsertionstocksanteclairJ2(lot,jour,date,table,cb);
+                     Tpstpc.traitementInsertionstocksanteclairJ2(lot,jour,date,table,chemintpsstockprod23h,cb);
                    },
  
                    function(cb){
-                     Tpstpc.traitementInsertionstocksanteclairJ5(lot,jour,date,table,cb);
+                     Tpstpc.traitementInsertionstocksanteclairJ5(lot,jour,date,table,chemintpsstockprod23h,cb);
                    },
                  ],function(erroned, lotValues){
                    if(erroned) return res.badRequest(erroned);
@@ -358,6 +533,8 @@
                          };
                  });
              });
+            }
+        });
    },
      accueil : function(req,res)
      {
@@ -393,6 +570,21 @@
      },
      traitementTacheTraite : function(req,res)
      {
+    
+        var sql1= 'select chemin from chemintpssuiviprod16h;';
+        Tpstpc.getDatastore().sendNativeQuery(sql1,function(err, nc1) {
+          if (err){
+            console.log('erreur');
+            console.log(err);
+          }
+          else
+          {
+            nc1 = nc1.rows;  
+            console.log('nc1'+nc1[0].chemin);
+            console.log('nc1'+nc1[1].chemin);
+            var chemintpssuiviprod16h =nc1[0].chemin;
+            var chemintpssuiviprod23h =nc1[1].chemin;
+         
          var dateFormat = require("dateformat");
          var datetest = req.param("date",0);
          var jour = dateFormat(datetest, "dddd");
@@ -449,16 +641,16 @@
                      ReportingInovcom.delete(table,lot,cb);
                    },
                    function(cb){
-                     Tpstpc.traitementInsertion(astt,trait,mcle1,mcle2,mcle3,mcle4,lot,jour,date,table,cb);
+                     Tpstpc.traitementInsertion(astt,trait,mcle1,mcle2,mcle3,mcle4,lot,jour,date,table,chemintpssuiviprod16h,cb);
                    },
                    function(cb){
-                     Tpstpc.traitementInsertion23h(astt,trait,mcle1,mcle2,mcle3,mcle4,lot,jour,date,table,cb);
+                     Tpstpc.traitementInsertion23h(astt,trait,mcle1,mcle2,mcle3,mcle4,lot,jour,date,table,chemintpssuiviprod23h,cb);
                    },
                    function(cb){
-                     Tpstpc.traitementInsertionJ2(astt,trait,mcle1,mcle2,mcle3,mcle4,lot,jour,date,table,cb);
+                     Tpstpc.traitementInsertionJ2(astt,trait,mcle1,mcle2,mcle3,mcle4,lot,jour,date,table,chemintpssuiviprod23h,cb);
                    },
                    function(cb){
-                     Tpstpc.traitementInsertionJ5(astt,trait,mcle1,mcle2,mcle3,mcle4,lot,jour,date,table,cb);
+                     Tpstpc.traitementInsertionJ5(astt,trait,mcle1,mcle2,mcle3,mcle4,lot,jour,date,table,chemintpssuiviprod23h,cb);
                    },
                  ],function(erroned, lotValues){
                    if(erroned) return res.badRequest(erroned);
@@ -472,13 +664,29 @@
                          }
                          else
                          {
-                           return res.view('Tpstpc/J2');
+                           return res.view('Tpstpc/J2',{date : datetest});
                          };
                  });
              });
+            }
+        });
      },
      traitementStocketBonJ : function(req,res)
      {
+      
+        var sql1= 'select chemin from chemintpsstock16h;';
+        Tpstpc.getDatastore().sendNativeQuery(sql1,function(err, nc1) {
+          if (err){
+            console.log('erreur');
+            console.log(err);
+          }
+          else
+          {
+            nc1 = nc1.rows;  
+            console.log('nc1'+nc1[0].chemin);
+            console.log('nc1'+nc1[1].chemin);
+            var chemintpssuiviprod16h =nc1[0].chemin;
+            var chemintpssuiviprod23h =nc1[1].chemin;
          var dateFormat = require("dateformat");
          var datetest = req.param("date",0);
          var jour = dateFormat(datetest, "dddd");
@@ -534,10 +742,10 @@
                async.forEachSeries(r, function(lot, callback_reporting_suivant) {
                  async.series([
                    function(cb){
-                     Tpstpc.traitementInsertionstock16h(astt,trait,mcle1,mcle2,mcle3,mcle4,lot,jour,date,table,cb);
+                     Tpstpc.traitementInsertionstock16h(astt,trait,mcle1,mcle2,mcle3,mcle4,lot,jour,date,table,chemintpssuiviprod16h,cb);
                    },
                    function(cb){
-                     Tpstpc.traitementInsertionstockbonJ(astt,trait,mcle1,mcle2,mcle3,mcle4,lot,jour,date,table,cb);
+                     Tpstpc.traitementInsertionstockbonJ(astt,trait,mcle1,mcle2,mcle3,mcle4,lot,jour,date,table,chemintpssuiviprod23h,cb);
                    },
                  ],function(erroned, lotValues){
                    if(erroned) return res.badRequest(erroned);
@@ -551,13 +759,28 @@
                          }
                          else
                          {
-                           return res.view('Tpstpc/bonj1');
+                           return res.view('Tpstpc/bonj1', {date : datetest});
                          };
                  });
              });
+            }
+        });
      },
      traitementBonJ1 : function(req,res)
      {
+        
+        var sql1= 'select chemin from chemintpsstock16h;';
+        Tpstpc.getDatastore().sendNativeQuery(sql1,function(err, nc1) {
+          if (err){
+            console.log('erreur');
+            console.log(err);
+          }
+          else
+          {
+            nc1 = nc1.rows;  
+            console.log('nc1'+nc1[0].chemin);
+            console.log('nc1'+nc1[1].chemin);
+            var chemintpssuiviprod23h =nc1[1].chemin;
          var dateFormat = require("dateformat");
          var datetest = req.param("date",0);
          var jour = dateFormat(datetest, "dddd");
@@ -613,13 +836,13 @@
                async.forEachSeries(r, function(lot, callback_reporting_suivant) {
                  async.series([
                    function(cb){
-                     Tpstpc.traitementInsertionstockbonJ1(astt,trait,mcle1,mcle2,mcle3,mcle4,lot,jour,date,table,cb);
+                     Tpstpc.traitementInsertionstockbonJ1(astt,trait,mcle1,mcle2,mcle3,mcle4,lot,jour,date,table,chemintpssuiviprod23h,cb);
                    },
                    function(cb){
-                     Tpstpc.traitementInsertionstockbonJ2(astt,trait,mcle1,mcle2,mcle3,mcle4,lot,jour,date,table,cb);
+                     Tpstpc.traitementInsertionstockbonJ2(astt,trait,mcle1,mcle2,mcle3,mcle4,lot,jour,date,table,chemintpssuiviprod23h,cb);
                    },
                    function(cb){
-                     Tpstpc.traitementInsertionstockbonJ5(astt,trait,mcle1,mcle2,mcle3,mcle4,lot,jour,date,table,cb);
+                     Tpstpc.traitementInsertionstockbonJ5(astt,trait,mcle1,mcle2,mcle3,mcle4,lot,jour,date,table,chemintpssuiviprod23h,cb);
                    },
                  ],function(erroned, lotValues){
                    if(erroned) return res.badRequest(erroned);
@@ -633,10 +856,12 @@
                          }
                          else
                          {
-                           return res.view('Tpstpc/santeclair');
+                           return res.view('Tpstpc/santeclair', {date : datetest});
                          };
                  });
              });
+            }
+        });
      },
  };
  
