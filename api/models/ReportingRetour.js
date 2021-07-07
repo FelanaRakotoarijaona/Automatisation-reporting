@@ -29,7 +29,7 @@ module.exports = {
         };
       });
     }
-    else if(table[nb]=="coldrcbtppublic")
+   /* else if(table[nb]=="coldrcbtppublic")
     {
       console.log('hehe coldrcbtppublic');
       var tab = [];
@@ -47,7 +47,7 @@ module.exports = {
                         }       
                                             });
       
-    }
+    }*/
     else if(table[nb]=="trpecaudio" || table[nb]=="trpecdentaire")
     {
       console.log('hehe trpecdentaire');
