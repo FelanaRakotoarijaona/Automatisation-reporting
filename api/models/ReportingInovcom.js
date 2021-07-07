@@ -1393,7 +1393,7 @@ lectureEtInsertiontype4:function(trameflux,feuil,cellule,table,cellule2,nb,numli
           fs.accessSync(pathparam, fs.constants.F_OK);
         
         }catch(e){
-          //console.log(e);
+          console.log(e);
           existe = 'faux';
           console.log('chemin diso');
         }
@@ -1968,10 +1968,9 @@ importEssaitype7: function (table,table2,date,option,nb,nomtable,numligne,numfeu
   var b1 = option2[nb];
   
   console.log('ch1' + ab);
-  console.log('ch2' + ab1);
   
   var c = ReportingInovcom.existenceFichier(ab);
-  var d = ReportingInovcom.existenceFichier(ab1);
+  //var d = ReportingInovcom.existenceFichier(ab1);
   console.log(c);
   if(c=='vrai')
   {
@@ -2047,7 +2046,7 @@ importEssaitype7: function (table,table2,date,option,nb,nomtable,numligne,numfeu
      };
   });
  }
- else if(d=='vrai')
+ /*else if(d=='vrai')
   {
    fs.readdir(ab1, (err, files) => {
      if(err){
@@ -2121,7 +2120,7 @@ importEssaitype7: function (table,table2,date,option,nb,nomtable,numligne,numfeu
        });
      };
   });
- }
+ }*/
   else
   {
     var sql = "insert into chemintsisy (typologiedelademande) values ('k') ";
