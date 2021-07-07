@@ -134,7 +134,7 @@ module.exports = {
   {
     return res.view('Indu/accueil3');
   },
-  EssaiExcel3 : function(req,res)
+  essaiExcel3 : function(req,res)
   {
     var dateFormat = require("dateformat");
     var datetest = req.param("date",0);
