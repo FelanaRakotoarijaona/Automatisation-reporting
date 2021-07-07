@@ -1292,7 +1292,6 @@ module.exports = {
     var chem2 = [];
     var option2 = [];
     var nomBase = "chemininovcomtype7";
-    //workbook.xlsx.readFile('Inovcom.xlsx')
     workbook.xlsx.readFile('Inovcomserveur.xlsx')
         .then(function() {
           var newworksheet = workbook.getWorksheet('Feuil7');

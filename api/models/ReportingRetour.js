@@ -32,7 +32,21 @@ module.exports = {
     else if(table[nb]=="coldrcbtppublic")
     {
       console.log('hehe coldrcbtppublic');
-      ReportingContetieux.lectureEtInsertiontype21( trameflux,feuil,cellule,table,cellule2,nb,numligne,callback);
+      var tab = [];
+      tab = ReportingContetieux.lectureEtInsertiontype21( trameflux,feuil,cellule,table,cellule2,nb,numligne,callback);
+      var sql = "insert into "+table[nbe]+" (nbok,nbko) values ('"+nbrok+"','"+nbrko+"') ";
+                      ReportingInovcom.getDatastore().sendNativeQuery(sql, function(err,res){
+                        if(err)
+                        {
+                          console.log(err);
+                        }
+                        else
+                        {
+                          console.log(sql);
+                          return callback(null, true);  
+                        }       
+                                            });
+      
     }
     else if(table[nb]=="trpecaudio" || table[nb]=="trpecdentaire")
     {
