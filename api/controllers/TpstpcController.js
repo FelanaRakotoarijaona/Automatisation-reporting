@@ -17,7 +17,7 @@
          var date = j  + m + an ;
          var chemin = '//10.128.1.2/bpo_almerys/03-POLE_TPS-TPC/00-PILOTAGE/09-REPORTING ENGAGEMENT/';
          var cheminTotal = chemin + date + '/' ;
-         var r = [0,1,2,3,4,5,6];
+         var r = [0,1,2,3,4,5,6,7];
          var cheminpart = [];
          var motcle = [];
          var table = [];
@@ -82,7 +82,6 @@
      var m = dateFormat(datetest, "mm");
      var an = dateFormat(datetest, "yyyy");
      var date = j + '/' + m +'/' + an ;
-     //var r = [0,1,2,3,4,5,6];
      var r = [0,1,2,3];
      var table = [];
      var motcle = [];
@@ -259,6 +258,8 @@
                    function(cb){
                      Tpstpc.countOkKo(table,3,cb);
                    },
+                  
+                   
                  ],function(err,result)
                  {
                          if (err){
@@ -287,6 +288,234 @@
                                      else
                                      {
                                        return res.view('Tpstpc/ecrituresuivant2',{date : datetest});
+                                     };
+                             });
+                         };
+                 });
+               });
+           
+   },
+   ecritureEtp: function(req,res)
+   {
+    var dateFormat = require("dateformat");
+     var datetest = req.param("date",0);
+     var j = dateFormat(datetest, "dd");
+     var m = dateFormat(datetest, "mm");
+     var an = dateFormat(datetest, "yyyy");
+     var date = j + '/' + m +'/' + an ;
+     var datepouretp = an + m +j;
+     var r = [0,1,2,3,4,5];
+     var table = [];
+     var motcle = [];
+     var Excel = require('exceljs');
+     var workbook = new Excel.Workbook();
+     workbook.xlsx.readFile('tps16h.xlsx')
+       .then(function() {
+         var newworksheet = workbook.getWorksheet('Feuil1');
+         var motcle1 = newworksheet.getColumn(8);
+         var tablem = newworksheet.getColumn(7);
+           motcle1.eachCell(function(cell, rowNumber) {
+             motcle.push(cell.value);
+           });
+           tablem.eachCell(function(cell, rowNumber) {
+             table.push(cell.value);
+           });
+               async.series([
+                   function(cb){
+                     Tpstpc.selectionSanteclair(datepouretp,cb);
+                   },
+                   function(cb){
+                    Tpstpc.selection(36139,936,1222,datepouretp,cb);
+                  },
+                  function(cb){
+                    Tpstpc.selection(36137,925,1189,datepouretp,cb);
+                  },
+                  function(cb){
+                    Tpstpc.selection(36140,939,1229,datepouretp,cb);
+                  },
+                  function(cb){
+                    Tpstpc.selection(36141,942,1236,datepouretp,cb);
+                  },
+                  function(cb){
+                    Tpstpc.selection(36138,931,1205,datepouretp,cb);
+                  },
+                 ],function(err,result)
+                 {
+                         if (err){
+                           return res.view('Contentieux/erreur');
+                         }
+                         else
+                         {
+                         
+                           console.log('ok');
+ 
+                           async.forEachSeries(r, function(lot, callback_reporting_suivant) {
+                            var tab = parseFloat(result[lot]) / 7.5;
+                            console.log(tab);
+                             async.series([
+                               function(cb){
+                                 Tpstpc.ecritureEtp(tab,date,motcle,lot,cb);
+                               },
+                             ],function(erroned, lotValues){
+                               if(erroned) return res.badRequest(erroned);
+                               return callback_reporting_suivant();
+                             });
+                           },
+                             function(err)
+                             {
+                                     if (err){
+                                       return res.view('Contentieux/erreur');
+                                     }
+                                     else
+                                     {
+                                       return res.view('Tpstpc/ecrituresuivantetp',{date : datetest});
+                                     };
+                             });
+                         };
+                 });
+               });
+           
+   },
+   ecritureEtp2: function(req,res)
+   {
+    var dateFormat = require("dateformat");
+     var datetest = req.param("date",0);
+     var j = dateFormat(datetest, "dd");
+     var m = dateFormat(datetest, "mm");
+     var an = dateFormat(datetest, "yyyy");
+     var date = j + '/' + m +'/' + an ;
+     var datepouretp = an + m +j;
+     //var r = [0,1,2,3,4,5,6];
+     var r = [0,1,2,3,4,5];
+     var table = [];
+     var motcle = [];
+     var Excel = require('exceljs');
+     var workbook = new Excel.Workbook();
+     workbook.xlsx.readFile('tps16h.xlsx')
+       .then(function() {
+         var newworksheet = workbook.getWorksheet('Feuil5');
+         var motcle1 = newworksheet.getColumn(8);
+         var tablem = newworksheet.getColumn(7);
+           motcle1.eachCell(function(cell, rowNumber) {
+             motcle.push(cell.value);
+           });
+           tablem.eachCell(function(cell, rowNumber) {
+             table.push(cell.value);
+           });
+               async.series([
+                  function(cb){
+                    Tpstpc.selection(36142,949,1248,datepouretp,cb);
+                  },
+                  function(cb){
+                    Tpstpc.selection(36137,926,1194 ,datepouretp,cb);
+                  },
+                  function(cb){
+                    Tpstpc.selection(36138,932,1208,datepouretp,cb);
+                  },
+                  function(cb){
+                    Tpstpc.selection(36139,935,1219,datepouretp,cb);
+                  },
+                  function(cb){
+                    Tpstpc.selection(36142,946,1244,datepouretp,cb);
+                  },
+                  function(cb){
+                    Tpstpc.selection(36141,954,1269,datepouretp,cb);
+                  },
+
+                 ],function(err,result)
+                 {
+                         if (err){
+                           return res.view('Contentieux/erreur');
+                         }
+                         else
+                         {
+                           console.log('ok');
+                           async.forEachSeries(r, function(lot, callback_reporting_suivant) {
+                            var tab = parseFloat(result[lot]) / 7.5;
+                            console.log(tab);
+                             async.series([
+                               function(cb){
+                                 Tpstpc.ecritureEtp(tab,date,motcle,lot,cb);
+                               },
+                             ],function(erroned, lotValues){
+                               if(erroned) return res.badRequest(erroned);
+                               return callback_reporting_suivant();
+                             });
+                           },
+                             function(err)
+                             {
+                                     if (err){
+                                       return res.view('Contentieux/erreur');
+                                     }
+                                     else
+                                     {
+                                       return res.view('Tpstpc/ecritureerreur',{date : datetest});
+                                     };
+                             });
+                         };
+                 });
+               });
+           
+   },
+   ecritureErreur: function(req,res)
+   {
+    var dateFormat = require("dateformat");
+     var datetest = req.param("date",0);
+     var j = dateFormat(datetest, "dd");
+     var m = dateFormat(datetest, "mm");
+     var an = dateFormat(datetest, "yyyy");
+     var date = j + '/' + m +'/' + an ;
+     var datepouretp = an + m +j;
+     //var r = [0,1,2,3,4,5,6];
+     var r = [0];
+     var table = [];
+     var motcle = [];
+     var Excel = require('exceljs');
+     var workbook = new Excel.Workbook();
+     workbook.xlsx.readFile('tps16h.xlsx')
+       .then(function() {
+         var newworksheet = workbook.getWorksheet('Feuil4');
+         var motcle1 = newworksheet.getColumn(8);
+         var tablem = newworksheet.getColumn(7);
+           motcle1.eachCell(function(cell, rowNumber) {
+             motcle.push(cell.value);
+           });
+           tablem.eachCell(function(cell, rowNumber) {
+             table.push(cell.value);
+           });
+               async.series([
+                  function(cb){
+                    Tpstpc.countErreur(table,4,cb);
+                  },
+
+                 ],function(err,result)
+                 {
+                         if (err){
+                           return res.view('Contentieux/erreur');
+                         }
+                         else
+                         {
+                           console.log('ok');
+                           async.forEachSeries(r, function(lot, callback_reporting_suivant) {
+                            var tab = parseFloat(result[lot]);
+                            console.log(tab);
+                             async.series([
+                               function(cb){
+                                 Tpstpc.ecritureEtp2(tab,date,motcle,lot,cb);
+                               },
+                             ],function(erroned, lotValues){
+                               if(erroned) return res.badRequest(erroned);
+                               return callback_reporting_suivant();
+                             });
+                           },
+                             function(err)
+                             {
+                                     if (err){
+                                       return res.view('Contentieux/erreur');
+                                     }
+                                     else
+                                     {
+                                       return res.view('Contentieux/succes');
                                      };
                              });
                          };
@@ -536,6 +765,11 @@
             }
         });
    },
+   
+   accueiletp : function(req,res)
+   {
+     return res.view('Tpstpc/ecritureetp');
+   },
      accueil : function(req,res)
      {
        return res.view('Tpstpc/etp');
@@ -568,6 +802,7 @@
      {
        return res.view('Tpstpc/accueilrecherchefichier');
      },
+     
      traitementTacheTraite : function(req,res)
      {
     

@@ -19,8 +19,11 @@ module.exports.routes = {
    '/accueiletp' : 'TpstpcController.accueil',
    '/accueilecriture' : 'TpstpcController.accueil6',
    '/traitementetp' : 'TpstpcController.selection',
-  /* 'traitement2' : 'TpstpcController.ecriture2',*/
+   '/accueilecritureetp' : 'TpstpcController.accueiletp',
+   '/ecritureetp' : 'TpstpcController.ecritureEtp',
    '/traitementfinal' :'TpstpcController.ecriture3',
+   '/ecritureetp2' : 'TpstpcController.ecritureEtp2',
+   '/ecritureerreur' : 'TpstpcController.ecritureErreur',
  
    '/traitementtachenontraite' : 'TpstpcController.traitementBonJ1',
    '/accueilsanteclair' : 'TpstpcController.accueil4',
@@ -176,6 +179,14 @@ module.exports.routes = {
    '/essaiIndu2' : 'ReportingInduController.Essaii2',
    '/accueil2Indu/:date' : 'ReportingInduController.accueil2',
    '/reportingindu2' : 'ReportingInduController.essaiExcel2',
+
+   
+   '/accueilIndu3' : 'ReportingInduController.accueiltype3',
+   '/essaiIndu3' : 'ReportingInduController.Essaii3',
+   '/accueil3Indu/:date' : 'ReportingInduController.accueil3',
+   '/reportingindu3' : 'ReportingInduController.essaiExcel3',
+
+
    //Route INDU Export mbola tsy traité
   //  '/exportIndu/:jour/:mois/:annee/:html' : 'ReportingInovcomExportController.accueil',
   //  '/exportReportingIndu:jour/:mois/:annee' : 'ReportingInovcomExportController.rechercheColonne',
