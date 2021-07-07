@@ -1442,10 +1442,12 @@ module.exports = {
                       var a =nc[i].colonnecible;
                       cellule.push(a);
                     };
+                    var nbre = [];
                     for(var i=0;i<nb;i++)
                     {
                       var a =nc[i].nomtable;
                       table.push(a);
+                      nbre.push(i);
                     };
                     for(var i=0;i<nb;i++)
                     {
