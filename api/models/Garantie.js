@@ -10,22 +10,30 @@ module.exports = {
   attributes: {
 
   },
-  /*deleteFromChemin : function (table,callback) {
-    var sql = "delete from chemingarantie ";
+  //Suppression chemin
+  deleteFromChemin : function (table,callback) {
+    var sql = "delete from chemingarantiesansdouble ";
     console.log(sql);
     Garantie.getDatastore().sendNativeQuery(sql, function(err, res){
       if (err) { return callback(err); }
       return callback(null, true);
       });
   },
-  // deleteFromChemin2 : function (table,callback) {
-  //   var sql = "delete from cheminhtp2 ";
-  //   Garantie.getDatastore().sendNativeQuery(sql, function(err, res){
-  //     if (err) { return callback(err); }
-  //     return callback(null, true);
-  //     });
-  // },
-
+  deleteFromChemin_1 : function (table,callback) {
+    var sql = "delete from chemingarantieligne ";
+    Garantie.getDatastore().sendNativeQuery(sql, function(err, res){
+      if (err) { return callback(err); }
+      return callback(null, true);
+      });
+  },
+  deleteFromChemin_bpo1 : function (table,callback) {
+    var sql = "delete from chemingarantiebpo ";
+    Garantie.getDatastore().sendNativeQuery(sql, function(err, res){
+      if (err) { return callback(err); }
+      return callback(null, true);
+      });
+  },
+//Insertion chemin dans la base
   importEssaidemat: function (table,table2,date,option,nb,nomtable,numligne,numfeuille,nomcolonne,nomcolonne2,nomcolonne3,callback) {
     const fs = require('fs');
     var re  = 'a';
@@ -66,7 +74,7 @@ module.exports = {
                        if(regex.test(files1[i]) && regex1.test(files1[i]) && regex2.test(files1[i]))
                        {
                          var a =ab + file +"\\" + files1[i]; 
-                         var sql = "insert into chemingarantie (chemin,nomtable,numligne,numfeuille,colonnecible,colonnecible2,colonnecible3) values ('"+a+"','"+nomtable+"','"+numligne+"','"+numfeuille+"','"+nomcolonne+"','"+nomcolonne2+"','"+nomcolonne3+"') ";
+                         var sql = "insert into chemingarantiesansdouble (chemin,nomtable,numligne,numfeuille,colonnecible,colonnecible2,colonnecible3) values ('"+a+"','"+nomtable+"','"+numligne+"','"+numfeuille+"','"+nomcolonne+"','"+nomcolonne2+"','"+nomcolonne3+"') ";
                         console.log(sql);
                          Reportinghtp.getDatastore().sendNativeQuery(sql, function(err,res){
                            if(err) 
@@ -115,8 +123,8 @@ module.exports = {
     }   
    },
 /************************************************************************/
-
- /* importEssaidemat1: function (table,table2,date,option,nb,nomtable,numligne,numfeuille,nomcolonne,colonnecible2,colonnecible3,callback) {
+//Import chemin vers la base
+  importEssaidemat1: function (table,table2,date,option,nb,nomtable,numligne,numfeuille,nomcolonne,colonnecible2,colonnecible3,callback) {
     const fs = require('fs');
     var re  = 'a';
     var tab = [];
@@ -144,7 +152,7 @@ module.exports = {
                  //re = a+'\\'+file;
                  re = a+''+file;
                  console.log('ato le sql mipoitra am rcindeterminable');
-                 var sql = "insert into chemingarantie (chemin,nomtable,numligne,numfeuille,colonnecible,colonnecible2,colonnecible3) values ('"+re+"','"+nomTable+"','"+numLigne+"','"+numFeuille+"','"+nomColonne+"','"+colonnecible2+"','"+colonnecible3+"') ";
+                 var sql = "insert into chemingarantieligne (chemin,nomtable,numligne,numfeuille,colonnecible,colonnecible2,colonnecible3) values ('"+re+"','"+nomTable+"','"+numLigne+"','"+numFeuille+"','"+nomColonne+"','"+colonnecible2+"','"+colonnecible3+"') ";
                 //  console.log(sql);
                  Garantie.getDatastore().sendNativeQuery(sql, function(err,res){
                   if (err) { 
@@ -200,7 +208,8 @@ module.exports = {
     }   
   },
   /*******************************************************/
- /* importEssaidematbpo: function (table_1,table2,date,option,nb,nomtable,numligne,numfeuille,nomcolonne,colonnecible2,colonnecible3,callback) {
+  //INSERTION DU CHEMIN DANS LA BASE DE DONNEE
+  importEssaidematbpo: function (table_1,table2,date,option,nb,nomtable,numligne,numfeuille,nomcolonne,colonnecible2,colonnecible3,callback) {
     const fs = require('fs');
     var re  = 'a';
     var tab = [];
@@ -218,13 +227,9 @@ module.exports = {
     var numFeuille = numfeuille;
     var nomColonne = nomcolonne;
     var c = Garantie.existenceFichier(a);
-    console.log('ccccccccccccccccccccccccccccccc');
-    console.log(c);    
     if(c=='vrai')
     {
-      console.log('fidirana voalohany');
       fs.readdir(a, (err, files) => {
-        console.log('mbola fidirana voalohany ihany');
         console.log(a);
             files.forEach(file => {
               const regex = new RegExp(b+'*');
@@ -232,8 +237,7 @@ module.exports = {
               {
                  //re = a+'\\'+file;
                  re = a+''+file;
-                 console.log('fidirana faharoa');
-                 var sql = "insert into chemingarantie (chemin,nomtable,numligne,numfeuille,colonnecible,colonnecible2,colonnecible3) values ('"+re+"','"+nomTable+"','"+numLigne+"','"+numFeuille+"','"+nomColonne+"','"+colonnecible2+"','"+colonnecible3+"') ";
+                 var sql = "insert into chemingarantiebpo (chemin,nomtable,numligne,numfeuille,colonnecible,colonnecible2,colonnecible3) values ('"+re+"','"+nomTable+"','"+numLigne+"','"+numFeuille+"','"+nomColonne+"','"+colonnecible2+"','"+colonnecible3+"') ";
                 //  console.log(sql);
                  Garantie.getDatastore().sendNativeQuery(sql, function(err,res){
                   if (err) { 
@@ -289,7 +293,8 @@ module.exports = {
     }   
   },
   /*******************************************************/ 
-  /*importEssaiavis: function (table,table2,date,option,nb,nomtable,numligne,numfeuille,nomcolonne,colonnecible2,colonnecible3,Sup,callback) {
+   //INSERTION DU CHEMIN DANS LA BASE DE DONNEE
+  importEssaiavis: function (table,table2,date,option,nb,nomtable,numligne,numfeuille,nomcolonne,colonnecible2,colonnecible3,Sup,callback) {
     const fs = require('fs');
     var re  = 'a';
     var tab = [];
@@ -382,7 +387,8 @@ module.exports = {
     }   
   },
   /*******************************************************/ 
- /* importEssaidematconvention: function (table,table2,date,option,nb,nomtable,numligne,numfeuille,nomcolonne,colonnecible2,colonnecible3,callback) {
+   //INSERTION DU CHEMIN DANS LA BASE DE DONNEE
+  importEssaidematconvention: function (table,table2,date,option,nb,nomtable,numligne,numfeuille,nomcolonne,colonnecible2,colonnecible3,callback) {
     const fs = require('fs');
     var re  = 'a';
     var tab = [];
@@ -471,7 +477,8 @@ module.exports = {
     }   
   },
   /*******************************************************/ 
- /* importEssaiencindus: function (table,table2,date,option,nb,nomtable,numligne,numfeuille,nomcolonne,colonnecible2,colonnecible3,Sup,date_indus,callback) {
+   //INSERTION DU CHEMIN DANS LA BASE DE DONNEE
+  importEssaiencindus: function (table,table2,date,option,nb,nomtable,numligne,numfeuille,nomcolonne,colonnecible2,colonnecible3,Sup,date_indus,callback) {
     const fs = require('fs');
     var re  = 'a';
     var tab = [];
@@ -562,7 +569,8 @@ module.exports = {
     }   
   },
   /*******************************************************/ 
- /* importEssaidematretention: function (table,table2,date,option,nb,nomtable,numligne,numfeuille,nomcolonne,colonnecible2,colonnecible3,datej_1,callback) {
+   //INSERTION DU CHEMIN DANS LA BASE DE DONNEE
+  importEssaidematretention: function (table,table2,date,option,nb,nomtable,numligne,numfeuille,nomcolonne,colonnecible2,colonnecible3,datej_1,callback) {
     const fs = require('fs');
     var re  = 'a';
     var tab = [];
@@ -651,7 +659,8 @@ module.exports = {
     }   
   },
   /*******************************************************/ 
-  /*existenceFichier : function (pathparam) {
+  //TEST EXISTENCE DU FICHIER
+  existenceFichier : function (pathparam) {
     const fs = require('fs');
 
       var existe ='vrai';
@@ -685,6 +694,7 @@ module.exports = {
     return tab ;
 
   },
+  //SUPPRESSION DE TOUS LES CHEMINS
   deleteTout: function (table,nb,callback) {
     for(var i=0;i<nb;i++){
       Garantie.deleteFichier(table,i,callback);
@@ -697,6 +707,7 @@ module.exports = {
       return callback(null, true);
       });
   },
+  //SUPRRESSION DES CHEMINS DANS LA BASE DE DONNEE
   deleteFichier: function (table,nb,callback) {
     var tab= '';
     console.log(tab);
@@ -725,7 +736,8 @@ module.exports = {
     };
   },
 /****************************************************************************************/
-   /*importTrameDemat : function (trameflux,feuil,cellule,table,cellule2,nb,numligne,dernierl,callback) {
+//IMPORT DES DONNES EXCELS VERS LA BASE DE DONNEE
+   importTrameDemat : function (trameflux,feuil,cellule,table,cellule2,nb,numligne,dernierl,callback) {
     // var tab = [];
     // tab = Garantie.totalFichierExistant(trameflux,nb,callback);
     // console.log(tab);
@@ -746,7 +758,7 @@ module.exports = {
     // };
     console.log('****************');
     console.log(nb);
-    console.log(trameflux[0]);
+    console.log(trameflux[nb]);
     console.log('****************');
     if(trameflux[nb]==undefined)
     {
@@ -765,18 +777,17 @@ module.exports = {
       });
     }
     else{
-      
-      var tab1 = [];
-      tab1 = Garantie.lectureEtInsertiongarantieRcindeterminable( trameflux,feuil,cellule,table,cellule2,nb,numligne,dernierl,callback);
-      console.log(tab1);
-      var sql = "insert into garantiercindeterminable (nb) values ('"+tab1[0]+"') ";
-      console.log('mety aloha hatreto '+sql);
 
       var tab = [];
       tab = Garantie.lectureEtInsertiongarantie( trameflux,feuil,cellule,table,cellule2,nb,numligne,dernierl,callback);
       var nbe= parseInt(nb);
       console.log(tab);
-      var sql = "insert into garantiedemat (nb) values ('"+tab[0]+"') ";
+      var sql = "insert into "+table[nbe]+" (nb) values ('"+tab[0]+"') ";
+      // var tab1 = [];
+      // tab1 = Garantie.lectureEtInsertiongarantieRcindeterminable( trameflux,feuil,cellule,table,cellule2,nb,numligne,dernierl,callback);
+      // console.log(tab1);
+      // var sql = "insert into garantiercindeterminable (nb) values ('"+tab1[0]+"') ";
+      // console.log('mety aloha hatreto '+sql);
 
       Garantie.getDatastore().sendNativeQuery(sql, function(err,res){
         if (err) { 
@@ -793,299 +804,323 @@ module.exports = {
 
   },
   /****************************************************************************/
- /* lectureEtInsertiongarantie:function(trameflux,feuil,cellule,table,cellule2,nb,numligne,dernierl,callback){
+  //LECTURE DU CHEMIN ET INSERTION DANS LA BASE
+  lectureEtInsertiongarantie:function(trameflux,feuil,cellule,table,cellule2,nb,numligne,dernierl,callback){
     XLSX = require('xlsx');
-    var workbook = XLSX.readFile(trameflux[1]);
-    var numerofeuille = feuil[1];
-    var numeroligne = parseInt(numligne[1]);
-    console.log('lign ato am lecture et insertion : ' +numeroligne);
-    try{
-      console.log('miditra ato am try v iz?');
-      console.log(numerofeuille);
-      const sheet = workbook.Sheets[workbook.SheetNames[numerofeuille]];
-      var range = XLSX.utils.decode_range(sheet['!ref']);
-      var col ;
-      var col1;
-      var col2;
-      console.log('Nombre de colonne' + range.e.c);
-      console.log('Nombre de ligne' + range.e.r);
-      console.log(numeroligne + 'numlign');
-      console.log(numerofeuille + 'numfeuille');
-      console.log(cellule2[1] + 'c2');
-      console.log(cellule[1] + 'c1');
-      console.log(dernierl[1] + 'c3');
-      console.log(table[1] + 'table');
-      for(var ra=0;ra<=range.e.c;ra++)
-      {
-        var address_of_cell = {c:ra, r:numeroligne};
-        // console.log(address_of_cell);//c:5 r:0
-        var cell_ref = XLSX.utils.encode_cell(address_of_cell);
-        var desired_cell = sheet[cell_ref];
-        // console.log(desired_cell);
-        var desired_value = (desired_cell ? desired_cell.v : undefined);
-        // console.log(desired_value);//No Facture
-        if(desired_value==dernierl[1])
-        {
-          col=ra;
-        }
-      };
-      // for(var ra=0;ra<=range.e.c;ra++)
-      // {
-      //   var address_of_cell = {c:ra, r:numeroligne};
-      //   var cell_ref = XLSX.utils.encode_cell(address_of_cell);
-      //   var desired_cell = sheet[cell_ref];
-      //   var desired_value = (desired_cell ? desired_cell.v : undefined);
-      //   // console.log(desired_value);
-      //   if(desired_value==cellule[nb])
-      //   {
-      //     col1=ra;
-      //   }
-      // };
-      // for(var ra=0;ra<=range.e.c;ra++)
-      // {
-      //   var address_of_cell = {c:ra, r:numeroligne};
-      //   var cell_ref = XLSX.utils.encode_cell(address_of_cell);
-      //   var desired_cell = sheet[cell_ref];
-      //   var desired_value = (desired_cell ? desired_cell.v : undefined);
-      //   // console.log(desired_value);
-      //   if(desired_value==cellule2[nb])
-      //   {
-      //     col2=ra;
-      //   }
-      // };
-      // console.log('colonne cible' +col + col1 +col2);
-      console.log('colonne cible : ' +col);
-      // if(col!=undefined && col1!=undefined  && col2!=undefined) 
-      if(col!=undefined)
-      {
-        var nbr = 0;
-        // var tabok = 0;
-        // var taboki = 0;
-        for(var a=0;a<=range.e.r;a++)
+    
+        var workbook = XLSX.readFile(trameflux[nb]);
+        var numerofeuille = feuil[nb];
+        var numeroligne = parseInt(numligne[nb]);
+        console.log('lign ato am lecture et insertion : ' +numeroligne);
+        try{
+          console.log('miditra ato am try v iz?');
+          console.log(numerofeuille);
+          const sheet = workbook.Sheets[workbook.SheetNames[numerofeuille]];
+          var range = XLSX.utils.decode_range(sheet['!ref']);
+          var col ;
+          var col1;
+          var col2;
+          console.log('Nombre de colonne' + range.e.c);
+          console.log('Nombre de ligne' + range.e.r);
+          console.log(numeroligne + 'numlign');
+          console.log(numerofeuille + 'numfeuille');
+          console.log(cellule2[1] + 'c2');
+          console.log(cellule[1] + 'c1');
+          console.log(dernierl[1] + 'c3');
+          console.log(table[1] + 'table');
+          for(var ra=0;ra<=range.e.c;ra++)
           {
-            var address_of_cell = {c:col, r:a};
+            var address_of_cell = {c:ra, r:numeroligne};
+            // console.log(address_of_cell);//c:5 r:0
             var cell_ref = XLSX.utils.encode_cell(address_of_cell);
             var desired_cell = sheet[cell_ref];
-            var desired_value1 = (desired_cell ? desired_cell.v : undefined);
-            var bi = 'Total';
-            const regex = new RegExp(bi+'*');
-            if(regex.test(desired_value1))
+            // console.log(desired_cell);
+            var desired_value = (desired_cell ? desired_cell.v : undefined);
+            // console.log(desired_value);//No Facture
+            if(desired_value==dernierl[0])
             {
-              // var z = parseInt(a) - 1;
-              // var address_of_cell2 = {c:col1, r:z};
-              // var cell_refs = XLSX.utils.encode_cell(address_of_cell2);
-              // var desired_cell2 = sheet[cell_refs];
-              // var desired_value2 = (desired_cell2 ? desired_cell2.v : undefined);
-
-              // var address_of_cell21 = {c:col2, r:z};
-              // var cell_refs1 = XLSX.utils.encode_cell(address_of_cell21);
-              // var desired_cell21 = sheet[cell_refs1];
-              // var desired_value21 = (desired_cell21 ? desired_cell21.v : undefined);
-
-              // if(desired_value2!=undefined)
-              // {
-              //   tabok= tabok + 1;
-              //   //console.log('ok');
-              // }
-              // else
-              // {
-              //   //console.log('ko');
-              // };
-
-              // if(desired_value21!=undefined)
-              // {
-              //   taboki = taboki +1;
-              //   //console.log('ok2');
-              // }
-              // else
-              // {
-              //   //console.log('ko2');
-              // };
-              // tabok= tabok + 1;
-              nbr=nbr + 1;
-            };
+              col=ra;
+            }
           };
-          // console.log('nb =' + tabok);
-          // var data = tabok-2;
-          // console.log('nb2 =' + taboki);
-          // var sql = "insert into garantiedemat (typologiedelademande,okko) values ('"+tabok+"','"+taboki+"') ";
-          // var sql = "insert into garantiedemat (nb) values ('"+data+"') ";
-          //             ReportingInovcom.getDatastore().sendNativeQuery(sql, function(err,res){
-          //               if (err) { 
-          //                 console.log("Une erreur ve garantiedemat ?");
-          //                 //return callback(err);
-          //                }
-          //               else
-          //               {
-          //                 console.log(sql);
-          //                 return callback(null, true);
-          //               };          
-          //                                  });
-      }
-
-      // else
-      // {
-      //   console.log('Colonne non trouvé');
-      // };
-
+          // for(var ra=0;ra<=range.e.c;ra++)
+          // {
+          //   var address_of_cell = {c:ra, r:numeroligne};
+          //   var cell_ref = XLSX.utils.encode_cell(address_of_cell);
+          //   var desired_cell = sheet[cell_ref];
+          //   var desired_value = (desired_cell ? desired_cell.v : undefined);
+          //   // console.log(desired_value);
+          //   if(desired_value==cellule[nb])
+          //   {
+          //     col1=ra;
+          //   }
+          // };
+          // for(var ra=0;ra<=range.e.c;ra++)
+          // {
+          //   var address_of_cell = {c:ra, r:numeroligne};
+          //   var cell_ref = XLSX.utils.encode_cell(address_of_cell);
+          //   var desired_cell = sheet[cell_ref];
+          //   var desired_value = (desired_cell ? desired_cell.v : undefined);
+          //   // console.log(desired_value);
+          //   if(desired_value==cellule2[nb])
+          //   {
+          //     col2=ra;
+          //   }
+          // };
+          // console.log('colonne cible' +col + col1 +col2);
+          console.log('colonne cible : ' +col);
+          // if(col!=undefined && col1!=undefined  && col2!=undefined) 
+          if(col!=undefined)
+          {
+            var nbr = 0;
+            // var tabok = 0;
+            // var taboki = 0;
+            for(var a=0;a<=range.e.r;a++)
+              {
+                var address_of_cell = {c:col, r:a};
+                var cell_ref = XLSX.utils.encode_cell(address_of_cell);
+                var desired_cell = sheet[cell_ref];
+                var desired_value1 = (desired_cell ? desired_cell.v : undefined);
+                var bi = 'Total';
+                const regex = new RegExp(bi+'*');
+                if(regex.test(desired_value1))
+                {
+                  // var z = parseInt(a) - 1;
+                  // var address_of_cell2 = {c:col1, r:z};
+                  // var cell_refs = XLSX.utils.encode_cell(address_of_cell2);
+                  // var desired_cell2 = sheet[cell_refs];
+                  // var desired_value2 = (desired_cell2 ? desired_cell2.v : undefined);
+    
+                  // var address_of_cell21 = {c:col2, r:z};
+                  // var cell_refs1 = XLSX.utils.encode_cell(address_of_cell21);
+                  // var desired_cell21 = sheet[cell_refs1];
+                  // var desired_value21 = (desired_cell21 ? desired_cell21.v : undefined);
+    
+                  // if(desired_value2!=undefined)
+                  // {
+                  //   tabok= tabok + 1;
+                  //   //console.log('ok');
+                  // }
+                  // else
+                  // {
+                  //   //console.log('ko');
+                  // };
+    
+                  // if(desired_value21!=undefined)
+                  // {
+                  //   taboki = taboki +1;
+                  //   //console.log('ok2');
+                  // }
+                  // else
+                  // {
+                  //   //console.log('ko2');
+                  // };
+                  // tabok= tabok + 1;
+                  nbr=nbr + 1;
+                };
+              };
+              // console.log('nb =' + tabok);
+              // var data = tabok-2;
+              // console.log('nb2 =' + taboki);
+              // var sql = "insert into garantiedemat (typologiedelademande,okko) values ('"+tabok+"','"+taboki+"') ";
+              // var sql = "insert into garantiedemat (nb) values ('"+data+"') ";
+              //             ReportingInovcom.getDatastore().sendNativeQuery(sql, function(err,res){
+              //               if (err) { 
+              //                 console.log("Une erreur ve garantiedemat ?");
+              //                 //return callback(err);
+              //                }
+              //               else
+              //               {
+              //                 console.log(sql);
+              //                 return callback(null, true);
+              //               };          
+              //                                  });
+          }
+    
+          // else
+          // {
+          //   console.log('Colonne non trouvé');
+          // };
+    
+          
+          else
+          {
+            console.log('Colonne non trouvé');
+          }
+          var tab = [nbr-2];
+              console.log("nombreeeeebr__quotidien__"+ nbr);
+              return tab; 
+    
+          
+        }
       
+        catch
+        {
+          console.log("erreur absolu haaha");
+        }
+   
+
+  },
+/*************************************************************************************************************/
+importTrameDemat_1 : function (trameflux,feuil,cellule,table,cellule2,nb,numligne,dernierl,callback) {
+  console.log('****************');
+  console.log(nb);
+  console.log(trameflux[nb]);
+  console.log('****************');
+  if(trameflux[nb]==undefined)
+  {
+    console.log('trame undefined');
+    var sql = "insert into chemintsisy(typologiedelademande) values ('ko') ";
+    Reportinghtp.getDatastore().sendNativeQuery(sql, function(err,res){
+      if (err) { 
+        console.log("Une erreur ve ok?");
+        //return callback(err);
+       }
       else
       {
-        console.log('Colonne non trouvé');
-      }
-      var tab = [nbr-2];
-          console.log("nombreeeeebr__quotidien__"+ nbr);
-          return tab; 
-      
-    }
-   
-    catch
-    {
-      console.log("erreur absolu haaha");
-    }
+        console.log(sql);
+        return callback(null, true);
+      };
+    });
+  }
+  else{
 
-
-  },
-  /***************************************************************************/
-  /*importTrameRcindeterminable : function (trameflux,feuil,cellule,table,cellule2,nb,numligne,dernierl,callback) {
     var tab = [];
-    tab = Garantie.totalFichierExistant(trameflux,nb,callback);
+    tab = Garantie.lectureEtInsertiongarantie_1( trameflux,feuil,cellule,table,cellule2,nb,numligne,dernierl,callback);
+    var nbe= parseInt(nb);
     console.log(tab);
-    if(tab.length==0)
+    var sql = "insert into "+table[nbe]+" (nb) values ('"+tab[0]+"') ";
+   
+
+    Garantie.getDatastore().sendNativeQuery(sql, function(err,res){
+      if (err) { 
+        console.log("Une erreur ve ok?");
+       }
+      else
+      {
+        console.log(sql);
+        return callback(null, true);
+      };
+                          });
+  };
+
+},
+/****************************************************************************/
+//LECTURE DU CHEMIN ET INSERTION DANS LA BASE
+lectureEtInsertiongarantie_1:function(trameflux,feuil,cellule,table,cellule2,nb,numligne,dernierl,callback){
+  XLSX = require('xlsx');
+  
+      var workbook = XLSX.readFile(trameflux[nb]);
+      var numerofeuille = feuil[nb];
+      var numeroligne = parseInt(numligne[nb]);
+      console.log('lign ato am lecture et insertion : ' +numeroligne);
+   
+          
+          try{
+            var nbr = 0;
+            const sheet = workbook.Sheets[workbook.SheetNames[numerofeuille]];
+            var range = XLSX.utils.decode_range(sheet['!ref']);
+            var col=0;
+            var nbe = parseInt(nb);
+            if(col!=undefined)
+            {
+              var debutligne = numeroligne + 1;
+              for(var a=debutligne;a<=range.e.r;a++)
+                {
+                  var address_of_cell = {c:col, r:a};
+                  var cell_ref = XLSX.utils.encode_cell(address_of_cell);
+                  var desired_cell = sheet[cell_ref];
+                  var desired_value1 = (desired_cell ? desired_cell.v : undefined);
+                  if(desired_value1!=undefined)
+                  {
+                    nbr=nbr + 1;
+                  }
+                }; 
+            }
+            else
+            {
+              console.log('Colonne non trouvé');
+            }
+            var tab = [nbr];
+                console.log("nombreeeeebr"+ nbr);
+                return tab;
+          }
+          catch
+          {
+            console.log("erreur absolu haaha");
+          }        
+
+
+      },
+  /**************************************************************************************************/
+  importTrameDematbpo1 : function (trameflux,feuil,cellule,table,cellule2,nb,numligne,dernierl,callback) {
+    console.log('****************');
+    console.log(nb);
+    console.log(trameflux[nb]);
+    console.log('****************');
+    if(trameflux[nb]==undefined)
     {
-      console.log('Aucune reporting pour ce date');
-      Garantie.deleteToutHtp(table,3,callback);
+      console.log('trame undefined');
+      var sql = "insert into chemintsisy(typologiedelademande) values ('ko') ";
+      Reportinghtp.getDatastore().sendNativeQuery(sql, function(err,res){
+        if (err) { 
+          console.log("Une erreur ve ok?");
+          //return callback(err);
+         }
+        else
+        {
+          console.log(sql);
+          return callback(null, true);
+        };
+      });
     }
     else{
-      for(var y=0;y<tab.length;y++) //parcours anle dossier rehetra
-    {
-      var j = parseInt(tab[y]);
-      console.log('j222222222222222222222');
-      console.log(j);
-      Garantie.lectureEtInsertiongarantieRcindeterminable( trameflux,feuil,cellule,table,cellule2,j,numligne,dernierl,callback)
-    // ReportingInovcom.lectureEtInsertion(trameflux,feuil,cellule,table,cellule2,j,callback)
-    }
-    };
-  },
-  /***************************************************************************/
-/*lectureEtInsertiongarantieRcindeterminable:function(trameflux,feuil,cellule,table,cellule2,nb,numligne,dernierl,callback){
-  XLSX = require('xlsx');
-  var workbook = XLSX.readFile(trameflux[0]);
-  var numerofeuille = feuil[0];
-  var numeroligne = parseInt(numligne[0]);
-  console.log('lign ato am lecture et insertion : ' +numeroligne);
-//   try{
-//     console.log('miditra ato am try v iz?');
-//     console.log(numerofeuille);
-//     const sheet = workbook.Sheets[workbook.SheetNames[numerofeuille]];
-//     var range = XLSX.utils.decode_range(sheet['!ref']);
-//     var col ;
-//     var col1;
-//     var col2;
-//     console.log('Nombre de colonne' + range.e.c);
-//     console.log('Nombre de ligne' + range.e.r);
-//     console.log(numeroligne + 'numlign');
-//     console.log(numerofeuille + 'numfeuille');
-//     console.log(cellule2[nb] + 'c2');
-//     console.log(cellule[nb] + 'c1');
-//     console.log(dernierl[nb] + 'c3');
-//     console.log(table[nb] + 'table');
-//     for(var ra=0;ra<=range.e.c;ra++)
-//     {
-//       var address_of_cell = {c:ra, r:numeroligne};
-//       // console.log(address_of_cell);//c:5 r:0
-//       var cell_ref = XLSX.utils.encode_cell(address_of_cell);
-//       var desired_cell = sheet[cell_ref];
-//       // console.log(desired_cell);
-//       var desired_value = (desired_cell ? desired_cell.v : undefined);
-//       console.log(desired_value);//Etat fin de traitement
-//       if(desired_value==dernierl[nb])
-//       {
-//         col=ra;
-//       }
-//     };
-//     console.log('colonne cible : ' +col);
-   
-//     if(col!=undefined)
-//     {
-//       var tabok = 0;
-//       for(var a=0;a<=range.e.r;a++)
-//         {
-//           var address_of_cell = {c:col, r:a};
-//           var cell_ref = XLSX.utils.encode_cell(address_of_cell);
-//           var desired_cell = sheet[cell_ref];
-//           var desired_value1 = (desired_cell ? desired_cell.v : undefined);
-//           var bi = 'Total';
-//           const regex = new RegExp(bi+'*');
-//           if(regex.test(desired_value1))
-//           {
-//             tabok= tabok + 1;
-//           };
-//         };
-//         console.log('nb =' + tabok);
-//         var data = tabok-1;
-//         var sql = "insert into garantiercindeterminable (nb) values ('"+data+"') ";
-//                     ReportingInovcom.getDatastore().sendNativeQuery(sql, function(err,res){
-//                       if (err) { 
-//                         console.log("Une erreur ve garantiercindeterminable ?");
-                        
-//                        }
-//                       else
-//                       {
-//                         console.log(sql);
-//                         return callback(null, true);
-//                       };          
-//                                          });
-//     }
-//     else
-//     {
-//       console.log('Colonne non trouvé');
-//     };
-    
-//   }
-//   catch
-//   {
-//     console.log("erreur absolu haaha");
-//   }
-
-try{
-  var nbr = 0;
-  const sheet = workbook.Sheets[workbook.SheetNames[numerofeuille]];
-  var range = XLSX.utils.decode_range(sheet['!ref']);
-  var col=0;
-  var nbe = parseInt(0);
-  if(col!=undefined)
-  {
-    var debutligne = numeroligne + 1;
-    for(var a=debutligne;a<=range.e.r;a++)
-      {
-        var address_of_cell = {c:col, r:a};
-        var cell_ref = XLSX.utils.encode_cell(address_of_cell);
-        var desired_cell = sheet[cell_ref];
-        var desired_value1 = (desired_cell ? desired_cell.v : undefined);
-        if(desired_value1!=undefined)
+  
+      var tab = [];
+      tab = Garantie.lectureEtInsertiongarantiebpo1( trameflux,feuil,cellule,table,cellule2,nb,numligne,dernierl,callback);
+      var nbe= parseInt(nb);
+      console.log(tab);
+      var sql = "insert into "+table[nbe]+" (nb) values ('"+tab[0]+"') ";
+     
+  
+      Garantie.getDatastore().sendNativeQuery(sql, function(err,res){
+        if (err) { 
+          console.log("Une erreur ve ok?");
+         }
+        else
         {
-          nbr=nbr + 1;
-        }
-      };
-     
-      
-     
-  }
-  else
-  {
-    console.log('Colonne non trouvé');
-  }
-  var tab1 = [nbr];
-      console.log("nombreeeeebr"+ nbr);
-      return tab1;
-}
-catch
-{
-  console.log("erreur absolu haaha");
-}
+          console.log(sql);
+          return callback(null, true);
+        };
+                            });
+    };
+  
+  },
+  /****************************************************************************/
+  lectureEtInsertiongarantiebpo1:function(trameflux,feuil,cellule,table,cellule2,nb,numligne,dernierl,callback){
+       
+        XLSX = require('xlsx');
+        const Excel = require('exceljs');
+        const newWorkbook = new Excel.Workbook();
+        console.log('efa miditra manao lecture bpo izy zao');
 
- },*/
+            // try{
+            //   await newWorkbook.xlsx.readFile("D:/LDR8_1421_nouv/PROJET_FELANA/GARANTIE/Suivi Prod Quotidien TRT.2021.v4.xlsx");
+            //   const newworksheet = newWorkbook.getWorksheet(mois1);
+              
+            // }
+            // catch
+            // {
+            //   console.log("erreur absolu haaha");
+            // }        
+  
+  
+        },
+  /*******************************************************************************************/
+
+
+
+
+
 
 };
 

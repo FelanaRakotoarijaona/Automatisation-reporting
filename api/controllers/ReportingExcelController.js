@@ -5,7 +5,7 @@
  * @help        :: See https://sailsjs.com/docs/concepts/actions
  */
 module.exports = {
-  //Recherche colonne
+  //ROUTES RETOUR VERS PAGE ACCEUILLE
   accueil : function(req,res)
   {
     var html= req.param("html");
@@ -35,6 +35,7 @@ module.exports = {
     {
       return res.view('reporting/exportExcelHTP');
   },
+  //RECHERCHE COLONNE
   rechercheColonne1 : function (req, res) {
    var html= '<script>'+
     '$( document ).ready(function() {'+

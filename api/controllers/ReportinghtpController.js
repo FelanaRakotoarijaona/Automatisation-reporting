@@ -11,6 +11,7 @@ module.exports = {
     {
       return res.view('reporting/accueilreporting');
     },
+  //REQUETE BASE DE DONNEE (donnéee des chemins du serveur)
   EssaiExcel2 : function(req,res)
   {
     var sql1= 'select count(*) as nb from cheminhtp2;';
@@ -96,6 +97,7 @@ module.exports = {
       
 });
   },
+  //REQUETE BASE DE DONNEE (donnéee des chemins du serveur)
   EssaiExcel : function(req,res)
   {
     var sql1= 'select count(*) as nb from cheminhtp;';
@@ -282,6 +284,7 @@ module.exports = {
       
 });
   },
+  //REQUETE BASE DE DONNEE (donnéee des chemins du serveur)
   Essaii : function(req,res)
   {
     var Excel = require('exceljs');
@@ -385,7 +388,7 @@ module.exports = {
 
         });
   },
- 
+ //REQUETE POUR PRENDRE LE CHEMIN SERVEUR DU BASE DE DONNEE
 CompterExcel : function (req, res) {
       var calendrier = req.param('calendrier');
       const Excels = require('exceljs');

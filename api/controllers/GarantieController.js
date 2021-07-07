@@ -8,16 +8,17 @@
 const Garantie = require('../models/Garantie');
 
 module.exports = {
+  //routes vers la page de recherche du fichier
     accueilGarantie : async function(req,res)
     {
-      return res.view('Garantie/accueilreportingGarantie');
+      return res.view('Garantie/accueilreportingGarantiesansdouble');
     },
-    essaiGarantie : function(req,res)
+    //INSERTION CHEMIN SANS DOUBLON
+    insertChemingarantiesansdouble : function(req,res)
     {
       var Excel = require('exceljs');
       var workbook = new Excel.Workbook();
       var table = ['\\\\10.128.1.2\\almerys-out\\Retour_Easytech_'];
-      var table_1 = ['\\\\10.128.1.2\\bpo_almerys'];
       var datetest = req.param("date",0);
       var annee = datetest.substr(0, 4);
       var mois = datetest.substr(5, 2);
@@ -36,7 +37,7 @@ module.exports = {
       var cheminp = [];
       var MotCle= [];
       var Sup= [];
-      var nomBase = "chemingarantie";
+      var nomBase = "chemingarantiesansdouble";
       workbook.xlsx.readFile('Garantie.xlsx')
           .then(function() {
             var newworksheet = workbook.getWorksheet('Feuil1');
@@ -126,9 +127,9 @@ module.exports = {
                     function(cb){
                       Garantie.importEssaidemat(table,cheminp,date,MotCle,0,nomtable[0],numligne[0],numfeuille[0],nomcolonne[0],nomcolonne2[0],nomcolonne3[0],cb);
                     },
-                    function(cb){
-                      Garantie.importEssaidemat1(table,cheminp,date,MotCle,1,nomtable[1],numligne[1],numfeuille[1],nomcolonne[1],nomcolonne2[1],nomcolonne3[1],cb);
-                    },
+                    // function(cb){
+                    //   Garantie.importEssaidemat1(table,cheminp,date,MotCle,1,nomtable[1],numligne[1],numfeuille[1],nomcolonne[1],nomcolonne2[1],nomcolonne3[1],cb);
+                    // },
                     // function(cb){
                     //   Garantie.importEssaiavis(table,cheminp,date,MotCle,2,nomtable[2],numligne[2],numfeuille[2],nomcolonne[2],nomcolonne2[2],nomcolonne3[2],Sup[2],cb);
                     // },
@@ -327,18 +328,228 @@ module.exports = {
                               }
                               else
                               {
-                                return res.view('Garantie/accueilgarantie', {date : datetest});
-                                
+                                return res.view('Garantie/accueilreportingGarantieligne', {date : datetest});
+                                                              
                               };
                           });
             });
           });
     },
-    //IMPORT EXCEL GARANTIE
-  essaiExcelgarantie : function(req,res)
+/*****************************************************************************************************/
+  //INSERTION CHEMIN NOMBRE DE LIGNE
+  insertChemingarantieligne : function(req,res)
+  {
+    var Excel = require('exceljs');
+    var workbook = new Excel.Workbook();
+    var table = ['\\\\10.128.1.2\\almerys-out\\Retour_Easytech_'];
+    var datetest = req.param("date",0);
+    var annee = datetest.substr(0, 4);
+    var mois = datetest.substr(5, 2);
+    var jour = datetest.substr(8, 2);
+    var date = annee+mois+jour;
+    var date_indus = jour+'.'+mois+'.'+annee;
+    var datej_1 = annee+mois+jour -1;
+    console.log(datej_1);
+    var nomtable = [];
+    var numligne = [];
+    var numfeuille = [];
+    var nomcolonne = [];
+    var nomcolonne2 = [];
+    var nomcolonne3 = [];
+    console.log(date);
+    var cheminp = [];
+    var MotCle= [];
+    var Sup= [];
+    var nomBase = "chemingarantieligne";
+    workbook.xlsx.readFile('Garantie.xlsx')
+        .then(function() {
+          var newworksheet = workbook.getWorksheet('Feuil1');
+          var nomColonne3 = newworksheet.getColumn(3);
+          var numFeuille = newworksheet.getColumn(4);
+          var nomColonne = newworksheet.getColumn(5);
+          var nomTable = newworksheet.getColumn(6);
+          var nomColonne2 = newworksheet.getColumn(7);
+          var numLigne = newworksheet.getColumn(8);
+          var cheminparticulier = newworksheet.getColumn(9);
+          var motcle = newworksheet.getColumn(10);
+          var suppleant = newworksheet.getColumn(11);
+       
+        numFeuille.eachCell(function(cell, rowNumber) {
+          numfeuille.push(cell.value);
+        });
+        nomColonne.eachCell(function(cell, rowNumber) {
+          nomcolonne.push(cell.value);
+        });
+        nomColonne2.eachCell(function(cell, rowNumber) {
+          nomcolonne2.push(cell.value);
+        });
+        nomColonne3.eachCell(function(cell, rowNumber) {
+          nomcolonne3.push(cell.value);
+        });
+        nomTable.eachCell(function(cell, rowNumber) {
+          nomtable.push(cell.value);
+        });
+        numLigne.eachCell(function(cell, rowNumber) {
+          numligne.push(cell.value);
+        });
+          cheminparticulier.eachCell(function(cell, rowNumber) {
+            cheminp.push(cell.value);
+        });
+          motcle.eachCell(function(cell, rowNumber) {
+            MotCle.push(cell.value);
+        });
+        suppleant.eachCell(function(cell, rowNumber) {
+          Sup.push(cell.value);
+        });
+
+
+          
+            console.log(cheminp[0]);
+            console.log(MotCle[0]);
+            async.series([  
+                function(cb){
+                    Garantie.deleteFromChemin_1(table,cb);
+                  },
+                  function(cb){
+                    Garantie.importEssaidemat1(table,cheminp,date,MotCle,1,nomtable[1],numligne[1],numfeuille[1],nomcolonne[1],nomcolonne2[1],nomcolonne3[1],cb);
+                  },
+                                   
+            ],
+            function(err, resultat){
+              var sql4= "select count(chemin) as ok from "+nomBase+" ";
+                      console.log(sql4);
+                      Reportinghtp.getDatastore().sendNativeQuery(sql4 ,function(err, nc) {
+                         nc = nc.rows;
+                         console.log(nc);
+                         console.log('nc'+nc[0].ok);
+                         var f = parseInt(nc[0].ok);
+                         console.log(f);
+                            if (err){
+                              return res.view('Inovcom/erreur');
+                            }
+                          if(f==0)
+                            {
+                              return res.view('Inovcom/erreur');
+                            }
+                            else
+                            {
+                              return res.view('Garantie/accueilreportingGarantiebpo1', {date : datetest});
+                              
+                            };
+                        });
+          });
+        });
+  },
+/****************************************************************************************************/
+insertChemingarantiebpo1 : function(req,res)
+{
+  var Excel = require('exceljs');
+  var workbook = new Excel.Workbook();
+  var table = ['\\\\10.128.1.2\\bpo_almerys'];
+  var datetest = req.param("date",0);
+  var annee = datetest.substr(0, 4);
+  var mois = datetest.substr(5, 2);
+  var jour = datetest.substr(8, 2);
+  var date = annee+mois+jour;
+  var date_indus = jour+'.'+mois+'.'+annee;
+  var datej_1 = annee+mois+jour -1;
+  console.log(datej_1);
+  var nomtable = [];
+  var numligne = [];
+  var numfeuille = [];
+  var nomcolonne = [];
+  var nomcolonne2 = [];
+  var nomcolonne3 = [];
+  console.log(date);
+  var cheminp = [];
+  var MotCle= [];
+  var Sup= [];
+  var nomBase = "chemingarantiebpo";
+  workbook.xlsx.readFile('Garantie.xlsx')
+      .then(function() {
+        var newworksheet = workbook.getWorksheet('Feuil2');
+        var nomColonne3 = newworksheet.getColumn(3);
+        var numFeuille = newworksheet.getColumn(4);
+        var nomColonne = newworksheet.getColumn(5);
+        var nomTable = newworksheet.getColumn(6);
+        var nomColonne2 = newworksheet.getColumn(7);
+        var numLigne = newworksheet.getColumn(8);
+        var cheminparticulier = newworksheet.getColumn(9);
+        var motcle = newworksheet.getColumn(10);
+        var suppleant = newworksheet.getColumn(11);
+
+      numFeuille.eachCell(function(cell, rowNumber) {
+        numfeuille.push(cell.value);
+      });
+      nomColonne.eachCell(function(cell, rowNumber) {
+        nomcolonne.push(cell.value);
+      });
+      nomColonne2.eachCell(function(cell, rowNumber) {
+        nomcolonne2.push(cell.value);
+      });
+      nomColonne3.eachCell(function(cell, rowNumber) {
+        nomcolonne3.push(cell.value);
+      });
+      nomTable.eachCell(function(cell, rowNumber) {
+        nomtable.push(cell.value);
+      });
+      numLigne.eachCell(function(cell, rowNumber) {
+        numligne.push(cell.value);
+      });
+        cheminparticulier.eachCell(function(cell, rowNumber) {
+          cheminp.push(cell.value);
+      });
+        motcle.eachCell(function(cell, rowNumber) {
+          MotCle.push(cell.value);
+      });
+      suppleant.eachCell(function(cell, rowNumber) {
+        Sup.push(cell.value);
+      });
+
+        
+          console.log(cheminp[0]);
+          console.log(MotCle[0]);
+          async.series([  
+              function(cb){
+                  Garantie.deleteFromChemin_bpo1(table,cb);
+                },
+           function(cb){
+                  Garantie.importEssaidematbpo(table,cheminp,date,MotCle,0,nomtable[0],numligne[0],numfeuille[0],nomcolonne[0],nomcolonne2[0],nomcolonne3[0],cb);
+                },
+                
+          ],
+          function(err, resultat){
+            var sql4= "select count(chemin) as ok from "+nomBase+" ";
+                    console.log(sql4);
+                    Reportinghtp.getDatastore().sendNativeQuery(sql4 ,function(err, nc) {
+                       nc = nc.rows;
+                       console.log(nc);
+                       console.log('nc'+nc[0].ok);
+                       var f = parseInt(nc[0].ok);
+                       console.log(f);
+                          if (err){
+                            return res.view('Inovcom/erreur');
+                          }
+                        if(f==0)
+                          {
+                            return res.view('Inovcom/erreur');
+                          }
+                          else
+                          {
+                            return res.view('Garantie/importGarantiesansdouble', {date : datetest});
+                                                          
+                          };
+                      });
+        });
+      });
+},
+/*****************************************************************************************************/
+
+  //IMPORTATION DES DONNEES SUR EXCEL DANS LA BASE
+  importGarantiesansdouble : function(req,res)
   {
     var datetest = req.param("date",0);
-    var sql1= 'select count(*) as nb from chemingarantie';
+    var sql1= 'select count(*) as nb from chemingarantiesansdouble';
       Reportinghtp.getDatastore().sendNativeQuery(sql1,function(err, nc1) {
         if (err){
           console.log(err);
@@ -350,7 +561,7 @@ module.exports = {
           var nbs = nc1[0].nb;
           var x = parseInt(nbs);
           //var sql='select * from cheminretourvrai limit' + " " + x ;
-          var sql= 'select * from chemingarantie limit'  + " " + x;
+          var sql= 'select * from chemingarantiesansdouble limit'  + " " + x;
           Reportinghtp.getDatastore().sendNativeQuery(sql,function(err, nc) {
             console.log(nc);
             if (err){
@@ -445,13 +656,255 @@ module.exports = {
                     // ],
                     function(err, resultat){
                       if (err) { return res.view('Inovcom/erreur'); }
-                      return res.view('Garantie/exportexcelGarantie', {date : datetest});
+                      return res.view('Garantie/importGarantieligne', {date : datetest});
                   });
                
-        }
-    })
-  };
-});
+              }
+          })
+        };
+      });
   },
+/***************************************************************************************************************/
+importGarantieligne : function(req,res)
+{
+  var datetest = req.param("date",0);
+  var sql1= 'select count(*) as nb from chemingarantieligne';
+    Reportinghtp.getDatastore().sendNativeQuery(sql1,function(err, nc1) {
+      if (err){
+        console.log(err);
+        return next(err);
+      }
+      else
+      {
+        nc1 = nc1.rows;
+        var nbs = nc1[0].nb;
+        var x = parseInt(nbs);
+        //var sql='select * from cheminretourvrai limit' + " " + x ;
+        var sql= 'select * from chemingarantieligne limit'  + " " + x;
+        Reportinghtp.getDatastore().sendNativeQuery(sql,function(err, nc) {
+          console.log(nc);
+          if (err){
+            console.log('ato am if erreur');
+            console.log(err);
+            return next(err);
+          }
+          else
+          {
+            console.log('ato amm else');              
+          nc = nc.rows;
+          sails.log(nc[0].chemin);
+          var Excel = require('exceljs');
+          var workbook = new Excel.Workbook();
+          var cheminc = [];
+          var cheminp = [];
+          var dernierl = [];
+          var feuil = [];
+          var cellule = [];
+          var cellule2 = [];
+          var table = [];
+          var trameflux = [];
+          var numligne = [];
+          var datetest = req.param("date",0);
+          var annee = datetest.substr(0, 4);
+          var mois = datetest.substr(5, 2);
+          var jour = datetest.substr(8, 2);
+          var date = annee+mois+jour;
+          var dateexport = jour + '/' + mois + '/' +annee;
+          var nb = x;
+          var nbre = [];
+                  for(var i=0;i<nb;i++)
+                  {
+                    var a = nc[i].chemin;
+                    trameflux.push(a);
+                    nbre.push(i);
+                  };
+                  for(var i=0;i<nb;i++)
+                  {
+                    var a = nc[i].numfeuille;
+                    feuil.push(a);                      
+                  };
+                  for(var i=0;i<nb;i++)
+                  {
+                    var a =nc[i].colonnecible;
+                    cellule.push(a);
+                  };
+                  for(var i=0;i<nb;i++)
+                  {
+                    var a =nc[i].nomtable;
+                    table.push(a);
+                  };
+                  for(var i=0;i<nb;i++)
+                  {
+                    var a =nc[i].colonnecible2;
+                    cellule2.push(a);
+                  };
+                  for(var i=0;i<nb;i++)
+                  {
+                    var a =nc[i].numligne;
+                    numligne.push(a);
+                  };
+                  for(var i=0;i<nb;i++)
+                  {
+                    var a =nc[i].colonnecible3;
+                    dernierl.push(a);
+                  };
+                  console.log(trameflux);
+                  async.forEachSeries(nbre, function(lot, callback_reporting_suivant) {
+                    async.series([
+                      function(cb){
+                        Garantie.deleteHtp(table,nb,cb);
+                     },
+                      function(cb){
+                        Garantie.importTrameDemat_1(trameflux,feuil,cellule,table,cellule2,lot,numligne,dernierl,cb);
+                      },
+                    ],function(erroned, lotValues){
+                      if(erroned) return res.badRequest(erroned);
+                      return callback_reporting_suivant();
+                    });
+                  },
+                  // async.series([
+                  //   function(cb){
+                  //     Garantie.deleteHtp(table,nb,cb);
+                  //   }, 
+                  //   function(cb){
+                  //     Garantie.importTrameDemat(trameflux,feuil,cellule,table,cellule2,nb,numligne,dernierl,cb);
+                  //   }, 
+                  //   // function(cb){
+                  //   //   Garantie.importTrameRcindeterminable(trameflux,feuil,cellule,table,cellule2,nb,numligne,dernierl,cb);
+                  //   // }, 
+                  // ],
+                  function(err, resultat){
+                    if (err) { return res.view('Inovcom/erreur'); }
+                    return res.view('Garantie/importGarantiebpo1', {date : datetest});
+                });
+             
+              }
+          })
+        };
+    });
+},
+/*****************************************************************************************************************/
+importGarantiebpo1 : function(req,res)
+{
+  var datetest = req.param("date",0);
+  var sql1= 'select count(*) as nb from chemingarantiebpo';
+    Reportinghtp.getDatastore().sendNativeQuery(sql1,function(err, nc1) {
+      if (err){
+        console.log(err);
+        return next(err);
+      }
+      else
+      {
+        nc1 = nc1.rows;
+        var nbs = nc1[0].nb;
+        var x = parseInt(nbs);
+        //var sql='select * from cheminretourvrai limit' + " " + x ;
+        var sql= 'select * from chemingarantiebpo limit'  + " " + x;
+        Reportinghtp.getDatastore().sendNativeQuery(sql,function(err, nc) {
+          console.log(nc);
+          if (err){
+            console.log('ato am if erreur');
+            console.log(err);
+            return next(err);
+          }
+          else
+          {
+            console.log('ato amm else');              
+          nc = nc.rows;
+          sails.log(nc[0].chemin);
+          var Excel = require('exceljs');
+          var workbook = new Excel.Workbook();
+          var cheminc = [];
+          var cheminp = [];
+          var dernierl = [];
+          var feuil = [];
+          var cellule = [];
+          var cellule2 = [];
+          var table = [];
+          var trameflux = [];
+          var numligne = [];
+          var datetest = req.param("date",0);
+          var annee = datetest.substr(0, 4);
+          var mois = datetest.substr(5, 2);
+          var jour = datetest.substr(8, 2);
+          var date = annee+mois+jour;
+          var dateexport = jour + '/' + mois + '/' +annee;
+          var nb = x;
+          var nbre = [];
+                  for(var i=0;i<nb;i++)
+                  {
+                    var a = nc[i].chemin;
+                    trameflux.push(a);
+                    nbre.push(i);
+                  };
+                  for(var i=0;i<nb;i++)
+                  {
+                    var a = nc[i].numfeuille;
+                    feuil.push(a);                      
+                  };
+                  for(var i=0;i<nb;i++)
+                  {
+                    var a =nc[i].colonnecible;
+                    cellule.push(a);
+                  };
+                  for(var i=0;i<nb;i++)
+                  {
+                    var a =nc[i].nomtable;
+                    table.push(a);
+                  };
+                  for(var i=0;i<nb;i++)
+                  {
+                    var a =nc[i].colonnecible2;
+                    cellule2.push(a);
+                  };
+                  for(var i=0;i<nb;i++)
+                  {
+                    var a =nc[i].numligne;
+                    numligne.push(a);
+                  };
+                  for(var i=0;i<nb;i++)
+                  {
+                    var a =nc[i].colonnecible3;
+                    dernierl.push(a);
+                  };
+                  console.log(trameflux);
+                  async.forEachSeries(nbre, function(lot, callback_reporting_suivant) {
+                    async.series([
+                      function(cb){
+                        Garantie.deleteHtp(table,nb,cb);
+                     },
+                      function(cb){
+                        Garantie.importTrameDematbpo1(trameflux,feuil,cellule,table,cellule2,lot,numligne,dernierl,cb);
+                      },
+                    ],function(erroned, lotValues){
+                      if(erroned) return res.badRequest(erroned);
+                      return callback_reporting_suivant();
+                    });
+                  },
+                  // async.series([
+                  //   function(cb){
+                  //     Garantie.deleteHtp(table,nb,cb);
+                  //   }, 
+                  //   function(cb){
+                  //     Garantie.importTrameDemat(trameflux,feuil,cellule,table,cellule2,nb,numligne,dernierl,cb);
+                  //   }, 
+                  //   // function(cb){
+                  //   //   Garantie.importTrameRcindeterminable(trameflux,feuil,cellule,table,cellule2,nb,numligne,dernierl,cb);
+                  //   // }, 
+                  // ],
+                  function(err, resultat){
+                    if (err) { return res.view('Inovcom/erreur'); }
+                    return res.view('Garantie/exportGarantie', {date : datetest});
+                });
+             
+              }
+          })
+        };
+    });
+},
+
+
+
+
 };
 

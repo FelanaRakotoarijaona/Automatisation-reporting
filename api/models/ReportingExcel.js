@@ -219,6 +219,7 @@ module.exports = {
     Reportinghtp.deleteToutHtp(table,3,callback);
 
     },*/
+//FONCTION POUR REMPLIR LE FICHIER EXCEL
  ecritureOkKo : async function (nombre_ok_ko, table,date_export,mois1,callback) {
     const Excel = require('exceljs');
     const newWorkbook = new Excel.Workbook();
@@ -301,6 +302,7 @@ module.exports = {
       Reportinghtp.deleteToutHtp(table,3,callback);
     }
     },
+  //configuration du fichier ini
   getConfigIni : function() {
     const fs = require('fs');
     const ini = require('ini');
@@ -308,7 +310,7 @@ module.exports = {
     //console.log(config);
     return config;
   },
-
+//Prendre la configuration du fichier ini
   getIniValue : function(table) {
     var iniValue = ReportingExcel.getConfigIni();
     var numeroColonneOk,numeroColonneKo;

@@ -7,6 +7,7 @@
 module.exports = {
   attributes: {
   },
+  //Import des donnees vers la base de donnée
   importTrameFlux929type2 : function (trameflux,feuil,cellule,table,cellule2,nb,numligne,callback) {
 
     if(trameflux[nb]==undefined)
@@ -44,6 +45,7 @@ module.exports = {
       });
     };
   },
+  //lecture des données
   lectureEtInsertion2:function(trameflux,feuil,cellule,table,cellule2,nb,numligne,callback){
     console.log('ok v');
    XLSX = require('xlsx');
@@ -138,6 +140,7 @@ module.exports = {
       console.log("erreur absolu haaha");
     }
   },
+  //import des données
   importTrameFlux929type4 : function (trameflux,feuil,cellule,table,cellule2,nb,numligne,dateexport,callback) {
     if(trameflux[nb]==undefined)
     {
@@ -190,6 +193,7 @@ module.exports = {
       };
     };*/
   },
+  //lecture des données
   lectureEtInsertiontype4:function(trameflux,feuil,cellule,table,cellule2,nb,numligne,dateexport,callback){
     XLSX = require('xlsx');
     var workbook = XLSX.readFile(trameflux[nb]);
@@ -302,6 +306,7 @@ module.exports = {
     
     
   },
+  //conversion date
   convertDate : function (dateExcel){
     var date = new Date(dateExcel);
     var year = date.getFullYear();
@@ -315,6 +320,7 @@ module.exports = {
     }
     return dt +"/"+ month +"/"+year;
   },
+//import des données et insertion vers la base
 importEssai: function (table,table2,date,option,nb,nomtable,numligne,numfeuille,nomcolonne,colonnecible2,callback) {
     const fs = require('fs');
     var re  = 'a';
@@ -472,6 +478,7 @@ importEssai: function (table,table2,date,option,nb,nomtable,numligne,numfeuille,
                             });
     };   
   },
+  //effacement des chemin dans le base de données pour eviter les doublons
   deleteFromChemin : function (table,callback) {
     var sql = "delete from cheminhtp ";
     Reportinghtp.getDatastore().sendNativeQuery(sql, function(err, res){
@@ -486,6 +493,7 @@ importEssai: function (table,table2,date,option,nb,nomtable,numligne,numfeuille,
       return callback(null, true);
       });
   },
+  //test d'existence 
   existenceFichier : function (pathparam) {
     const fs = require('fs');
 
@@ -499,7 +507,7 @@ importEssai: function (table,table2,date,option,nb,nomtable,numligne,numfeuille,
       }
       return existe;
   },
-  
+  //import
   importInovcom: function (trameflux,feuil,cellule,table,cellule2,numligne,nb,callback) {
     var tab = [];
     tab = Reportinghtp.totalFichierExistant(trameflux,nb,callback);
@@ -519,6 +527,7 @@ importEssai: function (table,table2,date,option,nb,nomtable,numligne,numfeuille,
     }
     };
   },
+  //insertion vers la base de donnée
   insertion:function(trameflux,feuil,cellule,table,cellule2,nb,numligne,callback){
     var tab= Reportinghtp.lectureEtInsertionModifie(trameflux,feuil,cellule,table,cellule2,nb,numligne,callback);
     console.log(tab);
@@ -533,6 +542,7 @@ importEssai: function (table,table2,date,option,nb,nomtable,numligne,numfeuille,
            
     });
   },
+  //test lecture de l'insertion
   lectureEtInsertionModifie:function(trameflux,feuil,cellule,table,cellule2,nb,numligne,callback){
     XLSX = require('xlsx');
     var workbook = XLSX.readFile(trameflux[nb]);

@@ -11,6 +11,7 @@ const path_reporting = '/dev/prod/00-TOUS/TestReporting/REPORTING INOVCOM Type.x
 module.exports = {
   attributes: {
   },
+  // Récuperer nombre okko
   countok : function (table, callback) {
     const Excel = require('exceljs');
     // var sqlOk ="select okko from "+table; 

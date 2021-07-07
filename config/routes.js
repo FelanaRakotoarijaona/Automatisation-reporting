@@ -199,11 +199,17 @@ module.exports.routes = {
     //Route RETOUR Export mbola tsy traité
     // '/exportRetour/:jour/:mois/:annee/:html' : 'ReportingInovcomExportController.accueil',
     // '/exportReportingIndu:jour/:mois/:annee' : 'ReportingInovcomExportController.rechercheColonne',
+    //ROUTES TEST CONTENTIEUX
+    '/testcont' : 'ReportingContetieuxController.testcont',
   
   // ROUTES REPORTING ALMERYS ENGAGEMENT
   '/accueilGarantie' : 'GarantieController.accueilGarantie',//accueilGarantie
-  '/essaiGarantie' : 'GarantieController.essaiGarantie',
-  '/reportingGarantie' : 'GarantieController.essaiExcelgarantie',
+  '/insertGarantiesansdouble' : 'GarantieController.insertChemingarantiesansdouble',
+  '/insertGarantieligne' : 'GarantieController.insertChemingarantieligne',
+  '/insertGarantiebpo1' : 'GarantieController.insertChemingarantiebpo1',
+  '/reportingGarantiesansdouble' : 'GarantieController.importGarantiesansdouble',
+  '/reportingGarantieligne' : 'GarantieController.importGarantieligne',
+  '/reportingGarantiebpo1' : 'GarantieController.importGarantiebpo1',
 
 
 

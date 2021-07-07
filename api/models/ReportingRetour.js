@@ -11,6 +11,7 @@ module.exports = {
 
   attributes: {
   },
+  //import du chemin dans le serveur
   importTrameFlux929type2 : function (trameflux,feuil,cellule,table,cellule2,nb,numligne,callback) {
     if(trameflux[nb]==undefined)
     {
@@ -72,6 +73,7 @@ module.exports = {
                             });
     };
   },
+  //lecture du chemin
   lectureEtInsertiontype2:function(trameflux,feuil,cellule,table,cellule2,nb,numligne,callback){
     XLSX = require('xlsx');
     var workbook = XLSX.readFile(trameflux[nb]);
@@ -182,6 +184,7 @@ module.exports = {
     }
     
   },
+  //effacement du chemin dans la base pour eviter le doublon
 deleteFromChemin : function (table,callback) {
       var sql = "delete from cheminretourvrai ";
       ReportingRetour.getDatastore().sendNativeQuery(sql, function(err, res){
@@ -189,6 +192,7 @@ deleteFromChemin : function (table,callback) {
         return callback(null, true);
         });
     },
+    //test existence du fichier
     existenceFichier : function (pathparam) {
       const fs = require('fs');
   
@@ -202,6 +206,7 @@ deleteFromChemin : function (table,callback) {
         }
         return existe;
     },
+    //import
     importEssai: function (table,table2,date,option,nb,nomtable,numligne,numfeuille,nomcolonne,callback) {
 
 

@@ -6,7 +6,7 @@
  */
 //CHEMIN CIBLER DANS LE SERVEUR (emplacement de l'excel dans le serveur)
  const path_reporting = '/dev/prod/00-TOUS/TestReporting/REPORTING CONTENTIEUX type.xlsx';
-//const path_reporting = 'D:/Reporting/Reporting/REPORTING CONTENTIEUX type.xlsx';
+// const path_reporting = 'D:/Reporting/Reporting/REPORTING CONTENTIEUX type.xlsx';
 // const path_reporting = 'D:/LDR8_1421_nouv/PROJET_FELANA/REPORTING CONTENTIEUX type.xlsx';
 
 module.exports = {
@@ -17,7 +17,7 @@ module.exports = {
     const Excel = require('exceljs');
     // var sqlOk ="select count(okko) as ok from "+table+" where okko='OK'"; //trameFlux
     // var sqlKo ="select count(okko) as ko from "+table+" where okko='KO'";
-    var sql ="select sum(nb::integer) as ok from "+table;
+    var sql ="select sum(nb::integer) from "+table;
     console.log(sql);
     // console.log(sqlOk);
     // console.log(sqlKo);
@@ -42,7 +42,7 @@ module.exports = {
             if(res.rows[0])
             {
               console.log('ok');
-              callback(null, res.rows[0].nb);
+              callback(null, res.rows[0].sum);
             }
             else
             {

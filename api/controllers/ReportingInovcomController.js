@@ -11,6 +11,7 @@ module.exports = {
     {
       return res.view('Inovcom/accueil1');
     },
+    //CIBLAGE DU FICHIER EXCEL DANS LE SERVEUR
     Essaii : function(req,res)
     {
       var Excel = require('exceljs');
@@ -136,6 +137,7 @@ module.exports = {
     {
       return res.view('Inovcom/accueil');
     },
+    //REQUETE BASE DE DONNEE (donnéee des chemins du serveur)
     EssaiExcel : function(req,res)
     {
       var datetest = req.param("date",0);
@@ -237,6 +239,7 @@ module.exports = {
     {
       return res.view('Inovcom/accueil1type2');
     },
+//REQUETE BASE DE DONNEE (donnéee des chemins du serveur)
     Essaiitype2 : function(req,res)
     {
       var Excel = require('exceljs');
@@ -356,6 +359,7 @@ module.exports = {
     {
       return res.view('Inovcom/accueiltype2');
     },
+    //REQUETE BASE DE DONNEE (donnéee des chemins du serveur)
     EssaiExceltype2 : function(req,res)
     {
       var datetest = req.param("date",0);
@@ -459,6 +463,7 @@ module.exports = {
     {
       return res.view('Inovcom/accueil1type3');
     },
+    //REQUETE BASE DE DONNEE (donnéee des chemins du serveur)
     Essaiitype3 : function(req,res)
     {
       var Excel = require('exceljs');
@@ -579,6 +584,7 @@ module.exports = {
     {
       return res.view('Inovcom/accueiltype3');
     },
+    //REQUETE BASE DE DONNEE (donnéee des chemins du serveur)
     EssaiExceltype3 : function(req,res)
     {
       var datetest = req.param("date",0);
@@ -677,6 +683,7 @@ module.exports = {
     {
       return res.view('Inovcom/accueil1type4');
     },
+    //REQUETE BASE DE DONNEE (donnéee des chemins du serveur)
     Essaiitype4 : function(req,res)
     {
       var Excel = require('exceljs');
@@ -797,6 +804,7 @@ module.exports = {
     {
       return res.view('Inovcom/accueiltype4');
     },
+    //REQUETE BASE DE DONNEE (donnéee des chemins du serveur)
     EssaiExceltype4 : function(req,res)
     {
       var sql1= 'select count(*) as nb from chemininovcomtype4;';
@@ -908,6 +916,7 @@ module.exports = {
     {
       return res.view('Inovcom/accueil1type5');
     },
+    //REQUETE BASE DE DONNEE (donnéee des chemins du serveur)
     Essaiitype5 : function(req,res)
     {
       var Excel = require('exceljs');
@@ -988,6 +997,7 @@ module.exports = {
     {
       return res.view('Inovcom/accueiltype5');
     },
+    //REQUETE BASE DE DONNEE (donnéee des chemins du serveur)
     EssaiExceltype5 : function(req,res)
     {
       var sql1= 'select nb from nbinovcomtype5;';

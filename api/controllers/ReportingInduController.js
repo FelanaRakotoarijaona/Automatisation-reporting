@@ -12,6 +12,7 @@ module.exports = {
     {
       return res.view('Indu/accueil1');
     },
+    //CIBLAGE DU FICHIER DANS LE SERVEUR
     Essaii : function(req,res)
     {
       var Excel = require('exceljs');
@@ -134,6 +135,7 @@ module.exports = {
     {
       return res.view('Indu/accueil');
     },
+    //REQUETE BASE DE DONNEE (donnéee des chemins du serveur)
     EssaiExcel : function(req,res)
     {
       var dateFormat = require("dateformat");
@@ -234,6 +236,7 @@ module.exports = {
     {
       return res.view('Indu/accueiltype2');
     },
+    //REQUETE BASE DE DONNEE (donnéee des chemins du serveur)
     Essaii2 : function(req,res)
     {
       var Excel = require('exceljs');
@@ -351,11 +354,12 @@ module.exports = {
             });
           });
     },
-
+    //REDIRECTION VERS ACCEUILL2
     accueil2 : function(req,res)
     {
       return res.view('Indu/accueil2');
     },
+    //REQUETE BASE DE DONNEE (donnéee des chemins du serveur)
     EssaiExcel2 : function(req,res)
     {
       var dateFormat = require("dateformat");

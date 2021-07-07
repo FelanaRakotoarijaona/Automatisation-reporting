@@ -6,6 +6,7 @@
  */
 
 module.exports = {
+  //ROUTES VERS PAGE D'ACCUEILLE
     accueil1 : function(req,res)
     {
       return res.view('Contentieux/accueil1');
@@ -15,7 +16,11 @@ module.exports = {
       {
         return res.view('Contentieux/exportExcelContentieux');
       },
-  
+ //TEST CONTENTTIEUX
+      testcont : function(req,res)
+      {
+        return res.view('Contentieux/exportExcelContentieux');
+      }, 
    
       accueil1 : function(req,res)
       {
