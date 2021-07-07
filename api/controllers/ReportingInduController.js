@@ -11,7 +11,7 @@ module.exports = {
   //type 3
   accueiltype3 : function(req,res)
   {
-    return res.view('Indu/accueil3');
+    return res.view('Indu/accueiltype3');
   },
   Essaii3 : function(req,res)
   {
@@ -132,7 +132,7 @@ module.exports = {
   },
   accueil3 : function(req,res)
   {
-    return res.view('Indu/accueil');
+    return res.view('Indu/accueil3');
   },
   EssaiExcel3 : function(req,res)
   {
