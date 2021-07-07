@@ -140,13 +140,17 @@ module.exports = {
     var workbook = XLSX.readFile(trameflux[nb]);
     var numerofeuille = feuil[nb];
     var numeroligne = parseInt(numligne[nb]);
+    console.log(trameflux[nb]);
+    console.log(numerofeuille);
+    console.log(numeroligne);
     try{
       var nbr = 0;
-      const sheet = workbook.Sheets[workbook.SheetNames[numerofeuille]];
+      const sheet = workbook.Sheets[workbook.SheetNames[1]];
       var range = XLSX.utils.decode_range(sheet['!ref']);
       var col = 0;
       var colnonvide;
       var nbe = parseInt(nb);
+      console.log('tafiditra ato v?');
       var bi = 'fin de traitement';
       const regex = new RegExp(bi,'i');
       for(var ra=0;ra<=range.e.c;ra++)
@@ -159,10 +163,12 @@ module.exports = {
         {
           colnonvide=ra;
         };
+        console.log('tafiditra ato v 2?');
       };
       console.log("colonnevide"+colnonvide);
       if(col!=undefined && colnonvide!=undefined)
       {
+        console.log('tafiditra ato v? 3');
         var debutligne = numeroligne + 1;
         for(var a=debutligne;a<=range.e.r;a++)
           {
