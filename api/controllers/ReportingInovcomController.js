@@ -2019,7 +2019,7 @@ module.exports = {
         var MotCle= [];
         var chem2 = [];
         var option2 = [];
-        var r = [0,1,2,3,4];
+        var r = [0,1,2,3,4,5];
         var nomBase = "chemininovcomtype12";
         //workbook.xlsx.readFile('Inovcom.xlsx')
         workbook.xlsx.readFile('Inovcomserveur.xlsx')
