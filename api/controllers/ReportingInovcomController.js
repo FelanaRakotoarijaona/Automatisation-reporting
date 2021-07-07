@@ -1463,14 +1463,19 @@ module.exports = {
                       dernierl.push(a);
                     };
                     console.log(trameflux);
+                    async.forEachSeries(nbre, function(lot, callback_reporting_suivant) {
                     async.series([
                       function(cb){
                         ReportingInovcom.deleteHtp(table,nb,cb);
                       }, 
                       function(cb){
-                        ReportingInovcom.importTrameFlux929type7(trameflux,feuil,cellule,table,cellule2,nb,numligne,dernierl,cb);
+                        ReportingInovcom.importTrameFlux929type7(trameflux,feuil,cellule,table,cellule2,lot,numligne,dernierl,cb);
                       }, 
-                    ],
+                    ],function(erroned, lotValues){
+                      if(erroned) return res.badRequest(erroned);
+                      return callback_reporting_suivant();
+                    });
+                  },
                     function(err, resultat){
                       if (err) { return res.view('Inovcom/erreur'); }
                       return res.view('Inovcom/exportexcelinovcom7', {date : datetest});
