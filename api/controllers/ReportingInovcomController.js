@@ -2057,11 +2057,10 @@ module.exports = {
                 opt2.eachCell(function(cell, rowNumber) {
                   option2.push(cell.value);
                 });
-                console.log(cheminp[0]);
-                console.log(MotCle[0]);
+                //console.log(nomTable);
                 async.series([  
                     function(cb){
-                        ReportingInovcom.deleteFromChemin11(table,cb);
+                        ReportingInovcom.deleteFromChemin12(table,cb);
                       },
                 ],
                 function(err, resultat){

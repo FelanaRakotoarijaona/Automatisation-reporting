@@ -123,7 +123,7 @@
 
         var motcle = cellule[nb];
         const regex = new RegExp(motcle,'i');
-        console.log('motcle'+ motcle)
+        //console.log('motcle'+ motcle)
         if(regex.test(desired_value))
         {
           col2=ra;
@@ -1152,6 +1152,16 @@ lectureEtInsertiontype4:function(trameflux,feuil,cellule,table,cellule2,nb,numli
     },
     deleteFromChemin2 : function (table,callback) {
       var sql = "delete from chemininovcomtype2 ";
+      ReportingInovcom.getDatastore().sendNativeQuery(sql, function(err, res){
+        if (err) {
+           //return callback(err); 
+           console.log('une erreur de suppression');
+          }
+        return callback(null, true);
+        });
+    },
+    deleteFromChemin12 : function (table,callback) {
+      var sql = "delete from chemininovcomtype12 ";
       ReportingInovcom.getDatastore().sendNativeQuery(sql, function(err, res){
         if (err) {
            //return callback(err); 
