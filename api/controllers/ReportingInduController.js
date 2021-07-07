@@ -9,7 +9,7 @@
 
 module.exports = {
   //type 3
-  accueil3 : function(req,res)
+  accueiltype3 : function(req,res)
   {
     return res.view('Indu/accueil3');
   },
