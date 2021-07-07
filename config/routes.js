@@ -10,7 +10,6 @@
 
 module.exports.routes = {
 
-
    //route tps-tpc
    '/accueilrecherchefichier' : 'TpstpcController.accueilrecherchefichier',
    '/recherchefichiertpstpc' : 'TpstpcController.recherchefichiertpstpc',
@@ -19,8 +18,12 @@ module.exports.routes = {
    '/accueiltachenontraite' : 'TpstpcController.accueil3',
    '/accueiletp' : 'TpstpcController.accueil',
    '/accueilecriture' : 'TpstpcController.accueil6',
- 
    '/traitementetp' : 'TpstpcController.selection',
+   '/accueilecritureetp' : 'TpstpcController.accueiletp',
+   '/ecritureetp' : 'TpstpcController.ecritureEtp',
+   '/traitementfinal' :'TpstpcController.ecriture3',
+   '/ecritureetp2' : 'TpstpcController.ecritureEtp2',
+   '/ecritureerreur' : 'TpstpcController.ecritureErreur',
  
    '/traitementtachenontraite' : 'TpstpcController.traitementBonJ1',
    '/accueilsanteclair' : 'TpstpcController.accueil4',
@@ -28,6 +31,8 @@ module.exports.routes = {
    '/accueilerreur' : 'TpstpcController.accueil5',
    '/traitementerreureasy' : 'TpstpcController.traitementErreurEasy',
    '/traitementTpstpc' : 'TpstpcController.traitementTacheTraite',
+   '/traitementsuivant' : 'TpstpcController.ecritureExcel',
+   
    '/traitementJ2' : 'TpstpcController.traitementStocketBonJ',
 
 
@@ -110,7 +115,25 @@ module.exports.routes = {
      '/accueilInovcomtype9' : 'ReportingInovcomController.accueil1type9',
      '/essaiInovcomtype9' : 'ReportingInovcomController.Essaiitype9',
      '/reportinginovcomtype8' : 'ReportingInovcomController.essaiExceltype8',
-  '/reportinginovcomtype2' : 'ReportingInovcomController.essaiExceltype2',
+     '/reportinginovcomtype2' : 'ReportingInovcomController.essaiExceltype2',
+
+     //type11
+     '/accueilInovcomtype11' : 'ReportingInovcomController.accueil1type11',
+     '/essaiInovcomtype11' : 'ReportingInovcomController.Essaiitype11',
+     '/reportinginovcomtype11' : 'ReportingInovcomController.essaiExceltype11',
+
+      //type10
+      '/accueilInovcomtype10' : 'ReportingInovcomController.accueil1type10',
+      '/essaiInovcomtype10' : 'ReportingInovcomController.Essaiitype10',
+      '/reportinginovcomtype10' : 'ReportingInovcomController.essaiExceltype10',
+
+      //type12
+     '/accueilInovcomtype12' : 'ReportingInovcomController.accueil1type12',
+     '/essaiInovcomtype12' : 'ReportingInovcomController.Essaiitype12',
+     '/reportinginovcomtype12' : 'ReportingInovcomController.essaiExceltype12',
+  
+
+
   //Route INOVCOM Export
   // '/exportInovcom/:jour/:mois/:annee/:html' : 'ReportingInovcomExportController.accueil',
   // '/exportReportingInovcom/:jour/:mois/:annee' : 'ReportingInovcomExportController.rechercheColonne',
@@ -156,6 +179,14 @@ module.exports.routes = {
    '/essaiIndu2' : 'ReportingInduController.Essaii2',
    '/accueil2Indu/:date' : 'ReportingInduController.accueil2',
    '/reportingindu2' : 'ReportingInduController.essaiExcel2',
+
+   
+   '/accueilIndu3' : 'ReportingInduController.accueiltype3',
+   '/essaiIndu3' : 'ReportingInduController.Essaii3',
+   '/accueil3Indu/:date' : 'ReportingInduController.accueil3',
+   '/reportingindu3' : 'ReportingInduController.essaiExcel3',
+
+
    //Route INDU Export mbola tsy traité
   //  '/exportIndu/:jour/:mois/:annee/:html' : 'ReportingInovcomExportController.accueil',
   //  '/exportReportingIndu:jour/:mois/:annee' : 'ReportingInovcomExportController.rechercheColonne',

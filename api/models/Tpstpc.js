@@ -7,7 +7,7 @@
 
  module.exports = {
 
-  //datastore : 'easy',
+  datastore : 'easy',
   attributes: {
    
   },
@@ -16,6 +16,7 @@
    var re  = 'a';
    var tab = [];
    var chemin = cheminfinal[nb];
+   console.log(chemin);
    var c = ReportingInovcom.existenceFichier(chemin);
    var motcle1 = motcle[nb];
    var tab = table[nb];
@@ -26,7 +27,6 @@
      fs.readdir(chemin, (err, files) => {
        console.log(chemin);
            files.forEach(file => {
-             
              const regex = new RegExp(motcle1,'i');
              var m1 = '.xlsx|.xls|.xlsm|.xlsb$';
              var m2 = '^[^~]';
@@ -69,9 +69,10 @@
                            })   
    }   
  },
-  selection : function (table,callback) {
+  selection: function (identifiant,identifiant1,identifiant2,date,callback) {
     //var nbr = parseInt(nb);
-    var sql = "select DISTINCT SUM(DATE_PART('epoch', to_timestamp(p_ldt.date_fin_ldt||' '||p_ldt.h_fin, 'YYYYMMDD HH24:MI:SS') -  to_timestamp(p_ldt.date_deb_ldt||' '||p_ldt.h_deb, 'YYYYMMDD HH24:MI:SS') ))/3600 as duree  from p_ldt LEFT join almerys_lien_ss_spe ON p_ldt.id_ldt= almerys_lien_ss_spe.id_ldt where p_ldt.id_lotclient = 36141  AND almerys_lien_ss_spe.id_alm_ss_spe=954  AND almerys_lien_ss_spe.id_lien_ss_spe2=1269  AND date_deb_ldt = '20210618' AND id_type_ldt = 0 group by almerys_lien_ss_spe.id_almerys ";
+    console.log(date);
+    var sql = "select DISTINCT SUM(DATE_PART('epoch', to_timestamp(p_ldt.date_fin_ldt||' '||p_ldt.h_fin, 'YYYYMMDD HH24:MI:SS') -  to_timestamp(p_ldt.date_deb_ldt||' '||p_ldt.h_deb, 'YYYYMMDD HH24:MI:SS') ))/3600 as duree  from p_ldt LEFT join almerys_lien_ss_spe ON p_ldt.id_ldt= almerys_lien_ss_spe.id_ldt where p_ldt.id_lotclient = "+identifiant+"  AND almerys_lien_ss_spe.id_alm_ss_spe="+identifiant1+"  AND almerys_lien_ss_spe.id_lien_ss_spe2="+identifiant2+"   AND date_deb_ldt = '"+date+"' AND id_type_ldt = 0 group by almerys_lien_ss_spe.id_almerys ";
     Tpstpc.getDatastore().sendNativeQuery(sql, function(err, res){
       if (err) { 
         console.log(err);
@@ -93,7 +94,31 @@
       };
       });
   },
-
+  selectionSanteclair : function (date,callback) {
+    //var nbr = parseInt(nb);
+    console.log(date);
+    var sql = "select DISTINCT SUM(DATE_PART('epoch', to_timestamp(p_ldt.date_fin_ldt||' '||p_ldt.h_fin, 'YYYYMMDD HH24:MI:SS') -  to_timestamp(p_ldt.date_deb_ldt||' '||p_ldt.h_deb, 'YYYYMMDD HH24:MI:SS') ))/3600 as duree, SUM(CASE WHEN quantite~E'^\\d+$' THEN quantite::integer ELSE 0 END) as qte,  p_ldt.id_pers   from p_ldt LEFT join almerys_lien_ss_spe ON p_ldt.id_ldt= almerys_lien_ss_spe.id_ldt where p_ldt.id_lotclient = 36137  AND almerys_lien_ss_spe.id_alm_ss_spe=929  AND date_deb_ldt = '"+date+"' AND id_type_ldt = 0 group by almerys_lien_ss_spe.id_almerys,p_ldt.id_pers ";
+    Tpstpc.getDatastore().sendNativeQuery(sql, function(err, res){
+      if (err) { 
+        console.log(err);
+        //return callback(err);
+       }
+      else
+      {
+        var somme = 0;
+        console.log(sql);
+        result = res.rows;
+        /*console.log(result[0].duree);
+        console.log(result.length);*/
+       for(var i=0;i<result.length;i++)
+        {
+          somme= somme + parseFloat(result[i].duree);
+        }
+        console.log(somme);
+        return callback(null,somme);
+      };
+      });
+  },
 		/***********************************************************/ 
     countOkKo : function (table,nb, callback) {
       var sql ="select sum(tt16h) as tt16h,sum(tt23h) as tt23h,sum(ttj2) as ttj2,sum(ttj5) as ttj5,sum(stock16h) as stock16h,sum(bonj) as bonj,sum(bonj1) as bonj1,sum(bonj2) as bonj2,sum(bonj5) as bonj5 from "+table[nb]+" ";
@@ -108,6 +133,23 @@
           result = res.rows;
           console.log(result[0].ttj2);
           return callback(null,result);
+        };
+        });
+    },
+    countErreur : function (table,nb, callback) {
+      var sql ="SELECT erreureasy from tpserreur; ";
+      Reportinghtp.getDatastore().sendNativeQuery(sql, function(err, res){
+        if (err) { 
+          console.log(err);
+          //return callback(err);
+         }
+        else
+        {
+          console.log(sql);
+          result = res.rows;
+          var resultat = result[0].erreureasy;
+         // console.log(result[0] +'e');
+          return callback(null,resultat);
         };
         });
     },
@@ -141,17 +183,18 @@
         }
       });
       console.log(ligne);
+      
       var m = newworksheet.getRow(ligne);
-      m.getCell(5).value = tab[0].tt16h;
-      m.getCell(6).value = tab[0].tt16h;
-      m.getCell(7).value = tab[0].tt23h;
-      m.getCell(9).value = tab[0].ttj2;
-      m.getCell(11).value = tab[0].ttj5;
-      m.getCell(16).value = tab[0].stock16h;
-      m.getCell(20).value = tab[0].bonj;
-      m.getCell(21).value = tab[0].bonj1;
-      m.getCell(22).value = tab[0].bonj2;
-      m.getCell(23).value = tab[0].bonj5;
+     //m.getCell(5).value = tab[0].tt16h;
+      m.getCell(6).value = parseFloat(tab[0].tt16h);
+      m.getCell(7).value = parseFloat(tab[0].tt23h);
+      m.getCell(9).value = parseFloat(tab[0].ttj2);
+      m.getCell(11).value = parseFloat(tab[0].ttj5);
+      m.getCell(16).value = parseFloat(tab[0].stock16h);
+      m.getCell(20).value = parseFloat(tab[0].bonj);
+      m.getCell(21).value = parseFloat(tab[0].bonj1);
+      m.getCell(22).value = parseFloat(tab[0].bonj2);
+      m.getCell(23).value = parseFloat(tab[0].bonj5);
      
       await newWorkbook.xlsx.writeFile(path_reporting);
       sails.log("Ecriture OK KO terminé"); 
@@ -161,9 +204,108 @@
       catch
       {
         console.log("Une erreur s'est produite");
-        Reportinghtp.deleteToutHtp(table,3,callback);
+        Reportinghtp.deleteToutHtp(tab,3,callback);
       }
       },
+
+
+      ecritureEtp : async function (tab,date_export,motcle,nb,callback) {
+        const Excel = require('exceljs');
+        const newWorkbook = new Excel.Workbook();
+        try{
+        var path_reporting = 'D:/Reporting Engagement/TPS-TPC_Reporting-Traitement-J-SLA_V12.xlsx';
+        await newWorkbook.xlsx.readFile(path_reporting);
+        const newworksheet = newWorkbook.getWorksheet('202106_Easy');
+        var colonneDate = newworksheet.getColumn('A');
+        var ligneDate1;
+        //var date_export='14/06/2021';
+        console.log(date_export);
+        var ligne = 0;
+  
+        colonneDate.eachCell(function(cell, rowNumber) {
+          var dateExcel = ReportingInovcomExport.convertDate(cell.text);
+          if(dateExcel==date_export)
+          {
+            ligneDate1 = parseInt(rowNumber);
+            var line = newworksheet.getRow(ligneDate1);
+            var f = line.getCell(4).value;
+            var bi = motcle[nb];
+            const regex = new RegExp(bi,'i');
+            if(regex.test(f))
+            {
+              console.log(rowNumber);
+              ligne = rowNumber;
+            }
+          }
+        });
+        console.log(ligne);
+        
+        var m = newworksheet.getRow(ligne);
+        var valeur = parseFloat(tab)
+        m.getCell(5).value = valeur;
+       
+        await newWorkbook.xlsx.writeFile(path_reporting);
+        sails.log("Ecriture OK KO terminé"); 
+        return callback(null, "OK");
+      
+        }
+        catch
+        {
+          console.log("Une erreur s'est produite");
+          Reportinghtp.deleteToutHtp(tab,3,callback);
+        }
+        },
+
+        ecritureEtp2 : async function (tab,date_export,motcle,nb,callback) {
+          
+            console.log('erreurrrrr');
+            const Excel = require('exceljs');
+            const newWorkbook = new Excel.Workbook();
+            try{
+            var path_reporting = 'D:/Reporting Engagement/TPS-TPC_Reporting-Traitement-J-SLA_V12.xlsx';
+            await newWorkbook.xlsx.readFile(path_reporting);
+            const newworksheet = newWorkbook.getWorksheet('202106_Easy');
+            var colonneDate = newworksheet.getColumn('A');
+            var ligneDate1;
+            //var date_export='14/06/2021';
+            console.log(date_export);
+            var ligne = 0;
+      
+            colonneDate.eachCell(function(cell, rowNumber) {
+              var dateExcel = ReportingInovcomExport.convertDate(cell.text);
+              if(dateExcel==date_export)
+              {
+                ligneDate1 = parseInt(rowNumber);
+                var line = newworksheet.getRow(ligneDate1);
+                var f = line.getCell(4).value;
+                var bi = 'Erreur applicative';
+                const regex = new RegExp(bi,'i');
+                if(regex.test(f))
+                {
+                  console.log(rowNumber);
+                  ligne = rowNumber;
+                }
+              }
+            });
+            console.log(ligne);
+            
+            var m = newworksheet.getRow(ligne);
+            var valeur = parseFloat(tab);
+            m.getCell(25).value = valeur;
+           
+            await newWorkbook.xlsx.writeFile(path_reporting);
+            sails.log("Ecriture OK KO terminé"); 
+            return callback(null, "OK");
+          
+            }
+            catch
+            {
+              console.log("Une erreur s'est produite");
+              Reportinghtp.deleteToutHtp(tab,3,callback);
+            }
+        
+         
+          },
     /***********************************************************/  
 
   traitementInsertionEtp:function(table,callback){
@@ -214,9 +356,9 @@
       console.log("erreur absolu haaha");
     }
   },
-  traitementInsertionErreur:function(table,callback){
+  traitementInsertionErreur:function(table,chemin,callback){
     XLSX = require('xlsx');
-    var trameflux= "D:/Reporting Engagement/Extraction_qualificatif.XLSX";
+    var trameflux= chemin;
     var workbook = XLSX.readFile(trameflux);
     
     try{
@@ -327,9 +469,9 @@
       console.log("erreur absolu haaha");
     }
   },
-  traitementInsertionstocksanteclairJ5:function(nb,jour,date,table,callback){
+  traitementInsertionstocksanteclairJ5:function(nb,jour,date,table,chemin,callback){
     XLSX = require('xlsx');
-    var trameflux= "D:/Reporting Engagement/Copie de Stock Inovcom Santecl (00B).xls";
+    var trameflux= chemin;
     var workbook = XLSX.readFile(trameflux);
     
     try{
@@ -426,9 +568,9 @@
       console.log("erreur absolu haaha");
     }
   },
-  traitementInsertionstocksanteclairJ2:function(nb,jour,date,table,callback){
+  traitementInsertionstocksanteclairJ2:function(nb,jour,date,table,chemin,callback){
     XLSX = require('xlsx');
-    var trameflux= "D:/Reporting Engagement/Copie de Stock Inovcom Santecl (00B).xls";
+    var trameflux= chemin;
     var workbook = XLSX.readFile(trameflux);
     
     try{
@@ -525,9 +667,9 @@
       console.log("erreur absolu haaha");
     }
   },
-  traitementInsertionstocksanteclairJ1:function(ast,traitement,motcle1,motcle2,motcle3,motcle4,nb,jour,date,table,callback){
+  traitementInsertionstocksanteclairJ1:function(nb,jour,date,table,chemin,callback){
     XLSX = require('xlsx');
-    var trameflux= "D:/Reporting Engagement/Copie de Stock Inovcom Santecl (00B).xls";
+    var trameflux= chemin;
     var workbook = XLSX.readFile(trameflux);
     
     try{
@@ -626,9 +768,9 @@
       console.log("erreur absolu haaha");
     }
   },
-  traitementInsertionstocksanteclairJ:function(nb,jour,date,table,callback){
+  traitementInsertionstocksanteclairJ:function(nb,jour,date,table,chemin,callback){
     XLSX = require('xlsx');
-    var trameflux= "D:/Reporting Engagement/Copie de Stock Inovcom Santecl (00B).xls";
+    var trameflux= chemin;
     var workbook = XLSX.readFile(trameflux);
     
     try{
@@ -679,9 +821,9 @@
       console.log("erreur absolu haaha");
     }
   },
-  traitementInsertionstocksanteclair:function(nb,jour,date,table,callback){
+  traitementInsertionstocksanteclair:function(nb,jour,date,table,chemin,callback){
     XLSX = require('xlsx');
-    var trameflux= "D:/Reporting Engagement/Copie de STT Stock Inovcom Santecl (00B).xls";
+    var trameflux= chemin;
     var workbook = XLSX.readFile(trameflux);
     
     try{
@@ -725,9 +867,9 @@
       console.log("erreur absolu haaha");
     }
   },
-  traitementInsertionstockbonJ5:function(ast,traitement,motcle1,motcle2,motcle3,motcle4,nb,jour,date,table,callback){
+  traitementInsertionstockbonJ5:function(ast,traitement,motcle1,motcle2,motcle3,motcle4,nb,jour,date,table,chemin,callback){
     XLSX = require('xlsx');
-    var trameflux= "D:/Reporting Engagement/Copie de Stock Inovcom Santecl (00B).xls";
+    var trameflux= chemin;
     var workbook = XLSX.readFile(trameflux);
     try{
       //console.log(ast[nb]);
@@ -1006,9 +1148,9 @@
       console.log("erreur absolu haaha");
     }
   },
-  traitementInsertionstockbonJ2:function(ast,traitement,motcle1,motcle2,motcle3,motcle4,nb,jour,date,table,callback){
+  traitementInsertionstockbonJ2:function(ast,traitement,motcle1,motcle2,motcle3,motcle4,nb,jour,date,table,chemin,callback){
     XLSX = require('xlsx');
-    var trameflux= "D:/Reporting Engagement/Copie de Stock Inovcom Santecl (00B).xls";
+    var trameflux= chemin;
     var workbook = XLSX.readFile(trameflux);
     try{
       //console.log(ast[nb]);
@@ -1285,144 +1427,281 @@
       console.log("erreur absolu haaha");
     }
   },
-  traitementInsertionstockbonJ:function(ast,traitement,motcle1,motcle2,motcle3,motcle4,nb,jour,date,table,callback){
+  traitementInsertionstockbonJ:function(ast,traitement,motcle1,motcle2,motcle3,motcle4,nb,jour,date,table,chemin,callback){
     XLSX = require('xlsx');
-    var trameflux= "D:/Reporting Engagement/STOCK 23H00 HF/Copie de STT Stock Inovcom (00A).xls";
+    var trameflux= chemin;
     var workbook = XLSX.readFile(trameflux);
     try{
       //console.log(ast[nb]);
       const sheet = workbook.Sheets[workbook.SheetNames[1]];
       var range = XLSX.utils.decode_range(sheet['!ref']);
       var somme = 0;
-              for(var ra=0;ra<=range.e.r;ra++)
+
+      if(jour=='Monday')
+      {
+        for(var ra=0;ra<=range.e.r;ra++)
+        {
+          //nature de tache
+          var address_of_cell = {c:2, r:ra};
+          var cell_ref = XLSX.utils.encode_cell(address_of_cell);
+          var desired_cell = sheet[cell_ref];
+          var desired_value = (desired_cell ? desired_cell.v : undefined);
+
+          // identification de la tache : le isaina
+          var address_of_cell1 = {c:7, r:ra};
+          var cell_ref1 = XLSX.utils.encode_cell(address_of_cell1);
+          var desired_cell1 = sheet[cell_ref1];
+          var desired_value1 = (desired_cell1 ? desired_cell1.v : undefined);
+
+          //etat de la tache
+          var address_of_cell2 = {c:0, r:ra};
+          var cell_ref2 = XLSX.utils.encode_cell(address_of_cell2);
+          var desired_cell2 = sheet[cell_ref2];
+          var desired_value2 = (desired_cell2 ? desired_cell2.v : undefined);
+          var b2 = "ETAT1";
+          var b3= "ETAT4";
+          const regex2 = new RegExp(b2,'i');
+          const regex3 = new RegExp(b3,'i');
+
+          //etat facture any amle undefined
+          var address_of_cell4 = {c:10, r:ra};
+          var cell_ref4 = XLSX.utils.encode_cell(address_of_cell4);
+          var desired_cell4 = sheet[cell_ref4];
+          var desired_value4 = (desired_cell4 ? desired_cell4.v : undefined);
+
+          //date de maturit5
+          var address_of_cell5 = {c:5, r:ra};
+          var cell_ref5 = XLSX.utils.encode_cell(address_of_cell5);
+          var desired_cell5 = sheet[cell_ref5];
+          var desired_value5 = (desired_cell5 ? desired_cell5.v : undefined);
+
+          if(regex2.test(desired_value2) || regex3.test(desired_value2) )
+          {
+            if(desired_value4!=undefined)
+            {
+              var j = 1;
+            }
+            else
+            {
+              var b = traitement[nb];
+              const regex = new RegExp(b,'i');
+              var j1 = date;
+              var conv = parseInt(date);
+              var j2 = conv - 1;
+              var j3 = conv -2;
+              if(regex.test(desired_value) && (desired_value5==j1 || desired_value5==j2 || desired_value5==j3 ) )
               {
-                //nature de tache
-                var address_of_cell = {c:2, r:ra};
-                var cell_ref = XLSX.utils.encode_cell(address_of_cell);
-                var desired_cell = sheet[cell_ref];
-                var desired_value = (desired_cell ? desired_cell.v : undefined);
-
-                // identification de la tache : le isaina
-                var address_of_cell1 = {c:7, r:ra};
-                var cell_ref1 = XLSX.utils.encode_cell(address_of_cell1);
-                var desired_cell1 = sheet[cell_ref1];
-                var desired_value1 = (desired_cell1 ? desired_cell1.v : undefined);
-
-                //etat de la tache
-                var address_of_cell2 = {c:0, r:ra};
-                var cell_ref2 = XLSX.utils.encode_cell(address_of_cell2);
-                var desired_cell2 = sheet[cell_ref2];
-                var desired_value2 = (desired_cell2 ? desired_cell2.v : undefined);
-                var b2 = "ETAT1";
-                var b3= "ETAT4";
-                const regex2 = new RegExp(b2,'i');
-                const regex3 = new RegExp(b3,'i');
-
-                //etat facture any amle undefined
-                var address_of_cell4 = {c:10, r:ra};
-                var cell_ref4 = XLSX.utils.encode_cell(address_of_cell4);
-                var desired_cell4 = sheet[cell_ref4];
-                var desired_value4 = (desired_cell4 ? desired_cell4.v : undefined);
-
-                //date de maturit5
-                var address_of_cell5 = {c:5, r:ra};
-                var cell_ref5 = XLSX.utils.encode_cell(address_of_cell5);
-                var desired_cell5 = sheet[cell_ref5];
-                var desired_value5 = (desired_cell5 ? desired_cell5.v : undefined);
-
-                if(regex2.test(desired_value2) || regex3.test(desired_value2) )
+              
+                var c = motcle1[nb];
+                var c1 = motcle2[nb];
+                var c2 = motcle3[nb];
+                var c5 = ast[nb];
+                const regex21 = new RegExp(c1,'i');
+                const regex31 = new RegExp(c2,'i');
+                const regex1 = new RegExp(c,'i');
+                const regex41 = new RegExp(c5,'i');
+            
+                if(motcle4[nb]=='a')
                 {
-                  if(desired_value4!=undefined)
+                  if(regex1.test(desired_value) || regex21.test(desired_value) || regex31.test(desired_value) || regex41.test(desired_value)) 
                   {
-                    var j = 1;
+                    var a = '1';
                   }
                   else
                   {
-                    var b = traitement[nb];
-                    const regex = new RegExp(b,'i');
-                    var j1 = date;
-                    var conv = parseInt(date);
-                    var j2 = conv - 1;
-                    var j3 = conv -2;
-                    if(regex.test(desired_value) && desired_value5==j1 )
+                    if(desired_value1!=undefined)
                     {
-                    
-                      var c = motcle1[nb];
-                      var c1 = motcle2[nb];
-                      var c2 = motcle3[nb];
-                      var c5 = ast[nb];
-                      const regex21 = new RegExp(c1,'i');
-                      const regex31 = new RegExp(c2,'i');
-                      const regex1 = new RegExp(c,'i');
-                      const regex41 = new RegExp(c5,'i');
-                  
-                      if(motcle4[nb]=='a')
-                      {
-                        if(regex1.test(desired_value) || regex21.test(desired_value) || regex31.test(desired_value) || regex41.test(desired_value)) 
-                        {
-                          var a = '1';
-                        }
-                        else
-                        {
-                          if(desired_value1!=undefined)
-                          {
-                            somme=somme+1;
-                          }
-                          else
-                          {
-                            var p = 0;
-                          }
-                        
-                        };
-                      }
-                      else if(motcle4[nb]=='b')
-                      {
-                        somme=somme+1;
-                      }
-                      else
-                      {
-                        var c4 = motcle4[nb];
-                        const regex4 = new RegExp(c4,'i');
-                        if(regex1.test(desired_value) || regex21.test(desired_value) || regex31.test(desired_value) || regex4.test(desired_value) || regex41.test(desired_value)) 
-                        {
-                          var a = '1';
-                        }
-                        else
-                        {
-                          if(desired_value1!=undefined)
-                          {
-                            somme=somme+1;
-                          }
-                          else
-                          {
-                            var p = 0;
-                          }
-                        
-                        };
-                      }
+                      somme=somme+1;
                     }
-                  }
+                    else
+                    {
+                      var p = 0;
+                    }
+                  
+                  };
                 }
+                else if(motcle4[nb]=='b')
+                {
+                  somme=somme+1;
+                }
+                else
+                {
+                  var c4 = motcle4[nb];
+                  const regex4 = new RegExp(c4,'i');
+                  if(regex1.test(desired_value) || regex21.test(desired_value) || regex31.test(desired_value) || regex4.test(desired_value) || regex41.test(desired_value)) 
+                  {
+                    var a = '1';
+                  }
                   else
                   {
-                    var r= 'a';
+                    if(desired_value1!=undefined)
+                    {
+                      somme=somme+1;
+                    }
+                    else
+                    {
+                      var p = 0;
+                    }
+                  
+                  };
+                }
+              }
+            }
+          }
+            else
+            {
+              var r= 'a';
+            }
+            }
+            console.log(somme);
+            var sql = "insert into "+table[nb]+" (bonj) values ("+somme+") ";
+                      Reportinghtp.getDatastore().sendNativeQuery(sql, function(err,res){
+                        if (err) { 
+                          console.log(err);
+                          //return callback(err); 
+                        }
+                        else
+                        {
+                          console.log(sql);
+                          return callback(null, true);
+                        }
+                      
+                                            });
+                                          
+      }
+      else
+      {
+        for(var ra=0;ra<=range.e.r;ra++)
+        {
+          //nature de tache
+          var address_of_cell = {c:2, r:ra};
+          var cell_ref = XLSX.utils.encode_cell(address_of_cell);
+          var desired_cell = sheet[cell_ref];
+          var desired_value = (desired_cell ? desired_cell.v : undefined);
+
+          // identification de la tache : le isaina
+          var address_of_cell1 = {c:7, r:ra};
+          var cell_ref1 = XLSX.utils.encode_cell(address_of_cell1);
+          var desired_cell1 = sheet[cell_ref1];
+          var desired_value1 = (desired_cell1 ? desired_cell1.v : undefined);
+
+          //etat de la tache
+          var address_of_cell2 = {c:0, r:ra};
+          var cell_ref2 = XLSX.utils.encode_cell(address_of_cell2);
+          var desired_cell2 = sheet[cell_ref2];
+          var desired_value2 = (desired_cell2 ? desired_cell2.v : undefined);
+          var b2 = "ETAT1";
+          var b3= "ETAT4";
+          const regex2 = new RegExp(b2,'i');
+          const regex3 = new RegExp(b3,'i');
+
+          //etat facture any amle undefined
+          var address_of_cell4 = {c:10, r:ra};
+          var cell_ref4 = XLSX.utils.encode_cell(address_of_cell4);
+          var desired_cell4 = sheet[cell_ref4];
+          var desired_value4 = (desired_cell4 ? desired_cell4.v : undefined);
+
+          //date de maturit5
+          var address_of_cell5 = {c:5, r:ra};
+          var cell_ref5 = XLSX.utils.encode_cell(address_of_cell5);
+          var desired_cell5 = sheet[cell_ref5];
+          var desired_value5 = (desired_cell5 ? desired_cell5.v : undefined);
+
+          if(regex2.test(desired_value2) || regex3.test(desired_value2) )
+          {
+            if(desired_value4!=undefined)
+            {
+              var j = 1;
+            }
+            else
+            {
+              var b = traitement[nb];
+              const regex = new RegExp(b,'i');
+              var j1 = date;
+              var conv = parseInt(date);
+              var j2 = conv - 1;
+              var j3 = conv -2;
+              if(regex.test(desired_value) && desired_value5==j1 )
+              {
+              
+                var c = motcle1[nb];
+                var c1 = motcle2[nb];
+                var c2 = motcle3[nb];
+                var c5 = ast[nb];
+                const regex21 = new RegExp(c1,'i');
+                const regex31 = new RegExp(c2,'i');
+                const regex1 = new RegExp(c,'i');
+                const regex41 = new RegExp(c5,'i');
+            
+                if(motcle4[nb]=='a')
+                {
+                  if(regex1.test(desired_value) || regex21.test(desired_value) || regex31.test(desired_value) || regex41.test(desired_value)) 
+                  {
+                    var a = '1';
                   }
+                  else
+                  {
+                    if(desired_value1!=undefined)
+                    {
+                      somme=somme+1;
+                    }
+                    else
+                    {
+                      var p = 0;
+                    }
+                  
+                  };
+                }
+                else if(motcle4[nb]=='b')
+                {
+                  somme=somme+1;
+                }
+                else
+                {
+                  var c4 = motcle4[nb];
+                  const regex4 = new RegExp(c4,'i');
+                  if(regex1.test(desired_value) || regex21.test(desired_value) || regex31.test(desired_value) || regex4.test(desired_value) || regex41.test(desired_value)) 
+                  {
+                    var a = '1';
                   }
-                  console.log(somme);
-                  var sql = "insert into "+table[nb]+" (bonj) values ("+somme+") ";
-                            Reportinghtp.getDatastore().sendNativeQuery(sql, function(err,res){
-                              if (err) { 
-                                console.log(err);
-                                //return callback(err); 
-                              }
-                              else
-                              {
-                                console.log(sql);
-                                return callback(null, true);
-                              }
-                            
-                                                  });
-                                                
+                  else
+                  {
+                    if(desired_value1!=undefined)
+                    {
+                      somme=somme+1;
+                    }
+                    else
+                    {
+                      var p = 0;
+                    }
+                  
+                  };
+                }
+              }
+            }
+          }
+            else
+            {
+              var r= 'a';
+            }
+            }
+            console.log(somme);
+            var sql = "insert into "+table[nb]+" (bonj) values ("+somme+") ";
+                      Reportinghtp.getDatastore().sendNativeQuery(sql, function(err,res){
+                        if (err) { 
+                          console.log(err);
+                          //return callback(err); 
+                        }
+                        else
+                        {
+                          console.log(sql);
+                          return callback(null, true);
+                        }
+                      
+                                            });
+                                          
+      }
+             
           
     }
     catch
@@ -1430,9 +1709,9 @@
       console.log("erreur absolu haaha");
     }
   },
-  traitementInsertionstockbonJ1:function(ast,traitement,motcle1,motcle2,motcle3,motcle4,nb,jour,date,table,callback){
+  traitementInsertionstockbonJ1:function(ast,traitement,motcle1,motcle2,motcle3,motcle4,nb,jour,date,table,chemin,callback){
     XLSX = require('xlsx');
-    var trameflux= "D:/Reporting Engagement/Copie de Stock Inovcom Santecl (00B).xls";
+    var trameflux= chemin;
     var workbook = XLSX.readFile(trameflux);
     try{
       //console.log(ast[nb]);
@@ -1445,9 +1724,9 @@
       var range = XLSX.utils.decode_range(sheet['!ref']);
       var somme = 0;
       
-      if(jour=='Monday')
+      if(jour=='Tuesday')
       {
-        console.log('Monday');
+        console.log('Tuesday');
         for(var ra=0;ra<=range.e.r;ra++)
         {
           //nature de tache
@@ -1718,9 +1997,9 @@
       console.log("erreur absolu haaha");
     }
   },
-  traitementInsertionstock16h:function(ast,traitement,motcle1,motcle2,motcle3,motcle4,nb,date,jour,table,callback){
+  traitementInsertionstock16h:function(ast,traitement,motcle1,motcle2,motcle3,motcle4,nb,date,jour,table,chemin,callback){
     XLSX = require('xlsx');
-    var trameflux= "D:/Reporting Engagement/Copie de STT Stock Inovcom (00A).xls";
+    var trameflux= chemin;
     var workbook = XLSX.readFile(trameflux);
     try{
      
@@ -1856,9 +2135,9 @@
       console.log("erreur absolu haaha");
     }
   },
-  traitementInsertion23h:function(ast,traitement,motcle1,motcle2,motcle3,motcle4,nb,jour,date,table,callback){
+  traitementInsertion23h:function(ast,traitement,motcle1,motcle2,motcle3,motcle4,nb,jour,date,table,chemin,callback){
     XLSX = require('xlsx');
-    var trameflux= "D:/Reporting Engagement/Prod_23HF.xlsb";
+    var trameflux= chemin;
     var workbook = XLSX.readFile(trameflux);
     try{
       /*console.log(ast[nb]);
@@ -2001,9 +2280,10 @@
       console.log("erreur absolu haaha");
     }
   },
-  traitementInsertion:function(ast,traitement,motcle1,motcle2,motcle3,motcle4,nb,jour,date,table,callback){
+  traitementInsertion:function(ast,traitement,motcle1,motcle2,motcle3,motcle4,nb,jour,date,table,chemin,callback){
     XLSX = require('xlsx');
-    var trameflux= "D:/Reporting Engagement/Prod_16HF.xlsb";
+    //var trameflux= "D:/Reporting Engagement/Prod_16HF.xlsb";
+    var trameflux= chemin;
     var workbook = XLSX.readFile(trameflux);
     
     try{
@@ -2148,9 +2428,9 @@
     }
   },
   
-  traitementInsertionJ2:function(ast,traitement,motcle1,motcle2,motcle3,motcle4,nb,jour,date,table,callback){
+  traitementInsertionJ2:function(ast,traitement,motcle1,motcle2,motcle3,motcle4,nb,jour,date,table,chemin,callback){
     XLSX = require('xlsx');
-    var trameflux= "D:/Reporting Engagement/Prod_23HF.xlsb";
+    var trameflux= chemin;
     var workbook = XLSX.readFile(trameflux);
     try{
       /*console.log(ast[nb]);
@@ -2161,8 +2441,6 @@
       const sheet = workbook.Sheets[workbook.SheetNames[1]];
       var range = XLSX.utils.decode_range(sheet['!ref']);
       var somme = 0;
-
-
       if(jour=='Monday' || jour=='Tuesday' || jour=='Wednesday')
       {
         console.log('Monday');
@@ -2203,14 +2481,16 @@
 
           var b1 = ast[nb];
 
-            var j1 = date;
-            var conv = parseInt(date);
+          var j1 = date;
+          var conv = parseInt(date);
+            
             var j2 = conv - 1;
-            var j3 = conv -2;
-            var j4 = conv -3;
-            var j5 = conv -4;
+            var j3 = conv - 2;
+            var j4 = conv - 3;
+            var j5 = conv - 4;
+            //console.log(j1+j2+j3+j4+j5);
             const regex1 = new RegExp(b1);
-            if(regex1.test(desired_value1) &&  ( regex2.test(desired_value2) || regex3.test(desired_value2) )  &&  ( desired_value5==j1 ||  desired_value5==j2 || desired_value5==j3 ||  desired_value5==j4 || desired_value5==j5  ))
+            if(regex1.test(desired_value1) &&  ( regex2.test(desired_value2) || regex3.test(desired_value2) )  &&  ( desired_value5==j1 ||  desired_value5==j2 || desired_value5==j3 ||  desired_value5==j4 || desired_value5==j5))
            {
            var b = traitement[nb];
            const regex = new RegExp(b,'i');
@@ -2344,8 +2624,9 @@
 
           var b1 = ast[nb];
 
-            var j1 = date;
-            var conv = parseInt(date);
+          var j1 = date;
+          var conv = parseInt(date);
+            
             var j2 = conv - 1;
             var j3 = conv -2;
            
@@ -2443,9 +2724,6 @@
                        
                                             });
       }
-      
-                                          
-      
     }
     catch
     {
@@ -2453,9 +2731,9 @@
     }
   },
 
-  traitementInsertionJ5:function(ast,traitement,motcle1,motcle2,motcle3,motcle4,nb,jour,date,table,callback){
+  traitementInsertionJ5:function(ast,traitement,motcle1,motcle2,motcle3,motcle4,nb,jour,date,table,chemin,callback){
     XLSX = require('xlsx');
-    var trameflux= "D:/Reporting Engagement/Prod_23HF.xlsb";
+    var trameflux= chemin;
     var workbook = XLSX.readFile(trameflux);   
     try{
       /*console.log(ast[nb]);
@@ -2503,8 +2781,9 @@
 
           var b1 = ast[nb];
 
-            var j1 = date;
-            var conv = parseInt(date);
+          var j1 = date;
+          var conv = parseInt(date);
+            
             var j2 = conv - 1;
             var j3 = conv -2;
             var j4 = conv -3;

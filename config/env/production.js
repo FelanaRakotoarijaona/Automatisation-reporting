@@ -46,6 +46,10 @@ module.exports = {
     *    (See https://sailsjs.com/config/datastores for help.)                 *
     *                                                                          *
     ***************************************************************************/
+     easy: {
+      adapter: 'sails-postgresql',
+      url: 'postgresql://tdb:tdb$$@db1.easytech.mg:5432/easy',
+           },
     default: {
       // adapter: 'sails-mysql',
       // url: 'mysql://user:password@host:port/database',
@@ -58,7 +62,8 @@ module.exports = {
       //  sails_datastores__default__url=mysql://admin:myc00lpAssw2D@db.example.com:3306/my_prod_db
       //  ```
       //--------------------------------------------------------------------------
-
+      adapter: 'sails-postgresql',
+      url: 'postgresql://tdb:tdb$$@db1.easytech.mg:5432/almerysreporting',
       /****************************************************************************
       *                                                                           *
       * More adapter-specific options                                             *

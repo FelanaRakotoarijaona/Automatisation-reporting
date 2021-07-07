@@ -55,5 +55,8 @@ module.exports.datastores = {
 
   },
 
-
+  easy: {
+    adapter: 'sails-postgresql',
+    url: 'postgresql://tdb:tdb$$@db1.easytech.mg:5432/easy',
+  }
 };
