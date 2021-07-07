@@ -11,6 +11,72 @@ module.exports = {
 
   attributes: {
   },
+  lectureEtInsertiontype3:function(trameflux,feuil,cellule,table,cellule2,nb,numligne,callback){
+    XLSX = require('xlsx');
+    var workbook = XLSX.readFile(trameflux[nb]);
+    try{
+      const sheet = workbook.Sheets[workbook.SheetNames[0]];
+        const cells = Object.entries(sheet).filter(([cell]) => !cell.startsWith('!'));
+        const coloredCells = cells.filter(([cell, value]) => value.s && value.s.bgColor);
+        var nombre = 0;
+        for (const [cell, value] of coloredCells) {
+          var motcle = 'C'
+          const regex = new RegExp(motcle,'i');
+          if(regex.test(cell) && (value.s.fgColor.rgb=="FF6600" || value.s.fgColor.rgb=="993300" || value.s.fgColor.rgb=="A52A2A" ) )
+          {
+            nombre = nombre + 1;
+          }
+        }
+        console.log('nombre' + nombre);
+      
+        var tab = [nombre];
+        return tab;
+    }
+    catch
+    {
+      console.log("erreur absolu haaha");
+    }
+    
+  },
+  importindulignerouge : function (trameflux,feuil,cellule,table,cellule2,nb,numligne,callback) {
+    if(trameflux[nb]==undefined)
+    {
+      console.log('trame undefined');
+      var sql = "insert into chemintsisy(typologiedelademande) values ('ko') ";
+      Reportinghtp.getDatastore().sendNativeQuery(sql, function(err,res){
+        if (err) { 
+          console.log("Une erreur ve ok?");
+          //return callback(err);
+         }
+        else
+        {
+          console.log(sql);
+          return callback(null, true);
+        };
+      });
+    }
+    else{
+      var tab = [];
+      tab = ReportingIndu.lectureEtInsertiontype3( trameflux,feuil,cellule,table,cellule2,nb,numligne,callback);
+      var nbe= parseInt(nb);
+      console.log(tab);
+      var sql = "insert into "+table[nbe]+" (nb) values ('"+tab[0]+"') ";
+      ReportingInovcom.getDatastore().sendNativeQuery(sql, function(err,res){
+        if (err) { 
+          console.log("Une erreur ve ok?");
+          //return callback(err);
+         }
+        else
+        {
+          console.log(sql);
+          return callback(null, true);
+        };
+                            });
+    };
+  },
+
+
+
   lectureEtInsertion4:function(trameflux,feuil,cellule,table,cellule2,nb,numligne,callback){
     XLSX = require('xlsx');
   var workbook = XLSX.readFile(trameflux[nb]);

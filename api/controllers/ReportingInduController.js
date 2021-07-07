@@ -120,7 +120,7 @@ module.exports = {
                           }
                           else
                           {
-                            return res.view('Indu/accueil', {date : datetest});
+                            return res.view('Indu/accueil3', {date : datetest});
                             
                           };
                       });
@@ -143,7 +143,7 @@ module.exports = {
     var f = tomorrow.setDate(today.getDate()- 1);
     var date2=dateFormat(f,"shortDate");
     console.log(date2);
-    var sql1= 'select count(*) as nb from cheminindu;';
+    var sql1= 'select count(*) as nb from cheminindu3;';
     Reportinghtp.getDatastore().sendNativeQuery(sql1,function(err, nc1) {
       if (err){
         console.log(err);
@@ -154,7 +154,7 @@ module.exports = {
         nc1 = nc1.rows;
         var nbs = nc1[0].nb;
         var x = parseInt(nbs);
-    var sql= 'select * from cheminindu limit' + " " + x ;
+    var sql= 'select * from cheminindu3 limit' + " " + x ;
     Reportinghtp.query(sql,function(err, nc) {
       if (err){
         console.log(err);
@@ -209,7 +209,7 @@ module.exports = {
                   async.forEachSeries(nbre, function(lot, callback_reporting_suivant) {
                     async.series([
                       function(cb){
-                        ReportingIndu.importTrameFlux929(trameflux,feuil,cellule,table,cellule2,lot,numligne,date2,cb);
+                        ReportingIndu.importindulignerouge(trameflux,feuil,cellule,table,cellule2,lot,numligne,cb);
                       }, 
                     ],function(erroned, lotValues){
                       if(erroned) return res.badRequest(erroned);
