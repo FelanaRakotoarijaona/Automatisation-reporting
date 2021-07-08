@@ -435,18 +435,20 @@ importTrameFlux929type4 : async function (trameflux,feuil,cellule,table,cellule2
       const cmd=require('node-cmd');
       const newWorkbook = new Excel.Workbook();
       try{
+        console.log(trameflux[nb]);
       await newWorkbook.xlsx.readFile(trameflux[nb]);
       // var feuille = newWorkbook.getWorksheet();
       var test = newWorkbook.worksheets;
-      var essaie = parseInt(test.length) - 1;
-      console.log(essaie);
-      for(var y=0;y<essaie;y++) //parcours anle dossier rehetra
+      console.log(test.length);
+      //var essaie = parseInt(test.length) - 1;
+      //console.log(essaie);
+      /*for(var y=0;y<essaie;y++) //parcours anle dossier rehetra
       {
         /*var j = parseInt(tab[y]);*/
-        console.log(y);
+        /*console.log(y);
         ReportingInovcom.lectureEtInsertiontype5v2(trameflux,y,cellule,table,cellule2,nb,numligne,callback);
       // ReportingInovcom.lectureEtInsertion(trameflux,feuil,cellule,table,cellule2,j,callback)
-      }
+      }*/
       }
       catch
       {
