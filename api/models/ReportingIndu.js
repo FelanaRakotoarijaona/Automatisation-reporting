@@ -2797,7 +2797,8 @@ ecritureOkKo : async function (nombre_ok_ko, table,date_export,mois1,callback) {
           colDate2 = parseInt(colNumber);
           var man = newworksheet.getRow(3);
           var f = man.getCell(colDate2).value;
-          if(f == iniValue.ok)
+          var getko_ini = man.getCell(colDate2).address;
+        if(getko_ini == iniValue.ko+3 && f == iniValue.ok)
           {
             collonne = parseInt(colNumber);
           }
@@ -2805,6 +2806,7 @@ ecritureOkKo : async function (nombre_ok_ko, table,date_export,mois1,callback) {
       });
       console.log(" Colnumber2"+collonne);
       numeroLigne.getCell(collonne).value = nombre_ok_ko.ok;
+      console.log(nombre_ok_ko.ok);
       await newWorkbook.xlsx.writeFile(path_reporting);
       sails.log("Ecriture OK KO terminé"); 
       return callback(null, "OK");
