@@ -2439,7 +2439,7 @@ module.exports = {
               function(err)
               {
                 console.log('vofafa ddol');
-                return res.view('Inovcom/exportexcelinovcom2', {date : datetest});
+                return res.view('Inovcom/exportexcelinovcom10', {date : datetest});
               }); 
         };
     });
