@@ -443,19 +443,19 @@ importTrameFlux929type4 : async function (trameflux,feuil,cellule,table,cellule2
       console.log(test2);
       var test3 = newWorkbook.Sheets.length;
       console.log(test3);*/
-      var test = newWorkbook.SheetNames.length;
-      console.log(test);
+      var test = newWorkbook.worksheets;
+      var essaie = parseInt(test.length)+1;
       /*var essaie = parseInt(test.length);
       console.log(essaie + 'ed');
       //var essaie = parseInt(test.length) - 1;
-      //console.log(essaie);
-      /*for(var y=0;y<essaie;y++) //parcours anle dossier rehetra
+      //console.log(essaie);*/
+      for(var y=0;y<essaie;y++) //parcours anle dossier rehetra
       {
         /*var j = parseInt(tab[y]);*/
-        /*console.log(y);
+        /*console.log(y);*/
         ReportingInovcom.lectureEtInsertiontype5v2(trameflux,y,cellule,table,cellule2,nb,numligne,callback);
       // ReportingInovcom.lectureEtInsertion(trameflux,feuil,cellule,table,cellule2,j,callback)
-      }*/
+      }
       }
       catch
       {
@@ -809,7 +809,7 @@ lectureEtInsertiontype4:function(trameflux,feuil,cellule,table,cellule2,nb,numli
       await newWorkbook.xlsx.readFile(trameflux[0]);
       // var feuille = newWorkbook.getWorksheet();
       var test = newWorkbook.worksheets;
-      var essaie = parseInt(test.length) - 1;
+      var essaie = parseInt(test.length)+1;
       console.log('valeur'+essaie);
       for(var y=0;y<essaie;y++) //parcours anle dossier rehetra
       {
