@@ -14,22 +14,24 @@
             <br><br>
             <div class="col-md-offset-6 col-md-5">
                 <br><br><br><br><br>
-                <form method="POST" action="/traitementTpstpc" style="background-color:white;height:300px;width:600px;margin-left: 80px;box-shadow: 5px 5px 5px 5px grey;">
+                <form method="POST" action="/traitementsuivant" style="background-color:white;height:300px;width:600px;margin-left: 80px;box-shadow: 5px 5px 5px 5px grey;">
                     <div class="form-group">
                         <br><br>
-                        <h4 style="margin-left: 50px;">Veuillez choisir la date de votre reporting</h4><br><br>
-                        <input type="date" class="form-control" name="date" id="d" style="margin-left: 5px;width: 390px;" required >
+                        <h4 style="margin-left: 50px;">>Cliquer sur suivant pour continuer</h4><br><br>
+                        <input type="date" class="form-control"  id="d" style="margin-left: 5px;width: 390px;" value="<%- date %>" name="date" readonly >
                         <div class="spinner-border" role="status" style="display: none;" id="snip">
                             <span class="visually-hidden"></span>
                           </div>
                     </div>
                     <br><br>
-                    <button type="submit" style="margin-left: 200px;"  style="background-color: grey;border-radius: 5px;"  onclick="affiche()" id="ok">Rechecher votre fichier</button>
+                    <button type="submit" style="margin-left: 200px;"  style="background-color: grey;border-radius: 5px;"  onclick="affiche()" id="ok">Suivant</button>
                 </form>
                 <br><br><br>
                 <br><br><br>
             </div>
     </div>
+   
+    
 </body>
 <script>
     function affiche(){

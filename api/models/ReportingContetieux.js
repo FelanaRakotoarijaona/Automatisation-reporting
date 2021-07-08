@@ -668,7 +668,10 @@ module.exports = {
               var a = 1;
             }
           };
-          var sql = "insert into "+table[nbe]+" (nbok,nbko) values ('"+nbrok+"','"+nbrko+"') ";
+          console.log("nombreeeeebr"+ nbrok + nbrko);
+          var tab = [nbrok,nbrko];
+          return tab;
+         /* var sql = "insert into "+table[nbe]+" (nbok,nbko) values ('"+nbrok+"','"+nbrko+"') ";
                       ReportingInovcom.getDatastore().sendNativeQuery(sql, function(err,res){
                         if(err)
                         {
@@ -680,7 +683,7 @@ module.exports = {
                           return callback(null, true);  
                         }       
                                             });
-          console.log("nombreeeeebr"+ nbrok + 'h' + nbrko);
+          console.log("nombreeeeebr"+ nbrok + 'h' + nbrko);*/
       }
       else
       {

@@ -1292,7 +1292,6 @@ module.exports = {
     var chem2 = [];
     var option2 = [];
     var nomBase = "chemininovcomtype7";
-    //workbook.xlsx.readFile('Inovcom.xlsx')
     workbook.xlsx.readFile('Inovcomserveur.xlsx')
         .then(function() {
           var newworksheet = workbook.getWorksheet('Feuil7');
@@ -1344,6 +1343,9 @@ module.exports = {
                   },
                 function(cb){
                     ReportingInovcom.importEssaitype7(table,cheminp,date,MotCle,0,nomtable[0],numligne[0],numfeuille[0],nomcolonne[0],nomcolonne2[0],nomcolonne3[0],chem2,option2,cb);
+                  },
+                function(cb){
+                    ReportingInovcom.importEssaitype7(table,cheminp,date,MotCle,1,nomtable[1],numligne[1],numfeuille[1],nomcolonne[1],nomcolonne2[1],nomcolonne3[1],chem2,option2,cb);
                   },
             ],
             function(err, resultat){
@@ -1439,10 +1441,12 @@ module.exports = {
                       var a =nc[i].colonnecible;
                       cellule.push(a);
                     };
+                    var nbre = [];
                     for(var i=0;i<nb;i++)
                     {
                       var a =nc[i].nomtable;
                       table.push(a);
+                      nbre.push(i);
                     };
                     for(var i=0;i<nb;i++)
                     {
@@ -1460,14 +1464,19 @@ module.exports = {
                       dernierl.push(a);
                     };
                     console.log(trameflux);
+                    async.forEachSeries(nbre, function(lot, callback_reporting_suivant) {
                     async.series([
                       function(cb){
                         ReportingInovcom.deleteHtp(table,nb,cb);
                       }, 
                       function(cb){
-                        ReportingInovcom.importTrameFlux929type7(trameflux,feuil,cellule,table,cellule2,nb,numligne,dernierl,cb);
+                        ReportingInovcom.importTrameFlux929type7(trameflux,feuil,cellule,table,cellule2,lot,numligne,dernierl,cb);
                       }, 
-                    ],
+                    ],function(erroned, lotValues){
+                      if(erroned) return res.badRequest(erroned);
+                      return callback_reporting_suivant();
+                    });
+                  },
                     function(err, resultat){
                       if (err) { return res.view('Inovcom/erreur'); }
                       return res.view('Inovcom/exportexcelinovcom7', {date : datetest});
@@ -2019,7 +2028,7 @@ module.exports = {
         var MotCle= [];
         var chem2 = [];
         var option2 = [];
-        var r = [0,1,2,3,4];
+        var r = [0,1,2,3,4,5];
         var nomBase = "chemininovcomtype12";
         //workbook.xlsx.readFile('Inovcom.xlsx')
         workbook.xlsx.readFile('Inovcomserveur.xlsx')
@@ -2057,11 +2066,10 @@ module.exports = {
                 opt2.eachCell(function(cell, rowNumber) {
                   option2.push(cell.value);
                 });
-                console.log(cheminp[0]);
-                console.log(MotCle[0]);
+                //console.log(nomTable);
                 async.series([  
                     function(cb){
-                        ReportingInovcom.deleteFromChemin11(table,cb);
+                        ReportingInovcom.deleteFromChemin12(table,cb);
                       },
                 ],
                 function(err, resultat){

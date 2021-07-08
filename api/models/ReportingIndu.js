@@ -13,19 +13,24 @@ module.exports = {
   },
   lectureEtInsertiontype3:function(trameflux,feuil,cellule,table,cellule2,nb,numligne,callback){
     XLSX = require('xlsx');
-    var workbook = XLSX.readFile(trameflux[nb]);
+    var workbook = XLSX.readFile(trameflux[nb],
+      {
+        cellStyles: true
+      });
     try{
       const sheet = workbook.Sheets[workbook.SheetNames[0]];
         const cells = Object.entries(sheet).filter(([cell]) => !cell.startsWith('!'));
         const coloredCells = cells.filter(([cell, value]) => value.s && value.s.bgColor);
         var nombre = 0;
         for (const [cell, value] of coloredCells) {
+          //console.log('v' + value.s.fgColor.rgb);
           var motcle = 'C'
           const regex = new RegExp(motcle,'i');
           if(regex.test(cell) && (value.s.fgColor.rgb=="FF6600" || value.s.fgColor.rgb=="993300" || value.s.fgColor.rgb=="A52A2A" ) )
           {
             nombre = nombre + 1;
-          }
+          };
+
         }
         console.log('nombre' + nombre);
       

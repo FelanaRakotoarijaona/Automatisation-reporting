@@ -123,8 +123,8 @@
 
         var motcle = cellule[nb];
         const regex = new RegExp(motcle,'i');
-        
-        if(regex.test(desired_value1))
+        //console.log('motcle'+ motcle)
+        if(regex.test(desired_value))
         {
           col2=ra;
         };
@@ -799,8 +799,117 @@ lectureEtInsertiontype4:function(trameflux,feuil,cellule,table,cellule2,nb,numli
       console.log("Erreur trouvé");
     }
   },
+  lectureEtInsertionDefraiment:function(trameflux,feuil,cellule,table,cellule2,nb,numligne,callback){
+    XLSX = require('xlsx');
+  var workbook = XLSX.readFile(trameflux[nb]);
+  var numerofeuille = feuil[nb];
+  var numeroligne = parseInt(numligne[nb]);
+  try{
+    var nbr = 0;
+    var nbrko = 0;
+    const sheet = workbook.Sheets[workbook.SheetNames[numerofeuille]];
+    var range = XLSX.utils.decode_range(sheet['!ref']);
+    var col=0;
+    var nbe = parseInt(nb);
+    console.log("colonne"+col);
+   if(col!=undefined )
+    {
+      var debutligne = numeroligne + 1;
+      for(var a=debutligne;a<=range.e.r;a++)
+        {
+          var address_of_cell = {c:col, r:a};
+          var cell_ref = XLSX.utils.encode_cell(address_of_cell);
+          var desired_cell = sheet[cell_ref];
+          var desired_value1 = (desired_cell ? desired_cell.v : undefined);
+          
+         var ok = 'OK';
+         var ko = 'KO';
+         const regexok = new RegExp(ok,'i');
+         const regexko = new RegExp(ko,'i');
+         if(regexok.test(desired_value1))
+         {
+           nbr=nbr+1;
+         }
+         if(regexko.test(desired_value1))
+         {
+           nbrko=nbrko+1;
+         }
+         else
+         { 
+           var m = 4;
+         }
+          
+        };  
+    }
+    else
+    {
+      console.log('Colonne non trouvé');
+    };
+    console.log("nombreeeeebr"+ nbr + 'et' + nbrko );
+    var tab = [nbr,nbrko];
+    return tab;
+    /*var tab = [nbr,nbrko,nbrokrib];
+    return tab;*/
+  }
+  catch
+  {
+    console.log("erreur absolu haaha");
+  };
+},
   importTrameFlux929type7 : function (trameflux,feuil,cellule,table,cellule2,nb,numligne,dernierl,callback) {
-    var tab = [];
+    if(trameflux[nb]==undefined)
+    {
+      console.log('trame undefined');
+      var sql = "insert into chemintsisy(typologiedelademande) values ('ko') ";
+      Reportinghtp.getDatastore().sendNativeQuery(sql, function(err,res){
+        if (err) { 
+          console.log("Une erreur ve ok?");
+          //return callback(err);
+         }
+        else
+        {
+          console.log(sql);
+          return callback(null, true);
+        };
+      });
+    }
+    else if(table[nbe]=="defraiment")
+      {
+        console.log('defraiment');
+        tab = ReportingInovcom.lectureEtInsertionDefraiment(trameflux,feuil,cellule,table,cellule2,nb,numligne,callback);
+        console.log(tab);
+        var sql = "insert into "+table[nbe]+" (typologiedelademande,okko) values ('"+tab[0]+"','"+tab[1]+"') ";
+                   ReportingInovcom.getDatastore().sendNativeQuery(sql, function(err,res){
+                      if (err) { 
+                        console.log("Une erreur ve insertion?");
+                        return callback(err);
+                       }
+                      else
+                      {
+                        console.log(sql);
+                        return callback(null, true);
+                      };     
+                                          });
+      }
+    else{
+      var tab = [];
+      tab = ReportingInovcom.lectureEtInsertiontype7(trameflux,feuil,cellule,table,cellule2,nb,numligne,callback);
+      var nbe= parseInt(nb);
+      console.log(tab);
+      var sql = "insert into "+table[nbe]+" (typologiedelademande,okko) values ('"+tab[0]+"','"+tab[1]+"')";
+      ReportingInovcom.getDatastore().sendNativeQuery(sql, function(err,res){
+        if (err) { 
+          console.log("Une erreur ve ok?");
+          //return callback(err);
+        }
+        else
+        {
+          console.log(sql);
+          return callback(null, true);
+        };
+                            });
+    };
+   /* var tab = [];
     tab = ReportingInovcom.totalFichierExistant(trameflux,nb,callback);
     console.log(tab);
     if(tab.length==0)
@@ -814,10 +923,10 @@ lectureEtInsertiontype4:function(trameflux,feuil,cellule,table,cellule2,nb,numli
       var j = parseInt(tab[y]);
       console.log(j);
       ReportingInovcom.lectureEtInsertiontype7( trameflux,feuil,cellule,table,cellule2,j,numligne,dernierl,callback)
-    // ReportingInovcom.lectureEtInsertion(trameflux,feuil,cellule,table,cellule2,j,callback)
     }
-    };
+    };*/
   },
+  
   lectureEtInsertiontype7:function(trameflux,feuil,cellule,table,cellule2,nb,numligne,dernierl,callback){
     XLSX = require('xlsx');
     var workbook = XLSX.readFile(trameflux[nb]);
@@ -932,7 +1041,7 @@ lectureEtInsertiontype4:function(trameflux,feuil,cellule,table,cellule2,nb,numli
           };
           console.log('nb =' + tabok);
           console.log('nb2 =' + taboki);
-          var sql = "insert into hospidematrejetprive (typologiedelademande,okko) values ('"+tabok+"','"+taboki+"') ";
+          /*var sql = "insert into hospidematrejetprive (typologiedelademande,okko) values ('"+tabok+"','"+taboki+"') ";
                       ReportingInovcom.getDatastore().sendNativeQuery(sql, function(err,res){
                         if (err) { 
                           console.log("Une erreur ve hospidematrejetprive?");
@@ -943,13 +1052,14 @@ lectureEtInsertiontype4:function(trameflux,feuil,cellule,table,cellule2,nb,numli
                           console.log(sql);
                           return callback(null, true);
                         };          
-                                           });
+                                           });*/
       }
       else
       {
         console.log('Colonne non trouvé');
       };
-      
+      var tab = [tabok,taboki];
+      return tab;
     }
     catch
     {
@@ -1160,6 +1270,16 @@ lectureEtInsertiontype4:function(trameflux,feuil,cellule,table,cellule2,nb,numli
         return callback(null, true);
         });
     },
+    deleteFromChemin12 : function (table,callback) {
+      var sql = "delete from chemininovcomtype12 ";
+      ReportingInovcom.getDatastore().sendNativeQuery(sql, function(err, res){
+        if (err) {
+           //return callback(err); 
+           console.log('une erreur de suppression');
+          }
+        return callback(null, true);
+        });
+    },
     deleteFromChemin11 : function (table,callback) {
       var sql = "delete from chemininovcomtype11 ";
       ReportingInovcom.getDatastore().sendNativeQuery(sql, function(err, res){
@@ -1273,7 +1393,7 @@ lectureEtInsertiontype4:function(trameflux,feuil,cellule,table,cellule2,nb,numli
           fs.accessSync(pathparam, fs.constants.F_OK);
         
         }catch(e){
-          //console.log(e);
+          console.log(e);
           existe = 'faux';
           console.log('chemin diso');
         }
@@ -1848,10 +1968,9 @@ importEssaitype7: function (table,table2,date,option,nb,nomtable,numligne,numfeu
   var b1 = option2[nb];
   
   console.log('ch1' + ab);
-  console.log('ch2' + ab1);
   
   var c = ReportingInovcom.existenceFichier(ab);
-  var d = ReportingInovcom.existenceFichier(ab1);
+  //var d = ReportingInovcom.existenceFichier(ab1);
   console.log(c);
   if(c=='vrai')
   {
@@ -1927,7 +2046,7 @@ importEssaitype7: function (table,table2,date,option,nb,nomtable,numligne,numfeu
      };
   });
  }
- else if(d=='vrai')
+ /*else if(d=='vrai')
   {
    fs.readdir(ab1, (err, files) => {
      if(err){
@@ -2001,7 +2120,7 @@ importEssaitype7: function (table,table2,date,option,nb,nomtable,numligne,numfeu
        });
      };
   });
- }
+ }*/
   else
   {
     var sql = "insert into chemintsisy (typologiedelademande) values ('k') ";
