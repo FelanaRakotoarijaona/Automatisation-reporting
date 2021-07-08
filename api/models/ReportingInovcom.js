@@ -648,7 +648,7 @@ lectureEtInsertiontype4:function(trameflux,feuil,cellule,table,cellule2,nb,numli
   lectureEtInsertiontype5v2:function(trameflux,feuil,cellule,table,cellule2,nb,numligne,callback){
     XLSX = require('xlsx');
     var workbook = XLSX.readFile(trameflux[nb]);
-    var numerofeuille = feuil;
+    var numerofeuille = parseInt(feuil);
     var numeroligne = numligne[0];
     console.log(trameflux[0]);
     console.log(numeroligne);
@@ -656,7 +656,7 @@ lectureEtInsertiontype4:function(trameflux,feuil,cellule,table,cellule2,nb,numli
     var nbr = 0;
     var nbrko = 0;
     try{
-      const sheet = workbook.Sheets[workbook.SheetNames[nb]];
+      const sheet = workbook.Sheets[workbook.SheetNames[numerofeuille]];
       var range = XLSX.utils.decode_range(sheet['!ref']);
       var col ;
       console.log('Nombre de colonne' + range.e.c);
@@ -667,7 +667,9 @@ lectureEtInsertiontype4:function(trameflux,feuil,cellule,table,cellule2,nb,numli
         var cell_ref = XLSX.utils.encode_cell(address_of_cell);
         var desired_cell = sheet[cell_ref];
         var desired_value = (desired_cell ? desired_cell.v : undefined);
-        if(desired_value==cellule[0])
+        var mc= cellule[nb];
+        const regex = new RegExp(mc,'i');
+        if(regex.test(desired_value))
         {
           col=ra;
         }
