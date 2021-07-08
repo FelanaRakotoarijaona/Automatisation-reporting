@@ -24,7 +24,7 @@ module.exports = {
       var range = XLSX.utils.decode_range(sheet['!ref']);
       var col = 0;
       var nbe = parseInt(nb);
-      /*if(col!=undefined)
+      if(col!=undefined)
       {
         var debutligne = numeroligne + 1;
         for(var a=debutligne;a<=range.e.r;a++)
@@ -39,18 +39,22 @@ module.exports = {
             var desired_cell1 = sheet[cell_ref1];
             var desired_value2 = (desired_cell1 ? desired_cell1.w : undefined);
 
-
+            console.log('mba ato ar ve e');
+            console.log(desired_value1 + desired_value2);
             if(desired_value2!=undefined && (desired_value1<desired_value2))
             {
               nbrok=nbrok + 1;
+              console.log('aryy atoo');
+
             }
             else if(desired_value2==undefined && (desired_value1!=undefined) || (desired_value2!=undefined && (desired_value1>desired_value2)))
             {
               nbrko=nbrko + 1;
+              console.log('aryy atoo 2');
             }
             else
             {
-              var a = 1;
+              var s = 1;
             }
           };
           console.log("nombreeeeebr"+ nbrok + nbrko);
@@ -69,13 +73,13 @@ module.exports = {
                         }       
                                             });
           console.log("nombreeeeebr"+ nbrok + 'h' + nbrko);*/
-      /*}
+      }
       else
       {
         console.log('Colonne non trouvé');
-      }*/
-      var tab = ['0','5'];
-      return tab;
+      }
+      /*var tab = ['0','5'];
+      return tab;*/
     }
     catch
     {
