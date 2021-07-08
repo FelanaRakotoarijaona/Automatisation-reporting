@@ -432,15 +432,16 @@ importTrameFlux929type4 : async function (trameflux,feuil,cellule,table,cellule2
   {
       console.log('favpharma');
       const Excel = require('exceljs');
-      const cmd=require('node-cmd');
       const newWorkbook = new Excel.Workbook();
       try{
         console.log(trameflux[nb]);
       await newWorkbook.xlsx.readFile(trameflux[nb]);
       // var feuille = newWorkbook.getWorksheet();
       //var test = newWorkbook.worksheets;
-      var test = newWorkbook.SheetNames.length;
-      console.log(test);
+      //var test = newWorkbook.SheetNames.length;
+      var test = newWorkbook.worksheets;
+      var essaie = parseInt(test.length);
+      console.log(essaie + 'ed');
       //var essaie = parseInt(test.length) - 1;
       //console.log(essaie);
       /*for(var y=0;y<essaie;y++) //parcours anle dossier rehetra
