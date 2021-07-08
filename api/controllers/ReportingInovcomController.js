@@ -1464,6 +1464,7 @@ module.exports = {
                       dernierl.push(a);
                     };
                     console.log(trameflux);
+                    console.log(dernierl + 'colonne c3');
                     async.forEachSeries(nbre, function(lot, callback_reporting_suivant) {
                     async.series([
                       function(cb){
