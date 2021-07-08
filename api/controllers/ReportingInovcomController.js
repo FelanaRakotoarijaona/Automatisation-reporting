@@ -482,7 +482,7 @@ module.exports = {
       console.log(date);
       var cheminp = [];
       var MotCle= [];
-      var r = [0,1,2];
+      var r = [0,1,2,3];
       var chem2 = [];
       var option2 = [];
       var nomBase = "chemininovcomtype3";
