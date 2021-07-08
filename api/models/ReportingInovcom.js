@@ -439,11 +439,11 @@ importTrameFlux929type4 : async function (trameflux,feuil,cellule,table,cellule2
       // var feuille = newWorkbook.getWorksheet();
       //var test = newWorkbook.worksheets;
       //var test = newWorkbook.SheetNames.length;
-      var test2 = newWorkbook.worksheets.sheetRows;
+      /*var test2 = newWorkbook.worksheets.sheetRows;
       console.log(test2);
       var test3 = newWorkbook.Sheets.length;
-      console.log(test3);
-      var test = newWorkbook.SheetNames;
+      console.log(test3);*/
+      var test = newWorkbook.SheetNames.length;
       console.log(test);
       /*var essaie = parseInt(test.length);
       console.log(essaie + 'ed');
