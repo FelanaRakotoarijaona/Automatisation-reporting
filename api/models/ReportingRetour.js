@@ -12,12 +12,11 @@ module.exports = {
   attributes: {
   },
   lectureEtInsertiontype22:function(trameflux,feuil,cellule,table,cellule2,nb,numligne,callback){
-    /*var tab = ['0','4'];
-    return tab;*/
    XLSX = require('xlsx');
     var workbook = XLSX.readFile(trameflux[nb]);
     var numerofeuille = feuil[nb];
     var numeroligne = parseInt(numligne[nb]);
+    console.log(trameflux[nb] + numerofeuille + numerofeuille + 'hihi');
     try{
       var nbrok = 0;
       var nbrko = 0;
@@ -25,7 +24,7 @@ module.exports = {
       var range = XLSX.utils.decode_range(sheet['!ref']);
       var col = 0;
       var nbe = parseInt(nb);
-      if(col!=undefined)
+      /*if(col!=undefined)
       {
         var debutligne = numeroligne + 1;
         for(var a=debutligne;a<=range.e.r;a++)
@@ -70,12 +69,13 @@ module.exports = {
                         }       
                                             });
           console.log("nombreeeeebr"+ nbrok + 'h' + nbrko);*/
-      }
+      /*}
       else
       {
         console.log('Colonne non trouvé');
-      }
-      
+      }*/
+      var tab = ['0','5'];
+      return tab;
     }
     catch
     {
@@ -103,10 +103,10 @@ module.exports = {
     }
    else if(table[nb]=="coldrcbtppublic")
     {
-      console.log('hehe coldrcbtppublic ato v'  );
-     /* var tab = [];
-      tab = ReportingRetour.lectureEtInsertiontype22( trameflux,feuil,cellule,table,cellule2,nb,numligne,callback);*/
-      var sql = "insert into "+table[nb]+" (nbok,nbko) values ('0','1') ";
+      console.log('hehe coldrcbtppublic ato v oooooooo');
+      var tab = [];
+      tab = ReportingRetour.lectureEtInsertiontype22( trameflux,feuil,cellule,table,cellule2,nb,numligne,callback);
+      /*var sql = "insert into "+table[nb]+" (nbok,nbko) values ('0','1') ";
                       ReportingInovcom.getDatastore().sendNativeQuery(sql, function(err,res){
                         if(err)
                         {
@@ -117,7 +117,7 @@ module.exports = {
                           console.log(sql);
                           return callback(null, true);  
                         }       
-                                            });
+                                            });*/
       
     }
     else if(table[nb]=="trpecaudio" || table[nb]=="trpecdentaire")
