@@ -103,10 +103,10 @@ module.exports = {
     }
    else if(table[nb]=="coldrcbtppublic")
     {
-      console.log('hehe coldrcbtppublic');
-      var tab = [];
-      tab = ReportingRetour.lectureEtInsertiontype22( trameflux,feuil,cellule,table,cellule2,nb,numligne,callback);
-      var sql = "insert into "+table[nb]+" (nbok,nbko) values ('"+nbrok+"','"+nbrko+"') ";
+      console.log('hehe coldrcbtppublic ato v'  );
+     /* var tab = [];
+      tab = ReportingRetour.lectureEtInsertiontype22( trameflux,feuil,cellule,table,cellule2,nb,numligne,callback);*/
+      var sql = "insert into "+table[nb]+" (nbok,nbko) values ('0','1') ";
                       ReportingInovcom.getDatastore().sendNativeQuery(sql, function(err,res){
                         if(err)
                         {
