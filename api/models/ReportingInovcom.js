@@ -810,7 +810,7 @@ lectureEtInsertiontype4:function(trameflux,feuil,cellule,table,cellule2,nb,numli
       // var feuille = newWorkbook.getWorksheet();
       var test = newWorkbook.worksheets;
       var essaie = parseInt(test.length) - 1;
-      console.log(essaie);
+      console.log('valeur'+essaie);
       for(var y=0;y<essaie;y++) //parcours anle dossier rehetra
       {
         /*var j = parseInt(tab[y]);*/
