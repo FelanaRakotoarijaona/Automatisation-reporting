@@ -1183,6 +1183,7 @@ lectureEtInsertiontype4:function(trameflux,feuil,cellule,table,cellule2,nb,numli
   };
   },
   importTrameFlux929type3 : function (trameflux,feuil,cellule,table,cellule2,nb,numligne,callback) {
+
     if(trameflux[nb]==undefined)
     {
       console.log('trame undefined');
@@ -1199,8 +1200,9 @@ lectureEtInsertiontype4:function(trameflux,feuil,cellule,table,cellule2,nb,numli
         };
       });
     }
-    else if(trameflux[nb]=='psfemajagaps')
+    else if(table[nb]=='psfemajagaps')
     {
+      console.log('maj agaps');
       for(var i =0;i<2;i++)
       {
         console.log('i'+ i);
