@@ -438,8 +438,9 @@ importTrameFlux929type4 : async function (trameflux,feuil,cellule,table,cellule2
         console.log(trameflux[nb]);
       await newWorkbook.xlsx.readFile(trameflux[nb]);
       // var feuille = newWorkbook.getWorksheet();
-      var test = newWorkbook.worksheets;
-      console.log(test.length);
+      //var test = newWorkbook.worksheets;
+      var test = newWorkbook.SheetNames.length;
+      console.log(test);
       //var essaie = parseInt(test.length) - 1;
       //console.log(essaie);
       /*for(var y=0;y<essaie;y++) //parcours anle dossier rehetra
