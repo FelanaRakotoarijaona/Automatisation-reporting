@@ -447,8 +447,8 @@ importTrameFlux929type4 : async function (trameflux,feuil,cellule,table,cellule2
       var essaie = parseInt(test.length)+1;
       /*var essaie = parseInt(test.length);
       console.log(essaie + 'ed');
-      //var essaie = parseInt(test.length) - 1;
-      //console.log(essaie);*/
+      //var essaie = parseInt(test.length) - 1;*/
+      console.log(essaie);
       for(var y=0;y<essaie;y++) //parcours anle dossier rehetra
       {
         /*var j = parseInt(tab[y]);*/
@@ -649,7 +649,7 @@ lectureEtInsertiontype4:function(trameflux,feuil,cellule,table,cellule2,nb,numli
     XLSX = require('xlsx');
     var workbook = XLSX.readFile(trameflux[nb]);
     var numerofeuille = parseInt(feuil);
-    var numeroligne = numligne[0];
+    var numeroligne = numligne[nb];
     console.log(trameflux[0]);
     console.log(numeroligne);
     console.log(numerofeuille);
@@ -663,7 +663,7 @@ lectureEtInsertiontype4:function(trameflux,feuil,cellule,table,cellule2,nb,numli
       console.log('Nombre de ligne' + range.e.r);
       for(var ra=0;ra<=range.e.c;ra++)
       {
-        var address_of_cell = {c:ra, r:numeroligne};
+        var address_of_cell = {c:ra, r:0};
         var cell_ref = XLSX.utils.encode_cell(address_of_cell);
         var desired_cell = sheet[cell_ref];
         var desired_value = (desired_cell ? desired_cell.v : undefined);
