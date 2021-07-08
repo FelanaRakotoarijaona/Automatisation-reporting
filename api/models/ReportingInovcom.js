@@ -462,8 +462,20 @@ importTrameFlux929type4 : async function (trameflux,feuil,cellule,table,cellule2
       var test = newWorkbook.worksheets;
       var essaie = parseInt(test.length) - 1;
       console.log(essaie);
-      ReportingInovcom.lectureEtInsertiontype4v2(trameflux,essaie,cellule,table,cellule2,nb,numligne,callback);
-      
+      var tab = [];
+      tab = ReportingInovcom.lectureEtInsertiontype4v2(trameflux,essaie,cellule,table,cellule2,nb,numligne,callback);
+      var sql = "insert into "+table[nb]+" (nbok,nbko) values ('"+tab[0]+"','"+tab[1]+"')";
+      ReportingInovcom.getDatastore().sendNativeQuery(sql, function(err,res){
+        if (err) { 
+          console.log("Une erreur ve ok?");
+          //return callback(err);
+         }
+        else
+        {
+          console.log(sql);
+          return callback(null, true);
+        };
+                            });
       }
       catch
       {
