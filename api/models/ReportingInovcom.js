@@ -460,7 +460,7 @@ importTrameFlux929type4 : async function (trameflux,feuil,cellule,table,cellule2
         console.log(trameflux[nb]);
       await newWorkbook.xlsx.readFile(trameflux[nb]);
       var test = newWorkbook.worksheets;
-      var essaie = parseInt(test.length);
+      var essaie = parseInt(test.length) - 1;
       console.log(essaie);
       ReportingInovcom.lectureEtInsertiontype4v2(trameflux,essaie,cellule,table,cellule2,nb,numligne,callback);
       
