@@ -613,7 +613,7 @@ lectureEtInsertiontype4:function(trameflux,feuil,cellule,table,cellule2,nb,numli
             };
           };
           console.log(nbr + 'et' + nbrko);
-          var sql = "insert into "+table[nb]+" (nbok,nbko) values ('"+nbr+"','"+nbrko+"') ";
+          var sql = "insert into fav (nbok,nbko) values ('"+nbr+"','"+nbrko+"') ";
                       ReportingInovcom.getDatastore().sendNativeQuery(sql, function(err,res){
                         if (err) { 
                           console.log("Une erreur ve fav?");
@@ -804,6 +804,7 @@ lectureEtInsertiontype4:function(trameflux,feuil,cellule,table,cellule2,nb,numli
       // var feuille = newWorkbook.getWorksheet();
       var test = newWorkbook.worksheets;
       var essaie = parseInt(test.length) - 1;
+      console.log(essaie);
       for(var y=0;y<essaie;y++) //parcours anle dossier rehetra
       {
         /*var j = parseInt(tab[y]);*/
