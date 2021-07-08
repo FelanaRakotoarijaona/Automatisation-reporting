@@ -668,13 +668,15 @@ lectureEtInsertiontype4:function(trameflux,feuil,cellule,table,cellule2,nb,numli
         var desired_cell = sheet[cell_ref];
         var desired_value = (desired_cell ? desired_cell.v : undefined);
         var mc= cellule[nb];
+        console.log('mc' + mc);
+        console.log(desired_value);
         const regex = new RegExp(mc,'i');
         if(regex.test(desired_value))
         {
           col=ra;
         }
       };
-      console.log('colonne cible' +col);
+      console.log('colonne ciblexx' +col);
       var tab = [];
       var tabl = [];
       if(col!=undefined)
