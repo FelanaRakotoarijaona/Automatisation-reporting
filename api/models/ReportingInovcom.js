@@ -428,6 +428,30 @@ importTrameFlux929type4 : function (trameflux,feuil,cellule,table,cellule2,nb,nu
         };
       });
     }
+  else if(table[nb]=='favpharma')
+  {
+    const Excel = require('exceljs');
+      const cmd=require('node-cmd');
+      const newWorkbook = new Excel.Workbook();
+      try{
+      await newWorkbook.xlsx.readFile(trameflux[0]);
+      // var feuille = newWorkbook.getWorksheet();
+      var test = newWorkbook.worksheets;
+      var essaie = parseInt(test.length) - 1;
+      for(var y=0;y<essaie;y++) //parcours anle dossier rehetra
+      {
+        /*var j = parseInt(tab[y]);*/
+        console.log(y);
+        ReportingInovcom.lectureEtInsertiontype5(trameflux,feuil,cellule,table,cellule2,y,numligne,callback);
+      // ReportingInovcom.lectureEtInsertion(trameflux,feuil,cellule,table,cellule2,j,callback)
+    }
+  }
+  catch
+  {
+    console.log('ko');
+  }
+  
+  }
   else{
     var tab = [];
     tab = ReportingInovcom.lectureEtInsertiontype4(trameflux,feuil,cellule,table,cellule2,nb,numligne,callback);
@@ -525,7 +549,7 @@ lectureEtInsertiontype4:function(trameflux,feuil,cellule,table,cellule2,nb,numli
   
 },
 
-/* type fin 4 */
+/* type fin 5 */
   lectureEtInsertiontype5:function(trameflux,feuil,cellule,table,cellule2,nb,numligne,callback){
     XLSX = require('xlsx');
     var workbook = XLSX.readFile(trameflux[0]);
@@ -564,11 +588,17 @@ lectureEtInsertiontype4:function(trameflux,feuil,cellule,table,cellule2,nb,numli
             var cell_ref = XLSX.utils.encode_cell(address_of_cell);
             var desired_cell = sheet[cell_ref];
             var desired_value1 = (desired_cell ? desired_cell.v : undefined);
-            if(desired_value1=='OK' || desired_value1=='ok')
+            var ok = 'OK';
+            const regexok = new RegExp(ok,'i');
+            var ko = 'KO';
+            const regexko = new RegExp(ko,'i');
+            var ko2 = 'Rejet def';
+            const regexko2 = new RegExp(ko2,'i');
+            if(regexok.test(desired_value1))
             {
               nbr=nbr + 1;
             }
-            if(desired_value1=='KO' || desired_value1=='ko')
+            if(regexko.test(desired_value1) || regexko2.test(desired_value1) )
             {
               nbrko=nbrko + 1;
             }
@@ -576,11 +606,9 @@ lectureEtInsertiontype4:function(trameflux,feuil,cellule,table,cellule2,nb,numli
             {
              var nbrtsisy = 1;
             };
-
-            
           };
           console.log(nbr + 'et' + nbrko);
-          var sql = "insert into fav (nbok,nbko) values ('"+nbr+"','"+nbrko+"') ";
+          var sql = "insert into "+table[nb]+" (nbok,nbko) values ('"+nbr+"','"+nbrko+"') ";
                       ReportingInovcom.getDatastore().sendNativeQuery(sql, function(err,res){
                         if (err) { 
                           console.log("Une erreur ve fav?");
@@ -2497,7 +2525,7 @@ importEssaitype8: function (table,table2,date,option,nb,type,type2,nomtable,numl
         console.log('colonne cible' +col);
         if(col!=undefined)
         {
-          var debutligne = numeroligne;
+          var debutligne = numeroligne + 1;
           for(var a=debutligne;a<=range.e.r;a++)
             {
               var address_of_cell = {c:col, r:a};
