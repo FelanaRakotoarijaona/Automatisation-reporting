@@ -197,6 +197,9 @@ module.exports.routes = {
    '/exportExcelIndu2' : 'ReportingInduController.rechercheColonne2',
    '/exportExcelin2' : 'ReportingInduController.accueilI2',
 
+   '/exportExcelIndu3' : 'ReportingInduController.rechercheColonne3',
+   '/exportExcelin3' : 'ReportingInduController.accueilI3',
+
   
    //Route RETOUR
    '/accueilRetour' : 'ReportingRetourController.accueil1',//1

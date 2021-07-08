@@ -219,7 +219,7 @@ module.exports = {
                   function(err)
                     {
                       console.log('vofafa ddol');
-                      return res.view('Indu/exportExcelIndu',{date : datetest});
+                      return res.view('Indu/exportExcelIndu3',{date : datetest});//exportExcelIndu3
                       //return res.redirect('/exportInovcom/'+dateexport +'/'+'<h1><h1>');
                     });
       };
@@ -1078,5 +1078,146 @@ rechercheColonne2 : function (req, res) {
     })
   })
 },
+/****************************************************************************************/
+rechercheColonne3 : function (req, res) {
+  var datetest = req.param("date",0);
+  var annee = datetest.substr(0, 4);
+  var mois = datetest.substr(5, 2);
+  var jour = datetest.substr(8, 2);
+  // var jour = req.param("jour");
+  // var mois = req.param("mois");
+  // var annee = req.param("annee");
+  var mois1 = 'Janvier' ;
+  if(mois==01)
+  {
+    mois1= 'Janvier';
+  };
+  if(mois==02)
+  {
+    mois1= 'Fevrier';
+  };
+  if(mois==03)
+  {
+    mois1= 'Mars';
+  };
+  if(mois==04)
+  {
+    mois1= 'Avril';
+  };
+  if(mois==05)
+  {
+    mois1= 'Mai';
+  };
+  if(mois==06)
+  {
+    mois1= 'Juin';
+  };
+  if(mois==07)
+  {
+    mois1= 'Juillet';
+  };
+  if(mois==08)
+  {
+    mois1= 'Aout';
+  };
+  if(mois==09)
+  {
+    mois1= 'Septembre';
+  };
+  if(mois==10)
+  {
+    mois1= 'Octobre';
+  };
+  if(mois==11)
+  {
+    mois1= 'Novembre';
+  };
+  if(mois==12)
+  {
+    mois1= 'Decembre';
+  };
+  console.log(mois1);
+  var date_export = jour + '/' + mois + '/' +annee;
+  console.log("RECHERCHE COLONNE");
+  async.series([
+    function (callback) {
+      ReportingIndu.countOkKoSum("indufraudeinterialej",callback);
+    },
+    function (callback) {
+      ReportingIndu.countOkKoSum("indufraudeinterialej1",callback);
+    },
+    function (callback) {
+      ReportingIndu.countOkKoSum("indufraudeinteriale12mois",callback);
+    },
+    function (callback) {
+      ReportingIndu.countOkKoSum("indufraudeinteriale15j",callback);
+    },
+    function (callback) {
+      ReportingIndu.countOkKoSum("indufraudeeolej",callback);
+    },
+    function (callback) {
+      ReportingIndu.countOkKoSum("indufraudeinterialej1",callback);
+    },
+    function (callback) {
+      ReportingIndu.countOkKoSum("indufraudeeole12mois",callback);
+    },
+    function (callback) {
+      ReportingIndu.countOkKoSum("indufraudeeole15j",callback);
+    },
+  ],function(err,result){
+    if(err) return res.badRequest(err);
+    console.log("Count OK 0==> " + result[0].ok);
+    console.log("Count OK 1==> " + result[1].ok);
+    console.log("Count OK 2==> " + result[2].ok);
+    console.log("Count OK 3==> " + result[3].ok);
+    console.log("Count OK 4==> " + result[4].ok);
+    console.log("Count OK 5==> " + result[5].ok);
+    console.log("Count OK 6==> " + result[6].ok);
+    console.log("Count OK 7==> " + result[7].ok);
+    async.series([
+      function (callback) {
+        ReportingIndu.ecritureOkKoIndu3cbtp(result[0],"indufraudeinterialej",date_export,mois1,callback);
+      },
+      function (callback) {
+        ReportingIndu.ecritureOkKoIndu3cbtp(result[1],"indufraudeinterialej1",date_export,mois1,callback);
+      },
+      function (callback) {
+        ReportingIndu.ecritureOkKoIndu3cbtp(result[2],"indufraudeinteriale12mois",date_export,mois1,callback);
+      },
+      function (callback) {
+        ReportingIndu.ecritureOkKoIndu3cbtp(result[3],"indufraudeinteriale15j",date_export,mois1,callback);
+      },
+      function (callback) {
+        ReportingIndu.ecritureOkKoIndu3cbtp(result[4],"indufraudeeolej",date_export,mois1,callback);
+      },
+      function (callback) {
+        ReportingIndu.ecritureOkKoIndu3cbtp(result[5],"indufraudeeolej1",date_export,mois1,callback);
+      },
+      function (callback) {
+        ReportingIndu.ecritureOkKoIndu3cbtp(result[6],"indufraudeeole12mois",date_export,mois1,callback);
+      },
+      function (callback) {
+        ReportingIndu.ecritureOkKoIndu3cbtp(result[7],"indufraudeeole15j",date_export,mois1,callback);
+      },
+    ],function(err,resultExcel){
+   console.log(resultExcel[0]);
+        if(resultExcel[0]==true)
+        {
+          console.log("true zn");
+          res.view('Contentieux/erera');
+        }
+        if(resultExcel[0]=='OK')
+        {
+          // res.redirect('/exportRetour/'+date_export+'/x')
+          res.view('Contentieux/succes');
+        }
+
+        
+      
+      
+    })
+  })
+},
+
 };
 

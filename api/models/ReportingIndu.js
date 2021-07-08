@@ -2685,6 +2685,69 @@ ecritureOkKo : async function (nombre_ok_ko, table,date_export,mois1,callback) {
     }
     },
     /***************************************************************/
+    ecritureOkKoIndu3cbtp : async function (nombre_ok_ko, table,date_export,mois1,callback) {
+      const Excel = require('exceljs');
+      const cmd=require('node-cmd');
+      const newWorkbook = new Excel.Workbook();
+      
+      try{
+      
+        await newWorkbook.xlsx.readFile(path_reporting);
+      const newworksheet = newWorkbook.getWorksheet(mois1);
+      var colonneDate = newworksheet.getColumn('A');
+      var ligneDate1;
+      var ligneDate;
+      colonneDate.eachCell(function(cell, rowNumber) {
+        var dateExcel = ReportingIndu.convertDate(cell.text);
+        if(dateExcel==date_export)
+        {
+          ligneDate1 = parseInt(rowNumber);
+          var line = newworksheet.getRow(ligneDate1);
+          var f = line.getCell(3).value;
+          if(f == "cbtp")
+          {
+            ligneDate = parseInt(rowNumber);
+          }
+        }
+      });
+      console.log("LIGNE DATE ===> "+ ligneDate);
+      var rowDate = newworksheet.getRow(ligneDate);
+      var numeroLigne = rowDate;
+      var iniValue = ReportingIndu.getIniValue(table);
+      
+      var a5;
+    
+      var rowm = newworksheet.getRow(1);
+    
+    
+      var collonne;
+      var colDate2;
+      rowm.eachCell(function(cell, colNumber) {
+        if(cell.value == 'DOCUMENTS TRAITES NON SAISIS (RETOURS)')
+        {
+          colDate2 = parseInt(colNumber);
+          var man = newworksheet.getRow(3);
+          var f = man.getCell(colDate2).value;
+          if(f == iniValue.ok)
+          {
+            collonne = parseInt(colNumber);
+          }
+        }
+      });
+      console.log(" Colnumber2"+collonne);
+      numeroLigne.getCell(collonne).value = nombre_ok_ko.ok;
+      await newWorkbook.xlsx.writeFile(path_reporting);
+      sails.log("Ecriture OK KO terminé"); 
+      return callback(null, "OK");
+    
+      }
+      catch
+      {
+        console.log("Une erreur s'est produite");
+        Reportinghtp.deleteToutHtp(table,3,callback);
+      }
+      },
+      /***************************************************************/
   getConfigIni : function() {
     const fs = require('fs');
     const ini = require('ini');
@@ -2773,7 +2836,39 @@ ecritureOkKo : async function (nombre_ok_ko, table,date_export,mois1,callback) {
       numeroColonneOk = iniValue.indufraudelmgdent.ok;
       numeroColonneKo = iniValue.indufraudelmgdent.ko;
     }
-    
+    if(table == "indufraudeinterialej"){
+      numeroColonneOk = iniValue.indufraudeinterialej.ok;
+      numeroColonneKo = iniValue.indufraudeinterialej.ko;
+    }
+    if(table == "indufraudeinterialej1"){
+      numeroColonneOk = iniValue.indufraudeinterialej1.ok;
+      numeroColonneKo = iniValue.indufraudeinterialej1.ko;
+    }
+    if(table == "indufraudeinteriale12mois"){
+      numeroColonneOk = iniValue.indufraudeinteriale12mois.ok;
+      numeroColonneKo = iniValue.indufraudeinteriale12mois.ko;
+    }
+    if(table == "indufraudeinteriale15j"){
+      numeroColonneOk = iniValue.indufraudeinteriale15j.ok;
+      numeroColonneKo = iniValue.indufraudeinteriale15j.ko;
+    }
+    if(table == "indufraudeeolej"){
+      numeroColonneOk = iniValue.indufraudeeolej.ok;
+      numeroColonneKo = iniValue.indufraudeeolej.ko;
+    }
+    if(table == "indufraudeeolej1"){
+      numeroColonneOk = iniValue.indufraudeeolej1.ok;
+      numeroColonneKo = iniValue.indufraudeeolej1.ko;
+    }
+    if(table == "indufraudeeole12mois"){
+      numeroColonneOk = iniValue.indufraudeeole12mois.ok;
+      numeroColonneKo = iniValue.indufraudeeole12mois.ko;
+    }
+    if(table == "indufraudeeole15j"){
+      numeroColonneOk = iniValue.indufraudeeole15j.ok;
+      numeroColonneKo = iniValue.indufraudeeole15j.ko;
+    }
+
     // if(table == ""){
     //   numeroColonneOk = iniValue..ok;
     //   numeroColonneKo = iniValue..ko;
