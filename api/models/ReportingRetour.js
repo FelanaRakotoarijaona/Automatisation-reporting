@@ -12,9 +12,9 @@ module.exports = {
   attributes: {
   },
   lectureEtInsertiontype22:function(trameflux,feuil,cellule,table,cellule2,nb,numligne,callback){
-    var tab = ['0','4'];
-    return tab;
-   /* XLSX = require('xlsx');
+    /*var tab = ['0','4'];
+    return tab;*/
+   XLSX = require('xlsx');
     var workbook = XLSX.readFile(trameflux[nb]);
     var numerofeuille = feuil[nb];
     var numeroligne = parseInt(numligne[nb]);
@@ -70,7 +70,7 @@ module.exports = {
                         }       
                                             });
           console.log("nombreeeeebr"+ nbrok + 'h' + nbrko);*/
-      /*}
+      }
       else
       {
         console.log('Colonne non trouvé');
@@ -80,7 +80,7 @@ module.exports = {
     catch
     {
       console.log("erreur absolu haaha");
-    }*/
+    }
     
   },
   //import du chemin dans le serveur
@@ -103,11 +103,10 @@ module.exports = {
     }
    else if(table[nb]=="coldrcbtppublic")
     {
-      console.log('ato v coldrcbtppublic');
-      /*var tab = [];
-      tab = ReportingRetour.lectureEtInsertiontype22( trameflux,feuil,cellule,table,cellule2,nb,numligne,callback);*/
-      //var sql = "insert into "+table[nbe]+" (nbok,nbko) values ('"+nbrok+"','"+nbrko+"') ";
-      var sql = "insert into "+table[nbe]+" (nbok,nbko) values ('0','1') ";
+      console.log('hehe coldrcbtppublic');
+      var tab = [];
+      tab = ReportingRetour.lectureEtInsertiontype22( trameflux,feuil,cellule,table,cellule2,nb,numligne,callback);
+      var sql = "insert into "+table[nb]+" (nbok,nbko) values ('"+nbrok+"','"+nbrko+"') ";
                       ReportingInovcom.getDatastore().sendNativeQuery(sql, function(err,res){
                         if(err)
                         {
