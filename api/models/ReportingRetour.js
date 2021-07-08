@@ -39,18 +39,18 @@ module.exports = {
             var desired_cell1 = sheet[cell_ref1];
             var desired_value2 = (desired_cell1 ? desired_cell1.w : undefined);
 
-            console.log('mba ato ar ve e');
-            console.log(desired_value1 + desired_value2);
+            //console.log('mba ato ar ve e');
+            //console.log(desired_value1 + desired_value2);
             if(desired_value2!=undefined && (desired_value1<desired_value2))
             {
               nbrok=nbrok + 1;
-              console.log('aryy atoo');
+              //console.log('aryy atoo');
 
             }
             else if(desired_value2==undefined && (desired_value1!=undefined) || (desired_value2!=undefined && (desired_value1>desired_value2)))
             {
               nbrko=nbrko + 1;
-              console.log('aryy atoo 2');
+              //console.log('aryy atoo 2');
             }
             else
             {
@@ -110,7 +110,8 @@ module.exports = {
       console.log('hehe coldrcbtppublic ato v oooooooo');
       var tab = [];
       tab = ReportingRetour.lectureEtInsertiontype22( trameflux,feuil,cellule,table,cellule2,nb,numligne,callback);
-      /*var sql = "insert into "+table[nb]+" (nbok,nbko) values ('0','1') ";
+      console.log('tab' + tab);
+      var sql = "insert into "+table[nb]+" (nbok,nbko) values ('"+tab[0]+"','"+tab[1]+"') ";
                       ReportingInovcom.getDatastore().sendNativeQuery(sql, function(err,res){
                         if(err)
                         {
@@ -121,7 +122,7 @@ module.exports = {
                           console.log(sql);
                           return callback(null, true);  
                         }       
-                                            });*/
+                                            });
       
     }
     else if(table[nb]=="trpecaudio" || table[nb]=="trpecdentaire")
