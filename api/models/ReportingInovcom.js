@@ -411,7 +411,7 @@
 /* type 4 */
 
 
-importTrameFlux929type4 : function (trameflux,feuil,cellule,table,cellule2,nb,numligne,callback) {
+importTrameFlux929type4 : async function (trameflux,feuil,cellule,table,cellule2,nb,numligne,callback) {
   if(trameflux[nb]==undefined)
     {
       console.log('trame undefined');
@@ -444,12 +444,12 @@ importTrameFlux929type4 : function (trameflux,feuil,cellule,table,cellule2,nb,nu
         console.log(y);
         ReportingInovcom.lectureEtInsertiontype5(trameflux,feuil,cellule,table,cellule2,y,numligne,callback);
       // ReportingInovcom.lectureEtInsertion(trameflux,feuil,cellule,table,cellule2,j,callback)
-    }
-  }
-  catch
-  {
-    console.log('ko');
-  }
+      }
+      }
+      catch
+      {
+        console.log('ko');
+      }
   
   }
   else{
