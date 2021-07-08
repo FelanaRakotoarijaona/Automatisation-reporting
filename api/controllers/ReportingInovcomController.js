@@ -1292,6 +1292,7 @@ module.exports = {
     var chem2 = [];
     var option2 = [];
     var nomBase = "chemininovcomtype7";
+    var r = [0,1];
     workbook.xlsx.readFile('Inovcomserveur.xlsx')
         .then(function() {
           var newworksheet = workbook.getWorksheet('Feuil7');
@@ -1340,19 +1341,58 @@ module.exports = {
             async.series([  
                 function(cb){
                     ReportingInovcom.deleteFromChemin7(table,cb);
-                  },
-                function(cb){
-                    ReportingInovcom.importEssaitype7(table,cheminp,date,MotCle,0,nomtable[0],numligne[0],numfeuille[0],nomcolonne[0],nomcolonne2[0],nomcolonne3[0],chem2,option2,cb);
-                  },
-                /*function(cb){
-                    ReportingInovcom.importEssaitype7(table,cheminp,date,MotCle,1,nomtable[1],numligne[1],numfeuille[1],nomcolonne[1],nomcolonne2[1],nomcolonne3[1],chem2,option2,cb);
-                  },*/
+                  }
             ],
             function(err, resultat){
               if (err){
                 return res.view('Contentieux/erreur');
               }
               else
+              {
+                async.forEachSeries(r, function(lot, callback_reporting_suivant) {
+                  async.series([
+                    function(cb){
+                      ReportingInovcom.delete(nomtable,lot,cb);
+                    },
+                    function(cb){
+                      ReportingInovcom.importEssaitype7(table,cheminp,date,MotCle,lot,nomtable[lot],numligne[lot],numfeuille[lot],nomcolonne[lot],nomcolonne2[lot],nomcolonne3[lot],chem2,option2,cb);
+                    },
+                  ],function(erroned, lotValues){
+                    if(erroned) return res.badRequest(erroned);
+                    return callback_reporting_suivant();
+                  });
+                },
+                  function(err)
+                  {
+                    if (err){
+                      return res.view('Contentieux/erreur');
+                    }
+                    else
+                    {
+                    var sql4= "select count(chemin) as ok from "+nomBase+" ";
+                    console.log(sql4);
+                    Reportinghtp.getDatastore().sendNativeQuery(sql4 ,function(err, nc) {
+                       nc = nc.rows;
+                       console.log('nc'+nc[0].ok);
+                       var f = parseInt(nc[0].ok);
+                          if (err){
+                            return res.view('Inovcom/erreur');
+                          }
+                         if(f==0)
+                          {
+                            return res.view('Inovcom/erreur');
+                          }
+                          else
+                          {
+                            return res.view('Inovcom/accueiltype7', {date : datetest});
+                            
+                          };
+                      });
+                    }
+                  });
+
+              }
+              /*else
               {
               var sql4= "select count(chemin) as ok from "+nomBase+" ";
                       console.log(sql4);
@@ -1374,7 +1414,7 @@ module.exports = {
                               
                             };
                         });
-                      }
+                      }*/
           });
         });
   },
