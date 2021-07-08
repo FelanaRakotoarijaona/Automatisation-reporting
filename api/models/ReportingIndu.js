@@ -1846,6 +1846,7 @@ countOkKoSum : function (table, callback) {
     // return callback(null, intro);
   })
 },
+/*****************************************************************************************/
 countOkKoSumko : function (table, callback) {
   const Excel = require('exceljs');
   // var sqlOk ="select count(okko) as ok from "+table+" where okko='OK'"; //trameFlux
@@ -1897,6 +1898,7 @@ countOkKoSumko : function (table, callback) {
     // return callback(null, intro);
   })
 },
+
 /***************************************************************************/
 countOkKoIndu2 : function (table, callback) {
   const Excel = require('exceljs');
@@ -1964,6 +1966,68 @@ countOkKoIndu2 : function (table, callback) {
     return callback(null, okko);
   })
 },
+/*************************************************************************************/
+countOkKoIndu3 : function (table, callback) {
+  const Excel = require('exceljs');
+  // var sqlOk ="select count(okko) as ok from "+table+" where okko='OK'"; //trameFlux
+  // var sqlKo ="select count(okko) as ko from "+table+" where okko='KO'";
+  var sql ="select sum(nb::integer) from "+table; 
+ 
+  console.log(sql);
+  // console.log(sqlOk);
+  // console.log(sqlKo);
+  async.series([
+    function (callback) {
+      ReportingIndu.query(sql, function(err, res){
+        // if (err) return res.badRequest(err);
+        // // callback(null, res.rows[0].ok);
+        // console.log(res.rows[0].sum);
+        if (err) {
+          console.log(err);
+          //return null;
+        }
+        else
+        {
+          if(res.rows[0])
+          {
+            console.log('ok');
+            callback(null, res.rows[0].sum);
+          }
+          else
+          {
+            console.log("null");
+            callback(null, 0);
+          }
+        }
+        // if(res.rows[0].sum != undefined){
+        //   callback(null, res.rows[0].sum);
+        // }
+        // else{
+        //   return res.rows[0].sum = 0;
+        // }
+        
+      });
+    },
+    // function (callback) {
+    //   Retour.query(sqlKo, function(err, resKo){
+    //     if (err) return res.badRequest(err);
+    //     callback(null, resKo.rows[0].ko);
+    //   });
+    // },
+  ],function(err,result){
+    if(err) return res.badRequest(err);
+    console.log("Count OK indu_3 ==> " + result[0]);
+    // console.log("Count KO ==> " + result[1]);
+    var okko = {};
+    okko.ok = result[0];
+    // okko.ko = result[1];      
+    return callback(null, okko);
+    // var intro = {};
+    // intro.nb = result[0];
+    // return callback(null, intro);
+  })
+},
+/*************************************************************************************/
   // Convert date
   convertDate : function (dateExcel){
     var date = new Date(dateExcel);
