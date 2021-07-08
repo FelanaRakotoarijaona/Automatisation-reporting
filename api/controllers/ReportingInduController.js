@@ -1141,28 +1141,28 @@ rechercheColonne3 : function (req, res) {
   console.log("RECHERCHE COLONNE");
   async.series([
     function (callback) {
-      ReportingIndu.countOkKoSum("indufraudeinterialej",callback);
+      ReportingIndu.countOkKoIndu3("indufraudeinterialej",callback);
     },
     function (callback) {
-      ReportingIndu.countOkKoSum("indufraudeinterialej1",callback);
+      ReportingIndu.countOkKoIndu3("indufraudeinterialej1",callback);
     },
     function (callback) {
-      ReportingIndu.countOkKoSum("indufraudeinteriale12mois",callback);
+      ReportingIndu.countOkKoIndu3("indufraudeinteriale12mois",callback);
     },
     function (callback) {
-      ReportingIndu.countOkKoSum("indufraudeinteriale15j",callback);
+      ReportingIndu.countOkKoIndu3("indufraudeinteriale15j",callback);
     },
     function (callback) {
-      ReportingIndu.countOkKoSum("indufraudeeolej",callback);
+      ReportingIndu.countOkKoIndu3("indufraudeeolej",callback);
     },
     function (callback) {
-      ReportingIndu.countOkKoSum("indufraudeinterialej1",callback);
+      ReportingIndu.countOkKoIndu3("indufraudeinterialej1",callback);
     },
     function (callback) {
-      ReportingIndu.countOkKoSum("indufraudeeole12mois",callback);
+      ReportingIndu.countOkKoIndu3("indufraudeeole12mois",callback);
     },
     function (callback) {
-      ReportingIndu.countOkKoSum("indufraudeeole15j",callback);
+      ReportingIndu.countOkKoIndu3("indufraudeeole15j",callback);
     },
   ],function(err,result){
     if(err) return res.badRequest(err);
