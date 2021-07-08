@@ -873,12 +873,12 @@ lectureEtInsertiontype4:function(trameflux,feuil,cellule,table,cellule2,nb,numli
         };
       });
     }
-    else if(table[nbe]=="defraiment")
+    else if(table[nb]=="defraiment")
       {
         console.log('defraiment');
         tab = ReportingInovcom.lectureEtInsertionDefraiment(trameflux,feuil,cellule,table,cellule2,nb,numligne,callback);
         console.log(tab);
-        var sql = "insert into "+table[nbe]+" (typologiedelademande,okko) values ('"+tab[0]+"','"+tab[1]+"') ";
+        var sql = "insert into "+table[nb]+" (typologiedelademande,okko) values ('"+tab[0]+"','"+tab[1]+"') ";
                    ReportingInovcom.getDatastore().sendNativeQuery(sql, function(err,res){
                       if (err) { 
                         console.log("Une erreur ve insertion?");
