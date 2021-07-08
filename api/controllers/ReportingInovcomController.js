@@ -1389,29 +1389,26 @@ module.exports = {
       Reportinghtp.getDatastore().sendNativeQuery(sql1,function(err, nc1) {
         console.log(nc1);
         if (err){
-          console.log(err);
-          return next(err);
+          console.log('une erreur');
+          /*console.log(err);
+          return next(err);*/
         }
         else
         {
           nc1 = nc1.rows;
           var nbs = nc1[0].nb;
           var x = parseInt(nbs);
-          //var sql='select * from cheminretourvrai limit' + " " + x ;
+          console.log('nb' + x);
           var sql= 'select * from chemininovcomtype7 limit'  + " " + x;
           Reportinghtp.getDatastore().sendNativeQuery(sql,function(err, nc) {
             if (err){
-              console.log(err);
-              return next(err);
+              console.log('une erreur');
+              /*console.log(err);
+              return next(err);*/
             }
             else
             {
             nc = nc.rows;
-            sails.log(nc[0].chemin);
-            var Excel = require('exceljs');
-            var workbook = new Excel.Workbook();
-            var cheminc = [];
-            var cheminp = [];
             var dernierl = [];
             var feuil = [];
             var cellule = [];
@@ -1426,6 +1423,7 @@ module.exports = {
             var date = annee+mois+jour;
             var dateexport = jour + '/' + mois + '/' +annee;
             var nb = x;
+            console.log('nb' + x);
                     for(var i=0;i<nb;i++)
                     {
                       var a = nc[i].chemin;
@@ -1464,12 +1462,12 @@ module.exports = {
                       dernierl.push(a);
                     };
                     console.log(trameflux);
-                    console.log(dernierl + 'colonne c3');
+                    console.log(dernierl + 'colonne c' + nbre);
                     async.forEachSeries(nbre, function(lot, callback_reporting_suivant) {
                     async.series([
-                      function(cb){
+                      /*function(cb){
                         ReportingInovcom.deleteHtp(table,nb,cb);
-                      }, 
+                      }, */
                       function(cb){
                         ReportingInovcom.importTrameFlux929type7(trameflux,feuil,cellule,table,cellule2,lot,numligne,dernierl,cb);
                       }, 
