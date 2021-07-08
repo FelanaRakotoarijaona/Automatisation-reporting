@@ -2513,20 +2513,30 @@ importEssaitype8: function (table,table2,date,option,nb,type,type2,nomtable,numl
                 console.log('non trouvé');
               }
             }
-           
-           /* */
         }
   
         else
         {
-          console.log('Colonne non trouvé');
+          {
+            var debutligne = numeroligne + 1;
+            for(var a=debutligne;a<=range.e.r;a++)
+              {
+                var address_of_cell = {c:0, r:a};
+                var cell_ref = XLSX.utils.encode_cell(address_of_cell);
+                var desired_cell = sheet[cell_ref];
+                var desired_value1 = (desired_cell ? desired_cell.v : undefined);
+                if(desired_value1!=undefined)
+                {
+                  nbr=nbr + 1;
+                }
+                else
+                {
+                  console.log('non trouvé');
+                }
+              }
+          }
         }
         console.log("nombreeeeebr"+ nbr);
-        /*var sql = "insert into "+table[nb]+" (typologiedelademande,okko) values ('"+nbr+"','"+nbr+"') ";
-                        ReportingInovcom.getDatastore().sendNativeQuery(sql, function(err,res){
-                          if(err) return console.log(err);
-                          else return callback(null, true);        
-                                              })*/
           var tab = [nbr];
           return tab;
       }
@@ -2569,7 +2579,7 @@ importEssaitype8: function (table,table2,date,option,nb,type,type2,nomtable,numl
         console.log('colonne cible' +col);
         if(col!=undefined)
         {
-          //var debutligne = numeroligne + 1;
+          var debutligne = numeroligne + 1;
           for(var a=debutligne;a<=range.e.r;a++)
             {
               var address_of_cell = {c:col, r:a};
@@ -2588,7 +2598,7 @@ importEssaitype8: function (table,table2,date,option,nb,type,type2,nomtable,numl
         }
         else
         {
-          //var debutligne = numeroligne + 1;
+          var debutligne = numeroligne + 1;
           for(var a=debutligne;a<=range.e.r;a++)
             {
               var address_of_cell = {c:0, r:a};
