@@ -7,10 +7,7 @@
 
 module.exports = {
   //ROUTES VERS PAGE D'ACCUEILLE
-    accueil1 : function(req,res)
-    {
-      return res.view('Contentieux/accueil1');
-    },
+    
 
     accueilCont : function(req,res)
       {

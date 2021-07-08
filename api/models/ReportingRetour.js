@@ -11,6 +11,78 @@ module.exports = {
 
   attributes: {
   },
+  lectureEtInsertiontype22:function(trameflux,feuil,cellule,table,cellule2,nb,numligne,callback){
+    var tab = ['0','4'];
+    return tab;
+   /* XLSX = require('xlsx');
+    var workbook = XLSX.readFile(trameflux[nb]);
+    var numerofeuille = feuil[nb];
+    var numeroligne = parseInt(numligne[nb]);
+    try{
+      var nbrok = 0;
+      var nbrko = 0;
+      const sheet = workbook.Sheets[workbook.SheetNames[numerofeuille]];
+      var range = XLSX.utils.decode_range(sheet['!ref']);
+      var col = 0;
+      var nbe = parseInt(nb);
+      if(col!=undefined)
+      {
+        var debutligne = numeroligne + 1;
+        for(var a=debutligne;a<=range.e.r;a++)
+          {
+            var address_of_cell = {c:1, r:a};
+            var cell_ref = XLSX.utils.encode_cell(address_of_cell);
+            var desired_cell = sheet[cell_ref];
+            var desired_value1 = (desired_cell ? desired_cell.w : undefined);
+
+            var address_of_cell1 = {c:23, r:a};
+            var cell_ref1 = XLSX.utils.encode_cell(address_of_cell1);
+            var desired_cell1 = sheet[cell_ref1];
+            var desired_value2 = (desired_cell1 ? desired_cell1.w : undefined);
+
+
+            if(desired_value2!=undefined && (desired_value1<desired_value2))
+            {
+              nbrok=nbrok + 1;
+            }
+            else if(desired_value2==undefined && (desired_value1!=undefined) || (desired_value2!=undefined && (desired_value1>desired_value2)))
+            {
+              nbrko=nbrko + 1;
+            }
+            else
+            {
+              var a = 1;
+            }
+          };
+          console.log("nombreeeeebr"+ nbrok + nbrko);
+          var tab = [nbrok,nbrko];
+          return tab;
+         /* var sql = "insert into "+table[nbe]+" (nbok,nbko) values ('"+nbrok+"','"+nbrko+"') ";
+                      ReportingInovcom.getDatastore().sendNativeQuery(sql, function(err,res){
+                        if(err)
+                        {
+                          console.log(err);
+                        }
+                        else
+                        {
+                          console.log(sql);
+                          return callback(null, true);  
+                        }       
+                                            });
+          console.log("nombreeeeebr"+ nbrok + 'h' + nbrko);*/
+      /*}
+      else
+      {
+        console.log('Colonne non trouvé');
+      }
+      
+    }
+    catch
+    {
+      console.log("erreur absolu haaha");
+    }*/
+    
+  },
   //import du chemin dans le serveur
   importTrameFlux929type2 : function (trameflux,feuil,cellule,table,cellule2,nb,numligne,callback) {
     if(trameflux[nb]==undefined)
@@ -29,11 +101,11 @@ module.exports = {
         };
       });
     }
-   /* else if(table[nb]=="coldrcbtppublic")
+   else if(table[nb]=="coldrcbtppublic")
     {
       console.log('hehe coldrcbtppublic');
       var tab = [];
-      tab = ReportingContetieux.lectureEtInsertiontype21( trameflux,feuil,cellule,table,cellule2,nb,numligne,callback);
+      tab = ReportingRetour.lectureEtInsertiontype22( trameflux,feuil,cellule,table,cellule2,nb,numligne,callback);
       var sql = "insert into "+table[nbe]+" (nbok,nbko) values ('"+nbrok+"','"+nbrko+"') ";
                       ReportingInovcom.getDatastore().sendNativeQuery(sql, function(err,res){
                         if(err)
@@ -47,7 +119,7 @@ module.exports = {
                         }       
                                             });
       
-    }*/
+    }
     else if(table[nb]=="trpecaudio" || table[nb]=="trpecdentaire")
     {
       console.log('hehe trpecdentaire');
