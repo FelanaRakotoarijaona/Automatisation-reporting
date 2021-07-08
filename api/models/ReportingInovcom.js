@@ -893,7 +893,7 @@ lectureEtInsertiontype4:function(trameflux,feuil,cellule,table,cellule2,nb,numli
       }
     else{
       var tab = [];
-      tab = ReportingInovcom.lectureEtInsertiontype7(trameflux,feuil,cellule,table,cellule2,nb,numligne,callback);
+      tab = ReportingInovcom.lectureEtInsertiontype7(trameflux,feuil,cellule,table,cellule2,nb,numligne,dernierl,callback);
       var nbe= parseInt(nb);
       console.log('tab'+ table[nb]);
       var sql = "insert into "+table[nb]+" (typologiedelademande,okko) values ('"+tab[0]+"','"+tab[1]+"')";
