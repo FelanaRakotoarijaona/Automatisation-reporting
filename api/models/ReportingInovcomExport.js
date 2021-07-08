@@ -1904,7 +1904,7 @@ module.exports = {
     const Excel = require('exceljs');
     const newWorkbook = new Excel.Workbook();
     try{
-      console.log('ecriture ok ko 22');
+      console.log('ecriture ok ko feuille 11');
       await newWorkbook.xlsx.readFile(path_reporting);
       const newworksheet = newWorkbook.getWorksheet(mois1);
       var colonneDate = newworksheet.getColumn('A');
@@ -1967,7 +1967,7 @@ module.exports = {
     const Excel = require('exceljs');
     const newWorkbook = new Excel.Workbook();
     try{
-      console.log('ecriture ok ko 22');
+      console.log('ecriture feuille 11 CBTP');
       await newWorkbook.xlsx.readFile(path_reporting);
       const newworksheet = newWorkbook.getWorksheet(mois1);
       var colonneDate = newworksheet.getColumn('A');
@@ -2192,6 +2192,10 @@ module.exports = {
     if(table == "inovtpsalmerys"){
       numeroColonneOk = iniValue.inovtpsalmerys.ok;
       numeroColonneKo = iniValue.inovtpsalmerys.ko;
+    }
+    if(table == "inovsealmerys"){
+      numeroColonneOk = iniValue.inovsealmerys.ok;
+      numeroColonneKo = iniValue.inovsealmerys.ko;
     }
     if(table == "inovspehospi"){
       numeroColonneOk = iniValue.inovspehospi.ok;
