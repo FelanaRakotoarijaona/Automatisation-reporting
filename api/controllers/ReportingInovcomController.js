@@ -1344,9 +1344,9 @@ module.exports = {
                 function(cb){
                     ReportingInovcom.importEssaitype7(table,cheminp,date,MotCle,0,nomtable[0],numligne[0],numfeuille[0],nomcolonne[0],nomcolonne2[0],nomcolonne3[0],chem2,option2,cb);
                   },
-                function(cb){
+                /*function(cb){
                     ReportingInovcom.importEssaitype7(table,cheminp,date,MotCle,1,nomtable[1],numligne[1],numfeuille[1],nomcolonne[1],nomcolonne2[1],nomcolonne3[1],chem2,option2,cb);
-                  },
+                  },*/
             ],
             function(err, resultat){
               if (err){

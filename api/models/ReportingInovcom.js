@@ -777,7 +777,7 @@ lectureEtInsertiontype4:function(trameflux,feuil,cellule,table,cellule2,nb,numli
             var sql = "insert into retourcmuc (nbok,nbko) values ('"+ok+"','"+ko+"') ";
                     ReportingInovcom.getDatastore().sendNativeQuery(sql, function(err,res){
                       if (err) { 
-                        console.log(err);
+                        console.log("une erreur cmuc");
                         //return callback(err);
                        }
                       else
@@ -882,7 +882,7 @@ lectureEtInsertiontype4:function(trameflux,feuil,cellule,table,cellule2,nb,numli
                    ReportingInovcom.getDatastore().sendNativeQuery(sql, function(err,res){
                       if (err) { 
                         console.log("Une erreur ve insertion?");
-                        return callback(err);
+                        //return callback(err);
                        }
                       else
                       {
@@ -895,8 +895,8 @@ lectureEtInsertiontype4:function(trameflux,feuil,cellule,table,cellule2,nb,numli
       var tab = [];
       tab = ReportingInovcom.lectureEtInsertiontype7(trameflux,feuil,cellule,table,cellule2,nb,numligne,callback);
       var nbe= parseInt(nb);
-      console.log(tab);
-      var sql = "insert into "+table[nbe]+" (typologiedelademande,okko) values ('"+tab[0]+"','"+tab[1]+"')";
+      console.log('tab'+ table[nb]);
+      var sql = "insert into "+table[nb]+" (typologiedelademande,okko) values ('"+tab[0]+"','"+tab[1]+"')";
       ReportingInovcom.getDatastore().sendNativeQuery(sql, function(err,res){
         if (err) { 
           console.log("Une erreur ve ok?");
@@ -1039,25 +1039,13 @@ lectureEtInsertiontype4:function(trameflux,feuil,cellule,table,cellule2,nb,numli
 
             };
           };
-          console.log('nb =' + tabok);
-          console.log('nb2 =' + taboki);
-          /*var sql = "insert into hospidematrejetprive (typologiedelademande,okko) values ('"+tabok+"','"+taboki+"') ";
-                      ReportingInovcom.getDatastore().sendNativeQuery(sql, function(err,res){
-                        if (err) { 
-                          console.log("Une erreur ve hospidematrejetprive?");
-                          //return callback(err);
-                         }
-                        else
-                        {
-                          console.log(sql);
-                          return callback(null, true);
-                        };          
-                                           });*/
       }
       else
       {
         console.log('Colonne non trouvé');
       };
+      console.log('nb =' + tabok);
+      console.log('nb2 =' + taboki);
       var tab = [tabok,taboki];
       return tab;
     }
@@ -1393,7 +1381,7 @@ lectureEtInsertiontype4:function(trameflux,feuil,cellule,table,cellule2,nb,numli
           fs.accessSync(pathparam, fs.constants.F_OK);
         
         }catch(e){
-          console.log(e);
+          //console.log(e);
           existe = 'faux';
           console.log('chemin diso');
         }
@@ -2004,7 +1992,7 @@ importEssaitype7: function (table,table2,date,option,nb,nomtable,numligne,numfeu
                      {
                        //var a =ab + file +"\\" + files1[i];
                        var a =ab + file +"/" + files1[i];
-                       console.log('*****************');
+                       //console.log('*****************');
                        console.log(a);  
                        var sql = "insert into chemininovcomtype7 (chemin,nomtable,numligne,numfeuile,colonnecible,colonnecible2,colonnecible3) values ('"+a+"','"+nomtable+"','"+numligne+"','"+numfeuille+"','"+nomcolonne+"','"+nomcolonne2+"','"+nomcolonne3+"') ";
                        ReportingInovcom.getDatastore().sendNativeQuery(sql, function(err,res){
