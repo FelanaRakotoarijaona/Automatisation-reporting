@@ -436,26 +436,34 @@ importTrameFlux929type4 : async function (trameflux,feuil,cellule,table,cellule2
       try{
         console.log(trameflux[nb]);
       await newWorkbook.xlsx.readFile(trameflux[nb]);
-      // var feuille = newWorkbook.getWorksheet();
-      //var test = newWorkbook.worksheets;
-      //var test = newWorkbook.SheetNames.length;
-      /*var test2 = newWorkbook.worksheets.sheetRows;
-      console.log(test2);
-      var test3 = newWorkbook.Sheets.length;
-      console.log(test3);*/
       var test = newWorkbook.worksheets;
       var essaie = parseInt(test.length)+1;
-      /*var essaie = parseInt(test.length);
-      console.log(essaie + 'ed');
-      //var essaie = parseInt(test.length) - 1;*/
       console.log(essaie);
       for(var y=0;y<essaie;y++) //parcours anle dossier rehetra
       {
-        /*var j = parseInt(tab[y]);*/
-        /*console.log(y);*/
+        
         ReportingInovcom.lectureEtInsertiontype5v2(trameflux,y,cellule,table,cellule2,nb,numligne,callback);
-      // ReportingInovcom.lectureEtInsertion(trameflux,feuil,cellule,table,cellule2,j,callback)
       }
+      }
+      catch
+      {
+        console.log('ko');
+      }
+  
+  }
+  else if(table[nb]=='favnument')
+  {
+      console.log('favnument');
+      const Excel = require('exceljs');
+      const newWorkbook = new Excel.Workbook();
+      try{
+        console.log(trameflux[nb]);
+      await newWorkbook.xlsx.readFile(trameflux[nb]);
+      var test = newWorkbook.worksheets;
+      var essaie = parseInt(test.length);
+      console.log(essaie);
+      ReportingInovcom.lectureEtInsertiontype4v2(trameflux,essaie,cellule,table,cellule2,nb,numligne,callback);
+      
       }
       catch
       {
@@ -559,7 +567,83 @@ lectureEtInsertiontype4:function(trameflux,feuil,cellule,table,cellule2,nb,numli
   }
   
 },
+lectureEtInsertiontype4v2:function(trameflux,feuil,cellule,table,cellule2,nb,numligne,callback){
+  XLSX = require('xlsx');
+  var workbook = XLSX.readFile(trameflux[nb]);
+  var numerofeuille = parseInt(feuil);
+  var numeroligne = parseInt(numligne[nb]);
+  try{
+    var nbr = 0;
+    var nbrko = 0;
+    var nbrtsisy = 0;
+    const sheet = workbook.Sheets[workbook.SheetNames[numerofeuille]];
+    var range = XLSX.utils.decode_range(sheet['!ref']);
+    var col ;
+    //var col = 16;
+    var nbe = parseInt(nb);
+    for(var ra=0;ra<=range.e.c;ra++)
+      {
+        var address_of_cell = {c:ra, r:numeroligne};
+        var cell_ref = XLSX.utils.encode_cell(address_of_cell);
+        var desired_cell = sheet[cell_ref];
+        var desired_value = (desired_cell ? desired_cell.v : undefined);
+        if(desired_value==cellule[nb])
+        {
+          col=ra;
+        };
+      };
+      console.log("colonne"+col);
+   if(col!=undefined)
+    {
+      var debutligne = numeroligne + 1;
+      for(var a=debutligne;a<=range.e.r;a++)
+        {
+          var address_of_cell = {c:col, r:a};
+          var cell_ref = XLSX.utils.encode_cell(address_of_cell);
+          var desired_cell = sheet[cell_ref];
+          var desired_value1 = (desired_cell ? desired_cell.v : undefined);
+          //console.log(desired_value1);
 
+          var ok = 'OK';
+          var ko = 'KO';
+          const regex = new RegExp(ok,'i');
+          const regex1 = new RegExp(ko,'i');
+          if(regex.test(desired_value1))
+          {
+            nbr=nbr + 1;
+          }
+          else if(regex1.test(desired_value1))
+          {
+            nbrko=nbrko + 1;
+          }
+          else
+          {
+            nbrtsisy = 1;
+          };
+        };
+       
+       /*var sql = "insert into "+table[nbe]+" (nbok,nbko) values ('"+nbr+"','"+nbrko+"') ";
+                    ReportingInovcom.getDatastore().sendNativeQuery(sql, function(err,res){
+                      if(err) return console.log(err);
+                      else return callback(null, true);        
+                                          });*/
+        
+    }
+    else
+    {
+      console.log('Colonne non trouvé');
+    }
+    console.log("nombreeeeebr"+ nbr);
+        var tab = [nbr,nbrko];
+        return tab;
+
+  }
+  catch
+  {
+    console.log("erreur absolu haaha");
+  }
+  
+},
 /* type fin 5 */
   lectureEtInsertiontype5:function(trameflux,feuil,cellule,table,cellule2,nb,numligne,callback){
     XLSX = require('xlsx');
@@ -668,8 +752,6 @@ lectureEtInsertiontype4:function(trameflux,feuil,cellule,table,cellule2,nb,numli
         var desired_cell = sheet[cell_ref];
         var desired_value = (desired_cell ? desired_cell.v : undefined);
         var mc= cellule[nb];
-        console.log('mc' + mc);
-        console.log(desired_value);
         const regex = new RegExp(mc,'i');
         if(regex.test(desired_value))
         {
