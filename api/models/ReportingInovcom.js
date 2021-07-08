@@ -430,19 +430,21 @@ importTrameFlux929type4 : async function (trameflux,feuil,cellule,table,cellule2
     }
   else if(table[nb]=='favpharma')
   {
-    const Excel = require('exceljs');
+      console.log('favpharma');
+      const Excel = require('exceljs');
       const cmd=require('node-cmd');
       const newWorkbook = new Excel.Workbook();
       try{
-      await newWorkbook.xlsx.readFile(trameflux[0]);
+      await newWorkbook.xlsx.readFile(trameflux[nb]);
       // var feuille = newWorkbook.getWorksheet();
       var test = newWorkbook.worksheets;
       var essaie = parseInt(test.length) - 1;
+      console.log(essaie);
       for(var y=0;y<essaie;y++) //parcours anle dossier rehetra
       {
         /*var j = parseInt(tab[y]);*/
         console.log(y);
-        ReportingInovcom.lectureEtInsertiontype5(trameflux,feuil,cellule,table,cellule2,y,numligne,callback);
+        ReportingInovcom.lectureEtInsertiontype5v2(trameflux,y,cellule,table,cellule2,nb,numligne,callback);
       // ReportingInovcom.lectureEtInsertion(trameflux,feuil,cellule,table,cellule2,j,callback)
       }
       }
@@ -554,6 +556,90 @@ lectureEtInsertiontype4:function(trameflux,feuil,cellule,table,cellule2,nb,numli
     XLSX = require('xlsx');
     var workbook = XLSX.readFile(trameflux[0]);
     var numerofeuille = feuil[nb];
+    var numeroligne = numligne[0];
+    console.log(trameflux[0]);
+    console.log(numeroligne);
+    console.log(numerofeuille);
+    var nbr = 0;
+    var nbrko = 0;
+    try{
+      const sheet = workbook.Sheets[workbook.SheetNames[nb]];
+      var range = XLSX.utils.decode_range(sheet['!ref']);
+      var col ;
+      console.log('Nombre de colonne' + range.e.c);
+      console.log('Nombre de ligne' + range.e.r);
+      for(var ra=0;ra<=range.e.c;ra++)
+      {
+        var address_of_cell = {c:ra, r:numeroligne};
+        var cell_ref = XLSX.utils.encode_cell(address_of_cell);
+        var desired_cell = sheet[cell_ref];
+        var desired_value = (desired_cell ? desired_cell.v : undefined);
+        if(desired_value==cellule[0])
+        {
+          col=ra;
+        }
+      };
+      console.log('colonne cible' +col);
+      var tab = [];
+      var tabl = [];
+      if(col!=undefined)
+      {
+        for(var a=0;a<=range.e.r;a++)
+          {
+            var address_of_cell = {c:col, r:a};
+            var cell_ref = XLSX.utils.encode_cell(address_of_cell);
+            var desired_cell = sheet[cell_ref];
+            var desired_value1 = (desired_cell ? desired_cell.v : undefined);
+            var ok = 'OK';
+            const regexok = new RegExp(ok,'i');
+            var ko = 'KO';
+            const regexko = new RegExp(ko,'i');
+            var ko2 = 'Rejet def';
+            const regexko2 = new RegExp(ko2,'i');
+            if(regexok.test(desired_value1))
+            {
+              nbr=nbr + 1;
+            }
+            if(regexko.test(desired_value1) || regexko2.test(desired_value1) )
+            {
+              nbrko=nbrko + 1;
+            }
+            else
+            {
+             var nbrtsisy = 1;
+            };
+          };
+          console.log(nbr + 'et' + nbrko);
+          var sql = "insert into "+table[nb]+" (nbok,nbko) values ('"+nbr+"','"+nbrko+"') ";
+                      ReportingInovcom.getDatastore().sendNativeQuery(sql, function(err,res){
+                        if (err) { 
+                          console.log("Une erreur ve fav?");
+                          //return callback(err);
+                         }
+                        else
+                        {
+                          console.log(sql);
+                          return callback(null, true);
+                        };       
+                                            });
+      }
+      else
+      {
+        console.log('Colonne non trouvé');
+      }
+      
+    }
+    catch
+    {
+      console.log("erreur absolu haaha");
+    }
+    
+  },
+
+  lectureEtInsertiontype5v2:function(trameflux,feuil,cellule,table,cellule2,nb,numligne,callback){
+    XLSX = require('xlsx');
+    var workbook = XLSX.readFile(trameflux[nb]);
+    var numerofeuille = feuil;
     var numeroligne = numligne[0];
     console.log(trameflux[0]);
     console.log(numeroligne);
