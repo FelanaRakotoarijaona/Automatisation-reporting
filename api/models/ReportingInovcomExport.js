@@ -2122,8 +2122,10 @@ module.exports = {
         colDate1 = parseInt(colNumber);
         var man = newworksheet.getRow(3);
         var f = man.getCell(colDate1).value;
-        var getko_ini = man.getCell(colDate1).address;
-        if(getko_ini == iniValue.ko+3 && f == iniValue.ok)
+        var a = iniValue.ok;
+        const regex = new RegExp(a,'i');
+        var getko_ini = man.getCell(colDate2).address;
+        if(getko_ini == iniValue.ko+3 && regex.test(f) == true)
         {
           colonnne = parseInt(colNumber);
         }
