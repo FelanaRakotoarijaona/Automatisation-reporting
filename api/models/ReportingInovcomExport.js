@@ -2026,6 +2026,64 @@ module.exports = {
   },
 
   /**********************************************************/
+  ecritureOkKofll11sante : async function (nombre_ok_ko, table,date_export,mois1,callback) {
+    const Excel = require('exceljs');
+    const newWorkbook = new Excel.Workbook();
+    try{
+    await newWorkbook.xlsx.readFile(path_reporting);
+    const newworksheet = newWorkbook.getWorksheet(mois1);
+    var colonneDate = newworksheet.getColumn('A');
+    var ligneDate1;
+    var ligneDate;
+    colonneDate.eachCell(function(cell, rowNumber) {
+      var dateExcel = ReportingInovcomExport.convertDate(cell.text);
+      if(dateExcel==date_export)
+      {
+        ligneDate1 = parseInt(rowNumber);
+        var line = newworksheet.getRow(ligneDate1);
+        var f = line.getCell(3).value;
+        if(f == "SANTECLAIR" || f == "SANTECLAIR ")
+        {
+          ligneDate = parseInt(rowNumber);
+        }
+      }
+    });
+    console.log("LIGNE DATE ===> "+ ligneDate);
+    var rowDate = newworksheet.getRow(ligneDate);
+    var numeroLigne = rowDate;
+    var iniValue = ReportingInovcomExport.getIniValue(table);
+    
+    var a5;
+
+    var rowm = newworksheet.getRow(1);
+    var colonnne;
+    var colDate1;
+    rowm.eachCell(function(cell, colNumber) {
+      if(cell.value == 'DOCUMENTS SAISIS')
+      {
+        colDate1 = parseInt(colNumber);
+        var man = newworksheet.getRow(3);
+        var f = man.getCell(colDate1).value;
+        if(f == iniValue.ok)
+        {
+          colonnne = parseInt(colNumber);
+        }
+        }
+    });
+    console.log(" Colnumber"+colonnne);
+    numeroLigne.getCell(colonnne).value = nombre_ok_ko.ok;
+    await newWorkbook.xlsx.writeFile(path_reporting);
+    sails.log("Ecriture OK KO terminé"); 
+    return callback(null, "OK");
+  
+    }
+    catch
+    {
+      console.log("Une erreur s'est produite");
+      Reportinghtp.deleteToutHtp(table,3,callback);
+    }
+    },
+   /**********************************************************/
   //CONFIGURATION DU FICHIER INI
   getConfigIni : function() {
     const fs = require('fs');

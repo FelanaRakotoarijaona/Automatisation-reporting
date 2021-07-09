@@ -1336,7 +1336,7 @@ rechercheColonne10: function (req, res) {
   });
 },
 /********************************************************************************************************/
-//EXPORT EXCEL nombre de ligne(2)
+//EXPORT EXCEL nombre de ligne(2) ATTENTE CONSIGNE POUR LES 2 EXPORTS
 rechercheColonne11: function (req, res) {
   var datetest = req.param("date",0);
   var annee = datetest.substr(0, 4);
@@ -1413,6 +1413,9 @@ rechercheColonne11: function (req, res) {
     function (callback) {
       ReportingInovcomExport.countok("inovspeaudio",callback);
     },
+    function (callback) {
+      ReportingInovcomExport.countok("santeclairaudio",callback);
+    },
   ],function(err,result){
     if(err) return res.badRequest(err);
     console.log("Count OK fll_11 0 ==> " + result[0].ok);
@@ -1439,6 +1442,9 @@ rechercheColonne11: function (req, res) {
       },
       function (callback) {
         ReportingInovcomExport.ecritureOkKofll11(result[5],"inovspeaudio",date_export,mois1,callback);
+      },
+      function (callback) {
+        ReportingInovcomExport.ecritureOkKofll11sante(result[6],"santeclairaudio",date_export,mois1,callback);
       },
     ],function(err,resultExcel){
         console.log('**************');
