@@ -2753,7 +2753,7 @@ ecritureOkKo : async function (nombre_ok_ko, table,date_export,mois1,callback) {
     }
     },
     /***************************************************************/
-    ecritureOkKoIndu3cbtp : async function (nombre_ok_ko, table,date_export,mois1,callback) {
+    ecritureOkKoIndu3 : async function (nombre_ok_ko, table,date_export,mois1,callback) {
       const Excel = require('exceljs');
       const cmd=require('node-cmd');
       const newWorkbook = new Excel.Workbook();
@@ -2772,7 +2772,7 @@ ecritureOkKo : async function (nombre_ok_ko, table,date_export,mois1,callback) {
           ligneDate1 = parseInt(rowNumber);
           var line = newworksheet.getRow(ligneDate1);
           var f = line.getCell(3).value;
-          if(f == "cbtp")
+          if(f == "almerys" || f == "Almerys")
           {
             ligneDate = parseInt(rowNumber);
           }

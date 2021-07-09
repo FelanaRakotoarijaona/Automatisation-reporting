@@ -1176,28 +1176,28 @@ rechercheColonne3 : function (req, res) {
     console.log("Count OK 7==> " + result[7].ok);
     async.series([
       function (callback) {
-        ReportingIndu.ecritureOkKoIndu3cbtp(result[0],"indufraudeinterialej",date_export,mois1,callback);
+        ReportingIndu.ecritureOkKoIndu3(result[0],"indufraudeinterialej",date_export,mois1,callback);
       },
       function (callback) {
-        ReportingIndu.ecritureOkKoIndu3cbtp(result[1],"indufraudeinterialej1",date_export,mois1,callback);
+        ReportingIndu.ecritureOkKoIndu3(result[1],"indufraudeinterialej1",date_export,mois1,callback);
       },
       function (callback) {
-        ReportingIndu.ecritureOkKoIndu3cbtp(result[2],"indufraudeinteriale12mois",date_export,mois1,callback);
+        ReportingIndu.ecritureOkKoIndu3(result[2],"indufraudeinteriale12mois",date_export,mois1,callback);
       },
       function (callback) {
-        ReportingIndu.ecritureOkKoIndu3cbtp(result[3],"indufraudeinteriale15j",date_export,mois1,callback);
+        ReportingIndu.ecritureOkKoIndu3(result[3],"indufraudeinteriale15j",date_export,mois1,callback);
       },
       function (callback) {
-        ReportingIndu.ecritureOkKoIndu3cbtp(result[4],"indufraudeeolej",date_export,mois1,callback);
+        ReportingIndu.ecritureOkKoIndu3(result[4],"indufraudeeolej",date_export,mois1,callback);
       },
       function (callback) {
-        ReportingIndu.ecritureOkKoIndu3cbtp(result[5],"indufraudeeolej1",date_export,mois1,callback);
+        ReportingIndu.ecritureOkKoIndu3(result[5],"indufraudeeolej1",date_export,mois1,callback);
       },
       function (callback) {
-        ReportingIndu.ecritureOkKoIndu3cbtp(result[6],"indufraudeeole12mois",date_export,mois1,callback);
+        ReportingIndu.ecritureOkKoIndu3(result[6],"indufraudeeole12mois",date_export,mois1,callback);
       },
       function (callback) {
-        ReportingIndu.ecritureOkKoIndu3cbtp(result[7],"indufraudeeole15j",date_export,mois1,callback);
+        ReportingIndu.ecritureOkKoIndu3(result[7],"indufraudeeole15j",date_export,mois1,callback);
       },
     ],function(err,resultExcel){
    console.log(resultExcel[0]);
