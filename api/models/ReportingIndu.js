@@ -1349,7 +1349,7 @@ module.exports = {
   var numeroligne = parseInt(numligne[nb]);
   //console.log('date' + date)
   var ff= new Date(date);
-  var date1= ff.setDate(today.getDate() + 1);
+  var date1= ff.setDate(ff.getDate() + 1);
   console.log('date' + date1);
   try{
     var nbr = 0;
