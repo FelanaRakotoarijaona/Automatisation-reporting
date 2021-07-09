@@ -472,13 +472,12 @@ importTrameFlux929type4 : async function (trameflux,feuil,cellule,table,cellule2
   {
       console.log('favnument');
       XLSX = require('xlsx');
-      
       try{
         console.log(trameflux[nb]);
         var workbook = XLSX.readFile(trameflux[nb]);
         const sheetd = workbook.SheetNames; 
         console.log('long' + sheetd.length);
-        var essaie = parseInt(sheetd.length);
+        var essaie = parseInt(sheetd.length) - 1;
         var tab = [];
       tab = ReportingInovcom.lectureEtInsertiontype4v2(trameflux,essaie,cellule,table,cellule2,nb,numligne,callback);
       var sql = "insert into "+table[nb]+" (nbok,nbko) values ('"+tab[0]+"','"+tab[1]+"')";
