@@ -301,7 +301,7 @@ module.exports = {
     }   
    },
 
-  importTrameFlux929 : function (trameflux,feuil,cellule,table,cellule2,nb,numligne,date2,callback) {
+  importTrameFlux929 : function (trameflux,feuil,cellule,table,cellule2,nb,numligne,date2,date3,callback) {
     console.log(table[nb]);
     if(trameflux[nb]==undefined)
     {
@@ -363,7 +363,7 @@ module.exports = {
       else if(table[nbe]=="indufactstc")
       {
         console.log('indufactstc');
-        tab = ReportingIndu.lectureEtInsertion31(trameflux,feuil,cellule,table,cellule2,nb,numligne,date2,callback);
+        tab = ReportingIndu.lectureEtInsertion31(trameflux,feuil,cellule,table,cellule2,nb,numligne,date3,callback);
         console.log(tab);
         var sql = "insert into "+table[nbe]+" (nbok,nbko) values ('"+tab[0]+"','"+tab[1]+"') ";
                    ReportingInovcom.getDatastore().sendNativeQuery(sql, function(err,res){
@@ -1349,8 +1349,7 @@ module.exports = {
   var numeroligne = parseInt(numligne[nb]);
   //console.log('date' + date)
   var ff= new Date(date);
-  var date1= ff.setDate(ff.getDate() + 1);
-  console.log('date' + date1);
+  var date1= ff.setDate(today.getDate() + 1);
   try{
     var nbr = 0;
     var nbrko = 0;
@@ -1445,7 +1444,7 @@ module.exports = {
          
           console.log(desired_value2 + desired_value1);
 
-          if(desired_value1==date1 && desired_value2==date1)
+          if(desired_value1==date1 && desired_value2==date)
           {
            
            
@@ -1492,7 +1491,7 @@ module.exports = {
          
           console.log(desired_value2 + desired_value1);
 
-          if(desired_value1==date1 && desired_value2==date1)
+          if(desired_value1==date && desired_value2==date)
           {
            
            

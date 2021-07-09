@@ -367,6 +367,7 @@ module.exports = {
       var tomorrow = new Date(today);
       var f = tomorrow.setDate(today.getDate()- 1);
       var date2=dateFormat(f,"shortDate");
+      var date3 =dateFormat(tomorrow,"shortDate");
       console.log(date2);
       var sql1= 'select count(*) as nb from cheminindu;';
       Reportinghtp.getDatastore().sendNativeQuery(sql1,function(err, nc1) {
@@ -434,7 +435,7 @@ module.exports = {
                     async.forEachSeries(nbre, function(lot, callback_reporting_suivant) {
                       async.series([
                         function(cb){
-                          ReportingIndu.importTrameFlux929(trameflux,feuil,cellule,table,cellule2,lot,numligne,date2,cb);
+                          ReportingIndu.importTrameFlux929(trameflux,feuil,cellule,table,cellule2,lot,numligne,date2,date3,cb);
                         }, 
                       ],function(erroned, lotValues){
                         if(erroned) return res.badRequest(erroned);
