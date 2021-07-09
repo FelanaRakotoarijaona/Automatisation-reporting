@@ -1450,7 +1450,7 @@ deleteFromChemin : function (table,callback) {
                    var file1 = file.replace("'", "''");
                    //re = p + '\\' + file1;
                    re = p + '/' + file1;
-                   re=re.replace("'", "''");
+                   //re=re.replace("'", "''");
                    console.log('ato'+re);
                    var sql = "insert into "+nomBase+" (chemin,nomtable,numligne,numfeuile,colonnecible,colonnecible2) values ('"+re+"','"+nomtable[nb]+"','"+numligne[nb]+"','"+numfeuille[nb]+"','"+nomCol+"','"+nomCol2+"') ";
                     ReportingInovcom.getDatastore().sendNativeQuery(sql, function(err,res){
@@ -1508,7 +1508,7 @@ deleteFromChemin : function (table,callback) {
                    var file1 = file.replace("'", "''");
                    //re = p + '\\' + file1;
                    re = p + '/' + file1;
-                   re=re.replace("'", "''");
+                   //re=re.replace("'", "''");
                    //re=re.replace("'", "''");
                    console.log('ato'+re);
                    var sql = "insert into "+nomBase+" (chemin,nomtable,numligne,numfeuile,colonnecible,colonnecible2) values ('"+re+"','"+nomtable[nb]+"','"+numligne[nb]+"','"+numfeuille[nb]+"','"+nomCol+"','"+nomCol2+"') ";
