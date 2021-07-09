@@ -478,6 +478,7 @@ importTrameFlux929type4 : async function (trameflux,feuil,cellule,table,cellule2
         const sheetd = workbook.SheetNames; 
         console.log('long' + sheetd.length);
         var essaie = parseInt(sheetd.length) - 1;
+        console.log(essaie + "fr");
         var tab = [];
       tab = ReportingInovcom.lectureEtInsertiontype4v2(trameflux,essaie,cellule,table,cellule2,nb,numligne,callback);
       var sql = "insert into "+table[nb]+" (nbok,nbko) values ('"+tab[0]+"','"+tab[1]+"')";
@@ -629,6 +630,7 @@ lectureEtInsertiontype4v2:function(trameflux,feuil,cellule,table,cellule2,nb,num
   XLSX = require('xlsx');
   var workbook = XLSX.readFile(trameflux[nb]);
   var numerofeuille = parseInt(feuil);
+  console.log(numerofeuille + 'numfeuil');
   var numeroligne = parseInt(numligne[nb]);
   try{
     var nbr = 0;
