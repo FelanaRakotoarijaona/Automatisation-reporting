@@ -369,7 +369,7 @@ module.exports = {
       var date2=dateFormat(f,"shortDate");
       var date3 =dateFormat(today,"shortDate");
       console.log(date3 + 'dattte');
-      /*var sql1= 'select count(*) as nb from cheminindu;';
+      var sql1= 'select count(*) as nb from cheminindu;';
       Reportinghtp.getDatastore().sendNativeQuery(sql1,function(err, nc1) {
         if (err){
           console.log(err);
@@ -451,7 +451,7 @@ module.exports = {
         };
     })
     };
-  });*/
+  });
 },
 
 // type 2
