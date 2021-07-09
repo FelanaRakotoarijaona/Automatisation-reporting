@@ -1347,7 +1347,10 @@ module.exports = {
   var workbook = XLSX.readFile(trameflux[nb]);
   var numerofeuille = feuil[nb];
   var numeroligne = parseInt(numligne[nb]);
-  console.log('date' + date)
+  //console.log('date' + date)
+  var ff= new Date(date);
+  var date1= ff.setDate(today.getDate() + 1);
+  console.log('date' + date1);
   try{
     var nbr = 0;
     var nbrko = 0;
@@ -1442,7 +1445,7 @@ module.exports = {
          
           console.log(desired_value2 + desired_value1);
 
-          if(desired_value1==date && desired_value2==date)
+          if(desired_value1==date1 && desired_value2==date1)
           {
            
            
@@ -1489,7 +1492,7 @@ module.exports = {
          
           console.log(desired_value2 + desired_value1);
 
-          if(desired_value1==date && desired_value2==date)
+          if(desired_value1==date1 && desired_value2==date1)
           {
            
            
