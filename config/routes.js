@@ -167,10 +167,11 @@ module.exports.routes = {
   '/exportExcelInovcom9' : 'ReportingInovcomExportController.rechercheColonne9',
   '/exportExcelInov9' : 'ReportingInovcomExportController.accueilInov9',
 
-  //EXPORT INOVCOM Nombre de ligne(3) et Nombre ligne(2)
+  //EXPORT INOVCOM Nombre de ligne(2,3,4)
   '/exportExcelInovcom10' : 'ReportingInovcomExportController.rechercheColonne10',
   '/exportExcelInovcom11' : 'ReportingInovcomExportController.rechercheColonne11',
   '/exportExcelInovcom2suivant11' : 'ReportingInovcomExportController.rechercheColonne11cbtp',
+  '/exportExcelInovcom12' : 'ReportingInovcomExportController.rechercheColonne12',
 
    //Route INDU
    '/accueilIndu' : 'ReportingInduController.accueil1',

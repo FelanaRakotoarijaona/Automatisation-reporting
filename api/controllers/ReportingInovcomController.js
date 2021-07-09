@@ -2255,7 +2255,7 @@ module.exports = {
                 function(err)
                 {
                   console.log('vofafa ddol');
-                  return res.view('Inovcom/exportexcelinovcom2', {date : datetest});
+                  return res.view('Inovcom/exportexcelinovcom12', {date : datetest});
                 }); 
           };
       });

@@ -2084,6 +2084,124 @@ module.exports = {
     }
     },
    /**********************************************************/
+  ecritureOkKofll12 : async function (nombre_ok_ko, table,date_export,mois1,callback) {
+    const Excel = require('exceljs');
+    const newWorkbook = new Excel.Workbook();
+    try{
+    await newWorkbook.xlsx.readFile(path_reporting);
+    const newworksheet = newWorkbook.getWorksheet(mois1);
+    var colonneDate = newworksheet.getColumn('A');
+    var ligneDate1;
+    var ligneDate;
+    colonneDate.eachCell(function(cell, rowNumber) {
+      var dateExcel = ReportingInovcomExport.convertDate(cell.text);
+      if(dateExcel==date_export)
+      {
+        ligneDate1 = parseInt(rowNumber);
+        var line = newworksheet.getRow(ligneDate1);
+        var f = line.getCell(3).value;
+        if(f == "ALMERYS")
+        {
+          ligneDate = parseInt(rowNumber);
+        }
+      }
+    });
+    console.log("LIGNE DATE ===> "+ ligneDate);
+    var rowDate = newworksheet.getRow(ligneDate);
+    var numeroLigne = rowDate;
+    var iniValue = ReportingInovcomExport.getIniValue(table);
+    
+    var a5;
+
+    var rowm = newworksheet.getRow(1);
+    var colonnne;
+    var colDate1;
+    rowm.eachCell(function(cell, colNumber) {
+      if(cell.value == 'DOCUMENTS SAISIS')
+      {
+        colDate1 = parseInt(colNumber);
+        var man = newworksheet.getRow(3);
+        var f = man.getCell(colDate1).value;
+        if(f == iniValue.ok)
+        {
+          colonnne = parseInt(colNumber);
+        }
+        }
+    });
+    console.log(" Colnumber"+colonnne);
+    numeroLigne.getCell(colonnne).value = nombre_ok_ko.ok;
+    await newWorkbook.xlsx.writeFile(path_reporting);
+    sails.log("Ecriture OK KO terminé"); 
+    return callback(null, "OK");
+  
+    }
+    catch
+    {
+      console.log("Une erreur s'est produite");
+      Reportinghtp.deleteToutHtp(table,3,callback);
+    }
+    },
+  /**********************************************************/
+  ecritureOkKofll12retours : async function (nombre_ok_ko, table,date_export,mois1,callback) {
+    const Excel = require('exceljs');
+    const newWorkbook = new Excel.Workbook();
+    try{
+    await newWorkbook.xlsx.readFile(path_reporting);
+    const newworksheet = newWorkbook.getWorksheet(mois1);
+    var colonneDate = newworksheet.getColumn('A');
+    var ligneDate1;
+    var ligneDate;
+    colonneDate.eachCell(function(cell, rowNumber) {
+      var dateExcel = ReportingInovcomExport.convertDate(cell.text);
+      if(dateExcel==date_export)
+      {
+        ligneDate1 = parseInt(rowNumber);
+        var line = newworksheet.getRow(ligneDate1);
+        var f = line.getCell(3).value;
+        if(f == "ALMERYS")
+        {
+          ligneDate = parseInt(rowNumber);
+        }
+      }
+    });
+    console.log("LIGNE DATE ===> "+ ligneDate);
+    var rowDate = newworksheet.getRow(ligneDate);
+    var numeroLigne = rowDate;
+    var iniValue = ReportingInovcomExport.getIniValue(table);
+    
+    var a5;
+
+    var rowm = newworksheet.getRow(1);
+    var colonnne;
+    var colDate1;
+    rowm.eachCell(function(cell, colNumber) {
+      if(cell.value == 'DOCUMENTS TRAITES NON SAISIS (RETOURS)')
+      {
+        colDate1 = parseInt(colNumber);
+        //var col = newworksheet.getColumn(colDate1);
+        var man = newworksheet.getRow(3);
+        var f = man.getCell(colDate1).value;
+        var getko_ini = man.getCell(colDate1).address;
+        if(getko_ini == iniValue.ko+3 && f == iniValue.ok)
+        {
+          colonnne = parseInt(colNumber);
+        }
+        }
+    });
+    console.log(" Colnumber"+colonnne);
+    numeroLigne.getCell(colonnne).value = nombre_ok_ko.ok;
+    await newWorkbook.xlsx.writeFile(path_reporting);
+    sails.log("Ecriture OK KO terminé"); 
+    return callback(null, "OK");
+  
+    }
+    catch
+    {
+      console.log("Une erreur s'est produite");
+      Reportinghtp.deleteToutHtp(table,3,callback);
+    }
+    },
+   /**********************************************************/
   //CONFIGURATION DU FICHIER INI
   getConfigIni : function() {
     const fs = require('fs');
@@ -2286,6 +2404,30 @@ module.exports = {
     if(table == "santeclairaudio"){
       numeroColonneOk = iniValue.santeclairaudio.ok;
       numeroColonneKo = iniValue.santeclairaudio.ko;
+    }
+    if(table == "inovaglaesynthese"){
+      numeroColonneOk = iniValue.inovaglaesynthese.ok;
+      numeroColonneKo = iniValue.inovaglaesynthese.ko;
+    }
+    if(table == "inovaglaefraudemms"){
+      numeroColonneOk = iniValue.inovaglaefraudemms.ok;
+      numeroColonneKo = iniValue.inovaglaefraudemms.ko;
+    }
+    if(table == "inovaglaeag2r"){
+      numeroColonneOk = iniValue.inovaglaeag2r.ok;
+      numeroColonneKo = iniValue.inovaglaeag2r.ko;
+    }
+    if(table == "inovaglaefraudeinteriale"){
+      numeroColonneOk = iniValue.inovaglaefraudeinteriale.ok;
+      numeroColonneKo = iniValue.inovaglaefraudeinteriale.ko;
+    }
+    if(table == "inovaglaefraudemg"){
+      numeroColonneOk = iniValue.inovaglaefraudemg.ok;
+      numeroColonneKo = iniValue.inovaglaefraudemg.ko;
+    }
+    if(table == "inovaglae100"){
+      numeroColonneOk = iniValue.inovaglae100.ok;
+      numeroColonneKo = iniValue.inovaglae100.ko;
     }
     
     var ok_ko = {};
