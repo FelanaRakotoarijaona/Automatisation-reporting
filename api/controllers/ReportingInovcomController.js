@@ -9,39 +9,7 @@ const ReportingInovcom = require('../models/ReportingInovcom');
 module.exports = {
     accueil1 : async function(req,res)
     {
-      XLSX = require('xlsx');
-      var trameflux =  'D:/NUMENT FACT_ 01072021.XLSX';
-      var workbook = XLSX.readFile(trameflux);
-      try{
-        //const sheet = workbook.Sheets[workbook.SheetNames['JUILLET']];
-        const sheetd = workbook.SheetNames; 
-        //const sheet = workbook.Sheets[workbook.SheetNames[numerofeuille]];
-        //var range = XLSX.utils.decode_range(sheet['!ref']);
-        console.log(sheetd[0]);
-       
-          /*const cells = Object.entries(sheet).filter(([cell]) => !cell.startsWith('!'));
-          const coloredCells = cells.filter(([cell, value]) => value.s && value.s.bgColor);
-          var nombre = 0;
-          for (const [cell, value] of coloredCells) {
-            //console.log('v' + value.s.fgColor.rgb);
-            var motcle = 'C'
-            const regex = new RegExp(motcle,'i');
-            if(regex.test(cell) && (value.s.fgColor.rgb=="FF6600" || value.s.fgColor.rgb=="993300" || value.s.fgColor.rgb=="A52A2A" ) )
-            {
-              nombre = nombre + 1;
-            };
-  
-          }
-          console.log('nombre' + nombre);
-        
-          var tab = [nombre];
-          return tab;*/
-      }
-      catch
-      {
-        console.log("erreur absolu haaha");
-      }
-      //return res.view('Inovcom/accueil1');
+      return res.view('Inovcom/accueil1');
     },
     //CIBLAGE DU FICHIER EXCEL DANS LE SERVEUR
     Essaii : function(req,res)

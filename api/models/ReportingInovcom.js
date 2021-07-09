@@ -431,18 +431,35 @@ importTrameFlux929type4 : async function (trameflux,feuil,cellule,table,cellule2
   else if(table[nb]=='favpharma')
   {
       console.log('favpharma');
-      const Excel = require('exceljs');
-      const newWorkbook = new Excel.Workbook();
+      XLSX = require('xlsx');
+      
       try{
         console.log(trameflux[nb]);
-      await newWorkbook.xlsx.readFile(trameflux[nb]);
-      var test = newWorkbook.worksheets;
-      var essaie = parseInt(test.length)+1;
-      console.log(essaie);
-      for(var y=0;y<essaie;y++) //parcours anle dossier rehetra
+        var workbook = XLSX.readFile(trameflux[nb]);
+        const sheetd = workbook.SheetNames; 
+        console.log('long' + sheetd.length);
+        var tab = [];
+        for(var i=0;i<sheetd.length;i++)
+        {
+          var mc1 = 'en cour';
+          const regex = new RegExp(mc1,'i');
+          if(regex.test(sheetd[i]))
+          {
+            console.log(sheetd[i]);
+          
+          }
+          else
+          {
+            tab.push(i);
+          }
+            
+        }
+      console.log(tab);
+      console.log(tab.length + 'long');
+      for(var y=0;y<tab.length;y++) //parcours anle dossier rehetra
       {
-        
-        ReportingInovcom.lectureEtInsertiontype5v2(trameflux,y,cellule,table,cellule2,nb,numligne,callback);
+        var i = parseInt(tab[y]);
+        ReportingInovcom.lectureEtInsertiontype5v2(trameflux,i,cellule,table,cellule2,nb,numligne,callback);
       }
       }
       catch
@@ -454,7 +471,37 @@ importTrameFlux929type4 : async function (trameflux,feuil,cellule,table,cellule2
   else if(table[nb]=='favnument')
   {
       console.log('favnument');
-      const Excel = require('exceljs');
+      XLSX = require('xlsx');
+      
+      try{
+        console.log(trameflux[nb]);
+        var workbook = XLSX.readFile(trameflux[nb]);
+        const sheetd = workbook.SheetNames; 
+        console.log('long' + sheetd.length);
+        var essaie = parseInt(sheetd.length);
+        var tab = [];
+      tab = ReportingInovcom.lectureEtInsertiontype4v2(trameflux,essaie,cellule,table,cellule2,nb,numligne,callback);
+      var sql = "insert into "+table[nb]+" (nbok,nbko) values ('"+tab[0]+"','"+tab[1]+"')";
+      ReportingInovcom.getDatastore().sendNativeQuery(sql, function(err,res){
+        if (err) { 
+          console.log("Une erreur ve ok?");
+          //return callback(err);
+         }
+        else
+        {
+          console.log(sql);
+          return callback(null, true);
+        };
+                            });
+       
+      }
+      catch
+      {
+        console.log('ko');
+      }
+  
+
+     /* const Excel = require('exceljs');
       const newWorkbook = new Excel.Workbook();
       try{
         console.log(trameflux[nb]);
@@ -480,7 +527,7 @@ importTrameFlux929type4 : async function (trameflux,feuil,cellule,table,cellule2
       catch
       {
         console.log('ko');
-      }
+      }*/
   
   }
   else{
@@ -900,14 +947,12 @@ lectureEtInsertiontype4v2:function(trameflux,feuil,cellule,table,cellule2,nb,num
       ReportingInovcom.deleteToutHtp(table,3,callback);
     }
     else{
-      const Excel = require('exceljs');
-      const cmd=require('node-cmd');
-      const newWorkbook = new Excel.Workbook();
+      XLSX = require('xlsx');
       try{
-      await newWorkbook.xlsx.readFile(trameflux[0]);
-      // var feuille = newWorkbook.getWorksheet();
-      var test = newWorkbook.worksheets;
-      var essaie = parseInt(test.length)+1;
+      var workbook = XLSX.readFile(trameflux[0])
+      const sheetd = workbook.SheetNames; 
+      console.log('long' + sheetd.length);
+      var essaie = parseInt(sheetd.length);
       console.log('valeur'+essaie);
       for(var y=0;y<essaie;y++) //parcours anle dossier rehetra
       {
