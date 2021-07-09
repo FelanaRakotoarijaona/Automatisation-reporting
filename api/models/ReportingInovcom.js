@@ -646,7 +646,7 @@ lectureEtInsertiontype4v2:function(trameflux,feuil,cellule,table,cellule2,nb,num
         var address_of_cell = {c:ra, r:numeroligne};
         var cell_ref = XLSX.utils.encode_cell(address_of_cell);
         var desired_cell = sheet[cell_ref];
-        var desired_value = (desired_cell ? desired_cell.v : undefined)s;
+        var desired_value = (desired_cell ? desired_cell.v : undefined);
         var mc1 = cellule[nb];
         const regex = new RegExp(mc1,'i');
         if(regex.test(desired_value))
