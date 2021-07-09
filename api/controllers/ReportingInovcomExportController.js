@@ -1465,6 +1465,101 @@ rechercheColonne11: function (req, res) {
         }
         else
         {
+          return res.view('Inovcom/exportsuivantinovcom11', {date: datetest});
+          // res.view('reporting/succes');
+        }
+    });
+  });
+},
+
+/********************************************************************************************************/
+rechercheColonne11cbtp: function (req, res) {
+  var datetest = req.param("date",0);
+  var annee = datetest.substr(0, 4);
+  var mois = datetest.substr(5, 2);
+  var jour = datetest.substr(8, 2);
+  var mois1 = 'Janvier' ;
+  if(mois==01)
+  {
+    mois1= 'Janvier';
+  };
+  if(mois==02)
+  {
+    mois1= 'Fevrier';
+  };
+  if(mois==03)
+  {
+    mois1= 'Mars';
+  };
+  if(mois==04)
+  {
+    mois1= 'Avril';
+  };
+  if(mois==05)
+  {
+    mois1= 'Mai';
+  };
+  if(mois==06)
+  {
+    mois1= 'Juin';
+  };
+  if(mois==07)
+  {
+    mois1= 'Juillet';
+  };
+  if(mois==08)
+  {
+    mois1= 'Aout';
+  };
+  if(mois==09)
+  {
+    mois1= 'Septembre';
+  };
+  if(mois==10)
+  {
+    mois1= 'Octobre';
+  };
+  if(mois==11)
+  {
+    mois1= 'Novembre';
+  };
+  if(mois==12)
+  {
+    mois1= 'Decembre';
+  };
+  console.log(mois1);
+  var date_export = jour + '/' + mois + '/' +annee;
+  console.log("RECHERCHE COLONNE");
+  async.series([
+    function (callback) {
+      ReportingInovcomExport.countok("inovtpscbtp",callback);
+    },
+    function (callback) {
+      ReportingInovcomExport.countok("inovsecbtp",callback);
+    },
+  ],function(err,result){
+    if(err) return res.badRequest(err);
+    console.log("Count OK fll_11cbtp 0 ==> " + result[0].ok);
+    console.log("Count OK fll_11cbtp 1 ==> " + result[1].ok);
+    async.series([
+     
+      function (callback) {
+        ReportingInovcomExport.ecritureOkKofll11cbtp(result[0],"inovtpscbtp",date_export,mois1,callback);
+      },
+      function (callback) {
+        ReportingInovcomExport.ecritureOkKofll11cbtp(result[1],"inovsecbtp",date_export,mois1,callback);
+      },
+    ],function(err,resultExcel){
+        console.log('**************');
+        console.log(resultExcel);
+        console.log('**************');
+        if(resultExcel[0]==true)
+        {
+          console.log("true zn");
+          res.view('Inovcom/erera');
+        }
+        else
+        {
           // return res.view('Inovcom/exportsuivantinovcom3', {date: datetest});
           res.view('reporting/succes');
         }
@@ -1473,6 +1568,5 @@ rechercheColonne11: function (req, res) {
 },
 
 /********************************************************************************************************/
-
 };
 
