@@ -1543,8 +1543,19 @@ lectureEtInsertiontype4v2:function(trameflux,feuil,cellule,table,cellule2,nb,num
         return callback(null, true);
         });
     },
+  
     deleteFromChemin2 : function (table,callback) {
       var sql = "delete from chemininovcomtype2 ";
+      ReportingInovcom.getDatastore().sendNativeQuery(sql, function(err, res){
+        if (err) {
+           //return callback(err); 
+           console.log('une erreur de suppression');
+          }
+        return callback(null, true);
+        });
+    },
+    deleteFromChemin14 : function (table,callback) {
+      var sql = "delete from chemininovcomtype14 ";
       ReportingInovcom.getDatastore().sendNativeQuery(sql, function(err, res){
         if (err) {
            //return callback(err); 
