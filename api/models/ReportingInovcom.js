@@ -665,16 +665,15 @@ lectureEtInsertiontype4v2:function(trameflux,feuil,cellule,table,cellule2,nb,num
           var desired_cell = sheet[cell_ref];
           var desired_value1 = (desired_cell ? desired_cell.v : undefined);
           //console.log(desired_value1);
-
           var ok = 'OK';
           var ko = 'KO';
           const regex = new RegExp(ok,'i');
           const regex1 = new RegExp(ko,'i');
-          if(regex.test(desired_value1))
+          if(desired_value1=='OK' || desired_value1=='ok')
           {
             nbr=nbr + 1;
           }
-          else if(regex1.test(desired_value1))
+          else if(desired_value1=='KO' || desired_value1=='ko')
           {
             nbrko=nbrko + 1;
           }
