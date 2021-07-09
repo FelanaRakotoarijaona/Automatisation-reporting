@@ -86,6 +86,13 @@ module.exports.routes = {
    '/essaiInovcomtype4' : 'ReportingInovcomController.Essaiitype4',
    '/reportinginovcomtype4' : 'ReportingInovcomController.essaiExceltype4',
 
+
+    //type14
+    '/accueilInovcomtype14' : 'ReportingInovcomController.accueil1type14',
+    '/essaiInovcomtype14' : 'ReportingInovcomController.Essaiitype14',
+    '/reportinginovcomtype14' : 'ReportingInovcomController.essaiExceltype14',
+
+
    //type5
    '/accueilInovcomtype5' : 'ReportingInovcomController.accueil1type5',
    '/essaiInovcomtype5' : 'ReportingInovcomController.Essaiitype5',
@@ -151,6 +158,8 @@ module.exports.routes = {
 
   '/exportExcelInovcom4' : 'ReportingInovcomExportController.rechercheColonne4',
   '/exportExcelInov4' : 'ReportingInovcomExportController.accueilInov4',
+
+  
 
   '/exportExcelInovcom5' : 'ReportingInovcomExportController.rechercheColonne5',
   '/exportExcelInov5' : 'ReportingInovcomExportController.accueilInov5',
