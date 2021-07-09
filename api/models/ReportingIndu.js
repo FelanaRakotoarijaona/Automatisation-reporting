@@ -1452,8 +1452,8 @@ deleteFromChemin : function (table,callback) {
                    var sql = "insert into "+nomBase+" (chemin,nomtable,numligne,numfeuile,colonnecible,colonnecible2) values ('"+re+"','"+nomtable[nb]+"','"+numligne[nb]+"','"+numfeuille[nb]+"','"+nomCol+"','"+nomCol2+"') ";
                     ReportingInovcom.getDatastore().sendNativeQuery(sql, function(err,res){
                       if (err) { 
-                        //console.log(err);
-                        console.log('une erreur trouvé');
+                        console.log(err);
+                        //console.log('une erreur trouvé');
                         //return callback(err);
                        }
                       else
