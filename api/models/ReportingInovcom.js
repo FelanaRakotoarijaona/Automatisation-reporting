@@ -1705,8 +1705,9 @@ lectureEtInsertiontype4v2:function(trameflux,feuil,cellule,table,cellule2,nb,num
       console.log(c);
       if(c=='vrai')
       {
-        var nomCol = nomcolonne[nb].replace("'", "''"); 
-        var nomCol2 = nomcolonne2[nb].replace("'", "''"); 
+        console.log(nomcolonne[nb]);
+        /*var nomCol = nomcolonne[nb].replace("'", "''"); 
+        var nomCol2 = nomcolonne2[nb].replace("'", "''"); */
         var p = a.replace("'", "''"); 
         fs.readdir(a, (err, files) => {
           console.log(a);
@@ -1726,7 +1727,7 @@ lectureEtInsertiontype4v2:function(trameflux,feuil,cellule,table,cellule2,nb,num
                    re = p + '/' + file1;
                    //re=re.replace("'", "''");
                    console.log('ato'+re);
-                   var sql = "insert into "+nomBase+" (chemin,nomtable,numligne,numfeuile,colonnecible,colonnecible2) values ('"+re+"','"+nomtable[nb]+"','"+numligne[nb]+"','"+numfeuille[nb]+"','"+nomCol+"','"+nomCol2+"') ";
+                   var sql = "insert into "+nomBase+" (chemin,nomtable,numligne,numfeuile,colonnecible,colonnecible2) values ('"+re+"','"+nomtable[nb]+"','"+numligne[nb]+"','"+numfeuille[nb]+"','"+nomcolonne[nb]+"','"+nomcolonne2[nb]+"') ";
                     ReportingInovcom.getDatastore().sendNativeQuery(sql, function(err,res){
                       if (err) { 
                         //console.log(err);
@@ -1762,8 +1763,8 @@ lectureEtInsertiontype4v2:function(trameflux,feuil,cellule,table,cellule2,nb,num
       }
       else if(d=='vrai')
       {
-        var nomCol = nomcolonne[nb].replace("'", "''"); 
-        var nomCol2 = nomcolonne2[nb].replace("'", "''"); 
+        /*var nomCol = nomcolonne[nb].replace("'", "''"); 
+        var nomCol2 = nomcolonne2[nb].replace("'", "''"); */
         var p = a1.replace("'", "''"); 
         fs.readdir(a1, (err, files) => {
           console.log(a1);
@@ -1784,7 +1785,7 @@ lectureEtInsertiontype4v2:function(trameflux,feuil,cellule,table,cellule2,nb,num
 
                    //re=re.replace("'", "''");
                    console.log('ato'+re);
-                   var sql = "insert into "+nomBase+" (chemin,nomtable,numligne,numfeuile,colonnecible,colonnecible2) values ('"+re+"','"+nomtable[nb]+"','"+numligne[nb]+"','"+numfeuille[nb]+"','"+nomCol+"','"+nomCol2+"') ";
+                   var sql = "insert into "+nomBase+" (chemin,nomtable,numligne,numfeuile,colonnecible,colonnecible2) values ('"+re+"','"+nomtable[nb]+"','"+numligne[nb]+"','"+numfeuille[nb]+"','"+nomcolonne[nb]+"','"+nnomcolonne2[nb]+"') ";
                     ReportingInovcom.getDatastore().sendNativeQuery(sql, function(err,res){
                       if (err) { 
                         //console.log(err);
