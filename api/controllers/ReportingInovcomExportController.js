@@ -1413,12 +1413,6 @@ rechercheColonne11: function (req, res) {
     function (callback) {
       ReportingInovcomExport.countok("inovspeaudio",callback);
     },
-    function (callback) {
-      ReportingInovcomExport.countok("inovtpscbtp",callback);
-    },
-    function (callback) {
-      ReportingInovcomExport.countok("inovsecbtp",callback);
-    },
   ],function(err,result){
     if(err) return res.badRequest(err);
     console.log("Count OK fll_11 0 ==> " + result[0].ok);
@@ -1427,8 +1421,6 @@ rechercheColonne11: function (req, res) {
     console.log("Count OK fll_11 3 ==> " + result[3].ok);
     console.log("Count OK fll_11 4 ==> " + result[4].ok);
     console.log("Count OK fll_11 5 ==> " + result[5].ok);
-    console.log("Count OK fll_11 6 ==> " + result[6].ok);
-    console.log("Count OK fll_11 7 ==> " + result[7].ok);
     async.series([
       function (callback) {
         ReportingInovcomExport.ecritureOkKofll11(result[0],"inovtpsalmerys",date_export,mois1,callback);
@@ -1447,12 +1439,6 @@ rechercheColonne11: function (req, res) {
       },
       function (callback) {
         ReportingInovcomExport.ecritureOkKofll11(result[5],"inovspeaudio",date_export,mois1,callback);
-      },
-      function (callback) {
-        ReportingInovcomExport.ecritureOkKofll11cbtp(result[6],"inovtpscbtp",date_export,mois1,callback);
-      },
-      function (callback) {
-        ReportingInovcomExport.ecritureOkKofll11cbtp(result[7],"inovsecbtp",date_export,mois1,callback);
       },
     ],function(err,resultExcel){
         console.log('**************');
