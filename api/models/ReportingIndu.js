@@ -1432,7 +1432,8 @@ deleteFromChemin : function (table,callback) {
       {
         var nomCol = nomcolonne[nb]; 
         var nomCol2 = nomcolonne2[nb]; 
-        var p = a.replace("'", "''"); 
+        var p = a;
+        //var p = a.replace("'", "''"); 
         fs.readdir(a, (err, files) => {
           console.log(a);
               files.forEach(file => {
@@ -1449,7 +1450,7 @@ deleteFromChemin : function (table,callback) {
                    var file1 = file.replace("'", "''");
                    //re = p + '\\' + file1;
                    re = p + '/' + file1;
-                   //re=re.replace("'", "''");
+                   re=re.replace("'", "''");
                    console.log('ato'+re);
                    var sql = "insert into "+nomBase+" (chemin,nomtable,numligne,numfeuile,colonnecible,colonnecible2) values ('"+re+"','"+nomtable[nb]+"','"+numligne[nb]+"','"+numfeuille[nb]+"','"+nomCol+"','"+nomCol2+"') ";
                     ReportingInovcom.getDatastore().sendNativeQuery(sql, function(err,res){
@@ -1489,7 +1490,8 @@ deleteFromChemin : function (table,callback) {
       {
         var nomCol = nomcolonne[nb]; 
         var nomCol2 = nomcolonne2[nb]; 
-        var p = a1.replace("'", "''"); 
+        var p = a1;
+        //var p = a1.replace("'", "''"); 
         fs.readdir(a1, (err, files) => {
           console.log(a1);
               files.forEach(file => {
@@ -1506,7 +1508,7 @@ deleteFromChemin : function (table,callback) {
                    var file1 = file.replace("'", "''");
                    //re = p + '\\' + file1;
                    re = p + '/' + file1;
-
+                   re=re.replace("'", "''");
                    //re=re.replace("'", "''");
                    console.log('ato'+re);
                    var sql = "insert into "+nomBase+" (chemin,nomtable,numligne,numfeuile,colonnecible,colonnecible2) values ('"+re+"','"+nomtable[nb]+"','"+numligne[nb]+"','"+numfeuille[nb]+"','"+nomCol+"','"+nomCol2+"') ";
