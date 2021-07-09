@@ -93,7 +93,7 @@ module.exports = {
                       ReportingInovcom.delete(nomtable,lot,cb);
                     },
                     function(cb){
-                      ReportingInovcom.importEssai(table,cheminp,date,MotCle,lot,nomtable,numligne,numfeuille,nomcolonne,nomcolonne2,nomBase,chem2,option2,cb);
+                      ReportingIndu.importEssai(table,cheminp,date,MotCle,lot,nomtable,numligne,numfeuille,nomcolonne,nomcolonne2,nomBase,chem2,option2,cb);
                     },
                   ],function(erroned, lotValues){
                     if(erroned) return res.badRequest(erroned);
@@ -256,7 +256,7 @@ module.exports = {
       var option2 = [];
       var cheminp = [];
       var MotCle= [];
-      var r = [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19];
+      var r = [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20];
      // var r = [0,1,2,3,4,5];
       var nomBase = "cheminindu";
       //workbook.xlsx.readFile('ReportingIndu.xlsx')

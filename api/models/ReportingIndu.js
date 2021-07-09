@@ -360,6 +360,24 @@ module.exports = {
                       };     
                                           });
       }
+      else if(table[nbe]=="indufactstc")
+      {
+        console.log('indufactstc');
+        tab = ReportingIndu.lectureEtInsertion31(trameflux,feuil,cellule,table,cellule2,nb,numligne,date2,callback);
+        console.log(tab);
+        var sql = "insert into "+table[nbe]+" (nbok,nbko) values ('"+tab[0]+"','"+tab[1]+"') ";
+                   ReportingInovcom.getDatastore().sendNativeQuery(sql, function(err,res){
+                      if (err) { 
+                        console.log("Une erreur ve insertion?");
+                        return callback(err);
+                       }
+                      else
+                      {
+                        console.log(sql);
+                        return callback(null, true);
+                      };     
+                                          });
+      }
       else if(table[nbe]=="indudentaire" || table[nbe]=="induoptique" || table[nbe]=="induaudio" ||table[nbe]=="induhospi")
       {
         console.log('type4');
@@ -1314,6 +1332,179 @@ module.exports = {
     var nb= 0;
   
     console.log("nombreeeeebr"+ nbr + 'et' + nbrko);
+    var tab = [nbr,nbrko];
+    return tab;
+    /*var tab = [nbr,nbrko,nbrokrib];
+    return tab;*/
+  }
+  catch
+  {
+    console.log("erreur absolu haaha");
+  };
+  },
+  lectureEtInsertion31:function(trameflux,feuil,cellule,table,cellule2,nb,numligne,date,callback){
+  XLSX = require('xlsx');
+  var workbook = XLSX.readFile(trameflux[nb]);
+  var numerofeuille = feuil[nb];
+  var numeroligne = parseInt(numligne[nb]);
+  console.log('date' + date)
+  try{
+    var nbr = 0;
+    var nbrko = 0;
+    const sheet = workbook.Sheets[workbook.SheetNames[numerofeuille]];
+    var range = XLSX.utils.decode_range(sheet['!ref']);
+    var colDate;
+    var colDate2;
+    var col;
+    var col2;
+    var nbe = parseInt(nb);
+    for(var ra=0;ra<=range.e.c;ra++)
+      {
+        var address_of_cell = {c:ra, r:numeroligne};
+        var cell_ref = XLSX.utils.encode_cell(address_of_cell);
+        var desired_cell = sheet[cell_ref];
+        var desired_value = (desired_cell ? desired_cell.v : undefined);
+
+        var mcdate = 'date de traitement';
+        const regex = new RegExp(mcdate,'i');
+        if(regex.test(desired_value))
+        {
+          colDate=ra;
+        };
+      };
+      for(var ra=0;ra<=range.e.c;ra++)
+      {
+        var address_of_cell = {c:ra, r:numeroligne};
+        var cell_ref = XLSX.utils.encode_cell(address_of_cell);
+        var desired_cell = sheet[cell_ref];
+        var desired_value = (desired_cell ? desired_cell.v : undefined);
+
+        var mcdate = "Date d'envoi";
+        const regex = new RegExp(mcdate,'i');
+        if(regex.test(desired_value))
+        {
+          colDate2=ra;
+        };
+      };
+      for(var ra=0;ra<=range.e.c;ra++)
+      {
+        var address_of_cell = {c:ra, r:numeroligne};
+        var cell_ref = XLSX.utils.encode_cell(address_of_cell);
+        var desired_cell = sheet[cell_ref];
+        var desired_value = (desired_cell ? desired_cell.v : undefined);
+
+        var mcdate = cellule[nb];
+        const regex = new RegExp(mcdate,'i');
+        if(regex.test(desired_value))
+        {
+          col=ra;
+        };
+      };
+      for(var ra=0;ra<=range.e.c;ra++)
+      {
+        var address_of_cell = {c:ra, r:numeroligne};
+        var cell_ref = XLSX.utils.encode_cell(address_of_cell);
+        var desired_cell = sheet[cell_ref];
+        var desired_value = (desired_cell ? desired_cell.v : undefined);
+
+        var mcdate = cellule2[nb];
+        const regex = new RegExp(mcdate,'i');
+        if(regex.test(desired_value))
+        {
+          col2=ra;
+        };
+      };
+      console.log("colonne2"+col2+col+colDate+colDate2);
+   if(col!=undefined || col2!=undefined ||colDate2!=undefined ||colDate!=undefined)
+    {
+      var debutligne = numeroligne + 1;
+      for(var a=debutligne;a<=range.e.r;a++)
+        {
+          var address_of_cell = {c:colDate, r:a};
+          var cell_ref = XLSX.utils.encode_cell(address_of_cell);
+          var desired_cell = sheet[cell_ref];
+          var desired_value1 = (desired_cell ? desired_cell.w : undefined);
+
+          var address_of_cell2 = {c:colDate2, r:a};
+          var cell_ref2 = XLSX.utils.encode_cell(address_of_cell2);
+          var desired_cell2 = sheet[cell_ref2];
+          var desired_value2 = (desired_cell2 ? desired_cell2.w : undefined);
+
+          var address_of_cell3 = {c:col, r:a};
+          var cell_ref3 = XLSX.utils.encode_cell(address_of_cell3);
+          var desired_cell3 = sheet[cell_ref3];
+          var desired_value3 = (desired_cell3 ? desired_cell3.v : undefined);
+
+          var address_of_cell4 = {c:col2, r:a};
+          var cell_ref4 = XLSX.utils.encode_cell(address_of_cell4);
+          var desired_cell4 = sheet[cell_ref4];
+          var desired_value4 = (desired_cell4 ? desired_cell4.v : undefined);
+         
+          console.log(desired_value2 + desired_value1);
+
+          if(desired_value1==date && desired_value2==date)
+          {
+           
+           
+              nbr = desired_value3;
+              nbrko = desired_value4
+          
+          }
+          else
+          {
+            var f = 4;
+          }
+          
+        };  
+    }
+    else
+    {
+      col=4;
+      col2=5;
+      colDate2=2;
+      colDate=3;
+
+      var debutligne = numeroligne + 1;
+      for(var a=debutligne;a<=range.e.r;a++)
+        {
+          var address_of_cell = {c:colDate, r:a};
+          var cell_ref = XLSX.utils.encode_cell(address_of_cell);
+          var desired_cell = sheet[cell_ref];
+          var desired_value1 = (desired_cell ? desired_cell.w : undefined);
+
+          var address_of_cell2 = {c:colDate2, r:a};
+          var cell_ref2 = XLSX.utils.encode_cell(address_of_cell2);
+          var desired_cell2 = sheet[cell_ref2];
+          var desired_value2 = (desired_cell2 ? desired_cell2.w : undefined);
+
+          var address_of_cell3 = {c:col, r:a};
+          var cell_ref3 = XLSX.utils.encode_cell(address_of_cell3);
+          var desired_cell3 = sheet[cell_ref3];
+          var desired_value3 = (desired_cell3 ? desired_cell3.v : undefined);
+
+          var address_of_cell4 = {c:col2, r:a};
+          var cell_ref4 = XLSX.utils.encode_cell(address_of_cell4);
+          var desired_cell4 = sheet[cell_ref4];
+          var desired_value4 = (desired_cell4 ? desired_cell4.v : undefined);
+         
+          console.log(desired_value2 + desired_value1);
+
+          if(desired_value1==date && desired_value2==date)
+          {
+           
+           
+              nbr = desired_value3;
+              nbrko = desired_value4
+          
+          }
+          else
+          {
+            var f = 4;
+          }
+          
+        };  
+    };
+    console.log("nombreeeeebr"+ nbr + 'et' + nbrko );
     var tab = [nbr,nbrko];
     return tab;
     /*var tab = [nbr,nbrko,nbrokrib];
