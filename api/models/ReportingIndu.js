@@ -783,7 +783,9 @@ module.exports = {
         var cell_ref = XLSX.utils.encode_cell(address_of_cell);
         var desired_cell = sheet[cell_ref];
         var desired_value = (desired_cell ? desired_cell.v : undefined);
-        if(desired_value==cellule[nb])
+        var mc1 = cellule[nb];
+        const regex = new RegExp(mc1,'i');
+        if(regex.test(desired_value))
         {
           col=ra;
         };
