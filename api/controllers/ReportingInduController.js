@@ -313,7 +313,7 @@ module.exports = {
                         ReportingInovcom.delete(nomtable,lot,cb);
                       },
                       function(cb){
-                        ReportingInovcom.importEssai(table,cheminp,date,MotCle,lot,nomtable,numligne,numfeuille,nomcolonne,nomcolonne2,nomBase,chem2,option2,cb);
+                        ReportingIndu.importEssai(table,cheminp,date,MotCle,lot,nomtable,numligne,numfeuille,nomcolonne,nomcolonne2,nomBase,chem2,option2,cb);
                       },
                     ],function(erroned, lotValues){
                       if(erroned) return res.badRequest(erroned);
