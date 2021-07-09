@@ -104,11 +104,11 @@ module.exports = {
           var address_of_cell = {c:6, r:a};
           var cell_ref = XLSX.utils.encode_cell(address_of_cell);
           var desired_cell = sheet[cell_ref];
-          var desired_value1 = (desired_cell ? desired_cell.v : undefined);
+          var desired_value2 = (desired_cell ? desired_cell.v : undefined);
           var address_of_cell2 = {c:7, r:a};
           var cell_ref2 = XLSX.utils.encode_cell(address_of_cell2);
           var desired_cell2 = sheet[cell_ref2];
-          var desired_value2 = (desired_cell2 ? desired_cell2.v : undefined);
+          var desired_value1 = (desired_cell2 ? desired_cell2.v : undefined);
 
           if(desired_value1!=undefined)
           {
@@ -901,7 +901,8 @@ module.exports = {
     var nbrko = 0;
     const sheet = workbook.Sheets[workbook.SheetNames[numerofeuille]];
     var range = XLSX.utils.decode_range(sheet['!ref']);
-    var col=10;
+    var col=parseInt(cellule[nb]);
+    console.log(col + 'numcol');
     //var col = 16;
     var nbe = parseInt(nb);
    /* for(var ra=0;ra<=range.e.c;ra++)
@@ -1329,8 +1330,6 @@ module.exports = {
   try{
     var nbr = 0;
     var nbrko = 0;
-    var nbrokrib = 0;
-    var nbrtsisy = 0;
     const sheet = workbook.Sheets[workbook.SheetNames[numerofeuille]];
     var range = XLSX.utils.decode_range(sheet['!ref']);
     var col;
