@@ -1447,9 +1447,9 @@ deleteFromChemin : function (table,callback) {
                 if((regex.test(file) || regex4.test(file))  && regex1.test(file) && regex2.test(file))
                 {
                   console.log(file);
-                   //var file1 = file.replace("'", "''");
+                   var file1 = file.replace("'", "''");
                    //re = p + '\\' + file1;
-                   re = p + '/' + file;
+                   re = p + '/' + file1;
                    //re=re.replace("'", "''");
                    console.log('ato'+re);
                    var sql = "insert into "+nomBase+" (chemin,nomtable,numligne,numfeuile,colonnecible,colonnecible2) values ('"+re+"','"+nomtable[nb]+"','"+numligne[nb]+"','"+numfeuille[nb]+"','"+nomcolonne[nb]+"','"+nomcolonne2[nb]+"') ";
@@ -1504,9 +1504,9 @@ deleteFromChemin : function (table,callback) {
                 if((regex.test(file) || regex4.test(file)) && regex1.test(file) && regex2.test(file))
                 {
                   console.log(file);
-                   //var file1 = file.replace("'", "''");
+                   var file1 = file.replace("'", "''");
                    //re = p + '\\' + file1;
-                   re = p + '/' + file;
+                   re = p + '/' + file1;
 
                    //re=re.replace("'", "''");
                    console.log('ato'+re);
