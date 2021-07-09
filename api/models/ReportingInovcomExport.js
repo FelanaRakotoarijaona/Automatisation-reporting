@@ -2124,7 +2124,7 @@ module.exports = {
         var f = man.getCell(colDate1).value;
         var a = iniValue.ok;
         const regex = new RegExp(a,'i');
-        var getko_ini = man.getCell(colDate2).address;
+        var getko_ini = man.getCell(colDate1).address;
         if(getko_ini == iniValue.ko+3 && regex.test(f) == true)
         {
           colonnne = parseInt(colNumber);
