@@ -3378,8 +3378,8 @@ ecritureOkKo : async function (nombre_ok_ko, table,date_export,mois1,callback) {
       }
     });
     console.log(" Colnumber2"+collonne);
-    // numeroLigne.getCell(collonne).value = nombre_ok_ko.ok;
-    numeroLigne.getCell(collonne).value = nombre_ok_ko.ko;
+    numeroLigne.getCell(collonne).value = nombre_ok_ko.ok;
+    // numeroLigne.getCell(collonne).value = nombre_ok_ko.ko;
     await newWorkbook.xlsx.writeFile(path_reporting);
     sails.log("Ecriture OK KO terminé"); 
     return callback(null, "OK");
