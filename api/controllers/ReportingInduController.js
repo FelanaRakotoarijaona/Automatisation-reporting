@@ -940,9 +940,9 @@ rechercheColonneindusuivant : function (req, res) {
     function (callback) {
       ReportingIndu.countOkKoDoubleSumcbtp("induse",callback);
     },
-    function (callback) {
-      ReportingIndu.countOkKoSum("indufactstc",callback);
-    },
+    // function (callback) {
+    //   ReportingIndu.countOkKoSum("indufactstc",callback);
+    // },
     // function (callback) {
     //   ReportingIndu.countOkKoSumko("indufactstc",callback);
     // },
@@ -971,9 +971,9 @@ rechercheColonneindusuivant : function (req, res) {
       function (callback) {
         ReportingIndu.ecritureOkKoDoublecbtp(result[4],"induse",date_export,mois1,callback);
       },
-      function (callback) {
-        ReportingIndu.ecritureOkKoSantece(result[5],"indufactstc",date_export,mois1,callback);
-      },
+      // function (callback) {
+      //   ReportingIndu.ecritureOkKoSantece(result[5],"indufactstc",date_export,mois1,callback);
+      // },
       // function (callback) {
       //   ReportingIndu.ecritureOkKoSantecf(result[6],"indufactstcazur",date_export,mois1,callback);
       // },
