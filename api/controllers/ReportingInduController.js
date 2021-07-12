@@ -954,7 +954,7 @@ rechercheColonneindusuivant : function (req, res) {
     console.log("Count OK 3 ==> " + result[3].ok + " / " + result[3].ko);
     console.log("Count OK 4 ==> " + result[4].ok + " / " + result[4].ko);
     console.log("Count OK 5 ==> " + result[5].ok );
-    console.log("Count OK 6 ==> " + result[6].ok );
+    console.log("Count OK 6 ==> " + result[6].ko );
     async.series([
       function (callback) {
         ReportingIndu.ecritureOkKoContest(result[0],"inducontestation",date_export,mois1,callback);
@@ -972,10 +972,10 @@ rechercheColonneindusuivant : function (req, res) {
         ReportingIndu.ecritureOkKoDoublecbtp(result[4],"induse",date_export,mois1,callback);
       },
       function (callback) {
-        ReportingIndu.ecritureOkKoSantececf(result[5],"indufactstc",date_export,mois1,callback);
+        ReportingIndu.ecritureOkKoSantece(result[5],"indufactstc",date_export,mois1,callback);
       },
       function (callback) {
-        ReportingIndu.ecritureOkKoSantececf(result[6],"indufactstcazur",date_export,mois1,callback);
+        ReportingIndu.ecritureOkKoSantecf(result[6],"indufactstcazur",date_export,mois1,callback);
       },
     ],function(err,resultExcel){
    console.log(resultExcel[0]);
