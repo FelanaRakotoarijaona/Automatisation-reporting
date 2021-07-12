@@ -929,7 +929,10 @@ rechercheColonneindusuivant : function (req, res) {
       ReportingIndu.countOkKoContest("inducontestation",callback);
     },
     function (callback) {
-      ReportingIndu.countOkKoDoubleSum("indufactstc",callback);
+      ReportingIndu.countOkKoSum("indufactstc",callback);
+    },
+    function (callback) {
+      ReportingIndu.countOkKoSumko("indufactstc",callback);
     },
     function (callback) {
       ReportingIndu.countOkKoSumko("indufraudelmg",callback);
@@ -953,7 +956,7 @@ rechercheColonneindusuivant : function (req, res) {
     console.log("Count OK 2 ==> " + result[2].ok + " / " + result[2].ko);    
     console.log("Count OK 3 ==> " + result[3].ok + " / " + result[3].ko);
     console.log("Count OK 4 ==> " + result[4].ok + " / " + result[4].ko);
-    // console.log("Count OK 5 ==> " + result[5].ok );
+    console.log("Count OK 5 ==> " + result[5].ok );
     // console.log("Count OK 6 ==> " + result[6].ok );
     async.series([
       function (callback) {
@@ -963,13 +966,16 @@ rechercheColonneindusuivant : function (req, res) {
         ReportingIndu.ecritureOkKoSante(result[1],"indufactstc",date_export,mois1,callback);
       },
       function (callback) {
-        ReportingIndu.ecritureOkKoko(result[2],"indufraudelmgdent",date_export,mois1,callback);
+        ReportingIndu.ecritureOkKoSante(result[2],"indufactstcdy",date_export,mois1,callback);
       },
       function (callback) {
-        ReportingIndu.ecritureOkKoDoublecbtp(result[3],"indutiers",date_export,mois1,callback);
+        ReportingIndu.ecritureOkKoko(result[3],"indufraudelmgdent",date_export,mois1,callback);
       },
       function (callback) {
-        ReportingIndu.ecritureOkKoDoublecbtp(result[4],"induse",date_export,mois1,callback);
+        ReportingIndu.ecritureOkKoDoublecbtp(result[4],"indutiers",date_export,mois1,callback);
+      },
+      function (callback) {
+        ReportingIndu.ecritureOkKoDoublecbtp(result[5],"induse",date_export,mois1,callback);
       },
       // function (callback) {
       //   ReportingIndu.ecritureOkKoSantece(result[5],"indufactstc",date_export,mois1,callback);

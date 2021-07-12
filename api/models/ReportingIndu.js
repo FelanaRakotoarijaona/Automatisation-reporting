@@ -3541,6 +3541,10 @@ ecritureOkKo : async function (nombre_ok_ko, table,date_export,mois1,callback) {
       numeroColonneOk = iniValue.indufactstc.ok;
       numeroColonneKo = iniValue.indufactstc.ko;
     }
+    if(table == "indufactstcdy"){
+      numeroColonneOk = iniValue.indufactstcdy.ok;
+      numeroColonneKo = iniValue.indufactstcdy.ko;
+    }
     if(table == "indufraudelmgdent"){
       numeroColonneOk = iniValue.indufraudelmgdent.ok;
       numeroColonneKo = iniValue.indufraudelmgdent.ko;
