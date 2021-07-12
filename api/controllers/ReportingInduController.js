@@ -972,10 +972,10 @@ rechercheColonneindusuivant : function (req, res) {
         ReportingIndu.ecritureOkKoDoublecbtp(result[4],"induse",date_export,mois1,callback);
       },
       function (callback) {
-        ReportingIndu.ecritureOkKoSante(result[5],"indufactstc",date_export,mois1,callback);
+        ReportingIndu.ecritureOkKoSantececf(result[5],"indufactstc",date_export,mois1,callback);
       },
       function (callback) {
-        ReportingIndu.ecritureOkKoSante(result[6],"indufactstcazur",date_export,mois1,callback);
+        ReportingIndu.ecritureOkKoSantececf(result[6],"indufactstcazur",date_export,mois1,callback);
       },
     ],function(err,resultExcel){
    console.log(resultExcel[0]);
