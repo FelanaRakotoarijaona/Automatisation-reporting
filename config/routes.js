@@ -214,9 +214,10 @@ module.exports.routes = {
   //  '/exportRetour/:jour/:mois/:annee/:html' : 'ReportingInovcomExportController.accueil',
   //  '/exportReportingIndu:jour/:mois/:annee' : 'ReportingInovcomExportController.rechercheColonne',
    //ajout routes pour RETOUR
-   '/exportExcelRetour' : 'ReportingRetourController.rechercheColonne',//5
+   '/exportExcelRetour' : 'ReportingRetourController.rechercheColonne',//A DECOMMENTER SI EXCEL RETOUR CORRECTE
    '/exportExcelRet' : 'ReportingRetourController.accueilR',//4
 
+  //  '/exportExcelRetour' : 'ReportingRetourController.rechercheColonnetest',//5 test
  
      //Route CONTENTIEUX
     //  '/accueilContentieux' : 'ReportingContetieuxController.accueil1',
