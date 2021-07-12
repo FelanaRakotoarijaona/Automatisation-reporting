@@ -940,6 +940,12 @@ rechercheColonneindusuivant : function (req, res) {
     function (callback) {
       ReportingIndu.countOkKoDoubleSumcbtp("induse",callback);
     },
+    function (callback) {
+      ReportingIndu.countOkKoSum("indufactstc",callback);
+    },
+    function (callback) {
+      ReportingIndu.countOkKoSumko("indufactstc",callback);
+    },
   ],function(err,result){
     if(err) return res.badRequest(err);
     console.log("Count OK 0 ==> " + result[0].ok + " / " + result[0].ko);
@@ -962,6 +968,12 @@ rechercheColonneindusuivant : function (req, res) {
       },
       function (callback) {
         ReportingIndu.ecritureOkKoDoublecbtp(result[4],"induse",date_export,mois1,callback);
+      },
+      function (callback) {
+        ReportingIndu.ecritureOkKoSante(result[5],"indufactstc",date_export,mois1,callback);
+      },
+      function (callback) {
+        ReportingIndu.ecritureOkKoSante(result[6],"indufactstcazur",date_export,mois1,callback);
       },
     ],function(err,resultExcel){
    console.log(resultExcel[0]);
