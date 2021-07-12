@@ -181,6 +181,7 @@ module.exports.routes = {
   '/exportExcelInovcom11' : 'ReportingInovcomExportController.rechercheColonne11',
   '/exportExcelInovcom2suivant11' : 'ReportingInovcomExportController.rechercheColonne11cbtp',
   '/exportExcelInovcom12' : 'ReportingInovcomExportController.rechercheColonne12',
+  '/exportExcelInovcom14' : 'ReportingInovcomExportController.rechercheColonne14',
 
    //Route INDU
    '/accueilIndu' : 'ReportingInduController.accueil1',

@@ -2699,7 +2699,7 @@ module.exports = {
                        function(err)
                        {
                          console.log('vofafa ddol');
-                         return res.view('Inovcom/exportexcelinovcom4', {date : datetest});
+                         return res.view('Inovcom/exportexcelinovcom14', {date : datetest});
                        });
                      /*async.series([
                        function(cb){
