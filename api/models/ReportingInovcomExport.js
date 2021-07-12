@@ -2352,6 +2352,10 @@ module.exports = {
       numeroColonneOk = iniValue.hospidematrejetprive.ok;
       numeroColonneKo = iniValue.hospidematrejetprive.ko;
     }
+    if(table == "defraiment"){
+      numeroColonneOk = iniValue.defraiment.ok;
+      numeroColonneKo = iniValue.defraiment.ko;
+    }
     if(table == "retouravisannulationtramealmerys"){
       numeroColonneOk = iniValue.retouravisannulationtramealmerys.ok;
       numeroColonneKo = iniValue.retouravisannulationtramealmerys.ko;

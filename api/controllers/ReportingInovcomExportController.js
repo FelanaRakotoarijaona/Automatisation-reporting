@@ -1043,12 +1043,19 @@ rechercheColonne7: function (req, res) {
     function (callback) {
       ReportingInovcomExport.countOkKofll7("hospidematrejetprive",callback);
     },
+    function (callback) {
+      ReportingInovcomExport.countOkKofll7("defraiment",callback);
+    },
   ],function(err,result){
     if(err) return res.badRequest(err);
     console.log("Count OK 0 ==> " + result[0].ok + " / " + result[0].ko);
+    console.log("Count OK 1 ==> " + result[1].ok + " / " + result[1].ko);
     async.series([          
       function (callback) {
         ReportingInovcomExport.ecritureOkKo7(result[0],"hospidematrejetprive",date_export,mois1,callback);
+      },
+      function (callback) {
+        ReportingInovcomExport.ecritureOkKo7(result[1],"defraiment",date_export,mois1,callback);
       },
     ],function(err,resultExcel){
    
