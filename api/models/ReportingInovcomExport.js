@@ -2432,6 +2432,10 @@ module.exports = {
       numeroColonneOk = iniValue.inovaglae100.ok;
       numeroColonneKo = iniValue.inovaglae100.ko;
     }
+    if(table == "psfemajagaps"){
+      numeroColonneOk = iniValue.psfemajagaps.ok;
+      numeroColonneKo = iniValue.psfemajagaps.ko;
+    }
     
     var ok_ko = {};
     ok_ko.ok = numeroColonneOk;

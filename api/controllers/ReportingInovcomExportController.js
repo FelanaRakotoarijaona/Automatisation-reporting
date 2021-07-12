@@ -635,11 +635,15 @@ module.exports = {
         function (callback) {
           ReportingInovcomExport.countok("hospidemat",callback);
         },
+        function (callback) {
+          ReportingInovcomExport.countok("psfemajagaps",callback);
+        },
       ],function(err,result){
         if(err) return res.badRequest(err);
         console.log("Count OK 0 ==> " + result[0].ok + " / " + result[0].ko);
         console.log("Count OK 1 ==> " + result[1].ok + " / " + result[1].ko);
         console.log("Count OK 2 ==> " + result[2].ok + " / " + result[2].ko);
+        console.log("Count OK 3 ==> " + result[3].ok + " / " + result[3].ko);
         async.series([          
           function (callback) {
             ReportingInovcomExport.ecritureOkKo3(result[0],"majribcbtp",date_export,mois1,callback);
@@ -649,6 +653,9 @@ module.exports = {
           },
           function (callback) {
             ReportingInovcomExport.ecritureOkKo31(result[2],"hospidemat",date_export,mois1,callback);
+          },
+          function (callback) {
+            ReportingInovcomExport.ecritureOkKo31(result[3],"psfemajagaps",date_export,mois1,callback);
           },
 
         ],function(err,resultExcel){
