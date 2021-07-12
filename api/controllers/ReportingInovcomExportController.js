@@ -655,7 +655,7 @@ module.exports = {
             ReportingInovcomExport.ecritureOkKo31(result[2],"hospidemat",date_export,mois1,callback);
           },
           function (callback) {
-            ReportingInovcomExport.ecritureOkKo31(result[3],"psfemajagaps",date_export,mois1,callback);
+            ReportingInovcomExport.ecritureOkKo3(result[3],"psfemajagaps",date_export,mois1,callback);
           },
 
         ],function(err,resultExcel){
