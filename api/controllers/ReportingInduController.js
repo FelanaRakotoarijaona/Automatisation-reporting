@@ -943,12 +943,12 @@ rechercheColonneindusuivant : function (req, res) {
     function (callback) {
       ReportingIndu.countOkKoDoubleSumcbtp("induse",callback);
     },
-    // function (callback) {
-    //   ReportingIndu.countOkKoSum("indufactstc",callback);
-    // },
-    // function (callback) {
-    //   ReportingIndu.countOkKoSumko("indufactstc",callback);
-    // },
+    function (callback) {
+      ReportingIndu.countOkKoSum("indufactstc",callback);
+    },
+    function (callback) {
+      ReportingIndu.countOkKoSumko("indufactstc",callback);
+    },
   ],function(err,result){
     if(err) return res.badRequest(err);
     console.log("Count OK 0 ==> " + result[0].ok + " / " + result[0].ko);
@@ -957,7 +957,8 @@ rechercheColonneindusuivant : function (req, res) {
     console.log("Count OK 3 ==> " + result[3].ok + " / " + result[3].ko);
     console.log("Count OK 4 ==> " + result[4].ok + " / " + result[4].ko);
     console.log("Count OK 5 ==> " + result[5].ok );
-    // console.log("Count OK 6 ==> " + result[6].ok );
+    console.log("Count OK 6 ==> " + result[6].ok );
+    console.log("Count OK 7 ==> " + result[7].ok );
     async.series([
       function (callback) {
         ReportingIndu.ecritureOkKoContest(result[0],"inducontestation",date_export,mois1,callback);
@@ -977,12 +978,12 @@ rechercheColonneindusuivant : function (req, res) {
       function (callback) {
         ReportingIndu.ecritureOkKoDoublecbtp(result[5],"induse",date_export,mois1,callback);
       },
-      // function (callback) {
-      //   ReportingIndu.ecritureOkKoSantece(result[5],"indufactstc",date_export,mois1,callback);
-      // },
-      // function (callback) {
-      //   ReportingIndu.ecritureOkKoSantecf(result[6],"indufactstcazur",date_export,mois1,callback);
-      // },
+      function (callback) {
+        ReportingIndu.ecritureOkKoSantesaisis(result[6],"indufactstcobs",date_export,mois1,callback);
+      },
+      function (callback) {
+        ReportingIndu.ecritureOkKoSantesaisis(result[7],"indufactstcazur",date_export,mois1,callback);
+      },
     ],function(err,resultExcel){
    console.log(resultExcel[0]);
         if(resultExcel[0]==true)
