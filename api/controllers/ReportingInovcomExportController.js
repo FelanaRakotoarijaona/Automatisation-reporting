@@ -747,18 +747,20 @@ rechercheColonne4: function (req, res) {
     function (callback) {
       ReportingInovcomExport.countOkKofll4("favbalma",callback);
     },
-    // function (callback) {
-    //   ReportingInovcomExport.countOkKofll4("rcindeterminable",callback);
-    // },
+    function (callback) {
+      ReportingInovcomExport.countOkKofll4("favpharma",callback);
+    },
+     function (callback) {
+      ReportingInovcomExport.countOkKofll4("favnument",callback);
+    },
   ],function(err,result){
     if(err) return res.badRequest(err);
     console.log("Count OK 0 ==> " + result[0].ok + " / " + result[0].ko);
     console.log("Count OK 1 ==> " + result[1].ok + " / " + result[1].ko);
     console.log("Count OK 2 ==> " + result[2].ok + " / " + result[2].ko);
-    async.series([          
-      // function (callback) {
-      //   ReportingInovcomExport.ecritureOkKo4(result[0],"extractionrcforce",date_export,mois1,callback);
-      // },
+    console.log("Count OK 3 ==> " + result[3].ok + " / " + result[3].ko);
+    console.log("Count OK 4 ==> " + result[4].ok + " / " + result[4].ko);
+    async.series([  
       function (callback) {
         ReportingInovcomExport.ecritureOkKo4(result[0],"faveole",date_export,mois1,callback);
       },
@@ -768,24 +770,13 @@ rechercheColonne4: function (req, res) {
       function (callback) {
         ReportingInovcomExport.ecritureOkKo4(result[2],"favbalma",date_export,mois1,callback);
       },
-      // function (callback) {
-      //   ReportingInovcomExport.ecritureOkKo4(result[4],"rcindeterminable",date_export,mois1,callback);
-      // },
-      // function (callback) {
-      //   ReportingInovcomExport.ecritureOkKo4(result[0].ko,"extractionrcforce",date_export,mois1,callback);
-      // // },
-      // function (callback) {
-      //   ReportingInovcomExport.ecritureOkKo4(result[1].ko,"faveole",date_export,mois1,callback);
-      // },
-      // function (callback) {
-      //   ReportingInovcomExport.ecritureOkKo4(result[2].ko,"favmgefi",date_export,mois1,callback);
-      // },
-      // function (callback) {
-      //   ReportingInovcomExport.ecritureOkKo4(result[3].ko,"favbalma",date_export,mois1,callback);
-      // },
-      // function (callback) {
-      //   ReportingInovcomExport.ecritureOkKo4(result[4].ko,"rcindeterminable",date_export,mois1,callback);
-      // },
+      function (callback) {
+        ReportingInovcomExport.ecritureOkKo4(result[3],"favpharma",date_export,mois1,callback);
+      },
+      function (callback) {
+        ReportingInovcomExport.ecritureOkKo4(result[4],"favnument",date_export,mois1,callback);
+      },
+     
 
     ],function(err,resultExcel){
    

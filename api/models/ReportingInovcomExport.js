@@ -2440,6 +2440,14 @@ module.exports = {
       numeroColonneOk = iniValue.psfemajagaps.ok;
       numeroColonneKo = iniValue.psfemajagaps.ko;
     }
+    if(table == "favpharma"){
+      numeroColonneOk = iniValue.favpharma.ok;
+      numeroColonneKo = iniValue.favpharma.ko;
+    }
+    if(table == "favnument"){
+      numeroColonneOk = iniValue.favnument.ok;
+      numeroColonneKo = iniValue.favnument.ko;
+    }
     
     var ok_ko = {};
     ok_ko.ok = numeroColonneOk;
