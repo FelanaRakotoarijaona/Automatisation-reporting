@@ -771,10 +771,10 @@ rechercheColonne4: function (req, res) {
         ReportingInovcomExport.ecritureOkKo4(result[2],"favbalma",date_export,mois1,callback);
       },
       function (callback) {
-        ReportingInovcomExport.ecritureOkKo4(result[3],"favpharma",date_export,mois1,callback);
+        ReportingInovcomExport.ecritureOkKo4etat(result[3],"favpharma",date_export,mois1,callback);
       },
       function (callback) {
-        ReportingInovcomExport.ecritureOkKo4(result[4],"favnument",date_export,mois1,callback);
+        ReportingInovcomExport.ecritureOkKo4pack(result[4],"favnument",date_export,mois1,callback);
       },
      
 
