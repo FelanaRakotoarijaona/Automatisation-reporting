@@ -1046,7 +1046,7 @@ rechercheColonne7: function (req, res) {
         ReportingInovcomExport.ecritureOkKo7(result[0],"hospidematrejetprive",date_export,mois1,callback);
       },
       function (callback) {
-        ReportingInovcomExport.ecritureOkKo7(result[1],"defraiment",date_export,mois1,callback);
+        ReportingInovcomExport.ecritureOkKo7bis(result[1],"defraiment",date_export,mois1,callback);
       },
     ],function(err,resultExcel){
    
