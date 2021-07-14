@@ -1043,10 +1043,10 @@ rechercheColonne7: function (req, res) {
     console.log("Count OK 1 ==> " + result[1].ok + " / " + result[1].ko);
     async.series([          
       function (callback) {
-        ReportingInovcomExport.ecritureOkKo7(result[0],"hospidematrejetprive",date_export,mois1,callback);
+        ReportingInovcomExport.ecritureOkKo7bis(result[0],"hospidematrejetprive",date_export,mois1,callback);
       },
       function (callback) {
-        ReportingInovcomExport.ecritureOkKo7bis(result[1],"defraiment",date_export,mois1,callback);
+        ReportingInovcomExport.ecritureOkKo7(result[1],"defraiment",date_export,mois1,callback);
       },
     ],function(err,resultExcel){
    
