@@ -143,7 +143,7 @@
             var desired_value1 = (desired_cell ? desired_cell.v : undefined);
             if(desired_value1!=undefined)
             {
-              nbr=nbr + 1;
+              nbr=nbr + 2;//Ajout rectification Odilon
             }
           }; 
         }
@@ -157,7 +157,7 @@
             var desired_value1 = (desired_cell ? desired_cell.v : undefined);
             if(desired_value1!=undefined)
             {
-              nbr=nbr + 1;
+              nbr=nbr + 2;//Ajout rectification Odilon
             }
           }; 
         }
@@ -167,7 +167,7 @@
       {
         console.log('Colonne non trouvé');
       }
-      var tab = [nbr];
+      var tab = [nbr-1];
           console.log("nombreeeeebr"+ nbr);
           return tab;
     }
