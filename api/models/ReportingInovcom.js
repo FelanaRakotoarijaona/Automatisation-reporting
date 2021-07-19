@@ -85,7 +85,7 @@
     }
     else{
       var tab = [];
-      tab = ReportingInovcom.lectureEtInsertiontype2( trameflux,feuil,cellule,table,cellule2,nb,numligne,callback);
+      tab = ReportingInovcom.lectureEtInsertiontype2(trameflux,feuil,cellule,table,cellule2,nb,numligne,callback);
       var nbe= parseInt(nb);
       console.log(tab);
       var sql = "insert into "+table[nbe]+" (okko) values ('"+tab[0]+"') ";
@@ -134,7 +134,6 @@
         var debutligne = numeroligne + 1;
         if(col2!=undefined)
         {
- 
           for(var a=debutligne;a<=range.e.r;a++)
           {
             var address_of_cell = {c:col2, r:a};
@@ -167,9 +166,9 @@
       {
         console.log('Colonne non trouvé');
       }
-      var tab = [nbr-1];//Ajout rectification Odilon
-          console.log("nombreeeeebr"+ nbr);
-          return tab;
+      var tab = [nbr];//Ajout rectification Odilon
+      console.log("nombreeeeebr"+ nbr);
+      return tab;
     }
     catch
     {
