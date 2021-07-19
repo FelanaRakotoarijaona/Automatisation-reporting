@@ -285,12 +285,14 @@ module.exports = {
         }
       }
     });
-    //console.log(" Colnumber2"+collonne);
+    console.log(" Colnumber2 "+collonne);
 
-    var ok = parseInt(nombre_ok_ko.ok);
+    /*var ok = parseInt(nombre_ok_ko.ok);
     var ko = parseInt(nombre_ok_ko.ko);
     numeroLigne.getCell(colonnne).value = ok;
-    numeroLigne.getCell(collonne).value = ko;
+    numeroLigne.getCell(collonne).value = ko;*/
+    numeroLigne.getCell(colonnne).value = nombre_ok_ko.ok;
+    numeroLigne.getCell(collonne).value = nombre_ok_ko.ko;
     await newWorkbook.xlsx.writeFile(path_reporting);
     sails.log("Ecriture OK KO terminé"); 
     return callback(null, "OK");
