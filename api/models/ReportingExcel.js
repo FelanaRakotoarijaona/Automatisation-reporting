@@ -291,8 +291,13 @@ module.exports = {
     var ko = parseInt(nombre_ok_ko.ko);
     numeroLigne.getCell(colonnne).value = ok;
     numeroLigne.getCell(collonne).value = ko;*/
+
+
     numeroLigne.getCell(colonnne).value = nombre_ok_ko.ok;
     numeroLigne.getCell(collonne).value = nombre_ok_ko.ko;
+
+    console.log('ok' + nombre_ok_ko.ok);
+    console.log('ko' + nombre_ok_ko.ko);
     await newWorkbook.xlsx.writeFile(path_reporting);
     sails.log("Ecriture OK KO terminé"); 
     return callback(null, "OK");
