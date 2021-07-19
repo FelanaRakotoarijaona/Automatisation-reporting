@@ -432,7 +432,6 @@ importTrameFlux929type4 : async function (trameflux,feuil,cellule,table,cellule2
   {
       console.log('favpharma');
       XLSX = require('xlsx');
-      
       try{
         console.log(trameflux[nb]);
         var workbook = XLSX.readFile(trameflux[nb]);
@@ -446,7 +445,6 @@ importTrameFlux929type4 : async function (trameflux,feuil,cellule,table,cellule2
           if(regex.test(sheetd[i]))
           {
             console.log(sheetd[i]);
-          
           }
           else
           {
@@ -664,16 +662,16 @@ lectureEtInsertiontype4v2:function(trameflux,feuil,cellule,table,cellule2,nb,num
           var cell_ref = XLSX.utils.encode_cell(address_of_cell);
           var desired_cell = sheet[cell_ref];
           var desired_value1 = (desired_cell ? desired_cell.v : undefined);
-          //console.log(desired_value1);
+          console.log('valeur2: ' +desired_value1);
           var ok = 'OK';
           var ko = 'KO';
           const regex = new RegExp(ok,'i');
           const regex1 = new RegExp(ko,'i');
-          if(desired_value1=='OK' || desired_value1=='ok')
+          if(regex.test(desired_value1))
           {
             nbr=nbr + 1;
           }
-          else if(desired_value1=='KO' || desired_value1=='ko')
+          else if(regex1.test(desired_value1))
           {
             nbrko=nbrko + 1;
           }
@@ -830,17 +828,16 @@ lectureEtInsertiontype4v2:function(trameflux,feuil,cellule,table,cellule2,nb,num
             var cell_ref = XLSX.utils.encode_cell(address_of_cell);
             var desired_cell = sheet[cell_ref];
             var desired_value1 = (desired_cell ? desired_cell.v : undefined);
+            console.log('valeur: ' +desired_value1);
             var ok = 'OK';
             const regexok = new RegExp(ok,'i');
-            var ko = 'KO';
-            const regexko = new RegExp(ko,'i');
-            var ko2 = 'Rejet def';
+            var ko2 = 'Rejet';
             const regexko2 = new RegExp(ko2,'i');
             if(regexok.test(desired_value1))
             {
               nbr=nbr + 1;
             }
-            if(regexko.test(desired_value1) || regexko2.test(desired_value1) )
+            else if(regexko2.test(desired_value1))
             {
               nbrko=nbrko + 1;
             }
