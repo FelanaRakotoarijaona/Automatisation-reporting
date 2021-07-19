@@ -2331,7 +2331,7 @@ module.exports = {
               console.log(MotCle[0]);
               async.series([  
                   function(cb){
-                      ReportingInovcom.deleteFromChemin11(table,cb);
+                      ReportingInovcom.deleteFromChemin10(table,cb);
                     },
               ],
               function(err, resultat){
