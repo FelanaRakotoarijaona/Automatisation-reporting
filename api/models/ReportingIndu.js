@@ -2578,10 +2578,7 @@ ecritureOkKo : async function (nombre_ok_ko, table,date_export,mois1,callback) {
   const Excel = require('exceljs');
   const cmd=require('node-cmd');
   const newWorkbook = new Excel.Workbook();
-  
   try{
-  
-   
     await newWorkbook.xlsx.readFile(path_reporting);
   const newworksheet = newWorkbook.getWorksheet(mois1);
   var colonneDate = newworksheet.getColumn('A');

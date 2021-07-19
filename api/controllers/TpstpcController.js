@@ -17,7 +17,7 @@
          var date = j  + m + an ;
          var chemin = '//10.128.1.2/bpo_almerys/03-POLE_TPS-TPC/00-PILOTAGE/09-REPORTING ENGAGEMENT/';
          var cheminTotal = chemin + date + '/' ;
-         var r = [0,1,2,3,4,5,6,7];
+         var r = [0,1,2,3,4,5,6];
          var cheminpart = [];
          var motcle = [];
          var table = [];
@@ -807,7 +807,7 @@
      {
     
         var sql1= 'select chemin from chemintpssuiviprod16h;';
-        Tpstpc.getDatastore().sendNativeQuery(sql1,function(err, nc1) {
+        ReportingInovcom.getDatastore().sendNativeQuery(sql1,function(err, nc1) {
           if (err){
             console.log('erreur');
             console.log(err);
