@@ -260,8 +260,13 @@ module.exports.routes = {
   '/reportingGarantieligne' : 'GarantieController.importGarantieligne',
   '/reportingGarantiebpo1' : 'GarantieController.importGarantiebpo1',
 
+   //ROUTES HTP REPORTING ENGAGEMENT
 
-
+   '/cheminHTPengagement' : { view: 'HTPengagement/exportHTPengagement' },
+   '/exportHTPengagement' : 'EngagementhtpController.exporthtpengagement',
+   '/exportHTPengagementsuivant_1' : 'EngagementhtpController.exporthtpengagementsuivant_1',
+   '/exportHTPengagementsuivant_2' : 'EngagementhtpController.exporthtpengagementsuivant_2',
+   '/exportHTPengagementsuivant_3' : 'EngagementhtpController.exporthtpengagementsuivant_3',
 
   /***************************************************************************
   *                                                                          *

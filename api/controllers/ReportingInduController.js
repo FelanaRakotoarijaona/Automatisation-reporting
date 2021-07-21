@@ -785,7 +785,10 @@ rechercheColonne : function (req, res) {
     function (callback) {
       ReportingIndu.countOkKoSum("induinterialeaudio",callback);
     },
-   
+    function (callback) {
+      ReportingIndu.countOkKoDoubleSum("induentrain",callback);
+    },
+
   ],function(err,result){
     if(err) return res.badRequest(err);
     console.log("Count OK 0 ==> " + result[0].ok + " / " + result[0].ko);
@@ -801,6 +804,7 @@ rechercheColonne : function (req, res) {
     console.log("Count OK 10 ==> " + result[10].ok + " / " + result[10].ko);
     console.log("Count OK 11 ==> " + result[11].ok + " / " + result[11].ko);
     console.log("Count OK 12 ==> " + result[12].ok + " / " + result[12].ko);
+    console.log("Count OK 13 ==> " + result[13].ok + " / " + result[13].ko);
     async.series([
       function (callback) {
         ReportingIndu.ecritureOkKoDouble(result[0],"induse",date_export,mois1,callback);
@@ -841,7 +845,9 @@ rechercheColonne : function (req, res) {
       function (callback) {
         ReportingIndu.ecritureOkKo(result[12],"induinterialeaudio",date_export,mois1,callback);
       },
-      
+      function (callback) {
+        ReportingIndu.ecritureOkKoDouble(result[13],"induentrain",date_export,mois1,callback);
+      },
       
     ],function(err,resultExcel){
    console.log(resultExcel[0]);
@@ -1005,6 +1011,7 @@ rechercheColonneindusuivant : function (req, res) {
 },
 
 /****************************************************************************************/
+//RELEVE DE COMPTE
 rechercheColonne2 : function (req, res) {
   var datetest = req.param("date",0);
   var annee = datetest.substr(0, 4);
@@ -1103,6 +1110,7 @@ rechercheColonne2 : function (req, res) {
   })
 },
 /****************************************************************************************/
+//INDU LIGNE ROUGE
 rechercheColonne3 : function (req, res) {
   var datetest = req.param("date",0);
   var annee = datetest.substr(0, 4);

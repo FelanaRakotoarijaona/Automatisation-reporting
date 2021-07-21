@@ -4,7 +4,7 @@
  * @description :: A model definition represents a database table/collection.
  * @docs        :: https://sailsjs.com/docs/concepts/models-and-orm/models
  */
-
+const path_reporting = 'D:/LDR8_1421_nouv/PROJET_FELANA/REPORTING CONTENTIEUX type.xlsx';
 module.exports = {
 
   attributes: {
@@ -1055,8 +1055,12 @@ lectureEtInsertiongarantie_1:function(trameflux,feuil,cellule,table,cellule2,nb,
   importTrameDematbpo1 : function (trameflux,feuil,cellule,table,cellule2,nb,numligne,dernierl,callback) {
     console.log('****************');
     console.log(nb);
-    console.log(trameflux[nb]);
+    console.log("ito n trameflu: "+trameflux[nb]);
     console.log('****************');
+
+   
+
+
     if(trameflux[nb]==undefined)
     {
       console.log('trame undefined');
@@ -1074,48 +1078,146 @@ lectureEtInsertiongarantie_1:function(trameflux,feuil,cellule,table,cellule2,nb,
       });
     }
     else{
-  
-      var tab = [];
-      tab = Garantie.lectureEtInsertiongarantiebpo1( trameflux,feuil,cellule,table,cellule2,nb,numligne,dernierl,callback);
-      var nbe= parseInt(nb);
-      console.log(tab);
-      var sql = "insert into "+table[nbe]+" (nb) values ('"+tab[0]+"') ";
-     
-  
-      Garantie.getDatastore().sendNativeQuery(sql, function(err,res){
-        if (err) { 
-          console.log("Une erreur ve ok?");
-         }
-        else
+      console.log(trameflux);
+      for(var z=0 ; z < trameflux.length; z++){
+
+        var a = "Suivi Prod Quotidien TRT.2021.v4";        
+        const regex = new RegExp(a,'i');
+        if(regex.test(trameflux[z])==false)
         {
-          console.log(sql);
-          return callback(null, true);
-        };
-                            });
+          console.log('trame autre chemin');
+          var sql = "insert into chemintsisy(typologiedelademande) values ('chemko') ";
+          Reportinghtp.getDatastore().sendNativeQuery(sql, function(err,res){
+            if (err) { 
+              console.log("Une erreur ve ok?");
+              //return callback(err);
+             }
+            else
+            {
+              console.log(sql);
+              return callback(null, true);
+            };
+          });
+        }
+        else{
+          var tab = [];
+          tab = Garantie.lectureEtInsertiongarantiebpo1( trameflux,feuil,cellule,table,cellule2,nb,numligne,dernierl,callback);
+          var nbe= parseInt(nb);
+          console.log(tab);
+          // var sql = "insert into "+table[nbe]+" (nb) values ('"+tab[0]+"') ";
+         
+      
+          // Garantie.getDatastore().sendNativeQuery(sql, function(err,res){
+          //   if (err) { 
+          //     console.log("Une erreur ve ok?");
+          //    }
+          //   else
+          //   {
+          //     console.log(sql);
+          //     return callback(null, true);
+          //   };
+          //     });
+
+        }
+
+      }
+      
     };
   
   },
   /****************************************************************************/
-  lectureEtInsertiongarantiebpo1:function(trameflux,feuil,cellule,table,cellule2,nb,numligne,dernierl,callback){
-       
-        XLSX = require('xlsx');
-        const Excel = require('exceljs');
-        const newWorkbook = new Excel.Workbook();
-        console.log('efa miditra manao lecture bpo izy zao');
+  lectureEtInsertiongarantiebpo_1: async function(trameflux,feuil,cellule,table,cellule2,nb,numligne,dernierl,callback){
+   const XLSX = require('xlsx');
+   const Excel = require('exceljs');
+   const newWorkbook = new Excel.Workbook(); 
+  
+ 
+        
+        try{
+          console.log('dans try');
+          await newWorkbook.xlsx.readFile('D:/LDR8_1421_nouv/PROJET_FELANA/GARANTIE/Suivi Prod Quotidien TRT.2021.v4.xlsx');
+          const newworksheet = newWorkbook.getWorksheet(1);
+          console.log('newworksheet: '+newworksheet);
+          var colonneDate = newworksheet.getColumn();  
+          console.log('colonneDate: '+colonneDate);
+          var tab = 0;
+              console.log("nombreeeeebr"+ nbr);
+              return tab;
+        }
+        catch
+        {
+          console.log("erreur absolu haaha");
+        }        
 
-            // try{
-            //   await newWorkbook.xlsx.readFile("D:/LDR8_1421_nouv/PROJET_FELANA/GARANTIE/Suivi Prod Quotidien TRT.2021.v4.xlsx");
-            //   const newworksheet = newWorkbook.getWorksheet(mois1);
-              
-            // }
-            // catch
-            // {
-            //   console.log("erreur absolu haaha");
-            // }        
+    
   
-  
-        },
+  },
   /*******************************************************************************************/
+  lectureEtInsertiongarantiebpo1 : async function (nombre_ok_ko, table,date_export,mois1,callback) {
+    const Excel = require('exceljs');
+    const cmd=require('node-cmd');
+    // const newWorkbook = new Excel.Workbook();
+    try{   
+    const newWorkbook = new Excel.Workbook();
+    await newWorkbook.xlsx.readFile(path_reporting);
+    const newworksheet = newWorkbook.getWorksheet(mois1);
+    var colonneDate = newworksheet.getColumn('A');
+    console.log(colonneDate);
+    var ligneDate1;
+    var ligneDate;
+    colonneDate.eachCell(function(cell, rowNumber) {
+      var dateExcel = ReportingContetieux.convertDate(cell.text);
+      if(dateExcel==date_export)
+      {
+        ligneDate1 = parseInt(rowNumber);
+        var line = newworksheet.getRow(ligneDate1);
+        var f = line.getCell(3).value;
+        //console.log();
+        if(f == "ALMERYS")
+        {
+          ligneDate = parseInt(rowNumber);
+        }
+      }
+    });
+    console.log("LIGNE DATE ===> "+ ligneDate);
+    var rowDate = newworksheet.getRow(ligneDate);
+    var numeroLigne = rowDate;
+    var iniValue = ReportingContetieux.getIniValue(table);
+    var a5;
+    var rowm = newworksheet.getRow(1);
+    var colonnne;
+    var colDate1;
+    rowm.eachCell(function(cell, colNumber) {
+      if(cell.value == 'DOCUMENTS TRAITES NON SAISIS (RETOURS)')
+      {
+        colDate1 = parseInt(colNumber);
+        
+        //var col = newworksheet.getColumn(colDate1);
+        var man = newworksheet.getRow(3);
+        var f = man.getCell(colDate1).value;
+        var a = iniValue.ok;
+        const regex = new RegExp(a,'i');        
+        var getko_ini = man.getCell(colDate1).address;
+        if(getko_ini == iniValue.ko+3 && regex.test(f) == true)
+        {
+          colonnne = parseInt(colNumber);
+        }
+     }
+    });
+    console.log(" Colnumber"+colonnne);
+   
+    numeroLigne.getCell(colonnne).value = nombre_ok_ko.ok;
+    await newWorkbook.xlsx.writeFile(path_reporting);
+    sails.log("Ecriture OK KO terminé"); 
+    return callback(null, "OK");
+  
+    }
+    catch
+    {
+      console.log("Une erreur s'est produite");
+      Reportinghtp.deleteToutHtp(table,3,callback);
+    }
+    },
 
 
 

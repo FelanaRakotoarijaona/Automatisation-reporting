@@ -868,6 +868,7 @@ importGarantiebpo1 : function(req,res)
                     dernierl.push(a);
                   };
                   console.log(trameflux);
+                  //BOUCLE
                   async.forEachSeries(nbre, function(lot, callback_reporting_suivant) {
                     async.series([
                       function(cb){

@@ -1133,8 +1133,8 @@ rechercheColonne8: function (req, res) {
     },
   ],function(err,result){
     if(err) return res.badRequest(err);
-    console.log("Count OK 0 ==> " + result[0].ok + " / " + result[0].ko);
-    console.log("Count OK 1 ==> " + result[1].ok + " / " + result[1].ko);
+    console.log("Count OK 0 ==> " + result[0].ok);
+    console.log("Count OK 1 ==> " + result[1].ok);
     async.series([          
       function (callback) {
         ReportingInovcomExport.ecritureOkKo8(result[0],"retouravisannulationtramealmerys",date_export,mois1,callback);
