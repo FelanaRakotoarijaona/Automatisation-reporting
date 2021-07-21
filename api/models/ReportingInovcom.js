@@ -661,7 +661,7 @@ lectureEtInsertiontype4v2:function(trameflux,feuil,cellule,table,cellule2,nb,num
           var cell_ref = XLSX.utils.encode_cell(address_of_cell);
           var desired_cell = sheet[cell_ref];
           var desired_value1 = (desired_cell ? desired_cell.v : undefined);
-          console.log('valeur2: ' +desired_value1);
+          //console.log('valeur2: ' +desired_value1);
           var ok = 'OK';
           var ko = 'KO';
           const regex = new RegExp(ok,'i');
@@ -827,7 +827,7 @@ lectureEtInsertiontype4v2:function(trameflux,feuil,cellule,table,cellule2,nb,num
             var cell_ref = XLSX.utils.encode_cell(address_of_cell);
             var desired_cell = sheet[cell_ref];
             var desired_value1 = (desired_cell ? desired_cell.v : undefined);
-            console.log('valeur: ' +desired_value1);
+            //console.log('valeur: ' +desired_value1);
             var ok = 'OK';
             const regexok = new RegExp(ok,'i');
             var ko2 = 'Rejet';
@@ -973,10 +973,8 @@ lectureEtInsertiontype4v2:function(trameflux,feuil,cellule,table,cellule2,nb,num
       console.log(nbr.length + 'long');
       for(var y=0;y<nbr.length;y++) //parcours anle dossier rehetra
       {
-        /*var j = parseInt(tab[y]);*/
         console.log(y);
         ReportingInovcom.lectureEtInsertiontype5(trameflux,feuil,cellule,table,cellule2,y,numligne,callback);
-      // ReportingInovcom.lectureEtInsertion(trameflux,feuil,cellule,table,cellule2,j,callback)
       }
     }
     catch
