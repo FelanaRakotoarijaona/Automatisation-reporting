@@ -948,11 +948,30 @@ lectureEtInsertiontype4v2:function(trameflux,feuil,cellule,table,cellule2,nb,num
       XLSX = require('xlsx');
       try{
       var workbook = XLSX.readFile(trameflux[0])
-      const sheetd = workbook.SheetNames; 
+      /*const sheetd = workbook.SheetNames; 
       console.log('long' + sheetd.length);
       var essaie = parseInt(sheetd.length);
-      console.log('valeur'+essaie);
-      for(var y=0;y<essaie;y++) //parcours anle dossier rehetra
+      console.log('valeur'+essaie);*/
+      //var workbook = XLSX.readFile(trameflux[nb]);
+      const sheetd = workbook.SheetNames; 
+      console.log('long' + sheetd.length);
+      var nbr = [];
+      for(var i=0;i<sheetd.length;i++)
+      {
+        var mc1 = 'en cour';
+        const regex = new RegExp(mc1,'i');
+        if(regex.test(sheetd[i]))
+        {
+          console.log(sheetd[i]);
+        }
+        else
+        {
+          nbr.push(i);
+        }
+          
+      }
+      console.log(nbr.length + 'long');
+      for(var y=0;y<nbr.length;y++) //parcours anle dossier rehetra
       {
         /*var j = parseInt(tab[y]);*/
         console.log(y);
@@ -964,8 +983,6 @@ lectureEtInsertiontype4v2:function(trameflux,feuil,cellule,table,cellule2,nb,num
     {
       console.log('ko');
     }
-    
-  
     };
   },
   importTrameFlux929type6 : function (trameflux,feuil,cellule,table,cellule2,nb,numligne,dernierl,callback) {
