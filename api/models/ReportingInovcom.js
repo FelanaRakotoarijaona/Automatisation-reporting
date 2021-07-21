@@ -1256,7 +1256,7 @@ lectureEtInsertiontype4v2:function(trameflux,feuil,cellule,table,cellule2,nb,num
           col1=ra;
         }
         else{
-          var a =2;
+          col1 =22;
         }
       };
       for(var ra=0;ra<=range.e.c;ra++)
