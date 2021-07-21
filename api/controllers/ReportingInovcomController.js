@@ -458,7 +458,7 @@ module.exports = {
   };
 });
     },
-    //Type 3
+    //Type 3 (Nombre non vide)
     accueil1type3 : function(req,res)
     {
       return res.view('Inovcom/accueil1type3');
@@ -2331,7 +2331,7 @@ module.exports = {
               console.log(MotCle[0]);
               async.series([  
                   function(cb){
-                      ReportingInovcom.deleteFromChemin11(table,cb);
+                      ReportingInovcom.deleteFromChemin10(table,cb);
                     },
               ],
               function(err, resultat){
@@ -2486,7 +2486,7 @@ module.exports = {
 });
     },
 
-     //Type 4
+     //Type 4 (Nombre OK/KO (2))
      accueil1type14 : function(req,res)
      {
        return res.view('Inovcom/accueil1type14');

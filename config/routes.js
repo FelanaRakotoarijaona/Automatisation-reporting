@@ -10,6 +10,41 @@
 
 module.exports.routes = {
 
+
+     //route tps-tpc grs
+     '/accueilEtpGrs' : 'TpsGrsController.accueilEtp',
+     '/copieEtp' : 'TpsGrsController.copieEtp',
+     '/accueilGrs' : 'TpsGrsController.accueil',
+     '/traitementTacheTraiteGrs' : 'TpsGrsController.traitementTacheTraite',
+     '/accueilrecherchefichier' : 'TpsGrsController.accueilrecherchefichier',
+     '/recherchefichiertpsgrs' : 'TpsGrsController.recherchefichier',
+     '/accueilstock16h' : 'TpsGrsController.accueilstock16h',
+     '/traitementgrsstock16h' : 'TpsGrsController.traitementgrsstock16h',
+
+
+     '/recherchefichiertpstpc' : 'TpstpcController.recherchefichiertpstpc',
+     '/accueilTpstpc' : 'TpstpcController.accueil1',
+     '/accueilstocketbonj' : 'TpstpcController.accueil2',
+     '/accueiltachenontraite' : 'TpstpcController.accueil3',
+     '/accueiletp' : 'TpstpcController.accueil',
+     '/accueilecriture' : 'TpstpcController.accueil6',
+     '/traitementetp' : 'TpstpcController.selection',
+     '/accueilecritureetp' : 'TpstpcController.accueiletp',
+     '/ecritureetp' : 'TpstpcController.ecritureEtp',
+     '/traitementfinal' :'TpstpcController.ecriture3',
+     '/ecritureetp2' : 'TpstpcController.ecritureEtp2',
+     '/ecritureerreur' : 'TpstpcController.ecritureErreur',
+   
+     '/traitementtachenontraite' : 'TpstpcController.traitementBonJ1',
+     '/accueilsanteclair' : 'TpstpcController.accueil4',
+     '/traitementSanteclair' : 'TpstpcController.traitementSanteclair',
+     '/accueilerreur' : 'TpstpcController.accueil5',
+     '/traitementerreureasy' : 'TpstpcController.traitementErreurEasy',
+     '/traitementTpstpc' : 'TpstpcController.traitementTacheTraite',
+     '/traitementsuivant' : 'TpstpcController.ecritureExcel',
+     
+     '/traitementJ2' : 'TpstpcController.traitementStocketBonJ',
+  
    //route tps-tpc
    '/accueilrecherchefichier' : 'TpstpcController.accueilrecherchefichier',
    '/recherchefichiertpstpc' : 'TpstpcController.recherchefichiertpstpc',

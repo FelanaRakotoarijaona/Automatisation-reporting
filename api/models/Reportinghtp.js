@@ -9,7 +9,6 @@ module.exports = {
   },
   //Import des donnees vers la base de donnée
   importTrameFlux929type2 : function (trameflux,feuil,cellule,table,cellule2,nb,numligne,callback) {
-
     if(trameflux[nb]==undefined)
     {
       var sql = "insert into chemintsisy(typologiedelademande) values ('tsisy') ";

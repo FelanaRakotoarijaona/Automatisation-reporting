@@ -1698,11 +1698,8 @@
                           return callback(null, true);
                         }
                       
-                                            });
-                                          
-      }
-             
-          
+                                            });                  
+      }    
     }
     catch
     {
