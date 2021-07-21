@@ -18,6 +18,8 @@ module.exports.routes = {
      '/traitementTacheTraiteGrs' : 'TpsGrsController.traitementTacheTraite',
      '/accueilrecherchefichier' : 'TpsGrsController.accueilrecherchefichier',
      '/recherchefichiertpsgrs' : 'TpsGrsController.recherchefichier',
+     '/accueilstock16h' : 'TpsGrsController.accueilstock16h',
+     '/traitementgrsstock16h' : 'TpsGrsController.traitementgrsstock16h',
 
 
      '/recherchefichiertpstpc' : 'TpstpcController.recherchefichiertpstpc',
