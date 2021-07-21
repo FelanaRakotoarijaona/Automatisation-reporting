@@ -1251,12 +1251,12 @@ lectureEtInsertiontype4v2:function(trameflux,feuil,cellule,table,cellule2,nb,num
         var desired_value = (desired_cell ? desired_cell.v : undefined);
         var mc1 = cellule[nb];
         const regex = new RegExp(mc1,'i');
-        if(desired_value==mc1)
+        if(desired_value=='Réponse' || desired_value=='Reponse')
         {
           col1=ra;
         }
         else{
-          col1 = 22;
+          var a =2;
         }
       };
       for(var ra=0;ra<=range.e.c;ra++)
@@ -1288,7 +1288,7 @@ lectureEtInsertiontype4v2:function(trameflux,feuil,cellule,table,cellule2,nb,num
             if(regex.test(desired_value1))
             {
               var z = parseInt(a) - 1;
-              var address_of_cell2 = {c:22, r:z};
+              var address_of_cell2 = {c:col1, r:z};
               var cell_refs = XLSX.utils.encode_cell(address_of_cell2);
               var desired_cell2 = sheet[cell_refs];
               var desired_value2 = (desired_cell2 ? desired_cell2.v : undefined);
