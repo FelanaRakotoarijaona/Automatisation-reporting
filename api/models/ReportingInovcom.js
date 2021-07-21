@@ -1251,9 +1251,12 @@ lectureEtInsertiontype4v2:function(trameflux,feuil,cellule,table,cellule2,nb,num
         var desired_value = (desired_cell ? desired_cell.v : undefined);
         var mc1 = cellule[nb];
         const regex = new RegExp(mc1,'i');
-        if(regex.test(desired_value))
+        if(desired_value==mc1)
         {
           col1=ra;
+        }
+        else{
+          col1 = 22;
         }
       };
       for(var ra=0;ra<=range.e.c;ra++)
@@ -1300,13 +1303,7 @@ lectureEtInsertiontype4v2:function(trameflux,feuil,cellule,table,cellule2,nb,num
                 tabok= tabok + 1;
                 //console.log('ok');
               }
-              else
-              {
-                var mm =1;
-                //console.log('ko');
-              };
-
-              if(desired_value21!=undefined)
+              else if(desired_value21!=undefined)
               {
                 taboki = taboki +1;
                 //console.log('ok2');
