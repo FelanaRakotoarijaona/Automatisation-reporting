@@ -218,8 +218,6 @@ module.exports = {
     var numerofeuille;
     var numeroligne = parseInt(numligne[nb]);
     console.log(trameflux[nb]);
-    console.log(numerofeuille);
-    
     console.log(numeroligne);
     try{
       var nbr = 0;
@@ -228,15 +226,11 @@ module.exports = {
       var col = 0;
       var colnonvide;
       var nbe = parseInt(nb);
-
-
-
       const sheetd = workbook.SheetNames; 
       console.log('long' + sheetd.length);
-      var tab = [];
       for(var i=0;i<sheetd.length;i++)
       {
-        var mc1 = nfeuil[nb];;
+        var mc1 = feuil[nb];;
         const regex = new RegExp(mc1,'i');
         if(regex.test(sheetd[i]))
         {
@@ -245,7 +239,7 @@ module.exports = {
         else
         {
           numerofeuille = i;
-        }
+        };
       };
       console.log('tafiditra ato v numfeuil?'+ numerofeuille);
       var bi = 'FIN DE TRAITEMENT';
