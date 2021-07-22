@@ -263,7 +263,7 @@ module.exports.routes = {
    //ajout routes pour RETOUR
    '/exportExcelRetour' : 'ReportingRetourController.rechercheColonne',//A DECOMMENTER SI EXCEL RETOUR CORRECTE
    '/exportExcelRet' : 'ReportingRetourController.accueilR',//4
-
+   '/exportretoursuivant' : 'ReportingRetourController.rechercheColonne_suivant',
   //  '/exportExcelRetour' : 'ReportingRetourController.rechercheColonnetest',//5 test
  
      //Route CONTENTIEUX
