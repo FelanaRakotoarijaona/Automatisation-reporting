@@ -228,7 +228,7 @@ module.exports = {
       var colnonvide;
       var nbe = parseInt(nb);
       console.log('tafiditra ato v?');
-      var bi = 'fin de traitement';
+      var bi = 'FIN DE TRAITEMENT';
       const regex = new RegExp(bi,'i');
       for(var ra=0;ra<=range.e.c;ra++)
       {
@@ -239,7 +239,11 @@ module.exports = {
         if(regex.test(desired_value))
         {
           colnonvide=ra;
-        };
+        }
+        else
+        {
+          colnonvide = 13;
+        }
         console.log('tafiditra ato v 2?');
       };
       console.log("colonnevide"+colnonvide);

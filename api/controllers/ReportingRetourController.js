@@ -22,7 +22,8 @@ module.exports = {
     {
       var Excel = require('exceljs');
       var workbook = new Excel.Workbook();
-      var table = ['\\\\10.128.1.2\\almerys-out\\Retour_Easytech_'];
+      var table = ['/dev/pro/Retour_Easytech_'];
+      //var table = ['\\\\10.128.1.2\\almerys-out\\Retour_Easytech_'];
       var datetest = req.param("date",0);
       var annee = datetest.substr(0, 4);
       var mois = datetest.substr(5, 2);
@@ -39,7 +40,7 @@ module.exports = {
       var option2 = [];
       var nomBase = "cheminretourvrai";
       var r = [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19];
-      workbook.xlsx.readFile('ReportingRetour.xlsx')
+      workbook.xlsx.readFile('ReportingRetourServeur.xlsx')
           .then(function() {
             var newworksheet = workbook.getWorksheet('Feuil2');
             var numFeuille = newworksheet.getColumn(4);
@@ -121,9 +122,6 @@ module.exports = {
                               
                             };
                         });
-                      /*console.log('vofafa ddol');
-                      return res.view('Retour/accueil', {date : datetest});*/
-                      //return res.view('Inovcom/accueil', {date : datetest});
                     });
                  
                 }

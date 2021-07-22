@@ -12,6 +12,8 @@ module.exports.routes = {
 
 
      //route tps-tpc grs
+     '/accueilstockj1et2et5' : 'TpsGrsController.accueilstockj1et2et5',
+     '/traitementstockj1et2et5' : 'TpsGrsController.traitementstockj1et2et5',
      '/accueilEtpGrs' : 'TpsGrsController.accueilEtp',
      '/copieEtp' : 'TpsGrsController.copieEtp',
      '/accueilGrs' : 'TpsGrsController.accueil',

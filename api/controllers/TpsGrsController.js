@@ -4,10 +4,106 @@
  * @description :: Server-side actions for handling incoming requests.
  * @help        :: See https://sailsjs.com/docs/concepts/actions
  */
-
-
-
 module.exports = {
+  traitementstockj1et2et5 : function(req,res)
+  {
+     var sql1= 'select chemin from chemintpsstock16h;';
+     TpsGrs.getDatastore().sendNativeQuery(sql1,function(err, nc1) {
+       if (err){
+         console.log('erreur');
+         console.log(err);
+       }
+       else
+       {
+        nc1 = nc1.rows;  
+        console.log('nc1'+nc1[0].chemin);
+        console.log('nc1'+nc1[1].chemin);
+        //var chemintpssuiviprod23h =nc1[1].chemin;
+        var chemintpssuiviprod23h ='D:/Copie de STT Stock GRS (0023).xls';
+        var dateFormat = require("dateformat");
+        var datetest = req.param("date",0);
+        var jour = dateFormat(datetest, "dddd");
+        var j = dateFormat(datetest, "dd");
+        var m = dateFormat(datetest, "mm");
+        var an = dateFormat(datetest, "yyyy");
+        var date = an+m+j;
+        console.log(jour + date);
+        console.log(typeof(date));
+        var Excel = require('exceljs');
+        var workbook = new Excel.Workbook();
+        var trait = [];
+        var astt = [];
+        var mcle1 = [];
+        var mcle2 = [];
+        var mcle3 = [];
+        var mcle4 = [];
+        var table = [];
+        var r = [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14];
+        workbook.xlsx.readFile('grs16h.xlsx')
+          .then(function() {
+            var newworksheet = workbook.getWorksheet('Feuil2');
+            var traitement = newworksheet.getColumn(2);
+            var ast = newworksheet.getColumn(1);
+            var motcle1 = newworksheet.getColumn(3);
+            var motcle2 = newworksheet.getColumn(4);
+            var motcle3 = newworksheet.getColumn(5);
+            var motcle4 = newworksheet.getColumn(6);
+            var tab = newworksheet.getColumn(7);
+              traitement.eachCell(function(cell, rowNumber) {
+                trait.push(cell.value);
+              });
+              ast.eachCell(function(cell, rowNumber) {
+                astt.push(cell.value);
+              });
+              motcle1.eachCell(function(cell, rowNumber) {
+                mcle1.push(cell.value);
+              });
+              motcle2.eachCell(function(cell, rowNumber) {
+                mcle2.push(cell.value);
+              });
+              motcle3.eachCell(function(cell, rowNumber) {
+                mcle3.push(cell.value);
+              });
+              motcle4.eachCell(function(cell, rowNumber) {
+                mcle4.push(cell.value);
+              });
+              tab.eachCell(function(cell, rowNumber) {
+                table.push(cell.value);
+              });
+              async.forEachSeries(r, function(lot, callback_reporting_suivant) {
+                async.series([
+                  function(cb){
+                    TpsGrs.traitementInsertionstockbonJ1(astt,trait,mcle1,mcle2,mcle3,mcle4,lot,jour,date,table,chemintpssuiviprod23h,cb);
+                  },
+                  function(cb){
+                    TpsGrs.traitementInsertionstockbonJ2(astt,trait,mcle1,mcle2,mcle3,mcle4,lot,jour,date,table,chemintpssuiviprod23h,cb);
+                  },
+                  function(cb){
+                    TpsGrs.traitementInsertionstockbonJ5(astt,trait,mcle1,mcle2,mcle3,mcle4,lot,jour,date,table,chemintpssuiviprod23h,cb);
+                  },
+                ],function(erroned, lotValues){
+                  if(erroned) return res.badRequest(erroned);
+                  return callback_reporting_suivant();
+                });
+              },
+                function(err)
+                {
+                        if (err){
+                          return res.view('Contentieux/erreur');
+                        }
+                        else
+                        {
+                          return res.view('Tpstpc/santeclair', {date : datetest});
+                        };
+                });
+            });
+          }
+      });
+  },
+  accueilstockj1et2et5 : function(req,res)
+  {
+    return res.view('TpsGrs/bonj1et2et5');
+  },
   accueilstock16h: function(req,res)
     {
       return res.view('TpsGrs/stock');
@@ -49,7 +145,6 @@ module.exports = {
        var mcle4 = [];
        var table = [];
        var r = [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14];
-       //var r = [0,1,2];
        workbook.xlsx.readFile('grs16h.xlsx')
          .then(function() {
            var newworksheet = workbook.getWorksheet('Feuil2');

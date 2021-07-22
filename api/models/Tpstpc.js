@@ -877,8 +877,8 @@
       const sheet = workbook.Sheets[workbook.SheetNames[1]];
       var range = XLSX.utils.decode_range(sheet['!ref']);
       var somme = 0;
-      if(jour=='Friday')
-      {
+      /*if(jour=='Friday')
+      {*/
         console.log('Friday');
         for(var ra=0;ra<=range.e.r;ra++)
         {
@@ -1009,8 +1009,8 @@
                         }
                        
                                             });
-                                          }
-          else
+                                          //}
+         /* else
           {
               console.log('hafa');
               for(var ra=0;ra<=range.e.r;ra++)
@@ -1140,7 +1140,7 @@
                               }
                             
                                                   });
-                                                }
+                                                }*/
           
     }
     catch
@@ -1436,7 +1436,6 @@
       const sheet = workbook.Sheets[workbook.SheetNames[1]];
       var range = XLSX.utils.decode_range(sheet['!ref']);
       var somme = 0;
-
       if(jour=='Monday')
       {
         for(var ra=0;ra<=range.e.r;ra++)
@@ -1711,12 +1710,6 @@
     var trameflux= chemin;
     var workbook = XLSX.readFile(trameflux);
     try{
-      //console.log(ast[nb]);
-      /*console.log(traitement[nb]);
-      console.log(motcle3[nb]);
-      console.log(motcle1[nb]);
-      console.log(motcle2[nb]);*/
-      //console.log(ast[nb]);
       const sheet = workbook.Sheets[workbook.SheetNames[1]];
       var range = XLSX.utils.decode_range(sheet['!ref']);
       var somme = 0;
@@ -2424,23 +2417,17 @@
       console.log("erreur absolu haaha");
     }
   },
-  
   traitementInsertionJ2:function(ast,traitement,motcle1,motcle2,motcle3,motcle4,nb,jour,date,table,chemin,callback){
     XLSX = require('xlsx');
     var trameflux= chemin;
     var workbook = XLSX.readFile(trameflux);
     try{
-      /*console.log(ast[nb]);
-      console.log(traitement[nb]);
-      console.log(motcle3[nb]);
-      console.log(motcle1[nb]);
-      console.log(motcle2[nb]);*/
       const sheet = workbook.Sheets[workbook.SheetNames[1]];
       var range = XLSX.utils.decode_range(sheet['!ref']);
       var somme = 0;
       if(jour=='Monday' || jour=='Tuesday' || jour=='Wednesday')
       {
-        console.log('Monday');
+        console.log('Monday ou Tuesday ou Wednes');
         for(var ra=0;ra<=range.e.r;ra++)
         {
           var address_of_cell = {c:2, r:ra};
@@ -2733,11 +2720,6 @@
     var trameflux= chemin;
     var workbook = XLSX.readFile(trameflux);   
     try{
-      /*console.log(ast[nb]);
-      console.log(traitement[nb]);
-      console.log(motcle3[nb]);
-      console.log(motcle1[nb]);
-      console.log(motcle2[nb]);*/
       const sheet = workbook.Sheets[workbook.SheetNames[1]];
       var range = XLSX.utils.decode_range(sheet['!ref']);
       var somme = 0;
@@ -2820,7 +2802,7 @@
                   {
                     somme=somme+1;
                   }
-                  else
+                  el
                   {
                     var p = 0;
                   }
