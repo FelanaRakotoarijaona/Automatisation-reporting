@@ -298,6 +298,10 @@ module.exports.routes = {
   '/reportingGarantiebpo1' : 'GarantieController.importGarantiebpo1',
 
    //ROUTES HTP REPORTING ENGAGEMENT
+   '/accueilengagementhtp' : 'EngagementhtpController.accueilengagementhtp',
+   '/insertengagementhtp' : 'EngagementhtpController.insertcheminengagementhtp',
+
+
 
    '/cheminHTPengagement' : { view: 'HTPengagement/exportHTPengagement' },
    '/exportHTPengagement' : 'EngagementhtpController.exporthtpengagement',
