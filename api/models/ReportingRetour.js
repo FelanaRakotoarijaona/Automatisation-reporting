@@ -238,7 +238,7 @@ module.exports = {
         }
         else
         {
-          numerofeuille = i;
+          numerofeuille = parseInt(i) - 1;
         };
       };
       console.log('tafiditra ato v numfeuil?'+ numerofeuille);
