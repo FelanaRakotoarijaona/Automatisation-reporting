@@ -263,7 +263,7 @@ module.exports = {
             var desired_cell2 = sheet[cell_ref2];
             var desired_value2 = (desired_cell2 ? desired_cell2.v : undefined);
 
-
+            console.log("valeur = " + desired_value2 + desired_value1);
             if(desired_value1!=undefined && desired_value2!=undefined )
             {
               nbr=nbr + 1;
