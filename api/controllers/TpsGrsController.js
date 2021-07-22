@@ -5,9 +5,90 @@
  * @help        :: See https://sailsjs.com/docs/concepts/actions
  */
 module.exports = {
-  traitementstockj1et2et5 : function(req,res)
+  ecritureetpgrs: function(req,res)
+    {
+      var dateFormat = require("dateformat");
+      var datetest = req.param("date",0);
+      var j = dateFormat(datetest, "dd");
+      var m = dateFormat(datetest, "mm");
+      var an = dateFormat(datetest, "yyyy");
+      var date = j + '/' + m +'/' + an ;
+      var r = [0,1,2,3,4];
+      var table = [];
+      var motcle = [];
+      var Excel = require('exceljs');
+      var workbook = new Excel.Workbook();
+      workbook.xlsx.readFile('grs16h.xlsx')
+        .then(function() {
+          var newworksheet = workbook.getWorksheet('Feuil4');
+          var motcle1 = newworksheet.getColumn(8);
+          var tablem = newworksheet.getColumn(7);
+            motcle1.eachCell(function(cell, rowNumber) {
+              motcle.push(cell.value);
+            });
+            tablem.eachCell(function(cell, rowNumber) {
+              table.push(cell.value);
+            });
+                  async.series([
+                    function(cb){
+                      Tpstpc.countOkKo(table,0,cb);
+                    },
+                   function(cb){
+                      Tpstpc.countOkKo(table,1,cb);
+                    },
+                    function(cb){
+                      Tpstpc.countOkKo(table,2,cb);
+                    },
+                    function(cb){
+                      Tpstpc.countOkKo(table,3,cb);
+                    },
+                    function(cb){
+                      Tpstpc.countOkKo(table,4,cb);
+                    },
+  
+                  ],function(err,result)
+                  {
+                          if (err){
+                            return res.view('Contentieux/erreur');
+                          }
+                          else
+                          {
+                            console.log('ok');
+  
+                            async.forEachSeries(r, function(lot, callback_reporting_suivant) {
+                             var tab = result[lot];
+                              async.series([
+                                function(cb){
+                                  TpsGrs.ecriture(tab,date,motcle,lot,cb);
+                                },
+                              ],function(erroned, lotValues){
+                                if(erroned) return res.badRequest(erroned);
+                                return callback_reporting_suivant();
+                              });
+                            },
+                              function(err)
+                              {
+                                      if (err){
+                                        return res.view('Contentieux/erreur');
+                                      }
+                                      else
+                                      {
+                                        return res.view('TpsGrs/ecrituresuivant',{date : datetest});
+                                      };
+                              });
+                          };
+                  });
+                });
+            
+    },
+  accueiletp : function(req,res)
+   {
+     return res.view('Tpstpc/ecritureetp');
+   },
+
+  traitementstockj1et2et5suivant : function(req,res)
   {
-     var sql1= 'select chemin from chemintpsstock16h;';
+     var sql1= 'select chemin from chemingrsstock16h;';
      TpsGrs.getDatastore().sendNativeQuery(sql1,function(err, nc1) {
        if (err){
          console.log('erreur');
@@ -18,8 +99,8 @@ module.exports = {
         nc1 = nc1.rows;  
         console.log('nc1'+nc1[0].chemin);
         console.log('nc1'+nc1[1].chemin);
-        //var chemintpssuiviprod23h =nc1[1].chemin;
-        var chemintpssuiviprod23h ='D:/Copie de STT Stock GRS (0023).xls';
+        var chemintpssuiviprod23h =nc1[1].chemin;
+        //var chemintpssuiviprod23h ='D:/Copie de STT Stock GRS (0023).xls';
         var dateFormat = require("dateformat");
         var datetest = req.param("date",0);
         var jour = dateFormat(datetest, "dddd");
@@ -38,7 +119,106 @@ module.exports = {
         var mcle3 = [];
         var mcle4 = [];
         var table = [];
-        var r = [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14];
+        var r = [0,1,2,3,4,5,6];
+        workbook.xlsx.readFile('grs16h.xlsx')
+          .then(function() {
+            var newworksheet = workbook.getWorksheet('Feuil6');
+            var traitement = newworksheet.getColumn(2);
+            var ast = newworksheet.getColumn(1);
+            var motcle1 = newworksheet.getColumn(3);
+            var motcle2 = newworksheet.getColumn(4);
+            var motcle3 = newworksheet.getColumn(5);
+            var motcle4 = newworksheet.getColumn(6);
+            var tab = newworksheet.getColumn(7);
+              traitement.eachCell(function(cell, rowNumber) {
+                trait.push(cell.value);
+              });
+              ast.eachCell(function(cell, rowNumber) {
+                astt.push(cell.value);
+              });
+              motcle1.eachCell(function(cell, rowNumber) {
+                mcle1.push(cell.value);
+              });
+              motcle2.eachCell(function(cell, rowNumber) {
+                mcle2.push(cell.value);
+              });
+              motcle3.eachCell(function(cell, rowNumber) {
+                mcle3.push(cell.value);
+              });
+              motcle4.eachCell(function(cell, rowNumber) {
+                mcle4.push(cell.value);
+              });
+              tab.eachCell(function(cell, rowNumber) {
+                table.push(cell.value);
+              });
+              async.forEachSeries(r, function(lot, callback_reporting_suivant) {
+                async.series([
+                  function(cb){
+                    TpsGrs.traitementInsertionstockbonJ1(astt,trait,mcle1,mcle2,mcle3,mcle4,lot,jour,date,table,chemintpssuiviprod23h,cb);
+                  },
+                  function(cb){
+                    TpsGrs.traitementInsertionstockbonJ2(astt,trait,mcle1,mcle2,mcle3,mcle4,lot,jour,date,table,chemintpssuiviprod23h,cb);
+                  },
+                  function(cb){
+                    TpsGrs.traitementInsertionstockbonJ5(astt,trait,mcle1,mcle2,mcle3,mcle4,lot,jour,date,table,chemintpssuiviprod23h,cb);
+                  },
+                ],function(erroned, lotValues){
+                  if(erroned) return res.badRequest(erroned);
+                  return callback_reporting_suivant();
+                });
+              },
+                function(err)
+                {
+                        if (err){
+                          return res.view('Contentieux/erreur');
+                        }
+                        else
+                        {
+                          return res.view('TpsGrs/ecriture');
+                        };
+                });
+            });
+          }
+      });
+  },
+  accueilstockj1et2et5suivant : function(req,res)
+  {
+    return res.view('TpsGrs/suivantstockj1et2et5');
+  },
+  traitementstockj1et2et5 : function(req,res)
+  {
+     var sql1= 'select chemin from chemingrsstock16h;';
+     TpsGrs.getDatastore().sendNativeQuery(sql1,function(err, nc1) {
+       if (err){
+         console.log('erreur');
+         console.log(err);
+       }
+       else
+       {
+        nc1 = nc1.rows;  
+        console.log('nc1'+nc1[0].chemin);
+        console.log('nc1'+nc1[1].chemin);
+        var chemintpssuiviprod23h =nc1[1].chemin;
+        //var chemintpssuiviprod23h ='D:/Copie de STT Stock GRS (0023).xls';
+        var dateFormat = require("dateformat");
+        var datetest = req.param("date",0);
+        var jour = dateFormat(datetest, "dddd");
+        var j = dateFormat(datetest, "dd");
+        var m = dateFormat(datetest, "mm");
+        var an = dateFormat(datetest, "yyyy");
+        var date = an+m+j;
+        console.log(jour + date);
+        console.log(typeof(date));
+        var Excel = require('exceljs');
+        var workbook = new Excel.Workbook();
+        var trait = [];
+        var astt = [];
+        var mcle1 = [];
+        var mcle2 = [];
+        var mcle3 = [];
+        var mcle4 = [];
+        var table = [];
+        var r = [0,1,2,3,4,5,6,7];
         workbook.xlsx.readFile('grs16h.xlsx')
           .then(function() {
             var newworksheet = workbook.getWorksheet('Feuil2');
@@ -93,7 +273,7 @@ module.exports = {
                         }
                         else
                         {
-                          return res.view('Tpstpc/santeclair', {date : datetest});
+                          return res.view('TpsGrs/suivantstockj1et2et5', {date : datetest});
                         };
                 });
             });
@@ -110,7 +290,7 @@ module.exports = {
     },
   traitementgrsstock16h: function(req,res)
     {
-      var sql1= 'select chemin from chemintpsstock16h;';
+      var sql1= 'select chemin from chemingrsstock16h;';
       TpsGrs.getDatastore().sendNativeQuery(sql1,function(err, nc1) {
         if (err){
           console.log('erreur');
@@ -121,10 +301,10 @@ module.exports = {
           nc1 = nc1.rows;  
           console.log('nc1'+nc1[0].chemin);
           console.log('nc1'+nc1[1].chemin);
-          /*var chemintpssuiviprod16h =nc1[0].chemin;
-          var chemintpssuiviprod23h =nc1[1].chemin;*/
-          var chemintpssuiviprod16h ='D:/Copie de STT Stock GRS (002).xls';
-          var chemintpssuiviprod23h ='D:/Copie de STT Stock GRS (0023).xls';
+          var chemintpssuiviprod16h =nc1[0].chemin;
+          var chemintpssuiviprod23h =nc1[1].chemin;
+          /*var chemintpssuiviprod16h ='D:/Copie de STT Stock GRS (002).xls';
+          var chemintpssuiviprod23h ='D:/Copie de STT Stock GRS (0023).xls';*/
        var dateFormat = require("dateformat");
        var datetest = req.param("date",0);
        var jour = dateFormat(datetest, "dddd");
@@ -274,7 +454,7 @@ module.exports = {
     },
     traitementTacheTraite : function(req,res)
     {
-       var sql1= 'select chemin from chemintpssuiviprod16h;';
+       var sql1= 'select chemin from chemingrssuiviprod16h;';
        ReportingInovcom.getDatastore().sendNativeQuery(sql1,function(err, nc1) {
          if (err){
            console.log('erreur');
@@ -450,11 +630,11 @@ module.exports = {
           });
           
     },
-
-
-
-    /* Mbola tsy niditra */
-    ecriture3: function(req,res)
+    accueilecriture : function(req,res)
+    {
+      return res.view('TpsGrs/ecriture');
+    },
+    ecrituregrs1: function(req,res)
     {
       var dateFormat = require("dateformat");
       var datetest = req.param("date",0);
@@ -462,12 +642,12 @@ module.exports = {
       var m = dateFormat(datetest, "mm");
       var an = dateFormat(datetest, "yyyy");
       var date = j + '/' + m +'/' + an ;
-      var r = [0,1,2,3];
+      var r = [0,1,2,3,4];
       var table = [];
       var motcle = [];
       var Excel = require('exceljs');
       var workbook = new Excel.Workbook();
-      workbook.xlsx.readFile('tps16h.xlsx')
+      workbook.xlsx.readFile('grs16h.xlsx')
         .then(function() {
           var newworksheet = workbook.getWorksheet('Feuil4');
           var motcle1 = newworksheet.getColumn(8);
@@ -482,7 +662,7 @@ module.exports = {
                     function(cb){
                       Tpstpc.countOkKo(table,0,cb);
                     },
-                    function(cb){
+                   function(cb){
                       Tpstpc.countOkKo(table,1,cb);
                     },
                     function(cb){
@@ -490,6 +670,9 @@ module.exports = {
                     },
                     function(cb){
                       Tpstpc.countOkKo(table,3,cb);
+                    },
+                    function(cb){
+                      Tpstpc.countOkKo(table,4,cb);
                     },
   
                   ],function(err,result)
@@ -505,7 +688,7 @@ module.exports = {
                              var tab = result[lot];
                               async.series([
                                 function(cb){
-                                  Tpstpc.ecriture(tab,date,motcle,lot,cb);
+                                  TpsGrs.ecriture(tab,date,motcle,lot,cb);
                                 },
                               ],function(erroned, lotValues){
                                 if(erroned) return res.badRequest(erroned);
@@ -519,7 +702,7 @@ module.exports = {
                                       }
                                       else
                                       {
-                                        return res.view('Contentieux/succes');
+                                        return res.view('TpsGrs/ecrituresuivant',{date : datetest});
                                       };
                               });
                           };
@@ -527,7 +710,11 @@ module.exports = {
                 });
             
     },
-    selection: function(req,res)
+    accueilecriture3 : function(req,res)
+    {
+      return res.view('TpsGrs/ecrituresuivant2');
+    },
+    ecrituregrs3: function(req,res)
     {
       var dateFormat = require("dateformat");
       var datetest = req.param("date",0);
@@ -535,17 +722,16 @@ module.exports = {
       var m = dateFormat(datetest, "mm");
       var an = dateFormat(datetest, "yyyy");
       var date = j + '/' + m +'/' + an ;
-      //var r = [0,1,2,3,4,5,6];
-      var r = [0,1,2,3];
+      var r = [0,1,2,3,4];
       var table = [];
       var motcle = [];
       var Excel = require('exceljs');
       var workbook = new Excel.Workbook();
-      workbook.xlsx.readFile('tps16h.xlsx')
+      workbook.xlsx.readFile('grs16h.xlsx')
         .then(function() {
-          var newworksheet = workbook.getWorksheet('Feuil1');
-          var motcle1 = newworksheet.getColumn(8);
-          var tablem = newworksheet.getColumn(7);
+          var newworksheet = workbook.getWorksheet('Feuil8');
+          var motcle1 = newworksheet.getColumn(2);
+          var tablem = newworksheet.getColumn(1);
             motcle1.eachCell(function(cell, rowNumber) {
               motcle.push(cell.value);
             });
@@ -556,7 +742,7 @@ module.exports = {
                     function(cb){
                       Tpstpc.countOkKo(table,0,cb);
                     },
-                    function(cb){
+                   function(cb){
                       Tpstpc.countOkKo(table,1,cb);
                     },
                     function(cb){
@@ -565,6 +751,10 @@ module.exports = {
                     function(cb){
                       Tpstpc.countOkKo(table,3,cb);
                     },
+                    function(cb){
+                      Tpstpc.countOkKo(table,4,cb);
+                    },
+  
                   ],function(err,result)
                   {
                           if (err){
@@ -578,7 +768,7 @@ module.exports = {
                              var tab = result[lot];
                               async.series([
                                 function(cb){
-                                  Tpstpc.ecriture(tab,date,motcle,lot,cb);
+                                  TpsGrs.ecriture(tab,date,motcle,lot,cb);
                                 },
                               ],function(erroned, lotValues){
                                 if(erroned) return res.badRequest(erroned);
@@ -592,7 +782,7 @@ module.exports = {
                                       }
                                       else
                                       {
-                                        return res.view('Tpstpc/ecrituresuivant', {date : datetest});
+                                        return res.view('TpsGrs/ecritureetp',{date : datetest});
                                       };
                               });
                           };
@@ -600,25 +790,28 @@ module.exports = {
                 });
             
     },
-    ecritureExcel: function(req,res)
+    accueilecriture2 : function(req,res)
     {
-     var dateFormat = require("dateformat");
+      return res.view('TpsGrs/ecrituresuivant');
+    },
+    ecrituregrs2: function(req,res)
+    {
+      var dateFormat = require("dateformat");
       var datetest = req.param("date",0);
       var j = dateFormat(datetest, "dd");
       var m = dateFormat(datetest, "mm");
       var an = dateFormat(datetest, "yyyy");
       var date = j + '/' + m +'/' + an ;
-      //var r = [0,1,2,3,4,5,6];
-      var r = [0,1,2,3];
+      var r = [0,1,2,3,4];
       var table = [];
       var motcle = [];
       var Excel = require('exceljs');
       var workbook = new Excel.Workbook();
-      workbook.xlsx.readFile('tps16h.xlsx')
+      workbook.xlsx.readFile('grs16h.xlsx')
         .then(function() {
-          var newworksheet = workbook.getWorksheet('Feuil3');
-          var motcle1 = newworksheet.getColumn(8);
-          var tablem = newworksheet.getColumn(7);
+          var newworksheet = workbook.getWorksheet('Feuil7');
+          var motcle1 = newworksheet.getColumn(2);
+          var tablem = newworksheet.getColumn(1);
             motcle1.eachCell(function(cell, rowNumber) {
               motcle.push(cell.value);
             });
@@ -629,7 +822,7 @@ module.exports = {
                     function(cb){
                       Tpstpc.countOkKo(table,0,cb);
                     },
-                    function(cb){
+                   function(cb){
                       Tpstpc.countOkKo(table,1,cb);
                     },
                     function(cb){
@@ -638,8 +831,10 @@ module.exports = {
                     function(cb){
                       Tpstpc.countOkKo(table,3,cb);
                     },
-                   
-                    
+                    function(cb){
+                      Tpstpc.countOkKo(table,4,cb);
+                    },
+  
                   ],function(err,result)
                   {
                           if (err){
@@ -653,7 +848,7 @@ module.exports = {
                              var tab = result[lot];
                               async.series([
                                 function(cb){
-                                  Tpstpc.ecriture(tab,date,motcle,lot,cb);
+                                  TpsGrs.ecriture(tab,date,motcle,lot,cb);
                                 },
                               ],function(erroned, lotValues){
                                 if(erroned) return res.badRequest(erroned);
@@ -667,7 +862,7 @@ module.exports = {
                                       }
                                       else
                                       {
-                                        return res.view('Tpstpc/ecrituresuivant2',{date : datetest});
+                                        return res.view('TpsGrs/ecrituresuivant2',{date : datetest});
                                       };
                               });
                           };
@@ -675,670 +870,8 @@ module.exports = {
                 });
             
     },
-    ecritureEtp: function(req,res)
-    {
-     var dateFormat = require("dateformat");
-      var datetest = req.param("date",0);
-      var j = dateFormat(datetest, "dd");
-      var m = dateFormat(datetest, "mm");
-      var an = dateFormat(datetest, "yyyy");
-      var date = j + '/' + m +'/' + an ;
-      var datepouretp = an + m +j;
-      var r = [0,1,2,3,4,5];
-      var table = [];
-      var motcle = [];
-      var Excel = require('exceljs');
-      var workbook = new Excel.Workbook();
-      workbook.xlsx.readFile('tps16h.xlsx')
-        .then(function() {
-          var newworksheet = workbook.getWorksheet('Feuil1');
-          var motcle1 = newworksheet.getColumn(8);
-          var tablem = newworksheet.getColumn(7);
-            motcle1.eachCell(function(cell, rowNumber) {
-              motcle.push(cell.value);
-            });
-            tablem.eachCell(function(cell, rowNumber) {
-              table.push(cell.value);
-            });
-                async.series([
-                    function(cb){
-                      Tpstpc.selectionSanteclair(datepouretp,cb);
-                    },
-                    function(cb){
-                     Tpstpc.selection(36139,936,1222,datepouretp,cb);
-                   },
-                   function(cb){
-                     Tpstpc.selection(36137,925,1189,datepouretp,cb);
-                   },
-                   function(cb){
-                     Tpstpc.selection(36140,939,1229,datepouretp,cb);
-                   },
-                   function(cb){
-                     Tpstpc.selection(36141,942,1236,datepouretp,cb);
-                   },
-                   function(cb){
-                     Tpstpc.selection(36138,931,1205,datepouretp,cb);
-                   },
-                  ],function(err,result)
-                  {
-                          if (err){
-                            return res.view('Contentieux/erreur');
-                          }
-                          else
-                          {
-                          
-                            console.log('ok');
-  
-                            async.forEachSeries(r, function(lot, callback_reporting_suivant) {
-                             var tab = parseFloat(result[lot]) / 7.5;
-                             console.log(tab);
-                              async.series([
-                                function(cb){
-                                  Tpstpc.ecritureEtp(tab,date,motcle,lot,cb);
-                                },
-                              ],function(erroned, lotValues){
-                                if(erroned) return res.badRequest(erroned);
-                                return callback_reporting_suivant();
-                              });
-                            },
-                              function(err)
-                              {
-                                      if (err){
-                                        return res.view('Contentieux/erreur');
-                                      }
-                                      else
-                                      {
-                                        return res.view('Tpstpc/ecrituresuivantetp',{date : datetest});
-                                      };
-                              });
-                          };
-                  });
-                });
-            
-    },
-    ecritureEtp2: function(req,res)
-    {
-     var dateFormat = require("dateformat");
-      var datetest = req.param("date",0);
-      var j = dateFormat(datetest, "dd");
-      var m = dateFormat(datetest, "mm");
-      var an = dateFormat(datetest, "yyyy");
-      var date = j + '/' + m +'/' + an ;
-      var datepouretp = an + m +j;
-      //var r = [0,1,2,3,4,5,6];
-      var r = [0,1,2,3,4,5];
-      var table = [];
-      var motcle = [];
-      var Excel = require('exceljs');
-      var workbook = new Excel.Workbook();
-      workbook.xlsx.readFile('tps16h.xlsx')
-        .then(function() {
-          var newworksheet = workbook.getWorksheet('Feuil5');
-          var motcle1 = newworksheet.getColumn(8);
-          var tablem = newworksheet.getColumn(7);
-            motcle1.eachCell(function(cell, rowNumber) {
-              motcle.push(cell.value);
-            });
-            tablem.eachCell(function(cell, rowNumber) {
-              table.push(cell.value);
-            });
-                async.series([
-                   function(cb){
-                     Tpstpc.selection(36142,949,1248,datepouretp,cb);
-                   },
-                   function(cb){
-                     Tpstpc.selection(36137,926,1194 ,datepouretp,cb);
-                   },
-                   function(cb){
-                     Tpstpc.selection(36138,932,1208,datepouretp,cb);
-                   },
-                   function(cb){
-                     Tpstpc.selection(36139,935,1219,datepouretp,cb);
-                   },
-                   function(cb){
-                     Tpstpc.selection(36142,946,1244,datepouretp,cb);
-                   },
-                   function(cb){
-                     Tpstpc.selection(36141,954,1269,datepouretp,cb);
-                   },
- 
-                  ],function(err,result)
-                  {
-                          if (err){
-                            return res.view('Contentieux/erreur');
-                          }
-                          else
-                          {
-                            console.log('ok');
-                            async.forEachSeries(r, function(lot, callback_reporting_suivant) {
-                             var tab = parseFloat(result[lot]) / 7.5;
-                             console.log(tab);
-                              async.series([
-                                function(cb){
-                                  Tpstpc.ecritureEtp(tab,date,motcle,lot,cb);
-                                },
-                              ],function(erroned, lotValues){
-                                if(erroned) return res.badRequest(erroned);
-                                return callback_reporting_suivant();
-                              });
-                            },
-                              function(err)
-                              {
-                                      if (err){
-                                        return res.view('Contentieux/erreur');
-                                      }
-                                      else
-                                      {
-                                        return res.view('Tpstpc/ecritureerreur',{date : datetest});
-                                      };
-                              });
-                          };
-                  });
-                });
-            
-    },
-    ecritureErreur: function(req,res)
-    {
-     var dateFormat = require("dateformat");
-      var datetest = req.param("date",0);
-      var j = dateFormat(datetest, "dd");
-      var m = dateFormat(datetest, "mm");
-      var an = dateFormat(datetest, "yyyy");
-      var date = j + '/' + m +'/' + an ;
-      var datepouretp = an + m +j;
-      //var r = [0,1,2,3,4,5,6];
-      var r = [0];
-      var table = [];
-      var motcle = [];
-      var Excel = require('exceljs');
-      var workbook = new Excel.Workbook();
-      workbook.xlsx.readFile('tps16h.xlsx')
-        .then(function() {
-          var newworksheet = workbook.getWorksheet('Feuil4');
-          var motcle1 = newworksheet.getColumn(8);
-          var tablem = newworksheet.getColumn(7);
-            motcle1.eachCell(function(cell, rowNumber) {
-              motcle.push(cell.value);
-            });
-            tablem.eachCell(function(cell, rowNumber) {
-              table.push(cell.value);
-            });
-                async.series([
-                   function(cb){
-                     Tpstpc.countErreur(table,4,cb);
-                   },
- 
-                  ],function(err,result)
-                  {
-                          if (err){
-                            return res.view('Contentieux/erreur');
-                          }
-                          else
-                          {
-                            console.log('ok');
-                            async.forEachSeries(r, function(lot, callback_reporting_suivant) {
-                             var tab = parseFloat(result[lot]);
-                             console.log(tab);
-                              async.series([
-                                function(cb){
-                                  Tpstpc.ecritureEtp2(tab,date,motcle,lot,cb);
-                                },
-                              ],function(erroned, lotValues){
-                                if(erroned) return res.badRequest(erroned);
-                                return callback_reporting_suivant();
-                              });
-                            },
-                              function(err)
-                              {
-                                      if (err){
-                                        return res.view('Contentieux/erreur');
-                                      }
-                                      else
-                                      {
-                                        return res.view('Contentieux/succes');
-                                      };
-                              });
-                          };
-                  });
-                });
-            
-    },
-   /* traitementEtp: function(req,res)
-    {
-     var dateFormat = require("dateformat");
-     var datetest = req.param("date",0);
-     var j = dateFormat(datetest, "dd");
-     var m = dateFormat(datetest, "mm");
-     var an = dateFormat(datetest, "yyyy");
-     var date = j + '/' + m +'/' + an ;
-     //var r = [0,1,2,3,4,5,6];
-     var r = [0,1,2,3];
-     var table = [];
-     var motcle = [];
-     var Excel = require('exceljs');
-     var workbook = new Excel.Workbook();
-     workbook.xlsx.readFile('tps16h.xlsx')
-       .then(function() {
-         var newworksheet = workbook.getWorksheet('Feuil4');
-         var motcle1 = newworksheet.getColumn(8);
-         var tablem = newworksheet.getColumn(7);
-           motcle1.eachCell(function(cell, rowNumber) {
-             motcle.push(cell.value);
-           });
-           tablem.eachCell(function(cell, rowNumber) {
-             table.push(cell.value);
-           });
-                 async.series([
-                   function(cb){
-                     Tpstpc.countOkKo(table,0,cb);
-                   },
-                   function(cb){
-                     Tpstpc.countOkKo(table,1,cb);
-                   },
-                   function(cb){
-                     Tpstpc.countOkKo(table,2,cb);
-                   },
-                   function(cb){
-                     Tpstpc.countOkKo(table,3,cb);
-                   },
- 
-                 ],function(err,result)
-                 {
-                         if (err){
-                           return res.view('Contentieux/erreur');
-                         }
-                         else
-                         {
-                           console.log('ok');
- 
-                           async.forEachSeries(r, function(lot, callback_reporting_suivant) {
-                            var tab = result[lot];
-                             async.series([
-                               function(cb){
-                                 Tpstpc.ecriture(tab,date,motcle,lot,cb);
-                               },
-                             ],function(erroned, lotValues){
-                               if(erroned) return res.badRequest(erroned);
-                               return callback_reporting_suivant();
-                             });
-                           },
-                             function(err)
-                             {
-                                     if (err){
-                                       return res.view('Contentieux/erreur');
-                                     }
-                                     else
-                                     {
-                                       return res.view('Contentieux/succes');
-                                     };
-                             });
-                         };
-                 });
-               });
-          /*var nomtable = ['tpsfactaudio','tpsfactdentaire','tpsfacthospi','tpsfactoptique','tpsfactse','tpsfacttiers','tpspecaudio','tpspecdentaire','tpspechospi','tpspecoptique','tpssanteclair','tpssdm'];
-          var r = [0];
-                async.forEachSeries(r, function(lot, callback_reporting_suivant) {
-                  async.series([
-                    function(cb){
-                      ReportingInovcom.delete(nomtable,lot,cb);
-                    },
-                    function(cb){
-                      Tpstpc.ecriture(chemin,nomtable,lot,cb);
-                    },
-                  ],function(erroned, lotValues){
-                    if(erroned) return res.badRequest(erroned);
-                    return callback_reporting_suivant();
-                  });
-                },
-                  function(err)
-                  {
-                          if (err){
-                            return res.view('Contentieux/erreur');
-                          }
-                          else
-                          {
-                            return res.view('Contentieux/succes');
-                          };
-                  });
-            
-    },*/
-    traitementErreurEasy: function(req,res)
-    {
-     var sql1= 'select chemin from chemintpssuiviproderreur;';
-     Tpstpc.getDatastore().sendNativeQuery(sql1,function(err, nc1) {
-       if (err){
-         console.log('erreur');
-         console.log(err);
-       }
-       else
-       {
-         nc1 = nc1.rows;  
-         console.log('nc1'+nc1[0].chemin);
-         var chemintpserreur =nc1[0].chemin;
- 
-          var table = "tpserreur";
-          var r = [0];
-                async.forEachSeries(r, function(lot, callback_reporting_suivant) {
-                  async.series([
-                    function(cb){
-                      Tpstpc.traitementInsertionErreur(table,chemintpserreur,cb);
-                    },
-                  ],function(erroned, lotValues){
-                    if(erroned) return res.badRequest(erroned);
-                    return callback_reporting_suivant();
-                  });
-                },
-                  function(err)
-                  {
-                          if (err){
-                            return res.view('Contentieux/erreur');
-                          }
-                          else
-                          {
-                            return res.view('Tpstpc/ecriture');
-                          };
-                  });
-                 }
-             });
-            
-    },
-    traitementSanteclair : function(req,res)
-    {
-     var sql1= 'select chemin from cheminsanteclairstock16h;';
-     Tpstpc.getDatastore().sendNativeQuery(sql1,function(err, nc1) {
-       if (err){
-         console.log('erreur');
-         console.log(err);
-       }
-       else
-       {
-         nc1 = nc1.rows;  
-         console.log('nc1'+nc1[0].chemin);
-         console.log('nc1'+nc1[1].chemin);
-         var chemintpsstockprod16h =nc1[0].chemin;
-         var chemintpsstockprod23h =nc1[1].chemin;
- 
-          var dateFormat = require("dateformat");
-          var datetest = req.param("date",0);
-          var jour = dateFormat(datetest, "dddd");
-          var j = dateFormat(datetest, "dd");
-          var m = dateFormat(datetest, "mm");
-          var an = dateFormat(datetest, "yyyy");
-          var date = an+m+j;
-          console.log(jour + date);
-          console.log(typeof(date));
-          var Excel = require('exceljs');
-          var workbook = new Excel.Workbook();
-          var trait = [];
-          var astt = [];
-          var mcle1 = [];
-          var mcle2 = [];
-          var mcle3 = [];
-          var mcle4 = [];
-          var table = [];
-          var r = [0];
-          workbook.xlsx.readFile('tps16h.xlsx')
-            .then(function() {
-              var newworksheet = workbook.getWorksheet('Feuil1');
-              var traitement = newworksheet.getColumn(2);
-              var ast = newworksheet.getColumn(1);
-              var motcle1 = newworksheet.getColumn(3);
-              var motcle2 = newworksheet.getColumn(4);
-              var motcle3 = newworksheet.getColumn(5);
-              var motcle4 = newworksheet.getColumn(6);
-              var tab = newworksheet.getColumn(7);
-                traitement.eachCell(function(cell, rowNumber) {
-                  trait.push(cell.value);
-                });
-                ast.eachCell(function(cell, rowNumber) {
-                  astt.push(cell.value);
-                });
-                motcle1.eachCell(function(cell, rowNumber) {
-                  mcle1.push(cell.value);
-                });
-                motcle2.eachCell(function(cell, rowNumber) {
-                  mcle2.push(cell.value);
-                });
-                motcle3.eachCell(function(cell, rowNumber) {
-                  mcle3.push(cell.value);
-                });
-                motcle4.eachCell(function(cell, rowNumber) {
-                  mcle4.push(cell.value);
-                });
-                tab.eachCell(function(cell, rowNumber) {
-                  table.push(cell.value);
-                });
-                async.forEachSeries(r, function(lot, callback_reporting_suivant) {
-                  async.series([
-                    function(cb){
-                      Tpstpc.traitementInsertionstocksanteclair(lot,jour,date,table,chemintpsstockprod16h,cb);
-                    },
-                    function(cb){
-                      Tpstpc.traitementInsertionstocksanteclairJ(lot,jour,date,table,chemintpsstockprod23h,cb);
-                    },
-                    function(cb){
-                      Tpstpc.traitementInsertionstocksanteclairJ1(lot,jour,date,table,chemintpsstockprod23h,cb);
-                    },
-                    function(cb){
-                      Tpstpc.traitementInsertionstocksanteclairJ2(lot,jour,date,table,chemintpsstockprod23h,cb);
-                    },
-  
-                    function(cb){
-                      Tpstpc.traitementInsertionstocksanteclairJ5(lot,jour,date,table,chemintpsstockprod23h,cb);
-                    },
-                  ],function(erroned, lotValues){
-                    if(erroned) return res.badRequest(erroned);
-                    return callback_reporting_suivant();
-                  });
-                },
-                  function(err)
-                  {
-                          if (err){
-                            return res.view('Contentieux/erreur');
-                          }
-                          else
-                          {
-                            return res.view('Tpstpc/erreureasy');
-                          };
-                  });
-              });
-             }
-         });
-    },
+
+
     
-   
-     
-      traitementStocketBonJ : function(req,res)
-      {
-       
-         var sql1= 'select chemin from chemintpsstock16h;';
-         Tpstpc.getDatastore().sendNativeQuery(sql1,function(err, nc1) {
-           if (err){
-             console.log('erreur');
-             console.log(err);
-           }
-           else
-           {
-             nc1 = nc1.rows;  
-             console.log('nc1'+nc1[0].chemin);
-             console.log('nc1'+nc1[1].chemin);
-             var chemintpssuiviprod16h =nc1[0].chemin;
-             var chemintpssuiviprod23h =nc1[1].chemin;
-          var dateFormat = require("dateformat");
-          var datetest = req.param("date",0);
-          var jour = dateFormat(datetest, "dddd");
-          //var jour = 'hafa';
-          var j = dateFormat(datetest, "dd");
-          var m = dateFormat(datetest, "mm");
-          var an = dateFormat(datetest, "yyyy");
-          var date = an+m+j;
-          console.log(jour + date);
-          console.log(typeof(date));
-          var Excel = require('exceljs');
-          var workbook = new Excel.Workbook();
-          var trait = [];
-          var astt = [];
-          var mcle1 = [];
-          var mcle2 = [];
-          var mcle3 = [];
-          var mcle4 = [];
-          var table = [];
-          var r = [0,1,2,3,4,5,6,7,8,9,10];
-          //var r = [0,1,2];
-          workbook.xlsx.readFile('tps16h.xlsx')
-            .then(function() {
-              var newworksheet = workbook.getWorksheet('Feuil2');
-              var traitement = newworksheet.getColumn(2);
-              var ast = newworksheet.getColumn(1);
-              var motcle1 = newworksheet.getColumn(3);
-              var motcle2 = newworksheet.getColumn(4);
-              var motcle3 = newworksheet.getColumn(5);
-              var motcle4 = newworksheet.getColumn(6);
-              var tab = newworksheet.getColumn(7);
-                traitement.eachCell(function(cell, rowNumber) {
-                  trait.push(cell.value);
-                });
-                ast.eachCell(function(cell, rowNumber) {
-                  astt.push(cell.value);
-                });
-                motcle1.eachCell(function(cell, rowNumber) {
-                  mcle1.push(cell.value);
-                });
-                motcle2.eachCell(function(cell, rowNumber) {
-                  mcle2.push(cell.value);
-                });
-                motcle3.eachCell(function(cell, rowNumber) {
-                  mcle3.push(cell.value);
-                });
-                motcle4.eachCell(function(cell, rowNumber) {
-                  mcle4.push(cell.value);
-                });
-                tab.eachCell(function(cell, rowNumber) {
-                  table.push(cell.value);
-                });
-                async.forEachSeries(r, function(lot, callback_reporting_suivant) {
-                  async.series([
-                    function(cb){
-                      Tpstpc.traitementInsertionstock16h(astt,trait,mcle1,mcle2,mcle3,mcle4,lot,jour,date,table,chemintpssuiviprod16h,cb);
-                    },
-                    function(cb){
-                      Tpstpc.traitementInsertionstockbonJ(astt,trait,mcle1,mcle2,mcle3,mcle4,lot,jour,date,table,chemintpssuiviprod23h,cb);
-                    },
-                  ],function(erroned, lotValues){
-                    if(erroned) return res.badRequest(erroned);
-                    return callback_reporting_suivant();
-                  });
-                },
-                  function(err)
-                  {
-                          if (err){
-                            return res.view('Contentieux/erreur');
-                          }
-                          else
-                          {
-                            return res.view('Tpstpc/bonj1', {date : datetest});
-                          };
-                  });
-              });
-             }
-         });
-      },
-      traitementBonJ1 : function(req,res)
-      {
-         
-         var sql1= 'select chemin from chemintpsstock16h;';
-         Tpstpc.getDatastore().sendNativeQuery(sql1,function(err, nc1) {
-           if (err){
-             console.log('erreur');
-             console.log(err);
-           }
-           else
-           {
-             nc1 = nc1.rows;  
-             console.log('nc1'+nc1[0].chemin);
-             console.log('nc1'+nc1[1].chemin);
-             var chemintpssuiviprod23h =nc1[1].chemin;
-          var dateFormat = require("dateformat");
-          var datetest = req.param("date",0);
-          var jour = dateFormat(datetest, "dddd");
-          //var jour = 'hafa';
-          var j = dateFormat(datetest, "dd");
-          var m = dateFormat(datetest, "mm");
-          var an = dateFormat(datetest, "yyyy");
-          var date = an+m+j;
-          console.log(jour + date);
-          console.log(typeof(date));
-          var Excel = require('exceljs');
-          var workbook = new Excel.Workbook();
-          var trait = [];
-          var astt = [];
-          var mcle1 = [];
-          var mcle2 = [];
-          var mcle3 = [];
-          var mcle4 = [];
-          var table = [];
-          var r = [0,1,2,3,4,5,6,7,8,9,10];
-          //var r = [0,1,2];
-          workbook.xlsx.readFile('tps16h.xlsx')
-            .then(function() {
-              var newworksheet = workbook.getWorksheet('Feuil2');
-              var traitement = newworksheet.getColumn(2);
-              var ast = newworksheet.getColumn(1);
-              var motcle1 = newworksheet.getColumn(3);
-              var motcle2 = newworksheet.getColumn(4);
-              var motcle3 = newworksheet.getColumn(5);
-              var motcle4 = newworksheet.getColumn(6);
-              var tab = newworksheet.getColumn(7);
-                traitement.eachCell(function(cell, rowNumber) {
-                  trait.push(cell.value);
-                });
-                ast.eachCell(function(cell, rowNumber) {
-                  astt.push(cell.value);
-                });
-                motcle1.eachCell(function(cell, rowNumber) {
-                  mcle1.push(cell.value);
-                });
-                motcle2.eachCell(function(cell, rowNumber) {
-                  mcle2.push(cell.value);
-                });
-                motcle3.eachCell(function(cell, rowNumber) {
-                  mcle3.push(cell.value);
-                });
-                motcle4.eachCell(function(cell, rowNumber) {
-                  mcle4.push(cell.value);
-                });
-                tab.eachCell(function(cell, rowNumber) {
-                  table.push(cell.value);
-                });
-                async.forEachSeries(r, function(lot, callback_reporting_suivant) {
-                  async.series([
-                    function(cb){
-                      Tpstpc.traitementInsertionstockbonJ1(astt,trait,mcle1,mcle2,mcle3,mcle4,lot,jour,date,table,chemintpssuiviprod23h,cb);
-                    },
-                    function(cb){
-                      Tpstpc.traitementInsertionstockbonJ2(astt,trait,mcle1,mcle2,mcle3,mcle4,lot,jour,date,table,chemintpssuiviprod23h,cb);
-                    },
-                    function(cb){
-                      Tpstpc.traitementInsertionstockbonJ5(astt,trait,mcle1,mcle2,mcle3,mcle4,lot,jour,date,table,chemintpssuiviprod23h,cb);
-                    },
-                  ],function(erroned, lotValues){
-                    if(erroned) return res.badRequest(erroned);
-                    return callback_reporting_suivant();
-                  });
-                },
-                  function(err)
-                  {
-                          if (err){
-                            return res.view('Contentieux/erreur');
-                          }
-                          else
-                          {
-                            return res.view('Tpstpc/santeclair', {date : datetest});
-                          };
-                  });
-              });
-             }
-         });
-      },
 };
 

@@ -139,7 +139,7 @@
                                      }
                                      else
                                      {
-                                       return res.view('Contentieux/succes');
+                                       return res.view('Tpstpc/ecritureetp');
                                      };
                              });
                          };
@@ -659,7 +659,7 @@
                          }
                          else
                          {
-                           return res.view('Tpstpc/erreureasy');
+                           return res.view('Tpstpc/erreureasy',{date : datetest});
                          };
                  });
              });
