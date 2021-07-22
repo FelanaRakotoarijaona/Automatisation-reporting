@@ -57,7 +57,7 @@ module.exports = {
     return res.view('HTPengagement/accueilreportingengagementhtp');
   },
   /***********************************************************************************/
-  //FONCTION POUR L'IMPORT DU CHEMIN UTILISER
+  //FONCTION POUR L'IMPORT DU CHEMIN UTILISER (22-07-2021)
 insertcheminengagementhtp : function(req,res)
 {
   var Excel = require('exceljs');
