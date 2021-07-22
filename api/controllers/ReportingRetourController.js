@@ -521,7 +521,7 @@ module.exports = {
           if(resultExcel[0]=='OK')
           {
             // res.redirect('/exportRetour/'+date_export+'/x')
-            res.view('Retour/succes');
+            // res.view('Retour/succes');
             res.view('Retour/exportretoursuivant', {date : datetest});
           }
 
