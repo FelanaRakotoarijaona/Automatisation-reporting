@@ -839,10 +839,13 @@ module.exports = {
             var annee = datetest.substr(0, 4);
             var mois = datetest.substr(5, 2);
             var jour = datetest.substr(8, 2);
+            var dateFormat = require("dateformat");
+            var date2 = dateFormat(datetest, "shortDate");
             var nbre = [];
             var date = annee+mois+jour;
             var dateexport = jour + '/' + mois + '/' +annee;
             var nb = x;
+            console.log('date2'+ date2);
             for(var i=0;i<nb;i++)
             {
               var a = nc[i].numfeuile;
@@ -881,7 +884,7 @@ module.exports = {
                     async.forEachSeries(nbre, function(lot, callback_reporting_suivant) {
                       async.series([
                         function(cb){
-                          ReportingInovcom.importTrameFlux929type4(trameflux,feuil,cellule,table,cellule2,lot,numligne,cb);
+                          ReportingInovcom.importTrameFlux929type4(trameflux,feuil,cellule,table,cellule2,lot,numligne,date2,cb);
                         }, 
                       ],function(erroned, lotValues){
                         if(erroned) return res.badRequest(erroned);

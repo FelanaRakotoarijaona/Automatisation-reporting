@@ -410,7 +410,7 @@
 /* type 4 */
 
 
-importTrameFlux929type4 : async function (trameflux,feuil,cellule,table,cellule2,nb,numligne,callback) {
+importTrameFlux929type4 : async function (trameflux,feuil,cellule,table,cellule2,nb,numligne,date,callback) {
   if(trameflux[nb]==undefined)
     {
       console.log('trame undefined');
@@ -477,7 +477,7 @@ importTrameFlux929type4 : async function (trameflux,feuil,cellule,table,cellule2
         var essaie = parseInt(sheetd.length) - 1;
         console.log(essaie + "fr");
         var tab = [];
-      tab = ReportingInovcom.lectureEtInsertiontype4v2(trameflux,essaie,cellule,table,cellule2,nb,numligne,callback);
+      tab = ReportingInovcom.lectureEtInsertiontype4v2(trameflux,essaie,cellule,table,cellule2,nb,numligne,date,callback);
       var sql = "insert into "+table[nb]+" (nbok,nbko) values ('"+tab[0]+"','"+tab[1]+"')";
       ReportingInovcom.getDatastore().sendNativeQuery(sql, function(err,res){
         if (err) { 
@@ -496,35 +496,6 @@ importTrameFlux929type4 : async function (trameflux,feuil,cellule,table,cellule2
       {
         console.log('ko');
       }
-  
-
-     /* const Excel = require('exceljs');
-      const newWorkbook = new Excel.Workbook();
-      try{
-        console.log(trameflux[nb]);
-      await newWorkbook.xlsx.readFile(trameflux[nb]);
-      var test = newWorkbook.worksheets;
-      var essaie = parseInt(test.length) - 1;
-      console.log(essaie);
-      var tab = [];
-      tab = ReportingInovcom.lectureEtInsertiontype4v2(trameflux,essaie,cellule,table,cellule2,nb,numligne,callback);
-      var sql = "insert into "+table[nb]+" (nbok,nbko) values ('"+tab[0]+"','"+tab[1]+"')";
-      ReportingInovcom.getDatastore().sendNativeQuery(sql, function(err,res){
-        if (err) { 
-          console.log("Une erreur ve ok?");
-          //return callback(err);
-         }
-        else
-        {
-          console.log(sql);
-          return callback(null, true);
-        };
-                            });
-      }
-      catch
-      {
-        console.log('ko');
-      }*/
   
   }
   else{
@@ -623,7 +594,7 @@ lectureEtInsertiontype4:function(trameflux,feuil,cellule,table,cellule2,nb,numli
   }
   
 },
-lectureEtInsertiontype4v2:function(trameflux,feuil,cellule,table,cellule2,nb,numligne,callback){
+lectureEtInsertiontype4v2:function(trameflux,feuil,cellule,table,cellule2,nb,numligne,date,callback){
   XLSX = require('xlsx');
   var workbook = XLSX.readFile(trameflux[nb]);
   var numerofeuille = parseInt(feuil);
@@ -636,6 +607,7 @@ lectureEtInsertiontype4v2:function(trameflux,feuil,cellule,table,cellule2,nb,num
     const sheet = workbook.Sheets[workbook.SheetNames[numerofeuille]];
     var range = XLSX.utils.decode_range(sheet['!ref']);
     var col ;
+    var colDate ;
     //var col = 16;
     var nbe = parseInt(nb);
     for(var ra=0;ra<=range.e.c;ra++)
@@ -651,8 +623,21 @@ lectureEtInsertiontype4v2:function(trameflux,feuil,cellule,table,cellule2,nb,num
           col=ra;
         };
       };
-      console.log("colonne"+col);
-   if(col!=undefined)
+      for(var ra=0;ra<=range.e.c;ra++)
+      {
+        var address_of_cell = {c:ra, r:numeroligne};
+        var cell_ref = XLSX.utils.encode_cell(address_of_cell);
+        var desired_cell = sheet[cell_ref];
+        var desired_value = (desired_cell ? desired_cell.v : undefined);
+        var mc1 = 'Date de contrôle';
+        const regex = new RegExp(mc1,'i');
+        if(regex.test(desired_value))
+        {
+          colDate=ra;
+        };
+      };
+      console.log("colonne"+col + colDate);
+   if(col!=undefined && colDate!=undefined)
     {
       var debutligne = numeroligne + 1;
       for(var a=debutligne;a<=range.e.r;a++)
@@ -661,16 +646,21 @@ lectureEtInsertiontype4v2:function(trameflux,feuil,cellule,table,cellule2,nb,num
           var cell_ref = XLSX.utils.encode_cell(address_of_cell);
           var desired_cell = sheet[cell_ref];
           var desired_value1 = (desired_cell ? desired_cell.v : undefined);
+
+          var address_of_cell2 = {c:colDate, r:a};
+          var cell_ref2 = XLSX.utils.encode_cell(address_of_cell2);
+          var desired_cell2 = sheet[cell_ref2];
+          var desired_value2 = (desired_cell2 ? desired_cell2.w : undefined);
           //console.log('valeur2: ' +desired_value1);
           var ok = 'OK';
           var ko = 'KO';
           const regex = new RegExp(ok,'i');
           const regex1 = new RegExp(ko,'i');
-          if(regex.test(desired_value1))
+          if(regex.test(desired_value1) && desired_value2==date)
           {
             nbr=nbr + 1;
           }
-          else if(regex1.test(desired_value1))
+          else if(regex1.test(desired_value1) && desired_value2==date)
           {
             nbrko=nbrko + 1;
           }
