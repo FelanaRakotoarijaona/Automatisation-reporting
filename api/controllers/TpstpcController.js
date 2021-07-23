@@ -15,8 +15,8 @@
          var m = dateFormat(datetest, "mm");
          var an = dateFormat(datetest, "yyyy");
          var date = j  + m + an ;
-         //var chemin = '//10.128.1.2/bpo_almerys/03-POLE_TPS-TPC/00-PILOTAGE/09-REPORTING ENGAGEMENT/';
-         var chemin= '/dev/prod/03-POLE_TPS-TPC/00-PILOTAGE/09-REPORTING ENGAGEMENT/';
+         var chemin = '//10.128.1.2/bpo_almerys/03-POLE_TPS-TPC/00-PILOTAGE/09-REPORTING ENGAGEMENT/';
+         //var chemin= '/dev/prod/03-POLE_TPS-TPC/00-PILOTAGE/09-REPORTING ENGAGEMENT/';
          var cheminTotal = chemin + date + '/' ;
          var r = [0,1,2,3,4,5,6];
          var cheminpart = [];
@@ -140,7 +140,7 @@
                                      }
                                      else
                                      {
-                                       return res.view('Tpstpc/ecritureetp');
+                                       return res.view('Tpstpc/ecritureetp', {date : datetest});
                                      };
                              });
                          };

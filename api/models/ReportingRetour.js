@@ -213,7 +213,63 @@ module.exports = {
     
   },
    lectureEtInsertiontype21:function(trameflux,feuil,cellule,table,cellule2,nb,numligne,callback){
-    XLSX = require('xlsx');
+    var Excel = require('exceljs');
+    var workbook = new Excel.Workbook();
+    try{
+      workbook.xlsx.readFile(trameflux[nb])
+        .then(function() {
+            var newworksheet = workbook.getWorksheet(feuil[nb]);
+            var row = newworksheet.getRow(1);
+            var a;
+            var bi = 'FIN DE TRAITEMENT';
+            const regex = new RegExp(bi,'i');
+            var bi1 = '[a-z]';
+            const regex1 = new RegExp(bi1,'i');
+            row.eachCell(function(cell, colNumber) {
+             // console.log(cell.text);
+              
+              if(regex.test(cell.text))
+              {
+                a = parseInt(colNumber);
+              }
+            });
+            console.log(a+ 'val');
+            /*var b;
+            row.eachCell(function(cell, colNumber) {
+              if(cell.text==cellule2[nb])
+              {
+                b = parseInt(colNumber);
+              }
+            });*/
+            var tab = 0;
+            if(a!=undefined)
+            {
+              var col = newworksheet.getColumn(a);
+              console.log('col' + col);
+              col.eachCell(function(cell, rowNumber) {
+                if(regex1.test(cell.text))
+                {
+                  tab = tab +1;
+                  console.log(cell.text);
+                }
+              });
+             
+            }
+            else
+            {
+              console.log("Nom de colonne non trouvé");
+            }
+            console.log(tab + 'nb');
+            var resultat = parseInt(tab) - 1;
+            var nb = [resultat]
+            return nb;
+        });
+    }
+    catch
+    {
+      console.log("Erreur trouvé");
+    }
+    /*XLSX = require('xlsx');
     var workbook = XLSX.readFile(trameflux[nb]);
     var numerofeuille;
     var numeroligne = parseInt(numligne[nb]);
@@ -296,7 +352,7 @@ module.exports = {
     catch
     {
       console.log("erreur absolu haaha");
-    }
+    }*/
     
   },
   //effacement du chemin dans la base pour eviter le doublon

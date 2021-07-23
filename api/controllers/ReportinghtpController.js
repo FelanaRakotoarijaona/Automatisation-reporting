@@ -41,11 +41,6 @@ module.exports = {
           var numligne = [];
           var trameflux = [];
           var datetest = req.param("date",0);
-          /*var annee = datetest.substr(0, 4);
-          var mois = datetest.substr(5, 2);
-          var jour = datetest.substr(8, 2);
-          var date = annee+mois+jour;
-          var dateexport = jour + '/' + mois + '/' +annee;*/
           var nb = x;
           for(var i=0;i<nb;i++)
           {

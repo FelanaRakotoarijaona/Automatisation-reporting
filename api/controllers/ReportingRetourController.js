@@ -4,16 +4,11 @@
  * @description :: Server-side actions for handling incoming requests.
  * @help        :: See https://sailsjs.com/docs/concepts/actions
  */
-
-// const ReportingRetour = require('../models/ReportingRetour');
 module.exports = {
-
   accueilR : function(req,res)
     {
       return res.view('Retour/exportExcel');
     },
-
- 
     accueil1 : function(req,res)
     {
       return res.view('Retour/accueil1');

@@ -237,7 +237,6 @@ module.exports = {
         console.log('nc1'+nc1[0].chemin);
         console.log('nc1'+nc1[1].chemin);
         var chemintpssuiviprod23h =nc1[1].chemin;
-        //var chemintpssuiviprod23h ='D:/Copie de STT Stock GRS (0023).xls';
         var dateFormat = require("dateformat");
         var datetest = req.param("date",0);
         var jour = dateFormat(datetest, "dddd");
@@ -523,7 +522,7 @@ module.exports = {
 
     accueilrecherchefichier : function(req,res)
     {
-      return res.view('Tpstpc/accueilrecherchefichier');
+      return res.view('TpsGrs/accueilrecherchefichier');
     },
     accueilEtp : function(req,res)
     {
@@ -534,8 +533,8 @@ module.exports = {
         var datetest = req.param("date",0);
         var date = dateFormat(datetest, "shortDate");
         console.log('daty'+ date);
-        //var trameflux= 'D:/Reporting Engagement/GRS.xlsb';
-        var trameflux= '/dev/prod/03-POLE_TPS-TPC/00-PILOTAGE/09-REPORTING ENGAGEMENT/GRS_Reporting-Traitement-J-SLA.xlsb';
+        var trameflux= 'D:/Reporting Engagement/GRS.xlsb';
+        //var trameflux= '/dev/prod/03-POLE_TPS-TPC/00-PILOTAGE/09-REPORTING ENGAGEMENT/GRS_Reporting-Traitement-J-SLA.xlsb';
         var nomColonne = [
             'tritp',
             'trinument',
@@ -709,8 +708,8 @@ module.exports = {
           var m = dateFormat(datetest, "mm");
           var an = dateFormat(datetest, "yyyy");
           var date = j  + m + an ;
-          //var chemin = '//10.128.1.2/bpo_almerys/03-POLE_TPS-TPC/00-PILOTAGE/09-REPORTING ENGAGEMENT/';
-          var chemin= '/dev/prod/03-POLE_TPS-TPC/00-PILOTAGE/09-REPORTING ENGAGEMENT/';
+          var chemin = '//10.128.1.2/bpo_almerys/03-POLE_TPS-TPC/00-PILOTAGE/09-REPORTING ENGAGEMENT/';
+          //var chemin= '/dev/prod/03-POLE_TPS-TPC/00-PILOTAGE/09-REPORTING ENGAGEMENT/';
           var cheminTotal = chemin + date + '/' ;
           var r = [0,1,2,3];
           var cheminpart = [];
@@ -763,7 +762,7 @@ module.exports = {
                       }
                       else
                       {
-                         return res.view('Tpstpc/accueil');
+                         return res.view('TpsGrs/copieetp');
                       };
                     });
           });
