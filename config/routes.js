@@ -257,7 +257,7 @@ module.exports.routes = {
    //ajout routes pour RETOUR
    '/exportExcelRetour' : 'ReportingRetourController.rechercheColonne',//A DECOMMENTER SI EXCEL RETOUR CORRECTE
    '/exportExcelRet' : 'ReportingRetourController.accueilR',//4
-
+   '/exportretoursuivant' : 'ReportingRetourController.rechercheColonne_suivant',
   //  '/exportExcelRetour' : 'ReportingRetourController.rechercheColonnetest',//5 test
  
      //Route CONTENTIEUX
@@ -292,6 +292,10 @@ module.exports.routes = {
   '/reportingGarantiebpo1' : 'GarantieController.importGarantiebpo1',
 
    //ROUTES HTP REPORTING ENGAGEMENT
+   '/accueilengagementhtp' : 'EngagementhtpController.accueilengagementhtp',
+   '/insertengagementhtp' : 'EngagementhtpController.insertcheminengagementhtp',
+
+
 
    '/cheminHTPengagement' : { view: 'HTPengagement/exportHTPengagement' },
    '/exportHTPengagement' : 'EngagementhtpController.exporthtpengagement',
