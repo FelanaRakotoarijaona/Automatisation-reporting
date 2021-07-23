@@ -294,10 +294,10 @@ module.exports.routes = {
    //ROUTES HTP REPORTING ENGAGEMENT
    '/accueilengagementhtp' : 'EngagementhtpController.accueilengagementhtp',
    '/insertengagementhtp' : 'EngagementhtpController.insertcheminengagementhtp',
+   '/reportingengagementhtp' : 'EngagementhtpController.importengagementhtp',
 
 
-
-   '/cheminHTPengagement' : { view: 'HTPengagement/exportHTPengagement' },
+   //'/cheminHTPengagement' : { view: 'HTPengagement/exportHTPengagement' }, EXPORT
    '/exportHTPengagement' : 'EngagementhtpController.exporthtpengagement',
    '/exportHTPengagementsuivant_1' : 'EngagementhtpController.exporthtpengagementsuivant_1',
    '/exportHTPengagementsuivant_2' : 'EngagementhtpController.exporthtpengagementsuivant_2',

@@ -84,7 +84,7 @@ insertcheminengagementhtp : function(req,res)
   var nomBase = "cheminengagementhtp";
   workbook.xlsx.readFile('engagementhtp.xlsx')
       .then(function() {
-        var newworksheet = workbook.getWorksheet('Feuil2');
+        var newworksheet = workbook.getWorksheet('Feuil1');
         var nomColonne3 = newworksheet.getColumn(3);
         var numFeuille = newworksheet.getColumn(4);
         var nomColonne = newworksheet.getColumn(5);
@@ -126,12 +126,17 @@ insertcheminengagementhtp : function(req,res)
         
           console.log(cheminp[0]);
           console.log(MotCle[0]);
+          console.log(nomtable[0]);
+          console.log(nomtable[1]);
           async.series([  
-              function(cb){
-                  Garantie.deleteFromChemin_bpo1(table,cb);
+            function(cb){
+                  Engagementhtp.deleteFromChemin(table,cb);
                 },
-           function(cb){
-                  Garantie.importdatacheminhtp(table,cheminp,date,MotCle,0,nomtable[0],numligne[0],numfeuille[0],nomcolonne[0],nomcolonne2[0],nomcolonne3[0],cb);
+            function(cb){
+                  Engagementhtp.importcheminhtp(table,cheminp,date,MotCle,0,nomtable[0],numligne[0],numfeuille[0],nomcolonne[0],nomcolonne2[0],nomcolonne3[0],cb);
+                },
+            function(cb){
+                  Engagementhtp.importcheminhtp(table,cheminp,date,MotCle,1,nomtable[1],numligne[1],numfeuille[1],nomcolonne[1],nomcolonne2[1],nomcolonne3[1],cb);
                 },
                 
           ],
@@ -153,7 +158,7 @@ insertcheminengagementhtp : function(req,res)
                           }
                           else
                           {
-                            return res.view('Garantie/importGarantiesansdouble', {date : datetest});
+                            return res.view('HTPengagement/importHTPengagement', {date : datetest});
                                                           
                           };
                       });
@@ -835,7 +840,127 @@ exporthtpengagementsuivant_3 : function (req, res) {
     })
   })
 },
+/*****************************************************************************************************/
 
+  //IMPORTATION DES DONNEES SUR EXCEL DANS LA BASE
+  importengagementhtp : function(req,res)
+  {
+    var datetest = req.param("date",0);
+    var sql1= 'select count(*) as nb from cheminengagementhtp';
+      Reportinghtp.getDatastore().sendNativeQuery(sql1,function(err, nc1) {
+        if (err){
+          console.log(err);
+          return next(err);
+        }
+        else
+        {
+          nc1 = nc1.rows;
+          var nbs = nc1[0].nb;
+          var x = parseInt(nbs);
+          //var sql='select * from cheminretourvrai limit' + " " + x ;
+          var sql= 'select * from cheminengagementhtp limit'  + " " + x;
+          Reportinghtp.getDatastore().sendNativeQuery(sql,function(err, nc) {
+            console.log(nc);
+            if (err){
+              console.log('ato am if erreur');
+              console.log(err);
+              return next(err);
+            }
+            else
+            {
+              console.log('ato amm else');              
+            nc = nc.rows;
+            sails.log(nc[0].chemin);
+            var Excel = require('exceljs');
+            var workbook = new Excel.Workbook();
+            var cheminc = [];
+            var cheminp = [];
+            var dernierl = [];
+            var feuil = [];
+            var cellule = [];
+            var cellule2 = [];
+            var table = [];
+            var trameflux = [];
+            var numligne = [];
+            var datetest = req.param("date",0);
+            var annee = datetest.substr(0, 4);
+            var mois = datetest.substr(5, 2);
+            var jour = datetest.substr(8, 2);
+            var date = annee+mois+jour;
+            var dateexport = jour + '/' + mois + '/' +annee;
+            var nb = x;
+            var nbre = [];
+                    for(var i=0;i<nb;i++)
+                    {
+                      var a = nc[i].chemin;
+                      trameflux.push(a);
+                      nbre.push(i);
+                    };
+                    for(var i=0;i<nb;i++)
+                    {
+                      var a = nc[i].numfeuille;
+                      feuil.push(a);                      
+                    };
+                    for(var i=0;i<nb;i++)
+                    {
+                      var a =nc[i].colonnecible;
+                      cellule.push(a);
+                    };
+                    for(var i=0;i<nb;i++)
+                    {
+                      var a =nc[i].nomtable;
+                      table.push(a);
+                    };
+                    for(var i=0;i<nb;i++)
+                    {
+                      var a =nc[i].colonnecible2;
+                      cellule2.push(a);
+                    };
+                    for(var i=0;i<nb;i++)
+                    {
+                      var a =nc[i].numligne;
+                      numligne.push(a);
+                    };
+                    for(var i=0;i<nb;i++)
+                    {
+                      var a =nc[i].colonnecible3;
+                      dernierl.push(a);
+                    };
+                    console.log(trameflux);
+                    async.forEachSeries(nbre, function(lot, callback_reporting_suivant) {
+                      async.series([
+                      //   function(cb){
+                      //     Engagementhtp.deleteHtp(table,nb,cb);
+                      //  },
+                        function(cb){
+                          Engagementhtp.importengagementhtptri(trameflux,feuil,cellule,table,cellule2,lot,numligne,dernierl,cb);
+                        },
+                      ],function(erroned, lotValues){
+                        if(erroned) return res.badRequest(erroned);
+                        return callback_reporting_suivant();
+                      });
+                    },
+                    // async.series([
+                    //   function(cb){
+                    //     Garantie.deleteHtp(table,nb,cb);
+                    //   }, 
+                    //   function(cb){
+                    //     Garantie.importTrameDemat(trameflux,feuil,cellule,table,cellule2,nb,numligne,dernierl,cb);
+                    //   }, 
+                    //   // function(cb){
+                    //   //   Garantie.importTrameRcindeterminable(trameflux,feuil,cellule,table,cellule2,nb,numligne,dernierl,cb);
+                    //   // }, 
+                    // ],
+                    function(err, resultat){
+                      if (err) { return res.view('Inovcom/erreur'); }
+                      return res.view('HTPengagement/exportHTPengagement', {date : datetest});
+                  });
+               
+              }
+          })
+        };
+      });
+  },
 
 
 };

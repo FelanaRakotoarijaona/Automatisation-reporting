@@ -995,7 +995,10 @@
      //   numeroColonneOk = iniValue.suivi_saisie_retourpublipostage6.ok;
      //   numeroColonneKo = iniValue.suivi_saisie_retourpublipostage6.ko;
      // }
-    
+     if(table == "trldrcbtp"){
+      numeroColonneOk = iniValue.suivi_saisie_trldrcbtp.ok;
+      numeroColonneKo = iniValue.suivi_saisie_trldrcbtp.ko;
+    }
      var ok_ko = {};
      ok_ko.ok = numeroColonneOk;
      ok_ko.ko = numeroColonneKo;

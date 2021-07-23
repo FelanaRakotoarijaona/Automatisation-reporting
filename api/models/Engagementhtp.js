@@ -1,3 +1,5 @@
+const { Console } = require('console');
+
 /**
  * Engagementhtp.js
  *
@@ -3764,6 +3766,268 @@ ecrituredataetpcotlamie : async function (nombre_ok_ko, table,date_export,mois1,
     Reportinghtp.deleteToutHtp(table,3,callback);
   }
   },
+/************************************************************************/
+deleteFromChemin : function (table,callback) {
+  var sql = "delete from cheminengagementhtp ";
+  Garantie.getDatastore().sendNativeQuery(sql, function(err, res){
+    if (err) { return callback(err); }
+    return callback(null, true);
+    });
+},
+
+ /*******************************************************/
+  //INSERTION DU CHEMIN DANS LA BASE DE DONNEE
+  importcheminhtp: function (table_1,table2,date,option,nb,nomtable,numligne,numfeuille,nomcolonne,colonnecible2,colonnecible3,callback) {
+    const fs = require('fs');
+    var re  = 'a';
+    var tab = [];
+    // var a = table[0]+date+table2[nb];
+    var a = table_1[0]+table2[nb];
+    console.log('*****************************');
+    console.log('chemin de a : '+a);
+    //var a ='\\\\10.128.1.2\\almerys-out\\Retour_Easytech_20210512\\TRAITEMENT_RETOUR_OTD_N2\\' ;
+    var b = option[nb];
+    //var b = 'OTD_ALMERYS SATD';
+    //var c = 'vrai';
+    //console.log(a);
+    var nomTable = nomtable;
+    var numLigne= numligne;
+    var numFeuille = numfeuille;
+    var nomColonne = nomcolonne;
+    var c = Garantie.existenceFichier(a);
+    console.log('ccccccccccccccccccccccc: '+c);
+    if(c=='vrai')
+    {
+      fs.readdir(a, (err, files) => {
+        console.log(a);
+            files.forEach(file => {
+              const regex = new RegExp(b+'*');
+              console.log('**********************************************************************');
+              console.log(b);
+              console.log(file);
+              console.log(regex.test(file));
+              console.log('***************************************************************************');
+              if(regex.test(file))
+              {
+                 //re = a+'\\'+file;
+                 re = a+''+file;
+                 console.log(re);
+
+                 var sql = "insert into cheminengagementhtp (chemin,nomtable,numligne,numfeuille,colonnecible,colonnecible2,colonnecible3) values ('"+re+"','"+nomTable+"','"+numLigne+"','"+numFeuille+"','"+nomColonne+"','"+colonnecible2+"','"+colonnecible3+"') ";
+                 console.log(sql);
+                 Engagementhtp.getDatastore().sendNativeQuery(sql, function(err,res){
+                  if (err) { 
+                    console.log("Une erreur ve? import 1");
+                    //return callback(err);
+                   }
+                  else
+                  {
+                    console.log("eto le requete alefany io : "+sql);
+                    return callback(null, true);
+                  };
+                   
+                });
+             }
+              else
+              {
+               var sql = "insert into chemintsisy (typologiedelademande) values ('"+re+"') ";
+               Engagementhtp.getDatastore().sendNativeQuery(sql, function(err,res){
+                if (err) { 
+                  console.log("Une erreur ve? import 1");
+                  //return callback(err);
+                 }
+                else
+                {
+                  console.log(sql);
+                  return callback(null, true);
+                };
+                 
+            });
+              }
+             
+             
+          });
+          
+         
+        });
+    }
+    else
+    {
+      var sql = "insert into chemintsisy(typologiedelademande) values ('k') ";
+      Engagementhtp.getDatastore().sendNativeQuery(sql, function(err,res){
+        if (err) { 
+          console.log("Une erreur ve? import 1");
+          //return callback(err);
+         }
+        else
+        {
+          console.log('eto njay iz le ts mety an : '+sql);
+          return callback(null, true);
+        };
+         
+    });
+    }   
+  },
+
+  deleteReportingHtp : function (table,nb,callback) {
+    var sql = "delete from "+table[nb]+" ";
+    Engagementhtp.getDatastore().sendNativeQuery(sql, function(err, res){
+      if (err) { return console.log(err); }
+      return callback(null, true);
+      });
+  },
+  deleteHtp__ : function (table,nb,callback) {
+    var j;
+    var i = parseInt(j);
+    for(i=0;i<nb;i++)
+    {
+      Engagementhtp.deleteReportingHtp(table,i,callback);
+    };
+  },
+  deleteHtp : function (table,nb,callback) {
+    var nbr = parseInt(nb);
+    var sql = "delete from "+table[nbr]+" ";
+    Engagementhtp.getDatastore().sendNativeQuery(sql, function(err, res){
+      if (err) { 
+        console.log("Une erreur supprooo?");
+        console.log(err);
+        //return callback(err);
+       }
+      else
+      {
+        console.log(sql);
+        return callback(null, true);
+      };
+      });
+  },
+
+/****************************************************************************************/
+//IMPORT DES DONNES EXCELS VERS LA BASE DE DONNEE
+importengagementhtptri : function (trameflux,feuil,cellule,table,cellule2,nb,numligne,dernierl,callback) {
+  console.log('****************');
+  console.log(nb);
+  console.log(trameflux[nb]);
+  console.log('****************');
+  if(trameflux[nb]==undefined)
+  {
+    console.log('trame undefined');
+    var sql = "insert into chemintsisy(typologiedelademande) values ('ko') ";
+    Reportinghtp.getDatastore().sendNativeQuery(sql, function(err,res){
+      if (err) { 
+        console.log("Une erreur ve ok?");
+        //return callback(err);
+       }
+      else
+      {
+        console.log(sql);
+        return callback(null, true);
+      };
+    });
+  }
+  else{
+
+    var tab = [];
+    tab = Engagementhtp.lectureEtInsertionengagementhtptri( trameflux,feuil,cellule,table,cellule2,nb,numligne,dernierl,callback);
+    var nbe= parseInt(nb);
+    console.log(tab);
+    var sql = "insert into "+table[nbe]+" (nb) values ('"+tab[0]+"') ";
+   
+
+    Engagementhtp.getDatastore().sendNativeQuery(sql, function(err,res){
+      if (err) { 
+        console.log("Une erreur ve ok?");
+       }
+      else
+      {
+        console.log(sql);
+        return callback(null, true);
+      };
+                          });
+  };
+
+},
+  /****************************************************************************/
+  //LECTURE DU CHEMIN ET INSERTION DANS LA BASE
+  lectureEtInsertionengagementhtptri:function(trameflux,feuil,cellule,table,cellule2,nb,numligne,dernierl,callback){
+    XLSX = require('xlsx');
+    
+        var workbook = XLSX.readFile(trameflux[nb]);
+        var numerofeuille = feuil[nb];
+        var numeroligne = parseInt(numligne[nb]);
+        console.log('lign ato am lecture et insertion : ' +numeroligne);
+        try{
+          console.log('miditra ato am try v iz?');
+          console.log(numerofeuille);
+          const sheet = workbook.Sheets[workbook.SheetNames[numerofeuille]];
+          var range = XLSX.utils.decode_range(sheet['!ref']);
+          var col ;
+          var col1;
+          var col2;
+          console.log('Nombre de colonne' + range.e.c);
+          console.log('Nombre de ligne' + range.e.r);
+          console.log(numeroligne + 'numlign');
+          console.log(numerofeuille + 'numfeuille');
+          console.log(cellule2[1] + 'c2');
+          console.log(cellule[1] + 'c1');
+          console.log(dernierl[1] + 'c3');
+          console.log(table[1] + 'table');
+          for(var ra=0;ra<=range.e.c;ra++)
+          {
+            var address_of_cell = {c:ra, r:numeroligne};
+            // console.log(address_of_cell);//c:5 r:0
+            var cell_ref = XLSX.utils.encode_cell(address_of_cell);
+            var desired_cell = sheet[cell_ref];
+            // console.log(desired_cell);
+            var desired_value = (desired_cell ? desired_cell.v : undefined);
+            // console.log(desired_value);//No Facture
+            if(desired_value==dernierl[0])
+            {
+              col=ra;
+            }
+          };
+          
+          console.log('colonne cible : ' +col);
+          if(col!=undefined)
+          {
+            var nbr = 0;
+            for(var a=0;a<=range.e.r;a++)
+              {
+                var address_of_cell = {c:col, r:a};
+                var cell_ref = XLSX.utils.encode_cell(address_of_cell);
+                var desired_cell = sheet[cell_ref];
+                var desired_value1 = (desired_cell ? desired_cell.v : undefined);
+                var bi = 'MGEFI HTP - Tri Courrier  ';
+                const regex = new RegExp(bi+'*');
+                if(regex.test(desired_value1))
+                {
+                  nbr=nbr + 1;
+                };
+              };
+          }
+    
+    
+          
+          else
+          {
+            console.log('Colonne non trouvé');
+          }
+          var tab = [nbr];
+              console.log("nombreeeeebr__tri__"+ nbr);
+              return tab; 
+    
+          
+        }
+      
+        catch
+        {
+          console.log("erreur absolu haaha");
+        }
+   
+
+  },
+
+
+
 
 };
 
