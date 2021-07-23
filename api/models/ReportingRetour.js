@@ -261,7 +261,7 @@ module.exports = {
             }
             console.log(tab + 'nb');
             var resultat = parseInt(tab) - 1;
-            var nb = [resultat]
+            var nb = [resultat];
             return nb;
         });
     }
