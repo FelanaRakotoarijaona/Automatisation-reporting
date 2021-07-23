@@ -14,38 +14,32 @@ module.exports.routes = {
      //route tps-tpc grs
      '/accueilstockj1et2et5' : 'TpsGrsController.accueilstockj1et2et5',
      '/traitementstockj1et2et5' : 'TpsGrsController.traitementstockj1et2et5',
+
+     '/accueilstockj1et2et5suivant' : 'TpsGrsController.accueilstockj1et2et5suivant',
+     '/traitementstockj1et2et5suivant' : 'TpsGrsController.traitementstockj1et2et5suivant',
+
      '/accueilEtpGrs' : 'TpsGrsController.accueilEtp',
      '/copieEtp' : 'TpsGrsController.copieEtp',
      '/accueilGrs' : 'TpsGrsController.accueil',
      '/traitementTacheTraiteGrs' : 'TpsGrsController.traitementTacheTraite',
      '/accueilrecherchefichier' : 'TpsGrsController.accueilrecherchefichier',
-     '/recherchefichiertpsgrs' : 'TpsGrsController.recherchefichier',
+     '/recherchefichiertpsGrs' : 'TpsGrsController.recherchefichier',
      '/accueilstock16h' : 'TpsGrsController.accueilstock16h',
      '/traitementgrsstock16h' : 'TpsGrsController.traitementgrsstock16h',
+     '/accueilGrs1' : 'TpsGrsController.accueilecriture',
+     '/ecrituregrs1' : 'TpsGrsController.ecrituregrs1',
 
+     '/accueilGrs2' : 'TpsGrsController.accueilecriture2',
+     '/ecrituregrs2' : 'TpsGrsController.ecrituregrs2',
+     '/accueilGrs3' : 'TpsGrsController.accueilecriture3',
+     '/ecrituregrs3' : 'TpsGrsController.ecrituregrs3',
 
-     '/recherchefichiertpstpc' : 'TpstpcController.recherchefichiertpstpc',
-     '/accueilTpstpc' : 'TpstpcController.accueil1',
-     '/accueilstocketbonj' : 'TpstpcController.accueil2',
-     '/accueiltachenontraite' : 'TpstpcController.accueil3',
-     '/accueiletp' : 'TpstpcController.accueil',
-     '/accueilecriture' : 'TpstpcController.accueil6',
-     '/traitementetp' : 'TpstpcController.selection',
-     '/accueilecritureetp' : 'TpstpcController.accueiletp',
-     '/ecritureetp' : 'TpstpcController.ecritureEtp',
-     '/traitementfinal' :'TpstpcController.ecriture3',
-     '/ecritureetp2' : 'TpstpcController.ecritureEtp2',
-     '/ecritureerreur' : 'TpstpcController.ecritureErreur',
-   
-     '/traitementtachenontraite' : 'TpstpcController.traitementBonJ1',
-     '/accueilsanteclair' : 'TpstpcController.accueil4',
-     '/traitementSanteclair' : 'TpstpcController.traitementSanteclair',
-     '/accueilerreur' : 'TpstpcController.accueil5',
-     '/traitementerreureasy' : 'TpstpcController.traitementErreurEasy',
-     '/traitementTpstpc' : 'TpstpcController.traitementTacheTraite',
-     '/traitementsuivant' : 'TpstpcController.ecritureExcel',
-     
-     '/traitementJ2' : 'TpstpcController.traitementStocketBonJ',
+     '/accueilecritureetpgrs' : 'TpsGrsController.accueilecritureetpgrs',
+     '/ecritureetpgrs' : 'TpsGrsController.ecritureetpgrs',
+     '/accueilecritureetpgrs2' : 'TpsGrsController.accueilecritureetpgrs2',
+     '/ecritureetpgrs2' : 'TpsGrsController.ecritureetpgrs2',
+
+    
   
    //route tps-tpc
    '/accueilrecherchefichier' : 'TpstpcController.accueilrecherchefichier',

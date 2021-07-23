@@ -4,7 +4,7 @@
  * @description :: A model definition represents a database table/collection.
  * @docs        :: https://sailsjs.com/docs/concepts/models-and-orm/models
  */
-
+ const path_reporting = '/dev/prod/03-POLE_TPS-TPC/00-PILOTAGE/09-REPORTING ENGAGEMENT/TestReporting/TPS-TPC_Reporting-Traitement-J-SLA_V12.xlsx';
  module.exports = {
 
   datastore : 'easy',
@@ -157,7 +157,7 @@
       const Excel = require('exceljs');
       const newWorkbook = new Excel.Workbook();
       try{
-      var path_reporting = 'D:/Reporting Engagement/TPS-TPC_Reporting-Traitement-J-SLA_V12.xlsx';
+      //var path_reporting = 'D:/Reporting Engagement/TPS-TPC_Reporting-Traitement-J-SLA_V12.xlsx';
       await newWorkbook.xlsx.readFile(path_reporting);
       const newworksheet = newWorkbook.getWorksheet('202106_Easy');
       var colonneDate = newworksheet.getColumn('A');
@@ -213,7 +213,7 @@
         const Excel = require('exceljs');
         const newWorkbook = new Excel.Workbook();
         try{
-        var path_reporting = 'D:/Reporting Engagement/TPS-TPC_Reporting-Traitement-J-SLA_V12.xlsx';
+        //var path_reporting = 'D:/Reporting Engagement/TPS-TPC_Reporting-Traitement-J-SLA_V12.xlsx';
         await newWorkbook.xlsx.readFile(path_reporting);
         const newworksheet = newWorkbook.getWorksheet('202106_Easy');
         var colonneDate = newworksheet.getColumn('A');
@@ -262,7 +262,7 @@
             const Excel = require('exceljs');
             const newWorkbook = new Excel.Workbook();
             try{
-            var path_reporting = 'D:/Reporting Engagement/TPS-TPC_Reporting-Traitement-J-SLA_V12.xlsx';
+            //var path_reporting = 'D:/Reporting Engagement/TPS-TPC_Reporting-Traitement-J-SLA_V12.xlsx';
             await newWorkbook.xlsx.readFile(path_reporting);
             const newworksheet = newWorkbook.getWorksheet('202106_Easy');
             var colonneDate = newworksheet.getColumn('A');
@@ -2782,8 +2782,6 @@
               var c1 = motcle2[nb];
               var c2 = motcle3[nb];
 
-             
-              
               const regex21 = new RegExp(c1,'i');
               const regex31 = new RegExp(c2,'i');
               const regex1 = new RegExp(c,'i');

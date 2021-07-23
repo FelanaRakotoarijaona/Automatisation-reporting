@@ -18,7 +18,7 @@
                     <div class="form-group">
                         <br><br>
                         <h4 style="margin-left: 50px;">Cliquer sur suivant pour traiter l'erreur applicatif</h4><br><br>
-                        <input type="date" class="form-control"  id="d" style="margin-left: 5px;width: 390px;" value="<%- date %>" name="date" readonly >
+                        <input type="date" class="form-control" name="date" id="d"  style="margin-left: 5px;width: 390px;" required >
                         <div class="spinner-border" role="status" style="display: none;" id="snip">
                             <span class="visually-hidden"></span>
                           </div>
@@ -35,6 +35,7 @@
 </body>
 <script>
     function affiche(){
+        var a =  $( "#d" ).val();
         if(a)
         {
             $( "#snip" ).css("display", "block");
