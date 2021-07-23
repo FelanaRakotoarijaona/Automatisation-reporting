@@ -13,16 +13,16 @@ module.exports = {
       var m = dateFormat(datetest, "mm");
       var an = dateFormat(datetest, "yyyy");
       var date = j + '/' + m +'/' + an ;
-      var r = [0,1,2,3,4];
+      var r = [0,1,2,3,4,5,6,7];
       var table = [];
       var motcle = [];
       var Excel = require('exceljs');
       var workbook = new Excel.Workbook();
       workbook.xlsx.readFile('grs16h.xlsx')
         .then(function() {
-          var newworksheet = workbook.getWorksheet('Feuil4');
-          var motcle1 = newworksheet.getColumn(8);
-          var tablem = newworksheet.getColumn(7);
+          var newworksheet = workbook.getWorksheet('Feuil9');
+          var motcle1 = newworksheet.getColumn(2);
+          var tablem = newworksheet.getColumn(1);
             motcle1.eachCell(function(cell, rowNumber) {
               motcle.push(cell.value);
             });
@@ -31,21 +31,50 @@ module.exports = {
             });
                   async.series([
                     function(cb){
-                      Tpstpc.countOkKo(table,0,cb);
-                    },
-                   function(cb){
-                      Tpstpc.countOkKo(table,1,cb);
+                      TpsGrs.countEtp("sdmnument",cb);
                     },
                     function(cb){
-                      Tpstpc.countOkKo(table,2,cb);
+                      TpsGrs.countEtp("pechospi",cb);
                     },
                     function(cb){
-                      Tpstpc.countOkKo(table,3,cb);
+                      TpsGrs.countEtp("factse",cb);
                     },
                     function(cb){
-                      Tpstpc.countOkKo(table,4,cb);
+                      TpsGrs.countEtp("santeclair",cb);
                     },
-  
+                    function(cb){
+                      TpsGrs.countEtp("pecdentaire",cb);
+                    },
+                    function(cb){
+                      TpsGrs.countEtp("factoptique",cb);
+                    },
+                    function(cb){
+                      TpsGrs.countEtp("facttiers",cb);
+                    },
+                    function(cb){
+                      TpsGrs.countEtp("factaudio",cb);
+                    },
+                   /* function(cb){
+                      TpsGrs.countEtp("pecoptique",cb);
+                    },
+                    function(cb){
+                      TpsGrs.countEtp("pecaudio",cb);
+                    },
+                    function(cb){
+                      TpsGrs.countEtp("tritp",cb);
+                    },
+                    function(cb){
+                      TpsGrs.countEtp("trinument",cb);
+                    },
+                    function(cb){
+                      TpsGrs.countEtp("sdpnument",cb);
+                    },
+                    function(cb){
+                      TpsGrs.countEtp("factdentaire",cb);
+                    },
+                    function(cb){
+                      TpsGrs.countEtp("facthospi",cb);
+                    },*/
                   ],function(err,result)
                   {
                           if (err){
@@ -59,7 +88,7 @@ module.exports = {
                              var tab = result[lot];
                               async.series([
                                 function(cb){
-                                  TpsGrs.ecriture(tab,date,motcle,lot,cb);
+                                  TpsGrs.ecritureEtp(tab,date,motcle,lot,cb);
                                 },
                               ],function(erroned, lotValues){
                                 if(erroned) return res.badRequest(erroned);
@@ -73,7 +102,7 @@ module.exports = {
                                       }
                                       else
                                       {
-                                        return res.view('TpsGrs/ecrituresuivant',{date : datetest});
+                                        return res.view('TpsGrs/ecritureetp2',{date:datetest});
                                       };
                               });
                           };
@@ -81,11 +110,119 @@ module.exports = {
                 });
             
     },
-  accueiletp : function(req,res)
+  accueilecritureetpgrs : function(req,res)
    {
-     return res.view('Tpstpc/ecritureetp');
+     return res.view('TpsGrs/ecritureetp2');
    },
-
+   ecritureetpgrs2: function(req,res)
+   {
+     var dateFormat = require("dateformat");
+     var datetest = req.param("date",0);
+     var j = dateFormat(datetest, "dd");
+     var m = dateFormat(datetest, "mm");
+     var an = dateFormat(datetest, "yyyy");
+     var date = j + '/' + m +'/' + an ;
+     var r = [0,1,2,3,4,5,6];
+     var table = [];
+     var motcle = [];
+     var Excel = require('exceljs');
+     var workbook = new Excel.Workbook();
+     workbook.xlsx.readFile('grs16h.xlsx')
+       .then(function() {
+         var newworksheet = workbook.getWorksheet('Feuil10');
+         var motcle1 = newworksheet.getColumn(2);
+         var tablem = newworksheet.getColumn(1);
+           motcle1.eachCell(function(cell, rowNumber) {
+             motcle.push(cell.value);
+           });
+           tablem.eachCell(function(cell, rowNumber) {
+             table.push(cell.value);
+           });
+                 async.series([
+                   /*function(cb){
+                     TpsGrs.countEtp("sdmnument",cb);
+                   },
+                   function(cb){
+                     TpsGrs.countEtp("pechospi",cb);
+                   },
+                   function(cb){
+                     TpsGrs.countEtp("factse",cb);
+                   },
+                   function(cb){
+                     TpsGrs.countEtp("santeclair",cb);
+                   },
+                   function(cb){
+                     TpsGrs.countEtp("pecdentaire",cb);
+                   },
+                   function(cb){
+                     TpsGrs.countEtp("factoptique",cb);
+                   },
+                   function(cb){
+                     TpsGrs.countEtp("facttiers",cb);
+                   },
+                   function(cb){
+                     TpsGrs.countEtp("factaudio",cb);
+                   },*/
+                   function(cb){
+                     TpsGrs.countEtp("pecoptique",cb);
+                   },
+                   function(cb){
+                     TpsGrs.countEtp("pecaudio",cb);
+                   },
+                   function(cb){
+                     TpsGrs.countEtp("tritp",cb);
+                   },
+                   function(cb){
+                     TpsGrs.countEtp("trinument",cb);
+                   },
+                   function(cb){
+                     TpsGrs.countEtp("sdpnument",cb);
+                   },
+                   function(cb){
+                     TpsGrs.countEtp("factdentaire",cb);
+                   },
+                   function(cb){
+                     TpsGrs.countEtp("facthospi",cb);
+                   },
+                 ],function(err,result)
+                 {
+                         if (err){
+                           return res.view('Contentieux/erreur');
+                         }
+                         else
+                         {
+                           console.log('ok');
+ 
+                           async.forEachSeries(r, function(lot, callback_reporting_suivant) {
+                            var tab = result[lot];
+                             async.series([
+                               function(cb){
+                                 TpsGrs.ecritureEtp(tab,date,motcle,lot,cb);
+                               },
+                             ],function(erroned, lotValues){
+                               if(erroned) return res.badRequest(erroned);
+                               return callback_reporting_suivant();
+                             });
+                           },
+                             function(err)
+                             {
+                                     if (err){
+                                       return res.view('Contentieux/erreur');
+                                     }
+                                     else
+                                     {
+                                       return res.view('Contentieux/succes');
+                                     };
+                             });
+                         };
+                 });
+               });
+           
+   },
+ accueilecritureetpgrs2 : function(req,res)
+  {
+    return res.view('TpsGrs/ecritureetp');
+  },
   traitementstockj1et2et5suivant : function(req,res)
   {
      var sql1= 'select chemin from chemingrsstock16h;';
@@ -397,7 +534,8 @@ module.exports = {
         var datetest = req.param("date",0);
         var date = dateFormat(datetest, "shortDate");
         console.log('daty'+ date);
-        var trameflux= 'D:/Reporting Engagement/GRS.xlsb';
+        //var trameflux= 'D:/Reporting Engagement/GRS.xlsb';
+        var trameflux= '/dev/prod/03-POLE_TPS-TPC/00-PILOTAGE/09-REPORTING ENGAGEMENT/GRS_Reporting-Traitement-J-SLA.xlsb';
         var nomColonne = [
             'tritp',
             'trinument',
@@ -571,7 +709,8 @@ module.exports = {
           var m = dateFormat(datetest, "mm");
           var an = dateFormat(datetest, "yyyy");
           var date = j  + m + an ;
-          var chemin = '//10.128.1.2/bpo_almerys/03-POLE_TPS-TPC/00-PILOTAGE/09-REPORTING ENGAGEMENT/';
+          //var chemin = '//10.128.1.2/bpo_almerys/03-POLE_TPS-TPC/00-PILOTAGE/09-REPORTING ENGAGEMENT/';
+          var chemin= '/dev/prod/03-POLE_TPS-TPC/00-PILOTAGE/09-REPORTING ENGAGEMENT/';
           var cheminTotal = chemin + date + '/' ;
           var r = [0,1,2,3];
           var cheminpart = [];

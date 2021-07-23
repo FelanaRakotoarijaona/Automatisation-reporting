@@ -4,16 +4,15 @@
  * @description :: A model definition represents a database table/collection.
  * @docs        :: https://sailsjs.com/docs/concepts/models-and-orm/models
  */
-
+const path_reporting = '/dev/prod/03-POLE_TPS-TPC/00-PILOTAGE/09-REPORTING ENGAGEMENT/TestReporting/TPS-TPC_Reporting-Traitement-J-SLA_V12.xlsx';
 module.exports = {
-
   attributes: {
   },
   ecritureEtp : async function (tab,date_export,motcle,nb,callback) {
     const Excel = require('exceljs');
     const newWorkbook = new Excel.Workbook();
     try{
-    var path_reporting = 'D:/Reporting Engagement/TPS-TPC_Reporting-Traitement-J-SLA_V12.xlsx';
+    //var path_reporting = 'D:/Reporting Engagement/TPS-TPC_Reporting-Traitement-J-SLA_V12.xlsx';
     await newWorkbook.xlsx.readFile(path_reporting);
     const newworksheet = newWorkbook.getWorksheet('202106_GRS');
     var colonneDate = newworksheet.getColumn('A');
@@ -41,8 +40,10 @@ module.exports = {
     console.log(ligne);
     
     var m = newworksheet.getRow(ligne);
-   //m.getCell(5).value = tab[0].tt16h;
-    m.getCell(6).value = parseFloat(tab[0].tt16h);
+    //console.log(m);
+
+    m.getCell(5).value = tab[0].nb;
+    /*m.getCell(6).value = parseFloat(tab[0].tt16h);
     m.getCell(7).value = parseFloat(tab[0].tt23h);
     m.getCell(9).value = parseFloat(tab[0].ttj2);
     m.getCell(11).value = parseFloat(tab[0].ttj5);
@@ -50,7 +51,7 @@ module.exports = {
     m.getCell(20).value = parseFloat(tab[0].bonj);
     m.getCell(21).value = parseFloat(tab[0].bonj1);
     m.getCell(22).value = parseFloat(tab[0].bonj2);
-    m.getCell(23).value = parseFloat(tab[0].bonj5);
+    m.getCell(23).value = parseFloat(tab[0].bonj5);*/
    
     await newWorkbook.xlsx.writeFile(path_reporting);
     sails.log("Ecriture OK KO terminé"); 
@@ -63,8 +64,9 @@ module.exports = {
       Reportinghtp.deleteToutHtp(tab,3,callback);
     }
     },
-  countOkKo : function (table,nb, callback) {
-    var sql ="select sum(tritp) as tritp,sum(trinument) as trinument,sum(sdpnument) as sdpnument,sum(sdmnument) as sdmnument,sum(factse) as factse,sum(facttiers) as facttiers,sum(factoptique) as factoptique,sum(factaudio) as factaudio,sum(factdentaire) as factdentaire, sum(facthospi) as facthospi,sum(santeclair) as santeclair,sum(pecoptique) as pecoptique,sum(pecaudio) as pecaudio,sum(pecdentaire) as pecdentaire,sum(pechospi) as pechospi from tpsgrsetp2 ";
+  countEtp : function (nomcolonne, callback) {
+    var sql ="select sum("+nomcolonne+"::float) as nb from tpsgrsetp";
+    //,sum(trinument) as trinument,sum(sdpnument) as sdpnument,sum(sdmnument) as sdmnument,sum(factse) as factse,sum(facttiers) as facttiers,sum(factoptique) as factoptique,sum(factaudio) as factaudio,sum(factdentaire) as factdentaire, sum(facthospi) as facthospi,sum(santeclair) as santeclair,sum(pecoptique) as pecoptique,sum(pecaudio) as pecaudio,sum(pecdentaire) as pecdentaire,sum(pechospi) as pechospi from tpsgrsetp2 ";
     Reportinghtp.getDatastore().sendNativeQuery(sql, function(err, res){
       if (err) { 
         console.log(err);
@@ -74,7 +76,7 @@ module.exports = {
       {
         console.log(sql);
         result = res.rows;
-        console.log(result[0].tritp);
+        console.log(result[0].nb);
         return callback(null,result);
       };
       });
@@ -83,7 +85,7 @@ module.exports = {
     const Excel = require('exceljs');
     const newWorkbook = new Excel.Workbook();
     try{
-    var path_reporting = 'D:/Reporting Engagement/TPS-TPC_Reporting-Traitement-J-SLA_V12.xlsx';
+    //var path_reporting = 'D:/Reporting Engagement/TPS-TPC_Reporting-Traitement-J-SLA_V12.xlsx';
     await newWorkbook.xlsx.readFile(path_reporting);
     const newworksheet = newWorkbook.getWorksheet('202106_GRS');
     var colonneDate = newworksheet.getColumn('A');
