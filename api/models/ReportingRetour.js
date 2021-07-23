@@ -127,7 +127,8 @@ module.exports = {
     }
     else if(table[nb]=="trpecaudio" || table[nb]=="trpecdentaire")
     {
-      console.log('hehe trpecdentaire');
+      ReportingRetour.lectureEtInsertiontype21( trameflux,feuil,cellule,table,cellule2,nb,numligne,callback);
+     /* console.log('hehe trpecdentaire');
       var tab = [];
       tab=ReportingRetour.lectureEtInsertiontype21( trameflux,feuil,cellule,table,cellule2,nb,numligne,callback);
       var nbe= parseInt(nb);
@@ -143,7 +144,7 @@ module.exports = {
           console.log(sql);
           return callback(null, true);
         };
-                            });
+                            });*/
     }
     else{
       var tab = [];
@@ -261,9 +262,21 @@ module.exports = {
             }
             console.log(tab + 'nb');
             var resultat = parseInt(tab) - 1;
-            var nb = [resultat];
-            return nb;
-        });
+            console.log(resultat + 'res');
+            //var nb = [resultat];
+            var sql = "insert into "+table[nb]+" (nb) values ('"+resultat+"') ";
+              ReportingInovcom.getDatastore().sendNativeQuery(sql, function(err,res){
+                if (err) { 
+                  console.log("Une erreur ve ok?");
+                  //return callback(err);
+                }
+                else
+                {
+                  console.log(sql);
+                  return callback(null, true);
+                };
+                                    });
+                });
     }
     catch
     {
