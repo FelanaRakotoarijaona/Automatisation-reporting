@@ -233,6 +233,11 @@ module.exports = {
         console.log(a);
             files.forEach(file => {
               const regex = new RegExp(b+'*');
+              console.log('**********************************************************************');
+              console.log(b);
+              console.log(file);
+              console.log(regex.test(file));
+              console.log('***************************************************************************');
               if(regex.test(file))
               {
                  //re = a+'\\'+file;

@@ -612,7 +612,9 @@ rechercheColonne_suivant : function (req, res) {
     function (callback) {
       Retour.countOkKoSum("trhospimulti",callback);
     },
-   
+    function (callback) {
+      Retour.countOkKoSum("trldrcbtp",callback);
+    },
   ],function(err,result){
     if(err) return res.badRequest(err);
     console.log("Count OK 0==> " + result[0].ok);
@@ -621,6 +623,7 @@ rechercheColonne_suivant : function (req, res) {
     console.log("Count OK 3==> " + result[3].ok );
     console.log("Count OK 4==> " + result[4].ok);
     console.log("Count OK 5==> " + result[5].ok );
+    console.log("Count OK 6==> " + result[6].ok );
 
     async.series([
 
@@ -642,7 +645,9 @@ rechercheColonne_suivant : function (req, res) {
       function (callback) {
         Retour.ecritureOkKo8(result[5],"trhospimulti",date_export,mois1,callback);
       },
-     
+      function (callback) {
+        Retour.ecritureOkKo6(result[6],"trldrcbtp",date_export,mois1,callback);
+      },
     
     ],function(err,resultExcel){
    console.log(resultExcel[0]);
