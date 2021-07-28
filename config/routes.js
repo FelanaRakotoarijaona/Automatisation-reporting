@@ -48,8 +48,10 @@ module.exports.routes = {
      '/accueilGrs1' : 'TpsGrsController.accueilecriture',
      '/ecrituregrs1' : 'TpsGrsController.ecrituregrs1',
 
-     '/accueilrechercheDate' : 'TpsGrsController.accueilrechercheDatel',
+     '/accueilrechercheDate' : 'TpsGrsController.accueilrechercheDate',
      '/rechercheDate' : 'TpsGrsController.rechercheDate',
+     '/ecritureDateGrs' : 'TpsGrsController.ecrituredateGrs',
+     '/ecritureDateGrs2' : 'TpsGrsController.ecrituredateGrs2',
     
 
      '/accueilGrs2' : 'TpsGrsController.accueilecriture2',

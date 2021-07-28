@@ -9,7 +9,7 @@ const path_reporting = '//10.128.1.2/bpo_almerys/03-POLE_TPS-TPC/00-PILOTAGE/09-
 module.exports = {
   attributes: {
   },
-  ecritureEtp : async function (tab,date_export,motcle,nb,callback) {
+  ecritureDate : async function (tab,date_export,row,callback) {
     const Excel = require('exceljs');
     const newWorkbook = new Excel.Workbook();
     try{
@@ -18,13 +18,85 @@ module.exports = {
     const newworksheet = newWorkbook.getWorksheet('202106_GRS');
     var colonneDate = newworksheet.getColumn('A');
     var ligneDate1;
+    console.log(path_reporting);
+    var ligne = 0;
+    var max = parseInt(row);
+    var min = max - 15;
+    console.log('min' + min + 'max' + max);
+    colonneDate.eachCell(function(cell, rowNumber) {
+     
+      if(rowNumber>=min && rowNumber<=max)
+      {
+        console.log('row'+rowNumber);
+        var m = newworksheet.getRow(rowNumber);
+        m.getCell(2).value = date_export;
+      }
+    });
+    console.log(ligne);
+    await newWorkbook.xlsx.writeFile(path_reporting);
+    sails.log("Ecriture OK KO terminé"); 
+    return callback(null, "OK");
+
+    }
+    catch
+    {
+      console.log("Une erreur s'est produite");
+      Reportinghtp.deleteToutHtp(tab,3,callback);
+    }
+    },
+    ecritureDate1 : async function (tab,date_export,row,callback) {
+      const Excel = require('exceljs');
+      const newWorkbook = new Excel.Workbook();
+      try{
+      //var path_reporting = 'D:/Reporting Engagement/TPS-TPC_Reporting-Traitement-J-SLA_V12.xlsx';
+      await newWorkbook.xlsx.readFile(path_reporting);
+      console.log(path_reporting);
+      const newworksheet = newWorkbook.getWorksheet('202106_GRS');
+      var colonneDate = newworksheet.getColumn('A');
+      var ligneDate1;
+      console.log(path_reporting);
+      var ligne = 0;
+      var max = parseInt(row);
+      var min = max - 15;
+      console.log('max' + min);
+      colonneDate.eachCell(function(cell, rowNumber) {
+       //console.log(date_export);
+        if(rowNumber==min)
+        {
+          console.log('row'+rowNumber);
+          var m = newworksheet.getRow(rowNumber);
+          m.getCell(1).value = date_export;
+        }
+      });
+      //console.log(ligne);
+      await newWorkbook.xlsx.writeFile(path_reporting);
+      sails.log("Ecriture OK KO terminé"); 
+      return callback(null, "OK");
+  
+      }
+      catch
+      {
+        console.log("Une erreur s'est produite");
+        Reportinghtp.deleteToutHtp(tab,3,callback);
+      }
+      },
+  ecritureEtp : async function (tab,row,date_export,motcle,nb,callback) {
+    const Excel = require('exceljs');
+    const newWorkbook = new Excel.Workbook();
+    try{
+    //var path_reporting = 'D:/Reporting Engagement/TPS-TPC_Reporting-Traitement-J-SLA_V12.xlsx';
+    await newWorkbook.xlsx.readFile(path_reporting);
+    const newworksheet = newWorkbook.getWorksheet('202106_GRS');
+    var colonneDate = newworksheet.getColumn('B');
+    var ligneDate1;
     //var date_export='14/06/2021';
     console.log(date_export);
     var ligne = 0;
-
+    var max = parseInt(row);
+    var min = max - 15;
     colonneDate.eachCell(function(cell, rowNumber) {
       var dateExcel = ReportingInovcomExport.convertDate(cell.text);
-      if(dateExcel==date_export)
+      if(rowNumber>=min && rowNumber<=max)
       {
         ligneDate1 = parseInt(rowNumber);
         var line = newworksheet.getRow(ligneDate1);
@@ -82,27 +154,26 @@ module.exports = {
       };
       });
   },
-  ecriture : async function (tab,date_export,motcle,nb,callback) {
+  ecriture : async function (tab,row,date_export,motcle,nb,callback) {
     const Excel = require('exceljs');
     const newWorkbook = new Excel.Workbook();
     try{
     //var path_reporting = 'D:/Reporting Engagement/TPS-TPC_Reporting-Traitement-J-SLA_V12.xlsx';
+    console.log(path_reporting);
     await newWorkbook.xlsx.readFile(path_reporting);
     const newworksheet = newWorkbook.getWorksheet('202106_GRS');
-    var colonneDate = newworksheet.getColumn('B');
+    var colonneDate = newworksheet.getColumn('A');
     var ligneDate1;
     //var date_export='14/06/2021';
     console.log(date_export);
     var ligne = 0;
-
+    var max = parseInt(row);
+    var min = max - 15;
+    console.log(max);
     colonneDate.eachCell(function(cell, rowNumber) {
-      var dateExcel = ReportingInovcomExport.convertDate(cell.text);
-      /*var sup = parseInt(date_export);
-      var min = sup - 15;*/
-      //if(rowNumber>=min && rowNumber<sup)
-      if(dateExcel==date_export)
+      if(rowNumber>=min && rowNumber<=max)
       {
-        //console.log('rownumber' + rowNumber);
+        console.log('rownumber' + rowNumber);
         ligneDate1 = parseInt(rowNumber);
         var line = newworksheet.getRow(ligneDate1);
         var f = line.getCell(4).value;
@@ -115,7 +186,7 @@ module.exports = {
         }
       }
     });
-    console.log(ligne);
+    //console.log(ligne);
     
     var m = newworksheet.getRow(ligne);
    //m.getCell(5).value = tab[0].tt16h;
@@ -140,7 +211,77 @@ module.exports = {
       Reportinghtp.deleteToutHtp(tab,3,callback);
     }
     },
-
+    ecriture3 : async function (tab,row,date_export,motcle,nb,callback) {
+      const Excel = require('exceljs');
+      const newWorkbook = new Excel.Workbook();
+      try{
+      //var path_reporting = 'D:/Reporting Engagement/TPS-TPC_Reporting-Traitement-J-SLA_V12.xlsx';
+      console.log(path_reporting);
+      await newWorkbook.xlsx.readFile(path_reporting);
+      const newworksheet = newWorkbook.getWorksheet('202106_GRS');
+      var colonneDate = newworksheet.getColumn('A');
+      var ligneDate1;
+      //var date_export='14/06/2021';
+      console.log(date_export);
+      var ligne = 0;
+      var max = parseInt(row);
+      var min = max - 15;
+      console.log(max);
+      colonneDate.eachCell(function(cell, rowNumber) {
+        if(rowNumber>=min && rowNumber<=max)
+        {
+          console.log('rownumber' + rowNumber);
+          ligneDate1 = parseInt(rowNumber);
+          var line = newworksheet.getRow(ligneDate1);
+          var f = line.getCell(4).value;
+          var bi = motcle[nb];
+          const regex = new RegExp(bi,'i');
+          if(regex.test(f))
+          {
+            console.log('row'+rowNumber);
+            ligne = rowNumber;
+          }
+        }
+      });
+      //console.log(ligne);
+      
+      var m = newworksheet.getRow(ligne);
+     
+      if(motcle[nb]=='Tri TP' || motcle[nb]=='Tri Nument'  || motcle[nb]=='SDP')
+      {
+        m.getCell(6).value = parseFloat(tab[0].tt16h);
+        m.getCell(7).value = parseFloat(tab[0].tt23h);
+        m.getCell(16).value = parseFloat(tab[0].stock16h);
+        m.getCell(20).value = parseFloat(tab[0].bonj);
+        m.getCell(21).value = parseFloat(tab[0].bonj1);
+        m.getCell(22).value = parseFloat(tab[0].bonj2);
+        m.getCell(23).value = parseFloat(tab[0].bonj5);
+      }
+      else
+      {
+        m.getCell(6).value = parseFloat(tab[0].tt16h);
+        m.getCell(7).value = parseFloat(tab[0].tt23h);
+        m.getCell(9).value = parseFloat(tab[0].ttj2);
+        m.getCell(11).value = parseFloat(tab[0].ttj5);
+        m.getCell(16).value = parseFloat(tab[0].stock16h);
+        m.getCell(20).value = parseFloat(tab[0].bonj);
+        m.getCell(21).value = parseFloat(tab[0].bonj1);
+        m.getCell(22).value = parseFloat(tab[0].bonj2);
+        m.getCell(23).value = parseFloat(tab[0].bonj5);
+      }
+     
+     
+      await newWorkbook.xlsx.writeFile(path_reporting);
+      sails.log("Ecriture OK KO terminé"); 
+      return callback(null, "OK");
+    
+      }
+      catch
+      {
+        console.log("Une erreur s'est produite");
+        Reportinghtp.deleteToutHtp(tab,3,callback);
+      }
+      },
   traitementInsertionstockbonJ5:function(ast,traitement,motcle1,motcle2,motcle3,motcle4,nb,jour,date,table,chemin,callback){
     XLSX = require('xlsx');
     var trameflux= chemin;

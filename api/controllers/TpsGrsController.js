@@ -788,6 +788,7 @@ traitementgrsstockbonj: function(req,res)
       var m = dateFormat(datetest, "mm");
       var an = dateFormat(datetest, "yyyy");
       var date = j + '/' + m +'/' + an ;
+      var row = req.param("row",0);
       var r = [0,1,2,3,4,5,6,7];
       var table = [];
       var motcle = [];
@@ -842,7 +843,7 @@ traitementgrsstockbonj: function(req,res)
                              var tab = result[lot];
                               async.series([
                                 function(cb){
-                                  TpsGrs.ecritureEtp(tab,date,motcle,lot,cb);
+                                  TpsGrs.ecritureEtp(tab,row,date,motcle,lot,cb);
                                 },
                               ],function(erroned, lotValues){
                                 if(erroned) return res.badRequest(erroned);
@@ -856,7 +857,7 @@ traitementgrsstockbonj: function(req,res)
                                       }
                                       else
                                       {
-                                        return res.view('TpsGrs/ecritureetp2',{date:datetest});
+                                        return res.view('TpsGrs/ecritureetp2',{date:datetest,row:row});
                                       };
                               });
                           };
@@ -872,6 +873,7 @@ traitementgrsstockbonj: function(req,res)
      var j = dateFormat(datetest, "dd");
      var m = dateFormat(datetest, "mm");
      var an = dateFormat(datetest, "yyyy");
+     var row= req.param("row",0);
      var date = j + '/' + m +'/' + an ;
      var r = [0,1,2,3,4,5,6];
      var table = [];
@@ -924,7 +926,7 @@ traitementgrsstockbonj: function(req,res)
                             var tab = result[lot];
                              async.series([
                                function(cb){
-                                 TpsGrs.ecritureEtp(tab,date,motcle,lot,cb);
+                                 TpsGrs.ecritureEtp(tab,row,date,motcle,lot,cb);
                                },
                              ],function(erroned, lotValues){
                                if(erroned) return res.badRequest(erroned);
@@ -1251,7 +1253,7 @@ traitementgrsstockbonj: function(req,res)
       {
         return res.view('TpsGrs/accueil');
       },
-    accueilrechercheDate : function(req,res)
+  accueilrechercheDate : function(req,res)
       {
         return res.view('TpsGrs/rechercheDate');
       },
@@ -1271,15 +1273,13 @@ traitementgrsstockbonj: function(req,res)
       const newworksheet = newWorkbook.getWorksheet('202106_Easy');
       var colonneDate = newworksheet.getColumn('A');
       var ligneDate1;
-      //var date_export='14/06/2021';
       console.log(date);
       var ligne = 0;
       var row = 0;
   
       colonneDate.eachCell(function(cell, rowNumber) {
         var dateExcel = ReportingInovcomExport.convertDate(cell.text);
-        if(dateExcel==date_export)
-        //if(rowNumber>=3685 && rowNumber<3700)
+        if(dateExcel==date)
         {
           ligne = rowNumber;
           if(ligne>row)
@@ -1289,7 +1289,93 @@ traitementgrsstockbonj: function(req,res)
         };
       });
       console.log('row'+ row);
-      return res.view('TpsGrs/ecriture',{row:row});
+      return res.view('TpsGrs/ecritureDate',{row:row,date:datetest});
+    },
+    ecrituredateGrs : function(req,res)
+    {
+    var dateFormat = require("dateformat");
+    var datetest = req.param("date",0);
+    var row = req.param("row",0);
+    var j = dateFormat(datetest, "dd");
+    var m = dateFormat(datetest, "mm");
+    var an = dateFormat(datetest, "yyyy");
+    var date = j + '/' + m +'/' + an ;
+    var r = [0];
+    var table = [];
+    var motcle = [];
+    var Excel = require('exceljs');
+    var workbook = new Excel.Workbook();
+    workbook.xlsx.readFile('tps16h.xlsx')
+      .then(function() {
+        var newworksheet = workbook.getWorksheet('Feuil4');
+        var motcle1 = newworksheet.getColumn(8);
+        var tablem = newworksheet.getColumn(7);
+          motcle1.eachCell(function(cell, rowNumber) {
+            motcle.push(cell.value);
+          });
+          tablem.eachCell(function(cell, rowNumber) {
+            table.push(cell.value);
+          });
+              async.series([
+                 function(cb){
+                  TpsGrs.ecritureDate('tab',date,row,cb);
+                 },
+
+                ],function(err,result)
+                {
+                        if (err){
+                          return res.view('Contentieux/erreur');
+                        }
+                        else
+                        {
+                          return res.view('TpsGrs/ecrituredate2',{date:datetest,row:row});
+                        };
+                });
+              });
+
+    },
+    ecrituredateGrs2 : function(req,res)
+    {
+    var dateFormat = require("dateformat");
+    var datetest = req.param("date",0);
+    var row = req.param("row",0);
+    var j = dateFormat(datetest, "dd");
+    var m = dateFormat(datetest, "mm");
+    var an = dateFormat(datetest, "yyyy");
+    var date = j + '/' + m +'/' + an ;
+    var r = [0];
+    var table = [];
+    var motcle = [];
+    var Excel = require('exceljs');
+    var workbook = new Excel.Workbook();
+    workbook.xlsx.readFile('tps16h.xlsx')
+      .then(function() {
+        var newworksheet = workbook.getWorksheet('Feuil4');
+        var motcle1 = newworksheet.getColumn(8);
+        var tablem = newworksheet.getColumn(7);
+          motcle1.eachCell(function(cell, rowNumber) {
+            motcle.push(cell.value);
+          });
+          tablem.eachCell(function(cell, rowNumber) {
+            table.push(cell.value);
+          });
+              async.series([
+                 function(cb){
+                  TpsGrs.ecritureDate1('tab',date,row,cb);
+                 },
+
+                ],function(err,result)
+                {
+                        if (err){
+                          return res.view('Contentieux/erreur');
+                        }
+                        else
+                        {
+                          return res.view('TpsGrs/ecriture',{date:datetest,row:row});
+                        };
+                });
+              });
+
     },
     accueilecriture : function(req,res)
     {
@@ -1303,6 +1389,7 @@ traitementgrsstockbonj: function(req,res)
       var m = dateFormat(datetest, "mm");
       var an = dateFormat(datetest, "yyyy");
       var date = j + '/' + m +'/' + an ;
+      var row = req.param("row",0);
       //var ligne = req.param("row",0);
       var r = [0,1,2,3];
       var table = [];
@@ -1350,7 +1437,7 @@ traitementgrsstockbonj: function(req,res)
                              var tab = result[lot];
                               async.series([
                                 function(cb){
-                                  TpsGrs.ecriture(tab,date,motcle,lot,cb);
+                                  TpsGrs.ecriture(tab,row,date,motcle,lot,cb);
                                 },
                               ],function(erroned, lotValues){
                                 if(erroned) return res.badRequest(erroned);
@@ -1364,7 +1451,7 @@ traitementgrsstockbonj: function(req,res)
                                       }
                                       else
                                       {
-                                        return res.view('TpsGrs/ecrituresuivant',{date : datetest});
+                                        return res.view('TpsGrs/ecrituresuivant',{date : datetest,row:row});
                                       };
                               });
                           };
@@ -1383,6 +1470,7 @@ traitementgrsstockbonj: function(req,res)
       var j = dateFormat(datetest, "dd");
       var m = dateFormat(datetest, "mm");
       var an = dateFormat(datetest, "yyyy");
+      var row = req.param("row",0);
       var date = j + '/' + m +'/' + an ;
       var r = [0,1,2,3,4];
       var table = [];
@@ -1430,7 +1518,7 @@ traitementgrsstockbonj: function(req,res)
                              var tab = result[lot];
                               async.series([
                                 function(cb){
-                                  TpsGrs.ecriture(tab,date,motcle,lot,cb);
+                                  TpsGrs.ecriture3(tab,row,date,motcle,lot,cb);
                                 },
                               ],function(erroned, lotValues){
                                 if(erroned) return res.badRequest(erroned);
@@ -1444,7 +1532,7 @@ traitementgrsstockbonj: function(req,res)
                                       }
                                       else
                                       {
-                                        return res.view('TpsGrs/ecritureetp',{date : datetest});
+                                        return res.view('TpsGrs/ecritureetp',{date : datetest,row:row});
                                       };
                               });
                           };
@@ -1459,11 +1547,12 @@ traitementgrsstockbonj: function(req,res)
     ecrituregrs2: function(req,res)
     {
       var dateFormat = require("dateformat");
-      var date = req.param("date",0);
+      var datetest = req.param("date",0);
       var j = dateFormat(datetest, "dd");
       var m = dateFormat(datetest, "mm");
       var an = dateFormat(datetest, "yyyy");
       var date = j + '/' + m +'/' + an ;
+      var row = req.param("row",0);
       var r = [0,1,2,3,4];
       var table = [];
       var motcle = [];
@@ -1510,7 +1599,7 @@ traitementgrsstockbonj: function(req,res)
                              var tab = result[lot];
                               async.series([
                                 function(cb){
-                                  TpsGrs.ecriture(tab,date,motcle,lot,cb);
+                                  TpsGrs.ecriture(tab,row,date,motcle,lot,cb);
                                 },
                               ],function(erroned, lotValues){
                                 if(erroned) return res.badRequest(erroned);
@@ -1524,7 +1613,7 @@ traitementgrsstockbonj: function(req,res)
                                       }
                                       else
                                       {
-                                        return res.view('TpsGrs/ecrituresuivant2',{date : datetest});
+                                        return res.view('TpsGrs/ecrituresuivant2',{date : datetest,row:row});
                                       };
                               });
                           };
