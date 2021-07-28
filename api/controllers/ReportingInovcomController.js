@@ -1,5 +1,6 @@
 const ReportingInovcom = require('../models/ReportingInovcom');
 
+
 /**
  * ReportingInovcomController
  *
@@ -9,6 +10,65 @@ const ReportingInovcom = require('../models/ReportingInovcom');
 module.exports = {
     accueil1 : async function(req,res)
     {
+      /*var date = '10/02/2021';
+      const Excel = require('exceljs');
+      const newWorkbook = new Excel.Workbook();
+      var path_reporting = 'D:/Reporting Engagement/TPS-TPC_Reporting-Traitement-J-SLA_V12.xlsx';
+      await newWorkbook.xlsx.readFile(path_reporting);
+      const newworksheet = newWorkbook.getWorksheet('202106_Easy');
+      var colonneDate = newworksheet.getColumn('A');
+      var ligneDate1;
+      //var date_export='14/06/2021';
+      console.log(date);
+      var ligne = 0;
+      var row = 0;
+  
+      colonneDate.eachCell(function(cell, rowNumber) {
+        var dateExcel = ReportingInovcomExport.convertDate(cell.text);
+        if(dateExcel==date)
+        //if(rowNumber>=3685 && rowNumber<3700)
+        {
+          ligne = rowNumber;
+          if(ligne>row)
+          {
+            row = ligne
+          };
+        
+          
+        };
+      });
+      console.log('row'+ row);
+      
+     // Tiers var sql4= " select DISTINCT SUM(DATE_PART('epoch', to_timestamp(p_ldt.date_fin_ldt||' '||p_ldt.h_fin, 'YYYYMMDD HH24:MI:SS') -  to_timestamp(p_ldt.date_deb_ldt||' '||p_ldt.h_deb, 'YYYYMMDD HH24:MI:SS') ))/3600 as duree  from p_ldt LEFT join almerys_lien_ss_spe ON p_ldt.id_ldt= almerys_lien_ss_spe.id_ldt where p_ldt.id_lotclient =36140 AND (almerys_lien_ss_spe.id_alm_ss_spe=939 OR almerys_lien_ss_spe.id_alm_ss_spe=941) AND (almerys_lien_ss_spe.id_lien_ss_spe2=1229 OR almerys_lien_ss_spe.id_lien_ss_spe2=1232)  AND date_deb_ldt = '20210614' AND id_type_ldt = 0 group by almerys_lien_ss_spe.id_almerys";
+    // var sql4= " select DISTINCT SUM(DATE_PART('epoch', to_timestamp(p_ldt.date_fin_ldt||' '||p_ldt.h_fin, 'YYYYMMDD HH24:MI:SS') -  to_timestamp(p_ldt.date_deb_ldt||' '||p_ldt.h_deb, 'YYYYMMDD HH24:MI:SS') ))/3600 as duree  from p_ldt LEFT join almerys_lien_ss_spe ON p_ldt.id_ldt= almerys_lien_ss_spe.id_ldt where p_ldt.id_lotclient =36141 AND (almerys_lien_ss_spe.id_alm_ss_spe=942 OR almerys_lien_ss_spe.id_alm_ss_spe=945) AND (almerys_lien_ss_spe.id_lien_ss_spe2=1236 OR almerys_lien_ss_spe.id_lien_ss_spe2=1235 OR almerys_lien_ss_spe.id_lien_ss_spe2=1240)  AND date_deb_ldt = '20210614' AND id_type_ldt = 0 group by almerys_lien_ss_spe.id_almerys ";   
+    // Fact dentaire var sql4 = " select DISTINCT SUM(DATE_PART('epoch', to_timestamp(p_ldt.date_fin_ldt||' '||p_ldt.h_fin, 'YYYYMMDD HH24:MI:SS') -  to_timestamp(p_ldt.date_deb_ldt||' '||p_ldt.h_deb, 'YYYYMMDD HH24:MI:SS') ))/3600 as duree  from p_ldt LEFT join almerys_lien_ss_spe ON p_ldt.id_ldt= almerys_lien_ss_spe.id_ldt where p_ldt.id_lotclient =36139 AND (almerys_lien_ss_spe.id_alm_ss_spe=935 OR almerys_lien_ss_spe.id_alm_ss_spe=938) AND (almerys_lien_ss_spe.id_lien_ss_spe2=1219 OR almerys_lien_ss_spe.id_lien_ss_spe2=1225)  AND date_deb_ldt = '20210614' AND id_type_ldt = 0 group by almerys_lien_ss_spe.id_almerys ";
+    //var sql4 = "select DISTINCT SUM(DATE_PART('epoch', to_timestamp(p_ldt.date_fin_ldt||' '||p_ldt.h_fin, 'YYYYMMDD HH24:MI:SS') -  to_timestamp(p_ldt.date_deb_ldt||' '||p_ldt.h_deb, 'YYYYMMDD HH24:MI:SS') ))/3600 as duree  from p_ldt LEFT join almerys_lien_ss_spe ON p_ldt.id_ldt= almerys_lien_ss_spe.id_ldt where p_ldt.id_lotclient =36142 AND (almerys_lien_ss_spe.id_alm_ss_spe=946 OR almerys_lien_ss_spe.id_alm_ss_spe=950) AND (almerys_lien_ss_spe.id_lien_ss_spe2=1251 OR almerys_lien_ss_spe.id_lien_ss_spe2=1243 OR almerys_lien_ss_spe.id_lien_ss_spe2=1244)  AND date_deb_ldt = '20210615' AND id_type_ldt = 0 group by almerys_lien_ss_spe.id_almerys";
+    //var sql4 = "select DISTINCT SUM(DATE_PART('epoch', to_timestamp(p_ldt.date_fin_ldt||' '||p_ldt.h_fin, 'YYYYMMDD HH24:MI:SS') -  to_timestamp(p_ldt.date_deb_ldt||' '||p_ldt.h_deb, 'YYYYMMDD HH24:MI:SS') ))/3600 as duree, SUM(CASE WHEN quantite~E'^\\d+$' THEN quantite::integer ELSE 0 END) as qte,  p_ldt.id_pers   from p_ldt LEFT join almerys_lien_ss_spe ON p_ldt.id_ldt= almerys_lien_ss_spe.id_ldt where p_ldt.id_lotclient = 36142  AND (almerys_lien_ss_spe.id_alm_ss_spe=946 OR almerys_lien_ss_spe.id_alm_ss_spe=950)   AND (almerys_lien_ss_spe.id_lien_ss_spe2=1251 OR almerys_lien_ss_spe.id_lien_ss_spe2=1243 OR almerys_lien_ss_spe.id_lien_ss_spe2=1244)  AND date_deb_ldt = '20210615' AND id_type_ldt = 0 group by almerys_lien_ss_spe.id_almerys,p_ldt.id_pers order by p_ldt.id_pers";
+    */
+    //var sql4 = "select DISTINCT SUM(DATE_PART('epoch', to_timestamp(p_ldt.date_fin_ldt||' '||p_ldt.h_fin, 'YYYYMMDD HH24:MI:SS') -  to_timestamp(p_ldt.date_deb_ldt||' '||p_ldt.h_deb, 'YYYYMMDD HH24:MI:SS') ))/3600 as duree, p_ldt.id_pers from p_ldt LEFT join almerys_lien_ss_spe ON p_ldt.id_ldt= almerys_lien_ss_spe.id_ldt where p_ldt.id_lotclient = 36142  AND almerys_lien_ss_spe.id_alm_ss_spe=946  AND almerys_lien_ss_spe.id_lien_ss_spe2=1244  AND date_deb_ldt = '20210726' AND id_type_ldt=0 group by almerys_lien_ss_spe.id_almerys,p_ldt.id_pers order by p_ldt.id_pers";
+    //var sql4 = "select DISTINCT SUM(DATE_PART('epoch', to_timestamp(p_ldt.date_fin_ldt||' '||p_ldt.h_fin, 'YYYYMMDD HH24:MI:SS') -  to_timestamp(p_ldt.date_deb_ldt||' '||p_ldt.h_deb, 'YYYYMMDD HH24:MI:SS') ))/3600 as duree, SUM(CASE WHEN quantite~E'^\\d+$' THEN quantite::integer ELSE 0 END) as qte,  p_ldt.id_pers from p_ldt LEFT join almerys_lien_ss_spe ON p_ldt.id_ldt= almerys_lien_ss_spe.id_ldt where p_ldt.id_lotclient = 36141  AND almerys_lien_ss_spe.id_alm_ss_spe=954  AND almerys_lien_ss_spe.id_lien_ss_spe2=1269  AND date_deb_ldt = '20210614' AND id_type_ldt=0 group by almerys_lien_ss_spe.id_almerys,p_ldt.id_pers order by p_ldt.id_pers";
+    var sql4 = "select DISTINCT SUM(DATE_PART('epoch', to_timestamp(p_ldt.date_fin_ldt||' '||p_ldt.h_fin, 'YYYYMMDD HH24:MI:SS') -  to_timestamp(p_ldt.date_deb_ldt||' '||p_ldt.h_deb, 'YYYYMMDD HH24:MI:SS') ))/3600 as duree, SUM(CASE WHEN quantite~E'^\\d+$' THEN quantite::integer ELSE 0 END) as qte,  p_ldt.id_pers from p_ldt LEFT join almerys_lien_ss_spe ON p_ldt.id_ldt= almerys_lien_ss_spe.id_ldt where p_ldt.id_lotclient = 36137  AND almerys_lien_ss_spe.id_alm_ss_spe=925  AND almerys_lien_ss_spe.id_lien_ss_spe2=1189  AND date_deb_ldt = '20210614' AND id_type_ldt=0 group by almerys_lien_ss_spe.id_almerys,p_ldt.id_pers order by p_ldt.id_pers";
+    Tpstpc.getDatastore().sendNativeQuery(sql4, function(err, res){
+                        if (err) { 
+                          console.log(err);
+                          //return callback(err);
+                         }
+                        else
+                        {
+                          var somme = 0;
+                          console.log(sql4);
+                          result = res.rows;
+                          /*console.log(result[0].duree);
+                          console.log(result.length);*/
+                          for(var i=0;i<result.length;i++)
+                          {
+                            //m = m.toFixed(2);*/
+                            somme= somme + parseFloat(result[i].duree);
+                          }
+                          console.log(somme);
+                          return callback(null,somme);
+                        };
+                        });
       return res.view('Inovcom/accueil1');
     },
     //CIBLAGE DU FICHIER EXCEL DANS LE SERVEUR
@@ -227,8 +287,6 @@ module.exports = {
                         console.log('vofafa ddol');
                         return res.view('Inovcom/exportexcelinovcom1', {date : datetest});
                       });
-                    
-               
         };
     });
   };

@@ -89,7 +89,7 @@ module.exports = {
     //var path_reporting = 'D:/Reporting Engagement/TPS-TPC_Reporting-Traitement-J-SLA_V12.xlsx';
     await newWorkbook.xlsx.readFile(path_reporting);
     const newworksheet = newWorkbook.getWorksheet('202106_GRS');
-    var colonneDate = newworksheet.getColumn('A');
+    var colonneDate = newworksheet.getColumn('B');
     var ligneDate1;
     //var date_export='14/06/2021';
     console.log(date_export);
@@ -97,8 +97,12 @@ module.exports = {
 
     colonneDate.eachCell(function(cell, rowNumber) {
       var dateExcel = ReportingInovcomExport.convertDate(cell.text);
+      /*var sup = parseInt(date_export);
+      var min = sup - 15;*/
+      //if(rowNumber>=min && rowNumber<sup)
       if(dateExcel==date_export)
       {
+        //console.log('rownumber' + rowNumber);
         ligneDate1 = parseInt(rowNumber);
         var line = newworksheet.getRow(ligneDate1);
         var f = line.getCell(4).value;
@@ -106,7 +110,7 @@ module.exports = {
         const regex = new RegExp(bi,'i');
         if(regex.test(f))
         {
-          console.log(rowNumber);
+          console.log('row'+rowNumber);
           ligne = rowNumber;
         }
       }
@@ -841,7 +845,137 @@ module.exports = {
                         }
                        
                                             });
-                                          }
+          }
+          else if(jour=='Monday')   
+          {
+            console.log('Monday');
+              for(var ra=0;ra<=range.e.r;ra++)
+              {
+                //nature de tache
+                var address_of_cell = {c:1, r:ra};
+                var cell_ref = XLSX.utils.encode_cell(address_of_cell);
+                var desired_cell = sheet[cell_ref];
+                var desired_value = (desired_cell ? desired_cell.v : undefined);
+
+                // identification de la tache : le isaina
+                var address_of_cell1 = {c:6, r:ra};
+                var cell_ref1 = XLSX.utils.encode_cell(address_of_cell1);
+                var desired_cell1 = sheet[cell_ref1];
+                var desired_value1 = (desired_cell1 ? desired_cell1.v : undefined);
+
+                //etat de la tache
+                var address_of_cell2 = {c:0, r:ra};
+                var cell_ref2 = XLSX.utils.encode_cell(address_of_cell2);
+                var desired_cell2 = sheet[cell_ref2];
+                var desired_value2 = (desired_cell2 ? desired_cell2.v : undefined);
+                var b2 = "ETAT1";
+                var b3= "ETAT4";
+                const regex2 = new RegExp(b2,'i');
+                const regex3 = new RegExp(b3,'i');
+
+                //etat facture any amle undefined
+                var address_of_cell4 = {c:9, r:ra};
+                var cell_ref4 = XLSX.utils.encode_cell(address_of_cell4);
+                var desired_cell4 = sheet[cell_ref4];
+                var desired_value4 = (desired_cell4 ? desired_cell4.v : undefined);
+
+                //date de maturit5
+                var address_of_cell5 = {c:4, r:ra};
+                var cell_ref5 = XLSX.utils.encode_cell(address_of_cell5);
+                var desired_cell5 = sheet[cell_ref5];
+                var desired_value5 = (desired_cell5 ? desired_cell5.v : undefined);
+
+                if(regex2.test(desired_value2) || regex3.test(desired_value2) )
+                {
+                  if(desired_value4!=undefined)
+                  {
+                    var j = 1;
+                  }
+                  else
+                  {
+                    var b = traitement[nb];
+                    const regex = new RegExp(b,'i');
+                    var conv = parseInt(date);
+                    var j1 = conv - 3;
+                    if(regex.test(desired_value) && desired_value5==j1 )
+                    {
+                    
+                      var c = motcle1[nb];
+                      var c1 = motcle2[nb];
+                      var c2 = motcle3[nb];
+                      var c5 = ast[nb];
+                      const regex21 = new RegExp(c1,'i');
+                      const regex31 = new RegExp(c2,'i');
+                      const regex1 = new RegExp(c,'i');
+                      const regex41 = new RegExp(c5,'i');
+                  
+                      if(motcle4[nb]=='a')
+                      {
+                        if(regex1.test(desired_value) || regex21.test(desired_value) || regex31.test(desired_value) || regex41.test(desired_value)) 
+                        {
+                          var a = '1';
+                        }
+                        else
+                        {
+                          if(desired_value1!=undefined)
+                          {
+                            somme=somme+1;
+                          }
+                          else
+                          {
+                            var p = 0;
+                          }
+                        
+                        };
+                      }
+                      else if(motcle4[nb]=='b')
+                      {
+                        somme=somme+1;
+                      }
+                      else
+                      {
+                        var c4 = motcle4[nb];
+                        const regex4 = new RegExp(c4,'i');
+                        if(regex1.test(desired_value) || regex21.test(desired_value) || regex31.test(desired_value) || regex4.test(desired_value) || regex41.test(desired_value)) 
+                        {
+                          var a = '1';
+                        }
+                        else
+                        {
+                          if(desired_value1!=undefined)
+                          {
+                            somme=somme+1;
+                          }
+                          else
+                          {
+                            var p = 0;
+                          }
+                        
+                        };
+                      }
+                    }
+                  }
+                }
+                  else
+                  {
+                    var r= 'a';
+                  }
+                  }
+                  console.log(somme);
+                  var sql = "insert into "+table[nb]+" (bonj1) values ("+somme+") ";
+                            Reportinghtp.getDatastore().sendNativeQuery(sql, function(err,res){
+                              if (err) { 
+                                console.log(err);
+                                //return callback(err); 
+                              }
+                              else
+                              {
+                                console.log(sql);
+                                return callback(null, true);
+                              }
+                            
+                                                  });
+          }                        
           else
           {
               console.log('hafa');

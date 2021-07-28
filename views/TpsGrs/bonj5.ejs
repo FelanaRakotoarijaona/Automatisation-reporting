@@ -14,11 +14,11 @@
             <br><br>
             <div class="col-md-offset-6 col-md-5">
                 <br><br><br><br><br>
-                <form method="POST" action="/traitementstockj1et2et5suivant" style="background-color:white;height:300px;width:600px;margin-left: 80px;box-shadow: 5px 5px 5px 5px grey;">
+                <form method="POST" action="/traitementstockj1et2et5final" style="background-color:white;height:300px;width:600px;margin-left: 80px;box-shadow: 5px 5px 5px 5px grey;">
                     <div class="form-group">
                         <br><br>
-                        <h4 style="margin-left: 50px;">Cliquer sur suivant pour traiter Bon >=J+2</h4><br><br>
-                        <input type="date" class="form-control" name="date" id="d"  style="margin-left: 5px;width: 390px;"  value="<%- date %>" readonly >
+                        <h4 style="margin-left: 50px;">Cliquer sur suivant pour traiter Bon >=J+5</h4><br><br>
+                        <input type="date" class="form-control"  id="d"  style="margin-left: 5px;width: 390px;" name="date"  value="<%- date %>" readonly>
                         <div class="spinner-border" role="status" style="display: none;" id="snip">
                             <span class="visually-hidden"></span>
                           </div>
@@ -30,6 +30,8 @@
                 <br><br><br>
             </div>
     </div>
+   
+    
 </body>
 <script>
     function affiche(){

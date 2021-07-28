@@ -18,16 +18,39 @@ module.exports.routes = {
      '/accueilstockj1et2et5suivant' : 'TpsGrsController.accueilstockj1et2et5suivant',
      '/traitementstockj1et2et5suivant' : 'TpsGrsController.traitementstockj1et2et5suivant',
 
+     '/accueilstockj1et2et5final' : 'TpsGrsController.accueilstockj1et2et5final',
+     '/traitementstockj1et2et5final' : 'TpsGrsController.traitementstockj1et2et5final',
+
      '/accueilEtpGrs' : 'TpsGrsController.accueilEtp',
      '/copieEtp' : 'TpsGrsController.copieEtp',
+
      '/accueilGrs' : 'TpsGrsController.accueil',
      '/traitementTacheTraiteGrs' : 'TpsGrsController.traitementTacheTraite',
+
+     '/accueilGrstt23h' : 'TpsGrsController.accueiltachetraite23h',
+     '/traitementTacheTraiteGrs23h' : 'TpsGrsController.traitementTacheTraite23h',
+
+     '/accueilGrsttJ2' : 'TpsGrsController.accueiltachetraiteJ2',
+     '/traitementTacheTraiteGrsJ2' : 'TpsGrsController.traitementTacheTraiteJ2',
+
+     '/accueilGrsttJ5' : 'TpsGrsController.accueiltachetraiteJ5',
+     '/traitementTacheTraiteGrsJ5' : 'TpsGrsController.traitementTacheTraiteJ5',
+
      '/accueilrecherchefichierGrs' : 'TpsGrsController.accueilrecherchefichier',
      '/recherchefichiertpsGrs' : 'TpsGrsController.recherchefichier',
      '/accueilstock16h' : 'TpsGrsController.accueilstock16h',
      '/traitementgrsstock16h' : 'TpsGrsController.traitementgrsstock16h',
+
+     '/accueilstockgrsbonj' : 'TpsGrsController.accueilstockbonj',
+     '/traitementgrsstockbonj' : 'TpsGrsController.traitementgrsstockbonj',
+
+
      '/accueilGrs1' : 'TpsGrsController.accueilecriture',
      '/ecrituregrs1' : 'TpsGrsController.ecrituregrs1',
+
+     '/accueilrechercheDate' : 'TpsGrsController.accueilrechercheDatel',
+     '/rechercheDate' : 'TpsGrsController.rechercheDate',
+    
 
      '/accueilGrs2' : 'TpsGrsController.accueilecriture2',
      '/ecrituregrs2' : 'TpsGrsController.ecrituregrs2',
@@ -42,11 +65,43 @@ module.exports.routes = {
     
   
    //route tps-tpc
+   
+   '/ecritureDate' : 'TpstpcController.ecritureDate',
+
    '/accueilrecherchefichier' : 'TpstpcController.accueilrecherchefichier',
    '/recherchefichiertpstpc' : 'TpstpcController.recherchefichiertpstpc',
+
    '/accueilTpstpc' : 'TpstpcController.accueil1',
-   '/accueilstocketbonj' : 'TpstpcController.accueil2',
-   '/accueiltachenontraite' : 'TpstpcController.accueil3',
+   '/traitementTpstpc' : 'TpstpcController.traitementTacheTraite16h',
+
+   '/accueilTacheTraite23h' : 'TpstpcController.accueilTacheTraite23h',
+   '/traitementTacheTraite23h' : 'TpstpcController.traitementTacheTraite23h',
+
+   '/accueilTacheTraiteJ2' : 'TpstpcController.accueilTacheTraiteJ2',
+   '/traitementTacheTraiteJ2' : 'TpstpcController.traitementTacheTraiteJ2',
+
+   '/accueilTacheTraiteJ5' : 'TpstpcController.accueilTacheTraiteJ5',
+   '/traitementTacheTraiteJ5' : 'TpstpcController.traitementTacheTraiteJ5',
+
+   '/accueilstock16h' : 'TpstpcController.accueilstock16h',
+   '/traitementstock16h' : 'TpstpcController.traitementStock16h',
+
+   '/accueilstockbonj' : 'TpstpcController.accueilstockbonj',
+   '/traitementstockbonj' : 'TpstpcController.traitementstockbonj',
+  
+   '/accueilstockJ1' : 'TpstpcController.accueilstockJ1',
+   '/traitementBonJ1' : 'TpstpcController.traitementBonJ1',
+
+   '/accueilstockJ2' : 'TpstpcController.accueilstockJ2',
+   '/traitementBonJ2' : 'TpstpcController.traitementBonJ2',
+
+   '/accueilstockJ5' : 'TpstpcController.accueilstockJ5',
+   '/traitementBonJ5' : 'TpstpcController.traitementBonJ5',
+
+   '/accueilsanteclair' : 'TpstpcController.accueil4',
+   '/traitementSanteclair' : 'TpstpcController.traitementSanteclair',
+   
+   
    '/accueiletp' : 'TpstpcController.accueil',
    '/accueilecriture' : 'TpstpcController.accueil6',
    '/traitementetp' : 'TpstpcController.selection',
@@ -56,15 +111,15 @@ module.exports.routes = {
    '/ecritureetp2' : 'TpstpcController.ecritureEtp2',
    '/ecritureerreur' : 'TpstpcController.ecritureErreur',
  
-   '/traitementtachenontraite' : 'TpstpcController.traitementBonJ1',
-   '/accueilsanteclair' : 'TpstpcController.accueil4',
-   '/traitementSanteclair' : 'TpstpcController.traitementSanteclair',
+  
+   
+  
    '/accueilerreur' : 'TpstpcController.accueil5',
    '/traitementerreureasy' : 'TpstpcController.traitementErreurEasy',
-   '/traitementTpstpc' : 'TpstpcController.traitementTacheTraite',
+  
    '/traitementsuivant' : 'TpstpcController.ecritureExcel',
    
-   '/traitementJ2' : 'TpstpcController.traitementStocketBonJ',
+  
 
 
   //Route Login
