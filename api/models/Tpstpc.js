@@ -370,6 +370,7 @@
       const newWorkbook = new Excel.Workbook();
       try{
       //var path_reporting = 'D:/Reporting Engagement/TPS-TPC_Reporting-Traitement-J-SLA_V12.xlsx';
+      console.log(path_reporting);
       await newWorkbook.xlsx.readFile(path_reporting);
       const newworksheet = newWorkbook.getWorksheet('202106_Easy');
       var colonneDate = newworksheet.getColumn('A');
