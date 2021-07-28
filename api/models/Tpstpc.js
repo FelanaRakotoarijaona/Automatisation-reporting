@@ -302,7 +302,7 @@
       };
       });
   },
-  selectionFactOptique : function (date,callback) {
+  selectionFactOpt : function (date,callback) {
     //var nbr = parseInt(nb);
     console.log(date);
     var sql = "select DISTINCT SUM(DATE_PART('epoch', to_timestamp(p_ldt.date_fin_ldt||' '||p_ldt.h_fin, 'YYYYMMDD HH24:MI:SS') -  to_timestamp(p_ldt.date_deb_ldt||' '||p_ldt.h_deb, 'YYYYMMDD HH24:MI:SS') ))/3600 as duree,    p_ldt.id_pers from p_ldt LEFT join almerys_lien_ss_spe ON p_ldt.id_ldt= almerys_lien_ss_spe.id_ldt where p_ldt.id_lotclient = 36137  AND almerys_lien_ss_spe.id_alm_ss_spe=925  AND almerys_lien_ss_spe.id_lien_ss_spe2=1189  AND date_deb_ldt = '"+date+"' AND id_type_ldt=0 group by almerys_lien_ss_spe.id_almerys,p_ldt.id_pers order by p_ldt.id_pers";

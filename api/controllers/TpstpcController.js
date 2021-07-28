@@ -1381,13 +1381,13 @@
                    },
                    function(cb){
                     Tpstpc.selection(36139,936,1222,datepouretp,cb);
-                  },
-                  function(cb){
-                    Tpstpc.SelectionFactOptique(datepouretp,cb);
-                  },
-                  function(cb){
-                    Tpstpc.selectionFactTiers(datepouretp,cb);
-                  },
+                   },
+                    function(cb){
+                      Tpstpc.selectionFactOpt(datepouretp,cb);
+                    },
+                    function(cb){
+                      Tpstpc.selectionFactTiers(datepouretp,cb);
+                    },
                   /*function(cb){
                     Tpstpc.selectionSE(datepouretp,cb);
                   },
