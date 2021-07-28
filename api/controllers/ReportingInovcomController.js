@@ -47,7 +47,8 @@ module.exports = {
     */
     //var sql4 = "select DISTINCT SUM(DATE_PART('epoch', to_timestamp(p_ldt.date_fin_ldt||' '||p_ldt.h_fin, 'YYYYMMDD HH24:MI:SS') -  to_timestamp(p_ldt.date_deb_ldt||' '||p_ldt.h_deb, 'YYYYMMDD HH24:MI:SS') ))/3600 as duree, p_ldt.id_pers from p_ldt LEFT join almerys_lien_ss_spe ON p_ldt.id_ldt= almerys_lien_ss_spe.id_ldt where p_ldt.id_lotclient = 36142  AND almerys_lien_ss_spe.id_alm_ss_spe=946  AND almerys_lien_ss_spe.id_lien_ss_spe2=1244  AND date_deb_ldt = '20210726' AND id_type_ldt=0 group by almerys_lien_ss_spe.id_almerys,p_ldt.id_pers order by p_ldt.id_pers";
     //var sql4 = "select DISTINCT SUM(DATE_PART('epoch', to_timestamp(p_ldt.date_fin_ldt||' '||p_ldt.h_fin, 'YYYYMMDD HH24:MI:SS') -  to_timestamp(p_ldt.date_deb_ldt||' '||p_ldt.h_deb, 'YYYYMMDD HH24:MI:SS') ))/3600 as duree, SUM(CASE WHEN quantite~E'^\\d+$' THEN quantite::integer ELSE 0 END) as qte,  p_ldt.id_pers from p_ldt LEFT join almerys_lien_ss_spe ON p_ldt.id_ldt= almerys_lien_ss_spe.id_ldt where p_ldt.id_lotclient = 36141  AND almerys_lien_ss_spe.id_alm_ss_spe=954  AND almerys_lien_ss_spe.id_lien_ss_spe2=1269  AND date_deb_ldt = '20210614' AND id_type_ldt=0 group by almerys_lien_ss_spe.id_almerys,p_ldt.id_pers order by p_ldt.id_pers";
-    var sql4 = "select DISTINCT SUM(DATE_PART('epoch', to_timestamp(p_ldt.date_fin_ldt||' '||p_ldt.h_fin, 'YYYYMMDD HH24:MI:SS') -  to_timestamp(p_ldt.date_deb_ldt||' '||p_ldt.h_deb, 'YYYYMMDD HH24:MI:SS') ))/3600 as duree, SUM(CASE WHEN quantite~E'^\\d+$' THEN quantite::integer ELSE 0 END) as qte,  p_ldt.id_pers from p_ldt LEFT join almerys_lien_ss_spe ON p_ldt.id_ldt= almerys_lien_ss_spe.id_ldt where p_ldt.id_lotclient = 36137  AND almerys_lien_ss_spe.id_alm_ss_spe=925  AND almerys_lien_ss_spe.id_lien_ss_spe2=1189  AND date_deb_ldt = '20210614' AND id_type_ldt=0 group by almerys_lien_ss_spe.id_almerys,p_ldt.id_pers order by p_ldt.id_pers";
+    //var sql4 = "select DISTINCT SUM(DATE_PART('epoch', to_timestamp(p_ldt.date_fin_ldt||' '||p_ldt.h_fin, 'YYYYMMDD HH24:MI:SS') -  to_timestamp(p_ldt.date_deb_ldt||' '||p_ldt.h_deb, 'YYYYMMDD HH24:MI:SS') ))/3600 as duree, SUM(CASE WHEN quantite~E'^\\d+$' THEN quantite::integer ELSE 0 END) as qte,  p_ldt.id_pers from p_ldt LEFT join almerys_lien_ss_spe ON p_ldt.id_ldt= almerys_lien_ss_spe.id_ldt where p_ldt.id_lotclient = 36137  AND almerys_lien_ss_spe.id_alm_ss_spe=925  AND almerys_lien_ss_spe.id_lien_ss_spe2=1189  AND date_deb_ldt = '20210614' AND id_type_ldt=0 group by almerys_lien_ss_spe.id_almerys,p_ldt.id_pers order by p_ldt.id_pers";
+    var sql4 = "select DISTINCT SUM(DATE_PART('epoch', to_timestamp(p_ldt.date_fin_ldt||' '||p_ldt.h_fin, 'YYYYMMDD HH24:MI:SS') -  to_timestamp(p_ldt.date_deb_ldt||' '||p_ldt.h_deb, 'YYYYMMDD HH24:MI:SS') ))/3600 as duree, SUM(CASE WHEN quantite~E'^\\d+$' THEN quantite::integer ELSE 0 END) as qte,  p_ldt.id_pers from p_ldt LEFT join almerys_lien_ss_spe ON p_ldt.id_ldt= almerys_lien_ss_spe.id_ldt where p_ldt.id_lotclient = 36142  AND almerys_lien_ss_spe.id_alm_ss_spe=949  AND almerys_lien_ss_spe.id_lien_ss_spe2=1248  AND date_deb_ldt = '20210727' AND id_type_ldt=0 group by almerys_lien_ss_spe.id_almerys,p_ldt.id_pers order by p_ldt.id_pers";
     Tpstpc.getDatastore().sendNativeQuery(sql4, function(err, res){
                         if (err) { 
                           console.log(err);
@@ -58,12 +59,14 @@ module.exports = {
                           var somme = 0;
                           console.log(sql4);
                           result = res.rows;
+                          var f = 0.00;
                           /*console.log(result[0].duree);
                           console.log(result.length);*/
                           for(var i=0;i<result.length;i++)
                           {
-                            //m = m.toFixed(2);*/
-                            somme= somme + parseFloat(result[i].duree);
+                            var m = parseFloat(result[i].duree);
+                            f = m.toFixed(2);
+                            somme= somme + parseFloat(f);
                           }
                           console.log(somme);
                           return callback(null,somme);

@@ -1315,8 +1315,6 @@
                    function(cb){
                      Tpstpc.countOkKo(table,3,cb);
                    },
-                  
-                   
                  ],function(err,result)
                  {
                          if (err){
@@ -1361,7 +1359,7 @@
      var an = dateFormat(datetest, "yyyy");
      var date = j + '/' + m +'/' + an ;
      var datepouretp = an + m +j;
-     var r = [0,1,2,3,4,5];
+     var r = [0,1,2,3];
      var table = [];
      var motcle = [];
      var Excel = require('exceljs');
@@ -1382,19 +1380,94 @@
                      Tpstpc.selectionSanteclair(datepouretp,cb);
                    },
                    function(cb){
-                    Tpstpc.selection(36139,936,1222,datepouretp,cb);
+                    Tpstpc.selectionPecDentaire(datepouretp,cb);
                   },
                   function(cb){
-                    Tpstpc.selection(36137,925,1189,datepouretp,cb);
+                    Tpstpc.FactOptique(datepouretp,cb);
                   },
                   function(cb){
                     Tpstpc.selectionFactTiers(datepouretp,cb);
                   },
+                  /*function(cb){
+                    Tpstpc.selectionSE(datepouretp,cb);
+                  },
+                  function(cb){
+                    Tpstpc.selection(36138,931,1205,datepouretp,cb);
+                  },*/
+                 ],function(err,result)
+                 {
+                         if (err){
+                           return res.view('Contentieux/erreur');
+                         }
+                         else
+                         {
+                         
+                           console.log('ok');
+ 
+                           async.forEachSeries(r, function(lot, callback_reporting_suivant) {
+                            var tab = parseFloat(result[lot]) / 7.5;
+                            console.log(tab);
+                             async.series([
+                               function(cb){
+                                 Tpstpc.ecritureEtp(tab,date,motcle,lot,cb);
+                               },
+                             ],function(erroned, lotValues){
+                               if(erroned) return res.badRequest(erroned);
+                               return callback_reporting_suivant();
+                             });
+                           },
+                             function(err)
+                             {
+                                     if (err){
+                                       return res.view('Contentieux/erreur');
+                                     }
+                                     else
+                                     {
+                                       return res.view('Tpstpc/ecrituresuivantetp0',{date : datetest});
+                                     };
+                             });
+                         };
+                 });
+               });
+           
+   },
+   ecritureEtp3: function(req,res)
+   {
+    var dateFormat = require("dateformat");
+     var datetest = req.param("date",0);
+     var j = dateFormat(datetest, "dd");
+     var m = dateFormat(datetest, "mm");
+     var an = dateFormat(datetest, "yyyy");
+     var date = j + '/' + m +'/' + an ;
+     var datepouretp = an + m +j;
+     var r = [0,1,2,3];
+     var table = [];
+     var motcle = [];
+     var Excel = require('exceljs');
+     var workbook = new Excel.Workbook();
+     workbook.xlsx.readFile('tps16h.xlsx')
+       .then(function() {
+         var newworksheet = workbook.getWorksheet('Feuil6');
+         var motcle1 = newworksheet.getColumn(8);
+         var tablem = newworksheet.getColumn(7);
+           motcle1.eachCell(function(cell, rowNumber) {
+             motcle.push(cell.value);
+           });
+           tablem.eachCell(function(cell, rowNumber) {
+             table.push(cell.value);
+           });
+               async.series([
                   function(cb){
                     Tpstpc.selectionSE(datepouretp,cb);
                   },
                   function(cb){
                     Tpstpc.selection(36138,931,1205,datepouretp,cb);
+                  },
+                  function(cb){
+                    Tpstpc.PecOptique(datepouretp,cb);
+                  },
+                  function(cb){
+                    Tpstpc.PecAudio(datepouretp,cb);
                   },
                  ],function(err,result)
                  {
@@ -1443,7 +1516,7 @@
      var date = j + '/' + m +'/' + an ;
      var datepouretp = an + m +j;
      //var r = [0,1,2,3,4,5,6];
-     var r = [0,1,2,3,4,5];
+     var r = [0,1,2,3];
      var table = [];
      var motcle = [];
      var Excel = require('exceljs');
@@ -1470,13 +1543,7 @@
                     Tpstpc.selectionNument(datepouretp,cb);
                   },
                   function(cb){
-                    Tpstpc.selection(36139,935,1219,datepouretp,cb);
-                  },
-                  function(cb){
-                    Tpstpc.selection(36142,946,1244,datepouretp,cb);
-                  },
-                  function(cb){
-                    Tpstpc.selection(36141,954,1269,datepouretp,cb);
+                    Tpstpc.PecHopspi(datepouretp,cb);
                   },
 
                  ],function(err,result)

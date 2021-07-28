@@ -109,6 +109,7 @@ module.exports.routes = {
    '/ecritureetp' : 'TpstpcController.ecritureEtp',
    '/traitementfinal' :'TpstpcController.ecriture3',
    '/ecritureetp2' : 'TpstpcController.ecritureEtp2',
+   '/ecritureetp3' : 'TpstpcController.ecritureEtp3',
    '/ecritureerreur' : 'TpstpcController.ecritureErreur',
  
   
