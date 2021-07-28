@@ -1464,10 +1464,10 @@
                     Tpstpc.selection(36138,931,1205,datepouretp,cb);
                   },
                   function(cb){
-                    Tpstpc.PecOptique(datepouretp,cb);
+                    Tpstpc.selectionPecOptique(datepouretp,cb);
                   },
                   function(cb){
-                    Tpstpc.PecAudio(datepouretp,cb);
+                    Tpstpc.selectionPecAudio(datepouretp,cb);
                   },
                  ],function(err,result)
                  {
@@ -1543,7 +1543,7 @@
                     Tpstpc.selectionNument(datepouretp,cb);
                   },
                   function(cb){
-                    Tpstpc.PecHopspi(datepouretp,cb);
+                    Tpstpc.selectionPecHospi(datepouretp,cb);
                   },
 
                  ],function(err,result)
