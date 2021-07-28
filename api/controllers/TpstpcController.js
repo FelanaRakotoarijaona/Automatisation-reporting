@@ -1380,10 +1380,10 @@
                      Tpstpc.selectionSanteclair(datepouretp,cb);
                    },
                    function(cb){
-                    Tpstpc.selectionPecDentaire(datepouretp,cb);
+                    Tpstpc.selection(36139,936,1222,datepouretp,cb);
                   },
                   function(cb){
-                    Tpstpc.FactOptique(datepouretp,cb);
+                    Tpstpc.SelectionFactOptique(datepouretp,cb);
                   },
                   function(cb){
                     Tpstpc.selectionFactTiers(datepouretp,cb);
