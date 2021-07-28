@@ -17,7 +17,7 @@
     try{
     //var path_reporting = 'D:/Reporting Engagement/TPS-TPC_Reporting-Traitement-J-SLA_V12.xlsx';
     await newWorkbook.xlsx.readFile(path_reporting);
-    const newworksheet = newWorkbook.getWorksheet('202106_GRS');
+    const newworksheet = newWorkbook.getWorksheet('202106_Easy');
     var colonneDate = newworksheet.getColumn('A');
     var ligneDate1;
     //var date_export='14/06/2021';
@@ -28,7 +28,8 @@
       var dateExcel = ReportingInovcomExport.convertDate(cell.text);
       //console.log(dateExcel + 'date')
       //if(rowNumber==3685)
-      if(rowNumber>=3685 && rowNumber<=3700)
+      //if(rowNumber>=3685 && rowNumber<=3700)
+      if(dateExcel==date_export)
       {
         console.log('row'+rowNumber);
         var m = newworksheet.getRow(rowNumber);

@@ -65,7 +65,7 @@ module.exports.routes = {
     
   
    //route tps-tpc
-   
+   '/accueilecritureDate' : 'TpstpcController.accueilecritureDate',
    '/ecritureDate' : 'TpstpcController.ecritureDate',
 
    '/accueilrecherchefichier' : 'TpstpcController.accueilrecherchefichier',
