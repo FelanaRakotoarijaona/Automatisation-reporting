@@ -5,91 +5,194 @@
  * @help        :: See https://sailsjs.com/docs/concepts/actions
  */
 module.exports = {
-  accueilR : function(req,res)
-    {
-      return res.view('Retour/exportExcel');
-    },
-    accueil1 : function(req,res)
-    {
-      return res.view('Retour/accueil1');
-    },
-    Essaii : function(req,res)
-    {
-      var Excel = require('exceljs');
-      var workbook = new Excel.Workbook();
-      var table = ['/dev/pro/Retour_Easytech_'];
-      //var table = ['\\\\10.128.1.2\\almerys-out\\Retour_Easytech_'];
-      var datetest = req.param("date",0);
-      var annee = datetest.substr(0, 4);
-      var mois = datetest.substr(5, 2);
-      var jour = datetest.substr(8, 2);
-      var date = annee+mois+jour;
-      var nomtable = [];
-      var numligne = [];
-      var numfeuille = [];
-      var nomcolonne = [];
-      console.log(date);
-      var cheminp = [];
-      var MotCle= [];
-      var chem2 = [];
-      var option2 = [];
-      var nomBase = "cheminretourvrai";
-      var r = [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19];
-      workbook.xlsx.readFile('ReportingRetourServeur.xlsx')
-          .then(function() {
-            var newworksheet = workbook.getWorksheet('Feuil2');
-            var numFeuille = newworksheet.getColumn(4);
-            var nomColonne = newworksheet.getColumn(5);
-            var nomTable = newworksheet.getColumn(6);
-            var numLigne = newworksheet.getColumn(8);
-            var cheminparticulier = newworksheet.getColumn(9);
-            var motcle = newworksheet.getColumn(10);
-            var chemin2 = newworksheet.getColumn(11);
-            var opt2 = newworksheet.getColumn(12);
-              numFeuille.eachCell(function(cell, rowNumber) {
-                numfeuille.push(cell.value);
-              });
-              nomColonne.eachCell(function(cell, rowNumber) {
-                nomcolonne.push(cell.value);
-              });
-              nomTable.eachCell(function(cell, rowNumber) {
-                nomtable.push(cell.value);
-              });
-              numLigne.eachCell(function(cell, rowNumber) {
-                numligne.push(cell.value);
-              });
-              cheminparticulier.eachCell(function(cell, rowNumber) {
-                cheminp.push(cell.value);
-              });
-              motcle.eachCell(function(cell, rowNumber) {
-                MotCle.push(cell.value);
-              });
-              chemin2.eachCell(function(cell, rowNumber) {
-                chem2.push(cell.value);
-              });
-              opt2.eachCell(function(cell, rowNumber) {
-                option2.push(cell.value);
-              });
-              console.log(cheminp[0]);
-              console.log(MotCle[0]);
-              async.series([  
-                  function(cb){
-                    ReportingInovcom.deleteFromChemin(nomBase,cb);
+  // Accueil rechercher fichier
+  accueilRetour : function(req,res)
+  {
+    return res.view('Retour/accueilRecherchefichier');
+  },
+  rechercheFichier : function(req,res)
+  {
+    var Excel = require('exceljs');
+    var workbook = new Excel.Workbook();
+    var table = ['/dev/pro/Retour_Easytech_'];
+    var datetest = req.param("date",0);
+    var annee = datetest.substr(0, 4);
+    var mois = datetest.substr(5, 2);
+    var jour = datetest.substr(8, 2);
+    var date = annee+mois+jour;
+    var nomtable = [];
+    var numligne = [];
+    var numfeuille = [];
+    var nomcolonne = [];
+    console.log(date);
+    var cheminp = [];
+    var MotCle= [];
+    var chem2 = [];
+    var option2 = [];
+    var nomBase = "cheminretour2";
+    var r = [0,1,2,3,4,5,6,7,8,9];
+    workbook.xlsx.readFile('ReportingRetourServeur.xlsx')
+        .then(function() {
+          var newworksheet = workbook.getWorksheet('Feuil1');
+          var numFeuille = newworksheet.getColumn(4);
+          var nomColonne = newworksheet.getColumn(5);
+          var nomTable = newworksheet.getColumn(6);
+          var numLigne = newworksheet.getColumn(8);
+          var cheminparticulier = newworksheet.getColumn(9);
+          var motcle = newworksheet.getColumn(10);
+          var chemin2 = newworksheet.getColumn(11);
+          var opt2 = newworksheet.getColumn(12);
+            numFeuille.eachCell(function(cell, rowNumber) {
+              numfeuille.push(cell.value);
+            });
+            nomColonne.eachCell(function(cell, rowNumber) {
+              nomcolonne.push(cell.value);
+            });
+            nomTable.eachCell(function(cell, rowNumber) {
+              nomtable.push(cell.value);
+            });
+            numLigne.eachCell(function(cell, rowNumber) {
+              numligne.push(cell.value);
+            });
+            cheminparticulier.eachCell(function(cell, rowNumber) {
+              cheminp.push(cell.value);
+            });
+            motcle.eachCell(function(cell, rowNumber) {
+              MotCle.push(cell.value);
+            });
+            chemin2.eachCell(function(cell, rowNumber) {
+              chem2.push(cell.value);
+            });
+            opt2.eachCell(function(cell, rowNumber) {
+              option2.push(cell.value);
+            });
+            console.log(cheminp[0]);
+            console.log(MotCle[0]);
+            async.series([  
+                function(cb){
+                  ReportingInovcom.deleteFromChemin(nomBase,cb);
+                  },
+            ],
+            function(err, resultat){
+              if (err) { return res.view('Retour/erreur'); }
+              else
+              {
+                async.forEachSeries(r, function(lot, callback_reporting_suivant) {
+                  async.series([
+                    function(cb){
+                      ReportingInovcom.delete(nomtable,lot,cb);
                     },
-              ],
-              function(err, resultat){
-                if (err) { return res.view('Retour/erreur'); }
-                else
-                {
-                  async.forEachSeries(r, function(lot, callback_reporting_suivant) {
+                    function(cb){
+                      ReportingInovcom.importEssaitype4(table,cheminp,date,MotCle,lot,nomtable,numligne,numfeuille,nomcolonne,nomBase,chem2,option2,cb);
+                      },
+                  ],function(erroned, lotValues){
+                    if(erroned) return res.badRequest(erroned);
+                    return callback_reporting_suivant();
+                  });
+                },
+                function(err)
+                  {
+                    var sql4= "select count(chemin) as ok from "+nomBase+" ";
+                    console.log(sql4);
+                    Reportinghtp.getDatastore().sendNativeQuery(sql4 ,function(err, nc) {
+                       nc = nc.rows;
+                       console.log('nc'+nc[0].ok);
+                       var f = parseInt(nc[0].ok);
+                          if (err){
+                            return res.view('Retour/erreur');
+                          }
+                         if(f==0)
+                          {
+                            return res.view('Retour/erreur');
+                          }
+                          else
+                          {
+                            return res.view('Retour/accueilImport', {date : datetest});
+                            
+                          };
+                      });
+                  });
+               
+              }
+          });
+        });
+  },
+  // Accueeil import
+  accueilImportRetour : function(req,res)
+  {
+    return res.view('Retour/accueilImport');
+  },
+  ImportRetour : function(req,res)
+  {
+    var datetest = req.param("date",0);
+    var annee = datetest.substr(0, 4);
+    var mois = datetest.substr(5, 2);
+    var jour = datetest.substr(8, 2);
+    var sql1= 'select count(*) as nb from cheminretour2;';
+    Reportinghtp.query(sql1,function(err, nc1) {
+      if (err){
+        console.log(err);
+        return next(err);
+      }
+      else
+      {
+        nc1 = nc1.rows;
+        var nbs = nc1[0].nb;
+        var x = parseInt(nbs);
+        var sql='select * from cheminretour2 limit' + " " + x ;
+        Reportinghtp.query(sql,function(err, nc) {
+          if (err){
+            console.log(err);
+            return next(err);
+          }
+          else
+          {
+          nc = nc.rows;
+          sails.log(nc[0].chemin);
+          var feuil = [];
+          var cellule = [];
+          var cellule2 = [];
+          var table = [];
+          var trameflux = [];
+          var numligne = [];
+          var nb = x;
+          for(var i=0;i<nb;i++)
+          {
+            var a = nc[i].chemin;
+            trameflux.push(a);
+          };
+          for(var i=0;i<nb;i++)
+          {
+            var a = nc[i].numfeuile;
+            feuil.push(a);
+          };
+          for(var i=0;i<nb;i++)
+          {
+            var a = nc[i].numligne;
+            numligne.push(a);
+          };
+          for(var i=0;i<nb;i++)
+          {
+            var a = nc[i].colonnecible;
+            cellule.push(a);
+          };
+          for(var i=0;i<nb;i++)
+          {
+            var a = nc[i].colonnecible;
+            cellule2.push(a);
+          };
+          var nbre = [];
+          for(var i=0;i<nb;i++)
+          {
+            var a = nc[i].nomtable;
+            table.push(a);
+            nbre.push(i);
+          };
+                  console.log(table);
+                  async.forEachSeries(nbre, function(lot, callback_reporting_suivant) {
                     async.series([
                       function(cb){
-                        ReportingInovcom.delete(nomtable,lot,cb);
-                      },
-                      function(cb){
-                        ReportingInovcom.importEssaitype4(table,cheminp,date,MotCle,lot,nomtable,numligne,numfeuille,nomcolonne,nomBase,chem2,option2,cb);
-                        //ReportingRetour.importEssai(table,cheminp,date,MotCle,lot,nomtable,numligne[17],numfeuille[17],nomcolonne[17],cb);
-                        //ReportingInovcom.importEssai(table,cheminp,date,MotCle,lot,nomtable,numligne,numfeuille,nomcolonne,nomcolonne2,nomBase,cb);
+                        ReportingRetour.importRetour(trameflux,feuil,cellule,table,cellule2,lot,numligne,cb);
                       },
                     ],function(erroned, lotValues){
                       if(erroned) return res.badRequest(erroned);
@@ -98,31 +201,16 @@ module.exports = {
                   },
                     function(err)
                     {
-                      var sql4= "select count(chemin) as ok from "+nomBase+" ";
-                      console.log(sql4);
-                      Reportinghtp.getDatastore().sendNativeQuery(sql4 ,function(err, nc) {
-                         nc = nc.rows;
-                         console.log('nc'+nc[0].ok);
-                         var f = parseInt(nc[0].ok);
-                            if (err){
-                              return res.view('Retour/erreur');
-                            }
-                           if(f==0)
-                            {
-                              return res.view('Retour/erreur');
-                            }
-                            else
-                            {
-                              return res.view('Retour/accueil', {date : datetest});
-                              
-                            };
-                        });
-                    });
-                 
-                }
-            });
-          });
-    },
+                      console.log('vofafa ddol');
+                      return res.view('Retour/exportExcel', {date : datetest});
+                    }); 
+           }
+           })
+      }
+  });
+},
+   /* ********** */ 
+    // Accueeil import
     accueil : function(req,res)
     {
       return res.view('Retour/accueil');
@@ -214,6 +302,123 @@ module.exports = {
         }
     });
   },
+  /* */
+    accueilR : function(req,res)
+    {
+      return res.view('Retour/exportExcel');
+    },
+    accueil1 : function(req,res)
+    {
+      return res.view('Retour/accueil1');
+    },
+    Essaii : function(req,res)
+    {
+      var Excel = require('exceljs');
+      var workbook = new Excel.Workbook();
+      var table = ['/dev/pro/Retour_Easytech_'];
+      //var table = ['\\\\10.128.1.2\\almerys-out\\Retour_Easytech_'];
+      var datetest = req.param("date",0);
+      var annee = datetest.substr(0, 4);
+      var mois = datetest.substr(5, 2);
+      var jour = datetest.substr(8, 2);
+      var date = annee+mois+jour;
+      var nomtable = [];
+      var numligne = [];
+      var numfeuille = [];
+      var nomcolonne = [];
+      console.log(date);
+      var cheminp = [];
+      var MotCle= [];
+      var chem2 = [];
+      var option2 = [];
+      var nomBase = "cheminretourvrai";
+      var r = [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19];
+      workbook.xlsx.readFile('ReportingRetourServeur.xlsx')
+          .then(function() {
+            var newworksheet = workbook.getWorksheet('Feuil2');
+            var numFeuille = newworksheet.getColumn(4);
+            var nomColonne = newworksheet.getColumn(5);
+            var nomTable = newworksheet.getColumn(6);
+            var numLigne = newworksheet.getColumn(8);
+            var cheminparticulier = newworksheet.getColumn(9);
+            var motcle = newworksheet.getColumn(10);
+            var chemin2 = newworksheet.getColumn(11);
+            var opt2 = newworksheet.getColumn(12);
+              numFeuille.eachCell(function(cell, rowNumber) {
+                numfeuille.push(cell.value);
+              });
+              nomColonne.eachCell(function(cell, rowNumber) {
+                nomcolonne.push(cell.value);
+              });
+              nomTable.eachCell(function(cell, rowNumber) {
+                nomtable.push(cell.value);
+              });
+              numLigne.eachCell(function(cell, rowNumber) {
+                numligne.push(cell.value);
+              });
+              cheminparticulier.eachCell(function(cell, rowNumber) {
+                cheminp.push(cell.value);
+              });
+              motcle.eachCell(function(cell, rowNumber) {
+                MotCle.push(cell.value);
+              });
+              chemin2.eachCell(function(cell, rowNumber) {
+                chem2.push(cell.value);
+              });
+              opt2.eachCell(function(cell, rowNumber) {
+                option2.push(cell.value);
+              });
+              console.log(cheminp[0]);
+              console.log(MotCle[0]);
+              async.series([  
+                  function(cb){
+                    ReportingInovcom.deleteFromChemin(nomBase,cb);
+                    },
+              ],
+              function(err, resultat){
+                if (err) { return res.view('Retour/erreur'); }
+                else
+                {
+                  async.forEachSeries(r, function(lot, callback_reporting_suivant) {
+                    async.series([
+                      function(cb){
+                        ReportingInovcom.delete(nomtable,lot,cb);
+                      },
+                      function(cb){
+                        ReportingInovcom.importEssaitype4(table,cheminp,date,MotCle,lot,nomtable,numligne,numfeuille,nomcolonne,nomBase,chem2,option2,cb);
+                        },
+                    ],function(erroned, lotValues){
+                      if(erroned) return res.badRequest(erroned);
+                      return callback_reporting_suivant();
+                    });
+                  },
+                  function(err)
+                    {
+                      var sql4= "select count(chemin) as ok from "+nomBase+" ";
+                      console.log(sql4);
+                      Reportinghtp.getDatastore().sendNativeQuery(sql4 ,function(err, nc) {
+                         nc = nc.rows;
+                         console.log('nc'+nc[0].ok);
+                         var f = parseInt(nc[0].ok);
+                            if (err){
+                              return res.view('Retour/erreur');
+                            }
+                           if(f==0)
+                            {
+                              return res.view('Retour/erreur');
+                            }
+                            else
+                            {
+                              return res.view('Retour/accueil', {date : datetest});
+                              
+                            };
+                        });
+                    });
+                 
+                }
+            });
+          });
+    },
   
   /* EXPORT */
 

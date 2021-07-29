@@ -314,6 +314,12 @@ module.exports.routes = {
    '/essaiRetour' : 'ReportingRetourController.Essaii',//2
    '/accueil2Retour/:date' : 'ReportingRetourController.accueil',
    '/reportingretour' : 'ReportingRetourController.essaiExcel',//3
+
+   '/accueilRetour2' : 'ReportingRetourController.accueilRetour',//1
+   '/rechercheFichierRetour' : 'ReportingRetourController.rechercheFichier',//2
+   '/accueilRetourImport' : 'ReportingRetourController.accueilImportRetour',
+   '/importRetour' : 'ReportingRetourController.ImportRetour',//3
+
    //Route RETOUR Export mbola tsy traité
   //  '/exportRetour/:jour/:mois/:annee/:html' : 'ReportingInovcomExportController.accueil',
   //  '/exportReportingIndu:jour/:mois/:annee' : 'ReportingInovcomExportController.rechercheColonne',
