@@ -47,6 +47,11 @@ module.exports.routes = {
 
      '/accueilGrs1' : 'TpsGrsController.accueilecriture',
      '/ecrituregrs1' : 'TpsGrsController.ecrituregrs1',
+     '/accueilGrs2' : 'TpsGrsController.accueilecriture2',
+     '/ecrituregrs2' : 'TpsGrsController.ecrituregrs2',
+     '/accueilGrs3' : 'TpsGrsController.accueilecriture3',
+     '/ecrituregrs3' : 'TpsGrsController.ecrituregrs3',
+     
 
      '/accueilrechercheDate' : 'TpsGrsController.accueilrechercheDate',
      '/rechercheDate' : 'TpsGrsController.rechercheDate',
@@ -54,15 +59,14 @@ module.exports.routes = {
      '/ecritureDateGrs2' : 'TpsGrsController.ecrituredateGrs2',
     
 
-     '/accueilGrs2' : 'TpsGrsController.accueilecriture2',
-     '/ecrituregrs2' : 'TpsGrsController.ecrituregrs2',
-     '/accueilGrs3' : 'TpsGrsController.accueilecriture3',
-     '/ecrituregrs3' : 'TpsGrsController.ecrituregrs3',
+     
 
      '/accueilecritureetpgrs' : 'TpsGrsController.accueilecritureetpgrs',
      '/ecritureetpgrs' : 'TpsGrsController.ecritureetpgrs',
      '/accueilecritureetpgrs2' : 'TpsGrsController.accueilecritureetpgrs2',
      '/ecritureetpgrs2' : 'TpsGrsController.ecritureetpgrs2',
+     '/accueilecritureetpgrs3' : 'TpsGrsController.accueilecritureetpgrs3',
+     '/ecritureetpgrs3' : 'TpsGrsController.ecritureetpgrs3',
 
     
   
