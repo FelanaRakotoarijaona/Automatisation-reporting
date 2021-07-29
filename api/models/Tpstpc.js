@@ -93,7 +93,7 @@
    }
    else
    {
-     var sql = "insert into cheminintsisy  values ('k') ";
+     var sql = "insert into chemintsisy  values ('k') ";
      ReportingInovcom.getDatastore().sendNativeQuery(sql, function(err,res){
       if (err) { 
         console.log(err);
