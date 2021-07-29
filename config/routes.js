@@ -23,6 +23,7 @@ module.exports.routes = {
 
      '/accueilEtpGrs' : 'TpsGrsController.accueilEtp',
      '/copieEtp' : 'TpsGrsController.copieEtp',
+     '/copieEtp2' : 'TpsGrsController.copieEtp2',
 
      '/accueilGrs' : 'TpsGrsController.accueil',
      '/traitementTacheTraiteGrs' : 'TpsGrsController.traitementTacheTraite',
@@ -51,7 +52,7 @@ module.exports.routes = {
      '/ecrituregrs2' : 'TpsGrsController.ecrituregrs2',
      '/accueilGrs3' : 'TpsGrsController.accueilecriture3',
      '/ecrituregrs3' : 'TpsGrsController.ecrituregrs3',
-     
+
 
      '/accueilrechercheDate' : 'TpsGrsController.accueilrechercheDate',
      '/rechercheDate' : 'TpsGrsController.rechercheDate',

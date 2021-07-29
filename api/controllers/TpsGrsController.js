@@ -350,7 +350,7 @@ module.exports = {
           'pecdentaire',
           'pechospi'
       ];
-      var r = [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14];
+      var r = [0,1,2,3,4,5,6,7];
       async.series([  
           function(cb){
               TpsGrs.delete("tpsgrsetp",cb);
@@ -377,12 +377,61 @@ module.exports = {
             }
             else
             {
-               return res.view('TpsGrs/accueil');
+               return res.view('TpsGrs/accueilEtp2',{date:datetest});
             };
           });
       }
       });
   },
+  copieEtp2 : function(req,res){
+    var dateFormat = require("dateformat");
+    var datetest = req.param("date",0);
+    var date = dateFormat(datetest, "shortDate");
+    console.log('daty'+ date);
+    var trameflux= '/dev/prod/03-POLE_TPS-TPC/00-PILOTAGE/09-REPORTING ENGAGEMENT/GRS_Reporting-Traitement-J-SLA.xlsb';
+    //var trameflux= '/dev/prod/03-POLE_TPS-TPC/00-PILOTAGE/09-REPORTING ENGAGEMENT/GRS_Reporting-Traitement-J-SLA.xlsb';
+    var nomColonne = [
+        'factdentaire',
+        'facthospi',
+        'santeclair',
+        'pecoptique',
+        'pecaudio',
+        'pecdentaire',
+        'pechospi'
+    ];
+    var r = [0,1,2,3,4,5,6];
+    async.series([  
+        function(cb){
+            TpsGrs.delete("tpsgrsetp",cb);
+          },
+    ],
+    function(err, resultat){
+      if (err) { return res.view('Inovcom/erreur'); }
+      else
+      {
+    async.forEachSeries(r, function(lot, callback_reporting_suivant) {
+        async.series([
+          function(cb){
+            TpsGrs.copieEtp(date,lot,trameflux,nomColonne,cb);
+          },
+        ],function(erroned, lotValues){
+          if(erroned) return res.badRequest(erroned);
+          return callback_reporting_suivant();
+        });
+      },
+        function(err)
+        {
+          if (err){
+            return res.view('Contentieux/erreur');
+          }
+          else
+          {
+             return res.view('TpsGrs/accueil');
+          };
+        });
+    }
+    });
+},
   //tache traités 16h
   accueil : function(req,res)
   {
