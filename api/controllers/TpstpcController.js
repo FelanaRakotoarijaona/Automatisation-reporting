@@ -70,13 +70,25 @@
                  },
                    function(err)
                    {
-                     if (err){
-                       return res.view('Contentieux/erreur');
-                     }
-                     else
-                     {
-                        return res.view('Tpstpc/accueil');
-                     };
+                    var sql4= "select count(chemin) as ok from chemintpsstock16h ";
+                    console.log(sql4);
+                    Reportinghtp.getDatastore().sendNativeQuery(sql4 ,function(err, nc) {
+                       nc = nc.rows;
+                       console.log('nc'+nc[0].chemin);
+                       var f = parseInt(nc[0].chemin);
+                          if (err){
+                            return res.view('Inovcom/erreur');
+                          }
+                         if(f==0)
+                          {
+                            return res.view('Inovcom/erreur');
+                          }
+                          else
+                          {
+                            return res.view('Tpstpc/accueil');
+                            
+                          };
+                      });
                    });
          });
          
@@ -1581,7 +1593,6 @@
                });
            
    },
-
    accueilEcritureDate : function(req,res)
    {
     return res.view('Tpstpc/ecrituredate');

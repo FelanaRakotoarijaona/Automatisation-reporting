@@ -315,7 +315,26 @@ module.exports = {
                     }
                     else
                     {
-                       return res.view('TpsGrs/copieetp');
+                      var sql4= "select count(chemin) as ok from chemingrsstock16h ";
+                      console.log(sql4);
+                      Reportinghtp.getDatastore().sendNativeQuery(sql4 ,function(err, nc) {
+                         nc = nc.rows;
+                         console.log('nc'+nc[0].chemin);
+                         var f = parseInt(nc[0].chemin);
+                            if (err){
+                              return res.view('Inovcom/erreur');
+                            }
+                           if(f==0)
+                            {
+                              return res.view('Inovcom/erreur');
+                            }
+                            else
+                            {
+                              return res.view('TpsGrs/copieetp');
+                              
+                            };
+                        });
+                      // return res.view('TpsGrs/copieetp');
                     };
                   });
         });
