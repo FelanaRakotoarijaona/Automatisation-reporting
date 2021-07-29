@@ -400,15 +400,6 @@ module.exports = {
         'pechospi'
     ];
     var r = [0,1,2,3,4,5,6];
-    async.series([  
-        function(cb){
-            TpsGrs.delete("tpsgrsetp",cb);
-          },
-    ],
-    function(err, resultat){
-      if (err) { return res.view('Inovcom/erreur'); }
-      else
-      {
     async.forEachSeries(r, function(lot, callback_reporting_suivant) {
         async.series([
           function(cb){
@@ -429,8 +420,6 @@ module.exports = {
              return res.view('TpsGrs/accueil');
           };
         });
-    }
-    });
 },
   //tache traités 16h
   accueil : function(req,res)
@@ -1383,7 +1372,8 @@ traitementgrsstockbonj: function(req,res)
       console.log('date'+date);
       const Excel = require('exceljs');
       const newWorkbook = new Excel.Workbook();
-      var path_reporting = 'D:/Reporting Engagement/TPS-TPC_Reporting-Traitement-J-SLA_V12.xlsx';
+      const path_reporting = '/dev/prod/03-POLE_TPS-TPC/00-PILOTAGE/09-REPORTING ENGAGEMENT/TestReporting/TPS-TPC_Reporting-Traitement-J-SLA_V12.xlsx';
+      //var path_reporting = 'D:/Reporting Engagement/TPS-TPC_Reporting-Traitement-J-SLA_V12.xlsx';
       await newWorkbook.xlsx.readFile(path_reporting);
       const newworksheet = newWorkbook.getWorksheet('202106_Easy');
       var colonneDate = newworksheet.getColumn('A');
