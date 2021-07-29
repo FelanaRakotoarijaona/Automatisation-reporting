@@ -79,8 +79,8 @@
          var sql = "insert into "+tab+" (chemin) values ('"+cheminbase+"') ";
                  ReportingInovcom.getDatastore().sendNativeQuery(sql, function(err,res){
                   if (err) { 
-                    console.log(err);
-                    //return callback(err);
+                    //console.log(err);
+                    return callback(err);
                    }
                   else
                   {
@@ -96,7 +96,7 @@
      var sql = "insert into cheminintsisy  values ('k') ";
      ReportingInovcom.getDatastore().sendNativeQuery(sql, function(err,res){
       if (err) { 
-        console.log("Une erreur ve? import 1");
+        console.log(err);
        }
       else
       {
