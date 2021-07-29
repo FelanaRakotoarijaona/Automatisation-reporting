@@ -1831,7 +1831,24 @@ module.exports = {
     XLSX = require('xlsx');
     var workbook = XLSX.readFile(trameflux);
     try{
-      const sheet = workbook.Sheets[workbook.SheetNames[0]];
+      const sheetd = workbook.SheetNames; 
+      console.log('long' + sheetd.length);
+      var tab = 0;
+      for(var i=0;i<sheetd.length;i++)
+      {
+        var mc1 = 'GRS';
+        const regex = new RegExp(mc1,'i');
+        if(regex.test(sheetd[i]))
+        {
+          console.log(sheetd[i]);
+          tab = i;
+        }
+        else
+        {
+          var m ='n'; 
+        }
+      }
+      const sheet = workbook.Sheets[workbook.SheetNames[tab]];
       var range = XLSX.utils.decode_range(sheet['!ref']);
       var ligne = 0;
       for(var ra=0;ra<=range.e.r;ra++)
