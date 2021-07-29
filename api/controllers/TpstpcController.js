@@ -74,8 +74,8 @@
                     console.log(sql4);
                     Reportinghtp.getDatastore().sendNativeQuery(sql4 ,function(err, nc) {
                        nc = nc.rows;
-                       console.log('nc'+nc[0].chemin);
-                       var f = parseInt(nc[0].chemin);
+                       console.log('nc'+nc[0].ok);
+                       var f = parseInt(nc[0].ok);
                           if (err){
                             return res.view('Inovcom/erreur');
                           }
