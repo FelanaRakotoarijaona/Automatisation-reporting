@@ -101,27 +101,7 @@ module.exports = {
         };
       });
     }
-   else if(table[nb]=="coldrcbtppublic")
-    {
-      console.log('hehe coldrcbtppublic ato v oooooooo');
-      var tab = [];
-      tab = ReportingRetour.lectureEtInsertiontype22( trameflux,feuil,cellule,table,cellule2,nb,numligne,callback);
-      console.log('tab' + tab);
-      var sql = "insert into "+table[nb]+" (nbok,nbko) values ('"+tab[0]+"','"+tab[1]+"') ";
-                      ReportingInovcom.getDatastore().sendNativeQuery(sql, function(err,res){
-                        if(err)
-                        {
-                          console.log(err);
-                        }
-                        else
-                        {
-                          console.log(sql);
-                          return callback(null, true);  
-                        }       
-                                            });
-      
-    }
-    else if(table[nb]=="trpecaudio" || table[nb]=="trpecdentaire")
+    else if(table[nb]=="trpecaudio" || table[nb]=="trpecdentaire" || table[nb]=='trpecoptique' || table[nb]=='trhospi' )
     {
       ReportingRetour.lectureEtInsertiontype21( trameflux,feuil,cellule,table,cellule2,nb,numligne,callback);
     }
@@ -257,27 +237,6 @@ module.exports = {
                         }       
                                             });
       
-    }
-    else if(table[nb]=="trpecaudio" || table[nb]=="trpecdentaire")
-    {
-      ReportingRetour.lectureEtInsertiontype21( trameflux,feuil,cellule,table,cellule2,nb,numligne,callback);
-     /* console.log('hehe trpecdentaire');
-      var tab = [];
-      tab=ReportingRetour.lectureEtInsertiontype21( trameflux,feuil,cellule,table,cellule2,nb,numligne,callback);
-      var nbe= parseInt(nb);
-      console.log(tab);
-      var sql = "insert into "+table[nbe]+" (nb) values ('"+tab[0]+"') ";
-      ReportingInovcom.getDatastore().sendNativeQuery(sql, function(err,res){
-        if (err) { 
-          console.log("Une erreur ve ok?");
-          //return callback(err);
-         }
-        else
-        {
-          console.log(sql);
-          return callback(null, true);
-        };
-                            });*/
     }
     else{
       var tab = [];

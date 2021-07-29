@@ -30,7 +30,7 @@ module.exports = {
     var chem2 = [];
     var option2 = [];
     var nomBase = "cheminretour2";
-    var r = [0,1,2,3,4,5,6,7,8,9];
+    var r = [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15];
     workbook.xlsx.readFile('ReportingRetourServeur.xlsx')
         .then(function() {
           var newworksheet = workbook.getWorksheet('Feuil1');
@@ -285,7 +285,7 @@ module.exports = {
                     async.forEachSeries(nbre, function(lot, callback_reporting_suivant) {
                       async.series([
                         function(cb){
-                          ReportingRetour.importTrameFlux929type2(trameflux,feuil,cellule,table,cellule2,lot,numligne,cb);
+                          ReportingRetour.importRetour(trameflux,feuil,cellule,table,cellule2,lot,numligne,cb);
                         },
                       ],function(erroned, lotValues){
                         if(erroned) return res.badRequest(erroned);
@@ -332,7 +332,7 @@ module.exports = {
       var chem2 = [];
       var option2 = [];
       var nomBase = "cheminretourvrai";
-      var r = [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19];
+      var r = [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14];
       workbook.xlsx.readFile('ReportingRetourServeur.xlsx')
           .then(function() {
             var newworksheet = workbook.getWorksheet('Feuil2');
