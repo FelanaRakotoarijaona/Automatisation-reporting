@@ -4027,16 +4027,16 @@
                                },
                              ],function(erroned, lotValues){
                                if(erroned) return res.badRequest(erroned);
+                               else if(lotValues[0]=='KO'|| lotValues[1]=='KO')   
+                               {
+                                return res.view('Tpstpc/erreur');
+                               }
                                return callback_reporting_suivant();
                              });
                            },
                              function(err)
                              {
                                      if (err){
-                                      return res.view('Tpstpc/erreur');
-                                     }
-                                     else if(lotValues[0]=='KO'|| lotValues[1]=='KO')   
-                                     {
                                       return res.view('Tpstpc/erreur');
                                      }
                                      else
@@ -4145,7 +4145,7 @@
                  ],function(err,result)
                  {
                          if (err){
-                           return res.view('Contentieux/erreur');
+                          return res.view('Tpstpc/erreur');
                          }
                          else
                          {
@@ -4161,13 +4161,17 @@
                                },
                              ],function(erroned, lotValues){
                                if(erroned) return res.badRequest(erroned);
+                               else if(lotValues[0]=='KO'|| lotValues[1]=='KO')   
+                               {
+                                return res.view('Tpstpc/erreur');
+                               }
                                return callback_reporting_suivant();
                              });
                            },
                              function(err)
                              {
                                      if (err){
-                                       return res.view('Contentieux/erreur');
+                                      return res.view('Tpstpc/erreur');
                                      }
                                      else
                                      {
