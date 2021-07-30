@@ -2407,7 +2407,7 @@
             }
         });
      },
-     traitementBonJ2 : function(req,res)
+     traitementBonJ12 : function(req,res)
      {
         
         var sql1= 'select chemin from chemintpsstock16h;';
