@@ -480,7 +480,6 @@
         }
       });
       console.log(ligne);
-      
       var m = newworksheet.getRow(ligne);
      //m.getCell(5).value = tab[0].tt16h;
       m.getCell(6).value = parseFloat(tab[0].tt16h);
@@ -501,7 +500,8 @@
       catch
       {
         console.log("Une erreur s'est produite");
-        Reportinghtp.deleteToutHtp(tab,3,callback);
+        return callback(err);
+        //Reportinghtp.deleteToutHtp(tab,3,callback);
       }
       },
 

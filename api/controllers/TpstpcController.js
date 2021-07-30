@@ -3342,12 +3342,6 @@
                });
                async.forEachSeries(r, function(lot, callback_reporting_suivant) {
                  async.series([
-                  /* function(cb){
-                     Tpstpc.traitementInsertionstockbonJ1(astt,trait,mcle1,mcle2,mcle3,mcle4,lot,jour,date,table,chemintpssuiviprod23h,cb);
-                   },
-                   /*function(cb){
-                     Tpstpc.traitementInsertionstockbonJ2(astt,trait,mcle1,mcle2,mcle3,mcle4,lot,jour,date,table,chemintpssuiviprod23h,cb);
-                   },*/
                    function(cb){
                      Tpstpc.traitementInsertionstockbonJ5(astt,trait,mcle1,mcle2,mcle3,mcle4,lot,jour,date,table,chemintpssuiviprod23h,cb);
                    },
@@ -3439,12 +3433,6 @@
                });
                async.forEachSeries(r, function(lot, callback_reporting_suivant) {
                  async.series([
-                  /* function(cb){
-                     Tpstpc.traitementInsertionstockbonJ1(astt,trait,mcle1,mcle2,mcle3,mcle4,lot,jour,date,table,chemintpssuiviprod23h,cb);
-                   },
-                   /*function(cb){
-                     Tpstpc.traitementInsertionstockbonJ2(astt,trait,mcle1,mcle2,mcle3,mcle4,lot,jour,date,table,chemintpssuiviprod23h,cb);
-                   },*/
                    function(cb){
                      Tpstpc.traitementInsertionstockbonJ5(astt,trait,mcle1,mcle2,mcle3,mcle4,lot,jour,date,table,chemintpssuiviprod23h,cb);
                    },
