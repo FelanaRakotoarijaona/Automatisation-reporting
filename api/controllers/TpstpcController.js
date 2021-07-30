@@ -3148,12 +3148,6 @@
                });
                async.forEachSeries(r, function(lot, callback_reporting_suivant) {
                  async.series([
-                  /* function(cb){
-                     Tpstpc.traitementInsertionstockbonJ1(astt,trait,mcle1,mcle2,mcle3,mcle4,lot,jour,date,table,chemintpssuiviprod23h,cb);
-                   },
-                   /*function(cb){
-                     Tpstpc.traitementInsertionstockbonJ2(astt,trait,mcle1,mcle2,mcle3,mcle4,lot,jour,date,table,chemintpssuiviprod23h,cb);
-                   },*/
                    function(cb){
                      Tpstpc.traitementInsertionstockbonJ5(astt,trait,mcle1,mcle2,mcle3,mcle4,lot,jour,date,table,chemintpssuiviprod23h,cb);
                    },
@@ -4125,7 +4119,7 @@
      var an = dateFormat(datetest, "yyyy");
      var date = j + '/' + m +'/' + an ;
      var datepouretp = an + m +j;
-     var r = [0,1,2,3];
+     var r = [0,1];
      var table = [];
      var motcle = [];
      var Excel = require('exceljs');
