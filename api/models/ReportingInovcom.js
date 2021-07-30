@@ -304,7 +304,6 @@
 
         var motcle = cellule[nb];
         const regex = new RegExp(motcle,'i');
-        //console.log('motcle'+ motcle)
         if(regex.test(desired_value))
         {
           col2=ra;

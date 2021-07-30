@@ -81,8 +81,15 @@ module.exports.routes = {
    '/accueilTpstpc' : 'TpstpcController.accueil1',
    '/traitementTpstpc' : 'TpstpcController.traitementTacheTraite16h',
 
+   '/traitementachettraite16h2' : 'TpstpcController.traitementTacheTraite16h2',
+   '/traitementachettraite16h3' : 'TpstpcController.traitementTacheTraite16h3',
+   '/traitementachettraite16h4' : 'TpstpcController.traitementTacheTraite16h4',
+
    '/accueilTacheTraite23h' : 'TpstpcController.accueilTacheTraite23h',
    '/traitementTacheTraite23h' : 'TpstpcController.traitementTacheTraite23h',
+   '/traitementTacheTraite23h2' : 'TpstpcController.traitementTacheTraite23h2',
+   '/traitementTacheTraite23h3' : 'TpstpcController.traitementTacheTraite23h3',
+   '/traitementTacheTraite23h4' : 'TpstpcController.traitementTacheTraite23h4',
 
    '/accueilTacheTraiteJ2' : 'TpstpcController.accueilTacheTraiteJ2',
    '/traitementTacheTraiteJ2' : 'TpstpcController.traitementTacheTraiteJ2',
