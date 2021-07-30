@@ -374,91 +374,6 @@ module.exports = {
     {
       console.log("Erreur trouvé");
     }
-    /*XLSX = require('xlsx');
-    var workbook = XLSX.readFile(trameflux[nb]);
-    var numerofeuille;
-    var numeroligne = parseInt(numligne[nb]);
-    console.log(trameflux[nb]);
-    console.log(numeroligne);
-    try{
-      var nbr = 0;
-      const sheet = workbook.Sheets[workbook.SheetNames[1]];
-      var range = XLSX.utils.decode_range(sheet['!ref']);
-      var col = 0;
-      var colnonvide;
-      var nbe = parseInt(nb);
-      const sheetd = workbook.SheetNames; 
-      console.log('long' + sheetd.length);
-      for(var i=0;i<sheetd.length;i++)
-      {
-        var mc1 = feuil[nb];;
-        const regex = new RegExp(mc1,'i');
-        if(regex.test(sheetd[i]))
-        {
-          console.log(sheetd[i]);
-        }
-        else
-        {
-          numerofeuille = parseInt(i) - 1;
-        };
-      };
-      console.log('tafiditra ato v numfeuil?'+ numerofeuille);
-      var bi = 'FIN DE TRAITEMENT';
-      const regex = new RegExp(bi,'i');
-      for(var ra=0;ra<=range.e.c;ra++)
-      {
-        var address_of_cell = {c:ra, r:numeroligne};
-        var cell_ref = XLSX.utils.encode_cell(address_of_cell);
-        var desired_cell = sheet[cell_ref];
-        var desired_value = (desired_cell ? desired_cell.v : undefined);
-        if(regex.test(desired_value))
-        {
-          colnonvide=ra;
-        }
-        else
-        {
-          colnonvide = 13;
-        }
-        console.log('tafiditra ato v 2?');
-      };
-      console.log("colonnevide"+colnonvide);
-      if(col!=undefined && colnonvide!=undefined)
-      {
-        console.log('tafiditra ato v? 3');
-        var debutligne = numeroligne + 1;
-        for(var a=debutligne;a<=range.e.r;a++)
-          {
-            var address_of_cell = {c:col, r:a};
-            var cell_ref = XLSX.utils.encode_cell(address_of_cell);
-            var desired_cell = sheet[cell_ref];
-            var desired_value1 = (desired_cell ? desired_cell.v : undefined);
-
-            var address_of_cell2 = {c:colnonvide, r:a};
-            var cell_ref2 = XLSX.utils.encode_cell(address_of_cell2);
-            var desired_cell2 = sheet[cell_ref2];
-            var desired_value2 = (desired_cell2 ? desired_cell2.v : undefined);
-
-            console.log("valeur = " + desired_value2 + desired_value1);
-            if(desired_value1!=undefined && desired_value2!=undefined )
-            {
-              nbr=nbr + 1;
-            }
-          };
-          console.log("nombreeeeebr"+ nbr);
-          var tab = [nbr];
-          return tab;
-      }
-      else
-      {
-        console.log('Colonne non trouvé');
-      }
-      
-    }
-    catch
-    {
-      console.log("erreur absolu haaha");
-    }*/
-    
   },
   //effacement du chemin dans la base pour eviter le doublon
 deleteFromChemin : function (table,callback) {
@@ -484,17 +399,11 @@ deleteFromChemin : function (table,callback) {
     },
     //import
     importEssai: function (table,table2,date,option,nb,nomtable,numligne,numfeuille,nomcolonne,callback) {
-
-
       const fs = require('fs');
       var re  = 'a';
       var tab = [];
       var a = table[0]+date+table2[nb];
-      //var a ='\\\\10.128.1.2\\almerys-out\\Retour_Easytech_20210512\\TRAITEMENT_RETOUR_OTD_N2\\' ;
       var b = option[nb];
-      //var b = 'OTD_ALMERYS SATD';
-      //var c = 'vrai';
-      //console.log(a);
       var nomTable = nomtable;
       var numLigne= numligne;
       var numFeuille = numfeuille;
