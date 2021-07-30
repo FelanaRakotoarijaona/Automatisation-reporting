@@ -111,9 +111,9 @@ module.exports.routes = {
 
    '/accueilstockbonj' : 'TpstpcController.accueilstockbonj',
    '/traitementstockbonj' : 'TpstpcController.traitementstockbonj',
-   '/traitementstockbonj1' : 'TpstpcController.traitementstockbonj1',
    '/traitementstockbonj2' : 'TpstpcController.traitementstockbonj2',
    '/traitementstockbonj3' : 'TpstpcController.traitementstockbonj3',
+   '/traitementstockbonj4' : 'TpstpcController.traitementstockbonj4',
   
    '/accueilstockJ1' : 'TpstpcController.accueilstockJ1',
    '/traitementBonJ1' : 'TpstpcController.traitementBonJ1',
