@@ -3620,7 +3620,11 @@
                                },
                              ],function(erroned, lotValues){
                                if(erroned) return res.badRequest(erroned);
-                               return callback_reporting_suivant();
+                               else if(lotValues[0]=='KO')
+                               {
+                                return res.view('Contentieux/erreur');
+                               }
+                               else return callback_reporting_suivant();
                              });
                            },
                              function(err,result)
