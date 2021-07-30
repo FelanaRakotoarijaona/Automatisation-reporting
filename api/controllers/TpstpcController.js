@@ -3239,12 +3239,6 @@
                });
                async.forEachSeries(r, function(lot, callback_reporting_suivant) {
                  async.series([
-                  /* function(cb){
-                     Tpstpc.traitementInsertionstockbonJ1(astt,trait,mcle1,mcle2,mcle3,mcle4,lot,jour,date,table,chemintpssuiviprod23h,cb);
-                   },
-                   /*function(cb){
-                     Tpstpc.traitementInsertionstockbonJ2(astt,trait,mcle1,mcle2,mcle3,mcle4,lot,jour,date,table,chemintpssuiviprod23h,cb);
-                   },*/
                    function(cb){
                      Tpstpc.traitementInsertionstockbonJ5(astt,trait,mcle1,mcle2,mcle3,mcle4,lot,jour,date,table,chemintpssuiviprod23h,cb);
                    },
@@ -4077,9 +4071,7 @@
                          }
                          else
                          {
-                         
                            console.log('ok');
- 
                            async.forEachSeries(r, function(lot, callback_reporting_suivant) {
                             var tab = parseFloat(result[lot]) / 7.5;
                             console.log(tab);
@@ -4460,8 +4452,6 @@
      var m = dateFormat(datetest, "mm");
      var an = dateFormat(datetest, "yyyy");
      var date = j + '/' + m +'/' + an ;
-     //var date = '14/06/2021';
-     //var r = [0,1,2,3,4,5,6];
      var r = [0];
      var table = [];
      var motcle = [];
@@ -4529,9 +4519,6 @@
      {
        return res.view('Tpstpc/etp');
      },
-     
-    
-     
      accueil5 : function(req,res)
      {
        return res.view('Tpstpc/erreureasy');
