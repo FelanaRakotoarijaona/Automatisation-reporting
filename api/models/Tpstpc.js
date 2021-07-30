@@ -45,7 +45,7 @@
     catch
     {
       console.log("Une erreur s'est produite");
-      Reportinghtp.deleteToutHtp(tab,3,callback);
+      return callback(null,'KO');
     }
     },
   importfichier: function (cheminfinal,motcle,table,nb,callback) {
@@ -549,7 +549,7 @@
         catch
         {
           console.log("Une erreur s'est produite");
-          Reportinghtp.deleteToutHtp(tab,3,callback);
+          return callback(null,'KO');
         }
         },
 
@@ -598,7 +598,7 @@
             catch
             {
               console.log("Une erreur s'est produite");
-              Reportinghtp.deleteToutHtp(tab,3,callback);
+              return callback(null,'KO');
             }
         
          

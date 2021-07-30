@@ -3565,600 +3565,7 @@
      },
      
     /* */
-   ecriture3: function(req,res)
-   {
-     var dateFormat = require("dateformat");
-     var datetest = req.param("date",0);
-     var j = dateFormat(datetest, "dd");
-     var m = dateFormat(datetest, "mm");
-     var an = dateFormat(datetest, "yyyy");
-     var date = j + '/' + m +'/' + an ;
-     var r = [0,1,2,3];
-     var table = [];
-     var motcle = [];
-     var Excel = require('exceljs');
-     var workbook = new Excel.Workbook();
-     workbook.xlsx.readFile('tps16h.xlsx')
-       .then(function() {
-         var newworksheet = workbook.getWorksheet('Feuil4');
-         var motcle1 = newworksheet.getColumn(8);
-         var tablem = newworksheet.getColumn(7);
-           motcle1.eachCell(function(cell, rowNumber) {
-             motcle.push(cell.value);
-           });
-           tablem.eachCell(function(cell, rowNumber) {
-             table.push(cell.value);
-           });
-                 async.series([
-                   function(cb){
-                     Tpstpc.countOkKo(table,0,cb);
-                   },
-                   function(cb){
-                     Tpstpc.countOkKo(table,1,cb);
-                   },
-                   function(cb){
-                     Tpstpc.countOkKo(table,2,cb);
-                   },
-                   function(cb){
-                     Tpstpc.countOkKo(table,3,cb);
-                   },
- 
-                 ],function(err,result)
-                 {
-                         if (err){
-                           return res.view('Contentieux/erreur');
-                         }
-                         else
-                         {
-                           console.log('ok');
- 
-                           async.forEachSeries(r, function(lot, callback_reporting_suivant) {
-                            var tab = result[lot];
-                             async.series([
-                               function(cb){
-                                 Tpstpc.ecriture(tab,date,motcle,lot,cb);
-                               },
-                             ],function(erroned, lotValues){
-                               if(erroned) return res.badRequest(erroned);
-                               else if(lotValues[0]=='KO')
-                               {
-                                return res.view('Contentieux/erreur');
-                               }
-                               else return callback_reporting_suivant();
-                             });
-                           },
-                             function(err,result)
-                             {
-                                     if (err){
-                                       console.log('res0' + result[0]+result[1]);
-                                       if(result[0]=='KO' || result[1]=='KO')
-                                       return res.view('Contentieux/erreur');
-                                     }
-                                     else
-                                     {
-                                      console.log('res0' + result[0]);
-                                      return res.view('Tpstpc/ecritureetp', {date : datetest});
-                                     };
-                             });
-                         };
-                 });
-               });
-           
-   },
-   selection: function(req,res)
-   {
-     var dateFormat = require("dateformat");
-     var datetest = req.param("date",0);
-     var j = dateFormat(datetest, "dd");
-     var m = dateFormat(datetest, "mm");
-     var an = dateFormat(datetest, "yyyy");
-     var date = j + '/' + m +'/' + an ;
-     //var r = [0,1,2,3,4,5,6];
-     var r = [0,1,2,3];
-     var table = [];
-     var motcle = [];
-     var Excel = require('exceljs');
-     var workbook = new Excel.Workbook();
-     workbook.xlsx.readFile('tps16h.xlsx')
-       .then(function() {
-         var newworksheet = workbook.getWorksheet('Feuil1');
-         var motcle1 = newworksheet.getColumn(8);
-         var tablem = newworksheet.getColumn(7);
-           motcle1.eachCell(function(cell, rowNumber) {
-             motcle.push(cell.value);
-           });
-           tablem.eachCell(function(cell, rowNumber) {
-             table.push(cell.value);
-           });
-                 async.series([
-                   function(cb){
-                     Tpstpc.countOkKo(table,0,cb);
-                   },
-                   function(cb){
-                     Tpstpc.countOkKo(table,1,cb);
-                   },
-                   function(cb){
-                     Tpstpc.countOkKo(table,2,cb);
-                   },
-                   function(cb){
-                     Tpstpc.countOkKo(table,3,cb);
-                   },
-                 ],function(err,result)
-                 {
-                         if (err){
-                           return res.view('Contentieux/erreur');
-                         }
-                         else
-                         {
-                           console.log('ok');
- 
-                           async.forEachSeries(r, function(lot, callback_reporting_suivant) {
-                            var tab = result[lot];
-                             async.series([
-                               function(cb){
-                                 Tpstpc.ecriture(tab,date,motcle,lot,cb);
-                               },
-                             ],function(erroned, lotValues){
-                               if(erroned) return res.badRequest(erroned);
-                               return callback_reporting_suivant();
-                             });
-                           },
-                             function(err)
-                             {
-                                     if (err){
-                                       return res.view('Contentieux/erreur');
-                                     }
-                                     else
-                                     {
-                                       return res.view('Tpstpc/ecrituresuivant', {date : datetest});
-                                     };
-                             });
-                         };
-                 });
-               });
-           
-   },
-   ecritureExcel: function(req,res)
-   {
-    var dateFormat = require("dateformat");
-     var datetest = req.param("date",0);
-     var j = dateFormat(datetest, "dd");
-     var m = dateFormat(datetest, "mm");
-     var an = dateFormat(datetest, "yyyy");
-     var date = j + '/' + m +'/' + an ;
-     //var r = [0,1,2,3,4,5,6];
-     var r = [0,1,2,3];
-     var table = [];
-     var motcle = [];
-     var Excel = require('exceljs');
-     var workbook = new Excel.Workbook();
-     workbook.xlsx.readFile('tps16h.xlsx')
-       .then(function() {
-         var newworksheet = workbook.getWorksheet('Feuil3');
-         var motcle1 = newworksheet.getColumn(8);
-         var tablem = newworksheet.getColumn(7);
-           motcle1.eachCell(function(cell, rowNumber) {
-             motcle.push(cell.value);
-           });
-           tablem.eachCell(function(cell, rowNumber) {
-             table.push(cell.value);
-           });
-                 async.series([
-                   function(cb){
-                     Tpstpc.countOkKo(table,0,cb);
-                   },
-                   function(cb){
-                     Tpstpc.countOkKo(table,1,cb);
-                   },
-                   function(cb){
-                     Tpstpc.countOkKo(table,2,cb);
-                   },
-                   function(cb){
-                     Tpstpc.countOkKo(table,3,cb);
-                   },
-                 ],function(err,result)
-                 {
-                         if (err){
-                           return res.view('Contentieux/erreur');
-                         }
-                         else
-                         {
-                           console.log('ok');
- 
-                           async.forEachSeries(r, function(lot, callback_reporting_suivant) {
-                            var tab = result[lot];
-                             async.series([
-                               function(cb){
-                                 Tpstpc.ecriture(tab,date,motcle,lot,cb);
-                               },
-                             ],function(erroned, lotValues){
-                               if(erroned) return res.badRequest(erroned);
-                               return callback_reporting_suivant();
-                             });
-                           },
-                             function(err)
-                             {
-                                     if (err){
-                                       return res.view('Contentieux/erreur');
-                                     }
-                                     else
-                                     {
-                                       return res.view('Tpstpc/ecrituresuivant2',{date : datetest});
-                                     };
-                             });
-                         };
-                 });
-               });
-           
-   },
-   ecritureEtp: function(req,res)
-   {
-    var dateFormat = require("dateformat");
-     var datetest = req.param("date",0);
-     var j = dateFormat(datetest, "dd");
-     var m = dateFormat(datetest, "mm");
-     var an = dateFormat(datetest, "yyyy");
-     var date = j + '/' + m +'/' + an ;
-     var datepouretp = an + m +j;
-     var r = [0,1,2,3];
-     var table = [];
-     var motcle = [];
-     var Excel = require('exceljs');
-     var workbook = new Excel.Workbook();
-     workbook.xlsx.readFile('tps16h.xlsx')
-       .then(function() {
-         var newworksheet = workbook.getWorksheet('Feuil1');
-         var motcle1 = newworksheet.getColumn(8);
-         var tablem = newworksheet.getColumn(7);
-           motcle1.eachCell(function(cell, rowNumber) {
-             motcle.push(cell.value);
-           });
-           tablem.eachCell(function(cell, rowNumber) {
-             table.push(cell.value);
-           });
-               async.series([
-                   function(cb){
-                     Tpstpc.selectionSanteclair(datepouretp,cb);
-                   },
-                   function(cb){
-                    Tpstpc.selection(36139,936,1222,datepouretp,cb);
-                   },
-                    function(cb){
-                      Tpstpc.selectionFactOpt(datepouretp,cb);
-                    },
-                    function(cb){
-                      Tpstpc.selectionFactTiers(datepouretp,cb);
-                    },
-                  /*function(cb){
-                    Tpstpc.selectionSE(datepouretp,cb);
-                  },
-                  function(cb){
-                    Tpstpc.selection(36138,931,1205,datepouretp,cb);
-                  },*/
-                 ],function(err,result)
-                 {
-                         if (err){
-                           return res.view('Contentieux/erreur');
-                         }
-                         else
-                         {
-                         
-                           console.log('ok');
- 
-                           async.forEachSeries(r, function(lot, callback_reporting_suivant) {
-                            var tab = parseFloat(result[lot]) / 7.5;
-                            console.log(tab);
-                             async.series([
-                               function(cb){
-                                 Tpstpc.ecritureEtp(tab,date,motcle,lot,cb);
-                               },
-                             ],function(erroned, lotValues){
-                               if(erroned) return res.badRequest(erroned);
-                               return callback_reporting_suivant();
-                             });
-                           },
-                             function(err)
-                             {
-                                     if (err){
-                                       return res.view('Contentieux/erreur');
-                                     }
-                                     else
-                                     {
-                                       return res.view('Tpstpc/ecrituresuivantetp0',{date : datetest});
-                                     };
-                             });
-                         };
-                 });
-               });
-           
-   },
-   ecritureEtp3: function(req,res)
-   {
-    var dateFormat = require("dateformat");
-     var datetest = req.param("date",0);
-     var j = dateFormat(datetest, "dd");
-     var m = dateFormat(datetest, "mm");
-     var an = dateFormat(datetest, "yyyy");
-     var date = j + '/' + m +'/' + an ;
-     var datepouretp = an + m +j;
-     var r = [0,1,2,3];
-     var table = [];
-     var motcle = [];
-     var Excel = require('exceljs');
-     var workbook = new Excel.Workbook();
-     workbook.xlsx.readFile('tps16h.xlsx')
-       .then(function() {
-         var newworksheet = workbook.getWorksheet('Feuil6');
-         var motcle1 = newworksheet.getColumn(8);
-         var tablem = newworksheet.getColumn(7);
-           motcle1.eachCell(function(cell, rowNumber) {
-             motcle.push(cell.value);
-           });
-           tablem.eachCell(function(cell, rowNumber) {
-             table.push(cell.value);
-           });
-               async.series([
-                  function(cb){
-                    Tpstpc.selectionSE(datepouretp,cb);
-                  },
-                  function(cb){
-                    Tpstpc.selection(36138,931,1205,datepouretp,cb);
-                  },
-                  function(cb){
-                    Tpstpc.selectionPecOptique(datepouretp,cb);
-                  },
-                  function(cb){
-                    Tpstpc.selectionPecAudio(datepouretp,cb);
-                  },
-                 ],function(err,result)
-                 {
-                         if (err){
-                           return res.view('Contentieux/erreur');
-                         }
-                         else
-                         {
-                         
-                           console.log('ok');
- 
-                           async.forEachSeries(r, function(lot, callback_reporting_suivant) {
-                            var tab = parseFloat(result[lot]) / 7.5;
-                            console.log(tab);
-                             async.series([
-                               function(cb){
-                                 Tpstpc.ecritureEtp(tab,date,motcle,lot,cb);
-                               },
-                             ],function(erroned, lotValues){
-                               if(erroned) return res.badRequest(erroned);
-                               return callback_reporting_suivant();
-                             });
-                           },
-                             function(err)
-                             {
-                                     if (err){
-                                       return res.view('Contentieux/erreur');
-                                     }
-                                     else
-                                     {
-                                       return res.view('Tpstpc/ecrituresuivantetp',{date : datetest});
-                                     };
-                             });
-                         };
-                 });
-               });
-           
-   },
-   ecritureEtp2: function(req,res)
-   {
-    var dateFormat = require("dateformat");
-     var datetest = req.param("date",0);
-     var j = dateFormat(datetest, "dd");
-     var m = dateFormat(datetest, "mm");
-     var an = dateFormat(datetest, "yyyy");
-     var date = j + '/' + m +'/' + an ;
-     var datepouretp = an + m +j;
-     //var r = [0,1,2,3,4,5,6];
-     var r = [0,1,2,3];
-     var table = [];
-     var motcle = [];
-     var Excel = require('exceljs');
-     var workbook = new Excel.Workbook();
-     workbook.xlsx.readFile('tps16h.xlsx')
-       .then(function() {
-         var newworksheet = workbook.getWorksheet('Feuil5');
-         var motcle1 = newworksheet.getColumn(8);
-         var tablem = newworksheet.getColumn(7);
-           motcle1.eachCell(function(cell, rowNumber) {
-             motcle.push(cell.value);
-           });
-           tablem.eachCell(function(cell, rowNumber) {
-             table.push(cell.value);
-           });
-               async.series([
-                  function(cb){
-                    Tpstpc.selectionFactDentaire(datepouretp,cb);
-                  },
-                  function(cb){
-                    Tpstpc.selectionFactHospi(datepouretp,cb);
-                  },
-                  function(cb){
-                    Tpstpc.selectionNument(datepouretp,cb);
-                  },
-                  function(cb){
-                    Tpstpc.selectionPecHospi(datepouretp,cb);
-                  },
-
-                 ],function(err,result)
-                 {
-                         if (err){
-                           return res.view('Contentieux/erreur');
-                         }
-                         else
-                         {
-                           console.log('ok');
-                           async.forEachSeries(r, function(lot, callback_reporting_suivant) {
-                            var tab = parseFloat(result[lot]) / 7.5;
-                            console.log(tab);
-                             async.series([
-                               function(cb){
-                                 Tpstpc.ecritureEtp(tab,date,motcle,lot,cb);
-                               },
-                             ],function(erroned, lotValues){
-                               if(erroned) return res.badRequest(erroned);
-                               return callback_reporting_suivant();
-                             });
-                           },
-                             function(err)
-                             {
-                                     if (err){
-                                       return res.view('Contentieux/erreur');
-                                     }
-                                     else
-                                     {
-                                       return res.view('Tpstpc/ecritureerreur',{date : datetest});
-                                     };
-                             });
-                         };
-                 });
-               });
-           
-   },
-   accueilEcritureDate : function(req,res)
-   {
-    return res.view('Tpstpc/ecrituredate');
-   },
-   ecritureDate: function(req,res)
-   {
-    var dateFormat = require("dateformat");
-     var datetest = req.param("date",0);
-     var j = dateFormat(datetest, "dd");
-     var m = dateFormat(datetest, "mm");
-     var an = dateFormat(datetest, "yyyy");
-     var date = j + '/' + m +'/' + an ;
-     //var date = '14/06/2021';
-     //var r = [0,1,2,3,4,5,6];
-     var r = [0];
-     var table = [];
-     var motcle = [];
-     var Excel = require('exceljs');
-     var workbook = new Excel.Workbook();
-     workbook.xlsx.readFile('tps16h.xlsx')
-       .then(function() {
-         var newworksheet = workbook.getWorksheet('Feuil4');
-         var motcle1 = newworksheet.getColumn(8);
-         var tablem = newworksheet.getColumn(7);
-           motcle1.eachCell(function(cell, rowNumber) {
-             motcle.push(cell.value);
-           });
-           tablem.eachCell(function(cell, rowNumber) {
-             table.push(cell.value);
-           });
-               async.series([
-                  function(cb){
-                    Tpstpc.countErreur(table,4,cb);
-                  },
-
-                 ],function(err,result)
-                 {
-                         if (err){
-                           return res.view('Contentieux/erreur');
-                         }
-                         else
-                         {
-                           async.forEachSeries(r, function(lot, callback_reporting_suivant) {
-                            var tab = parseFloat(result[lot]);
-                            console.log(tab);
-                             async.series([
-                               function(cb){
-                                 Tpstpc.ecritureDate(tab,date,cb);
-                               },
-                             ],function(erroned, lotValues){
-                               if(erroned) return res.badRequest(erroned);
-                               return callback_reporting_suivant();
-                             });
-                           },
-                             function(err)
-                             {
-                                     if (err){
-                                       return res.view('Contentieux/erreur');
-                                     }
-                                     else
-                                     {
-                                       return res.view('Contentieux/succes');
-                                     };
-                             });
-                         };
-                 });
-               });
-           
-   },
-
-
-   ecritureErreur: function(req,res)
-   {
-    var dateFormat = require("dateformat");
-     var datetest = req.param("date",0);
-     var j = dateFormat(datetest, "dd");
-     var m = dateFormat(datetest, "mm");
-     var an = dateFormat(datetest, "yyyy");
-     var date = j + '/' + m +'/' + an ;
-     var datepouretp = an + m +j;
-     //var r = [0,1,2,3,4,5,6];
-     var r = [0];
-     var table = [];
-     var motcle = [];
-     var Excel = require('exceljs');
-     var workbook = new Excel.Workbook();
-     workbook.xlsx.readFile('tps16h.xlsx')
-       .then(function() {
-         var newworksheet = workbook.getWorksheet('Feuil4');
-         var motcle1 = newworksheet.getColumn(8);
-         var tablem = newworksheet.getColumn(7);
-           motcle1.eachCell(function(cell, rowNumber) {
-             motcle.push(cell.value);
-           });
-           tablem.eachCell(function(cell, rowNumber) {
-             table.push(cell.value);
-           });
-               async.series([
-                  function(cb){
-                    Tpstpc.countErreur(table,4,cb);
-                  },
-
-                 ],function(err,result)
-                 {
-                         if (err){
-                           return res.view('Contentieux/erreur');
-                         }
-                         else
-                         {
-                           console.log('ok');
-                           async.forEachSeries(r, function(lot, callback_reporting_suivant) {
-                            var tab = parseFloat(result[lot]);
-                            console.log(tab);
-                             async.series([
-                               function(cb){
-                                 Tpstpc.ecritureEtp2(tab,date,motcle,lot,cb);
-                               },
-                             ],function(erroned, lotValues){
-                               if(erroned) return res.badRequest(erroned);
-                               return callback_reporting_suivant();
-                             });
-                           },
-                             function(err)
-                             {
-                                     if (err){
-                                       return res.view('Contentieux/erreur');
-                                     }
-                                     else
-                                     {
-                                       return res.view('Tpstpc/ecrituredate',{date : datetest});
-                                     };
-                             });
-                         };
-                 });
-               });
-           
-   },
+  
    traitementErreurEasy: function(req,res)
    {
     var sql1= 'select chemin from chemintpssuiviproderreur;';
@@ -4199,7 +3606,923 @@
             });
            
    },
+   ecriture: function(req,res)
+   {
+     var dateFormat = require("dateformat");
+     var datetest = req.param("date",0);
+     var j = dateFormat(datetest, "dd");
+     var m = dateFormat(datetest, "mm");
+     var an = dateFormat(datetest, "yyyy");
+     var date = j + '/' + m +'/' + an ;
+     var r = [0,1];
+     var table = [];
+     var motcle = [];
+     var Excel = require('exceljs');
+     var workbook = new Excel.Workbook();
+     workbook.xlsx.readFile('tps16h.xlsx')
+       .then(function() {
+         var newworksheet = workbook.getWorksheet('Feuil1');
+         var motcle1 = newworksheet.getColumn(8);
+         var tablem = newworksheet.getColumn(7);
+           motcle1.eachCell(function(cell, rowNumber) {
+             motcle.push(cell.value);
+           });
+           tablem.eachCell(function(cell, rowNumber) {
+             table.push(cell.value);
+           });
+                 async.series([
+                   function(cb){
+                     Tpstpc.countOkKo(table,0,cb);
+                   },
+                   function(cb){
+                     Tpstpc.countOkKo(table,1,cb);
+                   },
+                 ],function(err,result)
+                 {
+                         if (err){
+                           return res.view('Tpstpc/erreur');
+                         }
+                         else
+                         {
+                           console.log('ok');
+ 
+                           async.forEachSeries(r, function(lot, callback_reporting_suivant) {
+                            var tab = result[lot];
+                             async.series([
+                               function(cb){
+                                 Tpstpc.ecriture(tab,date,motcle,lot,cb);
+                               },
+                             ],function(erroned, lotValues){
+                               if(erroned) return res.badRequest(erroned);
+                               else if(lotValues[0]=='KO'|| lotValues[1]=='KO')   
+                               {
+                                return res.view('Tpstpc/erreur');
+                               }
+                               return callback_reporting_suivant();
+                             });
+                           },
+                             function(err)
+                             {
+                                     if (err){
+                                      return res.view('Tpstpc/erreur');
+                                     }
+                                     else
+                                     {
+                                      return res.view('Tpstpc/ecriture2', {date : datetest});
+                                     };
+                             });
+                         };
+                 });
+               });
+           
+   },
+   ecriture2: function(req,res)
+   {
+     var dateFormat = require("dateformat");
+     var datetest = req.param("date",0);
+     var j = dateFormat(datetest, "dd");
+     var m = dateFormat(datetest, "mm");
+     var an = dateFormat(datetest, "yyyy");
+     var date = j + '/' + m +'/' + an ;
+     var r = [0,1];
+     var table = ["tpsfactoptique","tpsfacttiers"];
+     var motcle = ["Fact Optique","Fact Tiers"];
+     async.series([
+       function(cb){
+         Tpstpc.countOkKo(table,0,cb);
+       },
+       function(cb){
+         Tpstpc.countOkKo(table,1,cb);
+       },
+     ],function(err,result)
+     {
+             if (err){
+              return res.view('Tpstpc/erreur');
+             }
+             else
+             {
+                           console.log('ok');
+                           async.forEachSeries(r, function(lot, callback_reporting_suivant) {
+                            var tab = result[lot];
+                             async.series([
+                               function(cb){
+                                 Tpstpc.ecriture(tab,date,motcle,lot,cb);
+                               },
+                             ],function(erroned, lotValues){
+                               if(erroned) return res.badRequest(erroned);
+                               else if(lotValues[0]=='KO'|| lotValues[1]=='KO')   
+                               {
+                                return res.view('Tpstpc/erreur');
+                               }
+                               return callback_reporting_suivant();
+                             });
+                           },
+                             function(err)
+                             {
+                                     if (err){
+                                      return res.view('Tpstpc/erreur');
+                                     }
+                                     else
+                                     {
+                                      return res.view('Tpstpc/ecrituresuivant', {date : datetest});
+                                     };
+                             });
+                         };
+                 });
+   },
+   ecritureExcel: function(req,res)
+   {
+    var dateFormat = require("dateformat");
+     var datetest = req.param("date",0);
+     var j = dateFormat(datetest, "dd");
+     var m = dateFormat(datetest, "mm");
+     var an = dateFormat(datetest, "yyyy");
+     var date = j + '/' + m +'/' + an ;
+     var r = [0,1];
+     var table = [];
+     var motcle = [];
+     var Excel = require('exceljs');
+     var workbook = new Excel.Workbook();
+     workbook.xlsx.readFile('tps16h.xlsx')
+       .then(function() {
+         var newworksheet = workbook.getWorksheet('Feuil3');
+         var motcle1 = newworksheet.getColumn(8);
+         var tablem = newworksheet.getColumn(7);
+           motcle1.eachCell(function(cell, rowNumber) {
+             motcle.push(cell.value);
+           });
+           tablem.eachCell(function(cell, rowNumber) {
+             table.push(cell.value);
+           });
+                 async.series([
+                   function(cb){
+                     Tpstpc.countOkKo(table,0,cb);
+                   },
+                   function(cb){
+                     Tpstpc.countOkKo(table,1,cb);
+                   },
+                 ],function(err,result)
+                 {
+                         if (err){
+                          return res.view('Tpstpc/erreur');
+                         }
+                         else
+                         {
+                           console.log('ok');
+ 
+                           async.forEachSeries(r, function(lot, callback_reporting_suivant) {
+                            var tab = result[lot];
+                             async.series([
+                               function(cb){
+                                 Tpstpc.ecriture(tab,date,motcle,lot,cb);
+                               },
+                             ],function(erroned, lotValues){
+                               if(erroned) return res.badRequest(erroned);
+                               else if(lotValues[0]=='KO'|| lotValues[1]=='KO')   
+                               {
+                                return res.view('Tpstpc/erreur');
+                               }
+                               return callback_reporting_suivant();
+                             });
+                           },
+                             function(err)
+                             {
+                                     if (err){
+                                      return res.view('Tpstpc/erreur');
+                                     }
+                                     else
+                                     {
+                                       return res.view('Tpstpc/ecriture3',{date : datetest});
+                                     };
+                             });
+                         };
+                 });
+               });
+           
+   },
+   ecritureExcel2: function(req,res)
+   {
+    var dateFormat = require("dateformat");
+     var datetest = req.param("date",0);
+     var j = dateFormat(datetest, "dd");
+     var m = dateFormat(datetest, "mm");
+     var an = dateFormat(datetest, "yyyy");
+     var date = j + '/' + m +'/' + an ;
+     var r = [0,1];
+     var table = ["tpsfactdentaire","tpsfacthospi"];
+     var motcle = ["Fact Dentaire","Fact Hospi"];
+                 async.series([
+                   function(cb){
+                     Tpstpc.countOkKo(table,0,cb);
+                   },
+                   function(cb){
+                     Tpstpc.countOkKo(table,1,cb);
+                   },
+                 ],function(err,result)
+                 {
+                         if (err){
+                          return res.view('Tpstpc/erreur');
+                         }
+                         else
+                         {
+                           console.log('ok');
+ 
+                           async.forEachSeries(r, function(lot, callback_reporting_suivant) {
+                            var tab = result[lot];
+                             async.series([
+                               function(cb){
+                                 Tpstpc.ecriture(tab,date,motcle,lot,cb);
+                               },
+                             ],function(erroned, lotValues){
+                               if(erroned) return res.badRequest(erroned);
+                               else if(lotValues[0]=='KO'|| lotValues[1]=='KO')   
+                               {
+                                return res.view('Tpstpc/erreur');
+                               }
+                               return callback_reporting_suivant();
+                             });
+                           },
+                             function(err)
+                             {
+                                     if (err){
+                                      return res.view('Tpstpc/erreur');
+                                     }
+                                     else
+                                     {
+                                       return res.view('Tpstpc/ecrituresuivant2',{date : datetest});
+                                     };
+                             });
+                         };
+                 });
+           
+   },
+   ecriture3: function(req,res)
+   {
+     var dateFormat = require("dateformat");
+     var datetest = req.param("date",0);
+     var j = dateFormat(datetest, "dd");
+     var m = dateFormat(datetest, "mm");
+     var an = dateFormat(datetest, "yyyy");
+     var date = j + '/' + m +'/' + an ;
+     var r = [0,1];
+     var table = [];
+     var motcle = [];
+     var Excel = require('exceljs');
+     var workbook = new Excel.Workbook();
+     workbook.xlsx.readFile('tps16h.xlsx')
+       .then(function() {
+         var newworksheet = workbook.getWorksheet('Feuil4');
+         var motcle1 = newworksheet.getColumn(8);
+         var tablem = newworksheet.getColumn(7);
+           motcle1.eachCell(function(cell, rowNumber) {
+             motcle.push(cell.value);
+           });
+           tablem.eachCell(function(cell, rowNumber) {
+             table.push(cell.value);
+           });
+                 async.series([
+                   function(cb){
+                     Tpstpc.countOkKo(table,0,cb);
+                   },
+                   function(cb){
+                     Tpstpc.countOkKo(table,1,cb);
+                   },
+                 ],function(err,result)
+                 {
+                         if (err){
+                          return res.view('Tpstpc/erreur');
+                         }
+                         else
+                         {
+                           console.log('ok');
+ 
+                           async.forEachSeries(r, function(lot, callback_reporting_suivant) {
+                            var tab = result[lot];
+                             async.series([
+                               function(cb){
+                                 Tpstpc.ecriture(tab,date,motcle,lot,cb);
+                               },
+                             ],function(erroned, lotValues){
+                               if(erroned) return res.badRequest(erroned);
+                               else if(lotValues[0]=='KO'|| lotValues[1]=='KO')   
+                               {
+                                return res.view('Tpstpc/erreur');
+                               }
+                               else return callback_reporting_suivant();
+                             });
+                           },
+                             function(err,result)
+                             {
+                                     if (err){
+                                      return res.view('Tpstpc/erreur');
+                                     }
+                                     else
+                                     {
+                                      return res.view('Tpstpc/ecriture4', {date : datetest});
+                                     };
+                             });
+                         };
+                 });
+               });
+           
+   },
+   ecriture4: function(req,res)
+   {
+     var dateFormat = require("dateformat");
+     var datetest = req.param("date",0);
+     var j = dateFormat(datetest, "dd");
+     var m = dateFormat(datetest, "mm");
+     var an = dateFormat(datetest, "yyyy");
+     var date = j + '/' + m +'/' + an ;
+     var r = [0,1];
+     var table = ["tpspecaudio","tpssdm"];
+     var motcle = ["PEC Audio","SDM Nument"];
+                 async.series([
+                   function(cb){
+                     Tpstpc.countOkKo(table,0,cb);
+                   },
+                   function(cb){
+                     Tpstpc.countOkKo(table,1,cb);
+                   },
+                 ],function(err,result)
+                 {
+                         if (err){
+                          return res.view('Tpstpc/erreur');
+                         }
+                         else
+                         {
+                           console.log('ok');
+ 
+                           async.forEachSeries(r, function(lot, callback_reporting_suivant) {
+                            var tab = result[lot];
+                             async.series([
+                               function(cb){
+                                 Tpstpc.ecriture(tab,date,motcle,lot,cb);
+                               },
+                             ],function(erroned, lotValues){
+                               if(erroned) return res.badRequest(erroned);
+                               else if(lotValues[0]=='KO'|| lotValues[1]=='KO')   
+                               {
+                                return res.view('Tpstpc/erreur');
+                               }
+                               else return callback_reporting_suivant();
+                             });
+                           },
+                             function(err,result)
+                             {
+                                     if (err){
+                                      return res.view('Tpstpc/erreur');
+                                     }
+                                     else
+                                     {
+                                      return res.view('Tpstpc/ecritureetp', {date : datetest});
+                                     };
+                             });
+                         };
+                 });
+           
+   },
+   ecritureEtp: function(req,res)
+   {
+    var dateFormat = require("dateformat");
+     var datetest = req.param("date",0);
+     var j = dateFormat(datetest, "dd");
+     var m = dateFormat(datetest, "mm");
+     var an = dateFormat(datetest, "yyyy");
+     var date = j + '/' + m +'/' + an ;
+     var datepouretp = an + m +j;
+     var r = [0,1];
+     var table = [];
+     var motcle = [];
+     var Excel = require('exceljs');
+     var workbook = new Excel.Workbook();
+     workbook.xlsx.readFile('tps16h.xlsx')
+       .then(function() {
+         var newworksheet = workbook.getWorksheet('Feuil1');
+         var motcle1 = newworksheet.getColumn(8);
+         var tablem = newworksheet.getColumn(7);
+           motcle1.eachCell(function(cell, rowNumber) {
+             motcle.push(cell.value);
+           });
+           tablem.eachCell(function(cell, rowNumber) {
+             table.push(cell.value);
+           });
+               async.series([
+                   function(cb){
+                     Tpstpc.selectionSanteclair(datepouretp,cb);
+                   },
+                   function(cb){
+                    Tpstpc.selection(36139,936,1222,datepouretp,cb);
+                   },
+                 ],function(err,result)
+                 {
+                         if (err){
+                          return res.view('Tpstpc/erreur');
+                         }
+                         else
+                         {
+                         
+                           console.log('ok');
+ 
+                           async.forEachSeries(r, function(lot, callback_reporting_suivant) {
+                            var tab = parseFloat(result[lot]) / 7.5;
+                            console.log(tab);
+                             async.series([
+                               function(cb){
+                                 Tpstpc.ecritureEtp(tab,date,motcle,lot,cb);
+                               },
+                             ],function(erroned, lotValues){
+                               if(erroned) return res.badRequest(erroned);
+                               return callback_reporting_suivant();
+                             });
+                           },
+                             function(err)
+                             {
+                                     if (err){
+                                      return res.view('Tpstpc/erreur');
+                                     }
+                                     else if(lotValues[0]=='KO'|| lotValues[1]=='KO')   
+                                     {
+                                      return res.view('Tpstpc/erreur');
+                                     }
+                                     else
+                                     {
+                                       return res.view('Tpstpc/ecritureetp3',{date : datetest});
+                                     };
+                             });
+                         };
+                 });
+               });
+           
+   },
+   ecritureEtptps3: function(req,res)
+   {
+    var dateFormat = require("dateformat");
+     var datetest = req.param("date",0);
+     var j = dateFormat(datetest, "dd");
+     var m = dateFormat(datetest, "mm");
+     var an = dateFormat(datetest, "yyyy");
+     var date = j + '/' + m +'/' + an ;
+     var datepouretp = an + m +j;
+     var r = [0,1];
+     var table = ["tpsfactoptique","tpsfacttiers"];
+     var motcle = ["Fact Optique","Fact Tiers"];
+     var Excel = require('exceljs');
+     var workbook = new Excel.Workbook();
+               async.series([
+                    function(cb){
+                      Tpstpc.selectionFactOpt(datepouretp,cb);
+                    },
+                    function(cb){
+                      Tpstpc.selectionFactTiers(datepouretp,cb);
+                    },
+                 ],function(err,result)
+                 {
+                         if (err){
+                          return res.view('Tpstpc/erreur');
+                         }
+                         else
+                         {
+                         
+                           console.log('ok');
+ 
+                           async.forEachSeries(r, function(lot, callback_reporting_suivant) {
+                            var tab = parseFloat(result[lot]) / 7.5;
+                            console.log(tab);
+                             async.series([
+                               function(cb){
+                                 Tpstpc.ecritureEtp(tab,date,motcle,lot,cb);
+                               },
+                             ],function(erroned, lotValues){
+                               if(erroned) return res.badRequest(erroned);
+                               else if(lotValues[0]=='KO'|| lotValues[1]=='KO')   
+                                     {
+                                      return res.view('Tpstpc/erreur');
+                                     }
+                               return callback_reporting_suivant();
+                             });
+                           },
+                             function(err)
+                             {
+                                     if (err){
+                                      return res.view('Tpstpc/erreur');
+                                     }
+                                     else
+                                     {
+                                       return res.view('Tpstpc/ecrituresuivantetp0',{date : datetest});
+                                     };
+                             });
+                         };
+                 });
+           
+   },
+   ecritureEtp3: function(req,res)
+   {
+    var dateFormat = require("dateformat");
+     var datetest = req.param("date",0);
+     var j = dateFormat(datetest, "dd");
+     var m = dateFormat(datetest, "mm");
+     var an = dateFormat(datetest, "yyyy");
+     var date = j + '/' + m +'/' + an ;
+     var datepouretp = an + m +j;
+     var r = [0,1,2,3];
+     var table = [];
+     var motcle = [];
+     var Excel = require('exceljs');
+     var workbook = new Excel.Workbook();
+     workbook.xlsx.readFile('tps16h.xlsx')
+       .then(function() {
+         var newworksheet = workbook.getWorksheet('Feuil6');
+         var motcle1 = newworksheet.getColumn(8);
+         var tablem = newworksheet.getColumn(7);
+           motcle1.eachCell(function(cell, rowNumber) {
+             motcle.push(cell.value);
+           });
+           tablem.eachCell(function(cell, rowNumber) {
+             table.push(cell.value);
+           });
+               async.series([
+                  function(cb){
+                    Tpstpc.selectionSE(datepouretp,cb);
+                  },
+                  function(cb){
+                    Tpstpc.selection(36138,931,1205,datepouretp,cb);
+                  },
+                 ],function(err,result)
+                 {
+                         if (err){
+                           return res.view('Contentieux/erreur');
+                         }
+                         else
+                         {
+                         
+                           console.log('ok');
+ 
+                           async.forEachSeries(r, function(lot, callback_reporting_suivant) {
+                            var tab = parseFloat(result[lot]) / 7.5;
+                            console.log(tab);
+                             async.series([
+                               function(cb){
+                                 Tpstpc.ecritureEtp(tab,date,motcle,lot,cb);
+                               },
+                             ],function(erroned, lotValues){
+                               if(erroned) return res.badRequest(erroned);
+                               return callback_reporting_suivant();
+                             });
+                           },
+                             function(err)
+                             {
+                                     if (err){
+                                       return res.view('Contentieux/erreur');
+                                     }
+                                     else
+                                     {
+                                       return res.view('Tpstpc/ecritureetp4',{date : datetest});
+                                     };
+                             });
+                         };
+                 });
+               });
+           
+   },
+   ecritureEtptps3: function(req,res)
+   {
+    var dateFormat = require("dateformat");
+     var datetest = req.param("date",0);
+     var j = dateFormat(datetest, "dd");
+     var m = dateFormat(datetest, "mm");
+     var an = dateFormat(datetest, "yyyy");
+     var date = j + '/' + m +'/' + an ;
+     var datepouretp = an + m +j;
+     var r = [0,1];
+     var table = ["tpspecoptique","tpspecaudio"];
+     var motcle = ["PEC Optique","PEC Audio"];
+     var Excel = require('exceljs');
+     var workbook = new Excel.Workbook();
+               async.series([
+                function(cb){
+                  Tpstpc.selectionPecOptique(datepouretp,cb);
+                },
+                function(cb){
+                  Tpstpc.selectionPecAudio(datepouretp,cb);
+                },
+                 ],function(err,result)
+                 {
+                         if (err){
+                          return res.view('Tpstpc/erreur');
+                         }
+                         else
+                         {
+                         
+                           console.log('ok');
+ 
+                           async.forEachSeries(r, function(lot, callback_reporting_suivant) {
+                            var tab = parseFloat(result[lot]) / 7.5;
+                            console.log(tab);
+                             async.series([
+                               function(cb){
+                                 Tpstpc.ecritureEtp(tab,date,motcle,lot,cb);
+                               },
+                             ],function(erroned, lotValues){
+                               if(erroned) return res.badRequest(erroned);
+                               else if(lotValues[0]=='KO'|| lotValues[1]=='KO')   
+                                     {
+                                      return res.view('Tpstpc/erreur');
+                                     }
+                               return callback_reporting_suivant();
+                             });
+                           },
+                             function(err)
+                             {
+                                     if (err){
+                                      return res.view('Tpstpc/erreur');
+                                     }
+                                     else
+                                     {
+                                       return res.view('Tpstpc/ecrituresuivantetp',{date : datetest});
+                                     };
+                             });
+                         };
+                 });
+           
+   },
+    ecritureEtp2: function(req,res)
+   {
+    var dateFormat = require("dateformat");
+     var datetest = req.param("date",0);
+     var j = dateFormat(datetest, "dd");
+     var m = dateFormat(datetest, "mm");
+     var an = dateFormat(datetest, "yyyy");
+     var date = j + '/' + m +'/' + an ;
+     var datepouretp = an + m +j;
+     var r = [0,1];
+     var table = [];
+     var motcle = [];
+     var Excel = require('exceljs');
+     var workbook = new Excel.Workbook();
+     workbook.xlsx.readFile('tps16h.xlsx')
+       .then(function() {
+         var newworksheet = workbook.getWorksheet('Feuil5');
+         var motcle1 = newworksheet.getColumn(8);
+         var tablem = newworksheet.getColumn(7);
+           motcle1.eachCell(function(cell, rowNumber) {
+             motcle.push(cell.value);
+           });
+           tablem.eachCell(function(cell, rowNumber) {
+             table.push(cell.value);
+           });
+               async.series([
+                  function(cb){
+                    Tpstpc.selectionFactDentaire(datepouretp,cb);
+                  },
+                  function(cb){
+                    Tpstpc.selectionFactHospi(datepouretp,cb);
+                  },
+                 ],function(err,result)
+                 {
+                         if (err){
+                          return res.view('Tpstpc/erreur');
+                         }
+                         else
+                         {
+                           console.log('ok');
+                           async.forEachSeries(r, function(lot, callback_reporting_suivant) {
+                            var tab = parseFloat(result[lot]) / 7.5;
+                            console.log(tab);
+                             async.series([
+                               function(cb){
+                                 Tpstpc.ecritureEtp(tab,date,motcle,lot,cb);
+                               },
+                             ],function(erroned, lotValues){
+                               if(erroned) return res.badRequest(erroned);
+                               else if(lotValues[0]=='KO'|| lotValues[1]=='KO')   
+                               {
+                                return res.view('Tpstpc/erreur');
+                               }
+                               return callback_reporting_suivant();
+                             });
+                           },
+                             function(err)
+                             {
+                                     if (err){
+                                      return res.view('Tpstpc/erreur');
+                                     }
+                                     else
+                                     {
+                                       return res.view('Tpstpc/ecritureetp5',{date : datetest});
+                                     };
+                             });
+                         };
+                 });
+               });
+           
+   },
+   ecritureEtptps5: function(req,res)
+   {
+    var dateFormat = require("dateformat");
+     var datetest = req.param("date",0);
+     var j = dateFormat(datetest, "dd");
+     var m = dateFormat(datetest, "mm");
+     var an = dateFormat(datetest, "yyyy");
+     var date = j + '/' + m +'/' + an ;
+     var datepouretp = an + m +j;
+     var r = [0,1];
+     var table = ["tpssdm","tpspechospi"];
+     var motcle = ["SDM Nument","PEC Hospi"];
+     
+               async.series([
+                 
+                  function(cb){
+                    Tpstpc.selectionNument(datepouretp,cb);
+                  },
+                  function(cb){
+                    Tpstpc.selectionPecHospi(datepouretp,cb);
+                  },
+
+                 ],function(err,result)
+                 {
+                         if (err){
+                          return res.view('Tpstpc/erreur');
+                         }
+                         else
+                         {
+                           console.log('ok');
+                           async.forEachSeries(r, function(lot, callback_reporting_suivant) {
+                            var tab = parseFloat(result[lot]) / 7.5;
+                            console.log(tab);
+                             async.series([
+                               function(cb){
+                                 Tpstpc.ecritureEtp(tab,date,motcle,lot,cb);
+                               },
+                             ],function(erroned, lotValues){
+                               if(erroned) return res.badRequest(erroned);
+                               else if(lotValues[0]=='KO'|| lotValues[1]=='KO')   
+                               {
+                                return res.view('Tpstpc/erreur');
+                               }
+                               return callback_reporting_suivant();
+                             });
+                           },
+                             function(err)
+                             {
+                                     if (err){
+                                      return res.view('Tpstpc/erreur');
+                                     }
+                                     else
+                                     {
+                                       return res.view('Tpstpc/ecritureerreur',{date : datetest});
+                                     };
+                             });
+                         };
+                 });
+            
+           
+   },
+   ecritureErreur: function(req,res)
+   {
+    var dateFormat = require("dateformat");
+     var datetest = req.param("date",0);
+     var j = dateFormat(datetest, "dd");
+     var m = dateFormat(datetest, "mm");
+     var an = dateFormat(datetest, "yyyy");
+     var date = j + '/' + m +'/' + an ;
+     var datepouretp = an + m +j;
+     //var r = [0,1,2,3,4,5,6];
+     var r = [0];
+     var table = [];
+     var motcle = [];
+     var Excel = require('exceljs');
+     var workbook = new Excel.Workbook();
+     workbook.xlsx.readFile('tps16h.xlsx')
+       .then(function() {
+         var newworksheet = workbook.getWorksheet('Feuil4');
+         var motcle1 = newworksheet.getColumn(8);
+         var tablem = newworksheet.getColumn(7);
+           motcle1.eachCell(function(cell, rowNumber) {
+             motcle.push(cell.value);
+           });
+           tablem.eachCell(function(cell, rowNumber) {
+             table.push(cell.value);
+           });
+               async.series([
+                  function(cb){
+                    Tpstpc.countErreur(table,4,cb);
+                  },
+
+                 ],function(err,result)
+                 {
+                         if (err){
+                          return res.view('Tpstpc/erreur');
+                         }
+                         else
+                         {
+                           console.log('ok');
+                           async.forEachSeries(r, function(lot, callback_reporting_suivant) {
+                            var tab = parseFloat(result[lot]);
+                            console.log(tab);
+                             async.series([
+                               function(cb){
+                                 Tpstpc.ecritureEtp2(tab,date,motcle,lot,cb);
+                               },
+                             ],function(erroned, lotValues){
+                               if(erroned) return res.badRequest(erroned);
+                               else if(lotValues[0]=='KO'|| lotValues[1]=='KO')   
+                                     {
+                                      return res.view('Tpstpc/erreur');
+                                     }
+                               return callback_reporting_suivant();
+                             });
+                           },
+                             function(err)
+                             {
+                                     if (err){
+                                      return res.view('Tpstpc/erreur');
+                                     }
+                                     else
+                                     {
+                                       return res.view('Tpstpc/ecrituredate',{date : datetest});
+                                     };
+                             });
+                         };
+                 });
+               });
+           
+   },
   
+  
+   accueilEcritureDate : function(req,res)
+   {
+    return res.view('Tpstpc/ecrituredate');
+   },
+   ecritureDate: function(req,res)
+   {
+    var dateFormat = require("dateformat");
+     var datetest = req.param("date",0);
+     var j = dateFormat(datetest, "dd");
+     var m = dateFormat(datetest, "mm");
+     var an = dateFormat(datetest, "yyyy");
+     var date = j + '/' + m +'/' + an ;
+     //var date = '14/06/2021';
+     //var r = [0,1,2,3,4,5,6];
+     var r = [0];
+     var table = [];
+     var motcle = [];
+     var Excel = require('exceljs');
+     var workbook = new Excel.Workbook();
+     workbook.xlsx.readFile('tps16h.xlsx')
+       .then(function() {
+         var newworksheet = workbook.getWorksheet('Feuil4');
+         var motcle1 = newworksheet.getColumn(8);
+         var tablem = newworksheet.getColumn(7);
+           motcle1.eachCell(function(cell, rowNumber) {
+             motcle.push(cell.value);
+           });
+           tablem.eachCell(function(cell, rowNumber) {
+             table.push(cell.value);
+           });
+               async.series([
+                  function(cb){
+                    Tpstpc.countErreur(table,4,cb);
+                  },
+
+                 ],function(err,result)
+                 {
+                         if (err){
+                          return res.view('Tpstpc/erreur');
+                         }
+                         else
+                         {
+                           async.forEachSeries(r, function(lot, callback_reporting_suivant) {
+                            var tab = parseFloat(result[lot]);
+                            console.log(tab);
+                             async.series([
+                               function(cb){
+                                 Tpstpc.ecritureDate(tab,date,cb);
+                               },
+                             ],function(erroned, lotValues){
+                               if(erroned) return res.badRequest(erroned);
+                               else if(lotValues[0]=='KO'|| lotValues[1]=='KO')   
+                               {
+                                return res.view('Tpstpc/erreur');
+                               }
+                               return callback_reporting_suivant();
+                             });
+                           },
+                             function(err)
+                             {
+                                     if (err){
+                                      return res.view('Tpstpc/erreur');
+                                     }
+                                     else
+                                     {
+                                       return res.view('Contentieux/succes');
+                                     };
+                             });
+                         };
+                 });
+               });
+           
+   },
    accueiletp : function(req,res)
    {
      return res.view('Tpstpc/ecritureetp');
