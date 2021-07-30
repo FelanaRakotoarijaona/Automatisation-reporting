@@ -33,7 +33,6 @@ module.exports = {
       },
     ],function(err,result){
       if(err) return res.badRequest(err);
-     // console.log("Count OK ==> " + result[0]);
       console.log("Count KO ==> " + result[1]);
       var okko = {};
       okko.ok = result[0];
@@ -142,83 +141,6 @@ module.exports = {
     }
     return dt +"/"+ month +"/"+year;
   },
-  // Ecriture nb OK et nb KO
-  /*ecritureOkKo : function (nombre_ok_ko, table,date_export,callback) {
-    const Excel = require('exceljs');
-    const newWorkbook = new Excel.Workbook();
-    newWorkbook.xlsx.readFile(path_reporting)
-    .then(function(){
-
-  
-    const newworksheet = newWorkbook.getWorksheet('Janvier');
-    var colonneDate = newworksheet.getColumn('A');
-    var ligneDate1;
-    var ligneDate;
-    colonneDate.eachCell(function(cell, rowNumber) {
-      var dateExcel = ReportingExcel.convertDate(cell.text);
-      if(dateExcel==date_export)
-      {
-        ligneDate1 = parseInt(rowNumber);
-        var line = newworksheet.getRow(ligneDate1);
-        var f = line.getCell(3).value;
-        //console.log();
-        if(f == "Pack normal")
-        {
-          ligneDate = parseInt(rowNumber);
-        }
-      }
-    });
-    console.log("LIGNE DATE ===> "+ ligneDate);
-    var rowDate = newworksheet.getRow(ligneDate);
-    var numeroLigne = rowDate;
-    var iniValue = ReportingExcel.getIniValue(table);
-    
-    var a5;
-
-    var rowm = newworksheet.getRow(1);
-    var colonnne;
-    var colDate1;
-    rowm.eachCell(function(cell, colNumber) {
-      if(cell.value == 'DOCUMENTS SAISIS')
-      {
-        colDate1 = parseInt(colNumber);
-        //var col = newworksheet.getColumn(colDate1);
-        var man = newworksheet.getRow(3);
-        var f = man.getCell(colDate1).value;
-        //console.log();
-        //console.log(iniValue.ok);
-        if(f == iniValue.ok)
-        {
-          colonnne = parseInt(colNumber);
-        }
-        }
-    });
-    console.log(" Colnumber"+colonnne);
-    var collonne;
-    var colDate2;
-    rowm.eachCell(function(cell, colNumber) {
-      if(cell.value == 'DOCUMENTS TRAITES NON SAISIS (RETOURS)')
-      {
-        colDate2 = parseInt(colNumber);
-        var man = newworksheet.getRow(3);
-        var f = man.getCell(colDate2).value;
-        if(f == iniValue.ok)
-        {
-          collonne = parseInt(colNumber);
-        }
-      }
-    });
-    console.log(" Colnumber2"+collonne);
-    numeroLigne.getCell(colonnne).value = nombre_ok_ko.ok;
-    numeroLigne.getCell(collonne).value = nombre_ok_ko.ko;
-    newWorkbook.xlsx.writeFile(path_reporting);
-    sails.log("Ecriture OK KO terminé"); 
-    return callback(null, "OK");
-    })
-    console.log("Une erreur s'est produite");
-    Reportinghtp.deleteToutHtp(table,3,callback);
-
-    },*/
 //FONCTION POUR REMPLIR LE FICHIER EXCEL
  ecritureOkKo : async function (nombre_ok_ko, table,date_export,mois1,callback) {
     const Excel = require('exceljs');
@@ -233,19 +155,15 @@ module.exports = {
       var dateExcel = ReportingExcel.convertDate(cell.text);
       if(dateExcel==date_export)
       {
-        /*console.log(dateExcel);
-        console.log(date_export);*/
         ligneDate1 = parseInt(rowNumber);
         var line = newworksheet.getRow(ligneDate1);
         var f = line.getCell(3).value;
-        //console.log();
         if(f == "Pack normal")
         {
           ligneDate = parseInt(rowNumber);
         }
       }
     });
-    //console.log("LIGNE DATE ===> "+ ligneDate);
     var rowDate = newworksheet.getRow(ligneDate);
     var numeroLigne = rowDate;
     var iniValue = ReportingExcel.getIniValue(table);
@@ -259,11 +177,8 @@ module.exports = {
       if(cell.value == 'DOCUMENTS SAISIS')
       {
         colDate1 = parseInt(colNumber);
-        //var col = newworksheet.getColumn(colDate1);
         var man = newworksheet.getRow(3);
         var f = man.getCell(colDate1).value;
-        //console.log();
-        //console.log(iniValue.ok);
         if(f == iniValue.ok)
         {
           colonnne = parseInt(colNumber);
@@ -286,13 +201,6 @@ module.exports = {
       }
     });
     console.log(" Colnumber2 "+collonne);
-
-    /*var ok = parseInt(nombre_ok_ko.ok);
-    var ko = parseInt(nombre_ok_ko.ko);
-    numeroLigne.getCell(colonnne).value = ok;
-    numeroLigne.getCell(collonne).value = ko;*/
-
-
     numeroLigne.getCell(colonnne).value = nombre_ok_ko.ok;
     numeroLigne.getCell(collonne).value = nombre_ok_ko.ko;
 

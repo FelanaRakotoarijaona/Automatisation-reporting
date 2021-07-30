@@ -4,13 +4,50 @@
  * @description :: A model definition represents a database table/collection.
  * @docs        :: https://sailsjs.com/docs/concepts/models-and-orm/models
  */
- //const path_reporting = '/dev/prod/03-POLE_TPS-TPC/00-PILOTAGE/09-REPORTING ENGAGEMENT/TestReporting/TPS-TPC_Reporting-Traitement-J-SLA_V12.xlsx';
- const path_reporting = '//10.128.1.2/bpo_almerys/03-POLE_TPS-TPC/00-PILOTAGE/09-REPORTING ENGAGEMENT/TestReporting/TPS-TPC_Reporting-Traitement-J-SLA_V12.xlsx';
+ const path_reporting = '/dev/prod/03-POLE_TPS-TPC/00-PILOTAGE/09-REPORTING ENGAGEMENT/TestReporting/TPS-TPC_Reporting-Traitement-J-SLA_V12.xlsx';
+ //const path_reporting = '//10.128.1.2/bpo_almerys/03-POLE_TPS-TPC/00-PILOTAGE/09-REPORTING ENGAGEMENT/TestReporting/TPS-TPC_Reporting-Traitement-J-SLA_V12.xlsx';
  module.exports = {
 
   datastore : 'easy',
   attributes: {
   },
+  ecritureDate : async function (tab,date_export,callback) {
+    const Excel = require('exceljs');
+    const newWorkbook = new Excel.Workbook();
+    try{
+    //var path_reporting = 'D:/Reporting Engagement/TPS-TPC_Reporting-Traitement-J-SLA_V12.xlsx';
+    await newWorkbook.xlsx.readFile(path_reporting);
+    const newworksheet = newWorkbook.getWorksheet('202106_Easy');
+    var colonneDate = newworksheet.getColumn('A');
+    var ligneDate1;
+    //var date_export='14/06/2021';
+    console.log(date_export);
+    var ligne = 0;
+
+    colonneDate.eachCell(function(cell, rowNumber) {
+      var dateExcel = ReportingInovcomExport.convertDate(cell.text);
+      //console.log(dateExcel + 'date')
+      //if(rowNumber==3685)
+      //if(rowNumber>=3685 && rowNumber<=3700)
+      if(dateExcel==date_export)
+      {
+        console.log('row'+rowNumber);
+        var m = newworksheet.getRow(rowNumber);
+        m.getCell(2).value = date_export;
+      }
+    });
+    console.log(ligne);
+    await newWorkbook.xlsx.writeFile(path_reporting);
+    sails.log("Ecriture OK KO terminé"); 
+    return callback(null, "OK");
+
+    }
+    catch
+    {
+      console.log("Une erreur s'est produite");
+      return callback(null,'KO');
+    }
+    },
   importfichier: function (cheminfinal,motcle,table,nb,callback) {
    const fs = require('fs');
    var re  = 'a';
@@ -42,8 +79,8 @@
          var sql = "insert into "+tab+" (chemin) values ('"+cheminbase+"') ";
                  ReportingInovcom.getDatastore().sendNativeQuery(sql, function(err,res){
                   if (err) { 
-                    console.log(err);
-                    //return callback(err);
+                    //console.log(err);
+                    return callback(err);
                    }
                   else
                   {
@@ -56,10 +93,10 @@
    }
    else
    {
-     var sql = "insert into cheminintsisy  values ('k') ";
+     var sql = "insert into chemintsisy  values ('k') ";
      ReportingInovcom.getDatastore().sendNativeQuery(sql, function(err,res){
       if (err) { 
-        console.log("Une erreur ve? import 1");
+        console.log(err);
        }
       else
       {
@@ -72,7 +109,8 @@
   selection: function (identifiant,identifiant1,identifiant2,date,callback) {
     //var nbr = parseInt(nb);
     console.log(date);
-    var sql = "select DISTINCT SUM(DATE_PART('epoch', to_timestamp(p_ldt.date_fin_ldt||' '||p_ldt.h_fin, 'YYYYMMDD HH24:MI:SS') -  to_timestamp(p_ldt.date_deb_ldt||' '||p_ldt.h_deb, 'YYYYMMDD HH24:MI:SS') ))/3600 as duree  from p_ldt LEFT join almerys_lien_ss_spe ON p_ldt.id_ldt= almerys_lien_ss_spe.id_ldt where p_ldt.id_lotclient = "+identifiant+"  AND almerys_lien_ss_spe.id_alm_ss_spe="+identifiant1+"  AND almerys_lien_ss_spe.id_lien_ss_spe2="+identifiant2+"   AND date_deb_ldt = '"+date+"' AND id_type_ldt = 0 group by almerys_lien_ss_spe.id_almerys ";
+    var sql = " select DISTINCT SUM(DATE_PART('epoch', to_timestamp(p_ldt.date_fin_ldt||' '||p_ldt.h_fin, 'YYYYMMDD HH24:MI:SS') -  to_timestamp(p_ldt.date_deb_ldt||' '||p_ldt.h_deb, 'YYYYMMDD HH24:MI:SS') ))/3600 as duree,  p_ldt.id_pers from p_ldt LEFT join almerys_lien_ss_spe ON p_ldt.id_ldt= almerys_lien_ss_spe.id_ldt where p_ldt.id_lotclient = "+identifiant+"  AND almerys_lien_ss_spe.id_alm_ss_spe="+identifiant1+" AND almerys_lien_ss_spe.id_lien_ss_spe2="+identifiant2+" AND date_deb_ldt = '"+date+"' AND id_type_ldt=0 group by almerys_lien_ss_spe.id_almerys,p_ldt.id_pers order by p_ldt.id_pers";
+    //var sql = "select DISTINCT SUM(DATE_PART('epoch', to_timestamp(p_ldt.date_fin_ldt||' '||p_ldt.h_fin, 'YYYYMMDD HH24:MI:SS') -  to_timestamp(p_ldt.date_deb_ldt||' '||p_ldt.h_deb, 'YYYYMMDD HH24:MI:SS') ))/3600 as duree  from p_ldt LEFT join almerys_lien_ss_spe ON p_ldt.id_ldt= almerys_lien_ss_spe.id_ldt where p_ldt.id_lotclient = "+identifiant+"  AND almerys_lien_ss_spe.id_alm_ss_spe="+identifiant1+"  AND almerys_lien_ss_spe.id_lien_ss_spe2="+identifiant2+"   AND date_deb_ldt = '"+date+"' AND id_type_ldt = 0 group by almerys_lien_ss_spe.id_almerys ";
     Tpstpc.getDatastore().sendNativeQuery(sql, function(err, res){
       if (err) { 
         console.log(err);
@@ -85,9 +123,12 @@
         result = res.rows;
         /*console.log(result[0].duree);
         console.log(result.length);*/
+        var f = 0.00;
         for(var i=0;i<result.length;i++)
         {
-          somme= somme + parseFloat(result[i].duree);
+          var m = parseFloat(result[i].duree);
+          f = m.toFixed(2);
+          somme= somme + parseFloat(f);
         }
         console.log(somme);
         return callback(null,somme);
@@ -97,7 +138,7 @@
   selectionSanteclair : function (date,callback) {
     //var nbr = parseInt(nb);
     console.log(date);
-    var sql = "select DISTINCT SUM(DATE_PART('epoch', to_timestamp(p_ldt.date_fin_ldt||' '||p_ldt.h_fin, 'YYYYMMDD HH24:MI:SS') -  to_timestamp(p_ldt.date_deb_ldt||' '||p_ldt.h_deb, 'YYYYMMDD HH24:MI:SS') ))/3600 as duree, SUM(CASE WHEN quantite~E'^\\d+$' THEN quantite::integer ELSE 0 END) as qte,  p_ldt.id_pers   from p_ldt LEFT join almerys_lien_ss_spe ON p_ldt.id_ldt= almerys_lien_ss_spe.id_ldt where p_ldt.id_lotclient = 36137  AND almerys_lien_ss_spe.id_alm_ss_spe=929  AND date_deb_ldt = '"+date+"' AND id_type_ldt = 0 group by almerys_lien_ss_spe.id_almerys,p_ldt.id_pers ";
+    var sql = "select DISTINCT SUM(DATE_PART('epoch', to_timestamp(p_ldt.date_fin_ldt||' '||p_ldt.h_fin, 'YYYYMMDD HH24:MI:SS') -  to_timestamp(p_ldt.date_deb_ldt||' '||p_ldt.h_deb, 'YYYYMMDD HH24:MI:SS') ))/3600 as duree,  p_ldt.id_pers from p_ldt LEFT join almerys_lien_ss_spe ON p_ldt.id_ldt= almerys_lien_ss_spe.id_ldt where p_ldt.id_lotclient = 36137  AND almerys_lien_ss_spe.id_alm_ss_spe=929  AND almerys_lien_ss_spe.id_lien_ss_spe2=1199  AND date_deb_ldt = '"+date+"' AND id_type_ldt=0 group by almerys_lien_ss_spe.id_almerys,p_ldt.id_pers order by p_ldt.id_pers ";
     Tpstpc.getDatastore().sendNativeQuery(sql, function(err, res){
       if (err) { 
         console.log(err);
@@ -110,9 +151,264 @@
         result = res.rows;
         /*console.log(result[0].duree);
         console.log(result.length);*/
-       for(var i=0;i<result.length;i++)
+        var f = 0.00;
+        for(var i=0;i<result.length;i++)
         {
-          somme= somme + parseFloat(result[i].duree);
+          var m = parseFloat(result[i].duree);
+          f = m.toFixed(2);
+          somme= somme + parseFloat(f);
+        }
+        console.log(somme);
+        return callback(null,somme);
+      };
+      });
+  },
+  selectionFactTiers : function (date,callback) {
+    //var nbr = parseInt(nb);
+    console.log(date);
+    var sql = "select DISTINCT SUM(DATE_PART('epoch', to_timestamp(p_ldt.date_fin_ldt||' '||p_ldt.h_fin, 'YYYYMMDD HH24:MI:SS') -  to_timestamp(p_ldt.date_deb_ldt||' '||p_ldt.h_deb, 'YYYYMMDD HH24:MI:SS') ))/3600 as duree,  p_ldt.id_pers from p_ldt LEFT join almerys_lien_ss_spe ON p_ldt.id_ldt= almerys_lien_ss_spe.id_ldt where p_ldt.id_lotclient = 36140  AND (almerys_lien_ss_spe.id_alm_ss_spe=939 OR almerys_lien_ss_spe.id_alm_ss_spe=941)  AND (almerys_lien_ss_spe.id_lien_ss_spe2=1229 OR almerys_lien_ss_spe.id_lien_ss_spe2=1232) AND date_deb_ldt = '"+date+"' AND id_type_ldt=0 group by almerys_lien_ss_spe.id_almerys,p_ldt.id_pers order by p_ldt.id_pers";
+    Tpstpc.getDatastore().sendNativeQuery(sql, function(err, res){
+      if (err) { 
+        console.log(err);
+        //return callback(err);
+       }
+      else
+      {
+        var somme = 0;
+        console.log(sql);
+        result = res.rows;
+        /*console.log(result[0].duree);
+        console.log(result.length);*/
+        var f = 0.00;
+        for(var i=0;i<result.length;i++)
+        {
+          var m = parseFloat(result[i].duree);
+          f = m.toFixed(2);
+          somme= somme + parseFloat(f);
+        }
+        console.log(somme);
+        return callback(null,somme);
+      };
+      });
+  },
+  selectionSE : function (date,callback) {
+    //var nbr = parseInt(nb);
+    console.log(date);
+    var sql = " select DISTINCT SUM(DATE_PART('epoch', to_timestamp(p_ldt.date_fin_ldt||' '||p_ldt.h_fin, 'YYYYMMDD HH24:MI:SS') -  to_timestamp(p_ldt.date_deb_ldt||' '||p_ldt.h_deb, 'YYYYMMDD HH24:MI:SS') ))/3600 as duree,  p_ldt.id_pers from p_ldt LEFT join almerys_lien_ss_spe ON p_ldt.id_ldt= almerys_lien_ss_spe.id_ldt where p_ldt.id_lotclient = 36141  AND (almerys_lien_ss_spe.id_alm_ss_spe=942 OR almerys_lien_ss_spe.id_alm_ss_spe=945)  AND (almerys_lien_ss_spe.id_lien_ss_spe2=1236 OR almerys_lien_ss_spe.id_lien_ss_spe2=1235 OR almerys_lien_ss_spe.id_lien_ss_spe2=1240) AND date_deb_ldt = '"+date+"' AND id_type_ldt=0 group by almerys_lien_ss_spe.id_almerys,p_ldt.id_pers order by p_ldt.id_pers ";
+    Tpstpc.getDatastore().sendNativeQuery(sql, function(err, res){
+      if (err) { 
+        console.log(err);
+        //return callback(err);
+       }
+      else
+      {
+        var somme = 0;
+        console.log(sql);
+        result = res.rows;
+        /*console.log(result[0].duree);
+        console.log(result.length);*/
+        var f = 0.00;
+        for(var i=0;i<result.length;i++)
+        {
+          var m = parseFloat(result[i].duree);
+          f = m.toFixed(2);
+          somme= somme + parseFloat(f);
+        }
+        console.log(somme);
+        return callback(null,somme);
+      };
+      });
+  },
+  selectionFactDentaire : function (date,callback) {
+    //var nbr = parseInt(nb);
+    console.log(date);
+    var sql = "select DISTINCT SUM(DATE_PART('epoch', to_timestamp(p_ldt.date_fin_ldt||' '||p_ldt.h_fin, 'YYYYMMDD HH24:MI:SS') -  to_timestamp(p_ldt.date_deb_ldt||' '||p_ldt.h_deb, 'YYYYMMDD HH24:MI:SS') ))/3600 as duree, p_ldt.id_pers from p_ldt LEFT join almerys_lien_ss_spe ON p_ldt.id_ldt= almerys_lien_ss_spe.id_ldt where p_ldt.id_lotclient = 36139  AND (almerys_lien_ss_spe.id_alm_ss_spe=935 OR almerys_lien_ss_spe.id_alm_ss_spe=938)  AND (almerys_lien_ss_spe.id_lien_ss_spe2=1219 OR almerys_lien_ss_spe.id_lien_ss_spe2=1225) AND date_deb_ldt = '"+date+"' AND id_type_ldt=0 group by almerys_lien_ss_spe.id_almerys,p_ldt.id_pers order by p_ldt.id_pers";
+    Tpstpc.getDatastore().sendNativeQuery(sql, function(err, res){
+      if (err) { 
+        console.log(err);
+        //return callback(err);
+       }
+      else
+      {
+        var somme = 0;
+        console.log(sql);
+        result = res.rows;
+        /*console.log(result[0].duree);
+        console.log(result.length);*/
+        var f = 0.00;
+        for(var i=0;i<result.length;i++)
+        {
+          var m = parseFloat(result[i].duree);
+          f = m.toFixed(2);
+          somme= somme + parseFloat(f);
+        }
+        console.log(somme);
+        return callback(null,somme);
+      };
+      });
+  },
+  selectionFactHospi : function (date,callback) {
+    //var nbr = parseInt(nb);
+    console.log(date);
+    var sql = "select DISTINCT SUM(DATE_PART('epoch', to_timestamp(p_ldt.date_fin_ldt||' '||p_ldt.h_fin, 'YYYYMMDD HH24:MI:SS') -  to_timestamp(p_ldt.date_deb_ldt||' '||p_ldt.h_deb, 'YYYYMMDD HH24:MI:SS') ))/3600 as duree,  p_ldt.id_pers from p_ldt LEFT join almerys_lien_ss_spe ON p_ldt.id_ldt= almerys_lien_ss_spe.id_ldt where p_ldt.id_lotclient = 36142  AND (almerys_lien_ss_spe.id_alm_ss_spe=946 OR almerys_lien_ss_spe.id_alm_ss_spe=950)  AND (almerys_lien_ss_spe.id_lien_ss_spe2=1244 OR almerys_lien_ss_spe.id_lien_ss_spe2=1243 OR almerys_lien_ss_spe.id_lien_ss_spe2=1251)  AND date_deb_ldt = '"+date+"' AND id_type_ldt=0 group by almerys_lien_ss_spe.id_almerys,p_ldt.id_pers order by p_ldt.id_pers";
+    Tpstpc.getDatastore().sendNativeQuery(sql, function(err, res){
+      if (err) { 
+        console.log(err);
+        //return callback(err);
+       }
+      else
+      {
+        var somme = 0;
+        console.log(sql);
+        result = res.rows;
+        /*console.log(result[0].duree);
+        console.log(result.length);*/
+        var f = 0.00;
+        for(var i=0;i<result.length;i++)
+        {
+          var m = parseFloat(result[i].duree);
+          f = m.toFixed(2);
+          somme= somme + parseFloat(f);
+        }
+        console.log(somme);
+        return callback(null,somme);
+      };
+      });
+  },
+  selectionNument : function (date,callback) {
+    //var nbr = parseInt(nb);
+    console.log(date);
+    var sql = "select DISTINCT SUM(DATE_PART('epoch', to_timestamp(p_ldt.date_fin_ldt||' '||p_ldt.h_fin, 'YYYYMMDD HH24:MI:SS') -  to_timestamp(p_ldt.date_deb_ldt||' '||p_ldt.h_deb, 'YYYYMMDD HH24:MI:SS') ))/3600 as duree,    p_ldt.id_pers from p_ldt LEFT join almerys_lien_ss_spe ON p_ldt.id_ldt= almerys_lien_ss_spe.id_ldt where p_ldt.id_lotclient = 36141  AND almerys_lien_ss_spe.id_alm_ss_spe=954  AND almerys_lien_ss_spe.id_lien_ss_spe2=1269  AND date_deb_ldt = '"+date+"' AND id_type_ldt=0 group by almerys_lien_ss_spe.id_almerys,p_ldt.id_pers order by p_ldt.id_pers";
+    Tpstpc.getDatastore().sendNativeQuery(sql, function(err, res){
+      if (err) { 
+        console.log(err);
+        //return callback(err);
+       }
+      else
+      {
+        var somme = 0;
+        console.log(sql);
+        result = res.rows;
+        /*console.log(result[0].duree);
+        console.log(result.length);*/
+        var f = 0.00;
+        for(var i=0;i<result.length;i++)
+        {
+          var m = parseFloat(result[i].duree);
+          f = m.toFixed(2);
+          somme= somme + parseFloat(f);
+        }
+        console.log(somme);
+        return callback(null,somme);
+      };
+      });
+  },
+  selectionFactOpt : function (date,callback) {
+    //var nbr = parseInt(nb);
+    console.log(date);
+    var sql = "select DISTINCT SUM(DATE_PART('epoch', to_timestamp(p_ldt.date_fin_ldt||' '||p_ldt.h_fin, 'YYYYMMDD HH24:MI:SS') -  to_timestamp(p_ldt.date_deb_ldt||' '||p_ldt.h_deb, 'YYYYMMDD HH24:MI:SS') ))/3600 as duree,    p_ldt.id_pers from p_ldt LEFT join almerys_lien_ss_spe ON p_ldt.id_ldt= almerys_lien_ss_spe.id_ldt where p_ldt.id_lotclient = 36137  AND almerys_lien_ss_spe.id_alm_ss_spe=925  AND almerys_lien_ss_spe.id_lien_ss_spe2=1189  AND date_deb_ldt = '"+date+"' AND id_type_ldt=0 group by almerys_lien_ss_spe.id_almerys,p_ldt.id_pers order by p_ldt.id_pers";
+    Tpstpc.getDatastore().sendNativeQuery(sql, function(err, res){
+      if (err) { 
+        console.log(err);
+        //return callback(err);
+       }
+      else
+      {
+        var somme = 0;
+        console.log(sql);
+        result = res.rows;
+        /*console.log(result[0].duree);
+        console.log(result.length);*/
+        var f = 0.00;
+        for(var i=0;i<result.length;i++)
+        {
+          var m = parseFloat(result[i].duree);
+          f = m.toFixed(2);
+          somme= somme + parseFloat(f);
+        }
+        console.log(somme);
+        return callback(null,somme);
+      };
+      });
+  },
+  selectionPecOptique : function (date,callback) {
+    //var nbr = parseInt(nb);
+    console.log(date);
+    var sql = "select DISTINCT SUM(DATE_PART('epoch', to_timestamp(p_ldt.date_fin_ldt||' '||p_ldt.h_fin, 'YYYYMMDD HH24:MI:SS') -  to_timestamp(p_ldt.date_deb_ldt||' '||p_ldt.h_deb, 'YYYYMMDD HH24:MI:SS') ))/3600 as duree,    p_ldt.id_pers from p_ldt LEFT join almerys_lien_ss_spe ON p_ldt.id_ldt= almerys_lien_ss_spe.id_ldt where p_ldt.id_lotclient = 36137  AND almerys_lien_ss_spe.id_alm_ss_spe=926  AND almerys_lien_ss_spe.id_lien_ss_spe2=1194  AND date_deb_ldt = '"+date+"' AND id_type_ldt=0 group by almerys_lien_ss_spe.id_almerys,p_ldt.id_pers order by p_ldt.id_pers";
+    Tpstpc.getDatastore().sendNativeQuery(sql, function(err, res){
+      if (err) { 
+        console.log(err);
+        //return callback(err);
+       }
+      else
+      {
+        var somme = 0;
+        console.log(sql);
+        result = res.rows;
+        /*console.log(result[0].duree);
+        console.log(result.length);*/
+        var f = 0.00;
+        for(var i=0;i<result.length;i++)
+        {
+          var m = parseFloat(result[i].duree);
+          f = m.toFixed(2);
+          somme= somme + parseFloat(f);
+        }
+        console.log(somme);
+        return callback(null,somme);
+      };
+      });
+  },
+  selectionPecAudio : function (date,callback) {
+    //var nbr = parseInt(nb);
+    console.log(date);
+    var sql = "select DISTINCT SUM(DATE_PART('epoch', to_timestamp(p_ldt.date_fin_ldt||' '||p_ldt.h_fin, 'YYYYMMDD HH24:MI:SS') -  to_timestamp(p_ldt.date_deb_ldt||' '||p_ldt.h_deb, 'YYYYMMDD HH24:MI:SS') ))/3600 as duree,    p_ldt.id_pers from p_ldt LEFT join almerys_lien_ss_spe ON p_ldt.id_ldt= almerys_lien_ss_spe.id_ldt where p_ldt.id_lotclient = 36138  AND almerys_lien_ss_spe.id_alm_ss_spe=932  AND almerys_lien_ss_spe.id_lien_ss_spe2=1208  AND date_deb_ldt = '"+date+"' AND id_type_ldt=0 group by almerys_lien_ss_spe.id_almerys,p_ldt.id_pers order by p_ldt.id_pers";
+    Tpstpc.getDatastore().sendNativeQuery(sql, function(err, res){
+      if (err) { 
+        console.log(err);
+        //return callback(err);
+       }
+      else
+      {
+        var somme = 0;
+        console.log(sql);
+        result = res.rows;
+        /*console.log(result[0].duree);
+        console.log(result.length);*/
+        var f = 0.00;
+        for(var i=0;i<result.length;i++)
+        {
+          var m = parseFloat(result[i].duree);
+          f = m.toFixed(2);
+          somme= somme + parseFloat(f);
+        }
+        console.log(somme);
+        return callback(null,somme);
+      };
+      });
+  },
+  selectionPecHospi : function (date,callback) {
+    //var nbr = parseInt(nb);
+    console.log(date);
+    var sql = "select DISTINCT SUM(DATE_PART('epoch', to_timestamp(p_ldt.date_fin_ldt||' '||p_ldt.h_fin, 'YYYYMMDD HH24:MI:SS') -  to_timestamp(p_ldt.date_deb_ldt||' '||p_ldt.h_deb, 'YYYYMMDD HH24:MI:SS') ))/3600 as duree,    p_ldt.id_pers from p_ldt LEFT join almerys_lien_ss_spe ON p_ldt.id_ldt= almerys_lien_ss_spe.id_ldt where p_ldt.id_lotclient = 36142  AND almerys_lien_ss_spe.id_alm_ss_spe=949  AND almerys_lien_ss_spe.id_lien_ss_spe2=1248  AND date_deb_ldt = '"+date+"' AND id_type_ldt=0 group by almerys_lien_ss_spe.id_almerys,p_ldt.id_pers order by p_ldt.id_pers";
+    Tpstpc.getDatastore().sendNativeQuery(sql, function(err, res){
+      if (err) { 
+        console.log(err);
+        //return callback(err);
+       }
+      else
+      {
+        var somme = 0;
+        console.log(sql);
+        result = res.rows;
+        /*console.log(result[0].duree);
+        console.log(result.length);*/
+        var f = 0.00;
+        for(var i=0;i<result.length;i++)
+        {
+          var m = parseFloat(result[i].duree);
+          f = m.toFixed(2);
+          somme= somme + parseFloat(f);
         }
         console.log(somme);
         return callback(null,somme);
@@ -158,6 +454,7 @@
       const newWorkbook = new Excel.Workbook();
       try{
       //var path_reporting = 'D:/Reporting Engagement/TPS-TPC_Reporting-Traitement-J-SLA_V12.xlsx';
+      console.log(path_reporting);
       await newWorkbook.xlsx.readFile(path_reporting);
       const newworksheet = newWorkbook.getWorksheet('202106_Easy');
       var colonneDate = newworksheet.getColumn('A');
@@ -183,7 +480,6 @@
         }
       });
       console.log(ligne);
-      
       var m = newworksheet.getRow(ligne);
      //m.getCell(5).value = tab[0].tt16h;
       m.getCell(6).value = parseFloat(tab[0].tt16h);
@@ -204,7 +500,8 @@
       catch
       {
         console.log("Une erreur s'est produite");
-        Reportinghtp.deleteToutHtp(tab,3,callback);
+        return callback(null,'KO');
+        //Reportinghtp.deleteToutHtp(tab,3,callback);
       }
       },
 
@@ -252,7 +549,7 @@
         catch
         {
           console.log("Une erreur s'est produite");
-          Reportinghtp.deleteToutHtp(tab,3,callback);
+          return callback(null,'KO');
         }
         },
 
@@ -301,7 +598,7 @@
             catch
             {
               console.log("Une erreur s'est produite");
-              Reportinghtp.deleteToutHtp(tab,3,callback);
+              return callback(null,'KO');
             }
         
          
@@ -1713,7 +2010,6 @@
       const sheet = workbook.Sheets[workbook.SheetNames[1]];
       var range = XLSX.utils.decode_range(sheet['!ref']);
       var somme = 0;
-      
       if(jour=='Tuesday')
       {
         console.log('Tuesday');
@@ -1849,9 +2145,139 @@
                         }
                        
                                             });
-                                          }
+      }
+     else if(jour=='Monday')
+     {
+      console.log('Monday');
+      for(var ra=0;ra<=range.e.r;ra++)
+      {
+        //nature de tache
+        var address_of_cell = {c:2, r:ra};
+        var cell_ref = XLSX.utils.encode_cell(address_of_cell);
+        var desired_cell = sheet[cell_ref];
+        var desired_value = (desired_cell ? desired_cell.v : undefined);
+
+        // identification de la tache : le isaina
+        var address_of_cell1 = {c:7, r:ra};
+        var cell_ref1 = XLSX.utils.encode_cell(address_of_cell1);
+        var desired_cell1 = sheet[cell_ref1];
+        var desired_value1 = (desired_cell1 ? desired_cell1.v : undefined);
+
+        //etat de la tache
+        var address_of_cell2 = {c:0, r:ra};
+        var cell_ref2 = XLSX.utils.encode_cell(address_of_cell2);
+        var desired_cell2 = sheet[cell_ref2];
+        var desired_value2 = (desired_cell2 ? desired_cell2.v : undefined);
+        var b2 = "ETAT1";
+        var b3= "ETAT4";
+        const regex2 = new RegExp(b2,'i');
+        const regex3 = new RegExp(b3,'i');
+
+        //etat facture any amle undefined
+        var address_of_cell4 = {c:10, r:ra};
+        var cell_ref4 = XLSX.utils.encode_cell(address_of_cell4);
+        var desired_cell4 = sheet[cell_ref4];
+        var desired_value4 = (desired_cell4 ? desired_cell4.v : undefined);
+
+        //date de maturit5
+        var address_of_cell5 = {c:5, r:ra};
+        var cell_ref5 = XLSX.utils.encode_cell(address_of_cell5);
+        var desired_cell5 = sheet[cell_ref5];
+        var desired_value5 = (desired_cell5 ? desired_cell5.v : undefined);
+
+        if(regex2.test(desired_value2) || regex3.test(desired_value2) )
+        {
+          if(desired_value4!=undefined)
+          {
+            var j = 1;
+          }
           else
           {
+            var b = traitement[nb];
+            const regex = new RegExp(b,'i');
+            var conv = parseInt(date);
+            var j1 = conv - 3;
+            if(regex.test(desired_value) && desired_value5==j1 )
+            {
+            
+              var c = motcle1[nb];
+              var c1 = motcle2[nb];
+              var c2 = motcle3[nb];
+              var c5 = ast[nb];
+              const regex21 = new RegExp(c1,'i');
+              const regex31 = new RegExp(c2,'i');
+              const regex1 = new RegExp(c,'i');
+              const regex41 = new RegExp(c5,'i');
+          
+              if(motcle4[nb]=='a')
+              {
+                if(regex1.test(desired_value) || regex21.test(desired_value) || regex31.test(desired_value) || regex41.test(desired_value)) 
+                {
+                  var a = '1';
+                }
+                else
+                {
+                  if(desired_value1!=undefined)
+                  {
+                    somme=somme+1;
+                  }
+                  else
+                  {
+                    var p = 0;
+                  }
+                
+                };
+              }
+              else if(motcle4[nb]=='b')
+              {
+                somme=somme+1;
+              }
+              else
+              {
+                var c4 = motcle4[nb];
+                const regex4 = new RegExp(c4,'i');
+                if(regex1.test(desired_value) || regex21.test(desired_value) || regex31.test(desired_value) || regex4.test(desired_value) || regex41.test(desired_value)) 
+                {
+                  var a = '1';
+                }
+                else
+                {
+                  if(desired_value1!=undefined)
+                  {
+                    somme=somme+1;
+                  }
+                  else
+                  {
+                    var p = 0;
+                  }
+                
+                };
+              }
+            }
+          }
+        }
+          else
+          {
+            var r= 'a';
+          }
+          }
+          console.log(somme);
+          var sql = "insert into "+table[nb]+" (bonj1) values ("+somme+") ";
+                    Reportinghtp.getDatastore().sendNativeQuery(sql, function(err,res){
+                      if (err) { 
+                        console.log(err);
+                        //return callback(err); 
+                      }
+                      else
+                      {
+                        console.log(sql);
+                        return callback(null, true);
+                      }
+                    
+                                          });
+     }
+     else
+      {
               console.log('hafa');
               for(var ra=0;ra<=range.e.r;ra++)
               {
@@ -1979,7 +2405,7 @@
                               }
                             
                                                   });
-                                                }
+      }
           
     }
     catch
