@@ -500,7 +500,7 @@
       catch
       {
         console.log("Une erreur s'est produite");
-        return callback(err);
+        return callback(null,'KO');
         //Reportinghtp.deleteToutHtp(tab,3,callback);
       }
       },

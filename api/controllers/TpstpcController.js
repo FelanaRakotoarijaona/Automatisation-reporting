@@ -3623,14 +3623,17 @@
                                return callback_reporting_suivant();
                              });
                            },
-                             function(err)
+                             function(err,result)
                              {
                                      if (err){
+                                       console.log('res0' + result[0]+result[1]);
+                                       if(result[0]=='KO' || result[1]=='KO')
                                        return res.view('Contentieux/erreur');
                                      }
                                      else
                                      {
-                                       return res.view('Tpstpc/ecritureetp', {date : datetest});
+                                      console.log('res0' + result[0]);
+                                      return res.view('Tpstpc/ecritureetp', {date : datetest});
                                      };
                              });
                          };
