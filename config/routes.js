@@ -93,24 +93,45 @@ module.exports.routes = {
 
    '/accueilTacheTraiteJ2' : 'TpstpcController.accueilTacheTraiteJ2',
    '/traitementTacheTraiteJ2' : 'TpstpcController.traitementTacheTraiteJ2',
+   '/traitementTacheTraiteJ22' : 'TpstpcController.traitementTacheTraiteJ22',
+   '/traitementTacheTraiteJ23' : 'TpstpcController.traitementTacheTraiteJ23',
+   '/traitementTacheTraiteJ24' : 'TpstpcController.traitementTacheTraiteJ24',
 
    '/accueilTacheTraiteJ5' : 'TpstpcController.accueilTacheTraiteJ5',
    '/traitementTacheTraiteJ5' : 'TpstpcController.traitementTacheTraiteJ5',
+   '/traitementTacheTraiteJ52' : 'TpstpcController.traitementTacheTraiteJ52',
+   '/traitementTacheTraiteJ53' : 'TpstpcController.traitementTacheTraiteJ53',
+   '/traitementTacheTraiteJ54' : 'TpstpcController.traitementTacheTraiteJ54',
 
    '/accueilstock16h' : 'TpstpcController.accueilstock16h',
    '/traitementstock16h' : 'TpstpcController.traitementStock16h',
+   '/traitementstock16h2' : 'TpstpcController.traitementStock16h2',
+   '/traitementstock16h3' : 'TpstpcController.traitementStock16h3',
+   '/traitementstock16h4' : 'TpstpcController.traitementStock16h4',
 
    '/accueilstockbonj' : 'TpstpcController.accueilstockbonj',
    '/traitementstockbonj' : 'TpstpcController.traitementstockbonj',
+   '/traitementstockbonj1' : 'TpstpcController.traitementstockbonj1',
+   '/traitementstockbonj2' : 'TpstpcController.traitementstockbonj2',
+   '/traitementstockbonj3' : 'TpstpcController.traitementstockbonj3',
   
    '/accueilstockJ1' : 'TpstpcController.accueilstockJ1',
    '/traitementBonJ1' : 'TpstpcController.traitementBonJ1',
+   '/traitementBonJ12' : 'TpstpcController.traitementBonJ12',
+   '/traitementBonJ13' : 'TpstpcController.traitementBonJ13',
+   '/traitementBonJ14' : 'TpstpcController.traitementBonJ14',
 
    '/accueilstockJ2' : 'TpstpcController.accueilstockJ2',
    '/traitementBonJ2' : 'TpstpcController.traitementBonJ2',
+   '/traitementBonJ22' : 'TpstpcController.traitementBonJ22',
+   '/traitementBonJ23' : 'TpstpcController.traitementBonJ23',
+   '/traitementBonJ24' : 'TpstpcController.traitementBonJ24',
 
    '/accueilstockJ5' : 'TpstpcController.accueilstockJ5',
    '/traitementBonJ5' : 'TpstpcController.traitementBonJ5',
+   '/traitementBonJ52' : 'TpstpcController.traitementBonJ52',
+   '/traitementBonJ53' : 'TpstpcController.traitementBonJ53',
+   '/traitementBonJ54' : 'TpstpcController.traitementBonJ54',
 
    '/accueilsanteclair' : 'TpstpcController.accueil4',
    '/traitementSanteclair' : 'TpstpcController.traitementSanteclair',
