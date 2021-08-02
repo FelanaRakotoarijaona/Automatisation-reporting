@@ -1778,7 +1778,7 @@ copieEtp5 : function(req,res){
                       }
                       else
                       {
-                        return res.view('TpsGrs/accueiltachetraite23',{date : datetest});
+                        return res.view('TpsGrs/accueiltachetraiteJ23',{date : datetest});
                       };
               });
           });
