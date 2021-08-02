@@ -4043,7 +4043,7 @@
                });
            
    },
-   ecritureEtp3: function(req,res)
+   ecritureEtptps3: function(req,res)
    {
     var dateFormat = require("dateformat");
      var datetest = req.param("date",0);
