@@ -186,7 +186,7 @@ module.exports.routes = {
    '/traitementfinal' :'TpstpcController.ecriture3',
    '/ecritureetp2' : 'TpstpcController.ecritureEtp2',
    '/ecritureetp3' : 'TpstpcController.ecritureEtp3',
-
+   
    '/ecritureetptps3' : 'TpstpcController.ecritureEtptps3',
    '/ecritureetptps4' : 'TpstpcController.ecritureEtptps4',
    '/ecritureetptps5' : 'TpstpcController.ecritureEtptps5',
