@@ -399,7 +399,7 @@ copieEtp3 : function(req,res){
     'factse',
     'facttiers',
   ];
-  var r = [0,1,2];
+  var r = [3,4,5];
   async.forEachSeries(r, function(lot, callback_reporting_suivant) {
       async.series([
         function(cb){
@@ -496,7 +496,6 @@ copieEtp5 : function(req,res){
     var date = dateFormat(datetest, "shortDate");
     console.log('daty'+ date);
     var trameflux= '/dev/prod/03-POLE_TPS-TPC/00-PILOTAGE/09-REPORTING ENGAGEMENT/GRS_Reporting-Traitement-J-SLA.xlsb';
-    //var trameflux= '/dev/prod/03-POLE_TPS-TPC/00-PILOTAGE/09-REPORTING ENGAGEMENT/GRS_Reporting-Traitement-J-SLA.xlsb';
     var nomColonne = [
         'factdentaire',
         'facthospi',
@@ -543,8 +542,6 @@ copieEtp5 : function(req,res){
          console.log('nc1'+nc1[0].chemin);
          console.log('nc1'+nc1[1].chemin);
          var chemintpssuiviprod16h =nc1[0].chemin;
-         var chemintpssuiviprod23h =nc1[1].chemin;
-      
       var dateFormat = require("dateformat");
       var datetest = req.param("date",0);
       var jour = dateFormat(datetest, "dddd");
@@ -604,15 +601,6 @@ copieEtp5 : function(req,res){
                 function(cb){
                   TpsGrs.traitementInsertion(astt,trait,mcle1,mcle2,mcle3,mcle4,lot,jour,date,table,chemintpssuiviprod16h,cb);
                 },
-               /*function(cb){
-                  Tpstpc.traitementInsertion23h(astt,trait,mcle1,mcle2,mcle3,mcle4,lot,jour,date,table,chemintpssuiviprod23h,cb);
-                },
-                function(cb){
-                  Tpstpc.traitementInsertionJ2(astt,trait,mcle1,mcle2,mcle3,mcle4,lot,jour,date,table,chemintpssuiviprod23h,cb);
-                },
-                function(cb){
-                  Tpstpc.traitementInsertionJ5(astt,trait,mcle1,mcle2,mcle3,mcle4,lot,jour,date,table,chemintpssuiviprod23h,cb);
-                },*/
               ],function(erroned, lotValues){
                 if(erroned) return res.badRequest(erroned);
                 return callback_reporting_suivant();
