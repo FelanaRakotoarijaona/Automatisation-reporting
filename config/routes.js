@@ -14,6 +14,14 @@ module.exports.routes = {
      //route tps-tpc grs
      '/accueilstockj1et2et5' : 'TpsGrsController.accueilstockj1et2et5',
      '/traitementstockj1et2et5' : 'TpsGrsController.traitementstockj1et2et5',
+     '/traitementstock23h1' : 'TpsGrsController.traitementstock23h1',
+     '/traitementstock23h2' : 'TpsGrsController.traitementstock23h2',
+     '/traitementstock23h3' : 'TpsGrsController.traitementstock23h3',
+     '/traitementstock23h4' : 'TpsGrsController.traitementstock23h4',
+     '/traitementstock23h5' : 'TpsGrsController.traitementstock23h5',
+     '/traitementstock23h6' : 'TpsGrsController.traitementstock23h6',
+     '/accueilrechercheDateGrs' : 'TpsGrsController.accueilrechercheDate',
+     
 
      '/accueilstockj1et2et5suivant' : 'TpsGrsController.accueilstockj1et2et5suivant',
      '/traitementstockj1et2et5suivant' : 'TpsGrsController.traitementstockj1et2et5suivant',
@@ -30,23 +38,47 @@ module.exports.routes = {
 
      '/accueilGrs' : 'TpsGrsController.accueil',
      '/traitementTacheTraiteGrs' : 'TpsGrsController.traitementTacheTraite',
+     '/traitementTacheTraite16h1' : 'TpsGrsController.traitementTacheTraite16h1',
+     '/traitementTacheTraite16h3' : 'TpsGrsController.traitementTacheTraite16h3',
+     '/traitementTacheTraite16h2' : 'TpsGrsController.traitementTacheTraite16h2',
+     '/traitementTacheTraite16h4' : 'TpsGrsController.traitementTacheTraite16h4',
 
      '/accueilGrstt23h' : 'TpsGrsController.accueiltachetraite23h',
      '/traitementTacheTraiteGrs23h' : 'TpsGrsController.traitementTacheTraite23h',
+     '/traitementTacheTraiteGrs23h1' : 'TpsGrsController.traitementTacheTraite23h1',
+     '/traitementTacheTraiteGrs23h2' : 'TpsGrsController.traitementTacheTraite23h2',
+     '/traitementTacheTraiteGrs23h3' : 'TpsGrsController.traitementTacheTraite23h3',
+     '/traitementTacheTraiteGrs23h4' : 'TpsGrsController.traitementTacheTraite23h4',
 
      '/accueilGrsttJ2' : 'TpsGrsController.accueiltachetraiteJ2',
      '/traitementTacheTraiteGrsJ2' : 'TpsGrsController.traitementTacheTraiteJ2',
+     '/traitementTacheTraiteGrsJ22' : 'TpsGrsController.traitementTacheTraiteJ22',
+     '/traitementTacheTraiteGrsJ23' : 'TpsGrsController.traitementTacheTraiteJ23',
+     '/traitementTacheTraiteGrsJ24' : 'TpsGrsController.traitementTacheTraiteJ24',
+     '/traitementTacheTraiteGrsJ21' : 'TpsGrsController.traitementTacheTraiteJ21',
 
      '/accueilGrsttJ5' : 'TpsGrsController.accueiltachetraiteJ5',
      '/traitementTacheTraiteGrsJ5' : 'TpsGrsController.traitementTacheTraiteJ5',
+     '/traitementTacheTraiteGrsJ51' : 'TpsGrsController.traitementTacheTraiteJ51',
+     '/traitementTacheTraiteGrsJ52' : 'TpsGrsController.traitementTacheTraiteJ52',
+     '/traitementTacheTraiteGrsJ53' : 'TpsGrsController.traitementTacheTraiteJ53',
+     '/traitementTacheTraiteGrsJ54' : 'TpsGrsController.traitementTacheTraiteJ54',
 
      '/accueilrecherchefichierGrs' : 'TpsGrsController.accueilrecherchefichier',
      '/recherchefichiertpsGrs' : 'TpsGrsController.recherchefichier',
      '/accueilstock16h' : 'TpsGrsController.accueilstock16h',
      '/traitementgrsstock16h' : 'TpsGrsController.traitementgrsstock16h',
+     '/traitementgrsstock16h1' : 'TpsGrsController.traitementgrsstock16h1',
+     '/traitementgrsstock16h2' : 'TpsGrsController.traitementgrsstock16h2',
+     '/traitementgrsstock16h3' : 'TpsGrsController.traitementgrsstock16h3',
+     '/traitementgrsstock16h4' : 'TpsGrsController.traitementgrsstock16h4',
 
      '/accueilstockgrsbonj' : 'TpsGrsController.accueilstockbonj',
      '/traitementgrsstockbonj' : 'TpsGrsController.traitementgrsstockbonj',
+     '/traitementgrsstockbonj1' : 'TpsGrsController.traitementgrsstockbonj1',
+     '/traitementgrsstockbonj2' : 'TpsGrsController.traitementgrsstockbonj2',
+     '/traitementgrsstockbonj3' : 'TpsGrsController.traitementgrsstockbonj3',
+     '/traitementgrsstockbonj4' : 'TpsGrsController.traitementgrsstockbonj4',
 
 
      '/accueilGrs1' : 'TpsGrsController.accueilecriture',

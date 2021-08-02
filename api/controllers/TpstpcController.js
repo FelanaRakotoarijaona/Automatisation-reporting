@@ -4043,7 +4043,7 @@
                });
            
    },
-   ecritureEtptps3: function(req,res)
+   ecritureEtp3: function(req,res)
    {
     var dateFormat = require("dateformat");
      var datetest = req.param("date",0);
@@ -4175,7 +4175,7 @@
                });
            
    },
-   ecritureEtptps3: function(req,res)
+   ecritureEtptps4: function(req,res)
    {
     var dateFormat = require("dateformat");
      var datetest = req.param("date",0);
