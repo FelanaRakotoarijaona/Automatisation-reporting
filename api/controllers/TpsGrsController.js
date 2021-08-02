@@ -354,7 +354,7 @@ module.exports = {
                                      }
                                      else
                                      {
-                                       return res.view('TpsGrs/ecritureetp6');
+                                       return res.view('TpsGrs/ecritureetp6',{date:datetest,row:row});
                                      };
                              });
                          };
