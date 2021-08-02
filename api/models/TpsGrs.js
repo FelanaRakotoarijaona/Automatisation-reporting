@@ -1819,6 +1819,7 @@ module.exports = {
   },
   copieEtp:function(date,nb,trameflux,nomColonne,callback){
     XLSX = require('xlsx');
+    console.log('nb' + nb);
     var workbook = XLSX.readFile(trameflux);
     try{
       const sheetd = workbook.SheetNames; 
@@ -1843,7 +1844,6 @@ module.exports = {
       var ligne = 0;
       for(var ra=0;ra<=range.e.r;ra++)
         {
-          //nature de tache
           var address_of_cell = {c:0, r:ra};
           var cell_ref = XLSX.utils.encode_cell(address_of_cell);
           var desired_cell = sheet[cell_ref];

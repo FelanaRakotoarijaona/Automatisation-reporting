@@ -429,9 +429,11 @@ copieEtp4 : function(req,res){
   var trameflux= '/dev/prod/03-POLE_TPS-TPC/00-PILOTAGE/09-REPORTING ENGAGEMENT/GRS_Reporting-Traitement-J-SLA.xlsb';
   //var trameflux= '/dev/prod/03-POLE_TPS-TPC/00-PILOTAGE/09-REPORTING ENGAGEMENT/GRS_Reporting-Traitement-J-SLA.xlsb';
   var nomColonne = [
-    'pecoptique',
-    'pecaudio',
-    'pecdentaire'
+    'factoptique',
+    'factaudio',
+    'factdentaire'
+
+   
   ];
   var r = [0,1,2];
   async.forEachSeries(r, function(lot, callback_reporting_suivant) {
@@ -463,10 +465,10 @@ copieEtp5 : function(req,res){
   var trameflux= '/dev/prod/03-POLE_TPS-TPC/00-PILOTAGE/09-REPORTING ENGAGEMENT/GRS_Reporting-Traitement-J-SLA.xlsb';
   //var trameflux= '/dev/prod/03-POLE_TPS-TPC/00-PILOTAGE/09-REPORTING ENGAGEMENT/GRS_Reporting-Traitement-J-SLA.xlsb';
   var nomColonne = [
-    'factoptique',
-    'factaudio',
-    'pechospi'
-
+    
+        'facthospi',
+        'santeclair',
+        'pecoptique'
   ];
   var r = [0,1,2];
   async.forEachSeries(r, function(lot, callback_reporting_suivant) {
@@ -497,9 +499,9 @@ copieEtp5 : function(req,res){
     console.log('daty'+ date);
     var trameflux= '/dev/prod/03-POLE_TPS-TPC/00-PILOTAGE/09-REPORTING ENGAGEMENT/GRS_Reporting-Traitement-J-SLA.xlsb';
     var nomColonne = [
-        'factdentaire',
-        'facthospi',
-        'santeclair',
+      'pecaudio',
+      'pecdentaire',
+      'pechospi',
     ];
     var r = [0,1,2];
     async.forEachSeries(r, function(lot, callback_reporting_suivant) {
