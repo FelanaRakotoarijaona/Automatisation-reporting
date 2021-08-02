@@ -19,7 +19,7 @@ module.exports = {
       var an = dateFormat(datetest, "yyyy");
       var date = j + '/' + m +'/' + an ;
       var row = req.param("row",0);
-      var r = [0,1,2,3,4];
+      var r = [0,1,2];
       var table = [];
       var motcle = [];
       var Excel = require('exceljs');
@@ -45,6 +45,67 @@ module.exports = {
                     function(cb){
                       TpsGrs.countEtp("factse",cb);
                     },
+                  ],function(err,result)
+                  {
+                          if (err){
+                            return res.view('TpsGrs/erreur');
+                          }
+                          else
+                          {
+                            console.log('ok');
+  
+                            async.forEachSeries(r, function(lot, callback_reporting_suivant) {
+                             var tab = result[lot];
+                              async.series([
+                                function(cb){
+                                  TpsGrs.ecritureEtp(tab,row,date,motcle,lot,cb);
+                                },
+                              ],function(erroned, lotValues){
+                                if(erroned) return res.badRequest(erroned);
+                                return callback_reporting_suivant();
+                              });
+                            },
+                              function(err)
+                              {
+                                      if (err){
+                                        return res.view('Contentieux/erreur');
+                                      }
+                                      else
+                                      {
+                                        return res.view('TpsGrs/ecritureetp4',{date:datetest,row:row});
+                                      };
+                              });
+                          };
+                  });
+                });
+            
+    },
+    ecritureetpgrs4: function(req,res)
+    {
+      var dateFormat = require("dateformat");
+      var datetest = req.param("date",0);
+      var j = dateFormat(datetest, "dd");
+      var m = dateFormat(datetest, "mm");
+      var an = dateFormat(datetest, "yyyy");
+      var date = j + '/' + m +'/' + an ;
+      var row = req.param("row",0);
+      var r = [0,1];
+      var table = [];
+      var motcle = [];
+      var Excel = require('exceljs');
+      var workbook = new Excel.Workbook();
+      workbook.xlsx.readFile('grs16h.xlsx')
+        .then(function() {
+          var newworksheet = workbook.getWorksheet('Feuil24');
+          var motcle1 = newworksheet.getColumn(2);
+          var tablem = newworksheet.getColumn(1);
+            motcle1.eachCell(function(cell, rowNumber) {
+              motcle.push(cell.value);
+            });
+            tablem.eachCell(function(cell, rowNumber) {
+              table.push(cell.value);
+            });
+                  async.series([
                     function(cb){
                       TpsGrs.countEtp("santeclair",cb);
                     },
@@ -99,7 +160,7 @@ module.exports = {
       var an = dateFormat(datetest, "yyyy");
       var date = j + '/' + m +'/' + an ;
       var row = req.param("row",0);
-      var r = [0,1,2,3,4];
+      var r = [0,1,2];
       var table = [];
       var motcle = [];
       var Excel = require('exceljs');
@@ -125,6 +186,67 @@ module.exports = {
                     function(cb){
                       TpsGrs.countEtp("factaudio",cb);
                     },
+                  ],function(err,result)
+                  {
+                          if (err){
+                            return res.view('TpsGrs/erreur');
+                          }
+                          else
+                          {
+                            console.log('ok');
+  
+                            async.forEachSeries(r, function(lot, callback_reporting_suivant) {
+                             var tab = result[lot];
+                              async.series([
+                                function(cb){
+                                  TpsGrs.ecritureEtp(tab,row,date,motcle,lot,cb);
+                                },
+                              ],function(erroned, lotValues){
+                                if(erroned) return res.badRequest(erroned);
+                                return callback_reporting_suivant();
+                              });
+                            },
+                              function(err)
+                              {
+                                      if (err){
+                                        return res.view('TpsGrs/erreur');
+                                      }
+                                      else
+                                      {
+                                        return res.view('TpsGrs/ecritureetp5',{date:datetest,row:row});
+                                      };
+                              });
+                          };
+                  });
+                });
+            
+    },
+    ecritureetpgrs5: function(req,res)
+    {
+      var dateFormat = require("dateformat");
+      var datetest = req.param("date",0);
+      var j = dateFormat(datetest, "dd");
+      var m = dateFormat(datetest, "mm");
+      var an = dateFormat(datetest, "yyyy");
+      var date = j + '/' + m +'/' + an ;
+      var row = req.param("row",0);
+      var r = [0,1];
+      var table = [];
+      var motcle = [];
+      var Excel = require('exceljs');
+      var workbook = new Excel.Workbook();
+      workbook.xlsx.readFile('grs16h.xlsx')
+        .then(function() {
+          var newworksheet = workbook.getWorksheet('Feuil25');
+          var motcle1 = newworksheet.getColumn(2);
+          var tablem = newworksheet.getColumn(1);
+            motcle1.eachCell(function(cell, rowNumber) {
+              motcle.push(cell.value);
+            });
+            tablem.eachCell(function(cell, rowNumber) {
+              table.push(cell.value);
+            });
+                  async.series([
                     function(cb){
                       TpsGrs.countEtp("factdentaire",cb);
                     },
@@ -179,7 +301,7 @@ module.exports = {
      var an = dateFormat(datetest, "yyyy");
      var row= req.param("row",0);
      var date = j + '/' + m +'/' + an ;
-     var r = [0,1,2,3,4];
+     var r = [0,1,2];
      var table = [];
      var motcle = [];
      var Excel = require('exceljs');
@@ -205,12 +327,73 @@ module.exports = {
                    function(cb){
                      TpsGrs.countEtp("tritp",cb);
                    },
+                 ],function(err,result)
+                 {
+                         if (err){
+                           return res.view('TpsGrs/erreur');
+                         }
+                         else
+                         {
+                           console.log('ok');
+ 
+                           async.forEachSeries(r, function(lot, callback_reporting_suivant) {
+                            var tab = result[lot];
+                             async.series([
+                               function(cb){
+                                 TpsGrs.ecritureEtp(tab,row,date,motcle,lot,cb);
+                               },
+                             ],function(erroned, lotValues){
+                               if(erroned) return res.badRequest(erroned);
+                               return callback_reporting_suivant();
+                             });
+                           },
+                             function(err)
+                             {
+                                     if (err){
+                                       return res.view('TpsGrs/erreur');
+                                     }
+                                     else
+                                     {
+                                       return res.view('TpsGrs/ecritureetp6');
+                                     };
+                             });
+                         };
+                 });
+               });
+           
+   },
+   ecritureetpgrs6: function(req,res)
+   {
+     var dateFormat = require("dateformat");
+     var datetest = req.param("date",0);
+     var j = dateFormat(datetest, "dd");
+     var m = dateFormat(datetest, "mm");
+     var an = dateFormat(datetest, "yyyy");
+     var row= req.param("row",0);
+     var date = j + '/' + m +'/' + an ;
+     var r = [0,1];
+     var table = [];
+     var motcle = [];
+     var Excel = require('exceljs');
+     var workbook = new Excel.Workbook();
+     workbook.xlsx.readFile('grs16h.xlsx')
+       .then(function() {
+         var newworksheet = workbook.getWorksheet('Feuil26');
+         var motcle1 = newworksheet.getColumn(2);
+         var tablem = newworksheet.getColumn(1);
+           motcle1.eachCell(function(cell, rowNumber) {
+             motcle.push(cell.value);
+           });
+           tablem.eachCell(function(cell, rowNumber) {
+             table.push(cell.value);
+           });
+                 async.series([
                    function(cb){
                      TpsGrs.countEtp("trinument",cb);
                    },
                    function(cb){
                      TpsGrs.countEtp("sdpnument",cb);
-                   },
+                   }
                  ],function(err,result)
                  {
                          if (err){

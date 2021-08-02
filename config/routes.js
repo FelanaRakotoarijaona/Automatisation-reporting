@@ -106,6 +106,9 @@ module.exports.routes = {
      '/ecritureetpgrs2' : 'TpsGrsController.ecritureetpgrs2',
      '/accueilecritureetpgrs3' : 'TpsGrsController.accueilecritureetpgrs3',
      '/ecritureetpgrs3' : 'TpsGrsController.ecritureetpgrs3',
+     '/ecritureetpgrs4' : 'TpsGrsController.ecritureetpgrs4',
+     '/ecritureetpgrs5' : 'TpsGrsController.ecritureetpgrs5',
+     '/ecritureetpgrs6' : 'TpsGrsController.ecritureetpgrs6',
 
     
   
