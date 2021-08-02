@@ -236,6 +236,7 @@
     ReportingInovcom.getDatastore().sendNativeQuery(sql, function(err,res){
       if (err) { 
         console.log("Une erreur ve ok?");
+        console.log(err);
         //return callback(err);
        }
       else
@@ -255,6 +256,7 @@
     ReportingInovcom.getDatastore().sendNativeQuery(sql, function(err,res){
       if (err) { 
         console.log("Une erreur ve ok?");
+        console.log(err);
         //return callback(err);
        }
       else
