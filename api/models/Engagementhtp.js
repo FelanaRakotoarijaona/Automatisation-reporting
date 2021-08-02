@@ -6,8 +6,9 @@ const { Console } = require('console');
  * @description :: A model definition represents a database table/collection.
  * @docs        :: https://sailsjs.com/docs/concepts/models-and-orm/models
  */
-const path_reporting = 'D:/LDR8_1421_nouv/PROJET_FELANA/HTP/Test.xlsx';
+// const path_reporting = 'D:/LDR8_1421_nouv/PROJET_FELANA/HTP/Test.xlsx';
 // const path_reporting = 'D:/LDR8_1421_nouv/PROJET_FELANA/HTP/REPORTING_RETOUR.xlsx';
+const path_reporting = '/dev/prod/00-TOUS/TestReporting/Test.xlsx';
 module.exports = {
 
   attributes: {

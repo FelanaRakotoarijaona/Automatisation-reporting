@@ -62,7 +62,8 @@ insertcheminengagementhtp : function(req,res)
 {
   var Excel = require('exceljs');
   var workbook = new Excel.Workbook();
-  var table = ['\\\\10.128.1.2\\bpo_almerys\\00-TOUS\\06-DOSSIER POLE\\01-HTP\\05- REPORTING\\03-HTP\\DOC_HTP\\'];
+  // var table = ['\\\\10.128.1.2\\bpo_almerys\\00-TOUS\\06-DOSSIER POLE\\01-HTP\\05- REPORTING\\03-HTP\\DOC_HTP\\'];
+  var table = ['/dev/prod/00-TOUS/06-DOSSIER POLE/01-HTP/05- REPORTING/03-HTP/DOC_HTP/'];
   var datetest = req.param("date",0);
   var annee = datetest.substr(0, 4);
   var mois = datetest.substr(5, 2);
@@ -199,7 +200,8 @@ insertcheminengagementhtp : function(req,res)
   {
     var Excel = require('exceljs');
     var workbook = new Excel.Workbook();
-    var table = ['\\\\10.128.1.2\\bpo_almerys\\00-TOUS\\06-DOSSIER POLE\\01-HTP\\05- REPORTING\\03-HTP\\DOC_HTP\\'];
+    // var table = ['\\\\10.128.1.2\\bpo_almerys\\00-TOUS\\06-DOSSIER POLE\\01-HTP\\05- REPORTING\\03-HTP\\DOC_HTP\\'];
+    var table = ['/dev/prod/00-TOUS/06-DOSSIER POLE/01-HTP/05- REPORTING/03-HTP/DOC_HTP/'];
     var datetest = req.param("date",0);
     var annee = datetest.substr(0, 4);
     var mois = datetest.substr(5, 2);
@@ -335,7 +337,8 @@ insertcheminengagementhtp : function(req,res)
   {
     var Excel = require('exceljs');
     var workbook = new Excel.Workbook();
-    var table = ['\\\\10.128.1.2\\bpo_almerys\\00-TOUS\\06-DOSSIER POLE\\01-HTP\\05- REPORTING\\03-HTP\\DOC_HTP\\'];
+    // var table = ['\\\\10.128.1.2\\bpo_almerys\\00-TOUS\\06-DOSSIER POLE\\01-HTP\\05- REPORTING\\03-HTP\\DOC_HTP\\'];
+    var table = ['/dev/prod/00-TOUS/06-DOSSIER POLE/01-HTP/05- REPORTING/03-HTP/DOC_HTP/'];
     var datetest = req.param("date",0);
     var annee = datetest.substr(0, 4);
     var mois = datetest.substr(5, 2);
@@ -470,7 +473,8 @@ insertcheminengagementhtp : function(req,res)
   {
     var Excel = require('exceljs');
     var workbook = new Excel.Workbook();
-    var table = ['\\\\10.128.1.2\\almerys-out\\Retour_Easytech_'];
+    // var table = ['\\\\10.128.1.2\\almerys-out\\Retour_Easytech_'];
+    var table = ['/dev/pro/Retour_Easytech_'];
     var datetest = req.param("date",0);
     var annee = datetest.substr(0, 4);
     var mois = datetest.substr(5, 2);
@@ -605,7 +609,8 @@ insertcheminengagementhtp : function(req,res)
    {
      var Excel = require('exceljs');
      var workbook = new Excel.Workbook();
-     var table = ['\\\\10.128.1.2\\bpo_almerys\\00-TOUS\\06-DOSSIER POLE\\01-HTP\\05- REPORTING\\03-HTP\\DOC_HTP\\'];
+    //  var table = ['\\\\10.128.1.2\\bpo_almerys\\00-TOUS\\06-DOSSIER POLE\\01-HTP\\05- REPORTING\\03-HTP\\DOC_HTP\\'];
+    var table = ['/dev/prod/00-TOUS/06-DOSSIER POLE/01-HTP/05- REPORTING/03-HTP/DOC_HTP/'];
      var datetest = req.param("date",0);
      var annee = datetest.substr(0, 4);
      var mois = datetest.substr(5, 2);
@@ -739,7 +744,8 @@ insertcheminengagementhtp : function(req,res)
   {
     var Excel = require('exceljs');
     var workbook = new Excel.Workbook();
-    var table = ['\\\\10.128.1.2\\bpo_almerys\\00-TOUS\\06-DOSSIER POLE\\01-HTP\\05- REPORTING\\03-HTP\\DOC_HTP\\'];
+    // var table = ['\\\\10.128.1.2\\bpo_almerys\\00-TOUS\\06-DOSSIER POLE\\01-HTP\\05- REPORTING\\03-HTP\\DOC_HTP\\'];
+    var table = ['/dev/prod/00-TOUS/06-DOSSIER POLE/01-HTP/05- REPORTING/03-HTP/DOC_HTP/'];
     var datetest = req.param("date",0);
     var annee = datetest.substr(0, 4);
     var mois = datetest.substr(5, 2);
@@ -874,7 +880,8 @@ insertcheminengagementhtp : function(req,res)
    {
      var Excel = require('exceljs');
      var workbook = new Excel.Workbook();
-     var table = ['\\\\10.128.1.2\\bpo_almerys\\00-TOUS\\06-DOSSIER POLE\\01-HTP\\05- REPORTING\\03-HTP\\DOC_HTP\\'];
+    //  var table = ['\\\\10.128.1.2\\bpo_almerys\\00-TOUS\\06-DOSSIER POLE\\01-HTP\\05- REPORTING\\03-HTP\\DOC_HTP\\'];
+    var table = ['/dev/prod/00-TOUS/06-DOSSIER POLE/01-HTP/05- REPORTING/03-HTP/DOC_HTP/'];
      var datetest = req.param("date",0);
      var annee = datetest.substr(0, 4);
      var mois = datetest.substr(5, 2);
@@ -1009,7 +1016,8 @@ insertcheminengagementhtp : function(req,res)
   {
     var Excel = require('exceljs');
     var workbook = new Excel.Workbook();
-    var table = ['\\\\10.128.1.2\\bpo_almerys\\00-TOUS\\06-DOSSIER POLE\\01-HTP\\05- REPORTING\\03-HTP\\DOC_HTP\\'];
+    // var table = ['\\\\10.128.1.2\\bpo_almerys\\00-TOUS\\06-DOSSIER POLE\\01-HTP\\05- REPORTING\\03-HTP\\DOC_HTP\\'];
+    var table = ['/dev/prod/00-TOUS/06-DOSSIER POLE/01-HTP/05- REPORTING/03-HTP/DOC_HTP/'];
     var datetest = req.param("date",0);
     var annee = datetest.substr(0, 4);
     var mois = datetest.substr(5, 2);
@@ -1143,7 +1151,8 @@ insertcheminengagementhtp : function(req,res)
   {
     var Excel = require('exceljs');
     var workbook = new Excel.Workbook();
-    var table = ['\\\\10.128.1.2\\almerys-out\\Retour_Easytech_'];
+    // var table = ['\\\\10.128.1.2\\almerys-out\\Retour_Easytech_'];
+    var table = ['/dev/pro/Retour_Easytech_'];
     var datetest = req.param("date",0);
     var annee = datetest.substr(0, 4);
     var mois = datetest.substr(5, 2);
@@ -1277,7 +1286,8 @@ insertcheminengagementhtp : function(req,res)
   {
     var Excel = require('exceljs');
     var workbook = new Excel.Workbook();
-    var table = ['\\\\10.128.1.2\\almerys-out\\Retour_Easytech_'];
+    // var table = ['\\\\10.128.1.2\\almerys-out\\Retour_Easytech_'];
+    var table = ['/dev/pro/Retour_Easytech_'];
     var datetest = req.param("date",0);
     var annee = datetest.substr(0, 4);
     var mois = datetest.substr(5, 2);
@@ -1547,7 +1557,8 @@ insertcheminengagementhtp : function(req,res)
         {
           var Excel = require('exceljs');
           var workbook = new Excel.Workbook();
-          var table = ['\\\\10.128.1.2\\bpo_almerys\\00-TOUS\\06-DOSSIER POLE\\01-HTP\\05- REPORTING\\03-HTP\\DOC_HTP\\'];
+          // var table = ['\\\\10.128.1.2\\bpo_almerys\\00-TOUS\\06-DOSSIER POLE\\01-HTP\\05- REPORTING\\03-HTP\\DOC_HTP\\'];
+          var table = ['/dev/prod/00-TOUS/06-DOSSIER POLE/01-HTP/05- REPORTING/03-HTP/DOC_HTP/'];
           var datetest = req.param("date",0);
           var annee = datetest.substr(0, 4);
           var mois = datetest.substr(5, 2);
@@ -1682,7 +1693,8 @@ insertcheminengagementhtp : function(req,res)
       {
         var Excel = require('exceljs');
         var workbook = new Excel.Workbook();
-        var table = ['\\\\10.128.1.2\\bpo_almerys\\00-TOUS\\06-DOSSIER POLE\\01-HTP\\05- REPORTING\\03-HTP\\DOC_HTP\\'];
+        // var table = ['\\\\10.128.1.2\\bpo_almerys\\00-TOUS\\06-DOSSIER POLE\\01-HTP\\05- REPORTING\\03-HTP\\DOC_HTP\\'];
+        var table = ['/dev/prod/00-TOUS/06-DOSSIER POLE/01-HTP/05- REPORTING/03-HTP/DOC_HTP/'];
         var datetest = req.param("date",0);
         var annee = datetest.substr(0, 4);
         var mois = datetest.substr(5, 2);
@@ -1817,7 +1829,8 @@ insertcheminengagementhtpsuivant13 : function(req,res)
 {
   var Excel = require('exceljs');
   var workbook = new Excel.Workbook();
-  var table = ['\\\\10.128.1.2\\bpo_almerys\\00-TOUS\\06-DOSSIER POLE\\01-HTP\\05- REPORTING\\03-HTP\\DOC_HTP\\'];
+  // var table = ['\\\\10.128.1.2\\bpo_almerys\\00-TOUS\\06-DOSSIER POLE\\01-HTP\\05- REPORTING\\03-HTP\\DOC_HTP\\'];
+  var table = ['/dev/prod/00-TOUS/06-DOSSIER POLE/01-HTP/05- REPORTING/03-HTP/DOC_HTP/'];
   var datetest = req.param("date",0);
   var annee = datetest.substr(0, 4);
   var mois = datetest.substr(5, 2);
@@ -1952,7 +1965,8 @@ insertcheminengagementhtpsuivant14 : function(req,res)
 {
   var Excel = require('exceljs');
   var workbook = new Excel.Workbook();
-  var table = ['\\\\10.128.1.2\\bpo_almerys\\00-TOUS\\06-DOSSIER POLE\\01-HTP\\05- REPORTING\\03-HTP\\DOC_HTP\\'];
+  // var table = ['\\\\10.128.1.2\\bpo_almerys\\00-TOUS\\06-DOSSIER POLE\\01-HTP\\05- REPORTING\\03-HTP\\DOC_HTP\\'];
+  var table = ['/dev/prod/00-TOUS/06-DOSSIER POLE/01-HTP/05- REPORTING/03-HTP/DOC_HTP/'];
   var datetest = req.param("date",0);
   var annee = datetest.substr(0, 4);
   var mois = datetest.substr(5, 2);
@@ -2087,7 +2101,8 @@ insertcheminengagementhtpsuivant15 : function(req,res)
 {
   var Excel = require('exceljs');
   var workbook = new Excel.Workbook();
-  var table = ['\\\\10.128.1.2\\bpo_almerys\\00-TOUS\\06-DOSSIER POLE\\01-HTP\\05- REPORTING\\03-HTP\\DOC_HTP\\'];
+  // var table = ['\\\\10.128.1.2\\bpo_almerys\\00-TOUS\\06-DOSSIER POLE\\01-HTP\\05- REPORTING\\03-HTP\\DOC_HTP\\'];
+  var table = ['/dev/prod/00-TOUS/06-DOSSIER POLE/01-HTP/05- REPORTING/03-HTP/DOC_HTP/'];
   var datetest = req.param("date",0);
   var annee = datetest.substr(0, 4);
   var mois = datetest.substr(5, 2);
@@ -2222,7 +2237,8 @@ insertcheminengagementhtpsuivant16 : function(req,res)
 {
   var Excel = require('exceljs');
   var workbook = new Excel.Workbook();
-  var table = ['\\\\10.128.1.2\\bpo_almerys\\00-TOUS\\06-DOSSIER POLE\\01-HTP\\05- REPORTING\\03-HTP\\DOC_HTP\\'];
+  // var table = ['\\\\10.128.1.2\\bpo_almerys\\00-TOUS\\06-DOSSIER POLE\\01-HTP\\05- REPORTING\\03-HTP\\DOC_HTP\\'];
+  var table = ['/dev/prod/00-TOUS/06-DOSSIER POLE/01-HTP/05- REPORTING/03-HTP/DOC_HTP/'];
   var datetest = req.param("date",0);
   var annee = datetest.substr(0, 4);
   var mois = datetest.substr(5, 2);
@@ -2357,7 +2373,8 @@ insertcheminengagementhtpsuivant17 : function(req,res)
 {
   var Excel = require('exceljs');
   var workbook = new Excel.Workbook();
-  var table = ['\\\\10.128.1.2\\bpo_almerys\\00-TOUS\\06-DOSSIER POLE\\01-HTP\\05- REPORTING\\03-HTP\\DOC_HTP\\'];
+  // var table = ['\\\\10.128.1.2\\bpo_almerys\\00-TOUS\\06-DOSSIER POLE\\01-HTP\\05- REPORTING\\03-HTP\\DOC_HTP\\'];
+  var table = ['/dev/prod/00-TOUS/06-DOSSIER POLE/01-HTP/05- REPORTING/03-HTP/DOC_HTP/'];
   var datetest = req.param("date",0);
   var annee = datetest.substr(0, 4);
   var mois = datetest.substr(5, 2);
@@ -2492,7 +2509,8 @@ insertcheminengagementhtpsuivant18 : function(req,res)
 {
   var Excel = require('exceljs');
   var workbook = new Excel.Workbook();
-  var table = ['\\\\10.128.1.2\\bpo_almerys\\00-TOUS\\06-DOSSIER POLE\\01-HTP\\05- REPORTING\\03-HTP\\DOC_HTP\\'];
+  // var table = ['\\\\10.128.1.2\\bpo_almerys\\00-TOUS\\06-DOSSIER POLE\\01-HTP\\05- REPORTING\\03-HTP\\DOC_HTP\\'];
+  var table = ['/dev/prod/00-TOUS/06-DOSSIER POLE/01-HTP/05- REPORTING/03-HTP/DOC_HTP/'];
   var datetest = req.param("date",0);
   var annee = datetest.substr(0, 4);
   var mois = datetest.substr(5, 2);
@@ -2627,7 +2645,8 @@ insertcheminengagementhtpsuivant19 : function(req,res)
 {
   var Excel = require('exceljs');
   var workbook = new Excel.Workbook();
-  var table = ['\\\\10.128.1.2\\bpo_almerys\\00-TOUS\\06-DOSSIER POLE\\01-HTP\\05- REPORTING\\03-HTP\\DOC_HTP\\'];
+  // var table = ['\\\\10.128.1.2\\bpo_almerys\\00-TOUS\\06-DOSSIER POLE\\01-HTP\\05- REPORTING\\03-HTP\\DOC_HTP\\'];
+  var table = ['/dev/prod/00-TOUS/06-DOSSIER POLE/01-HTP/05- REPORTING/03-HTP/DOC_HTP/'];
   var datetest = req.param("date",0);
   var annee = datetest.substr(0, 4);
   var mois = datetest.substr(5, 2);
@@ -2762,7 +2781,8 @@ insertcheminengagementhtpsuivant20 : function(req,res)
 {
   var Excel = require('exceljs');
   var workbook = new Excel.Workbook();
-  var table = ['\\\\10.128.1.2\\bpo_almerys\\00-TOUS\\06-DOSSIER POLE\\01-HTP\\05- REPORTING\\03-HTP\\DOC_HTP\\'];
+  // var table = ['\\\\10.128.1.2\\bpo_almerys\\00-TOUS\\06-DOSSIER POLE\\01-HTP\\05- REPORTING\\03-HTP\\DOC_HTP\\'];
+  var table = ['/dev/prod/00-TOUS/06-DOSSIER POLE/01-HTP/05- REPORTING/03-HTP/DOC_HTP/'];
   var datetest = req.param("date",0);
   var annee = datetest.substr(0, 4);
   var mois = datetest.substr(5, 2);
@@ -2897,7 +2917,8 @@ insertcheminengagementhtpsuivant21 : function(req,res)
 {
   var Excel = require('exceljs');
   var workbook = new Excel.Workbook();
-  var table = ['\\\\10.128.1.2\\bpo_almerys\\00-TOUS\\06-DOSSIER POLE\\01-HTP\\05- REPORTING\\03-HTP\\DOC_HTP\\'];
+  // var table = ['\\\\10.128.1.2\\bpo_almerys\\00-TOUS\\06-DOSSIER POLE\\01-HTP\\05- REPORTING\\03-HTP\\DOC_HTP\\'];
+  var table = ['/dev/prod/00-TOUS/06-DOSSIER POLE/01-HTP/05- REPORTING/03-HTP/DOC_HTP/'];
   var datetest = req.param("date",0);
   var annee = datetest.substr(0, 4);
   var mois = datetest.substr(5, 2);
