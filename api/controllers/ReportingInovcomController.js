@@ -895,19 +895,6 @@ module.exports = {
                         console.log('vofafa ddol');
                         return res.view('Inovcom/exportexcelinovcom4', {date : datetest});
                       });
-                    /*async.series([
-                      function(cb){
-                        ReportingInovcom.deleteHtp(table,nb,cb);
-                      }, 
-                      function(cb){
-                        ReportingInovcom.importTrameFlux929type4(trameflux,feuil,cellule,table,cellule2,nb,numligne,cb);
-                      }, 
-                    ],
-                    function(err, resultat){
-                      if (err) { return res.view('Inovcom/erreur'); }
-                      return res.redirect('/exportInovcom/'+dateexport +'/'+'<h1><h1>');
-                  })*/
-               
         }
     })
   }

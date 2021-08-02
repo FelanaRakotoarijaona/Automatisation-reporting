@@ -116,16 +116,6 @@ module.exports = {
     //console.log(m);
 
     m.getCell(5).value = tab[0].nb;
-    /*m.getCell(6).value = parseFloat(tab[0].tt16h);
-    m.getCell(7).value = parseFloat(tab[0].tt23h);
-    m.getCell(9).value = parseFloat(tab[0].ttj2);
-    m.getCell(11).value = parseFloat(tab[0].ttj5);
-    m.getCell(16).value = parseFloat(tab[0].stock16h);
-    m.getCell(20).value = parseFloat(tab[0].bonj);
-    m.getCell(21).value = parseFloat(tab[0].bonj1);
-    m.getCell(22).value = parseFloat(tab[0].bonj2);
-    m.getCell(23).value = parseFloat(tab[0].bonj5);*/
-   
     await newWorkbook.xlsx.writeFile(path_reporting);
     sails.log("Ecriture OK KO terminé"); 
     return callback(null, "OK");

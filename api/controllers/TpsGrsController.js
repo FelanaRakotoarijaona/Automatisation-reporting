@@ -261,7 +261,6 @@ module.exports = {
         var m = dateFormat(datetest, "mm");
         var an = dateFormat(datetest, "yyyy");
         var date = j  + m + an ;
-        //var chemin = '//10.128.1.2/bpo_almerys/03-POLE_TPS-TPC/00-PILOTAGE/09-REPORTING ENGAGEMENT/';
         var chemin= '/dev/prod/03-POLE_TPS-TPC/00-PILOTAGE/09-REPORTING ENGAGEMENT/';
         var cheminTotal = chemin + date + '/' ;
         var r = [0,1,2,3];
@@ -334,7 +333,6 @@ module.exports = {
                               
                             };
                         });
-                      // return res.view('TpsGrs/copieetp');
                     };
                   });
         });
@@ -346,62 +344,152 @@ module.exports = {
    return res.view('TpsGrs/copieetp');
   },
   copieEtp : function(req,res){
-      var dateFormat = require("dateformat");
-      var datetest = req.param("date",0);
-      var date = dateFormat(datetest, "shortDate");
-      console.log('daty'+ date);
-      var trameflux= '/dev/prod/03-POLE_TPS-TPC/00-PILOTAGE/09-REPORTING ENGAGEMENT/GRS_Reporting-Traitement-J-SLA.xlsb';
-      //var trameflux= '/dev/prod/03-POLE_TPS-TPC/00-PILOTAGE/09-REPORTING ENGAGEMENT/GRS_Reporting-Traitement-J-SLA.xlsb';
-      var nomColonne = [
-          'tritp',
-          'trinument',
-          'sdpnument',
-          'sdmnument',
-          'factse',
-          'facttiers',
-          'factoptique',
-          'factaudio',
-          'factdentaire',
-          'facthospi',
-          'santeclair',
-          'pecoptique',
-          'pecaudio',
-          'pecdentaire',
-          'pechospi'
-      ];
-      var r = [0,1,2,3,4,5,6,7];
-      async.series([  
+    var dateFormat = require("dateformat");
+    var datetest = req.param("date",0);
+    var date = dateFormat(datetest, "shortDate");
+    console.log('daty'+ date);
+    var trameflux= '/dev/prod/03-POLE_TPS-TPC/00-PILOTAGE/09-REPORTING ENGAGEMENT/GRS_Reporting-Traitement-J-SLA.xlsb';
+    var nomColonne = [
+        'tritp',
+        'trinument',
+        'sdpnument',
+    ];
+    var r = [0,1,2];
+    async.series([  
+        function(cb){
+            TpsGrs.delete("tpsgrsetp",cb);
+          },
+    ],
+    function(err, resultat){
+      if (err) { return res.view('Inovcom/erreur'); }
+      else
+      {
+    async.forEachSeries(r, function(lot, callback_reporting_suivant) {
+        async.series([
           function(cb){
-              TpsGrs.delete("tpsgrsetp",cb);
-            },
-      ],
-      function(err, resultat){
-        if (err) { return res.view('Inovcom/erreur'); }
+            TpsGrs.copieEtp(date,lot,trameflux,nomColonne,cb);
+          },
+        ],function(erroned, lotValues){
+          if(erroned) return res.badRequest(erroned);
+          return callback_reporting_suivant();
+        });
+      },
+        function(err)
+        {
+          if (err){
+            return res.view('Contentieux/erreur');
+          }
+          else
+          {
+             return res.view('TpsGrs/accueilEtp3',{date:datetest});
+          };
+        });
+    }
+    });
+},
+copieEtp3 : function(req,res){
+  var dateFormat = require("dateformat");
+  var datetest = req.param("date",0);
+  var date = dateFormat(datetest, "shortDate");
+  console.log('daty'+ date);
+  var trameflux= '/dev/prod/03-POLE_TPS-TPC/00-PILOTAGE/09-REPORTING ENGAGEMENT/GRS_Reporting-Traitement-J-SLA.xlsb';
+  //var trameflux= '/dev/prod/03-POLE_TPS-TPC/00-PILOTAGE/09-REPORTING ENGAGEMENT/GRS_Reporting-Traitement-J-SLA.xlsb';
+  var nomColonne = [
+    'sdmnument',
+    'factse',
+    'facttiers',
+  ];
+  var r = [0,1,2];
+  async.forEachSeries(r, function(lot, callback_reporting_suivant) {
+      async.series([
+        function(cb){
+          TpsGrs.copieEtp(date,lot,trameflux,nomColonne,cb);
+        },
+      ],function(erroned, lotValues){
+        if(erroned) return res.badRequest(erroned);
+        return callback_reporting_suivant();
+      });
+    },
+      function(err)
+      {
+        if (err){
+          return res.view('Contentieux/erreur');
+        }
         else
         {
-      async.forEachSeries(r, function(lot, callback_reporting_suivant) {
-          async.series([
-            function(cb){
-              TpsGrs.copieEtp(date,lot,trameflux,nomColonne,cb);
-            },
-          ],function(erroned, lotValues){
-            if(erroned) return res.badRequest(erroned);
-            return callback_reporting_suivant();
-          });
-        },
-          function(err)
-          {
-            if (err){
-              return res.view('Contentieux/erreur');
-            }
-            else
-            {
-               return res.view('TpsGrs/accueilEtp2',{date:datetest});
-            };
-          });
-      }
+           return res.view('TpsGrs/accueilEtp4',{date:datetest});
+        };
       });
-  },
+},
+copieEtp4 : function(req,res){
+  var dateFormat = require("dateformat");
+  var datetest = req.param("date",0);
+  var date = dateFormat(datetest, "shortDate");
+  console.log('daty'+ date);
+  var trameflux= '/dev/prod/03-POLE_TPS-TPC/00-PILOTAGE/09-REPORTING ENGAGEMENT/GRS_Reporting-Traitement-J-SLA.xlsb';
+  //var trameflux= '/dev/prod/03-POLE_TPS-TPC/00-PILOTAGE/09-REPORTING ENGAGEMENT/GRS_Reporting-Traitement-J-SLA.xlsb';
+  var nomColonne = [
+    'pecoptique',
+    'pecaudio',
+    'pecdentaire'
+  ];
+  var r = [0,1,2];
+  async.forEachSeries(r, function(lot, callback_reporting_suivant) {
+      async.series([
+        function(cb){
+          TpsGrs.copieEtp(date,lot,trameflux,nomColonne,cb);
+        },
+      ],function(erroned, lotValues){
+        if(erroned) return res.badRequest(erroned);
+        return callback_reporting_suivant();
+      });
+    },
+      function(err)
+      {
+        if (err){
+          return res.view('Contentieux/erreur');
+        }
+        else
+        {
+           return res.view('TpsGrs/accueilEtp5',{date:datetest});
+        };
+      });
+},
+copieEtp5 : function(req,res){
+  var dateFormat = require("dateformat");
+  var datetest = req.param("date",0);
+  var date = dateFormat(datetest, "shortDate");
+  console.log('daty'+ date);
+  var trameflux= '/dev/prod/03-POLE_TPS-TPC/00-PILOTAGE/09-REPORTING ENGAGEMENT/GRS_Reporting-Traitement-J-SLA.xlsb';
+  //var trameflux= '/dev/prod/03-POLE_TPS-TPC/00-PILOTAGE/09-REPORTING ENGAGEMENT/GRS_Reporting-Traitement-J-SLA.xlsb';
+  var nomColonne = [
+    'factoptique',
+    'factaudio',
+    'pechospi'
+
+  ];
+  var r = [0,1,2];
+  async.forEachSeries(r, function(lot, callback_reporting_suivant) {
+      async.series([
+        function(cb){
+          TpsGrs.copieEtp(date,lot,trameflux,nomColonne,cb);
+        },
+      ],function(erroned, lotValues){
+        if(erroned) return res.badRequest(erroned);
+        return callback_reporting_suivant();
+      });
+    },
+      function(err)
+      {
+        if (err){
+          return res.view('Contentieux/erreur');
+        }
+        else
+        {
+           return res.view('TpsGrs/accueilEtp2',{date:datetest});
+        };
+      });
+},
   copieEtp2 : function(req,res){
     var dateFormat = require("dateformat");
     var datetest = req.param("date",0);
@@ -413,12 +501,8 @@ module.exports = {
         'factdentaire',
         'facthospi',
         'santeclair',
-        'pecoptique',
-        'pecaudio',
-        'pecdentaire',
-        'pechospi'
     ];
-    var r = [0,1,2,3,4,5,6];
+    var r = [0,1,2];
     async.forEachSeries(r, function(lot, callback_reporting_suivant) {
         async.series([
           function(cb){

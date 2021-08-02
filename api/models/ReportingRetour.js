@@ -18,7 +18,6 @@ module.exports = {
     var numeroligne = parseInt(numligne[nb]);
     try{
       var nbr = 0;
-      //const sheet = workbook.Sheets[workbook.SheetNames[numerofeuille]];
       const sheetd = workbook.SheetNames; 
       console.log('long' + sheetd.length);
       var tab = 0;

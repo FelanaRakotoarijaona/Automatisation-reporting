@@ -23,6 +23,7 @@ module.exports = {
         ReportingExcel.getDatastore().sendNativeQuery(sqlOk, function(err, res){
           if (err) return res.badRequest(err);
           callback(null, res.rows[0].ok);
+          
         });
       },
       function (callback) {

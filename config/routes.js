@@ -24,6 +24,9 @@ module.exports.routes = {
      '/accueilEtpGrs' : 'TpsGrsController.accueilEtp',
      '/copieEtp' : 'TpsGrsController.copieEtp',
      '/copieEtp2' : 'TpsGrsController.copieEtp2',
+     '/copieEtp3' : 'TpsGrsController.copieEtp3',
+     '/copieEtp4' : 'TpsGrsController.copieEtp4',
+     '/copieEtp5' : 'TpsGrsController.copieEtp5',
 
      '/accueilGrs' : 'TpsGrsController.accueil',
      '/traitementTacheTraiteGrs' : 'TpsGrsController.traitementTacheTraite',
