@@ -2150,7 +2150,7 @@ lectureEtInsertiontype4v2:function(trameflux,feuil,cellule,table,cellule2,nb,num
                    
                     }
                     
-                    /*var sql = "insert into recherchefactureinteriale (typologiedelademande,okko) values ("+re+","+re+") ";
+                    var sql = "insert into recherchefactureinteriale (typologiedelademande,okko) values ("+re+","+re+") ";
                     ReportingInovcom.getDatastore().sendNativeQuery(sql, function(err,res){
                      if (err) { 
                        //console.log(err);
@@ -2160,12 +2160,12 @@ lectureEtInsertiontype4v2:function(trameflux,feuil,cellule,table,cellule2,nb,num
                      else
                      {
                        console.log(sql);
+                       re = 0;
                        return callback(null, true);
                      };        
-                                         });   */  
+                                         });   
                
             });
-            console.log('fin'+ re);
           }
         
         }
