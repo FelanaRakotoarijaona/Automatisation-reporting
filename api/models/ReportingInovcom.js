@@ -43,14 +43,14 @@
             var desired_value1 = (desired_cell ? desired_cell.v : undefined);
             var ok = 'OK';
             var ko = 'KO'
-            const regex = new RegExp(ok,'i');
+            const regexok = new RegExp(ok,'i');
             const regexko = new RegExp(ko,'i');
             console.log('val'+desired_value1);
-            if(regex.test(desired_value1))
+            if(regexok.test(desired_value1))
             {
               nbr=nbr + 1;
             }
-            else
+            /*else
             {
               if(regexko(desired_value1))
               {
@@ -60,7 +60,7 @@
               {
                var x = 5;
               }
-            };
+            };*/
           };
       }
       else
