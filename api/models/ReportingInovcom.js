@@ -2118,7 +2118,7 @@ lectureEtInsertiontype4v2:function(trameflux,feuil,cellule,table,cellule2,nb,num
 
     importEssaitype9: function (table,table2,date,option,nb,callback) {
       const fs = require('fs');
-      var re  = 'a';
+      var re  = 0;
       //var a = '\\\\10.128.1.2\\almerys-out\\Retour_Easytech_20210428\\RETOUR_RECHERCHE FACTURE INTERIALE\\INTERIALE';
       var a = table[0]+date+table2[nb];
       console.log('ch' +a);
@@ -2130,14 +2130,27 @@ lectureEtInsertiontype4v2:function(trameflux,feuil,cellule,table,cellule2,nb,num
         fs.readdir(a, (err, files) => {
           console.log(a);
               files.forEach(file => {
-                const regex = new RegExp('.pdf');
+                for(var i = 0; i < files.length; i++){
+                  if(file == files[i]){
+                  const test1 = a +files[i];
+                  fs.readdir(test1, (err, files1) => {
+                    if(err){
+                      console.log("une erreur1");
+                    }
+                    else{
+                      const regex = new RegExp('.pdf');
   
-                if(regex.test(file))
-                {
-                   re = re + 1;
-                   
-                } 
+                      if(regex.test(files1))
+                      {
+                         re = re + 1; 
+                      } 
+                    }
+
+               
             });
+          }
+        }
+        });
             console.log(re); 
             var sql = "insert into recherchefactureinteriale (typologiedelademande,okko) values ("+re+","+re+") ";
              ReportingInovcom.getDatastore().sendNativeQuery(sql, function(err,res){
