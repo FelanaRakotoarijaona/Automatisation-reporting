@@ -7674,7 +7674,7 @@ deleteFromChemindevis : function (nomBase,callback) {
     var re  = 'a';
     var tab = [];
     // var a = table[0]+date+table2[nb];
-    var a = table_1[0]+date+'/';
+    var a = table_1[0]+date+;
     console.log('*****************************');
     console.log('chemin de a : '+a);
     //var a ='\\\\10.128.1.2\\almerys-out\\Retour_Easytech_20210512\\TRAITEMENT_RETOUR_OTD_N2\\' ;
