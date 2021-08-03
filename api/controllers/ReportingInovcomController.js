@@ -146,7 +146,6 @@ module.exports = {
     //REQUETE BASE DE DONNEE (donnéee des chemins du serveur)
     EssaiExcel : function(req,res)
     {
-      var datetest = req.param("date",0);
       var sql1= 'select count(*) as nb from chemininovcom;';
       Reportinghtp.getDatastore().sendNativeQuery(sql1,function(err, nc1) {
         if (err){
@@ -173,12 +172,8 @@ module.exports = {
             var table = [];
             var trameflux = [];
             var numligne = [];
+            var cletpmep = [];
             var datetest = req.param("date",0);
-            var annee = datetest.substr(0, 4);
-            var mois = datetest.substr(5, 2);
-            var jour = datetest.substr(8, 2);
-            var date = annee+mois+jour;
-            var dateexport = jour + '/' + mois + '/' +annee;
             var nb = x;
             for(var i=0;i<nb;i++)
             {
@@ -205,6 +200,11 @@ module.exports = {
               var a = nc[i].nomtable;
               table.push(a);
             };
+            for(var i=0;i<nb;i++)
+            {
+              var a = nc[i].tpmepcle;
+              cletpmep.push(a);
+            };
             var nbre = [];
                     for(var i=0;i<nb;i++)
                     {
@@ -221,7 +221,7 @@ module.exports = {
                           ReportingInovcom.delete(lot,cb);
                         },*/
                         function(cb){
-                          ReportingInovcom.importTrameFlux929(trameflux,feuil,cellule,table,cellule2,lot,numligne,cb);
+                          ReportingInovcom.importTrameFlux929(trameflux,feuil,cellule,table,cellule2,lot,numligne,cletpmep,cb);
                         }, 
                       ],function(erroned, lotValues){
                         if(erroned) return res.badRequest(erroned);
