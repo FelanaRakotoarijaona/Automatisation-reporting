@@ -2118,7 +2118,7 @@ lectureEtInsertiontype4v2:function(trameflux,feuil,cellule,table,cellule2,nb,num
 
     importEssaitype9: function (table,table2,date,option,nb,callback) {
       const fs = require('fs');
-      var re  = 0;
+      var re  = 'a';
       //var a = '\\\\10.128.1.2\\almerys-out\\Retour_Easytech_20210428\\RETOUR_RECHERCHE FACTURE INTERIALE\\INTERIALE';
       var a = table[0]+date+table2[nb];
       console.log('ch' +a);
@@ -2134,6 +2134,7 @@ lectureEtInsertiontype4v2:function(trameflux,feuil,cellule,table,cellule2,nb,num
                   if(file == files[i]){
                   const test1 = a +files[i];
                   fs.readdir(test1, (err, files1) => {
+                    console.log('re'+test1);
                     if(err){
                       console.log("une erreur1");
                     }
@@ -2143,13 +2144,16 @@ lectureEtInsertiontype4v2:function(trameflux,feuil,cellule,table,cellule2,nb,num
                       if(regex.test(files1))
                       {
                          re = re + 1; 
+                         console.log('++'+ re);
                       } 
                     }
 
                
             });
           }
+          console.log('3'+re); 
         }
+        console.log('2'+re); 
         });
             console.log(re); 
             var sql = "insert into recherchefactureinteriale (typologiedelademande,okko) values ("+re+","+re+") ";
