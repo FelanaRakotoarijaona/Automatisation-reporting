@@ -2147,12 +2147,13 @@ lectureEtInsertiontype4v2:function(trameflux,feuil,cellule,table,cellule2,nb,num
                          console.log('++'+ re);
                       } 
                     }
+                    console.log('3'+re); 
                     }
 
                
             });
           }
-          console.log('3'+re); 
+        
         }
         console.log('2'+re); 
         });
