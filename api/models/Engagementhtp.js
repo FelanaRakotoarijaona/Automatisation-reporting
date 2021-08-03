@@ -7702,7 +7702,7 @@ deleteFromChemindevis : function (nomBase,callback) {
               if(regex.test(file))
               {
                  //re = a+'\\'+file;
-                 re = a+'\\'+file;
+                 re = a+file;
                  console.log(re);
 
                  var sql = "insert into "+nomBase+" (chemin,nomtable,numligne,numfeuille,colonnecible,colonnecible2,colonnecible3) values ('"+re+"','"+nomTable[nb]+"','"+numLigne[nb]+"','"+numFeuille[nb]+"','"+nomColonne[nb]+"','"+colonnecible2[nb]+"','"+colonnecible3[nb]+"') ";
