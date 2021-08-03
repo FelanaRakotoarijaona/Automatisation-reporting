@@ -2147,17 +2147,16 @@ lectureEtInsertiontype4v2:function(trameflux,feuil,cellule,table,cellule2,nb,num
                          console.log('++'+ re);
                       } 
                     }
-                    console.log('3'+re); 
+                   
                     }
-
+                    console.log('fin'+re); 
                
             });
           }
         
         }
-        console.log('2'+re); 
         });
-            console.log(re); 
+            
             var sql = "insert into recherchefactureinteriale (typologiedelademande,okko) values ("+re+","+re+") ";
              ReportingInovcom.getDatastore().sendNativeQuery(sql, function(err,res){
               if (err) { 
