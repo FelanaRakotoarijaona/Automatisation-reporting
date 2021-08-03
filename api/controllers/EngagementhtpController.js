@@ -1422,7 +1422,8 @@ insertcheminengagementhtp : function(req,res)
       {
         var Excel = require('exceljs');
         var workbook = new Excel.Workbook();
-        var table = ['\\\\10.128.1.2\\bpo_almerys\\00-TOUS\\06-DOSSIER POLE\\01-HTP\\05- REPORTING\\03-HTP\\DOC_HTP\\'];
+        // var table = ['\\\\10.128.1.2\\bpo_almerys\\00-TOUS\\06-DOSSIER POLE\\01-HTP\\05- REPORTING\\03-HTP\\DOC_HTP\\'];
+        var table = ['/dev/prod/00-TOUS/06-DOSSIER POLE/01-HTP/05- REPORTING/03-HTP/DOC_HTP/'];
         var datetest = req.param("date",0);
         var annee = datetest.substr(0, 4);
         var mois = datetest.substr(5, 2);
