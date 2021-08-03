@@ -2140,12 +2140,13 @@ lectureEtInsertiontype4v2:function(trameflux,feuil,cellule,table,cellule2,nb,num
                     }
                     else{
                       const regex = new RegExp('.pdf');
-  
-                      if(regex.test(files1))
+                      for(var i = 0; i < files1.length; i++){
+                      if(regex.test(files1[i]))
                       {
                          re = re + 1; 
                          console.log('++'+ re);
                       } 
+                    }
                     }
 
                
