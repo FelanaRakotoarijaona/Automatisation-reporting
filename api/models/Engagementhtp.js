@@ -1617,7 +1617,7 @@ ecrituredataj2tri : async function (nombre_ok_ko, table,date_export,mois1,callba
     }
   });
   console.log(" Colnumber2"+collonne);
-  numeroLigne.getCell(collonne).value = 1421;
+  numeroLigne.getCell(collonne).value = 0;
   await newWorkbook.xlsx.writeFile(path_reporting);
   sails.log("Ecriture OK KO terminé"); 
   return callback(null, "OK");
@@ -2281,7 +2281,7 @@ ecrituredataj5tri : async function (nombre_ok_ko, table,date_export,mois1,callba
     }
   });
   console.log(" Colnumber2"+collonne);
-  numeroLigne.getCell(collonne).value = 1421;
+  numeroLigne.getCell(collonne).value = 0;
   await newWorkbook.xlsx.writeFile(path_reporting);
   sails.log("Ecriture OK KO terminé"); 
   return callback(null, "OK");
@@ -3341,7 +3341,7 @@ ecrituredatastock16cotlamie : async function (nombre_ok_ko, table,date_export,mo
     }
   });
   console.log(" Colnumber2"+collonne);
-  numeroLigne.getCell(collonne).value = 1421;
+  numeroLigne.getCell(collonne).value = 0;
   await newWorkbook.xlsx.writeFile(path_reporting);
   sails.log("Ecriture OK KO terminé"); 
   return callback(null, "OK");
@@ -4006,7 +4006,7 @@ ecrituredatastocktotcotlamie : async function (nombre_ok_ko, table,date_export,m
     }
   });
   console.log(" Colnumber2"+collonne);
-  numeroLigne.getCell(collonne).value = 1421;
+  numeroLigne.getCell(collonne).value = 0;
   await newWorkbook.xlsx.writeFile(path_reporting);
   sails.log("Ecriture OK KO terminé"); 
   return callback(null, "OK");
@@ -4770,7 +4770,7 @@ ecrituredatastocknontjsales : async function (nombre_ok_ko, table,date_export,mo
     }
   });
   console.log(" Colnumber2"+collonne);
-  numeroLigne.getCell(collonne).value = 1421;
+  numeroLigne.getCell(collonne).value = 0;
   await newWorkbook.xlsx.writeFile(path_reporting);
   sails.log("Ecriture OK KO terminé"); 
   return callback(null, "OK");
@@ -5435,7 +5435,7 @@ ecrituredatastocknontj1sales : async function (nombre_ok_ko, table,date_export,m
     }
   });
   console.log(" Colnumber2"+collonne);
-  numeroLigne.getCell(collonne).value = 1421;
+  numeroLigne.getCell(collonne).value = 0;
   await newWorkbook.xlsx.writeFile(path_reporting);
   sails.log("Ecriture OK KO terminé"); 
   return callback(null, "OK");
@@ -6100,7 +6100,7 @@ ecrituredatastocknontj2sales : async function (nombre_ok_ko, table,date_export,m
     }
   });
   console.log(" Colnumber2"+collonne);
-  numeroLigne.getCell(collonne).value = 1421;
+  numeroLigne.getCell(collonne).value = 0;
   await newWorkbook.xlsx.writeFile(path_reporting);
   sails.log("Ecriture OK KO terminé"); 
   return callback(null, "OK");
@@ -6765,7 +6765,7 @@ ecrituredatastocknontj5sales : async function (nombre_ok_ko, table,date_export,m
     }
   });
   console.log(" Colnumber2"+collonne);
-  numeroLigne.getCell(collonne).value = 1421;
+  numeroLigne.getCell(collonne).value = 0;
   await newWorkbook.xlsx.writeFile(path_reporting);
   sails.log("Ecriture OK KO terminé"); 
   return callback(null, "OK");
