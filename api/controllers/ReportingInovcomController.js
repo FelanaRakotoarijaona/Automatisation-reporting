@@ -1834,7 +1834,7 @@ module.exports = {
       var MotCle= [];
       var chem2 = [];
       var option2 = [];
-      var r = [0,1,2,3,4,5,6,7,8,9,10,11];
+      var r = [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14];
       var nomBase = "chemininovcomtype11";
       //workbook.xlsx.readFile('Inovcom.xlsx')
       workbook.xlsx.readFile('Inovcomserveur.xlsx')
@@ -1956,18 +1956,12 @@ module.exports = {
         {
             nc = nc.rows;
             sails.log(nc[0].typologiedelademande);
-            var Excel = require('exceljs');
-            var workbook = new Excel.Workbook();
-            var cheminc = [];
-            var cheminp = [];
-            var dernierl = [];
             var feuil = [];
             var cellule = [];
             var cellule2 = [];
             var table = [];
             var trameflux = [];
             var numligne = [];
-            var datetest = req.param("date",0);
             var annee = datetest.substr(0, 4);
             var mois = datetest.substr(5, 2);
             var jour = datetest.substr(8, 2);
