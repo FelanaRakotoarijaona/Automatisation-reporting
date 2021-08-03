@@ -50,9 +50,9 @@
             {
               nbr=nbr + 1;
             }
-            /*else
+            else
             {
-              if(regexko(desired_value1))
+              if(regexko.test(desired_value1))
               {
                 nbrko=nbrko + 1;
               }
@@ -60,7 +60,7 @@
               {
                var x = 5;
               }
-            };*/
+            };
           };
       }
       else
