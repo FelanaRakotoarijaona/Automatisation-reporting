@@ -1381,29 +1381,6 @@ module.exports = {
                   });
 
               }
-              /*else
-              {
-              var sql4= "select count(chemin) as ok from "+nomBase+" ";
-                      console.log(sql4);
-                      Reportinghtp.getDatastore().sendNativeQuery(sql4 ,function(err, nc) {
-                         nc = nc.rows;
-                         console.log('nc'+nc[0].ok);
-                         var f = parseInt(nc[0].ok);                         
-                         console.log('ito le f anaz :'+f);
-                            if (err){
-                              return res.view('Inovcom/erreur');
-                            }
-                           if(f==0)
-                            {
-                              return res.view('Inovcom/erreur');
-                            }
-                            else
-                            {
-                              return res.view('Inovcom/accueiltype7', {date : datetest});
-                              
-                            };
-                        });
-                      }*/
           });
         });
   },
@@ -1734,7 +1711,6 @@ module.exports = {
     {
       var Excel = require('exceljs');
       var workbook = new Excel.Workbook();
-      //var table = ['\\\\10.128.1.2\\almerys-out\\Retour_Easytech_'];
       var table = ['/dev/pro/Retour_Easytech_'];
       var datetest = req.param("date",0);
       var annee = datetest.substr(0, 4);
@@ -1746,7 +1722,7 @@ module.exports = {
       console.log(date);
       var cheminp = [];
       var MotCle= [];
-      var nomBase = "chemininovcomtype9";
+      var r = [0,1];
       workbook.xlsx.readFile('Inovcomserveur.xlsx')
           .then(function() {
             var newworksheet = workbook.getWorksheet('Feuil9');
@@ -1768,16 +1744,21 @@ module.exports = {
 
              });
               console.log(cheminp[0]);
-              var tab= 'recherchefactureinteriale';
+              var tab= ['recherchefactureinteriale','recherchefacturemacif'];
+              async.forEachSeries(r, function(lot, callback_reporting_suivant) {
               async.series([  
                   function(cb){
-                      ReportingInovcom.deletetype9(tab,cb);
+                      ReportingInovcom.deletetype9(tab,lot,cb);
                     },
                   function(cb){
-                      ReportingInovcom.importEssaitype9(table,cheminp,date,MotCle,0,cb);
+                      ReportingInovcom.importEssaitype9(table,cheminp,date,tab,lot,cb);
                     },
                   
-              ],
+              ],function(erroned, lotValues){
+                if(erroned) return res.badRequest(erroned);
+                return callback_reporting_suivant();
+              });
+            },
               function(err, resultat){
                       if (err){
                         return res.view('Contentieux/erreur');
@@ -1785,21 +1766,6 @@ module.exports = {
                       else
                       {
                         return res.view('Inovcom/exportexcelinovcom9', {date : datetest});
-                /*var sql4= "select count(typologiedelademande) as ok from "+nomBase+" ";
-                      console.log(sql4);
-                      Reportinghtp.getDatastore().sendNativeQuery(sql4 ,function(err, nc) {
-                         nc = nc.rows;
-                         console.log('nc'+nc[0].ok);
-                         var f = parseInt(nc[0].ok);
-                            if (err){
-                              return res.view('Inovcom/erreur');
-                            }
-                            else
-                            {
-                              return res.view('Inovcom/exportexcelinovcom9', {date : datetest});
-                              
-                            };
-                        });*/
                       }
             });
           });

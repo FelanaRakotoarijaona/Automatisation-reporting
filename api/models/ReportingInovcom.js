@@ -2076,8 +2076,8 @@ lectureEtInsertiontype4v2:function(trameflux,feuil,cellule,table,cellule2,nb,num
         return callback(null, true);
         });
     },
-    deletetype9 : function (table,callback) {
-      var sql = "delete from recherchefactureinteriale ";
+    deletetype9 : function (table,lot,callback) {
+      var sql = "delete from "+table[lot]+" ";
       ReportingInovcom.getDatastore().sendNativeQuery(sql, function(err, res){
         if (err) { 
           //return callback(err); 
@@ -2116,11 +2116,11 @@ lectureEtInsertiontype4v2:function(trameflux,feuil,cellule,table,cellule2,nb,num
         return existe;
     },
 
-    importEssaitype9: function (table,table2,date,option,nb,callback) {
+    importEssaitype9: function (table,table2,date,tab,lot,callback) {
       const fs = require('fs');
       var re  = 'a';
       //var a = '\\\\10.128.1.2\\almerys-out\\Retour_Easytech_20210428\\RETOUR_RECHERCHE FACTURE INTERIALE\\INTERIALE';
-      var a = table[0]+date+table2[nb];
+      var a = table[lot]+date+table2[lot];
       console.log('ch' +a);
       var c = ReportingInovcom.existenceFichier(a);
       console.log(c);
@@ -2150,7 +2150,7 @@ lectureEtInsertiontype4v2:function(trameflux,feuil,cellule,table,cellule2,nb,num
                    
                     }
                     
-                    var sql = "insert into recherchefactureinteriale (typologiedelademande,okko) values ("+re+","+re+") ";
+                    var sql = "insert into "+tab[lot]+" (nb) values ("+re+") ";
                     ReportingInovcom.getDatastore().sendNativeQuery(sql, function(err,res){
                      if (err) { 
                        //console.log(err);
@@ -2160,7 +2160,6 @@ lectureEtInsertiontype4v2:function(trameflux,feuil,cellule,table,cellule2,nb,num
                      else
                      {
                        console.log(sql);
-                       re = 0;
                        return callback(null, true);
                      };        
                                          });   
