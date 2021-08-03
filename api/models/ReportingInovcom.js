@@ -45,6 +45,7 @@
             var ko = 'KO'
             const regex = new RegExp(ok,'i');
             const regexko = new RegExp(ko,'i');
+            console.log('val'+desired_value1);
             if(regex.test(desired_value1))
             {
               nbr=nbr + 1;
