@@ -29,13 +29,14 @@ module.exports = {
       var numfeuille = [];
       var nomcolonne = [];
       var nomcolonne2 = [];
+      var tpmepcle = [];
       var chem2 = [];
       var option2 = [];
       console.log(date);
       var cheminp = [];
       var MotCle= [];
       var nomBase = "chemininovcom";
-      var r = [0,1,2];
+      var r = [0,1,2,3,4,5];
       //workbook.xlsx.readFile('Inovcom.xlsx')
         workbook.xlsx.readFile('Inovcomserveur.xlsx')
           .then(function() {
@@ -49,6 +50,10 @@ module.exports = {
             var motcle = newworksheet.getColumn(10);
             var chemin2 = newworksheet.getColumn(11);
             var opt2 = newworksheet.getColumn(12);
+            var cletpmep = newworksheet.getColumn(14);
+            cletpmep.eachCell(function(cell, rowNumber) {
+              tpmepcle.push(cell.value);
+            });
             numFeuille.eachCell(function(cell, rowNumber) {
               numfeuille.push(cell.value);
             });
@@ -93,7 +98,7 @@ module.exports = {
                         ReportingInovcom.delete(nomtable,lot,cb);
                       },
                       function(cb){
-                        ReportingIndu.importEssai(table,cheminp,date,MotCle,lot,nomtable,numligne,numfeuille,nomcolonne,nomcolonne2,nomBase,chem2,option2,cb);
+                        ReportingInovcom.importEssaitype1(table,cheminp,date,MotCle,lot,nomtable,numligne,numfeuille,nomcolonne,nomcolonne2,nomBase,chem2,option2,tpmepcle,cb);
                       },
                     ],function(erroned, lotValues){
                       if(erroned) return res.badRequest(erroned);
