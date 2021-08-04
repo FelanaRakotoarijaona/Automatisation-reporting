@@ -3293,6 +3293,111 @@ importEssaitype7: function (table,table2,date,option,nb,nomtable,numligne,numfeu
                           });  
   }   
  },
+ importEssaitype8: function (table,table2,date,option,nb,nomtable,numligne,numfeuille,nomcolonne,callback) {
+  const fs = require('fs');
+  var re  = 'a';
+  var tab = [];
+  var ab = table[0]+date+table2[nb];
+  var b = option[nb];
+  /*var ab1 = table[0]+date+chem2[nb];
+  var b1 = option2[nb];*/
+  
+  //console.log('ch1' + ab);
+  
+  var c = ReportingInovcom.existenceFichier(ab);
+  //var d = ReportingInovcom.existenceFichier(ab1);
+  //console.log(c);
+  if(c=='vrai')
+  {
+   fs.readdir(ab, (err, files) => {
+     if(err){
+       console.log('ito le erreur : '+err);
+     }
+     else{
+       var a;
+       files.forEach(file =>{
+         for(var i = 0; i < files.length; i++){
+               if(file == files[i]){
+               const test1 = ab +files[i];
+               fs.readdir(test1, (err, files1) => {
+                 if(err){
+                   console.log("une erreur1");
+                 }
+                 else{
+                   //console.log(file +" " +  files1[files1.length-1]);
+                   //var cible = "MASQUE SAISIE";
+                   const regex = new RegExp(b,'i');
+                   //const regex4 = new RegExp(b1,'i');
+                   for(var i = 0; i < files1.length; i++){
+                   
+                    var m1 = '.xlsx|.xls|.xlsm|.xlsb$';
+                    var m2 = '^[^~]';
+                    const regex1 = new RegExp(m1,'i');
+                    const regex2 = new RegExp(m2);
+                    
+                     if( regex.test(files1[i])  && regex1.test(files1[i]) && regex2.test(files1[i]))
+                     {
+                       //var a =ab + file +"\\" + files1[i];
+                       var a =ab + file +"/" + files1[i];
+                       //console.log('*****************');
+                       //console.log(a);  
+                       var sql = "insert into chemininovcomtype7 (chemin,nomtable,numligne,numfeuile,colonnecible) values ('"+a+"','"+nomtable+"','"+numligne+"','"+numfeuille+"','"+nomcolonne+"') ";
+                       ReportingInovcom.getDatastore().sendNativeQuery(sql, function(err,res){
+                        if(err)
+                        {
+                          console.log('une erreur');
+                          //console.log(err);
+                        }
+                        else 
+                        {
+                          return callback(null, true); 
+                        }          
+                                             });
+                     } 
+                     else
+                     {
+                       var sql = "insert into chemintsisy(typologiedelademande) values ('k') ";
+                       ReportingInovcom.getDatastore().sendNativeQuery(sql, function(err,res){
+                        if(err)
+                        {
+                          console.log('une erreur');
+                          //console.log(err);
+                        }
+                        else 
+                        {
+                          //console.log(sql);
+                          return callback(null, true); 
+                        }          
+                                             });
+                     };
+                   };
+                 }
+               });
+             }
+             
+         }
+ 
+       });
+     };
+  });
+ }
+  else
+  {
+    var sql = "insert into chemintsisy (typologiedelademande) values ('k') ";
+    ReportingInovcom.getDatastore().sendNativeQuery(sql, function(err,res){
+                        if(err)
+                        {
+                          console.log('une erreur');
+                          //console.log(err);
+                        }
+                        else 
+                        {
+                          //console.log(sql);
+                          return callback(null, true); 
+                        }             
+                          });  
+  }   
+ },
 importEssaitype8: function (table,table2,date,option,nb,type,type2,nomtable,numligne,numfeuille,nomcolonne,callback) {
   const fs = require('fs');
   var re  = 'a';
@@ -3327,6 +3432,17 @@ importEssaitype8: function (table,table2,date,option,nb,type,type2,nomtable,numl
                   }
                   else{
                     console.log(file +" " +  files1[files1.length-1]);
+                    var m1 = '.xlsx|.xls|.xlsm|.xlsb$';
+                    var m2 = '^[^~]';
+                    const regex1 = new RegExp(m1,'i');
+                    const regex2 = new RegExp(m2);
+                    const regex = new RegExp(b,'i');
+                    const regex4 = new RegExp(b2,'i');
+                    console.log(b);
+                    if((regex.test(file) || regex4.test(file))  && regex1.test(file) && regex2.test(file))
+                    {
+
+                    }
                     console.log('ok');
                     var a = chemin+ "/RETOUR_HOSPI/RETOUR_AVIS D''ANNULATION/" + file  + type2[nb] + files1[files1.length-1];  
                     //var a = chemin+ "\\RETOUR_HOSPI\\RETOUR_AVIS D''ANNULATION\\" + file  + type2[nb] + files1[files1.length-1];  
