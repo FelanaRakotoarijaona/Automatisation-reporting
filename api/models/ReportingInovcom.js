@@ -1584,7 +1584,9 @@ lectureEtInsertiontype4v2:function(trameflux,feuil,cellule,table,cellule2,nb,num
         var cell_ref = XLSX.utils.encode_cell(address_of_cell);
         var desired_cell = sheet[cell_ref];
         var desired_value = (desired_cell ? desired_cell.v : undefined);
-        if(desired_value==cellule[nb])
+        var motcle = cellule[nb];
+        const regex1 = new RegExp(motcle,'i');
+        if(regex1.test(desired_value))
         {
           col=ra;
         }
