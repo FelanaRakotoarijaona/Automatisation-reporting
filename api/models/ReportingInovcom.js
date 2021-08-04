@@ -1126,10 +1126,9 @@ lectureEtInsertiontype4:function(trameflux,feuil,cellule,table,cellule2,nb,numli
     var nbr = 0;
     var nbrko = 0;
     const sheet = workbook.Sheets[workbook.SheetNames[numerofeuille]];
+    console.log('tafiditra ato v 1');
     var range = XLSX.utils.decode_range(sheet['!ref']);
     var col =0 ;
-    //var col = 16;
-    var nbe = parseInt(nb);
     for(var ra=0;ra<=range.e.c;ra++)
       {
         var address_of_cell = {c:ra, r:numeroligne};
