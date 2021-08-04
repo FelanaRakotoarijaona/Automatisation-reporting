@@ -2438,7 +2438,7 @@ lectureEtInsertiontype4v2:function(trameflux,feuil,cellule,table,cellule2,nb,num
       var b2 = option2[nb];
       console.log(b);
       var c = ReportingInovcom.existenceFichier(a);
-      var d = ReportingInovcom.existenceFichier(a1);
+      //var d = ReportingInovcom.existenceFichier(a1);
       console.log(c);
       if(c=='vrai')
       {
@@ -2498,10 +2498,9 @@ lectureEtInsertiontype4v2:function(trameflux,feuil,cellule,table,cellule2,nb,num
                                           }); 
           });
       }
-      else if(d=='vrai')
+     /* else if(d=='vrai')
       {
-        /*var nomCol = nomcolonne[nb].replace("'", "''"); 
-        var nomCol2 = nomcolonne2[nb].replace("'", "''"); */
+       
         var p = a1.replace("'", "''"); 
         fs.readdir(a1, (err, files) => {
           console.log(a1);
@@ -2555,7 +2554,7 @@ lectureEtInsertiontype4v2:function(trameflux,feuil,cellule,table,cellule2,nb,num
             
                                           }); 
           });
-      }
+      }*/
       else
       {
         var sql = "insert into chemintsisy (typologiedelademande) values ('k') ";
@@ -2932,6 +2931,7 @@ importEssaitype6: function (table,table2,date,option,nb,callback) {
                          }) ;
  }   
 },
+
 importEssaitype7: function (table,table2,date,option,nb,nomtable,numligne,numfeuille,nomcolonne,nomcolonne2,nomcolonne3,chem2,option2,callback) {
   const fs = require('fs');
   var re  = 'a';
