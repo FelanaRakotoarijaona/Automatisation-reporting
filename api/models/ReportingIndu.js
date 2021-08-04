@@ -1191,11 +1191,10 @@ module.exports = {
     var nbrko = 0;
     const sheet = workbook.Sheets[workbook.SheetNames[numerofeuille]];
     var range = XLSX.utils.decode_range(sheet['!ref']);
-    var nbe = parseInt(nb);
     var bb = 'Etat de fin de traitement';
     const regex4 = new RegExp(bb,'i');
     var colb = 6;
-    /*for(var ra=0;ra<=range.e.c;ra++)
+    for(var ra=0;ra<=range.e.c;ra++)
 
       {
         var address_of_cell = {c:ra, r:numeroligne};
@@ -1206,7 +1205,7 @@ module.exports = {
         {
           colb=ra;
         };
-      };*/
+      };
     console.log(colb);
    if(colb!=undefined )
     {
@@ -1260,6 +1259,22 @@ module.exports = {
   try{
     var nbr = 0;
     var nbrko = 0;
+    const sheetd = workbook.SheetNames; 
+        console.log('long' + sheetd.length);
+        var tab = [];
+        for(var i=0;i<sheetd.length;i++)
+        {
+          var mc1 = 'Chèque TP';
+          const regex = new RegExp(mc1,'i');
+          if(regex.test(sheetd[i]))
+          {
+            numerofeuille = parseInt(i);
+          }
+          else
+          {
+           var am = 1;
+          }
+        }
     const sheet = workbook.Sheets[workbook.SheetNames[numerofeuille]];
     var range = XLSX.utils.decode_range(sheet['!ref']);
     var col;
@@ -1289,7 +1304,7 @@ module.exports = {
         const regex1 = new RegExp(ok,'i');
         if(regex1.test(desired_value))
         {
-          //col2=ra;
+          col2=ra;
         };
       };
       console.log("colonne"+col + 'g' + col2);
