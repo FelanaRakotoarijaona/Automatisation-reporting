@@ -31,7 +31,7 @@
       var sql = "insert into "+table[nbe]+" (nb) values ("+tab[0]+") ";
       ReportingInovcom.getDatastore().sendNativeQuery(sql, function(err,res){
         if (err) { 
-          console.log("Une erreur ve ok?");
+          console.log("Une erreur"+ err);
           //return callback(err);
          }
         else
@@ -83,6 +83,7 @@
               ligne = parseInt(a);
             }
           }
+          console.log("ligne"+ligne);
       if(col!=undefined && ligne!=undefined)
       {
         var address_of_cell = {c:col, r:ligne};
