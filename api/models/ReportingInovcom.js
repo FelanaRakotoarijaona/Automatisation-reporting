@@ -6,6 +6,106 @@
  */
  module.exports = {
   attributes: {},
+  importInovcomtype9 : function (trameflux,feuil,cellule,table,cellule2,nb,numligne,callback) {
+    if(trameflux[nb]==undefined)
+    {
+      console.log('trame undefined');
+      var sql = "insert into chemintsisy(typologiedelademande) values ('ko') ";
+      Reportinghtp.getDatastore().sendNativeQuery(sql, function(err,res){
+        if (err) { 
+          console.log("Une erreur ve ok?");
+          //return callback(err);
+         }
+        else
+        {
+          console.log(sql);
+          return callback(null, true);
+        };
+      });
+    }
+    else{
+      var tab = [];
+      tab = ReportingInovcom.lectureEtInsertionFacture(trameflux,feuil,cellule,table,cellule2,nb,numligne,callback);
+      var nbe= parseInt(nb);
+      console.log(tab);
+      var sql = "insert into "+table[nbe]+" (nb) values ("+tab[0]+") ";
+      ReportingInovcom.getDatastore().sendNativeQuery(sql, function(err,res){
+        if (err) { 
+          console.log("Une erreur"+ err);
+          //return callback(err);
+         }
+        else
+        {
+          console.log(sql);
+          return callback(null, true);
+        };
+                            });
+    };
+  },
+
+  lectureEtInsertionFacture:function(trameflux,feuil,cellule,table,cellule2,nb,numligne,callback){
+    XLSX = require('xlsx');
+    var workbook = XLSX.readFile(trameflux[nb]);
+    var numerofeuille = feuil[nb];
+    var numeroligne = parseInt(numligne[nb]);
+    try{
+      var nbr = 0;
+      var nbrko = 0;
+      const sheet = workbook.Sheets[workbook.SheetNames[numerofeuille]];
+      var range = XLSX.utils.decode_range(sheet['!ref']);
+      var col = 0;
+      var ligne = 0;
+      for(var ra=0;ra<=range.e.c;ra++)
+        {
+          var address_of_cell = {c:ra, r:numeroligne};
+          var cell_ref = XLSX.utils.encode_cell(address_of_cell);
+          var desired_cell = sheet[cell_ref];
+          var desired_value = (desired_cell ? desired_cell.v : undefined);
+          var mc1 = cellule[nb];
+          const regex = new RegExp(mc1,'i');
+          if(regex.test(desired_value))
+          {
+            col=ra;
+          };
+        };
+        console.log("colonne"+col);
+        var debutligne = numeroligne + 1;
+        for(var a=debutligne;a<=range.e.r;a++)
+          {
+            var address_of_cell = {c:0, r:a};
+            var cell_ref = XLSX.utils.encode_cell(address_of_cell);
+            var desired_cell = sheet[cell_ref];
+            var desired_value1 = (desired_cell ? desired_cell.v : undefined);
+            var mc2 = cellule2[nb];
+            const regex = new RegExp(mc2,'i');
+            if(regex.test(desired_value1))
+            {
+              ligne = parseInt(a);
+            }
+          }
+          console.log("ligne"+ligne);
+      if(col!=undefined && ligne!=undefined)
+      {
+        var address_of_cell = {c:col, r:ligne};
+        var cell_ref = XLSX.utils.encode_cell(address_of_cell);
+        var desired_cell = sheet[cell_ref];
+        var desired_value1 = (desired_cell ? desired_cell.v : undefined);   
+
+        nbr = desired_value1;
+      }
+      else
+      {
+        console.log('Colonne non trouvé');
+      }
+      console.log("nombreeeeebr"+ nbr);
+          var tab = [nbr];
+          return tab;
+    }
+    catch
+    {
+      console.log("erreur absolu haaha");
+    }
+  },
   importEssaitype1: function (table,table2,date,option,nb,nomtable,numligne,numfeuille,nomcolonne,nomcolonne2,nomBase,chemin,option2,tpmepcle,callback) {
     const fs = require('fs');
     var re  = 'a';
@@ -276,7 +376,6 @@
       const sheet = workbook.Sheets[workbook.SheetNames[numerofeuille]];
       var range = XLSX.utils.decode_range(sheet['!ref']);
       var col = 0;
-      var nbe = parseInt(nb);
       for(var ra=0;ra<=range.e.c;ra++)
         {
           var address_of_cell = {c:ra, r:numeroligne};
@@ -935,7 +1034,7 @@
           }
         }
     console.log('numfeuille' + numerofeuille);
-    const sheet = workbook.Sheets[workbook.SheetNames[numerofeuille]];
+    const sheet = workbook.Sheets[workbook.SheetNames[3]];
     var range = XLSX.utils.decode_range(sheet['!ref']);
     
     var col ;
@@ -1485,7 +1584,9 @@ lectureEtInsertiontype4v2:function(trameflux,feuil,cellule,table,cellule2,nb,num
         var cell_ref = XLSX.utils.encode_cell(address_of_cell);
         var desired_cell = sheet[cell_ref];
         var desired_value = (desired_cell ? desired_cell.v : undefined);
-        if(desired_value==cellule[nb])
+        var motcle = cellule[nb];
+        const regex1 = new RegExp(motcle,'i');
+        if(regex1.test(desired_value))
         {
           col=ra;
         }
@@ -2649,6 +2750,85 @@ lectureEtInsertiontype4v2:function(trameflux,feuil,cellule,table,cellule2,nb,num
                            })   
    }   
  },
+ importEssaitype9: function (table,table2,date,option,nb,nomtable,numligne,numfeuille,nomcolonne,nomcolonne2,nomBase,chemin,option2,callback) {
+  const fs = require('fs');
+  var re  = 'a';
+  var a = table[0]+date+table2[nb];
+  var b = option[nb];
+  var nomTable = nomtable[nb];
+  var numLigne= numligne[nb];
+  var numFeuille = numfeuille[nb];
+  var nomColonne = nomcolonne[nb];
+  var c = ReportingInovcom.existenceFichier(a);
+  var a1 = table[0]+date+chemin[nb];
+  var b2 = option2[nb];
+  var d = ReportingInovcom.existenceFichier(a1);
+  console.log(c);
+  if(c=='vrai')
+  {
+    fs.readdir(a, (err, files) => {
+      console.log(a);
+          files.forEach(file => {
+            var m1 = '.xlsx|.xls|.xlsm|.xlsb$';
+            var m2 = '^[^~]';
+            const regex = new RegExp(b,'i');
+            const regex1 = new RegExp(m1,'i');
+            const regex2 = new RegExp(m2);
+            const regex4 = new RegExp(b2,'i');
+            if((regex.test(file)  || regex4.test(file)) && regex1.test(file) && regex2.test(file))
+            {
+               //re = a+'\\'+file;
+               re = a+'/'+file;
+               var sql = "insert into "+nomBase+" (chemin,nomtable,numligne,numfeuile,colonnecible,colonnecible2) values ('"+re+"','"+nomTable+"','"+numLigne+"','"+numFeuille+"','"+nomColonne+"','"+nomcolonne2[nb]+"') ";
+               ReportingInovcom.getDatastore().sendNativeQuery(sql, function(err,res){
+                if (err) { 
+                  console.log('une erreur');
+                  //return callback(err);
+                 }
+                else
+                {
+                  console.log(sql);
+                  return callback(null, true);
+                };          
+                                     }) ;    
+            } 
+            else
+            {
+             var sql = "delete from chemintsisy ";
+               ReportingInovcom.getDatastore().sendNativeQuery(sql, function(err,res){
+                if (err) { 
+                  console.log("Une erreur ve? import 1");
+                  //return callback(err);
+                 }
+                else
+                {
+                  console.log(sql);
+                  return callback(null, true);
+                };       
+                                     }) ;
+            };
+           
+           
+        });
+      });
+  }
+  
+  else
+  {
+    var sql = "insert into chemintsisy(typologiedelademande) values ('k') ";
+    ReportingInovcom.getDatastore().sendNativeQuery(sql, function(err,res){
+      if (err) { 
+        console.log("Une erreur ve? import 1");
+        //return callback(err);
+       }
+      else
+      {
+        console.log(sql);
+        return callback(null, true);
+      };
+                          }) ;  
+  };   
+},
  importEssaitype4: function (table,table2,date,option,nb,nomtable,numligne,numfeuille,nomcolonne,nomBase,chemin,option2,callback) {
   const fs = require('fs');
   var re  = 'a';
@@ -2932,6 +3112,7 @@ importEssaitype6: function (table,table2,date,option,nb,callback) {
                          }) ;
  }   
 },
+
 importEssaitype7: function (table,table2,date,option,nb,nomtable,numligne,numfeuille,nomcolonne,nomcolonne2,nomcolonne3,chem2,option2,callback) {
   const fs = require('fs');
   var re  = 'a';
