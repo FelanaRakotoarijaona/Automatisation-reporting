@@ -7209,7 +7209,14 @@ deleteFromChemindevis : function (nomBase,callback) {
     var re  = 'a';
     var tab = [];
     // var a = table[0]+date+table2[nb];
-    var a = table_1[0]+date+table2[nb];
+    //******************************************CONDITION MBOLA TSY METY */
+    if(table_1[0]){
+      var a = table_1[0]+date+table2[nb];
+    }
+    else{
+      var a = outable[0]+date+table2[nb];
+    }
+    // var a = table_1[0]+date+table2[nb];
     console.log('*****************************');
     console.log('chemin de a : '+a);
     //var a ='\\\\10.128.1.2\\almerys-out\\Retour_Easytech_20210512\\TRAITEMENT_RETOUR_OTD_N2\\' ;
@@ -7852,34 +7859,39 @@ importengagementhtptri : function (trameflux,feuil,cellule,table,cellule2,nb,num
           console.log(numerofeuille);
           const sheet = workbook.Sheets[workbook.SheetNames[numerofeuille]];
           var range = XLSX.utils.decode_range(sheet['!ref']);
-          var col ;
-          var col1;
-          var col2;
-          console.log('Nombre de colonne' + range.e.c);
-          console.log('Nombre de ligne' + range.e.r);
-          console.log(numeroligne + 'numlign');
-          console.log(numerofeuille + 'numfeuille');
-          console.log(cellule2[1] + 'c2');
-          console.log(cellule[1] + 'c1');
-          console.log(dernierl[1] + 'c3');
-          console.log(table[1] + 'table');
-          for(var ra=0;ra<=range.e.c;ra++)
-          {
-            var address_of_cell = {c:ra, r:numeroligne};
-            // console.log(address_of_cell);//c:5 r:0
-            var cell_ref = XLSX.utils.encode_cell(address_of_cell);
-            var desired_cell = sheet[cell_ref];
-            // console.log(desired_cell);
-            var desired_value = (desired_cell ? desired_cell.v : undefined);
-            // console.log(desired_value);//No Facture
-            if(desired_value==dernierl[0])
-            {
-              col=ra;
-            }
-          };
+          // var col ;
+          // var col1;
+          // var col2;
+          // console.log('Nombre de colonne' + range.e.c);
+          // console.log('Nombre de ligne' + range.e.r);
+          // console.log(numeroligne + 'numlign');
+          // console.log(numerofeuille + 'numfeuille');
+          // console.log(cellule2[1] + 'c2');
+          // console.log(cellule[1] + 'c1');
+          // console.log(dernierl[1] + 'c3');
+          // console.log(table[1] + 'table');
+          console.log('table n°: '+nb+'__'+table[nb]);
+/* ancien code
+          // for(var ra=0;ra<=range.e.c;ra++)
+          // {
+          //   var address_of_cell = {c:ra, r:numeroligne};
+          //   // console.log(address_of_cell);//c:5 r:0
+          //   var cell_ref = XLSX.utils.encode_cell(address_of_cell);
+          //   var desired_cell = sheet[cell_ref];
+          //   // console.log(desired_cell);
+          //   var desired_value = (desired_cell ? desired_cell.v : undefined);
+          //   // console.log(desired_value);//No Facture
+          //   if(desired_value==dernierl[0])
+          //   {
+          //     col=ra;
+          //   }
+          // };
           
-          console.log('colonne cible : ' +col);
-          if(col!=undefined)
+          // console.log('colonne cible : ' +col);
+
+*/
+          var col=2;
+          if(table[nb]=='htptri16' || table[nb]=='htptrifin')
           {
             var nbr = 0;
             for(var a=0;a<=range.e.r;a++)
@@ -7896,12 +7908,59 @@ importengagementhtptri : function (trameflux,feuil,cellule,table,cellule2,nb,num
                 };
               };
           }
-    
-    
-          
+          if(table[nb]=='htpfacmg16' || table[nb]=='htpfacmgfin')
+          {
+            var nbr = 0;
+            for(var a=0;a<=range.e.r;a++)
+              {
+                var address_of_cell = {c:col, r:a};
+                var cell_ref = XLSX.utils.encode_cell(address_of_cell);
+                var desired_cell = sheet[cell_ref];
+                var desired_value1 = (desired_cell ? desired_cell.v : undefined);
+                var bi = 'MGEFI HTP - Saisir Facture ';
+                const regex = new RegExp(bi+'*');
+                if(regex.test(desired_value1))
+                {
+                  nbr=nbr + 1;
+                };
+              };
+          }
+          if(table[nb]=='htpdevi16' || table[nb]=='htpdevifin')
+          {
+            var nbr = 0;
+            for(var a=0;a<=range.e.r;a++)
+              {
+                var address_of_cell = {c:col, r:a};
+                var cell_ref = XLSX.utils.encode_cell(address_of_cell);
+                var desired_cell = sheet[cell_ref];
+                var desired_value1 = (desired_cell ? desired_cell.v : undefined);
+                var bi = 'MGEFI HTP - Saisir Devis ';
+                const regex = new RegExp(bi+'*');
+                if(regex.test(desired_value1))
+                {
+                  nbr=nbr + 1;
+                };
+              };
+          }
+          if(table[nb]=='htpflux16' || table[nb]=='htpfluxfin' || table[nb]=='htprejet16' || table[nb]=='htprejetfin' || table[nb]=='htpcotlamie16' || table[nb]=='htpcotlamiefin' || table[nb]=='htpcotite16' || table[nb]=='htpcotitefin' || table[nb]=='htpcotite16' || table[nb]=='htpcotitefin' || table[nb]=='htpcotite16' || table[nb]=='htpcotitefin')
+          {
+            var nbr = 0;
+            for(var a=0;a<=range.e.r;a++)
+              {
+                var address_of_cell = {c:col, r:a};
+                var cell_ref = XLSX.utils.encode_cell(address_of_cell);
+                var desired_cell = sheet[cell_ref];
+                var desired_value1 = (desired_cell ? desired_cell.v : undefined);
+                if(desired_value1!=undefined)
+                {
+                  nbr=nbr + 1;
+                }
+              };
+          }
+
           else
           {
-            console.log('Colonne non trouvé');
+            console.log('Nom du table non trouvé');
           }
           var tab = [nbr];
               console.log("nombreeeeebr__tri__"+ nbr);

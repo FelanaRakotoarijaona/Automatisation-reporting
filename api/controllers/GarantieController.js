@@ -341,8 +341,8 @@ module.exports = {
   {
     var Excel = require('exceljs');
     var workbook = new Excel.Workbook();
-    // var table = ['\\\\10.128.1.2\\almerys-out\\Retour_Easytech_'];
-    var table = ['/dev/pro/Retour_Easytech_'];
+    var table = ['\\\\10.128.1.2\\almerys-out\\Retour_Easytech_'];
+    // var table = ['/dev/pro/Retour_Easytech_'];
     var datetest = req.param("date",0);
     var annee = datetest.substr(0, 4);
     var mois = datetest.substr(5, 2);
@@ -897,7 +897,7 @@ importGarantiebpo1 : function(req,res)
                   // ],
                   function(err, resultat){
                     if (err) { return res.view('Inovcom/erreur'); }
-                    return res.view('Garantie/exportGarantie', {date : datetest});
+                    return res.view('Garantie/exportGarantie', {date : datetest});//ROUTE EXPORT
                 });
              
               }
@@ -905,6 +905,836 @@ importGarantiebpo1 : function(req,res)
         };
     });
 },
+   /***********************************************************************************/  
+   /*
+   *
+   *
+   *                              EXPORT GARANTIE
+   * 
+   * 
+   *  
+  /***********************************************************************************/
+  //CONFIGURATION ROUTES PAS ENCORE PRET
+exportgarantiefinprod : function (req, res) {
+  var datetest = req.param("date",0);
+  var annee = datetest.substr(0, 4);
+  var mois = datetest.substr(5, 2);
+  var jour = datetest.substr(8, 2);
+  var feuille = annee+mois+'_EASY';
+  console.log(feuille);
+  var mois1 = 'Janvier' ;
+  if(mois==01)
+  {
+    mois1= 'Janvier';
+  };
+  if(mois==02)
+  {
+    mois1= 'Fevrier';
+  };
+  if(mois==03)
+  {
+    mois1= 'Mars';
+  };
+  if(mois==04)
+  {
+    mois1= 'Avril';
+  };
+  if(mois==05)
+  {
+    mois1= 'Mai';
+  };
+  if(mois==06)
+  {
+    mois1= 'Juin';
+  };
+  if(mois==07)
+  {
+    mois1= 'Juillet';
+  };
+  if(mois==08)
+  {
+    mois1= 'Aout';
+  };
+  if(mois==09)
+  {
+    mois1= 'Septembre';
+  };
+  if(mois==10)
+  {
+    mois1= 'octobre';
+  };
+  if(mois==11)
+  {
+    mois1= 'Novembre';
+  };
+  if(mois==12)
+  {
+    mois1= 'Decembre';
+  };
+  console.log(mois1);
+  var date_export = jour + '/' + mois + '/' +annee;
+  console.log("RECHERCHE COLONNE");
+  async.series([
+    function (callback) {
+      Garantie.recupdata("garantiedematfinp",callback);
+    },
+    function (callback) {
+      Garantie.recupdata("garantieavisfinp",callback);
+    },
+    function (callback) {
+      Garantie.recupdata("garantieconvfinp",callback);
+    },
+    function (callback) {
+      Garantie.recupdata("garantietpmepfinp",callback);
+    },
+    function (callback) {
+      Garantie.recupdata("garantieindusfinp",callback);
+    },
+    function (callback) {
+      Garantie.recupdata("garantiecontrfinp",callback);
+    },
+    function (callback) {
+      Garantie.recupdata("garantieretenfinp",callback);
+    },
+    function (callback) {
+      Garantie.recupdata("garantiercforcefinp",callback);
+    },
+    function (callback) {
+      Garantie.recupdata("garantiefraudesfinp",callback);
+    },
+    function (callback) {
+      Garantie.recupdata("garantiecodelisfinp",callback);
+    },
+    function (callback) {
+      Garantie.recupdata("garantieremisefinp",callback);
+    },
+    function (callback) {
+      Garantie.recupdata("garantiearnofinp",callback);
+    },
+    function (callback) {
+      Garantie.recupdata("garantiedefraifinp",callback);
+    },
+    function (callback) {
+      Garantie.recupdata("garantiecurefinp",callback);
+    },
+    function (callback) {
+      Garantie.recupdatasum("garantierechfinp",callback);
+    },
+    function (callback) {
+      Garantie.recupdatasum("garantiecmucfinp",callback);
+    },
+    
+   
+  ],function(err,result){
+    if(err) return res.badRequest(err);
+    console.log("Count OK 1==> " + result[0].ok);
+    async.series([
+      function (callback) {
+        Garantie.ecrituredata16tri(result[0],"garantiedematfinp",date_export,feuille,callback);
+      },
+      function (callback) {
+        Garantie.ecrituredata16facM(result[1],"garantieavisfinp",date_export,feuille,callback);
+      },
+      function (callback) {
+        Garantie.ecrituredata16devi(result[2],"garantieconvfinp",date_export,feuille,callback);
+      },
+      function (callback) {
+        Garantie.ecrituredata16sales(result[3],"garantietpmepfinp",date_export,feuille,callback);
+      },
+      function (callback) {
+        Garantie.ecrituredata16flux(result[4],"garantieindusfinp",date_export,feuille,callback);
+      },
+      function (callback) {
+          Garantie.ecrituredata16rejet(result[5],"garantiecontrfinp",date_export,feuille,callback);
+        },
+      function (callback) {
+          Garantie.ecrituredata16cotlamie(result[6],"garantieretenfinp",date_export,feuille,callback);
+      },
+      function (callback) {
+          Garantie.ecrituredatafinptri(result[7],"garantiercforcefinp",date_export,feuille,callback);
+        },
+        function (callback) {
+          Garantie.ecrituredatafinpfacM(result[8],"garantiefraudesfinp",date_export,feuille,callback);
+        },
+        function (callback) {
+          Garantie.ecrituredatafinpdevi(result[9],"garantiecodelisfinp",date_export,feuille,callback);
+        },
+        function (callback) {
+          Garantie.ecrituredatafinpsales(result[10],"garantieremisefinp",date_export,feuille,callback);
+        },
+        function (callback) {
+          Garantie.ecrituredatafinpflux(result[11],"garantiearnofinp",date_export,feuille,callback);
+        },
+        function (callback) {
+            Garantie.ecrituredatafinprejet(result[12],"garantiedefraifinp",date_export,feuille,callback);
+          },
+        function (callback) {
+        Garantie.ecrituredatafinpcotlamie(result[13],"garantiecurefinp",date_export,feuille,callback);
+        },
+        function (callback) {
+          Garantie.ecrituredata16cotite(result[14],"garantierechfinp",date_export,feuille,callback);
+        },
+        function (callback) {
+          Garantie.ecrituredatafinpcotite(result[15],"garantiecmucfinp",date_export,feuille,callback);
+        },
+        
+    
+    ],function(err,resultExcel){
+   console.log(resultExcel[0]);
+        if(resultExcel[0]==true)
+        {
+          console.log("true zn");
+          res.view('Retour/erera');
+        }
+        if(resultExcel[0]=='OK')
+        {
+          res.view('HTPengagement/exportHTPengagementsuivant_1', {date : datetest});
+          // res.view('Retour/succes');
+        }
+
+    })
+  })
+},
+
+/*************************************************************************************/
+exportgarantiej2 : function (req, res) {
+  var datetest = req.param("date",0);
+  var annee = datetest.substr(0, 4);
+  var mois = datetest.substr(5, 2);
+  var jour = datetest.substr(8, 2);
+  var feuille = annee+mois+'_EASY';
+  console.log(feuille);
+  var mois1 = 'Janvier' ;
+  if(mois==01)
+  {
+    mois1= 'Janvier';
+  };
+  if(mois==02)
+  {
+    mois1= 'Fevrier';
+  };
+  if(mois==03)
+  {
+    mois1= 'Mars';
+  };
+  if(mois==04)
+  {
+    mois1= 'Avril';
+  };
+  if(mois==05)
+  {
+    mois1= 'Mai';
+  };
+  if(mois==06)
+  {
+    mois1= 'Juin';
+  };
+  if(mois==07)
+  {
+    mois1= 'Juillet';
+  };
+  if(mois==08)
+  {
+    mois1= 'Aout';
+  };
+  if(mois==09)
+  {
+    mois1= 'Septembre';
+  };
+  if(mois==10)
+  {
+    mois1= 'octobre';
+  };
+  if(mois==11)
+  {
+    mois1= 'Novembre';
+  };
+  if(mois==12)
+  {
+    mois1= 'Decembre';
+  };
+  console.log(mois1);
+  var date_export = jour + '/' + mois + '/' +annee;
+  console.log("RECHERCHE COLONNE");
+  async.series([
+    function (callback) {
+      Engagementhtp.recupdata("garantiedematj2",callback);
+    },
+    function (callback) {
+      Engagementhtp.recupdata("garantieavisj2",callback);
+    },
+    function (callback) {
+      Engagementhtp.recupdata("garantieconvj2",callback);
+    },
+    function (callback) {
+      Engagementhtp.recupdata("garantietpmepj2",callback);
+    },
+    function (callback) {
+      Engagementhtp.recupdata("garantieindusj2",callback);
+    },
+    function (callback) {
+      Engagementhtp.recupdata("garantiecontrj2",callback);
+    },
+    function (callback) {
+      Engagementhtp.recupdata("garantieretenj2",callback);
+    },
+    function (callback) {
+      Engagementhtp.recupdata("garantiercforcej2",callback);
+    },
+    function (callback) {
+      Engagementhtp.recupdata("garantiefraudesj2",callback);
+    },
+    function (callback) {
+      Engagementhtp.recupdata("garantiecodelisj2",callback);
+    },
+    function (callback) {
+      Engagementhtp.recupdata("garantiermisej2",callback);
+    },
+    function (callback) {
+      Engagementhtp.recupdata("garantiearnoj2",callback);
+    },
+    function (callback) {
+      Engagementhtp.recupdata("garantiedefraij2",callback);
+    },
+    function (callback) {
+      Engagementhtp.recupdata("garantiecurej2",callback);
+    },
+    
+   
+  ],function(err,result){
+    if(err) return res.badRequest(err);
+    console.log("Count OK 1==> " + result[0].ok);
+    async.series([
+      function (callback) {
+        Engagementhtp.ecrituredata16tri(result[0],"garantiedematj2",date_export,feuille,callback);
+      },
+      function (callback) {
+        Engagementhtp.ecrituredata16facM(result[1],"garantieavisj2",date_export,feuille,callback);
+      },
+      function (callback) {
+        Engagementhtp.ecrituredata16devi(result[2],"garantieconvj2",date_export,feuille,callback);
+      },
+      function (callback) {
+        Engagementhtp.ecrituredata16sales(result[3],"garantietpmepj2",date_export,feuille,callback);
+      },
+      function (callback) {
+        Engagementhtp.ecrituredata16flux(result[4],"garantieindusj2",date_export,feuille,callback);
+      },
+      function (callback) {
+          Engagementhtp.ecrituredata16rejet(result[5],"garantiecontrj2",date_export,feuille,callback);
+        },
+      function (callback) {
+      Engagementhtp.ecrituredata16cotlamie(result[6],"garantieretenj2",date_export,feuille,callback);
+      },
+      function (callback) {
+          Engagementhtp.ecrituredatafinptri(result[7],"garantiercforcej2",date_export,feuille,callback);
+        },
+        function (callback) {
+          Engagementhtp.ecrituredatafinpfacM(result[8],"garantiefraudesj2",date_export,feuille,callback);
+        },
+        function (callback) {
+          Engagementhtp.ecrituredatafinpdevi(result[9],"garantiecodelisj2",date_export,feuille,callback);
+        },
+        function (callback) {
+          Engagementhtp.ecrituredatafinpsales(result[10],"garantiermisej2",date_export,feuille,callback);
+        },
+        function (callback) {
+          Engagementhtp.ecrituredatafinpflux(result[11],"garantiearnoj2",date_export,feuille,callback);
+        },
+        function (callback) {
+            Engagementhtp.ecrituredatafinprejet(result[12],"garantiedefraij2",date_export,feuille,callback);
+          },
+        function (callback) {
+        Engagementhtp.ecrituredatafinpcotlamie(result[13],"garantiecurej2",date_export,feuille,callback);
+        },
+       
+    
+    ],function(err,resultExcel){
+   console.log(resultExcel[0]);
+        if(resultExcel[0]==true)
+        {
+          console.log("true zn");
+          res.view('Retour/erera');
+        }
+        if(resultExcel[0]=='OK')
+        {
+          res.view('HTPengagement/exportHTPengagementsuivant_1', {date : datetest});
+          // res.view('Retour/succes');
+        }
+
+    })
+  })
+},
+/*******************************************************************************************/
+exportgarantiej5 : function (req, res) {
+  var datetest = req.param("date",0);
+  var annee = datetest.substr(0, 4);
+  var mois = datetest.substr(5, 2);
+  var jour = datetest.substr(8, 2);
+  var feuille = annee+mois+'_EASY';
+  console.log(feuille);
+  var mois1 = 'Janvier' ;
+  if(mois==01)
+  {
+    mois1= 'Janvier';
+  };
+  if(mois==02)
+  {
+    mois1= 'Fevrier';
+  };
+  if(mois==03)
+  {
+    mois1= 'Mars';
+  };
+  if(mois==04)
+  {
+    mois1= 'Avril';
+  };
+  if(mois==05)
+  {
+    mois1= 'Mai';
+  };
+  if(mois==06)
+  {
+    mois1= 'Juin';
+  };
+  if(mois==07)
+  {
+    mois1= 'Juillet';
+  };
+  if(mois==08)
+  {
+    mois1= 'Aout';
+  };
+  if(mois==09)
+  {
+    mois1= 'Septembre';
+  };
+  if(mois==10)
+  {
+    mois1= 'octobre';
+  };
+  if(mois==11)
+  {
+    mois1= 'Novembre';
+  };
+  if(mois==12)
+  {
+    mois1= 'Decembre';
+  };
+  console.log(mois1);
+  var date_export = jour + '/' + mois + '/' +annee;
+  console.log("RECHERCHE COLONNE");
+  async.series([
+    function (callback) {
+      Engagementhtp.recupdata("garantiedematj5",callback);
+    },
+    function (callback) {
+      Engagementhtp.recupdata("garantieavisj5",callback);
+    },
+    function (callback) {
+      Engagementhtp.recupdata("garantieconvj5",callback);
+    },
+    function (callback) {
+      Engagementhtp.recupdata("garantietpmepj5",callback);
+    },
+    function (callback) {
+      Engagementhtp.recupdata("garantieindusj5",callback);
+    },
+    function (callback) {
+      Engagementhtp.recupdata("garantiecontrj5",callback);
+    },
+    function (callback) {
+      Engagementhtp.recupdata("garantieretenj5",callback);
+    },
+    function (callback) {
+      Engagementhtp.recupdata("garantiercforcej5",callback);
+    },
+    function (callback) {
+      Engagementhtp.recupdata("garantiefraudesj5",callback);
+    },
+    function (callback) {
+      Engagementhtp.recupdata("garantiecodelisj5",callback);
+    },
+    function (callback) {
+      Engagementhtp.recupdata("garantieremisej5",callback);
+    },
+    function (callback) {
+      Engagementhtp.recupdata("garantiearnoj5",callback);
+    },
+    function (callback) {
+      Engagementhtp.recupdata("garantiedefraij5",callback);
+    },
+    function (callback) {
+      Engagementhtp.recupdata("garantiecurej5",callback);
+    },
+    
+   
+  ],function(err,result){
+    if(err) return res.badRequest(err);
+    console.log("Count OK 1==> " + result[0].ok);
+    async.series([
+      function (callback) {
+        Engagementhtp.ecrituredata16tri(result[0],"garantiedematj5",date_export,feuille,callback);
+      },
+      function (callback) {
+        Engagementhtp.ecrituredata16facM(result[1],"garantieavisj5",date_export,feuille,callback);
+      },
+      function (callback) {
+        Engagementhtp.ecrituredata16devi(result[2],"garantieconvj5",date_export,feuille,callback);
+      },
+      function (callback) {
+        Engagementhtp.ecrituredata16sales(result[3],"garantietpmepj5",date_export,feuille,callback);
+      },
+      function (callback) {
+        Engagementhtp.ecrituredata16flux(result[4],"garantieindusj5",date_export,feuille,callback);
+      },
+      function (callback) {
+          Engagementhtp.ecrituredata16rejet(result[5],"garantiecontrj5",date_export,feuille,callback);
+        },
+      function (callback) {
+      Engagementhtp.ecrituredata16cotlamie(result[6],"garantieretenj5",date_export,feuille,callback);
+      },
+      function (callback) {
+          Engagementhtp.ecrituredatafinptri(result[7],"garantiercforcej5",date_export,feuille,callback);
+        },
+        function (callback) {
+          Engagementhtp.ecrituredatafinpfacM(result[8],"garantiefraudesj5",date_export,feuille,callback);
+        },
+        function (callback) {
+          Engagementhtp.ecrituredatafinpdevi(result[9],"garantiecodelisj5",date_export,feuille,callback);
+        },
+        function (callback) {
+          Engagementhtp.ecrituredatafinpsales(result[10],"garantieremisej5",date_export,feuille,callback);
+        },
+        function (callback) {
+          Engagementhtp.ecrituredatafinpflux(result[11],"garantiearnoj5",date_export,feuille,callback);
+        },
+        function (callback) {
+            Engagementhtp.ecrituredatafinprejet(result[12],"garantiedefraij5",date_export,feuille,callback);
+          },
+        function (callback) {
+        Engagementhtp.ecrituredatafinpcotlamie(result[13],"garantiecurej5",date_export,feuille,callback);
+        },
+        
+    
+    ],function(err,resultExcel){
+   console.log(resultExcel[0]);
+        if(resultExcel[0]==true)
+        {
+          console.log("true zn");
+          res.view('Retour/erera');
+        }
+        if(resultExcel[0]=='OK')
+        {
+          res.view('HTPengagement/exportHTPengagementsuivant_1', {date : datetest});
+          // res.view('Retour/succes');
+        }
+
+    })
+  })
+},
+
+/********************************************************************************************/
+exportgarantieetpentrants : function (req, res) {
+  var datetest = req.param("date",0);
+  var annee = datetest.substr(0, 4);
+  var mois = datetest.substr(5, 2);
+  var jour = datetest.substr(8, 2);
+  var feuille = annee+mois+'_EASY';
+  console.log(feuille);
+  var mois1 = 'Janvier' ;
+  if(mois==01)
+  {
+    mois1= 'Janvier';
+  };
+  if(mois==02)
+  {
+    mois1= 'Fevrier';
+  };
+  if(mois==03)
+  {
+    mois1= 'Mars';
+  };
+  if(mois==04)
+  {
+    mois1= 'Avril';
+  };
+  if(mois==05)
+  {
+    mois1= 'Mai';
+  };
+  if(mois==06)
+  {
+    mois1= 'Juin';
+  };
+  if(mois==07)
+  {
+    mois1= 'Juillet';
+  };
+  if(mois==08)
+  {
+    mois1= 'Aout';
+  };
+  if(mois==09)
+  {
+    mois1= 'Septembre';
+  };
+  if(mois==10)
+  {
+    mois1= 'octobre';
+  };
+  if(mois==11)
+  {
+    mois1= 'Novembre';
+  };
+  if(mois==12)
+  {
+    mois1= 'Decembre';
+  };
+  console.log(mois1);
+  var date_export = jour + '/' + mois + '/' +annee;
+  console.log("RECHERCHE COLONNE");
+  async.series([
+    function (callback) {
+      Engagementhtp.recupdata("garantiedematetp",callback);
+    },
+    function (callback) {
+      Engagementhtp.recupdata("garantieavisetp",callback);
+    },
+    function (callback) {
+      Engagementhtp.recupdata("garantiedematentrants",callback);
+    },
+    function (callback) {
+      Engagementhtp.recupdata("garantieavisentrants",callback);
+    },
+    
+   
+  ],function(err,result){
+    if(err) return res.badRequest(err);
+    console.log("Count OK 1==> " + result[0].ok);
+    async.series([
+      function (callback) {
+        Engagementhtp.ecrituredata16tri(result[0],"garantiedematetp",date_export,feuille,callback);
+      },
+      function (callback) {
+        Engagementhtp.ecrituredata16facM(result[1],"garantieavisetp",date_export,feuille,callback);
+      },
+      function (callback) {
+        Engagementhtp.ecrituredata16devi(result[2],"garantiedematentrants",date_export,feuille,callback);
+      },
+      function (callback) {
+        Engagementhtp.ecrituredata16sales(result[3],"garantieavisentrants",date_export,feuille,callback);
+      },
+      
+    
+    ],function(err,resultExcel){
+   console.log(resultExcel[0]);
+        if(resultExcel[0]==true)
+        {
+          console.log("true zn");
+          res.view('Retour/erera');
+        }
+        if(resultExcel[0]=='OK')
+        {
+          res.view('HTPengagement/exportHTPengagementsuivant_1', {date : datetest});
+          // res.view('Retour/succes');
+        }
+
+    })
+  })
+},
+/*********************************************************************************************/
+exportgarantietachenont : function (req, res) {
+  var datetest = req.param("date",0);
+  var annee = datetest.substr(0, 4);
+  var mois = datetest.substr(5, 2);
+  var jour = datetest.substr(8, 2);
+  var feuille = annee+mois+'_EASY';
+  console.log(feuille);
+  var mois1 = 'Janvier' ;
+  if(mois==01)
+  {
+    mois1= 'Janvier';
+  };
+  if(mois==02)
+  {
+    mois1= 'Fevrier';
+  };
+  if(mois==03)
+  {
+    mois1= 'Mars';
+  };
+  if(mois==04)
+  {
+    mois1= 'Avril';
+  };
+  if(mois==05)
+  {
+    mois1= 'Mai';
+  };
+  if(mois==06)
+  {
+    mois1= 'Juin';
+  };
+  if(mois==07)
+  {
+    mois1= 'Juillet';
+  };
+  if(mois==08)
+  {
+    mois1= 'Aout';
+  };
+  if(mois==09)
+  {
+    mois1= 'Septembre';
+  };
+  if(mois==10)
+  {
+    mois1= 'octobre';
+  };
+  if(mois==11)
+  {
+    mois1= 'Novembre';
+  };
+  if(mois==12)
+  {
+    mois1= 'Decembre';
+  };
+  console.log(mois1);
+  var date_export = jour + '/' + mois + '/' +annee;
+  console.log("RECHERCHE COLONNE");
+  async.series([
+    function (callback) {
+      Engagementhtp.recupdata("garantieconvtnt",callback);
+    },
+    function (callback) {
+      Engagementhtp.recupdata("garantietpmeptnt",callback);
+    },
+    function (callback) {
+      Engagementhtp.recupdata("garantieindustnt",callback);
+    },
+    function (callback) {
+      Engagementhtp.recupdata("garantiecontrtnt",callback);
+    },
+    function (callback) {
+      Engagementhtp.recupdata("grantieretentnt",callback);
+    },
+    function (callback) {
+      Engagementhtp.recupdata("garantiefraudestnt",callback);
+    },
+    function (callback) {
+      Engagementhtp.recupdata("garantiecodelistnt",callback);
+    },
+    function (callback) {
+      Engagementhtp.recupdata("garantieremisetnt",callback);
+    },
+    function (callback) {
+      Engagementhtp.recupdata("garantiearnotnt",callback);
+    },
+    function (callback) {
+      Engagementhtp.recupdata("garantiedefraitnt",callback);
+    },
+    function (callback) {
+      Engagementhtp.recupdata("garantiecuretnt",callback);
+    },
+    function (callback) {
+      Engagementhtp.recupdata("garantierechtnt",callback);
+    },
+    function (callback) {
+      Engagementhtp.recupdata("garantiecmuctnt",callback);
+    },
+    function (callback) {
+      Engagementhtp.recupdata("garantiercforcetnt",callback);
+    },
+    function (callback) {
+      Engagementhtp.recupdatasum("garantiercforcetntj1",callback);
+    },
+    function (callback) {
+      Engagementhtp.recupdatasum("garantiercforcetntj2",callback);
+    },
+    function (callback) {
+      Engagementhtp.recupdata("garantiercforcetntj5",callback);
+    },
+   
+   
+  ],function(err,result){
+    if(err) return res.badRequest(err);
+    console.log("Count OK 1==> " + result[0].ok);
+    async.series([
+      function (callback) {
+        Engagementhtp.ecrituredata16tri(result[0],"garantieconvtnt",date_export,feuille,callback);
+      },
+      function (callback) {
+        Engagementhtp.ecrituredata16facM(result[1],"garantietpmeptnt",date_export,feuille,callback);
+      },
+      function (callback) {
+        Engagementhtp.ecrituredata16devi(result[2],"garantieindustnt",date_export,feuille,callback);
+      },
+      function (callback) {
+        Engagementhtp.ecrituredata16sales(result[3],"garantiecontrtnt",date_export,feuille,callback);
+      },
+      function (callback) {
+        Engagementhtp.ecrituredata16flux(result[4],"grantieretentnt",date_export,feuille,callback);
+      },
+      function (callback) {
+          Engagementhtp.ecrituredata16rejet(result[5],"garantiefraudestnt",date_export,feuille,callback);
+        },
+      function (callback) {
+      Engagementhtp.ecrituredata16cotlamie(result[6],"garantiecodelistnt",date_export,feuille,callback);
+      },
+      function (callback) {
+          Engagementhtp.ecrituredatafinptri(result[7],"garantieremisetnt",date_export,feuille,callback);
+        },
+        function (callback) {
+          Engagementhtp.ecrituredatafinpfacM(result[8],"garantiearnotnt",date_export,feuille,callback);
+        },
+        function (callback) {
+          Engagementhtp.ecrituredatafinpdevi(result[9],"garantiedefraitnt",date_export,feuille,callback);
+        },
+        function (callback) {
+          Engagementhtp.ecrituredatafinpsales(result[10],"garantiecuretnt",date_export,feuille,callback);
+        },
+        function (callback) {
+          Engagementhtp.ecrituredatafinpflux(result[11],"garantierechtnt",date_export,feuille,callback);
+        },
+        function (callback) {
+            Engagementhtp.ecrituredatafinprejet(result[12],"garantiecmuctnt",date_export,feuille,callback);
+          },
+        function (callback) {
+        Engagementhtp.ecrituredatafinpcotlamie(result[13],"garantiercforcetnt",date_export,feuille,callback);
+        },
+        function (callback) {
+          Engagementhtp.ecrituredata16cotite(result[14],"garantiercforcetntj1",date_export,feuille,callback);
+        },
+        function (callback) {
+          Engagementhtp.ecrituredatafinpcotite(result[15],"garantiercforcetntj2",date_export,feuille,callback);
+        },
+        function (callback) {
+          Engagementhtp.ecrituredata16faclamie(result[16],"garantiercforcetntj5",date_export,feuille,callback);
+        },
+      
+    
+    ],function(err,resultExcel){
+   console.log(resultExcel[0]);
+        if(resultExcel[0]==true)
+        {
+          console.log("true zn");
+          res.view('Retour/erera');
+        }
+        if(resultExcel[0]=='OK')
+        {
+          res.view('HTPengagement/exportHTPengagementsuivant_1', {date : datetest});
+          // res.view('Retour/succes');
+        }
+
+    })
+  })
+},
+
+
+
+
 
 
 

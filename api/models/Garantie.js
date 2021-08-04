@@ -4,7 +4,7 @@
  * @description :: A model definition represents a database table/collection.
  * @docs        :: https://sailsjs.com/docs/concepts/models-and-orm/models
  */
-const path_reporting = 'D:/LDR8_1421_nouv/PROJET_FELANA/REPORTING CONTENTIEUX type.xlsx';
+const path_reporting = 'D:/LDR8_1421_nouv/PROJET_FELANA/GARANTIE/EXPORT_GARANTIE/TP_Reporting-Traitement-J-SLA_V1.xlsx';
 module.exports = {
 
   attributes: {
@@ -1223,6 +1223,71 @@ lectureEtInsertiongarantie_1:function(trameflux,feuil,cellule,table,cellule2,nb,
       Reportinghtp.deleteToutHtp(table,3,callback);
     }
     },
+
+/***************************************************************************************************/
+/*
+*
+*
+*                                       EXPORT GARANTIE
+*
+*
+*
+*
+*
+/****************************************************************************************************/
+
+ //RECUPERATION VALEUR DANS LA BASE
+ recupdata : function (table, callback) {
+  const Excel = require('exceljs');
+  // var sqlOk ="select count(okko) as ok from "+table+" where okko='OK'"; //trameFlux
+  // var sqlKo ="select count(okko) as ko from "+table+" where okko='KO'";
+  var sql ="select * from "+table ; 
+ 
+  console.log(sql);
+  // console.log(sqlOk);
+  // console.log(sqlKo);
+  async.series([
+    function (callback) {
+      Retour.query(sql, function(err, res){          
+        if (err) {
+          console.log(err);
+          //return null;
+        }
+        else
+        {
+          if(res.rows[0])
+          {
+            console.log('ok');
+            callback(null, res.rows[0].nb);
+          }
+          else
+          {
+            console.log("null");
+            callback(null, 0);
+          }
+        }
+                 
+      });
+    },
+    // function (callback) {
+    //   Retour.query(sqlKo, function(err, resKo){
+    //     if (err) return res.badRequest(err);
+    //     callback(null, resKo.rows[0].ko);
+    //   });
+    // },
+  ],function(err,result){
+    if(err) return res.badRequest(err);
+    console.log("Count OK ==> " + result[0]);
+    // console.log("Count KO ==> " + result[1]);
+    var okko = {};
+    okko.ok = result[0];
+    // okko.ko = result[1];      
+    return callback(null, okko);
+    // var intro = {};
+    // intro.nb = result[0];
+    // return callback(null, intro);
+  })
+},
 
 
 

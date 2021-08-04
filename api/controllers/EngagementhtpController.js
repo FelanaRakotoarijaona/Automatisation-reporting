@@ -62,8 +62,9 @@ insertcheminengagementhtp : function(req,res)
 {
   var Excel = require('exceljs');
   var workbook = new Excel.Workbook();
-  // var table = ['\\\\10.128.1.2\\bpo_almerys\\00-TOUS\\06-DOSSIER POLE\\01-HTP\\05- REPORTING\\03-HTP\\DOC_HTP\\'];
-  var table = ['/dev/prod/00-TOUS/06-DOSSIER POLE/01-HTP/05- REPORTING/03-HTP/DOC_HTP/'];
+  var table = ['\\\\10.128.1.2\\bpo_almerys\\00-TOUS\\06-DOSSIER POLE\\01-HTP\\05- REPORTING\\03-HTP\\DOC_HTP\\'];
+  var outable = ['\\\\10.128.1.2\\almerys-out\\Retour_Easytech_'];//TETO ZA NY FARANY OMALY
+  // var table = ['/dev/prod/00-TOUS/06-DOSSIER POLE/01-HTP/05- REPORTING/03-HTP/DOC_HTP/'];
   var datetest = req.param("date",0);
   var annee = datetest.substr(0, 4);
   var mois = datetest.substr(5, 2);
@@ -83,7 +84,7 @@ insertcheminengagementhtp : function(req,res)
   var MotCle= [];
   var Sup= [];
   var nomBase = "cheminengagementhtp";
-  var r = [0,1];
+  var r = [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17];
   workbook.xlsx.readFile('engagementhtp.xlsx')
       .then(function() {
         var newworksheet = workbook.getWorksheet('Feuil1');
@@ -147,7 +148,7 @@ insertcheminengagementhtp : function(req,res)
                     Engagementhtp.delete(nomtable,lot,cb);
                   },
                   function(cb){
-                    Engagementhtp.importcheminhtp(table,cheminp,date,MotCle,lot,nomtable,numligne,numfeuille,nomcolonne,nomcolonne2,nomcolonne3,nomBase,cb);
+                    Engagementhtp.importcheminhtp(table,cheminp,date,MotCle,lot,nomtable,numligne,numfeuille,nomcolonne,nomcolonne2,nomcolonne3,nomBase,outable,cb);
                   },
                   // function(cb){
                   //   Engagementhtp.importcheminhtp(table,cheminp,date,MotCle,1,nomtable[1],numligne[1],numfeuille[1],nomcolonne[1],nomcolonne2[1],nomcolonne3[1],nomBase,cb);
@@ -181,8 +182,8 @@ insertcheminengagementhtp : function(req,res)
                       }
                       else
                       {
-                        return res.view('HTPengagement/accueilreportingengagementhtpsuivant', {date : datetest});
-                        
+                        // return res.view('HTPengagement/accueilreportingengagementhtpsuivant', {date : datetest});
+                        return res.view('HTPengagement/importHTPengagement', {date : datetest});
                       };
                   });
                 }
@@ -3049,15 +3050,15 @@ insertcheminengagementhtpsuivant21 : function(req,res)
         });
       });
 },
-   /***********************************************************************************/  
-   /*
-   *
-   *
-   *                              EXPORT
-   * 
-   * 
-   *  
-  /***********************************************************************************/
+/***********************************************************************************/  
+/*
+*
+*
+*                              EXPORT HTP
+* 
+* 
+*  
+/***********************************************************************************/
   //FONCTION POUR L'EXPORT TACHES TRAITEES
   exporthtpengagement : function (req, res) {
       var datetest = req.param("date",0);

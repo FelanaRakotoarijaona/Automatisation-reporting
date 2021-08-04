@@ -406,6 +406,7 @@ module.exports.routes = {
    '/exportExcelRetour' : 'ReportingRetourController.rechercheColonne',//A DECOMMENTER SI EXCEL RETOUR CORRECTE
    '/exportExcelRet' : 'ReportingRetourController.accueilR',//4
    '/exportretoursuivant' : 'ReportingRetourController.rechercheColonne_suivant',
+   '/exportExcelRetour_2' : 'ReportingRetourController.rechercheColonne_2',
   //  '/exportExcelRetour' : 'ReportingRetourController.rechercheColonnetest',//5 test
  
      //Route CONTENTIEUX
@@ -435,11 +436,17 @@ module.exports.routes = {
   '/insertGarantiesansdouble' : 'GarantieController.insertChemingarantiesansdouble',
   '/insertGarantieligne' : 'GarantieController.insertChemingarantieligne',
   '/insertGarantiebpo1' : 'GarantieController.insertChemingarantiebpo1',
+
+
   '/reportingGarantiesansdouble' : 'GarantieController.importGarantiesansdouble',
   '/reportingGarantieligne' : 'GarantieController.importGarantieligne',
   '/reportingGarantiebpo1' : 'GarantieController.importGarantiebpo1',
 
-   //ROUTES HTP REPORTING ENGAGEMENT
+
+   //ROUTES EXPORT DES DONNEES REPORTING ENGAGEMENT GARANTIE
+  '/exportExcelGarantie' : 'GarantieController.exportgarantiefinprod',
+
+   //ROUTES HTP REPORTING ENGAGEMENT HTP
    '/accueilengagementhtp' : 'EngagementhtpController.accueilengagementhtp',
 
    //ROUTES INSERTION CHEMIN REPORTING ENGAGEMENT HTP
