@@ -7204,12 +7204,11 @@ deleteFromChemindevis : function (nomBase,callback) {
 },
  /*******************************************************/
   //INSERTION DU CHEMIN DANS LA BASE DE DONNEE
-  importcheminhtp: function (table_1,table2,date,option,nb,nomtable,numligne,numfeuille,nomcolonne,colonnecible2,colonnecible3,nomBase,callback) {
+  importcheminhtp: function (table_1,table2,date,option,nb,nomtable,numligne,numfeuille,nomcolonne,colonnecible2,colonnecible3,nomBase,outable,callback) {
     const fs = require('fs');
     var re  = 'a';
     var tab = [];
     // var a = table[0]+date+table2[nb];
-    //******************************************CONDITION MBOLA TSY METY */
     if(table_1[0]){
       var a = table_1[0]+date+table2[nb];
     }
