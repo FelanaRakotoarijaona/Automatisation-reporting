@@ -822,7 +822,9 @@
         var cell_ref = XLSX.utils.encode_cell(address_of_cell);
         var desired_cell = sheet[cell_ref];
         var desired_value = (desired_cell ? desired_cell.v : undefined);
-        if(desired_value==cellule[nb])
+        var motcle = cellule[nb];
+        const regex1 = new RegExp(motcle,'i');
+        if(regex1.test(desired_value))
         {
           col=ra;
         };
@@ -833,7 +835,9 @@
         var cell_ref = XLSX.utils.encode_cell(address_of_cell);
         var desired_cell = sheet[cell_ref];
         var desired_value = (desired_cell ? desired_cell.v : undefined);
-        if(desired_value==cellule2[nb])
+        var motcle2 = cellule2[nb];
+        const regex2= new RegExp(motcle2,'i');
+        if(regex2.test(desired_value))
         {
           col2=ra;
         };
@@ -863,6 +867,10 @@
           };
         };  
     }
+    else
+    {
+      console.log('Colonne non trouvé 1');
+    };
     if(col2!=undefined )
     {
       var debutligne = numeroligne + 1;
@@ -1859,7 +1867,7 @@ lectureEtInsertiontype4v2:function(trameflux,feuil,cellule,table,cellule2,nb,num
     {
       var nbe= parseInt(nb);
       var tab = [];
-      if(table[nbe]=="ribtpmep")
+      if(table[nbe]=="ribtpmep" || table[nbe]=="tpmepmail" )
       {
         console.log('ribtpmep');
         tab = ReportingInovcom.lectureEtInsertion2(trameflux,feuil,cellule,table,cellule2,nb,numligne,callback);
