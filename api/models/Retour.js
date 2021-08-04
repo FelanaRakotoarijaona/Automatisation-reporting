@@ -1016,8 +1016,8 @@
        numeroColonneKo = iniValue.trautoqueryradiation.ko;
      }
      if(table == "trautoquerydoublon"){
-       numeroColonneOk = iniValue.suivi_trautoquerydoublon.ok;
-       numeroColonneKo = iniValue.suivi_trautoquerydoublon.ko;
+       numeroColonneOk = iniValue.trautoquerydoublon.ok;
+       numeroColonneKo = iniValue.trautoquerydoublon.ko;
      }
 
      var ok_ko = {};
