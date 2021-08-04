@@ -78,8 +78,15 @@
     {
       var sql = "insert into chemintsisy (typologiedelademande) values ('k') ";
       ReportingInovcom.getDatastore().sendNativeQuery(sql, function(err,res){
-        if(err) return console.log(err);
-        else return callback(null, true);        
+        if (err) { 
+          console.log("Une erreur ve? import 1");
+          //return callback(err);
+         }
+        else
+        {
+          console.log(sql);
+          return callback(null, true);
+        };       
                             });   
     };
   },
@@ -1845,7 +1852,7 @@ lectureEtInsertiontype4v2:function(trameflux,feuil,cellule,table,cellule2,nb,num
                             });
     };
   },
-  importTrameFlux929 : function (trameflux,feuil,cellule,table,cellule2,nb,numligne,callback) {
+  importTrameFlux929 : function (trameflux,feuil,cellule,table,cellule2,nb,numligne,cletpmep,callback) {
     console.log(table[nb]);
     if(trameflux[nb]==undefined)
     {
@@ -1867,7 +1874,7 @@ lectureEtInsertiontype4v2:function(trameflux,feuil,cellule,table,cellule2,nb,num
     {
       var nbe= parseInt(nb);
       var tab = [];
-      if(table[nbe]=="ribtpmep" || table[nbe]=="tpmepmail" )
+      if(table[nbe]=="ribtpmep" || table[nbe]=="tpmepmail")
       {
         console.log('ribtpmep');
         tab = ReportingInovcom.lectureEtInsertion2(trameflux,feuil,cellule,table,cellule2,nb,numligne,callback);
@@ -1875,7 +1882,7 @@ lectureEtInsertiontype4v2:function(trameflux,feuil,cellule,table,cellule2,nb,num
         var sql = "insert into "+table[nbe]+" (nbok,nbko,nbrokrib) values ('"+tab[0]+"','"+tab[1]+"','"+tab[2]+"') ";
                    ReportingInovcom.getDatastore().sendNativeQuery(sql, function(err,res){
                       if (err) { 
-                        console.log("Une erreur ve insertion?");
+                        console.log('rib'+err);
                         //return callback(err);
                        }
                       else
@@ -1911,7 +1918,7 @@ lectureEtInsertiontype4v2:function(trameflux,feuil,cellule,table,cellule2,nb,num
         var sql = "insert into "+table[nbe]+" (nbok,nbko) values ('"+tab[0]+"','"+tab[1]+"') ";
                    ReportingInovcom.getDatastore().sendNativeQuery(sql, function(err,res){
                       if (err) { 
-                        console.log("Une erreur ve insertion?");
+                        console.log('conv'+err);
                         //return callback(err);
                        }
                       else
