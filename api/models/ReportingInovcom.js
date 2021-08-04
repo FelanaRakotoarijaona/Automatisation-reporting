@@ -927,7 +927,7 @@
           const regex = new RegExp(mc1,'i');
           if(regex.test(sheetd[i]))
           {
-            numerofeuille = sheetd[i];
+            numerofeuille = parseInt(i);
           }
           else
           {
