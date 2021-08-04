@@ -3341,12 +3341,12 @@ importEssaitype7: function (table,table2,date,option,nb,nomtable,numligne,numfeu
                        var a =ab + file +"/" + files1[i];
                        //console.log('*****************');
                        //console.log(a);  
-                       var sql = "insert into chemininovcomtype7 (chemin,nomtable,numligne,numfeuile,colonnecible) values ('"+a+"','"+nomtable+"','"+numligne+"','"+numfeuille+"','"+nomcolonne+"') ";
+                       var sql = "insert into chemininovcomtype8 (chemin,nomtable,numligne,numfeuile,colonnecible) values ('"+a+"','"+nomtable+"','"+numligne+"','"+numfeuille+"','"+nomcolonne+"') ";
                        ReportingInovcom.getDatastore().sendNativeQuery(sql, function(err,res){
                         if(err)
                         {
                           console.log('une erreur');
-                          //console.log(err);
+                          console.log(err);
                         }
                         else 
                         {
