@@ -295,8 +295,7 @@ module.exports.routes = {
      //type9
      '/accueilInovcomtype9' : 'ReportingInovcomController.accueil1type9',
      '/essaiInovcomtype9' : 'ReportingInovcomController.Essaiitype9',
-     '/reportinginovcomtype8' : 'ReportingInovcomController.essaiExceltype8',
-     '/reportinginovcomtype2' : 'ReportingInovcomController.essaiExceltype2',
+     '/reportinginovcomtype9' : 'ReportingInovcomController.essaiExceltype9',
 
      //type11
      '/accueilInovcomtype11' : 'ReportingInovcomController.accueil1type11',

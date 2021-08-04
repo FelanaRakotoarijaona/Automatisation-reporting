@@ -6,6 +6,105 @@
  */
  module.exports = {
   attributes: {},
+  importInovcomtype9 : function (trameflux,feuil,cellule,table,cellule2,nb,numligne,callback) {
+    if(trameflux[nb]==undefined)
+    {
+      console.log('trame undefined');
+      var sql = "insert into chemintsisy(typologiedelademande) values ('ko') ";
+      Reportinghtp.getDatastore().sendNativeQuery(sql, function(err,res){
+        if (err) { 
+          console.log("Une erreur ve ok?");
+          //return callback(err);
+         }
+        else
+        {
+          console.log(sql);
+          return callback(null, true);
+        };
+      });
+    }
+    else{
+      var tab = [];
+      tab = ReportingInovcom.lectureEtInsertionFacture(trameflux,feuil,cellule,table,cellule2,nb,numligne,callback);
+      var nbe= parseInt(nb);
+      console.log(tab);
+      var sql = "insert into "+table[nbe]+" (nb) values ("+tab[0]+") ";
+      ReportingInovcom.getDatastore().sendNativeQuery(sql, function(err,res){
+        if (err) { 
+          console.log("Une erreur ve ok?");
+          //return callback(err);
+         }
+        else
+        {
+          console.log(sql);
+          return callback(null, true);
+        };
+                            });
+    };
+  },
+
+  lectureEtInsertionFacture:function(trameflux,feuil,cellule,table,cellule2,nb,numligne,callback){
+    XLSX = require('xlsx');
+    var workbook = XLSX.readFile(trameflux[nb]);
+    var numerofeuille = feuil[nb];
+    var numeroligne = parseInt(numligne[nb]);
+    try{
+      var nbr = 0;
+      var nbrko = 0;
+      const sheet = workbook.Sheets[workbook.SheetNames[numerofeuille]];
+      var range = XLSX.utils.decode_range(sheet['!ref']);
+      var col = 0;
+      var ligne = 0;
+      for(var ra=0;ra<=range.e.c;ra++)
+        {
+          var address_of_cell = {c:ra, r:numeroligne};
+          var cell_ref = XLSX.utils.encode_cell(address_of_cell);
+          var desired_cell = sheet[cell_ref];
+          var desired_value = (desired_cell ? desired_cell.v : undefined);
+          var mc1 = cellule[nb];
+          const regex = new RegExp(mc1,'i');
+          if(regex.test(desired_value))
+          {
+            col=ra;
+          };
+        };
+        console.log("colonne"+col);
+        var debutligne = numeroligne + 1;
+        for(var a=debutligne;a<=range.e.r;a++)
+          {
+            var address_of_cell = {c:col, r:a};
+            var cell_ref = XLSX.utils.encode_cell(address_of_cell);
+            var desired_cell = sheet[cell_ref];
+            var desired_value1 = (desired_cell ? desired_cell.v : undefined);
+            var ok = cellule2[nb];
+            const regex = new RegExp(ok,'i');
+            if(regex.test(desired_value1))
+            {
+              ligne = parseInt(a);
+            }
+          }
+      if(col!=undefined && ligne!=undefined)
+      {
+        var address_of_cell = {c:col, r:ligne};
+        var cell_ref = XLSX.utils.encode_cell(address_of_cell);
+        var desired_cell = sheet[cell_ref];
+        var desired_value1 = (desired_cell ? desired_cell.v : undefined);   
+
+        nbr = desired_value1;
+      }
+      else
+      {
+        console.log('Colonne non trouvé');
+      }
+      console.log("nombreeeeebr"+ nbr);
+          var tab = [nbr];
+          return tab;
+    }
+    catch
+    {
+      console.log("erreur absolu haaha");
+    }
+  },
   importEssaitype1: function (table,table2,date,option,nb,nomtable,numligne,numfeuille,nomcolonne,nomcolonne2,nomBase,chemin,option2,tpmepcle,callback) {
     const fs = require('fs');
     var re  = 'a';
@@ -276,7 +375,6 @@
       const sheet = workbook.Sheets[workbook.SheetNames[numerofeuille]];
       var range = XLSX.utils.decode_range(sheet['!ref']);
       var col = 0;
-      var nbe = parseInt(nb);
       for(var ra=0;ra<=range.e.c;ra++)
         {
           var address_of_cell = {c:ra, r:numeroligne};

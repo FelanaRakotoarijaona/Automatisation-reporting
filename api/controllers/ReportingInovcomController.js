@@ -1829,6 +1829,93 @@ module.exports = {
             });
           });
     },
+    EssaiExceltype9 : function(req,res)
+    {
+      var datetest = req.param("date",0);
+      var sql1= 'select count(*) as nb from chemininovcomtype9;';
+      Reportinghtp.getDatastore().sendNativeQuery(sql1,function(err, nc1) {
+        if (err){
+          console.log(err);
+          return next(err);
+        }
+        else
+        {
+          nc1 = nc1.rows;
+          var nbs = nc1[0].nb;
+          var x = parseInt(nbs);
+          var sql='select * from chemininovcomtype9 limit' + " " + x ;
+      Reportinghtp.getDatastore().sendNativeQuery(sql,function(err, nc) {
+        if (err){
+          console.log(err);
+          return next(err);
+        }
+        else
+        {
+            nc = nc.rows;
+            var feuil = [];
+            var cellule = [];
+            var cellule2 = [];
+            var table = [];
+            var trameflux = [];
+            var numligne = [];
+            var nb = x;
+            var nbre = [];
+            console.log(nb);
+            for(var i=0;i<nb;i++)
+            {
+              var a = nc[i].numfeuile;
+              feuil.push(a);
+            };
+            for(var i=0;i<nb;i++)
+            {
+              var a = nc[i].numligne;
+              numligne.push(a);
+            };
+            for(var i=0;i<nb;i++)
+            {
+              var a = nc[i].colonnecible;
+              cellule.push(a);
+            };
+            for(var i=0;i<nb;i++)
+            {
+              var a = nc[i].colonnecible2;
+              cellule2.push(a);
+            };
+            for(var i=0;i<nb;i++)
+            {
+              var a = nc[i].nomtable;
+              table.push(a);
+            };
+            console.log(table);
+           
+            for(var i=0;i<nb;i++)
+            {
+              var a = nc[i].chemin;
+              trameflux.push(a);
+              nbre.push(i);
+            };
+            console.log(trameflux);
+            async.forEachSeries(nbre, function(lot, callback_reporting_suivant) {
+              async.series([
+                function(cb){
+                  ReportingInovcom.importInovcomtype9(trameflux,feuil,cellule,table,cellule2,lot,numligne,cb);
+                },
+              ],function(erroned, lotValues){
+                if(erroned) return res.badRequest(erroned);
+                return callback_reporting_suivant();
+              });
+            },
+              function(err)
+              {
+                console.log('vofafa ddol');
+                return res.view('Inovcom/exportexcelinovcom9', {date : datetest});
+              }); 
+        };
+    });
+  };
+});
+    },
+
     // Retour et nouvelle
 
 
