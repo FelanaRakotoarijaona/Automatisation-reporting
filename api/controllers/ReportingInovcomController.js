@@ -36,7 +36,7 @@ module.exports = {
       var cheminp = [];
       var MotCle= [];
       var nomBase = "chemininovcom";
-      var r = [0,1,2,3];
+      var r = [0,1,2,3,4,5];
       //workbook.xlsx.readFile('Inovcom.xlsx')
         workbook.xlsx.readFile('Inovcomserveur.xlsx')
           .then(function() {
