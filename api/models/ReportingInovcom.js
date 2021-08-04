@@ -918,17 +918,33 @@
   try{
     var nbr = 0;
     var nbrko = 0;
+    const sheetd = workbook.SheetNames; 
+        console.log('long' + sheetd.length);
+        var tab = [];
+        for(var i=0;i<sheetd.length;i++)
+        {
+          var mc1 = 'Saisie';
+          const regex = new RegExp(mc1,'i');
+          if(regex.test(sheetd[i]))
+          {
+            numerofeuille = sheetd[i];
+          }
+          else
+          {
+           var am = 1;
+          }
+        }
     const sheet = workbook.Sheets[workbook.SheetNames[numerofeuille]];
     var range = XLSX.utils.decode_range(sheet['!ref']);
     console.log('numligne' + numeroligne);
     var col ;
     for(var ra=0;ra<=range.e.c;ra++)
       {
-        var address_of_cell = {c:ra, r:1};
+        var address_of_cell = {c:ra, r:numeroligne};
         var cell_ref = XLSX.utils.encode_cell(address_of_cell);
         var desired_cell = sheet[cell_ref];
         var desired_value = (desired_cell ? desired_cell.v : undefined);
-        var motcle = 'STATUT';
+        var motcle = cellule[nb];
         const regex1 = new RegExp(motcle,'i');
         if(regex1.test(desired_value))
         {
@@ -937,11 +953,11 @@
       };
     for(var ra=0;ra<=range.e.c;ra++)
       {
-        var address_of_cell = {c:ra, r:1};
+        var address_of_cell = {c:ra, r:numeroligne};
         var cell_ref = XLSX.utils.encode_cell(address_of_cell);
         var desired_cell = sheet[cell_ref];
         var desired_value = (desired_cell ? desired_cell.v : undefined);
-        var motcle2 = 'POLE';
+        var motcle2 = cellule2[nb];
         const regex2= new RegExp(motcle2,'i');
         if(regex2.test(desired_value))
         {
@@ -1082,6 +1098,7 @@ importTrameFlux929type4 : async function (trameflux,feuil,cellule,table,cellule2
           //return callback(err);
          }
         else
+
         {
           console.log(sql);
           return callback(null, true);
