@@ -6,9 +6,6 @@
  */
 
 const ReportingInovcom = require('../models/ReportingInovcom');
-
-// const ReportingIndu = require('../models/ReportingIndu');
-
 module.exports = {
   //type 3
   accueiltype3 : function(req,res)

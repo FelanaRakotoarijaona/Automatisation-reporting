@@ -144,6 +144,8 @@ module.exports = {
   },
 //FONCTION POUR REMPLIR LE FICHIER EXCEL
  ecritureOkKo : async function (nombre_ok_ko, table,date_export,mois1,callback) {
+  console.log('ok' + nombre_ok_ko.ok);
+  console.log('ko' + nombre_ok_ko.ko);
     const Excel = require('exceljs');
     const newWorkbook = new Excel.Workbook();
     try{
@@ -205,8 +207,7 @@ module.exports = {
     numeroLigne.getCell(colonnne).value = nombre_ok_ko.ok;
     numeroLigne.getCell(collonne).value = nombre_ok_ko.ko;
 
-    console.log('ok' + nombre_ok_ko.ok);
-    console.log('ko' + nombre_ok_ko.ko);
+    
     await newWorkbook.xlsx.writeFile(path_reporting);
     sails.log("Ecriture OK KO terminé"); 
     return callback(null, "OK");

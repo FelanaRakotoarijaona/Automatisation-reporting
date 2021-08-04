@@ -125,7 +125,7 @@ module.exports = {
       }
     ],function(err,result){
       if(err) return res.badRequest(err);
-      if(result[0].ok==null &&  result[0].ko==null )
+      /*if(result[0].ok==null &&  result[0].ko==null )
       {
         result[0].ok=0;
         result[0].ko=0;
@@ -154,7 +154,7 @@ module.exports = {
       {
         result[5].ok=0;
         result[5].ko=0;
-      };
+      };*/
       console.log("Count OK trameFlux ==> " + result[0].ok + " / " + result[0].ko);
       console.log("Count OK suivisaisielmde ==> " + result[1].ok + " / " + result[1].ko);
       console.log("Count OK suivisaisiemgas ==> " + result[2].ok + " / " + result[2].ko);
