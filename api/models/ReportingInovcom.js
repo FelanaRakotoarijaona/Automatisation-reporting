@@ -918,18 +918,17 @@
   try{
     var nbr = 0;
     var nbrko = 0;
-    var nbrokrib = 0;
     const sheet = workbook.Sheets[workbook.SheetNames[numerofeuille]];
     var range = XLSX.utils.decode_range(sheet['!ref']);
+    console.log('numligne' + numeroligne);
     var col ;
-    var nbe = parseInt(nb);
     for(var ra=0;ra<=range.e.c;ra++)
       {
-        var address_of_cell = {c:ra, r:numeroligne};
+        var address_of_cell = {c:ra, r:1};
         var cell_ref = XLSX.utils.encode_cell(address_of_cell);
         var desired_cell = sheet[cell_ref];
         var desired_value = (desired_cell ? desired_cell.v : undefined);
-        var motcle = cellule[nb];
+        var motcle = 'STATUT';
         const regex1 = new RegExp(motcle,'i');
         if(regex1.test(desired_value))
         {
@@ -938,11 +937,11 @@
       };
     for(var ra=0;ra<=range.e.c;ra++)
       {
-        var address_of_cell = {c:ra, r:numeroligne};
+        var address_of_cell = {c:ra, r:1};
         var cell_ref = XLSX.utils.encode_cell(address_of_cell);
         var desired_cell = sheet[cell_ref];
         var desired_value = (desired_cell ? desired_cell.v : undefined);
-        var motcle2 = cellule2[nb];
+        var motcle2 = 'POLE';
         const regex2= new RegExp(motcle2,'i');
         if(regex2.test(desired_value))
         {
@@ -966,8 +965,6 @@
           var desired_cell2 = sheet[cell_ref2];
           var desired_value2 = (desired_cell2 ? desired_cell2.v : undefined);
 
-
-          //console.log(desired_value1);
           if(desired_value2=='TPMEP' || desired_value2=='tpmep' || desired_value2=="Tpmep")
           {
             var ok = 'OK';
@@ -998,7 +995,7 @@
       console.log('Colonne non trouvé 1');
     };
    
-    console.log("nombreeeeebr"+ nbr + 'et' + nbrko + 'et' + nbrokrib);
+    console.log("nombreeeeebr"+ nbr + 'et' + nbrko);
     var tab = [nbr,nbrko];
     return tab;
   }
