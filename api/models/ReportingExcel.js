@@ -144,8 +144,14 @@ module.exports = {
   },
 //FONCTION POUR REMPLIR LE FICHIER EXCEL
  ecritureOkKo : async function (nombre_ok_ko, table,date_export,mois1,callback) {
-  console.log('ok' + nombre_ok_ko.ok);
-  console.log('ko' + nombre_ok_ko.ko);
+   if(nombre_ok_ko.ok==null && nombre_ok_ko.ko==null)
+   {
+    console.log('ok' + nombre_ok_ko.ok);
+    console.log('ko' + nombre_ok_ko.ko);
+    return callback(null, "KO");
+   }
+   else
+   {
     const Excel = require('exceljs');
     const newWorkbook = new Excel.Workbook();
     try{
@@ -218,6 +224,9 @@ module.exports = {
       console.log("Une erreur s'est produite");
       Reportinghtp.deleteToutHtp(table,3,callback);
     }
+   }
+  
+   
     },
   //configuration du fichier ini
   getConfigIni : function() {
