@@ -999,6 +999,27 @@
       numeroColonneOk = iniValue.suivi_saisie_trldrcbtp.ok;
       numeroColonneKo = iniValue.suivi_saisie_trldrcbtp.ko;
     }
+         if(table == "trse"){
+       numeroColonneOk = iniValue.trse.ok;
+       numeroColonneKo = iniValue.trse.ko;
+     }
+     if(table == "trretourotdn2cbtp"){
+       numeroColonneOk = iniValue.trretourotdn2cbtp.ok;
+       numeroColonneKo = iniValue.trretourotdn2cbtp.ko;
+     }
+     if(table == "trautoqueryannulation"){
+       numeroColonneOk = iniValue.trautoqueryannulation.ok;
+       numeroColonneKo = iniValue.trautoqueryannulation.ko;
+     }
+          if(table == "trautoqueryradiation"){
+       numeroColonneOk = iniValue.trautoqueryradiation.ok;
+       numeroColonneKo = iniValue.trautoqueryradiation.ko;
+     }
+     if(table == "trautoquerydoublon"){
+       numeroColonneOk = iniValue.suivi_trautoquerydoublon.ok;
+       numeroColonneKo = iniValue.suivi_trautoquerydoublon.ko;
+     }
+
      var ok_ko = {};
      ok_ko.ok = numeroColonneOk;
      ok_ko.ko = numeroColonneKo;
