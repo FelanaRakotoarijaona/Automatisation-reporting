@@ -934,9 +934,10 @@
            var am = 1;
           }
         }
+    console.log('numfeuille' + numerofeuille);
     const sheet = workbook.Sheets[workbook.SheetNames[numerofeuille]];
     var range = XLSX.utils.decode_range(sheet['!ref']);
-    console.log('numligne' + numeroligne);
+    
     var col ;
     for(var ra=0;ra<=range.e.c;ra++)
       {
