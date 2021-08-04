@@ -72,7 +72,7 @@
         var debutligne = numeroligne + 1;
         for(var a=debutligne;a<=range.e.r;a++)
           {
-            var address_of_cell = {c:col, r:a};
+            var address_of_cell = {c:1, r:a};
             var cell_ref = XLSX.utils.encode_cell(address_of_cell);
             var desired_cell = sheet[cell_ref];
             var desired_value1 = (desired_cell ? desired_cell.v : undefined);
