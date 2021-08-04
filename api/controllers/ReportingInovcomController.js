@@ -10,7 +10,14 @@ const ReportingInovcom = require('../models/ReportingInovcom');
 module.exports = {
     accueil1 : async function(req,res)
     {
-      return res.view('Inovcom/accueil1');
+      fs.open('D:/Reporting/Reporting/REPORTING INDU Type.xlsx','r+', function(err,data) {
+        if (err.code === 'EBUSY'){
+          console.log('file is busy');
+        } else {
+          console.log('fichier fermé');
+        }
+      });
+      //return res.view('Inovcom/accueil1');
     },
     //CIBLAGE DU FICHIER EXCEL DANS LE SERVEUR
     Essaii : function(req,res)
