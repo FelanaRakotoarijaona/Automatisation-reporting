@@ -455,7 +455,7 @@ module.exports.routes = {
    '/insertengagementhtp_1' : 'EngagementhtpController.insertcheminengagementhtp_1',
    '/insertcheminengagementhtp_2' : 'EngagementhtpController.insertcheminengagementhtpsuivant_2',
    '/insertcheminengagementhtp_3' : 'EngagementhtpController.insertcheminengagementhtpsuivant_3',
-   '/insertcheminengagementhtp_4' : 'EngagementhtpController.insertcheminengagementhtpsuivant_4',
+   
 
 
 
@@ -463,7 +463,7 @@ module.exports.routes = {
    '/reportingengagementhtp_1' : 'EngagementhtpController.importengagementhtp_1',
    '/reportingengagementhtp_2' : 'EngagementhtpController.importengagementhtpsuivantligne',
    '/reportingengagementhtp_3' : 'EngagementhtpController.importengagementhtpsuivantsales',
-   '/reportingengagementhtp_4' : 'EngagementhtpController.importengagementhtpsuivantsalesstock',
+   
 
 
 
@@ -471,10 +471,6 @@ module.exports.routes = {
    //'/cheminHTPengagement' : { view: 'HTPengagement/exportHTPengagement' }, EXPORT
    '/exportHTPengagement' : 'EngagementhtpController.exporthtpengagement',
    '/exportHTPengagementsuivant_1' : 'EngagementhtpController.exporthtpengagementsuivant_1',
-   '/exportHTPengagementsuivant_2' : 'EngagementhtpController.exporthtpengagementsuivant_2',
-   '/exportHTPengagementsuivant_3' : 'EngagementhtpController.exporthtpengagementsuivant_3',
-   '/exportHTPengagementsuivant_4' : 'EngagementhtpController.exporthtpengagementsuivant_4',
-   '/exportHTPengagementsuivant_5' : 'EngagementhtpController.exporthtpengagementsuivant_5',
 
   /***************************************************************************
   *                                                                          *

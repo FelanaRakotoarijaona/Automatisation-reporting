@@ -7,50 +7,7 @@
  */
 
 module.exports = {
-  //fonction n'est pas encore en service
-  exporthtpengagement1: function(req, res){
-      console.log('commencer');
-      var datetest = req.param("date",0);
-      var annee = datetest.substr(0, 4);
-      var mois = datetest.substr(5, 2);
-      var jour = datetest.substr(8, 2);
-      var feuille = annee+mois+'_EASY';
-      console.log(feuille);
-
-      var date_export = jour + '/' + mois + '/' +annee;
-      console.log("RECHERCHE FEUILLE EXCEL");
-
-      async.series([
-          function (callback) {
-              Engagementhtp.recupdata("trhospimulti",callback);
-          },
-         
-        ],function(err,result){
-          if(err) return res.badRequest(err);
-          console.log("Count OK 0 ==> " + result[0].ok);
-          async.series([
-            function (callback) {
-              Engagementhtp.ecriture(result[0],"trhospimulti",date_export,feuille,callback);
-            },
-      
-          
-          ],function(err,resultExcel){
-         console.log(resultExcel[0]);
-              if(resultExcel[0]==true)
-              {
-                console.log("true zn");
-                res.view('Retour/erera');
-              }
-              if(resultExcel[0]=='OK')
-              {
-                res.view('Retour/succes');
-              }
-                           
-            
-          })
-        })
-
-  },
+  
   /*********************************/
   accueilengagementhtp : async function(req,res)
   {
@@ -358,10 +315,10 @@ insertcheminengagementhtp_1 : function(req,res)
        var MotCle= [];
        var Sup= [];
        var nomBase = "cheminengagementhtpsales";
-       var r = [0,1];
+       var r = [0,1,2];
        workbook.xlsx.readFile('engagementhtp.xlsx')
            .then(function() {
-             var newworksheet = workbook.getWorksheet('Feuil11');
+             var newworksheet = workbook.getWorksheet('Feuil3');
              var nomColonne3 = newworksheet.getColumn(3);
              var numFeuille = newworksheet.getColumn(4);
              var nomColonne = newworksheet.getColumn(5);
@@ -453,8 +410,8 @@ insertcheminengagementhtp_1 : function(req,res)
                            }
                            else
                            {
-                             return res.view('HTPengagement/accueilreportingengagementhtpsuivant4', {date : datetest});
-                             
+                            //  return res.view('HTPengagement/accueilreportingengagementhtpsuivant4', {date : datetest});
+                             return res.view('HTPengagement/importHTPengagement_1', {date : datetest});
                            };
                        });
                      }
@@ -465,139 +422,7 @@ insertcheminengagementhtp_1 : function(req,res)
              });
            });
      },
-      /********************************************************************************/
-      insertcheminengagementhtpsuivant_4 : function(req,res)
-      {
-        var Excel = require('exceljs');
-        var workbook = new Excel.Workbook();
-        // var table = ['\\\\10.128.1.2\\bpo_almerys\\00-TOUS\\06-DOSSIER POLE\\01-HTP\\05- REPORTING\\03-HTP\\DOC_HTP\\'];
-        var table = ['/dev/prod/00-TOUS/06-DOSSIER POLE/01-HTP/05- REPORTING/03-HTP/DOC_HTP/'];
-        var datetest = req.param("date",0);
-        var annee = datetest.substr(0, 4);
-        var mois = datetest.substr(5, 2);
-        var jour = datetest.substr(8, 2);
-        var date = annee+mois+jour;
-        var date_indus = jour+'.'+mois+'.'+annee;
-        var datej_1 = annee+mois+jour -1;
-        console.log(datej_1);
-        var nomtable = [];
-        var numligne = [];
-        var numfeuille = [];
-        var nomcolonne = [];
-        var nomcolonne2 = [];
-        var nomcolonne3 = [];
-        console.log(date);
-        var cheminp = [];
-        var MotCle= [];
-        var Sup= [];
-        var nomBase = "cheminengagementhtpsalesstock";
-        var r = [0];
-        workbook.xlsx.readFile('engagementhtp.xlsx')
-            .then(function() {
-              var newworksheet = workbook.getWorksheet('Feuil12');
-              var nomColonne3 = newworksheet.getColumn(3);
-              var numFeuille = newworksheet.getColumn(4);
-              var nomColonne = newworksheet.getColumn(5);
-              var nomTable = newworksheet.getColumn(6);
-              var nomColonne2 = newworksheet.getColumn(7);
-              var numLigne = newworksheet.getColumn(8);
-              var cheminparticulier = newworksheet.getColumn(9);
-              var motcle = newworksheet.getColumn(10);
-              var suppleant = newworksheet.getColumn(11);
-      
-            numFeuille.eachCell(function(cell, rowNumber) {
-              numfeuille.push(cell.value);
-            });
-            nomColonne.eachCell(function(cell, rowNumber) {
-              nomcolonne.push(cell.value);
-            });
-            nomColonne2.eachCell(function(cell, rowNumber) {
-              nomcolonne2.push(cell.value);
-            });
-            nomColonne3.eachCell(function(cell, rowNumber) {
-              nomcolonne3.push(cell.value);
-            });
-            nomTable.eachCell(function(cell, rowNumber) {
-              nomtable.push(cell.value);
-            });
-            numLigne.eachCell(function(cell, rowNumber) {
-              numligne.push(cell.value);
-            });
-              cheminparticulier.eachCell(function(cell, rowNumber) {
-                cheminp.push(cell.value);
-            });
-              motcle.eachCell(function(cell, rowNumber) {
-                MotCle.push(cell.value);
-            });
-            suppleant.eachCell(function(cell, rowNumber) {
-              Sup.push(cell.value);
-            });
-      
-              
-                console.log(cheminp[0]);
-                console.log(MotCle[0]);
-                console.log(nomtable[0]);
-                console.log(nomtable[1]);
-                async.series([  
-                  function(cb){
-                        Engagementhtp.deleteFromChemin(nomBase,cb);
-                      },
-                                        
-                ],
-                function(err, resultat){
-                  if(err){
-                    return res.view('Inovcom/erreur');
-                  }
-                  else{
-                    async.forEachSeries(r, function(lot, callback_reporting_suivant){
-                      async.series([
-                        function(cb){
-                          Engagementhtp.delete(nomtable,lot,cb);
-                        },
-                        function(cb){
-                          Engagementhtp.importcheminhtpsales(table,cheminp,date,MotCle,lot,nomtable,numligne,numfeuille,nomcolonne,nomcolonne2,nomcolonne3,nomBase,cb);
-                        },
-                      ],
-                      function(erroned, lotValues){
-                        if(erroned) return res.badRequest(erroned);
-                        return callback_reporting_suivant();
-                        
-                      });
-                    },
-                    function(err)
-                    {
-                      if (err){
-                        return res.view('Contentieux/erreur');
-                      }
-                      else
-                      {
-                      var sql4= "select count(chemin) as ok from "+nomBase+" ";
-                      console.log(sql4);
-                      Reportinghtp.getDatastore().sendNativeQuery(sql4 ,function(err, nc) {
-                         nc = nc.rows;
-                         console.log('nc'+nc[0].ok);
-                         var f = parseInt(nc[0].ok);
-                            if (err){
-                              return res.view('Inovcom/erreur');
-                            }
-                           if(f==0)
-                            {
-                              return res.view('Inovcom/erreur');
-                            }
-                            else
-                            {
-                             
-                              return res.view('HTPengagement/importHTPengagement_1', {date : datetest});
-                            };
-                        });
-                      }
-                    });
-      
-                  }
-                 
-              });
-            });
-      },
+ 
 /***********************************************************************************/  
 /*
 *
@@ -967,8 +792,8 @@ insertcheminengagementhtp_1 : function(req,res)
                     function(err, resultat){
                       if (err) { return res.view('Inovcom/erreur'); }
 
-                      // return res.view('HTPengagement/exportHTPengagement', {date : datetest});
-                      return res.view('HTPengagement/importHTPengagementsuivant_4', {date : datetest})
+                      return res.view('HTPengagement/exportHTPengagement', {date : datetest});
+                      // return res.view('HTPengagement/importHTPengagementsuivant_4', {date : datetest})
                   });
                
               }
@@ -1217,7 +1042,117 @@ insertcheminengagementhtp_1 : function(req,res)
         function (callback) {
           Engagementhtp.recupdata("htpacsfin",callback);
         },
-       
+       /****************************************************************************************/
+              // function (callback) {
+          //   Engagementhtp.recupdata("htptrij2",callback);
+          // },
+          function (callback) {
+            Engagementhtp.recupdata("htpfacmgj2",callback);
+          },
+          function (callback) {
+            Engagementhtp.recupdata("htpdevij2",callback);
+          },
+          function (callback) {
+            Engagementhtp.recupdata("htpsales16",callback);//htpsalesj2
+          },
+          function (callback) {
+            Engagementhtp.recupdata("htpflux16",callback);//htpfluxj2
+          },
+          function (callback) {
+            Engagementhtp.recupdata("htprejet16",callback);//htprejetj2
+          },
+          function (callback) {
+            Engagementhtp.recupdata("htpcotlamiej2",callback);
+          },
+          // function (callback) {
+          //   Engagementhtp.recupdata("htptrij5",callback);
+          // },
+          function (callback) {
+            Engagementhtp.recupdata("htpfacmgj5",callback);
+          },
+          function (callback) {
+            Engagementhtp.recupdata("htpdevij5",callback);
+          },
+          function (callback) {
+            Engagementhtp.recupdata("htpsales16",callback);//htpsalesj5
+          },
+          function (callback) {
+            Engagementhtp.recupdata("htpflux16",callback);//htpfluxj5
+          },
+          function (callback) {
+            Engagementhtp.recupdata("htprejet16",callback);//htprejetj5
+          },
+          function (callback) {
+            Engagementhtp.recupdata("htpcotlamiej5",callback);
+          },
+          function (callback) {
+            Engagementhtp.recupdatasum("htpcotite16",callback);//htpcotitej2
+          },
+          function (callback) {
+            Engagementhtp.recupdatasum("htpcotite16",callback);//htpcotitej5
+          },
+          function (callback) {
+            Engagementhtp.recupdata("htpfaclamiej2",callback);
+          },
+          function (callback) {
+            Engagementhtp.recupdata("htpacsj2",callback);
+          },
+          function (callback) {
+            Engagementhtp.recupdata("htpfaclamiej5",callback);
+          },
+          function (callback) {
+            Engagementhtp.recupdata("htpacsj5",callback);
+          },
+          /****************************************************************/
+          function (callback) {
+            Engagementhtp.recupdata("htptrietp",callback);
+          },
+          function (callback) {
+            Engagementhtp.recupdata("htpfacmgetp",callback);
+          },
+          function (callback) {
+            Engagementhtp.recupdata("htpdevietp",callback);
+          },
+          function (callback) {
+            Engagementhtp.recupdata("htpfaclamieetp",callback);
+          },
+          function (callback) {
+            Engagementhtp.recupdata("htpcotlamieetp",callback);
+          },
+          /*************************************************************************/
+          function (callback) {
+            Engagementhtp.recupdata("htptristock",callback);
+          },
+          function (callback) {
+            Engagementhtp.recupdata("htpfacmgstocktot",callback);//htpfacmgstock
+          },
+          function (callback) {
+            Engagementhtp.recupdata("htpdevistocktot",callback);//htpdevistock
+          },
+          function (callback) {
+            Engagementhtp.recupdata("htpsalesstocktot",callback);//htpsalesstock
+          },
+          function (callback) {
+            Engagementhtp.recupdata("htpfluxstock",callback);
+          },
+          function (callback) {
+            Engagementhtp.recupdata("htprejetstock",callback);
+          },
+          function (callback) {
+            Engagementhtp.recupdata("htpcotlamiestock",callback);
+          },
+          function (callback) {
+            Engagementhtp.recupdata("htpcotitestock",callback);
+          },
+          function (callback) {
+            Engagementhtp.recupdata("htpfaclamiestock",callback);
+          },
+          function (callback) {
+            Engagementhtp.recupdata("htpacsstock",callback);
+          },
+
+
+
       ],function(err,result){
         if(err) return res.badRequest(err);
         console.log("Count OK 1==> " + result[0].ok);
@@ -1282,7 +1217,117 @@ insertcheminengagementhtp_1 : function(req,res)
             function (callback) {
               Engagementhtp.ecrituredatafinpacs(result[19],"htpacsfin",date_export,feuille,callback);
             },
-        
+        /**********************************************************************************************/
+         // function (callback) {
+                  //   Engagementhtp.ecrituredataj2tri(result[0],"htptrij2",date_export,feuille,callback);
+                  // },
+                  function (callback) {
+                    Engagementhtp.ecrituredataj2facM(result[20],"htpfacmgj2",date_export,feuille,callback);
+                  },
+                  function (callback) {
+                    Engagementhtp.ecrituredataj2devi(result[21],"htpdevij2",date_export,feuille,callback);
+                  },
+                  function (callback) {
+                    Engagementhtp.ecrituredataj2sales(result[22],"htpsales16",date_export,feuille,callback);//htpsalesj2
+                  },
+                  function (callback) {
+                    Engagementhtp.ecrituredataj2flux(result[23],"htpflux16",date_export,feuille,callback);
+                  },
+                  function (callback) {
+                      Engagementhtp.ecrituredataj2rejet(result[24],"htprejet16",date_export,feuille,callback);
+                    },
+                  function (callback) {
+                      Engagementhtp.ecrituredataj2cotlamie(result[25],"htpcotlamiej2",date_export,feuille,callback);
+                  },
+                  // function (callback) {
+                  //     Engagementhtp.ecrituredataj5tri(result[7],"htptrij5",date_export,feuille,callback);
+                  // },
+                  function (callback) {
+                      Engagementhtp.ecrituredataj5facM(result[26],"htpfacmgj5",date_export,feuille,callback);
+                  },
+                  function (callback) {
+                      Engagementhtp.ecrituredataj5devi(result[27],"htpdevij5",date_export,feuille,callback);
+                  },
+                  function (callback) {
+                      Engagementhtp.ecrituredataj5sales(result[28],"htpsales16",date_export,feuille,callback);//htpsalesj5
+                  },
+                  function (callback) {
+                      Engagementhtp.ecrituredataj5flux(result[29],"htpflux16",date_export,feuille,callback);
+                  },
+                  function (callback) {
+                      Engagementhtp.ecrituredataj5rejet(result[30],"htprejet16",date_export,feuille,callback);
+                  },
+                  function (callback) {
+                      Engagementhtp.ecrituredataj5cotlamie(result[31],"htpcotlamiej5",date_export,feuille,callback);
+                  },
+                  function (callback) {
+                      Engagementhtp.ecrituredataj2cotite(result[32],"htpcotite16",date_export,feuille,callback);
+                  },
+                  function (callback) {
+                      Engagementhtp.ecrituredataj5cotite(result[33],"htpcotite16",date_export,feuille,callback);
+                    },
+                    function (callback) {
+                      Engagementhtp.ecrituredataj2faclamie(result[34],"htpfaclamiej2",date_export,feuille,callback);
+                    },
+                  function (callback) {
+                    Engagementhtp.ecrituredataj2acs(result[35],"htpacsj2",date_export,feuille,callback);
+                  },
+                  function (callback) {
+                    Engagementhtp.ecrituredataj5faclamie(result[36],"htpfaclamiej5",date_export,feuille,callback);
+                  },
+                function (callback) {
+                    Engagementhtp.ecrituredataj5acs(result[37],"htpacsj5",date_export,feuille,callback);
+                  },
+                /**************************************************************************************************/
+                function (callback) {
+                  Engagementhtp.ecrituredataetptri(result[38],"htptrietp",date_export,feuille,callback);
+                },
+                function (callback) {
+                  Engagementhtp.ecrituredataetpfacM(result[39],"htpfacmgetp",date_export,feuille,callback);
+                },
+                function (callback) {
+                  Engagementhtp.ecrituredataetpdevi(result[40],"htpdevietp",date_export,feuille,callback);
+                },
+                function (callback) {
+                  Engagementhtp.ecrituredataetpfaclamie(result[41],"htpfaclamieetp",date_export,feuille,callback);
+                },
+                function (callback) {
+                  Engagementhtp.ecrituredataetpcotlamie(result[42],"htpcotlamieetp",date_export,feuille,callback);
+                },
+                /*********************************************************************************************/
+
+                function (callback) {
+                  Engagementhtp.ecrituredatastock16tri(result[43],"htptristock",date_export,feuille,callback);
+                },
+                function (callback) {
+                  Engagementhtp.ecrituredatastock16facM(result[44],"htpfacmgstocktot",date_export,feuille,callback);
+                },
+                function (callback) {
+                  Engagementhtp.ecrituredatastock16devi(result[45],"htpdevistocktot",date_export,feuille,callback);
+                },
+                function (callback) {
+                  Engagementhtp.ecrituredatastock16sales(result[46],"htpsalesstocktot",date_export,feuille,callback);
+                },
+                function (callback) {
+                  Engagementhtp.ecrituredatastock16flux(result[47],"htpfluxstock",date_export,feuille,callback);
+                },
+                function (callback) {
+                    Engagementhtp.ecrituredatastock16rejet(result[48],"htprejetstock",date_export,feuille,callback);
+                  },
+                function (callback) {
+                    Engagementhtp.ecrituredatastock16cotlamie(result[49],"htpcotlamiestock",date_export,feuille,callback);
+                },
+                function (callback) {
+                    Engagementhtp.ecrituredatastock16cotite(result[50],"htpcotitestock",date_export,feuille,callback);
+                },
+                function (callback) {
+                    Engagementhtp.ecrituredatastock16faclamie(result[51],"htpfaclamiestock",date_export,feuille,callback);
+                },
+                function (callback) {
+                    Engagementhtp.ecrituredatastock16acs(result[52],"htpacsstock",date_export,feuille,callback);
+                },
+
+
         ],function(err,resultExcel){
        console.log(resultExcel[0]);
             if(resultExcel[0]==true)
@@ -1299,542 +1344,11 @@ insertcheminengagementhtp_1 : function(req,res)
         })
       })
     },
-/**********************************************************************************************************/ 
-//FONCTION EXPORT SUIVANT 1 (taches traitees)
-exporthtpengagementsuivant_1 : function (req, res) {
-  var datetest = req.param("date",0);
-  var annee = datetest.substr(0, 4);
-  var mois = datetest.substr(5, 2);
-  var jour = datetest.substr(8, 2);
-  var feuille = annee+mois+'_EASY';
-  console.log(feuille);
-  var mois1 = 'Janvier' ;
-  if(mois==01)
-  {
-    mois1= 'Janvier';
-  };
-  if(mois==02)
-  {
-    mois1= 'Fevrier';
-  };
-  if(mois==03)
-  {
-    mois1= 'Mars';
-  };
-  if(mois==04)
-  {
-    mois1= 'Avril';
-  };
-  if(mois==05)
-  {
-    mois1= 'Mai';
-  };
-  if(mois==06)
-  {
-    mois1= 'Juin';
-  };
-  if(mois==07)
-  {
-    mois1= 'Juillet';
-  };
-  if(mois==08)
-  {
-    mois1= 'Aout';
-  };
-  if(mois==09)
-  {
-    mois1= 'Septembre';
-  };
-  if(mois==10)
-  {
-    mois1= 'octobre';
-  };
-  if(mois==11)
-  {
-    mois1= 'Novembre';
-  };
-  if(mois==12)
-  {
-    mois1= 'Decembre';
-  };
-  console.log(mois1);
-  var date_export = jour + '/' + mois + '/' +annee;
-  console.log("RECHERCHE COLONNE");
-  async.series([
-    // function (callback) {
-    //   Engagementhtp.recupdata("htptrij2",callback);
-    // },
-    function (callback) {
-      Engagementhtp.recupdata("htpfacmgj2",callback);
-    },
-    function (callback) {
-      Engagementhtp.recupdata("htpdevij2",callback);
-    },
-    function (callback) {
-      Engagementhtp.recupdata("htpsales16",callback);//htpsalesj2
-    },
-    function (callback) {
-      Engagementhtp.recupdata("htpflux16",callback);//htpfluxj2
-    },
-    function (callback) {
-      Engagementhtp.recupdata("htprejet16",callback);//htprejetj2
-    },
-    function (callback) {
-      Engagementhtp.recupdata("htpcotlamiej2",callback);
-    },
-    // function (callback) {
-    //   Engagementhtp.recupdata("htptrij5",callback);
-    // },
-    function (callback) {
-      Engagementhtp.recupdata("htpfacmgj5",callback);
-    },
-    function (callback) {
-      Engagementhtp.recupdata("htpdevij5",callback);
-    },
-    function (callback) {
-      Engagementhtp.recupdata("htpsales16",callback);//htpsalesj5
-    },
-    function (callback) {
-      Engagementhtp.recupdata("htpflux16",callback);//htpfluxj5
-    },
-    function (callback) {
-      Engagementhtp.recupdata("htprejet16",callback);//htprejetj5
-    },
-    function (callback) {
-      Engagementhtp.recupdata("htpcotlamiej5",callback);
-    },
-    function (callback) {
-      Engagementhtp.recupdatasum("htpcotite16",callback);//htpcotitej2
-    },
-    function (callback) {
-      Engagementhtp.recupdatasum("htpcotite16",callback);//htpcotitej5
-    },
-    function (callback) {
-      Engagementhtp.recupdata("htpfaclamiej2",callback);
-    },
-    function (callback) {
-      Engagementhtp.recupdata("htpacsj2",callback);
-    },
-    function (callback) {
-      Engagementhtp.recupdata("htpfaclamiej5",callback);
-    },
-    function (callback) {
-      Engagementhtp.recupdata("htpacsj5",callback);
-    },
 
-  ],function(err,result){
-    if(err) return res.badRequest(err);
-    console.log("Count OK 1==> " + result[0].ok);
-    async.series([
-      // function (callback) {
-      //   Engagementhtp.ecrituredataj2tri(result[0],"htptrij2",date_export,feuille,callback);
-      // },
-      function (callback) {
-        Engagementhtp.ecrituredataj2facM(result[0],"htpfacmgj2",date_export,feuille,callback);
-      },
-      function (callback) {
-        Engagementhtp.ecrituredataj2devi(result[1],"htpdevij2",date_export,feuille,callback);
-      },
-      function (callback) {
-        Engagementhtp.ecrituredataj2sales(result[2],"htpsales16",date_export,feuille,callback);//htpsalesj2
-      },
-      function (callback) {
-        Engagementhtp.ecrituredataj2flux(result[3],"htpflux16",date_export,feuille,callback);
-      },
-      function (callback) {
-          Engagementhtp.ecrituredataj2rejet(result[4],"htprejet16",date_export,feuille,callback);
-        },
-      function (callback) {
-          Engagementhtp.ecrituredataj2cotlamie(result[5],"htpcotlamiej2",date_export,feuille,callback);
-      },
-      // function (callback) {
-      //     Engagementhtp.ecrituredataj5tri(result[7],"htptrij5",date_export,feuille,callback);
-      // },
-      function (callback) {
-          Engagementhtp.ecrituredataj5facM(result[6],"htpfacmgj5",date_export,feuille,callback);
-      },
-      function (callback) {
-          Engagementhtp.ecrituredataj5devi(result[7],"htpdevij5",date_export,feuille,callback);
-      },
-      function (callback) {
-          Engagementhtp.ecrituredataj5sales(result[8],"htpsales16",date_export,feuille,callback);//htpsalesj5
-      },
-      function (callback) {
-          Engagementhtp.ecrituredataj5flux(result[9],"htpflux16",date_export,feuille,callback);
-      },
-      function (callback) {
-          Engagementhtp.ecrituredataj5rejet(result[10],"htprejet16",date_export,feuille,callback);
-      },
-      function (callback) {
-          Engagementhtp.ecrituredataj5cotlamie(result[11],"htpcotlamiej5",date_export,feuille,callback);
-      },
-      function (callback) {
-          Engagementhtp.ecrituredataj2cotite(result[12],"htpcotite16",date_export,feuille,callback);
-      },
-      function (callback) {
-          Engagementhtp.ecrituredataj5cotite(result[13],"htpcotite16",date_export,feuille,callback);
-        },
-        function (callback) {
-          Engagementhtp.ecrituredataj2faclamie(result[14],"htpfaclamiej2",date_export,feuille,callback);
-        },
-      function (callback) {
-        Engagementhtp.ecrituredataj2acs(result[15],"htpacsj2",date_export,feuille,callback);
-      },
-      function (callback) {
-        Engagementhtp.ecrituredataj5faclamie(result[16],"htpfaclamiej5",date_export,feuille,callback);
-      },
-    function (callback) {
-        Engagementhtp.ecrituredataj5acs(result[17],"htpacsj5",date_export,feuille,callback);
-      },
-    
-    
-    ],function(err,resultExcel){
-   console.log(resultExcel[0]);
-        if(resultExcel[0]==true)
-        {
-          console.log("true zn");
-          res.view('Retour/erera');
-        }
-        if(resultExcel[0]=='OK')
-        {
-          res.view('HTPengagement/exportHTPengagementsuivant_2', {date : datetest});
-          // res.view('Retour/succes');
-        }
 
-    })
-  })
-},
-
-/**********************************************************************************************************/ 
-//FONCTION EXPORT STOCKS
-exporthtpengagementsuivant_2 : function (req, res) {
-  var datetest = req.param("date",0);
-  var annee = datetest.substr(0, 4);
-  var mois = datetest.substr(5, 2);
-  var jour = datetest.substr(8, 2);
-  var feuille = annee+mois+'_EASY';
-  console.log(feuille);
-  var mois1 = 'Janvier' ;
-  if(mois==01)
-  {
-    mois1= 'Janvier';
-  };
-  if(mois==02)
-  {
-    mois1= 'Fevrier';
-  };
-  if(mois==03)
-  {
-    mois1= 'Mars';
-  };
-  if(mois==04)
-  {
-    mois1= 'Avril';
-  };
-  if(mois==05)
-  {
-    mois1= 'Mai';
-  };
-  if(mois==06)
-  {
-    mois1= 'Juin';
-  };
-  if(mois==07)
-  {
-    mois1= 'Juillet';
-  };
-  if(mois==08)
-  {
-    mois1= 'Aout';
-  };
-  if(mois==09)
-  {
-    mois1= 'Septembre';
-  };
-  if(mois==10)
-  {
-    mois1= 'octobre';
-  };
-  if(mois==11)
-  {
-    mois1= 'Novembre';
-  };
-  if(mois==12)
-  {
-    mois1= 'Decembre';
-  };
-  console.log(mois1);
-  var date_export = jour + '/' + mois + '/' +annee;
-  console.log("RECHERCHE COLONNE");
-  async.series([
-    function (callback) {
-      Engagementhtp.recupdata("htptristock",callback);
-    },
-    function (callback) {
-      Engagementhtp.recupdata("htpfacmgstocktot",callback);//htpfacmgstock
-    },
-    function (callback) {
-      Engagementhtp.recupdata("htpdevistocktot",callback);//htpdevistock
-    },
-    function (callback) {
-      Engagementhtp.recupdata("htpsalesstocktot",callback);//htpsalesstock
-    },
-    function (callback) {
-      Engagementhtp.recupdata("htpfluxstock",callback);
-    },
-    function (callback) {
-      Engagementhtp.recupdata("htprejetstock",callback);
-    },
-    function (callback) {
-      Engagementhtp.recupdata("htpcotlamiestock",callback);
-    },
-    function (callback) {
-      Engagementhtp.recupdata("htpcotitestock",callback);
-    },
-    function (callback) {
-      Engagementhtp.recupdata("htpfaclamiestock",callback);
-    },
-    function (callback) {
-      Engagementhtp.recupdata("htpacsstock",callback);
-    },
-    /**************************/
-    function (callback) {
-      Engagementhtp.recupdata("htptristocktot",callback);
-    },
-    function (callback) {
-      Engagementhtp.recupdata("htpfacmgstocktot",callback);
-    },
-    function (callback) {
-      Engagementhtp.recupdata("htpdevistocktot",callback);
-    },
-    function (callback) {
-      Engagementhtp.recupdata("htpsalesstocktot",callback);
-    },
-    function (callback) {
-      Engagementhtp.recupdata("htpfluxstocktot",callback);
-    },
-    function (callback) {
-      Engagementhtp.recupdata("htprejetstocktot",callback);
-    },
-    function (callback) {
-      Engagementhtp.recupdata("htpcotlamiestocktot",callback);
-    },
-    function (callback) {
-      Engagementhtp.recupdata("htpcotitestocktot",callback);
-    },
-    function (callback) {
-      Engagementhtp.recupdata("htpfaclamiestocktot",callback);
-    },
-    function (callback) {
-      Engagementhtp.recupdata("htpacsstocktot",callback);
-    },
-
-  ],function(err,result){
-    if(err) return res.badRequest(err);
-    console.log("Count OK 1==> " + result[0].ok);
-    async.series([
-      function (callback) {
-        Engagementhtp.ecrituredatastock16tri(result[0],"htptristock",date_export,feuille,callback);
-      },
-      function (callback) {
-        Engagementhtp.ecrituredatastock16facM(result[1],"htpfacmgstocktot",date_export,feuille,callback);
-      },
-      function (callback) {
-        Engagementhtp.ecrituredatastock16devi(result[2],"htpdevistocktot",date_export,feuille,callback);
-      },
-      function (callback) {
-        Engagementhtp.ecrituredatastock16sales(result[3],"htpsalesstocktot",date_export,feuille,callback);
-      },
-      function (callback) {
-        Engagementhtp.ecrituredatastock16flux(result[4],"htpfluxstock",date_export,feuille,callback);
-      },
-      function (callback) {
-          Engagementhtp.ecrituredatastock16rejet(result[5],"htprejetstock",date_export,feuille,callback);
-        },
-      function (callback) {
-          Engagementhtp.ecrituredatastock16cotlamie(result[6],"htpcotlamiestock",date_export,feuille,callback);
-      },
-      function (callback) {
-          Engagementhtp.ecrituredatastock16cotite(result[7],"htpcotitestock",date_export,feuille,callback);
-      },
-      function (callback) {
-          Engagementhtp.ecrituredatastock16faclamie(result[8],"htpfaclamiestock",date_export,feuille,callback);
-      },
-      function (callback) {
-          Engagementhtp.ecrituredatastock16acs(result[9],"htpacsstock",date_export,feuille,callback);
-      },
-      /*********************************************************/
-      function (callback) {
-        Engagementhtp.ecrituredatastocktottri(result[10],"htptristocktot",date_export,feuille,callback);
-      },
-      function (callback) {
-        Engagementhtp.ecrituredatastocktotfacM(result[11],"htpfacmgstocktot",date_export,feuille,callback);
-      },
-      function (callback) {
-        Engagementhtp.ecrituredatastocktotdevi(result[12],"htpdevistocktot",date_export,feuille,callback);
-      },
-      function (callback) {
-        Engagementhtp.ecrituredatastocktotsales(result[13],"htpsalesstocktot",date_export,feuille,callback);
-      },
-      function (callback) {
-        Engagementhtp.ecrituredatastocktotflux(result[14],"htpfluxstocktot",date_export,feuille,callback);
-      },
-      function (callback) {
-          Engagementhtp.ecrituredatastocktotrejet(result[15],"htprejetstocktot",date_export,feuille,callback);
-        },
-      function (callback) {
-          Engagementhtp.ecrituredatastocktotcotlamie(result[16],"htpcotlamiestocktot",date_export,feuille,callback);
-      },
-      function (callback) {
-          Engagementhtp.ecrituredatastocktotcotite(result[17],"htpcotitestocktot",date_export,feuille,callback);
-      },
-      function (callback) {
-          Engagementhtp.ecrituredatastocktotfaclamie(result[18],"htpfaclamiestocktot",date_export,feuille,callback);
-      },
-      function (callback) {
-          Engagementhtp.ecrituredatastocktotacs(result[19],"htpacsstocktot",date_export,feuille,callback);
-      },
-    
-    ],function(err,resultExcel){
-   console.log(resultExcel[0]);
-        if(resultExcel[0]==true)
-        {
-          console.log("true zn");
-          res.view('Retour/erera');
-        }
-        if(resultExcel[0]=='OK')
-        {
-          res.view('HTPengagement/exportHTPengagementsuivant_3', {date : datetest});
-          // res.view('Retour/succes');
-        }
-
-    })
-  })
-},
-
-/**********************************************************************************************************/ 
-//FONCTION EXPORT ETP
-exporthtpengagementsuivant_3 : function (req, res) {
-  var datetest = req.param("date",0);
-  var annee = datetest.substr(0, 4);
-  var mois = datetest.substr(5, 2);
-  var jour = datetest.substr(8, 2);
-  var feuille = annee+mois+'_EASY';
-  console.log(feuille);
-  var mois1 = 'Janvier' ;
-  if(mois==01)
-  {
-    mois1= 'Janvier';
-  };
-  if(mois==02)
-  {
-    mois1= 'Fevrier';
-  };
-  if(mois==03)
-  {
-    mois1= 'Mars';
-  };
-  if(mois==04)
-  {
-    mois1= 'Avril';
-  };
-  if(mois==05)
-  {
-    mois1= 'Mai';
-  };
-  if(mois==06)
-  {
-    mois1= 'Juin';
-  };
-  if(mois==07)
-  {
-    mois1= 'Juillet';
-  };
-  if(mois==08)
-  {
-    mois1= 'Aout';
-  };
-  if(mois==09)
-  {
-    mois1= 'Septembre';
-  };
-  if(mois==10)
-  {
-    mois1= 'octobre';
-  };
-  if(mois==11)
-  {
-    mois1= 'Novembre';
-  };
-  if(mois==12)
-  {
-    mois1= 'Decembre';
-  };
-  console.log(mois1);
-  var date_export = jour + '/' + mois + '/' +annee;
-  var dateduree = annee+''+mois+''+jour;
-  console.log("RECHERCHE COLONNE");
-  async.series([
-    function (callback) {
-      Engagementhtp.recupdata("htptrietp",callback);
-    },
-    function (callback) {
-      Engagementhtp.recupdata("htpfacmgetp",callback);
-    },
-    function (callback) {
-      Engagementhtp.recupdata("htpdevietp",callback);
-    },
-    function (callback) {
-      Engagementhtp.recupdata("htpfaclamieetp",callback);
-    },
-    function (callback) {
-      Engagementhtp.recupdata("htpcotlamieetp",callback);
-    },
-    
-  
-
-  ],function(err,result){
-    if(err) return res.badRequest(err);
-    console.log("Count OK 1==> " + result[0].ok);
-    async.series([
-      function (callback) {
-        Engagementhtp.ecrituredataetptri(result[0],"htptrietp",date_export,feuille,callback);
-      },
-      function (callback) {
-        Engagementhtp.ecrituredataetpfacM(result[1],"htpfacmgetp",date_export,feuille,callback);
-      },
-      function (callback) {
-        Engagementhtp.ecrituredataetpdevi(result[2],"htpdevietp",date_export,feuille,callback);
-      },
-      function (callback) {
-        Engagementhtp.ecrituredataetpfaclamie(result[3],"htpfaclamieetp",date_export,feuille,callback);
-      },
-      function (callback) {
-        Engagementhtp.ecrituredataetpcotlamie(result[4],"htpcotlamieetp",date_export,feuille,callback);
-      },
-      
-      
-    
-    ],function(err,resultExcel){
-   console.log(resultExcel[0]);
-        if(resultExcel[0]==true)
-        {
-          console.log("true zn");
-          res.view('Retour/erera');
-        }
-        if(resultExcel[0]=='OK')
-        {
-          res.view('HTPengagement/exportHTPengagementsuivant_4', {date : datetest});
-          // res.view('Retour/succes');
-        }
-
-    })
-  })
-},
-/**************************************************************************/
 /**********************************************************************************************************/ 
 //FONCTION EXPORT TACHES NON TRAITEES
-exporthtpengagementsuivant_4 : function (req, res) {
+exporthtpengagementsuivant_1 : function (req, res) {
   var datetest = req.param("date",0);
   var annee = datetest.substr(0, 4);
   var mois = datetest.substr(5, 2);
@@ -1955,6 +1469,100 @@ exporthtpengagementsuivant_4 : function (req, res) {
     function (callback) {
       Engagementhtp.recupdata("htpacstnontj1",callback);
     },
+/*************************************************************************************/
+        function (callback) {
+          Engagementhtp.recupdata("htptritnontj2",callback);
+        },
+        function (callback) {
+          Engagementhtp.recupdata("htpfacmgtnontj2",callback);
+        },
+        function (callback) {
+          Engagementhtp.recupdata("htpdevitnontj2",callback);
+        },
+        function (callback) {
+          Engagementhtp.recupdata("htpsalestnontj2",callback);
+        },
+        function (callback) {
+          Engagementhtp.recupdata("htpfluxtnontj2",callback);
+        },
+        function (callback) {
+          Engagementhtp.recupdata("htprejettnontj2",callback);
+        },
+        function (callback) {
+          Engagementhtp.recupdata("htpcotlamietnontj2",callback);
+        },
+        function (callback) {
+          Engagementhtp.recupdata("htpcotitetnontj2",callback);
+        },
+        function (callback) {
+          Engagementhtp.recupdata("htpfaclamietnontj2",callback);
+        },
+        function (callback) {
+          Engagementhtp.recupdata("htpacstnontj2",callback);
+        },
+        /**************************/
+        function (callback) {
+          Engagementhtp.recupdata("htptritnontj5",callback);
+        },
+        function (callback) {
+          Engagementhtp.recupdata("htpfacmgtnontj5",callback);
+        },
+        function (callback) {
+          Engagementhtp.recupdata("htpdevitnontj5",callback);
+        },
+        function (callback) {
+          Engagementhtp.recupdata("htpsalestnontj5",callback);
+        },
+        function (callback) {
+          Engagementhtp.recupdata("htpfluxtnontj5",callback);
+        },
+        function (callback) {
+          Engagementhtp.recupdata("htprejettnontj5",callback);
+        },
+        function (callback) {
+          Engagementhtp.recupdata("htpcotlamietnontj5",callback);
+        },
+        function (callback) {
+          Engagementhtp.recupdata("htpcotitetnontj5",callback);
+        },
+        function (callback) {
+          Engagementhtp.recupdata("htpfaclamietnontj5",callback);
+        },
+        function (callback) {
+          Engagementhtp.recupdata("htpacstnontj5",callback);
+        },
+        /**********************************************************************/
+        function (callback) {
+          Engagementhtp.recupdata("htptristocktot",callback);
+        },
+        function (callback) {
+          Engagementhtp.recupdata("htpfacmgstocktot",callback);
+        },
+        function (callback) {
+          Engagementhtp.recupdata("htpdevistocktot",callback);
+        },
+        function (callback) {
+          Engagementhtp.recupdata("htpsalesstocktot",callback);
+        },
+        function (callback) {
+          Engagementhtp.recupdata("htpfluxstocktot",callback);
+        },
+        function (callback) {
+          Engagementhtp.recupdata("htprejetstocktot",callback);
+        },
+        function (callback) {
+          Engagementhtp.recupdata("htpcotlamiestocktot",callback);
+        },
+        function (callback) {
+          Engagementhtp.recupdata("htpcotitestocktot",callback);
+        },
+        function (callback) {
+          Engagementhtp.recupdata("htpfaclamiestocktot",callback);
+        },
+        function (callback) {
+          Engagementhtp.recupdata("htpacsstocktot",callback);
+        },
+
 
   ],function(err,result){
     if(err) return res.badRequest(err);
@@ -2021,214 +1629,101 @@ exporthtpengagementsuivant_4 : function (req, res) {
       function (callback) {
           Engagementhtp.ecrituredatastocknontj1acs(result[19],"htpacstnontj1",date_export,feuille,callback);
       },
-    
-    ],function(err,resultExcel){
-   console.log(resultExcel[0]);
-        if(resultExcel[0]==true)
-        {
-          console.log("true zn");
-          res.view('Retour/erera');
-        }
-        if(resultExcel[0]=='OK')
-        {
-          res.view('HTPengagement/exportHTPengagementsuivant_5', {date : datetest});
-          // res.view('Retour/succes');
-        }
-
-    })
-  })
-},
-/*****************************************************************************************/
-/**********************************************************************************************************/ 
-//FONCTION EXPORT TACHES NON TRAITEES
-exporthtpengagementsuivant_5 : function (req, res) {
-  var datetest = req.param("date",0);
-  var annee = datetest.substr(0, 4);
-  var mois = datetest.substr(5, 2);
-  var jour = datetest.substr(8, 2);
-  var feuille = annee+mois+'_EASY';
-  console.log(feuille);
-  var mois1 = 'Janvier' ;
-  if(mois==01)
-  {
-    mois1= 'Janvier';
-  };
-  if(mois==02)
-  {
-    mois1= 'Fevrier';
-  };
-  if(mois==03)
-  {
-    mois1= 'Mars';
-  };
-  if(mois==04)
-  {
-    mois1= 'Avril';
-  };
-  if(mois==05)
-  {
-    mois1= 'Mai';
-  };
-  if(mois==06)
-  {
-    mois1= 'Juin';
-  };
-  if(mois==07)
-  {
-    mois1= 'Juillet';
-  };
-  if(mois==08)
-  {
-    mois1= 'Aout';
-  };
-  if(mois==09)
-  {
-    mois1= 'Septembre';
-  };
-  if(mois==10)
-  {
-    mois1= 'octobre';
-  };
-  if(mois==11)
-  {
-    mois1= 'Novembre';
-  };
-  if(mois==12)
-  {
-    mois1= 'Decembre';
-  };
-  console.log(mois1);
-  var date_export = jour + '/' + mois + '/' +annee;
-  console.log("RECHERCHE COLONNE");
-  async.series([
-    function (callback) {
-      Engagementhtp.recupdata("htptritnontj2",callback);
-    },
-    function (callback) {
-      Engagementhtp.recupdata("htpfacmgtnontj2",callback);
-    },
-    function (callback) {
-      Engagementhtp.recupdata("htpdevitnontj2",callback);
-    },
-    function (callback) {
-      Engagementhtp.recupdata("htpsalestnontj2",callback);
-    },
-    function (callback) {
-      Engagementhtp.recupdata("htpfluxtnontj2",callback);
-    },
-    function (callback) {
-      Engagementhtp.recupdata("htprejettnontj2",callback);
-    },
-    function (callback) {
-      Engagementhtp.recupdata("htpcotlamietnontj2",callback);
-    },
-    function (callback) {
-      Engagementhtp.recupdata("htpcotitetnontj2",callback);
-    },
-    function (callback) {
-      Engagementhtp.recupdata("htpfaclamietnontj2",callback);
-    },
-    function (callback) {
-      Engagementhtp.recupdata("htpacstnontj2",callback);
-    },
-    /**************************/
-    function (callback) {
-      Engagementhtp.recupdata("htptritnontj5",callback);
-    },
-    function (callback) {
-      Engagementhtp.recupdata("htpfacmgtnontj5",callback);
-    },
-    function (callback) {
-      Engagementhtp.recupdata("htpdevitnontj5",callback);
-    },
-    function (callback) {
-      Engagementhtp.recupdata("htpsalestnontj5",callback);
-    },
-    function (callback) {
-      Engagementhtp.recupdata("htpfluxtnontj5",callback);
-    },
-    function (callback) {
-      Engagementhtp.recupdata("htprejettnontj5",callback);
-    },
-    function (callback) {
-      Engagementhtp.recupdata("htpcotlamietnontj5",callback);
-    },
-    function (callback) {
-      Engagementhtp.recupdata("htpcotitetnontj5",callback);
-    },
-    function (callback) {
-      Engagementhtp.recupdata("htpfaclamietnontj5",callback);
-    },
-    function (callback) {
-      Engagementhtp.recupdata("htpacstnontj5",callback);
-    },
-
-  ],function(err,result){
-    if(err) return res.badRequest(err);
-    console.log("Count OK 1==> " + result[0].ok);
-    async.series([
+      /*******************************************************************************************************/
       function (callback) {
-        Engagementhtp.ecrituredatastocknontj2tri(result[0],"htptritnontj2",date_export,feuille,callback);
+        Engagementhtp.ecrituredatastocknontj2tri(result[20],"htptritnontj2",date_export,feuille,callback);
       },
       function (callback) {
-        Engagementhtp.ecrituredatastocknontj2facM(result[1],"htpfacmgtnontj2",date_export,feuille,callback);
+        Engagementhtp.ecrituredatastocknontj2facM(result[21],"htpfacmgtnontj2",date_export,feuille,callback);
       },
       function (callback) {
-        Engagementhtp.ecrituredatastocknontj2devi(result[2],"htpdevitnontj2",date_export,feuille,callback);
+        Engagementhtp.ecrituredatastocknontj2devi(result[22],"htpdevitnontj2",date_export,feuille,callback);
       },
       function (callback) {
-        Engagementhtp.ecrituredatastocknontj2sales(result[3],"htpsalestnontj2",date_export,feuille,callback);
+        Engagementhtp.ecrituredatastocknontj2sales(result[23],"htpsalestnontj2",date_export,feuille,callback);
       },
       function (callback) {
-        Engagementhtp.ecrituredatastocknontj2flux(result[4],"htpfluxtnontj2",date_export,feuille,callback);
+        Engagementhtp.ecrituredatastocknontj2flux(result[24],"htpfluxtnontj2",date_export,feuille,callback);
       },
       function (callback) {
-          Engagementhtp.ecrituredatastocknontj2rejet(result[5],"htprejettnontj2",date_export,feuille,callback);
+          Engagementhtp.ecrituredatastocknontj2rejet(result[25],"htprejettnontj2",date_export,feuille,callback);
         },
       function (callback) {
-          Engagementhtp.ecrituredatastocknontj2cotlamie(result[6],"htpcotlamietnontj2",date_export,feuille,callback);
+          Engagementhtp.ecrituredatastocknontj2cotlamie(result[26],"htpcotlamietnontj2",date_export,feuille,callback);
       },
       function (callback) {
-          Engagementhtp.ecrituredatastocknontj2cotite(result[7],"htpcotitetnontj2",date_export,feuille,callback);
+          Engagementhtp.ecrituredatastocknontj2cotite(result[27],"htpcotitetnontj2",date_export,feuille,callback);
       },
       function (callback) {
-          Engagementhtp.ecrituredatastocknontj2faclamie(result[8],"htpfaclamietnontj2",date_export,feuille,callback);
+          Engagementhtp.ecrituredatastocknontj2faclamie(result[28],"htpfaclamietnontj2",date_export,feuille,callback);
       },
       function (callback) {
-          Engagementhtp.ecrituredatastocknontj2acs(result[9],"htpacstnontj2",date_export,feuille,callback);
+          Engagementhtp.ecrituredatastocknontj2acs(result[29],"htpacstnontj2",date_export,feuille,callback);
       },
       /*********************************************************/
       function (callback) {
-        Engagementhtp.ecrituredatastocknontj5tri(result[10],"htptritnontj5",date_export,feuille,callback);
+        Engagementhtp.ecrituredatastocknontj5tri(result[30],"htptritnontj5",date_export,feuille,callback);
       },
       function (callback) {
-        Engagementhtp.ecrituredatastocknontj5facM(result[11],"htpfacmgtnontj5",date_export,feuille,callback);
+        Engagementhtp.ecrituredatastocknontj5facM(result[31],"htpfacmgtnontj5",date_export,feuille,callback);
       },
       function (callback) {
-        Engagementhtp.ecrituredatastocknontj5devi(result[12],"htpdevitnontj5",date_export,feuille,callback);
+        Engagementhtp.ecrituredatastocknontj5devi(result[32],"htpdevitnontj5",date_export,feuille,callback);
       },
       function (callback) {
-        Engagementhtp.ecrituredatastocknontj5sales(result[13],"htpsalestnontj5",date_export,feuille,callback);
+        Engagementhtp.ecrituredatastocknontj5sales(result[33],"htpsalestnontj5",date_export,feuille,callback);
       },
       function (callback) {
-        Engagementhtp.ecrituredatastocknontj5flux(result[14],"htpfluxtnontj5",date_export,feuille,callback);
+        Engagementhtp.ecrituredatastocknontj5flux(result[34],"htpfluxtnontj5",date_export,feuille,callback);
       },
       function (callback) {
-          Engagementhtp.ecrituredatastocknontj5rejet(result[15],"htprejettnontj5",date_export,feuille,callback);
+          Engagementhtp.ecrituredatastocknontj5rejet(result[35],"htprejettnontj5",date_export,feuille,callback);
         },
       function (callback) {
-          Engagementhtp.ecrituredatastocknontj5cotlamie(result[16],"htpcotlamietnontj5",date_export,feuille,callback);
+          Engagementhtp.ecrituredatastocknontj5cotlamie(result[36],"htpcotlamietnontj5",date_export,feuille,callback);
       },
       function (callback) {
-          Engagementhtp.ecrituredatastocknontj5cotite(result[17],"htpcotitetnontj5",date_export,feuille,callback);
+          Engagementhtp.ecrituredatastocknontj5cotite(result[37],"htpcotitetnontj5",date_export,feuille,callback);
       },
       function (callback) {
-          Engagementhtp.ecrituredatastocknontj5faclamie(result[18],"htpfaclamietnontj5",date_export,feuille,callback);
+          Engagementhtp.ecrituredatastocknontj5faclamie(result[38],"htpfaclamietnontj5",date_export,feuille,callback);
       },
       function (callback) {
-          Engagementhtp.ecrituredatastocknontj5acs(result[19],"htpacstnontj5",date_export,feuille,callback);
+          Engagementhtp.ecrituredatastocknontj5acs(result[39],"htpacstnontj5",date_export,feuille,callback);
       },
-    
+      /********************************************************************************************************/
+
+      function (callback) {
+        Engagementhtp.ecrituredatastocktottri(result[40],"htptristocktot",date_export,feuille,callback);
+      },
+      function (callback) {
+        Engagementhtp.ecrituredatastocktotfacM(result[41],"htpfacmgstocktot",date_export,feuille,callback);
+      },
+      function (callback) {
+        Engagementhtp.ecrituredatastocktotdevi(result[42],"htpdevistocktot",date_export,feuille,callback);
+      },
+      function (callback) {
+        Engagementhtp.ecrituredatastocktotsales(result[43],"htpsalesstocktot",date_export,feuille,callback);
+      },
+      function (callback) {
+        Engagementhtp.ecrituredatastocktotflux(result[44],"htpfluxstocktot",date_export,feuille,callback);
+      },
+      function (callback) {
+          Engagementhtp.ecrituredatastocktotrejet(result[45],"htprejetstocktot",date_export,feuille,callback);
+        },
+      function (callback) {
+          Engagementhtp.ecrituredatastocktotcotlamie(result[46],"htpcotlamiestocktot",date_export,feuille,callback);
+      },
+      function (callback) {
+          Engagementhtp.ecrituredatastocktotcotite(result[47],"htpcotitestocktot",date_export,feuille,callback);
+      },
+      function (callback) {
+          Engagementhtp.ecrituredatastocktotfaclamie(result[48],"htpfaclamiestocktot",date_export,feuille,callback);
+      },
+      function (callback) {
+          Engagementhtp.ecrituredatastocktotacs(result[49],"htpacsstocktot",date_export,feuille,callback);
+      },
+
     ],function(err,resultExcel){
    console.log(resultExcel[0]);
         if(resultExcel[0]==true)
@@ -2238,12 +1733,14 @@ exporthtpengagementsuivant_5 : function (req, res) {
         }
         if(resultExcel[0]=='OK')
         {
+          // res.view('HTPengagement/exportHTPengagementsuivant_5', {date : datetest});
           res.view('Retour/succes');
         }
 
     })
   })
 },
+
 
   
 };
