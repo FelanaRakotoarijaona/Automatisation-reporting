@@ -14,36 +14,7 @@ module.exports = {
   attributes: {
 
   },
-  convertDate : function (dateExcel){
-    var date = new Date(dateExcel);
-    var year = date.getFullYear();
-    var month = date.getMonth()+1;
-    var dt = date.getDate();
-    if (dt < 10) {
-      dt = '0' + dt;
-    }
-    if (month < 10) {
-      month = '0' + month;
-    }
-    return dt +"/"+ month +"/"+year;
-  },
-  /******************************/
-  //CONVERTION DATE EXCEL
-  convertionexceldate : function (serial){
-    var utc_days  = Math.floor(serial - 25569);
-    var utc_value = utc_days * 86400;                                        
-    var date_info = new Date(utc_value * 1000);
-    var fractional_day = serial - Math.floor(serial) + 0.0000001;
-    var total_seconds = Math.floor(86400 * fractional_day);
-    var seconds = total_seconds % 60;
- 
-    total_seconds -= seconds;
- 
-    var hours = Math.floor(total_seconds / (60 * 60));
-    var minutes = Math.floor(total_seconds / 60) % 60;
- 
-    return new Date(date_info.getFullYear(), date_info.getMonth(), date_info.getDate(), hours, minutes, seconds);
-  },
+
   //RECUPERATION VALEUR DANS LA BASE
   recupdata : function (table, callback) {
     const Excel = require('exceljs');
@@ -7202,20 +7173,21 @@ deleteFromChemindevis : function (nomBase,callback) {
     return callback(null, true);
     });
 },
- /*******************************************************/
+/************************************************************/
+/*
+*
+*             INSERTION DONNEES
+*
+*
+*/
+ /*************************************************************/
   //INSERTION DU CHEMIN DANS LA BASE DE DONNEE
-  importcheminhtp: function (table_1,table2,date,option,nb,nomtable,numligne,numfeuille,nomcolonne,colonnecible2,colonnecible3,nomBase,outable,callback) {
+  importcheminhtp: function (table_1,table2,date,option,nb,nomtable,numligne,numfeuille,nomcolonne,colonnecible2,colonnecible3,nomBase,callback) {
     const fs = require('fs');
     var re  = 'a';
     var tab = [];
     // var a = table[0]+date+table2[nb];
-    if(table_1[0]){
-      var a = table_1[0]+date+table2[nb];
-    }
-    else{
-      var a = outable[0]+date+table2[nb];
-    }
-    // var a = table_1[0]+date+table2[nb];
+    var a = table_1[0]+date+table2[nb];
     console.log('*****************************');
     console.log('chemin de a : '+a);
     //var a ='\\\\10.128.1.2\\almerys-out\\Retour_Easytech_20210512\\TRAITEMENT_RETOUR_OTD_N2\\' ;
@@ -7301,7 +7273,200 @@ deleteFromChemindevis : function (nomBase,callback) {
     });
     }   
   },
+  /*******************************************************/
+  //INSERTION DU CHEMIN DANS LA BASE DE DONNEE DEUX
+  importcheminhtpligne: function (table_1,table2,date,option,nb,nomtable,numligne,numfeuille,nomcolonne,colonnecible2,colonnecible3,nomBase,callback) {
+    const fs = require('fs');
+    var re  = 'a';
+    var tab = [];
+    // var a = table[0]+date+table2[nb];
+    var a = table_1[0]+date+table2[nb];
+    console.log('*****************************');
+    console.log('chemin de a : '+a);
+    //var a ='\\\\10.128.1.2\\almerys-out\\Retour_Easytech_20210512\\TRAITEMENT_RETOUR_OTD_N2\\' ;
+    var b = option[nb];
+    //var b = 'OTD_ALMERYS SATD';
+    //var c = 'vrai';
+    //console.log(a);
+    var nomTable = nomtable;
+    var numLigne= numligne;
+    var numFeuille = numfeuille;
+    var nomColonne = nomcolonne;
+    var c = Garantie.existenceFichier(a);
+    console.log('ccccccccccccccccccccccc: '+c);
+    if(c=='vrai')
+    {
+      fs.readdir(a, (err, files) => {
+        console.log(a);
+            files.forEach(file => {
+              const regex = new RegExp(b+'*');
+              console.log('**********************************************************************');
+              console.log(b);
+              console.log(file);
+              console.log(regex.test(file));
+              console.log('***************************************************************************');
+              if(regex.test(file))
+              {
+                 //re = a+'\\'+file;
+                 re = a+''+file;
+                 console.log(re);
+
+                 var sql = "insert into "+nomBase+" (chemin,nomtable,numligne,numfeuille,colonnecible,colonnecible2,colonnecible3) values ('"+re+"','"+nomTable[nb]+"','"+numLigne[nb]+"','"+numFeuille[nb]+"','"+nomColonne[nb]+"','"+colonnecible2[nb]+"','"+colonnecible3[nb]+"') ";
+                 console.log(sql);
+                 Engagementhtp.getDatastore().sendNativeQuery(sql, function(err,res){
+                  if (err) { 
+                    console.log("Une erreur ve? import 1");
+                    //return callback(err);
+                   }
+                  else
+                  {
+                    console.log("eto le requete alefany io : "+sql);
+                    return callback(null, true);
+                  };
+                   
+                });
+             }
+              else
+              {
+               var sql = "insert into chemintsisy (typologiedelademande) values ('"+re+"') ";
+               Engagementhtp.getDatastore().sendNativeQuery(sql, function(err,res){
+                if (err) { 
+                  console.log("Une erreur ve? import 1");
+                  //return callback(err);
+                 }
+                else
+                {
+                  console.log(sql);
+                  return callback(null, true);
+                };
+                 
+            });
+              }
+             
+             
+          });
+          
+         
+        });
+    }
+    else
+    {
+      var sql = "insert into chemintsisy(typologiedelademande) values ('k') ";
+      Engagementhtp.getDatastore().sendNativeQuery(sql, function(err,res){
+        if (err) { 
+          console.log("Une erreur ve? import 1");
+          //return callback(err);
+         }
+        else
+        {
+          console.log('eto njay iz le ts mety an : '+sql);
+          return callback(null, true);
+        };
+         
+    });
+    }   
+  },
+
+   /*******************************************************/
+  //INSERTION DU CHEMIN DANS LA BASE DE DONNEE TROIS
+  importcheminhtpsales: function (table_1,table2,date,option,nb,nomtable,numligne,numfeuille,nomcolonne,colonnecible2,colonnecible3,nomBase,callback) {
+    const fs = require('fs');
+    var re  = 'a';
+    var tab = [];
+    // var a = table[0]+date+table2[nb];
+    var a = table_1[0]+table2[nb];
+    console.log('*****************************');
+    console.log('chemin de a : '+a);
+    //var a ='\\\\10.128.1.2\\almerys-out\\Retour_Easytech_20210512\\TRAITEMENT_RETOUR_OTD_N2\\' ;
+    var b = option[nb];
+    //var b = 'OTD_ALMERYS SATD';
+    //var c = 'vrai';
+    //console.log(a);
+    var nomTable = nomtable;
+    var numLigne= numligne;
+    var numFeuille = numfeuille;
+    var nomColonne = nomcolonne;
+    var c = Garantie.existenceFichier(a);
+    console.log('ccccccccccccccccccccccc: '+c);
+    if(c=='vrai')
+    {
+      fs.readdir(a, (err, files) => {
+        console.log(a);
+            files.forEach(file => {
+              const regex = new RegExp(b+'*');
+              console.log('**********************************************************************');
+              console.log(b);
+              console.log(file);
+              console.log(regex.test(file));
+              console.log('***************************************************************************');
+              if(regex.test(file))
+              {
+                 //re = a+'\\'+file;
+                 re = a+''+file;
+                 console.log(re);
+
+                 var sql = "insert into "+nomBase+" (chemin,nomtable,numligne,numfeuille,colonnecible,colonnecible2,colonnecible3) values ('"+re+"','"+nomTable[nb]+"','"+numLigne[nb]+"','"+numFeuille[nb]+"','"+nomColonne[nb]+"','"+colonnecible2[nb]+"','"+colonnecible3[nb]+"') ";
+                 console.log(sql);
+                 Engagementhtp.getDatastore().sendNativeQuery(sql, function(err,res){
+                  if (err) { 
+                    console.log("Une erreur ve? import 1");
+                    //return callback(err);
+                   }
+                  else
+                  {
+                    console.log("eto le requete alefany io : "+sql);
+                    return callback(null, true);
+                  };
+                   
+                });
+             }
+              else
+              {
+               var sql = "insert into chemintsisy (typologiedelademande) values ('"+re+"') ";
+               Engagementhtp.getDatastore().sendNativeQuery(sql, function(err,res){
+                if (err) { 
+                  console.log("Une erreur ve? import 1");
+                  //return callback(err);
+                 }
+                else
+                {
+                  console.log(sql);
+                  return callback(null, true);
+                };
+                 
+            });
+              }
+             
+             
+          });
+          
+         
+        });
+    }
+    else
+    {
+      var sql = "insert into chemintsisy(typologiedelademande) values ('k') ";
+      Engagementhtp.getDatastore().sendNativeQuery(sql, function(err,res){
+        if (err) { 
+          console.log("Une erreur ve? import 1");
+          //return callback(err);
+         }
+        else
+        {
+          console.log('eto njay iz le ts mety an : '+sql);
+          return callback(null, true);
+        };
+         
+    });
+    }   
+  },
+
+
+
+
 /*******************************************************/
+//ANCIEN INSERTION
+/********************************************************/
   //INSERTION DU CHEMIN DANS LA BASE DE DONNEE
   importcheminhtpfacture: function (table_1,table2,date,option,nb,nomtable,numligne,numfeuille,nomcolonne,colonnecible2,colonnecible3,nomBase,callback) {
     const fs = require('fs');
@@ -7487,192 +7652,8 @@ deleteFromChemindevis : function (nomBase,callback) {
     });
     }   
   },
-  /*******************************************************/
-  //INSERTION DU CHEMIN DANS LA BASE DE DONNEE
-  importcheminhtpligne: function (table_1,table2,date,option,nb,nomtable,numligne,numfeuille,nomcolonne,colonnecible2,colonnecible3,nomBase,callback) {
-    const fs = require('fs');
-    var re  = 'a';
-    var tab = [];
-    // var a = table[0]+date+table2[nb];
-    var a = table_1[0]+date+table2[nb];
-    console.log('*****************************');
-    console.log('chemin de a : '+a);
-    //var a ='\\\\10.128.1.2\\almerys-out\\Retour_Easytech_20210512\\TRAITEMENT_RETOUR_OTD_N2\\' ;
-    var b = option[nb];
-    //var b = 'OTD_ALMERYS SATD';
-    //var c = 'vrai';
-    //console.log(a);
-    var nomTable = nomtable;
-    var numLigne= numligne;
-    var numFeuille = numfeuille;
-    var nomColonne = nomcolonne;
-    var c = Garantie.existenceFichier(a);
-    console.log('ccccccccccccccccccccccc: '+c);
-    if(c=='vrai')
-    {
-      fs.readdir(a, (err, files) => {
-        console.log(a);
-            files.forEach(file => {
-              const regex = new RegExp(b+'*');
-              console.log('**********************************************************************');
-              console.log(b);
-              console.log(file);
-              console.log(regex.test(file));
-              console.log('***************************************************************************');
-              if(regex.test(file))
-              {
-                 //re = a+'\\'+file;
-                 re = a+''+file;
-                 console.log(re);
 
-                 var sql = "insert into "+nomBase+" (chemin,nomtable,numligne,numfeuille,colonnecible,colonnecible2,colonnecible3) values ('"+re+"','"+nomTable[nb]+"','"+numLigne[nb]+"','"+numFeuille[nb]+"','"+nomColonne[nb]+"','"+colonnecible2[nb]+"','"+colonnecible3[nb]+"') ";
-                 console.log(sql);
-                 Engagementhtp.getDatastore().sendNativeQuery(sql, function(err,res){
-                  if (err) { 
-                    console.log("Une erreur ve? import 1");
-                    //return callback(err);
-                   }
-                  else
-                  {
-                    console.log("eto le requete alefany io : "+sql);
-                    return callback(null, true);
-                  };
-                   
-                });
-             }
-              else
-              {
-               var sql = "insert into chemintsisy (typologiedelademande) values ('"+re+"') ";
-               Engagementhtp.getDatastore().sendNativeQuery(sql, function(err,res){
-                if (err) { 
-                  console.log("Une erreur ve? import 1");
-                  //return callback(err);
-                 }
-                else
-                {
-                  console.log(sql);
-                  return callback(null, true);
-                };
-                 
-            });
-              }
-             
-             
-          });
-          
-         
-        });
-    }
-    else
-    {
-      var sql = "insert into chemintsisy(typologiedelademande) values ('k') ";
-      Engagementhtp.getDatastore().sendNativeQuery(sql, function(err,res){
-        if (err) { 
-          console.log("Une erreur ve? import 1");
-          //return callback(err);
-         }
-        else
-        {
-          console.log('eto njay iz le ts mety an : '+sql);
-          return callback(null, true);
-        };
-         
-    });
-    }   
-  },
-   /*******************************************************/
-  //INSERTION DU CHEMIN DANS LA BASE DE DONNEE
-  importcheminhtpsales: function (table_1,table2,date,option,nb,nomtable,numligne,numfeuille,nomcolonne,colonnecible2,colonnecible3,nomBase,callback) {
-    const fs = require('fs');
-    var re  = 'a';
-    var tab = [];
-    // var a = table[0]+date+table2[nb];
-    var a = table_1[0]+table2[nb];
-    console.log('*****************************');
-    console.log('chemin de a : '+a);
-    //var a ='\\\\10.128.1.2\\almerys-out\\Retour_Easytech_20210512\\TRAITEMENT_RETOUR_OTD_N2\\' ;
-    var b = option[nb];
-    //var b = 'OTD_ALMERYS SATD';
-    //var c = 'vrai';
-    //console.log(a);
-    var nomTable = nomtable;
-    var numLigne= numligne;
-    var numFeuille = numfeuille;
-    var nomColonne = nomcolonne;
-    var c = Garantie.existenceFichier(a);
-    console.log('ccccccccccccccccccccccc: '+c);
-    if(c=='vrai')
-    {
-      fs.readdir(a, (err, files) => {
-        console.log(a);
-            files.forEach(file => {
-              const regex = new RegExp(b+'*');
-              console.log('**********************************************************************');
-              console.log(b);
-              console.log(file);
-              console.log(regex.test(file));
-              console.log('***************************************************************************');
-              if(regex.test(file))
-              {
-                 //re = a+'\\'+file;
-                 re = a+''+file;
-                 console.log(re);
 
-                 var sql = "insert into "+nomBase+" (chemin,nomtable,numligne,numfeuille,colonnecible,colonnecible2,colonnecible3) values ('"+re+"','"+nomTable[nb]+"','"+numLigne[nb]+"','"+numFeuille[nb]+"','"+nomColonne[nb]+"','"+colonnecible2[nb]+"','"+colonnecible3[nb]+"') ";
-                 console.log(sql);
-                 Engagementhtp.getDatastore().sendNativeQuery(sql, function(err,res){
-                  if (err) { 
-                    console.log("Une erreur ve? import 1");
-                    //return callback(err);
-                   }
-                  else
-                  {
-                    console.log("eto le requete alefany io : "+sql);
-                    return callback(null, true);
-                  };
-                   
-                });
-             }
-              else
-              {
-               var sql = "insert into chemintsisy (typologiedelademande) values ('"+re+"') ";
-               Engagementhtp.getDatastore().sendNativeQuery(sql, function(err,res){
-                if (err) { 
-                  console.log("Une erreur ve? import 1");
-                  //return callback(err);
-                 }
-                else
-                {
-                  console.log(sql);
-                  return callback(null, true);
-                };
-                 
-            });
-              }
-             
-             
-          });
-          
-         
-        });
-    }
-    else
-    {
-      var sql = "insert into chemintsisy(typologiedelademande) values ('k') ";
-      Engagementhtp.getDatastore().sendNativeQuery(sql, function(err,res){
-        if (err) { 
-          console.log("Une erreur ve? import 1");
-          //return callback(err);
-         }
-        else
-        {
-          console.log('eto njay iz le ts mety an : '+sql);
-          return callback(null, true);
-        };
-         
-    });
-    }   
-  },
    /*******************************************************/
   //INSERTION DU CHEMIN DANS LA BASE DE DONNEE
   importcheminhtpstockfacdevis: function (table_1,table2,date,option,nb,nomtable,numligne,numfeuille,nomcolonne,colonnecible2,colonnecible3,nomBase,callback) {
@@ -7766,6 +7747,14 @@ deleteFromChemindevis : function (nomBase,callback) {
     });
     }   
   },
+  /*******************************************************************/
+  /*
+  *
+  *
+  * *                     AUTRE FONCTION 
+  * *
+  * 
+  * */
   /*********************************************************************/
   deleteReportingHtp : function (table,nb,callback) {
     var sql = "delete from "+table[nb]+" ";
@@ -7798,10 +7787,48 @@ deleteFromChemindevis : function (nomBase,callback) {
       };
       });
   },
-
+  /*********************************************/
+  convertDate : function (dateExcel){
+    var date = new Date(dateExcel);
+    var year = date.getFullYear();
+    var month = date.getMonth()+1;
+    var dt = date.getDate();
+    if (dt < 10) {
+      dt = '0' + dt;
+    }
+    if (month < 10) {
+      month = '0' + month;
+    }
+    return dt +"/"+ month +"/"+year;
+  },
+  /******************************/
+  //CONVERTION DATE EXCEL
+  convertionexceldate : function (serial){
+    var utc_days  = Math.floor(serial - 25569);
+    var utc_value = utc_days * 86400;                                        
+    var date_info = new Date(utc_value * 1000);
+    var fractional_day = serial - Math.floor(serial) + 0.0000001;
+    var total_seconds = Math.floor(86400 * fractional_day);
+    var seconds = total_seconds % 60;
+ 
+    total_seconds -= seconds;
+ 
+    var hours = Math.floor(total_seconds / (60 * 60));
+    var minutes = Math.floor(total_seconds / 60) % 60;
+ 
+    return new Date(date_info.getFullYear(), date_info.getMonth(), date_info.getDate(), hours, minutes, seconds);
+  },
+/***************************************************************************************/
+/*
+*
+*
+*                 IMPORT DONNEES
+*
+*
+*/
 /****************************************************************************************/
 //IMPORT DES DONNES EXCELS VERS LA BASE DE DONNEE
-importengagementhtptri : function (trameflux,feuil,cellule,table,cellule2,nb,numligne,dernierl,callback) {
+importengagementhtp_1 : function (trameflux,feuil,cellule,table,cellule2,nb,numligne,dernierl,date,callback) {
   console.log('****************');
   console.log(nb);
   console.log(trameflux[nb]);
@@ -7825,7 +7852,7 @@ importengagementhtptri : function (trameflux,feuil,cellule,table,cellule2,nb,num
   else{
 
     var tab = [];
-    tab = Engagementhtp.lectureEtInsertionengagementhtptri( trameflux,feuil,cellule,table,cellule2,nb,numligne,dernierl,callback);
+    tab = Engagementhtp.lectureEtInsertionengagementhtp_1( trameflux,feuil,cellule,table,cellule2,nb,numligne,dernierl,date,callback);
     var nbe= parseInt(nb);
     console.log(tab);
     var sql = "insert into "+table[nbe]+" (nb) values ('"+tab[0]+"') ";
@@ -7846,7 +7873,7 @@ importengagementhtptri : function (trameflux,feuil,cellule,table,cellule2,nb,num
 },
   /****************************************************************************/
   //LECTURE DU CHEMIN ET INSERTION DANS LA BASE
-  lectureEtInsertionengagementhtptri:function(trameflux,feuil,cellule,table,cellule2,nb,numligne,dernierl,callback){
+  lectureEtInsertionengagementhtp_1:function(trameflux,feuil,cellule,table,cellule2,nb,numligne,dernierl,date,callback){
     XLSX = require('xlsx');
     
         var workbook = XLSX.readFile(trameflux[nb]);
@@ -7907,7 +7934,7 @@ importengagementhtptri : function (trameflux,feuil,cellule,table,cellule2,nb,num
                 };
               };
           }
-          if(table[nb]=='htpfacmg16' || table[nb]=='htpfacmgfin')
+          if(table[nb]=='htpfacmg16' || table[nb]=='htpfacmgfin' || table[nb]=='htpfacmgstocktot')
           {
             var nbr = 0;
             for(var a=0;a<=range.e.r;a++)
@@ -7924,7 +7951,7 @@ importengagementhtptri : function (trameflux,feuil,cellule,table,cellule2,nb,num
                 };
               };
           }
-          if(table[nb]=='htpdevi16' || table[nb]=='htpdevifin')
+          if(table[nb]=='htpdevi16' || table[nb]=='htpdevifin' || table[nb]=='htpdevistocktot')
           {
             var nbr = 0;
             for(var a=0;a<=range.e.r;a++)
@@ -7941,28 +7968,226 @@ importengagementhtptri : function (trameflux,feuil,cellule,table,cellule2,nb,num
                 };
               };
           }
-          if(table[nb]=='htpflux16' || table[nb]=='htpfluxfin' || table[nb]=='htprejet16' || table[nb]=='htprejetfin' || table[nb]=='htpcotlamie16' || table[nb]=='htpcotlamiefin' || table[nb]=='htpcotite16' || table[nb]=='htpcotitefin' || table[nb]=='htpcotite16' || table[nb]=='htpcotitefin' || table[nb]=='htpcotite16' || table[nb]=='htpcotitefin')
+
+          if(table[nb]=='htpdevij2' || table[nb]=='htpdevitnontj2')
           {
             var nbr = 0;
-            for(var a=0;a<=range.e.r;a++)
+            for(var ra=2;ra<=range.e.r;ra++)
+            {
+             // console.log(ra);
+              var address_of_cell = {c:col, r:ra};
+              var cell_ref = XLSX.utils.encode_cell(address_of_cell);
+              var desired_cell = sheet[cell_ref];
+              var desired_value = (desired_cell ? desired_cell.v : undefined);
+              var bi = 'MGEFI HTP - Saisir Devis ';
+              const regex = new RegExp(bi+'*');
+    
+              var address_of_cell1 = {c:6, r:ra};
+              var cell_ref1 = XLSX.utils.encode_cell(address_of_cell1);
+              var desired_cell1 = sheet[cell_ref1];
+              var desired_value1 = (desired_cell1 ? desired_cell1.v : undefined);
+    
+              var conv = date;
+              var j2 = conv - 2;
+              if(regex.test(desired_value) && desired_value1<=j2)
               {
-                var address_of_cell = {c:col, r:a};
+                nbr=nbr + 1;  
+              }
+            };
+          }
+          if(table[nb]=='htpdevij5' || table[nb]=='htpdevitnontj5')
+          {
+            var nbr = 0;
+            for(var ra=2;ra<=range.e.r;ra++)
+            {
+             // console.log(ra);
+              var address_of_cell = {c:col, r:ra};
+              var cell_ref = XLSX.utils.encode_cell(address_of_cell);
+              var desired_cell = sheet[cell_ref];
+              var desired_value = (desired_cell ? desired_cell.v : undefined);
+              var bi = 'MGEFI HTP - Saisir Devis ';
+              const regex = new RegExp(bi+'*');
+    
+              var address_of_cell1 = {c:6, r:ra};
+              var cell_ref1 = XLSX.utils.encode_cell(address_of_cell1);
+              var desired_cell1 = sheet[cell_ref1];
+              var desired_value1 = (desired_cell1 ? desired_cell1.v : undefined);
+    
+              var conv = date;
+              var j5 = conv - 5;
+              if(regex.test(desired_value) && desired_value1<=j5)
+              {
+                nbr=nbr + 1;  
+              }
+            };
+          }
+          if(table[nb]=='htpfacmgj2' || table[nb]=='htpfacmgtnontj2')
+          {
+            var nbr = 0;
+            for(var ra=2;ra<=range.e.r;ra++)
+            {
+             // console.log(ra);
+              var address_of_cell = {c:col, r:ra};
+              var cell_ref = XLSX.utils.encode_cell(address_of_cell);
+              var desired_cell = sheet[cell_ref];
+              var desired_value = (desired_cell ? desired_cell.v : undefined);
+              var bi = 'MGEFI HTP - Saisir Facture ';
+              const regex = new RegExp(bi+'*');
+    
+              var address_of_cell1 = {c:6, r:ra};
+              var cell_ref1 = XLSX.utils.encode_cell(address_of_cell1);
+              var desired_cell1 = sheet[cell_ref1];
+              var desired_value1 = (desired_cell1 ? desired_cell1.v : undefined);
+    
+              var conv = date;
+              var j2 = conv - 2;
+              if(regex.test(desired_value) && desired_value1<=j2)
+              {
+                nbr=nbr + 1;  
+              }
+            };
+          }
+          if(table[nb]=='htpfacmgj5' || table[nb]=='htpfacmgtnontj5')
+          {
+            var nbr = 0;
+            for(var ra=2;ra<=range.e.r;ra++)
+            {
+             // console.log(ra);
+              var address_of_cell = {c:col, r:ra};
+              var cell_ref = XLSX.utils.encode_cell(address_of_cell);
+              var desired_cell = sheet[cell_ref];
+              var desired_value = (desired_cell ? desired_cell.v : undefined);
+              var bi = 'MGEFI HTP - Saisir Facture ';
+              const regex = new RegExp(bi+'*');
+    
+              var address_of_cell1 = {c:6, r:ra};
+              var cell_ref1 = XLSX.utils.encode_cell(address_of_cell1);
+              var desired_cell1 = sheet[cell_ref1];
+              var desired_value1 = (desired_cell1 ? desired_cell1.v : undefined);
+    
+              var conv = date;
+              var j5 = conv - 5;
+              if(regex.test(desired_value) && desired_value1<=j5)
+              {
+                nbr=nbr + 1;  
+              }
+            };
+          }
+          if(table[nb]=='htpfacmgtnontj')
+          {
+            var nbr = 0;
+              for(var ra=2;ra<=range.e.r;ra++)
+            {
+            // console.log(ra);
+              var address_of_cell = {c:col, r:ra};
+              var cell_ref = XLSX.utils.encode_cell(address_of_cell);
+              var desired_cell = sheet[cell_ref];
+              var desired_value = (desired_cell ? desired_cell.v : undefined);
+              var bi = 'MGEFI HTP - Saisir Facture ';
+              const regex = new RegExp(bi+'*');
+    
+              var address_of_cell1 = {c:5, r:ra};
+              var cell_ref1 = XLSX.utils.encode_cell(address_of_cell1);
+              var desired_cell1 = sheet[cell_ref1];
+              var desired_value1 = (desired_cell1 ? desired_cell1.v : undefined);
+    
+              var conv = date;
+              var j = conv;
+              if(regex.test(desired_value) && desired_value1==j)
+              {
+                nbr=nbr + 1;  
+              }
+            };
+          }
+          if(table[nb]=='htpfacmgtnontj1')
+          {
+            var nbr = 0;
+            for(var ra=2;ra<=range.e.r;ra++)
+            {
+            // console.log(ra);
+            var address_of_cell = {c:col, r:ra};
+            var cell_ref = XLSX.utils.encode_cell(address_of_cell);
+            var desired_cell = sheet[cell_ref];
+            var desired_value = (desired_cell ? desired_cell.v : undefined);
+            var bi = 'MGEFI HTP - Saisir Facture ';
+            const regex = new RegExp(bi+'*');
+  
+            var address_of_cell1 = {c:5, r:ra};
+            var cell_ref1 = XLSX.utils.encode_cell(address_of_cell1);
+            var desired_cell1 = sheet[cell_ref1];
+            var desired_value1 = (desired_cell1 ? desired_cell1.v : undefined);
+  
+            var conv = date;
+            var j1 = conv - 1;
+            if(regex.test(desired_value) && desired_value1==j1)
+            {
+              nbr=nbr + 1;  
+            }
+          };
+            
+        }
+            if(table[nb]=='htpdevitnontj')
+            {
+              var nbr = 0;
+                for(var ra=2;ra<=range.e.r;ra++)
+              {
+              // console.log(ra);
+                var address_of_cell = {c:col, r:ra};
                 var cell_ref = XLSX.utils.encode_cell(address_of_cell);
                 var desired_cell = sheet[cell_ref];
-                var desired_value1 = (desired_cell ? desired_cell.v : undefined);
-                if(desired_value1!=undefined)
+                var desired_value = (desired_cell ? desired_cell.v : undefined);
+                var bi = 'MGEFI HTP - Saisir Devis ';
+                const regex = new RegExp(bi+'*');
+      
+                var address_of_cell1 = {c:5, r:ra};
+                var cell_ref1 = XLSX.utils.encode_cell(address_of_cell1);
+                var desired_cell1 = sheet[cell_ref1];
+                var desired_value1 = (desired_cell1 ? desired_cell1.v : undefined);
+      
+                var conv = date;
+                var j = conv;
+                if(regex.test(desired_value) && desired_value1==j)
                 {
-                  nbr=nbr + 1;
+                  nbr=nbr + 1;  
                 }
               };
+            }
+            if(table[nb]=='htpdevitnontj1')
+            {
+              var nbr = 0;
+              for(var ra=2;ra<=range.e.r;ra++)
+              {
+              // console.log(ra);
+              var address_of_cell = {c:col, r:ra};
+              var cell_ref = XLSX.utils.encode_cell(address_of_cell);
+              var desired_cell = sheet[cell_ref];
+              var desired_value = (desired_cell ? desired_cell.v : undefined);
+              var bi = 'MGEFI HTP - Saisir Devis ';
+              const regex = new RegExp(bi+'*');
+    
+              var address_of_cell1 = {c:5, r:ra};
+              var cell_ref1 = XLSX.utils.encode_cell(address_of_cell1);
+              var desired_cell1 = sheet[cell_ref1];
+              var desired_value1 = (desired_cell1 ? desired_cell1.v : undefined);
+    
+              var conv = date;
+              var j1 = conv - 1;
+              if(regex.test(desired_value) && desired_value1==j1)
+              {
+                nbr=nbr + 1;  
+              }
+            };
+              
           }
+         
+
 
           else
           {
             console.log('Nom du table non trouvé');
           }
           var tab = [nbr];
-              console.log("nombreeeeebr__tri__"+ nbr);
+              console.log("valeur_obtenue_ "+ nbr);
               return tab; 
     
           
@@ -8227,7 +8452,7 @@ importengagementhtpfacture : function (trameflux,feuil,cellule,table,cellule2,nb
 
 /****************************************************************************************/
 //IMPORT DES DONNES EXCELS VERS LA BASE DE DONNEE FACTURE
-importengagementhtpligne : function (trameflux,feuil,cellule,table,cellule2,nb,numligne,dernierl,callback) {
+importengagementhtpligne : function (trameflux,feuil,cellule,table,cellule2,nb,numligne,dernierl,date,callback) {
   console.log('****************');
   console.log(nb);
   console.log(trameflux[nb]);
@@ -8251,7 +8476,7 @@ importengagementhtpligne : function (trameflux,feuil,cellule,table,cellule2,nb,n
   else{
 
     var tab = [];
-    tab = Engagementhtp.lectureEtInsertionengagementhtpligne( trameflux,feuil,cellule,table,cellule2,nb,numligne,dernierl,callback);
+    tab = Engagementhtp.lectureEtInsertionengagementhtpligne( trameflux,feuil,cellule,table,cellule2,nb,numligne,dernierl,date,callback);
     var nbe= parseInt(nb);
     console.log(tab);
     var sql = "insert into "+table[nbe]+" (nb) values ('"+tab[0]+"') ";
@@ -8272,7 +8497,7 @@ importengagementhtpligne : function (trameflux,feuil,cellule,table,cellule2,nb,n
 },
  /****************************************************************************/
   //LECTURE DU CHEMIN ET INSERTION DANS LA BASE
-  lectureEtInsertionengagementhtpligne:function(trameflux,feuil,cellule,table,cellule2,nb,numligne,dernierl,callback){
+  lectureEtInsertionengagementhtpligne:function(trameflux,feuil,cellule,table,cellule2,nb,numligne,dernierl,date,callback){
     XLSX = require('xlsx');
     
         var workbook = XLSX.readFile(trameflux[nb]);
@@ -8285,7 +8510,8 @@ importengagementhtpligne : function (trameflux,feuil,cellule,table,cellule2,nb,n
           var range = XLSX.utils.decode_range(sheet['!ref']);
           var col=0;
           var nbe = parseInt(nb);
-          if(col!=undefined)
+          // if(col!=undefined)
+          if(table[nb]=='htpflux16' || table[nb]=='htpfluxfin' || table[nb]=='htprejet16' || table[nb]=='htpcotlamie16' || table[nb]=='htpcotlamiefin' || table[nb]=='htprejetfin' || table[nb]=='htpcotite16' || table[nb]=='htpcotitefin')
           {
             var debutligne = numeroligne + 1;
             for(var a=debutligne;a<=range.e.r;a++)
@@ -8300,6 +8526,44 @@ importengagementhtpligne : function (trameflux,feuil,cellule,table,cellule2,nb,n
                 }
               }; 
           }
+          if(table[nb]=='htpcotlamiej2' || table[nb]=='htpcotlamiej5')
+          {
+            var nbr = 0;
+            var debutligne = numeroligne + 1;
+            for(var a=debutligne;a<=range.e.r;a++)
+              {
+               
+                var address_of_cell1 = {c:2, r:a};
+                var cell_ref1 = XLSX.utils.encode_cell(address_of_cell1);
+                var desired_cell1 = sheet[cell_ref1];
+                var desired_value1 = (desired_cell1 ? desired_cell1.v : undefined);
+          
+                var test = Engagementhtp.convertionexceldate(desired_value1);
+                var y = test.getFullYear();
+                var m = test.getMonth()+1;
+                var d = test.getDate();
+
+                if (d < 10) {
+                  d = '0' + d;
+                }
+                if (m < 10) {
+                  m = '0' + m;
+                }
+
+                var datetime = y+''+m+''+d;
+                // console.log(datetime);
+
+                var conv = parseInt(date);
+                var j2 = conv - 2;
+                
+                  if(datetime<=j2)
+                 {
+                    nbr=nbr + 1;  
+                 }
+              }; 
+          }
+
+
           else
           {
             console.log('Colonne non trouvé');
