@@ -67,6 +67,10 @@ module.exports = {
       return res.view('Inovcom/exportErica', {date : dateexport , html : html});
     },
     rechercheColonne1: function (req, res) {
+      const fs = require('fs');
+      try {
+        await fs.promises.open('/dev/prod/00-TOUS/TestReporting/REPORTING INOVCOM Type.xlsx', 'r+');
+     
       var sql4= "select existe as ok from testinovcom ";
                      console.log(sql4);
                       Reportinghtp.getDatastore().sendNativeQuery(sql4 ,function(err, nc) {
@@ -228,6 +232,16 @@ module.exports = {
                               });
                               }
                               });
+                            } catch (error) {
+                              if (error.code === 'EBUSY'){
+                                console.log('file is busy');
+                                return res.view('Inovcom/fichieroccuper');
+                              } 
+                              else 
+                              {
+                                throw error;
+                              }
+                            }
       
     },
     /******************************************************************************/
