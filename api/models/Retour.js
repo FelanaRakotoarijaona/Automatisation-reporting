@@ -242,6 +242,13 @@
   },
  
  ecritureOkKo : async function (nombre_ok_ko, table,date_export,mois1,callback) {
+  if(nombre_ok_ko.ok==null && nombre_ok_ko.ko==null || nombre_ok_ko.ok==null && nombre_ok_ko.ko==undefined)
+  {
+   console.log('ok' + nombre_ok_ko.ok);
+   console.log('ko' + nombre_ok_ko.ko);
+   return callback(null, "KO");
+  }
+  else{
     const Excel = require('exceljs');
     const cmd=require('node-cmd');
     const newWorkbook = new Excel.Workbook();
@@ -309,9 +316,20 @@
       console.log("Une erreur s'est produite");
       Reportinghtp.deleteToutHtp(table,3,callback);
     }
+  }
+
+
+
     },
     /****************************************************************/
     ecritureOkKo2 : async function (nombre_ok_ko, table,date_export,mois1,callback) {
+      if(nombre_ok_ko.ok==null && nombre_ok_ko.ko==null || nombre_ok_ko.ok==null && nombre_ok_ko.ko==undefined)
+      {
+       console.log('ok' + nombre_ok_ko.ok);
+       console.log('ko' + nombre_ok_ko.ko);
+       return callback(null, "KO");
+      }
+      else{
       const Excel = require('exceljs');
       const cmd=require('node-cmd');
       const newWorkbook = new Excel.Workbook();
@@ -376,9 +394,20 @@
         console.log("Une erreur s'est produite");
         Reportinghtp.deleteToutHtp(table,3,callback);
       }
+    }
+
+
+
       },
     /***************************************************************/
    ecritureOkKo3 : async function (nombre_ok_ko, table,date_export,mois1,callback) {
+    if(nombre_ok_ko.ok==null && nombre_ok_ko.ko==null || nombre_ok_ko.ok==null && nombre_ok_ko.ko==undefined)
+    {
+     console.log('ok' + nombre_ok_ko.ok);
+     console.log('ko' + nombre_ok_ko.ko);
+     return callback(null, "KO");
+    }
+    else{
       const Excel = require('exceljs');
       const cmd=require('node-cmd');
       const newWorkbook = new Excel.Workbook();
@@ -442,9 +471,19 @@
         console.log("Une erreur s'est produite");
         Reportinghtp.deleteToutHtp(table,3,callback);
       }
+    }
+
+
       },
     /***************************************************************/
     ecritureOkKo4 : async function (nombre_ok_ko, table,date_export,mois1,callback) {
+      if(nombre_ok_ko.ok==null && nombre_ok_ko.ko==null || nombre_ok_ko.ok==null && nombre_ok_ko.ko==undefined)
+      {
+       console.log('ok' + nombre_ok_ko.ok);
+       console.log('ko' + nombre_ok_ko.ko);
+       return callback(null, "KO");
+      }
+      else{
       const Excel = require('exceljs');
       const cmd=require('node-cmd');
       const newWorkbook = new Excel.Workbook();
@@ -508,9 +547,19 @@
         console.log("Une erreur s'est produite");
         Reportinghtp.deleteToutHtp(table,3,callback);
       }
+    }
+
+
       },
     /***************************************************************/
     ecritureOkKo5 : async function (nombre_ok_ko, table,date_export,mois1,callback) {
+      if(nombre_ok_ko.ok==null && nombre_ok_ko.ko==null || nombre_ok_ko.ok==null && nombre_ok_ko.ko==undefined)
+      {
+       console.log('ok' + nombre_ok_ko.ok);
+       console.log('ko' + nombre_ok_ko.ko);
+       return callback(null, "KO");
+      }
+      else{
       const Excel = require('exceljs');
       const cmd=require('node-cmd');
       const newWorkbook = new Excel.Workbook();
@@ -575,9 +624,20 @@
         console.log("Une erreur s'est produite");
         Reportinghtp.deleteToutHtp(table,3,callback);
       }
+    }
+
+
+
       },
     /***************************************************************/
     ecritureOkKo6 : async function (nombre_ok_ko, table,date_export,mois1,callback) {
+      if(nombre_ok_ko.ok==null && nombre_ok_ko.ko==null || nombre_ok_ko.ok==null && nombre_ok_ko.ko==undefined)
+      {
+       console.log('ok' + nombre_ok_ko.ok);
+       console.log('ko' + nombre_ok_ko.ko);
+       return callback(null, "KO");
+      }
+      else{
       const Excel = require('exceljs');
       const cmd=require('node-cmd');
       const newWorkbook = new Excel.Workbook();
@@ -641,9 +701,20 @@
         console.log("Une erreur s'est produite");
         Reportinghtp.deleteToutHtp(table,3,callback);
       }
+    }
+
+
+
       },
     /***************************************************************/
    ecritureOkKo7 : async function (nombre_ok_ko, table,date_export,mois1,callback) {
+    if(nombre_ok_ko.ok==null && nombre_ok_ko.ko==null || nombre_ok_ko.ok==null && nombre_ok_ko.ko==undefined)
+    {
+     console.log('ok' + nombre_ok_ko.ok);
+     console.log('ko' + nombre_ok_ko.ko);
+     return callback(null, "KO");
+    }
+    else{
       const Excel = require('exceljs');
       const cmd=require('node-cmd');
       const newWorkbook = new Excel.Workbook();
@@ -707,9 +778,20 @@
         console.log("Une erreur s'est produite");
         Reportinghtp.deleteToutHtp(table,3,callback);
       }
+
+    }
+
+
       },
     /***************************************************************/
     ecritureOkKo8 : async function (nombre_ok_ko, table,date_export,mois1,callback) {
+      if(nombre_ok_ko.ok==null && nombre_ok_ko.ko==null || nombre_ok_ko.ok==null && nombre_ok_ko.ko==undefined)
+      {
+       console.log('ok' + nombre_ok_ko.ok);
+       console.log('ko' + nombre_ok_ko.ko);
+       return callback(null, "KO");
+      }
+      else{
       const Excel = require('exceljs');
       const cmd=require('node-cmd');
       const newWorkbook = new Excel.Workbook();
@@ -775,9 +857,20 @@
         console.log("Une erreur s'est produite");
         Reportinghtp.deleteToutHtp(table,3,callback);
       }
+
+    }
+
+
       },
      /***************************************************************/
      ecritureOkKotest : async function (nombre_ok_ko, table,date_export,mois1,callback) {
+      if(nombre_ok_ko.ok==null && nombre_ok_ko.ko==null || nombre_ok_ko.ok==null && nombre_ok_ko.ko==undefined)
+      {
+       console.log('ok' + nombre_ok_ko.ok);
+       console.log('ko' + nombre_ok_ko.ko);
+       return callback(null, "KO");
+      }
+      else{
       const Excel = require('exceljs');
       const cmd=require('node-cmd');
       const newWorkbook = new Excel.Workbook();
@@ -842,6 +935,10 @@
         console.log("Une erreur s'est produite");
         Reportinghtp.deleteToutHtp(table,3,callback);
       }
+
+    }
+
+
       },
       /****************************************************************/
    getConfigIni : function() {
