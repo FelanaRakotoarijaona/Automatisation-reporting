@@ -46,7 +46,7 @@ module.exports = {
     return res.view('reporting/exportErica', { html : html});
     //res.view('reporting/exportErica')
   },
-  rechercheColonne : function (req, res) {
+  rechercheColonne : async function (req, res) {
     const fs = require('fs');
       try {
         await fs.promises.open('/dev/prod/00-TOUS/TestReporting/REPORTING HTP  Type.xlsx', 'r+');
