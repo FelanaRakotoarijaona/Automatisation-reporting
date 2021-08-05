@@ -152,12 +152,6 @@ module.exports = {
                                   var date_export = jour + '/' + mois + '/' +annee;
                                   console.log("RECHERCHE COLONNE");
                                   async.series([
-                                    // function (callback) {
-                                    //   ReportingInovcomExport.countOkKo("extractionrcforce",callback);
-                                    // },
-                                    // function (callback) {
-                                    //   ReportingInovcomExport.countOkKo("favmgefi",callback);
-                                    // },
                                     function (callback) {
                                       ReportingInovcomExport.countOkKo("retourconventionsaisiedesconventions",callback);
                                     },
@@ -209,13 +203,26 @@ module.exports = {
                                           console.log("true zn");
                                           res.view('Inovcom/erera');
                                         }
-                                        if(resultExcel[0]=='OK')
+                                        if(resultExcel[0]=='OK' || resultExcel[1]=='OK' || resultExcel[2]=='OK'|| resultExcel[3]=='OK' || resultExcel[4]=='OK')
                                         {
-                                          // res.redirect('/exportInovcom/'+date_export+'/x')
-                                          res.view('Contentieux/succes');
+                                          async.series([
+                                            function(cb){
+                                              ReportingInovcom.update0('nomtable',cb);
+                                            },
+                                          ],
+                                          function(err)
+                                          {
+                                            if (err){
+                                              return res.view('Contentieux/erreur');
+                                            }
+                                            else
+                                            {
+                                              res.view('Contentieux/succes');
+                                            }
+                                          });
                                         }
-                                    })
-                                  })
+                                  });
+                                });
                                         
                                 };
                               });
