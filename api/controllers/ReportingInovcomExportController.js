@@ -95,7 +95,10 @@ module.exports = {
                                 else
                                 {
                                
-                                 
+                                  var datetest = req.param("date",0);
+                                  var annee = datetest.substr(0, 4);
+                                  var mois = datetest.substr(5, 2);
+                                  var jour = datetest.substr(8, 2);
                                   var mois1 = 'Janvier' ;
                                   if(mois==01)
                                   {
