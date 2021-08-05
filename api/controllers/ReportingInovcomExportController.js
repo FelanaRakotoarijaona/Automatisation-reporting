@@ -66,7 +66,7 @@ module.exports = {
       var dateexport = jour + '/' + mois + '/' +annee;
       return res.view('Inovcom/exportErica', {date : dateexport , html : html});
     },
-    rechercheColonne1: function (req, res) {
+    rechercheColonne1 : async function (req, res) {
       const fs = require('fs');
       try {
         await fs.promises.open('/dev/prod/00-TOUS/TestReporting/REPORTING INOVCOM Type.xlsx', 'r+');
