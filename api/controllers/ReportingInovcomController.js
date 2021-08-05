@@ -11,23 +11,20 @@ module.exports = {
     accueil1 : async function(req,res)
     {
       const fs = require('fs');
-      /*fs.open('D:/Reporting/Reporting/REPORTING INDU Type.xlsx','r+', function(err,data) {
-        if (err.code === 'EBUSY'){
-          console.log('file is busy');
-        } else {
-          console.log('fichier fermé');
-        }
-      });*/
-     /* try {
+      try {
         await fs.promises.open('D:/Reporting/Reporting/REPORTING INDU Type.xlsx', 'r+');
-      } catch (error) {
+        return res.view('Inovcom/accueil1');
+       } catch (error) {
         if (error.code === 'EBUSY'){
           console.log('file is busy');
-        } else {
-          return res.view('Inovcom/accueil1');
+          return res.view('Contentieux/erreur');
+        } 
+        else 
+        {
+          throw error;
         }
-      }*/
-      try {
+      }
+      /*try {
         const fileHandle = await fs.promises.open('D:/Reporting/Reporting/REPORTING INDU Type.xlsx', fs.constants.O_RDONLY | 0x10000000);
      
        fileHandle.close();
@@ -37,7 +34,7 @@ module.exports = {
        } else {
         return res.view('Inovcom/accueil1');
        }
-     }
+     }*/
       //return res.view('Inovcom/accueil1');
     },
     //CIBLAGE DU FICHIER EXCEL DANS LE SERVEUR
