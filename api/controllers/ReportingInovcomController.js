@@ -10,7 +10,61 @@ const ReportingInovcom = require('../models/ReportingInovcom');
 module.exports = {
     accueil1 : async function(req,res)
     {
-      const fs = require('fs');
+     /* var sql4= "select existe as ok from testinovcom ";
+                     console.log(sql4);
+                      Reportinghtp.getDatastore().sendNativeQuery(sql4 ,function(err, nc) {
+                         nc = nc.rows;
+                         console.log('nc'+nc[0].ok);
+                         var f = parseInt(nc[0].ok);
+                            if (err){
+                              return res.view('Inovcom/erreur');
+                            }
+                            else if(f==1)
+                            {
+                              return res.view('Inovcom/erreur');
+                            }
+                            else
+                            {
+                              async.series([
+                                function(cb){
+                                  ReportingInovcom.update('nomtable',cb);
+                                },
+                              ],
+                              function(err)
+                              {
+                                if (err){
+                                  return res.view('Contentieux/erreur');
+                                }
+                                else
+                                {
+                               
+                                  return res.view('Inovcom/accueil', {date : datetest});
+                                        
+                                };
+                              });
+                              }
+                              });
+          
+                            
+                         
+                           
+                      
+      /*const Excel = require('exceljs');
+      const workbook = new Excel.Workbook();
+      try{
+        await workbook.xlsx.readFile('D:/Reporting/Reporting/REPORTING INDU Type.xlsx');
+        workbook.array.forEach(element => {
+          
+        });(function(worksheet, SheetNames) {
+          console.log('shet' + SheetNames);
+        
+        });
+      }
+      catch
+      {
+        console.log('une erreur');
+      }
+      /*const fs = require('fs');
       try {
         await fs.promises.open('D:/Reporting/Reporting/REPORTING INDU Type.xlsx', 'r+');
         return res.view('Inovcom/accueil1');
@@ -35,7 +89,7 @@ module.exports = {
         return res.view('Inovcom/accueil1');
        }
      }*/
-      //return res.view('Inovcom/accueil1');
+      return res.view('Inovcom/accueil1');
     },
     //CIBLAGE DU FICHIER EXCEL DANS LE SERVEUR
     Essaii : function(req,res)

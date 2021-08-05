@@ -326,13 +326,6 @@ module.exports = {
               }
             });
             console.log(a+ 'val');
-            /*var b;
-            row.eachCell(function(cell, colNumber) {
-              if(cell.text==cellule2[nb])
-              {
-                b = parseInt(colNumber);
-              }
-            });*/
             var tab = 0;
             if(a!=undefined)
             {
