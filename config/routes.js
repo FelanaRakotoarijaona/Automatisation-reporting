@@ -455,15 +455,15 @@ module.exports.routes = {
    '/insertengagementhtp_1' : 'EngagementhtpController.insertcheminengagementhtp_1',
    '/insertcheminengagementhtp_2' : 'EngagementhtpController.insertcheminengagementhtpsuivant_2',
    '/insertcheminengagementhtp_3' : 'EngagementhtpController.insertcheminengagementhtpsuivant_3',
-   '/insertcheminengagementhtpsuivant11' : 'EngagementhtpController.insertcheminengagementhtpsuivant11',
+   '/insertcheminengagementhtp_4' : 'EngagementhtpController.insertcheminengagementhtpsuivant_4',
 
 
 
 //ROUTES IMPORTS DES DONNEES REPORTING ENGAGEMENT HTP
    '/reportingengagementhtp_1' : 'EngagementhtpController.importengagementhtp_1',
-   '/reportingengagementhtpsuivant3' : 'EngagementhtpController.importengagementhtpsuivantligne',
-   '/reportingengagementhtpsuivant10' : 'EngagementhtpController.importengagementhtpsuivantsales',
-   '/reportingengagementhtpsuivant11' : 'EngagementhtpController.importengagementhtpsuivantsalesstock',
+   '/reportingengagementhtp_2' : 'EngagementhtpController.importengagementhtpsuivantligne',
+   '/reportingengagementhtp_3' : 'EngagementhtpController.importengagementhtpsuivantsales',
+   '/reportingengagementhtp_4' : 'EngagementhtpController.importengagementhtpsuivantsalesstock',
 
 
 
