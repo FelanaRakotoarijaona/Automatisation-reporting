@@ -1,6 +1,3 @@
-const ReportingInovcom = require('../models/ReportingInovcom');
-
-
 /**
  * ReportingInovcomController
  *
