@@ -446,58 +446,24 @@ module.exports.routes = {
    //ROUTES EXPORT DES DONNEES REPORTING ENGAGEMENT GARANTIE
   '/exportExcelGarantie' : 'GarantieController.exportgarantiefinprod',
 
-   //ROUTES HTP REPORTING ENGAGEMENT HTP
+  /*****************************************************************************************/
+
+//ROUTES HTP REPORTING ENGAGEMENT HTP
    '/accueilengagementhtp' : 'EngagementhtpController.accueilengagementhtp',
 
-   //ROUTES INSERTION CHEMIN REPORTING ENGAGEMENT HTP
-   '/insertengagementhtp' : 'EngagementhtpController.insertcheminengagementhtp',
-   '/insertcheminengagementhtpsuivant1' : 'EngagementhtpController.insertcheminengagementhtpsuivant1',
-   '/insertcheminengagementhtpsuivant2' : 'EngagementhtpController.insertcheminengagementhtpsuivant2',
-   '/insertcheminengagementhtpsuivant3' : 'EngagementhtpController.insertcheminengagementhtpsuivant3',
-   '/insertcheminengagementhtpsuivant4' : 'EngagementhtpController.insertcheminengagementhtpsuivant4',
-   '/insertcheminengagementhtpsuivant5' : 'EngagementhtpController.insertcheminengagementhtpsuivant5',
-   '/insertcheminengagementhtpsuivant6' : 'EngagementhtpController.insertcheminengagementhtpsuivant6',
-   '/insertcheminengagementhtpsuivant7' : 'EngagementhtpController.insertcheminengagementhtpsuivant7',
-   '/insertcheminengagementhtpsuivant8' : 'EngagementhtpController.insertcheminengagementhtpsuivant8',
-   '/insertcheminengagementhtpsuivant9' : 'EngagementhtpController.insertcheminengagementhtpsuivant9',
-   '/insertcheminengagementhtpsuivant10' : 'EngagementhtpController.insertcheminengagementhtpsuivant10',
+//ROUTES INSERTION CHEMIN REPORTING ENGAGEMENT HTP
+   '/insertengagementhtp_1' : 'EngagementhtpController.insertcheminengagementhtp_1',
+   '/insertcheminengagementhtp_2' : 'EngagementhtpController.insertcheminengagementhtpsuivant_2',
+   '/insertcheminengagementhtp_3' : 'EngagementhtpController.insertcheminengagementhtpsuivant_3',
    '/insertcheminengagementhtpsuivant11' : 'EngagementhtpController.insertcheminengagementhtpsuivant11',
-   '/insertcheminengagementhtpsuivant12' : 'EngagementhtpController.insertcheminengagementhtpsuivant12',
-   '/insertcheminengagementhtpsuivant13' : 'EngagementhtpController.insertcheminengagementhtpsuivant13',
-   '/insertcheminengagementhtpsuivant14' : 'EngagementhtpController.insertcheminengagementhtpsuivant14',
-   '/insertcheminengagementhtpsuivant15' : 'EngagementhtpController.insertcheminengagementhtpsuivant15',
-   '/insertcheminengagementhtpsuivant16' : 'EngagementhtpController.insertcheminengagementhtpsuivant16',
-   '/insertcheminengagementhtpsuivant17' : 'EngagementhtpController.insertcheminengagementhtpsuivant17',
-   '/insertcheminengagementhtpsuivant18' : 'EngagementhtpController.insertcheminengagementhtpsuivant18',
-   '/insertcheminengagementhtpsuivant19' : 'EngagementhtpController.insertcheminengagementhtpsuivant19',
-   '/insertcheminengagementhtpsuivant20' : 'EngagementhtpController.insertcheminengagementhtpsuivant20',
-   '/insertcheminengagementhtpsuivant21' : 'EngagementhtpController.insertcheminengagementhtpsuivant21',
 
 
 
 //ROUTES IMPORTS DES DONNEES REPORTING ENGAGEMENT HTP
-   '/reportingengagementhtp' : 'EngagementhtpController.importengagementhtp',
-   '/reportingengagementhtpsuivant1' : 'EngagementhtpController.importengagementhtpsuivantfacture',
-   '/reportingengagementhtpsuivant2' : 'EngagementhtpController.importengagementhtpsuivantdevis',
+   '/reportingengagementhtp_1' : 'EngagementhtpController.importengagementhtp_1',
    '/reportingengagementhtpsuivant3' : 'EngagementhtpController.importengagementhtpsuivantligne',
-   '/reportingengagementhtpsuivant4' : 'EngagementhtpController.importengagementhtpsuivantdevisj2',
-   '/reportingengagementhtpsuivant5' : 'EngagementhtpController.importengagementhtpsuivantdevisj5',
-   '/reportingengagementhtpsuivant6' : 'EngagementhtpController.importengagementhtpsuivantfacmgj2',
-   '/reportingengagementhtpsuivant7' : 'EngagementhtpController.importengagementhtpsuivantfacmgj5',
-   '/reportingengagementhtpsuivant8' : 'EngagementhtpController.importengagementhtpsuivantcotlamiej2',
-   '/reportingengagementhtpsuivant9' : 'EngagementhtpController.importengagementhtpsuivantcotlamiej5',
    '/reportingengagementhtpsuivant10' : 'EngagementhtpController.importengagementhtpsuivantsales',
    '/reportingengagementhtpsuivant11' : 'EngagementhtpController.importengagementhtpsuivantsalesstock',
-   '/reportingengagementhtpsuivant12' : 'EngagementhtpController.importengagementhtpsuivantfacmgstock',
-   '/reportingengagementhtpsuivant13' : 'EngagementhtpController.importengagementhtpsuivantdevistock',
-   '/reportingengagementhtpsuivant14' : 'EngagementhtpController.importengagementhtpsuivantfacmgtnontj',
-   '/reportingengagementhtpsuivant15' : 'EngagementhtpController.importengagementhtpsuivantfacmgtnontj1',
-   '/reportingengagementhtpsuivant16' : 'EngagementhtpController.importengagementhtpsuivantfacmgtnontj2',
-   '/reportingengagementhtpsuivant17' : 'EngagementhtpController.importengagementhtpsuivantfacmgtnontj5',
-   '/reportingengagementhtpsuivant18' : 'EngagementhtpController.importengagementhtpsuivantdevitnontj',
-   '/reportingengagementhtpsuivant19' : 'EngagementhtpController.importengagementhtpsuivantdevitnontj1',
-   '/reportingengagementhtpsuivant20' : 'EngagementhtpController.importengagementhtpsuivantdevitnontj2',
-   '/reportingengagementhtpsuivant21' : 'EngagementhtpController.importengagementhtpsuivantdevitnontj5',
 
 
 

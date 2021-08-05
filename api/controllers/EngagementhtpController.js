@@ -58,12 +58,11 @@ module.exports = {
   },
   /***********************************************************************************/
   //FONCTION POUR L'IMPORT DU CHEMIN UTILISER (22-07-2021)
-insertcheminengagementhtp : function(req,res)
+insertcheminengagementhtp_1 : function(req,res)
 {
   var Excel = require('exceljs');
   var workbook = new Excel.Workbook();
   var table = ['\\\\10.128.1.2\\bpo_almerys\\00-TOUS\\06-DOSSIER POLE\\01-HTP\\05- REPORTING\\03-HTP\\DOC_HTP\\'];
-  var outable = ['\\\\10.128.1.2\\almerys-out\\Retour_Easytech_'];//TETO ZA NY FARANY OMALY
   // var table = ['/dev/prod/00-TOUS/06-DOSSIER POLE/01-HTP/05- REPORTING/03-HTP/DOC_HTP/'];
   var datetest = req.param("date",0);
   var annee = datetest.substr(0, 4);
@@ -84,7 +83,7 @@ insertcheminengagementhtp : function(req,res)
   var MotCle= [];
   var Sup= [];
   var nomBase = "cheminengagementhtp";
-  var r = [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17];
+  var r = [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19];
   workbook.xlsx.readFile('engagementhtp.xlsx')
       .then(function() {
         var newworksheet = workbook.getWorksheet('Feuil1');
@@ -148,7 +147,7 @@ insertcheminengagementhtp : function(req,res)
                     Engagementhtp.delete(nomtable,lot,cb);
                   },
                   function(cb){
-                    Engagementhtp.importcheminhtp(table,cheminp,date,MotCle,lot,nomtable,numligne,numfeuille,nomcolonne,nomcolonne2,nomcolonne3,nomBase,outable,cb);
+                    Engagementhtp.importcheminhtp(table,cheminp,date,MotCle,lot,nomtable,numligne,numfeuille,nomcolonne,nomcolonne2,nomcolonne3,nomBase,cb);
                   },
                   // function(cb){
                   //   Engagementhtp.importcheminhtp(table,cheminp,date,MotCle,1,nomtable[1],numligne[1],numfeuille[1],nomcolonne[1],nomcolonne2[1],nomcolonne3[1],nomBase,cb);
@@ -183,7 +182,8 @@ insertcheminengagementhtp : function(req,res)
                       else
                       {
                         // return res.view('HTPengagement/accueilreportingengagementhtpsuivant', {date : datetest});
-                        return res.view('HTPengagement/importHTPengagement', {date : datetest});
+                        // return res.view('HTPengagement/importHTPengagement_1', {date : datetest});
+                        return res.view('HTPengagement/accueilreportingengagementhtpsuivant2', {date : datetest});
                       };
                   });
                 }
@@ -195,7 +195,291 @@ insertcheminengagementhtp : function(req,res)
       });
 },
 
-  /***********************************************************************************/
+  /********************************************************************************/
+  insertcheminengagementhtpsuivant_2 : function(req,res)
+  {
+    var Excel = require('exceljs');
+    var workbook = new Excel.Workbook();
+    var table = ['\\\\10.128.1.2\\almerys-out\\Retour_Easytech_'];
+    // var table = ['/dev/pro/Retour_Easytech_'];
+    var datetest = req.param("date",0);
+    var annee = datetest.substr(0, 4);
+    var mois = datetest.substr(5, 2);
+    var jour = datetest.substr(8, 2);
+    var date = annee+mois+jour;
+    var date_indus = jour+'.'+mois+'.'+annee;
+    var datej_1 = annee+mois+jour -1;
+    console.log(datej_1);
+    var nomtable = [];
+    var numligne = [];
+    var numfeuille = [];
+    var nomcolonne = [];
+    var nomcolonne2 = [];
+    var nomcolonne3 = [];
+    console.log(date);
+    var cheminp = [];
+    var MotCle= [];
+    var Sup= [];
+    var nomBase = "cheminengagementhtpligne";
+    var r = [0,1,2,3,4,5,6,7,8,9,10,11,12,13];
+    workbook.xlsx.readFile('engagementhtp.xlsx')
+        .then(function() {
+          var newworksheet = workbook.getWorksheet('Feuil2');
+          var nomColonne3 = newworksheet.getColumn(3);
+          var numFeuille = newworksheet.getColumn(4);
+          var nomColonne = newworksheet.getColumn(5);
+          var nomTable = newworksheet.getColumn(6);
+          var nomColonne2 = newworksheet.getColumn(7);
+          var numLigne = newworksheet.getColumn(8);
+          var cheminparticulier = newworksheet.getColumn(9);
+          var motcle = newworksheet.getColumn(10);
+          var suppleant = newworksheet.getColumn(11);
+  
+        numFeuille.eachCell(function(cell, rowNumber) {
+          numfeuille.push(cell.value);
+        });
+        nomColonne.eachCell(function(cell, rowNumber) {
+          nomcolonne.push(cell.value);
+        });
+        nomColonne2.eachCell(function(cell, rowNumber) {
+          nomcolonne2.push(cell.value);
+        });
+        nomColonne3.eachCell(function(cell, rowNumber) {
+          nomcolonne3.push(cell.value);
+        });
+        nomTable.eachCell(function(cell, rowNumber) {
+          nomtable.push(cell.value);
+        });
+        numLigne.eachCell(function(cell, rowNumber) {
+          numligne.push(cell.value);
+        });
+          cheminparticulier.eachCell(function(cell, rowNumber) {
+            cheminp.push(cell.value);
+        });
+          motcle.eachCell(function(cell, rowNumber) {
+            MotCle.push(cell.value);
+        });
+        suppleant.eachCell(function(cell, rowNumber) {
+          Sup.push(cell.value);
+        });
+  
+          
+            console.log(cheminp[0]);
+            console.log(MotCle[0]);
+            console.log(nomtable[0]);
+            console.log(nomtable[1]);
+            async.series([  
+              function(cb){
+                    Engagementhtp.deleteFromChemin(nomBase,cb);
+                  },
+                                    
+            ],
+            function(err, resultat){
+              if(err){
+                return res.view('Inovcom/erreur');
+              }
+              else{
+                async.forEachSeries(r, function(lot, callback_reporting_suivant){
+                  async.series([
+                    function(cb){
+                      Engagementhtp.delete(nomtable,lot,cb);
+                    },
+                    function(cb){
+                      Engagementhtp.importcheminhtpligne(table,cheminp,date,MotCle,lot,nomtable,numligne,numfeuille,nomcolonne,nomcolonne2,nomcolonne3,nomBase,cb);
+                    },
+                    // function(cb){
+                    //   Engagementhtp.importcheminhtpdevis(table,cheminp,date,MotCle,1,nomtable[1],numligne[1],numfeuille[1],nomcolonne[1],nomcolonne2[1],nomcolonne3[1],nomBase,cb);
+                    // },
+                  ],
+                  function(erroned, lotValues){
+                    if(erroned) return res.badRequest(erroned);
+                    return callback_reporting_suivant();
+                    
+                  });
+                },
+                function(err)
+                {
+                  if (err){
+                    return res.view('Contentieux/erreur');
+                  }
+                  else
+                  {
+                  var sql4= "select count(chemin) as ok from "+nomBase+" ";
+                  console.log(sql4);
+                  Reportinghtp.getDatastore().sendNativeQuery(sql4 ,function(err, nc) {
+                     nc = nc.rows;
+                     console.log('nc'+nc[0].ok);
+                     var f = parseInt(nc[0].ok);
+                        if (err){
+                          return res.view('Inovcom/erreur');
+                        }
+                       if(f==0)
+                        {
+                          return res.view('Inovcom/erreur');
+                        }
+                        else
+                        {
+                          // return res.view('HTPengagement/importHTPengagement', {date : datetest});
+                          return res.view('HTPengagement/accueilreportingengagementhtpsuivant3', {date : datetest});
+                          // return res.view('HTPengagement/importHTPengagement_1', {date : datetest});
+                        };
+                    });
+                  }
+                });
+  
+              }
+             
+          });
+        });
+  },
+
+     /********************************************************************************/
+     insertcheminengagementhtpsuivant_3 : function(req,res)
+     {
+       var Excel = require('exceljs');
+       var workbook = new Excel.Workbook();
+       var table = ['\\\\10.128.1.2\\bpo_almerys\\00-TOUS\\06-DOSSIER POLE\\01-HTP\\05- REPORTING\\03-HTP\\DOC_HTP\\'];
+      //  var table = ['/dev/prod/00-TOUS/06-DOSSIER POLE/01-HTP/05- REPORTING/03-HTP/DOC_HTP/'];
+       var datetest = req.param("date",0);
+       var annee = datetest.substr(0, 4);
+       var mois = datetest.substr(5, 2);
+       var jour = datetest.substr(8, 2);
+       var date = annee+mois+jour;
+       var date_indus = jour+'.'+mois+'.'+annee;
+       var datej_1 = annee+mois+jour -1;
+       console.log(datej_1);
+       var nomtable = [];
+       var numligne = [];
+       var numfeuille = [];
+       var nomcolonne = [];
+       var nomcolonne2 = [];
+       var nomcolonne3 = [];
+       console.log(date);
+       var cheminp = [];
+       var MotCle= [];
+       var Sup= [];
+       var nomBase = "cheminengagementhtpsales";
+       var r = [0,1];
+       workbook.xlsx.readFile('engagementhtp.xlsx')
+           .then(function() {
+             var newworksheet = workbook.getWorksheet('Feuil11');
+             var nomColonne3 = newworksheet.getColumn(3);
+             var numFeuille = newworksheet.getColumn(4);
+             var nomColonne = newworksheet.getColumn(5);
+             var nomTable = newworksheet.getColumn(6);
+             var nomColonne2 = newworksheet.getColumn(7);
+             var numLigne = newworksheet.getColumn(8);
+             var cheminparticulier = newworksheet.getColumn(9);
+             var motcle = newworksheet.getColumn(10);
+             var suppleant = newworksheet.getColumn(11);
+     
+           numFeuille.eachCell(function(cell, rowNumber) {
+             numfeuille.push(cell.value);
+           });
+           nomColonne.eachCell(function(cell, rowNumber) {
+             nomcolonne.push(cell.value);
+           });
+           nomColonne2.eachCell(function(cell, rowNumber) {
+             nomcolonne2.push(cell.value);
+           });
+           nomColonne3.eachCell(function(cell, rowNumber) {
+             nomcolonne3.push(cell.value);
+           });
+           nomTable.eachCell(function(cell, rowNumber) {
+             nomtable.push(cell.value);
+           });
+           numLigne.eachCell(function(cell, rowNumber) {
+             numligne.push(cell.value);
+           });
+             cheminparticulier.eachCell(function(cell, rowNumber) {
+               cheminp.push(cell.value);
+           });
+             motcle.eachCell(function(cell, rowNumber) {
+               MotCle.push(cell.value);
+           });
+           suppleant.eachCell(function(cell, rowNumber) {
+             Sup.push(cell.value);
+           });
+     
+             
+               console.log(cheminp[0]);
+               console.log(MotCle[0]);
+               console.log(nomtable[0]);
+               console.log(nomtable[1]);
+               async.series([  
+                 function(cb){
+                       Engagementhtp.deleteFromChemin(nomBase,cb);
+                     },
+                                       
+               ],
+               function(err, resultat){
+                 if(err){
+                   return res.view('Inovcom/erreur');
+                 }
+                 else{
+                   async.forEachSeries(r, function(lot, callback_reporting_suivant){
+                     async.series([
+                       function(cb){
+                         Engagementhtp.delete(nomtable,lot,cb);
+                       },
+                       function(cb){
+                         Engagementhtp.importcheminhtpsales(table,cheminp,date,MotCle,lot,nomtable,numligne,numfeuille,nomcolonne,nomcolonne2,nomcolonne3,nomBase,cb);
+                       },
+                       // function(cb){
+                       //   Engagementhtp.importcheminhtpdevis(table,cheminp,date,MotCle,1,nomtable[1],numligne[1],numfeuille[1],nomcolonne[1],nomcolonne2[1],nomcolonne3[1],nomBase,cb);
+                       // },
+                     ],
+                     function(erroned, lotValues){
+                       if(erroned) return res.badRequest(erroned);
+                       return callback_reporting_suivant();
+                       
+                     });
+                   },
+                   function(err)
+                   {
+                     if (err){
+                       return res.view('Contentieux/erreur');
+                     }
+                     else
+                     {
+                     var sql4= "select count(chemin) as ok from "+nomBase+" ";
+                     console.log(sql4);
+                     Reportinghtp.getDatastore().sendNativeQuery(sql4 ,function(err, nc) {
+                        nc = nc.rows;
+                        console.log('nc'+nc[0].ok);
+                        var f = parseInt(nc[0].ok);
+                           if (err){
+                             return res.view('Inovcom/erreur');
+                           }
+                          if(f==0)
+                           {
+                             return res.view('Inovcom/erreur');
+                           }
+                           else
+                           {
+                            //  return res.view('HTPengagement/accueilreportingengagementhtpsuivant4', {date : datetest});
+                             // return res.view('HTPengagement/importHTPengagement', {date : datetest});
+                             return res.view('HTPengagement/importHTPengagement_1', {date : datetest});
+                           };
+                       });
+                     }
+                   });
+     
+                 }
+                
+             });
+           });
+     },
+
+ 
+/************************************************************************************/
+/*
+*
+*                 ANCIEN INSERTION CHEMIN
+*
+*
+*/
+/***********************************************************************************/
   //FONCTION POUR L'IMPORT DU CHEMIN UTILISER (TCD FACTURE MGEFI ET DEVIS MGEFI)
   insertcheminengagementhtpsuivant1 : function(req,res)
   {
@@ -469,142 +753,7 @@ insertcheminengagementhtp : function(req,res)
           });
         });
   },
-  /********************************************************************************/
-  insertcheminengagementhtpsuivant3 : function(req,res)
-  {
-    var Excel = require('exceljs');
-    var workbook = new Excel.Workbook();
-    // var table = ['\\\\10.128.1.2\\almerys-out\\Retour_Easytech_'];
-    var table = ['/dev/pro/Retour_Easytech_'];
-    var datetest = req.param("date",0);
-    var annee = datetest.substr(0, 4);
-    var mois = datetest.substr(5, 2);
-    var jour = datetest.substr(8, 2);
-    var date = annee+mois+jour;
-    var date_indus = jour+'.'+mois+'.'+annee;
-    var datej_1 = annee+mois+jour -1;
-    console.log(datej_1);
-    var nomtable = [];
-    var numligne = [];
-    var numfeuille = [];
-    var nomcolonne = [];
-    var nomcolonne2 = [];
-    var nomcolonne3 = [];
-    console.log(date);
-    var cheminp = [];
-    var MotCle= [];
-    var Sup= [];
-    var nomBase = "cheminengagementhtpligne";
-    var r = [0,1,2,3,4,5,6,7,8,9,10,11];
-    workbook.xlsx.readFile('engagementhtp.xlsx')
-        .then(function() {
-          var newworksheet = workbook.getWorksheet('Feuil4');
-          var nomColonne3 = newworksheet.getColumn(3);
-          var numFeuille = newworksheet.getColumn(4);
-          var nomColonne = newworksheet.getColumn(5);
-          var nomTable = newworksheet.getColumn(6);
-          var nomColonne2 = newworksheet.getColumn(7);
-          var numLigne = newworksheet.getColumn(8);
-          var cheminparticulier = newworksheet.getColumn(9);
-          var motcle = newworksheet.getColumn(10);
-          var suppleant = newworksheet.getColumn(11);
-  
-        numFeuille.eachCell(function(cell, rowNumber) {
-          numfeuille.push(cell.value);
-        });
-        nomColonne.eachCell(function(cell, rowNumber) {
-          nomcolonne.push(cell.value);
-        });
-        nomColonne2.eachCell(function(cell, rowNumber) {
-          nomcolonne2.push(cell.value);
-        });
-        nomColonne3.eachCell(function(cell, rowNumber) {
-          nomcolonne3.push(cell.value);
-        });
-        nomTable.eachCell(function(cell, rowNumber) {
-          nomtable.push(cell.value);
-        });
-        numLigne.eachCell(function(cell, rowNumber) {
-          numligne.push(cell.value);
-        });
-          cheminparticulier.eachCell(function(cell, rowNumber) {
-            cheminp.push(cell.value);
-        });
-          motcle.eachCell(function(cell, rowNumber) {
-            MotCle.push(cell.value);
-        });
-        suppleant.eachCell(function(cell, rowNumber) {
-          Sup.push(cell.value);
-        });
-  
-          
-            console.log(cheminp[0]);
-            console.log(MotCle[0]);
-            console.log(nomtable[0]);
-            console.log(nomtable[1]);
-            async.series([  
-              function(cb){
-                    Engagementhtp.deleteFromChemin(nomBase,cb);
-                  },
-                                    
-            ],
-            function(err, resultat){
-              if(err){
-                return res.view('Inovcom/erreur');
-              }
-              else{
-                async.forEachSeries(r, function(lot, callback_reporting_suivant){
-                  async.series([
-                    function(cb){
-                      Engagementhtp.delete(nomtable,lot,cb);
-                    },
-                    function(cb){
-                      Engagementhtp.importcheminhtpligne(table,cheminp,date,MotCle,lot,nomtable,numligne,numfeuille,nomcolonne,nomcolonne2,nomcolonne3,nomBase,cb);
-                    },
-                    // function(cb){
-                    //   Engagementhtp.importcheminhtpdevis(table,cheminp,date,MotCle,1,nomtable[1],numligne[1],numfeuille[1],nomcolonne[1],nomcolonne2[1],nomcolonne3[1],nomBase,cb);
-                    // },
-                  ],
-                  function(erroned, lotValues){
-                    if(erroned) return res.badRequest(erroned);
-                    return callback_reporting_suivant();
-                    
-                  });
-                },
-                function(err)
-                {
-                  if (err){
-                    return res.view('Contentieux/erreur');
-                  }
-                  else
-                  {
-                  var sql4= "select count(chemin) as ok from "+nomBase+" ";
-                  console.log(sql4);
-                  Reportinghtp.getDatastore().sendNativeQuery(sql4 ,function(err, nc) {
-                     nc = nc.rows;
-                     console.log('nc'+nc[0].ok);
-                     var f = parseInt(nc[0].ok);
-                        if (err){
-                          return res.view('Inovcom/erreur');
-                        }
-                       if(f==0)
-                        {
-                          return res.view('Inovcom/erreur');
-                        }
-                        else
-                        {
-                          // return res.view('HTPengagement/importHTPengagement', {date : datetest});
-                          return res.view('HTPengagement/accueilreportingengagementhtpsuivant3', {date : datetest});
-                        };
-                    });
-                  }
-                });
-  
-              }
-             
-          });
-        });
-  },
+
    /********************************************************************************/
    insertcheminengagementhtpsuivant4 : function(req,res)
    {
@@ -1147,550 +1296,418 @@ insertcheminengagementhtp : function(req,res)
           });
         });
   },
-  /********************************************************************************/
-  insertcheminengagementhtpsuivant8 : function(req,res)
-  {
-    var Excel = require('exceljs');
-    var workbook = new Excel.Workbook();
-    // var table = ['\\\\10.128.1.2\\almerys-out\\Retour_Easytech_'];
-    var table = ['/dev/pro/Retour_Easytech_'];
-    var datetest = req.param("date",0);
-    var annee = datetest.substr(0, 4);
-    var mois = datetest.substr(5, 2);
-    var jour = datetest.substr(8, 2);
-    var date = annee+mois+jour;
-    var date_indus = jour+'.'+mois+'.'+annee;
-    var datej_1 = annee+mois+jour -1;
-    console.log(datej_1);
-    var nomtable = [];
-    var numligne = [];
-    var numfeuille = [];
-    var nomcolonne = [];
-    var nomcolonne2 = [];
-    var nomcolonne3 = [];
-    console.log(date);
-    var cheminp = [];
-    var MotCle= [];
-    var Sup= [];
-    var nomBase = "cheminengagementhtpcotlamiej2";
-    var r = [0];
-    workbook.xlsx.readFile('engagementhtp.xlsx')
-        .then(function() {
-          var newworksheet = workbook.getWorksheet('Feuil9');
-          var nomColonne3 = newworksheet.getColumn(3);
-          var numFeuille = newworksheet.getColumn(4);
-          var nomColonne = newworksheet.getColumn(5);
-          var nomTable = newworksheet.getColumn(6);
-          var nomColonne2 = newworksheet.getColumn(7);
-          var numLigne = newworksheet.getColumn(8);
-          var cheminparticulier = newworksheet.getColumn(9);
-          var motcle = newworksheet.getColumn(10);
-          var suppleant = newworksheet.getColumn(11);
-  
-        numFeuille.eachCell(function(cell, rowNumber) {
-          numfeuille.push(cell.value);
-        });
-        nomColonne.eachCell(function(cell, rowNumber) {
-          nomcolonne.push(cell.value);
-        });
-        nomColonne2.eachCell(function(cell, rowNumber) {
-          nomcolonne2.push(cell.value);
-        });
-        nomColonne3.eachCell(function(cell, rowNumber) {
-          nomcolonne3.push(cell.value);
-        });
-        nomTable.eachCell(function(cell, rowNumber) {
-          nomtable.push(cell.value);
-        });
-        numLigne.eachCell(function(cell, rowNumber) {
-          numligne.push(cell.value);
-        });
-          cheminparticulier.eachCell(function(cell, rowNumber) {
-            cheminp.push(cell.value);
-        });
-          motcle.eachCell(function(cell, rowNumber) {
-            MotCle.push(cell.value);
-        });
-        suppleant.eachCell(function(cell, rowNumber) {
-          Sup.push(cell.value);
-        });
-  
-          
-            console.log(cheminp[0]);
-            console.log(MotCle[0]);
-            console.log(nomtable[0]);
-            console.log(nomtable[1]);
-            async.series([  
-              function(cb){
-                    Engagementhtp.deleteFromChemin(nomBase,cb);
-                  },
-                                    
-            ],
-            function(err, resultat){
-              if(err){
-                return res.view('Inovcom/erreur');
-              }
-              else{
-                async.forEachSeries(r, function(lot, callback_reporting_suivant){
-                  async.series([
-                    function(cb){
-                      Engagementhtp.delete(nomtable,lot,cb);
-                    },
-                    function(cb){
-                      Engagementhtp.importcheminhtpligne(table,cheminp,date,MotCle,lot,nomtable,numligne,numfeuille,nomcolonne,nomcolonne2,nomcolonne3,nomBase,cb);
-                    },
-                    // function(cb){
-                    //   Engagementhtp.importcheminhtpdevis(table,cheminp,date,MotCle,1,nomtable[1],numligne[1],numfeuille[1],nomcolonne[1],nomcolonne2[1],nomcolonne3[1],nomBase,cb);
-                    // },
-                  ],
-                  function(erroned, lotValues){
-                    if(erroned) return res.badRequest(erroned);
-                    return callback_reporting_suivant();
-                    
-                  });
-                },
-                function(err)
-                {
-                  if (err){
-                    return res.view('Contentieux/erreur');
-                  }
-                  else
-                  {
-                  var sql4= "select count(chemin) as ok from "+nomBase+" ";
-                  console.log(sql4);
-                  Reportinghtp.getDatastore().sendNativeQuery(sql4 ,function(err, nc) {
-                     nc = nc.rows;
-                     console.log('nc'+nc[0].ok);
-                     var f = parseInt(nc[0].ok);
-                        if (err){
-                          return res.view('Inovcom/erreur');
-                        }
-                       if(f==0)
-                        {
-                          return res.view('Inovcom/erreur');
-                        }
-                        else
-                        {
-                          return res.view('HTPengagement/accueilreportingengagementhtpsuivant8', {date : datetest});
-                        };
-                    });
-                  }
-                });
-  
-              }
-             
-          });
-        });
-  },
-  /********************************************************************************/
-  insertcheminengagementhtpsuivant9 : function(req,res)
-  {
-    var Excel = require('exceljs');
-    var workbook = new Excel.Workbook();
-    // var table = ['\\\\10.128.1.2\\almerys-out\\Retour_Easytech_'];
-    var table = ['/dev/pro/Retour_Easytech_'];
-    var datetest = req.param("date",0);
-    var annee = datetest.substr(0, 4);
-    var mois = datetest.substr(5, 2);
-    var jour = datetest.substr(8, 2);
-    var date = annee+mois+jour;
-    var date_indus = jour+'.'+mois+'.'+annee;
-    var datej_1 = annee+mois+jour -1;
-    console.log(datej_1);
-    var nomtable = [];
-    var numligne = [];
-    var numfeuille = [];
-    var nomcolonne = [];
-    var nomcolonne2 = [];
-    var nomcolonne3 = [];
-    console.log(date);
-    var cheminp = [];
-    var MotCle= [];
-    var Sup= [];
-    var nomBase = "cheminengagementhtpcotlamiej5";
-    var r = [0];
-    workbook.xlsx.readFile('engagementhtp.xlsx')
-        .then(function() {
-          var newworksheet = workbook.getWorksheet('Feuil10');
-          var nomColonne3 = newworksheet.getColumn(3);
-          var numFeuille = newworksheet.getColumn(4);
-          var nomColonne = newworksheet.getColumn(5);
-          var nomTable = newworksheet.getColumn(6);
-          var nomColonne2 = newworksheet.getColumn(7);
-          var numLigne = newworksheet.getColumn(8);
-          var cheminparticulier = newworksheet.getColumn(9);
-          var motcle = newworksheet.getColumn(10);
-          var suppleant = newworksheet.getColumn(11);
-  
-        numFeuille.eachCell(function(cell, rowNumber) {
-          numfeuille.push(cell.value);
-        });
-        nomColonne.eachCell(function(cell, rowNumber) {
-          nomcolonne.push(cell.value);
-        });
-        nomColonne2.eachCell(function(cell, rowNumber) {
-          nomcolonne2.push(cell.value);
-        });
-        nomColonne3.eachCell(function(cell, rowNumber) {
-          nomcolonne3.push(cell.value);
-        });
-        nomTable.eachCell(function(cell, rowNumber) {
-          nomtable.push(cell.value);
-        });
-        numLigne.eachCell(function(cell, rowNumber) {
-          numligne.push(cell.value);
-        });
-          cheminparticulier.eachCell(function(cell, rowNumber) {
-            cheminp.push(cell.value);
-        });
-          motcle.eachCell(function(cell, rowNumber) {
-            MotCle.push(cell.value);
-        });
-        suppleant.eachCell(function(cell, rowNumber) {
-          Sup.push(cell.value);
-        });
-  
-          
-            console.log(cheminp[0]);
-            console.log(MotCle[0]);
-            console.log(nomtable[0]);
-            console.log(nomtable[1]);
-            async.series([  
-              function(cb){
-                    Engagementhtp.deleteFromChemin(nomBase,cb);
-                  },
-                                    
-            ],
-            function(err, resultat){
-              if(err){
-                return res.view('Inovcom/erreur');
-              }
-              else{
-                async.forEachSeries(r, function(lot, callback_reporting_suivant){
-                  async.series([
-                    function(cb){
-                      Engagementhtp.delete(nomtable,lot,cb);
-                    },
-                    function(cb){
-                      Engagementhtp.importcheminhtpligne(table,cheminp,date,MotCle,lot,nomtable,numligne,numfeuille,nomcolonne,nomcolonne2,nomcolonne3,nomBase,cb);
-                    },
-                    // function(cb){
-                    //   Engagementhtp.importcheminhtpdevis(table,cheminp,date,MotCle,1,nomtable[1],numligne[1],numfeuille[1],nomcolonne[1],nomcolonne2[1],nomcolonne3[1],nomBase,cb);
-                    // },
-                  ],
-                  function(erroned, lotValues){
-                    if(erroned) return res.badRequest(erroned);
-                    return callback_reporting_suivant();
-                    
-                  });
-                },
-                function(err)
-                {
-                  if (err){
-                    return res.view('Contentieux/erreur');
-                  }
-                  else
-                  {
-                  var sql4= "select count(chemin) as ok from "+nomBase+" ";
-                  console.log(sql4);
-                  Reportinghtp.getDatastore().sendNativeQuery(sql4 ,function(err, nc) {
-                     nc = nc.rows;
-                     console.log('nc'+nc[0].ok);
-                     var f = parseInt(nc[0].ok);
-                        if (err){
-                          return res.view('Inovcom/erreur');
-                        }
-                       if(f==0)
-                        {
-                          return res.view('Inovcom/erreur');
-                        }
-                        else
-                        {
-                          // return res.view('HTPengagement/importHTPengagement', {date : datetest});
-                          return res.view('HTPengagement/accueilreportingengagementhtpsuivant9', {date : datetest});
-                        };
-                    });
-                  }
-                });
-  
-              }
-             
-          });
-        });
-  },
-      /********************************************************************************/
-      insertcheminengagementhtpsuivant10 : function(req,res)
-      {
-        var Excel = require('exceljs');
-        var workbook = new Excel.Workbook();
-        // var table = ['\\\\10.128.1.2\\bpo_almerys\\00-TOUS\\06-DOSSIER POLE\\01-HTP\\05- REPORTING\\03-HTP\\DOC_HTP\\'];
-        var table = ['/dev/prod/00-TOUS/06-DOSSIER POLE/01-HTP/05- REPORTING/03-HTP/DOC_HTP/'];
-        var datetest = req.param("date",0);
-        var annee = datetest.substr(0, 4);
-        var mois = datetest.substr(5, 2);
-        var jour = datetest.substr(8, 2);
-        var date = annee+mois+jour;
-        var date_indus = jour+'.'+mois+'.'+annee;
-        var datej_1 = annee+mois+jour -1;
-        console.log(datej_1);
-        var nomtable = [];
-        var numligne = [];
-        var numfeuille = [];
-        var nomcolonne = [];
-        var nomcolonne2 = [];
-        var nomcolonne3 = [];
-        console.log(date);
-        var cheminp = [];
-        var MotCle= [];
-        var Sup= [];
-        var nomBase = "cheminengagementhtpsales";
-        var r = [0,1];
-        workbook.xlsx.readFile('engagementhtp.xlsx')
-            .then(function() {
-              var newworksheet = workbook.getWorksheet('Feuil11');
-              var nomColonne3 = newworksheet.getColumn(3);
-              var numFeuille = newworksheet.getColumn(4);
-              var nomColonne = newworksheet.getColumn(5);
-              var nomTable = newworksheet.getColumn(6);
-              var nomColonne2 = newworksheet.getColumn(7);
-              var numLigne = newworksheet.getColumn(8);
-              var cheminparticulier = newworksheet.getColumn(9);
-              var motcle = newworksheet.getColumn(10);
-              var suppleant = newworksheet.getColumn(11);
-      
-            numFeuille.eachCell(function(cell, rowNumber) {
-              numfeuille.push(cell.value);
-            });
-            nomColonne.eachCell(function(cell, rowNumber) {
-              nomcolonne.push(cell.value);
-            });
-            nomColonne2.eachCell(function(cell, rowNumber) {
-              nomcolonne2.push(cell.value);
-            });
-            nomColonne3.eachCell(function(cell, rowNumber) {
-              nomcolonne3.push(cell.value);
-            });
-            nomTable.eachCell(function(cell, rowNumber) {
-              nomtable.push(cell.value);
-            });
-            numLigne.eachCell(function(cell, rowNumber) {
-              numligne.push(cell.value);
-            });
-              cheminparticulier.eachCell(function(cell, rowNumber) {
-                cheminp.push(cell.value);
-            });
-              motcle.eachCell(function(cell, rowNumber) {
-                MotCle.push(cell.value);
-            });
-            suppleant.eachCell(function(cell, rowNumber) {
-              Sup.push(cell.value);
-            });
-      
-              
-                console.log(cheminp[0]);
-                console.log(MotCle[0]);
-                console.log(nomtable[0]);
-                console.log(nomtable[1]);
-                async.series([  
-                  function(cb){
-                        Engagementhtp.deleteFromChemin(nomBase,cb);
-                      },
-                                        
-                ],
-                function(err, resultat){
-                  if(err){
-                    return res.view('Inovcom/erreur');
-                  }
-                  else{
-                    async.forEachSeries(r, function(lot, callback_reporting_suivant){
-                      async.series([
-                        function(cb){
-                          Engagementhtp.delete(nomtable,lot,cb);
-                        },
-                        function(cb){
-                          Engagementhtp.importcheminhtpsales(table,cheminp,date,MotCle,lot,nomtable,numligne,numfeuille,nomcolonne,nomcolonne2,nomcolonne3,nomBase,cb);
-                        },
-                        // function(cb){
-                        //   Engagementhtp.importcheminhtpdevis(table,cheminp,date,MotCle,1,nomtable[1],numligne[1],numfeuille[1],nomcolonne[1],nomcolonne2[1],nomcolonne3[1],nomBase,cb);
-                        // },
-                      ],
-                      function(erroned, lotValues){
-                        if(erroned) return res.badRequest(erroned);
-                        return callback_reporting_suivant();
-                        
-                      });
-                    },
-                    function(err)
-                    {
-                      if (err){
-                        return res.view('Contentieux/erreur');
-                      }
-                      else
-                      {
-                      var sql4= "select count(chemin) as ok from "+nomBase+" ";
-                      console.log(sql4);
-                      Reportinghtp.getDatastore().sendNativeQuery(sql4 ,function(err, nc) {
-                         nc = nc.rows;
-                         console.log('nc'+nc[0].ok);
-                         var f = parseInt(nc[0].ok);
-                            if (err){
-                              return res.view('Inovcom/erreur');
-                            }
-                           if(f==0)
-                            {
-                              return res.view('Inovcom/erreur');
-                            }
-                            else
-                            {
-                              return res.view('HTPengagement/accueilreportingengagementhtpsuivant10', {date : datetest});
-                              // return res.view('HTPengagement/importHTPengagement', {date : datetest});
-                            };
-                        });
-                      }
-                    });
-      
-                  }
-                 
-              });
-            });
-      },
-        /********************************************************************************/
-        insertcheminengagementhtpsuivant11 : function(req,res)
-        {
-          var Excel = require('exceljs');
-          var workbook = new Excel.Workbook();
-          // var table = ['\\\\10.128.1.2\\bpo_almerys\\00-TOUS\\06-DOSSIER POLE\\01-HTP\\05- REPORTING\\03-HTP\\DOC_HTP\\'];
-          var table = ['/dev/prod/00-TOUS/06-DOSSIER POLE/01-HTP/05- REPORTING/03-HTP/DOC_HTP/'];
-          var datetest = req.param("date",0);
-          var annee = datetest.substr(0, 4);
-          var mois = datetest.substr(5, 2);
-          var jour = datetest.substr(8, 2);
-          var date = annee+mois+jour;
-          var date_indus = jour+'.'+mois+'.'+annee;
-          var datej_1 = annee+mois+jour -1;
-          console.log(datej_1);
-          var nomtable = [];
-          var numligne = [];
-          var numfeuille = [];
-          var nomcolonne = [];
-          var nomcolonne2 = [];
-          var nomcolonne3 = [];
-          console.log(date);
-          var cheminp = [];
-          var MotCle= [];
-          var Sup= [];
-          var nomBase = "cheminengagementhtpsalesstock";
-          var r = [0];
-          workbook.xlsx.readFile('engagementhtp.xlsx')
-              .then(function() {
-                var newworksheet = workbook.getWorksheet('Feuil12');
-                var nomColonne3 = newworksheet.getColumn(3);
-                var numFeuille = newworksheet.getColumn(4);
-                var nomColonne = newworksheet.getColumn(5);
-                var nomTable = newworksheet.getColumn(6);
-                var nomColonne2 = newworksheet.getColumn(7);
-                var numLigne = newworksheet.getColumn(8);
-                var cheminparticulier = newworksheet.getColumn(9);
-                var motcle = newworksheet.getColumn(10);
-                var suppleant = newworksheet.getColumn(11);
-        
-              numFeuille.eachCell(function(cell, rowNumber) {
-                numfeuille.push(cell.value);
-              });
-              nomColonne.eachCell(function(cell, rowNumber) {
-                nomcolonne.push(cell.value);
-              });
-              nomColonne2.eachCell(function(cell, rowNumber) {
-                nomcolonne2.push(cell.value);
-              });
-              nomColonne3.eachCell(function(cell, rowNumber) {
-                nomcolonne3.push(cell.value);
-              });
-              nomTable.eachCell(function(cell, rowNumber) {
-                nomtable.push(cell.value);
-              });
-              numLigne.eachCell(function(cell, rowNumber) {
-                numligne.push(cell.value);
-              });
-                cheminparticulier.eachCell(function(cell, rowNumber) {
-                  cheminp.push(cell.value);
-              });
-                motcle.eachCell(function(cell, rowNumber) {
-                  MotCle.push(cell.value);
-              });
-              suppleant.eachCell(function(cell, rowNumber) {
-                Sup.push(cell.value);
-              });
-        
-                
-                  console.log(cheminp[0]);
-                  console.log(MotCle[0]);
-                  console.log(nomtable[0]);
-                  console.log(nomtable[1]);
-                  async.series([  
-                    function(cb){
-                          Engagementhtp.deleteFromChemin(nomBase,cb);
-                        },
-                                          
-                  ],
-                  function(err, resultat){
-                    if(err){
-                      return res.view('Inovcom/erreur');
-                    }
-                    else{
-                      async.forEachSeries(r, function(lot, callback_reporting_suivant){
-                        async.series([
-                          function(cb){
-                            Engagementhtp.delete(nomtable,lot,cb);
-                          },
-                          function(cb){
-                            Engagementhtp.importcheminhtpsales(table,cheminp,date,MotCle,lot,nomtable,numligne,numfeuille,nomcolonne,nomcolonne2,nomcolonne3,nomBase,cb);
-                          },
-                          // function(cb){
-                          //   Engagementhtp.importcheminhtpdevis(table,cheminp,date,MotCle,1,nomtable[1],numligne[1],numfeuille[1],nomcolonne[1],nomcolonne2[1],nomcolonne3[1],nomBase,cb);
-                          // },
-                        ],
-                        function(erroned, lotValues){
-                          if(erroned) return res.badRequest(erroned);
-                          return callback_reporting_suivant();
-                          
-                        });
-                      },
-                      function(err)
-                      {
-                        if (err){
-                          return res.view('Contentieux/erreur');
-                        }
-                        else
-                        {
-                        var sql4= "select count(chemin) as ok from "+nomBase+" ";
-                        console.log(sql4);
-                        Reportinghtp.getDatastore().sendNativeQuery(sql4 ,function(err, nc) {
-                           nc = nc.rows;
-                           console.log('nc'+nc[0].ok);
-                           var f = parseInt(nc[0].ok);
-                              if (err){
-                                return res.view('Inovcom/erreur');
-                              }
-                             if(f==0)
-                              {
-                                return res.view('Inovcom/erreur');
-                              }
-                              else
-                              {
-                                return res.view('HTPengagement/accueilreportingengagementhtpsuivant11', {date : datetest});
-                                // return res.view('HTPengagement/importHTPengagement', {date : datetest});
-                              };
-                          });
-                        }
-                      });
-        
-                    }
+ /********************************************************************************/
+ insertcheminengagementhtpsuivant8 : function(req,res)
+ {
+   var Excel = require('exceljs');
+   var workbook = new Excel.Workbook();
+   // var table = ['\\\\10.128.1.2\\almerys-out\\Retour_Easytech_'];
+   var table = ['/dev/pro/Retour_Easytech_'];
+   var datetest = req.param("date",0);
+   var annee = datetest.substr(0, 4);
+   var mois = datetest.substr(5, 2);
+   var jour = datetest.substr(8, 2);
+   var date = annee+mois+jour;
+   var date_indus = jour+'.'+mois+'.'+annee;
+   var datej_1 = annee+mois+jour -1;
+   console.log(datej_1);
+   var nomtable = [];
+   var numligne = [];
+   var numfeuille = [];
+   var nomcolonne = [];
+   var nomcolonne2 = [];
+   var nomcolonne3 = [];
+   console.log(date);
+   var cheminp = [];
+   var MotCle= [];
+   var Sup= [];
+   var nomBase = "cheminengagementhtpcotlamiej2";
+   var r = [0];
+   workbook.xlsx.readFile('engagementhtp.xlsx')
+       .then(function() {
+         var newworksheet = workbook.getWorksheet('Feuil9');
+         var nomColonne3 = newworksheet.getColumn(3);
+         var numFeuille = newworksheet.getColumn(4);
+         var nomColonne = newworksheet.getColumn(5);
+         var nomTable = newworksheet.getColumn(6);
+         var nomColonne2 = newworksheet.getColumn(7);
+         var numLigne = newworksheet.getColumn(8);
+         var cheminparticulier = newworksheet.getColumn(9);
+         var motcle = newworksheet.getColumn(10);
+         var suppleant = newworksheet.getColumn(11);
+ 
+       numFeuille.eachCell(function(cell, rowNumber) {
+         numfeuille.push(cell.value);
+       });
+       nomColonne.eachCell(function(cell, rowNumber) {
+         nomcolonne.push(cell.value);
+       });
+       nomColonne2.eachCell(function(cell, rowNumber) {
+         nomcolonne2.push(cell.value);
+       });
+       nomColonne3.eachCell(function(cell, rowNumber) {
+         nomcolonne3.push(cell.value);
+       });
+       nomTable.eachCell(function(cell, rowNumber) {
+         nomtable.push(cell.value);
+       });
+       numLigne.eachCell(function(cell, rowNumber) {
+         numligne.push(cell.value);
+       });
+         cheminparticulier.eachCell(function(cell, rowNumber) {
+           cheminp.push(cell.value);
+       });
+         motcle.eachCell(function(cell, rowNumber) {
+           MotCle.push(cell.value);
+       });
+       suppleant.eachCell(function(cell, rowNumber) {
+         Sup.push(cell.value);
+       });
+ 
+         
+           console.log(cheminp[0]);
+           console.log(MotCle[0]);
+           console.log(nomtable[0]);
+           console.log(nomtable[1]);
+           async.series([  
+             function(cb){
+                   Engagementhtp.deleteFromChemin(nomBase,cb);
+                 },
+                                   
+           ],
+           function(err, resultat){
+             if(err){
+               return res.view('Inovcom/erreur');
+             }
+             else{
+               async.forEachSeries(r, function(lot, callback_reporting_suivant){
+                 async.series([
+                   function(cb){
+                     Engagementhtp.delete(nomtable,lot,cb);
+                   },
+                   function(cb){
+                     Engagementhtp.importcheminhtpligne(table,cheminp,date,MotCle,lot,nomtable,numligne,numfeuille,nomcolonne,nomcolonne2,nomcolonne3,nomBase,cb);
+                   },
+                   // function(cb){
+                   //   Engagementhtp.importcheminhtpdevis(table,cheminp,date,MotCle,1,nomtable[1],numligne[1],numfeuille[1],nomcolonne[1],nomcolonne2[1],nomcolonne3[1],nomBase,cb);
+                   // },
+                 ],
+                 function(erroned, lotValues){
+                   if(erroned) return res.badRequest(erroned);
+                   return callback_reporting_suivant();
                    
-                });
-              });
-        },
-            /********************************************************************************/
+                 });
+               },
+               function(err)
+               {
+                 if (err){
+                   return res.view('Contentieux/erreur');
+                 }
+                 else
+                 {
+                 var sql4= "select count(chemin) as ok from "+nomBase+" ";
+                 console.log(sql4);
+                 Reportinghtp.getDatastore().sendNativeQuery(sql4 ,function(err, nc) {
+                    nc = nc.rows;
+                    console.log('nc'+nc[0].ok);
+                    var f = parseInt(nc[0].ok);
+                       if (err){
+                         return res.view('Inovcom/erreur');
+                       }
+                      if(f==0)
+                       {
+                         return res.view('Inovcom/erreur');
+                       }
+                       else
+                       {
+                         return res.view('HTPengagement/accueilreportingengagementhtpsuivant8', {date : datetest});
+                       };
+                   });
+                 }
+               });
+ 
+             }
+            
+         });
+       });
+ },
+ /********************************************************************************/
+ insertcheminengagementhtpsuivant9 : function(req,res)
+ {
+   var Excel = require('exceljs');
+   var workbook = new Excel.Workbook();
+   // var table = ['\\\\10.128.1.2\\almerys-out\\Retour_Easytech_'];
+   var table = ['/dev/pro/Retour_Easytech_'];
+   var datetest = req.param("date",0);
+   var annee = datetest.substr(0, 4);
+   var mois = datetest.substr(5, 2);
+   var jour = datetest.substr(8, 2);
+   var date = annee+mois+jour;
+   var date_indus = jour+'.'+mois+'.'+annee;
+   var datej_1 = annee+mois+jour -1;
+   console.log(datej_1);
+   var nomtable = [];
+   var numligne = [];
+   var numfeuille = [];
+   var nomcolonne = [];
+   var nomcolonne2 = [];
+   var nomcolonne3 = [];
+   console.log(date);
+   var cheminp = [];
+   var MotCle= [];
+   var Sup= [];
+   var nomBase = "cheminengagementhtpcotlamiej5";
+   var r = [0];
+   workbook.xlsx.readFile('engagementhtp.xlsx')
+       .then(function() {
+         var newworksheet = workbook.getWorksheet('Feuil10');
+         var nomColonne3 = newworksheet.getColumn(3);
+         var numFeuille = newworksheet.getColumn(4);
+         var nomColonne = newworksheet.getColumn(5);
+         var nomTable = newworksheet.getColumn(6);
+         var nomColonne2 = newworksheet.getColumn(7);
+         var numLigne = newworksheet.getColumn(8);
+         var cheminparticulier = newworksheet.getColumn(9);
+         var motcle = newworksheet.getColumn(10);
+         var suppleant = newworksheet.getColumn(11);
+ 
+       numFeuille.eachCell(function(cell, rowNumber) {
+         numfeuille.push(cell.value);
+       });
+       nomColonne.eachCell(function(cell, rowNumber) {
+         nomcolonne.push(cell.value);
+       });
+       nomColonne2.eachCell(function(cell, rowNumber) {
+         nomcolonne2.push(cell.value);
+       });
+       nomColonne3.eachCell(function(cell, rowNumber) {
+         nomcolonne3.push(cell.value);
+       });
+       nomTable.eachCell(function(cell, rowNumber) {
+         nomtable.push(cell.value);
+       });
+       numLigne.eachCell(function(cell, rowNumber) {
+         numligne.push(cell.value);
+       });
+         cheminparticulier.eachCell(function(cell, rowNumber) {
+           cheminp.push(cell.value);
+       });
+         motcle.eachCell(function(cell, rowNumber) {
+           MotCle.push(cell.value);
+       });
+       suppleant.eachCell(function(cell, rowNumber) {
+         Sup.push(cell.value);
+       });
+ 
+         
+           console.log(cheminp[0]);
+           console.log(MotCle[0]);
+           console.log(nomtable[0]);
+           console.log(nomtable[1]);
+           async.series([  
+             function(cb){
+                   Engagementhtp.deleteFromChemin(nomBase,cb);
+                 },
+                                   
+           ],
+           function(err, resultat){
+             if(err){
+               return res.view('Inovcom/erreur');
+             }
+             else{
+               async.forEachSeries(r, function(lot, callback_reporting_suivant){
+                 async.series([
+                   function(cb){
+                     Engagementhtp.delete(nomtable,lot,cb);
+                   },
+                   function(cb){
+                     Engagementhtp.importcheminhtpligne(table,cheminp,date,MotCle,lot,nomtable,numligne,numfeuille,nomcolonne,nomcolonne2,nomcolonne3,nomBase,cb);
+                   },
+                   // function(cb){
+                   //   Engagementhtp.importcheminhtpdevis(table,cheminp,date,MotCle,1,nomtable[1],numligne[1],numfeuille[1],nomcolonne[1],nomcolonne2[1],nomcolonne3[1],nomBase,cb);
+                   // },
+                 ],
+                 function(erroned, lotValues){
+                   if(erroned) return res.badRequest(erroned);
+                   return callback_reporting_suivant();
+                   
+                 });
+               },
+               function(err)
+               {
+                 if (err){
+                   return res.view('Contentieux/erreur');
+                 }
+                 else
+                 {
+                 var sql4= "select count(chemin) as ok from "+nomBase+" ";
+                 console.log(sql4);
+                 Reportinghtp.getDatastore().sendNativeQuery(sql4 ,function(err, nc) {
+                    nc = nc.rows;
+                    console.log('nc'+nc[0].ok);
+                    var f = parseInt(nc[0].ok);
+                       if (err){
+                         return res.view('Inovcom/erreur');
+                       }
+                      if(f==0)
+                       {
+                         return res.view('Inovcom/erreur');
+                       }
+                       else
+                       {
+                         // return res.view('HTPengagement/importHTPengagement', {date : datetest});
+                         return res.view('HTPengagement/accueilreportingengagementhtpsuivant9', {date : datetest});
+                       };
+                   });
+                 }
+               });
+ 
+             }
+            
+         });
+       });
+ },
+
+  
+       /********************************************************************************/
+       insertcheminengagementhtpsuivant11 : function(req,res)
+       {
+         var Excel = require('exceljs');
+         var workbook = new Excel.Workbook();
+         // var table = ['\\\\10.128.1.2\\bpo_almerys\\00-TOUS\\06-DOSSIER POLE\\01-HTP\\05- REPORTING\\03-HTP\\DOC_HTP\\'];
+         var table = ['/dev/prod/00-TOUS/06-DOSSIER POLE/01-HTP/05- REPORTING/03-HTP/DOC_HTP/'];
+         var datetest = req.param("date",0);
+         var annee = datetest.substr(0, 4);
+         var mois = datetest.substr(5, 2);
+         var jour = datetest.substr(8, 2);
+         var date = annee+mois+jour;
+         var date_indus = jour+'.'+mois+'.'+annee;
+         var datej_1 = annee+mois+jour -1;
+         console.log(datej_1);
+         var nomtable = [];
+         var numligne = [];
+         var numfeuille = [];
+         var nomcolonne = [];
+         var nomcolonne2 = [];
+         var nomcolonne3 = [];
+         console.log(date);
+         var cheminp = [];
+         var MotCle= [];
+         var Sup= [];
+         var nomBase = "cheminengagementhtpsalesstock";
+         var r = [0];
+         workbook.xlsx.readFile('engagementhtp.xlsx')
+             .then(function() {
+               var newworksheet = workbook.getWorksheet('Feuil12');
+               var nomColonne3 = newworksheet.getColumn(3);
+               var numFeuille = newworksheet.getColumn(4);
+               var nomColonne = newworksheet.getColumn(5);
+               var nomTable = newworksheet.getColumn(6);
+               var nomColonne2 = newworksheet.getColumn(7);
+               var numLigne = newworksheet.getColumn(8);
+               var cheminparticulier = newworksheet.getColumn(9);
+               var motcle = newworksheet.getColumn(10);
+               var suppleant = newworksheet.getColumn(11);
+       
+             numFeuille.eachCell(function(cell, rowNumber) {
+               numfeuille.push(cell.value);
+             });
+             nomColonne.eachCell(function(cell, rowNumber) {
+               nomcolonne.push(cell.value);
+             });
+             nomColonne2.eachCell(function(cell, rowNumber) {
+               nomcolonne2.push(cell.value);
+             });
+             nomColonne3.eachCell(function(cell, rowNumber) {
+               nomcolonne3.push(cell.value);
+             });
+             nomTable.eachCell(function(cell, rowNumber) {
+               nomtable.push(cell.value);
+             });
+             numLigne.eachCell(function(cell, rowNumber) {
+               numligne.push(cell.value);
+             });
+               cheminparticulier.eachCell(function(cell, rowNumber) {
+                 cheminp.push(cell.value);
+             });
+               motcle.eachCell(function(cell, rowNumber) {
+                 MotCle.push(cell.value);
+             });
+             suppleant.eachCell(function(cell, rowNumber) {
+               Sup.push(cell.value);
+             });
+       
+               
+                 console.log(cheminp[0]);
+                 console.log(MotCle[0]);
+                 console.log(nomtable[0]);
+                 console.log(nomtable[1]);
+                 async.series([  
+                   function(cb){
+                         Engagementhtp.deleteFromChemin(nomBase,cb);
+                       },
+                                         
+                 ],
+                 function(err, resultat){
+                   if(err){
+                     return res.view('Inovcom/erreur');
+                   }
+                   else{
+                     async.forEachSeries(r, function(lot, callback_reporting_suivant){
+                       async.series([
+                         function(cb){
+                           Engagementhtp.delete(nomtable,lot,cb);
+                         },
+                         function(cb){
+                           Engagementhtp.importcheminhtpsales(table,cheminp,date,MotCle,lot,nomtable,numligne,numfeuille,nomcolonne,nomcolonne2,nomcolonne3,nomBase,cb);
+                         },
+                         // function(cb){
+                         //   Engagementhtp.importcheminhtpdevis(table,cheminp,date,MotCle,1,nomtable[1],numligne[1],numfeuille[1],nomcolonne[1],nomcolonne2[1],nomcolonne3[1],nomBase,cb);
+                         // },
+                       ],
+                       function(erroned, lotValues){
+                         if(erroned) return res.badRequest(erroned);
+                         return callback_reporting_suivant();
+                         
+                       });
+                     },
+                     function(err)
+                     {
+                       if (err){
+                         return res.view('Contentieux/erreur');
+                       }
+                       else
+                       {
+                       var sql4= "select count(chemin) as ok from "+nomBase+" ";
+                       console.log(sql4);
+                       Reportinghtp.getDatastore().sendNativeQuery(sql4 ,function(err, nc) {
+                          nc = nc.rows;
+                          console.log('nc'+nc[0].ok);
+                          var f = parseInt(nc[0].ok);
+                             if (err){
+                               return res.view('Inovcom/erreur');
+                             }
+                            if(f==0)
+                             {
+                               return res.view('Inovcom/erreur');
+                             }
+                             else
+                             {
+                              //  return res.view('HTPengagement/accueilreportingengagementhtpsuivant11', {date : datetest});
+                               return res.view('HTPengagement/importHTPengagement', {date : datetest});
+                             };
+                         });
+                       }
+                     });
+       
+                   }
+                  
+               });
+             });
+       },
+
+
+ /********************************************************************************/
       insertcheminengagementhtpsuivant12 : function(req,res)
       {
         var Excel = require('exceljs');
@@ -4211,7 +4228,7 @@ exporthtpengagementsuivant_5 : function (req, res) {
 /******************************************************************************************************/
 /*****************************************************************************************************/
   //IMPORTATION DES DONNEES SUR EXCEL DANS LA BASE
-  importengagementhtp : function(req,res)
+  importengagementhtp_1 : function(req,res)
   {
     var datetest = req.param("date",0);
     var sql1= 'select count(*) as nb from cheminengagementhtp';
@@ -4301,7 +4318,7 @@ exporthtpengagementsuivant_5 : function (req, res) {
                       //     Engagementhtp.deleteHtp(table,nb,cb);
                       //  },
                         function(cb){
-                          Engagementhtp.importengagementhtptri(trameflux,feuil,cellule,table,cellule2,lot,numligne,dernierl,cb);
+                          Engagementhtp.importengagementhtp_1(trameflux,feuil,cellule,table,cellule2,lot,numligne,dernierl,date,cb);
                         },
                       ],function(erroned, lotValues){
                         if(erroned) return res.badRequest(erroned);
@@ -4321,7 +4338,8 @@ exporthtpengagementsuivant_5 : function (req, res) {
                     // ],
                     function(err, resultat){
                       if (err) { return res.view('Inovcom/erreur'); }
-                      return res.view('HTPengagement/importHTPengagementsuivant_1', {date : datetest});
+                      // return res.view('HTPengagement/importHTPengagementsuivant_1', {date : datetest});
+                      return res.view('HTPengagement/importHTPengagementsuivant_3', {date : datetest});
                   });
                
               }
@@ -4668,7 +4686,7 @@ exporthtpengagementsuivant_5 : function (req, res) {
                       //     Engagementhtp.deleteHtp(table,nb,cb);
                       //  },
                         function(cb){
-                          Engagementhtp.importengagementhtpligne(trameflux,feuil,cellule,table,cellule2,lot,numligne,dernierl,cb);
+                          Engagementhtp.importengagementhtpligne(trameflux,feuil,cellule,table,cellule2,lot,numligne,dernierl,date,cb);
                         },
                       ],function(erroned, lotValues){
                         if(erroned) return res.badRequest(erroned);
