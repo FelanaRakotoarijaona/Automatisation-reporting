@@ -690,6 +690,13 @@ module.exports = {
   /**********************************************************************************/
   //FONCTION POUR REMPLIR LE FICHIER EXCEL INOVCOM 1
  ecritureOkKo : async function (nombre_ok_ko, table,date_export,mois1,callback) {
+  if(nombre_ok_ko.ok==null && nombre_ok_ko.ko==null || nombre_ok_ko.ok==null && nombre_ok_ko.ko==undefined)
+  {
+   console.log('ok' + nombre_ok_ko.ok);
+   console.log('ko' + nombre_ok_ko.ko);
+   return callback(null, "KO");
+  }
+  else{
     const Excel = require('exceljs');
     const newWorkbook = new Excel.Workbook();
     try{
@@ -765,9 +772,18 @@ module.exports = {
       console.log("Une erreur s'est produite");
       Reportinghtp.deleteToutHtp(table,3,callback);
     }
+  }
+
     },
   /***********************************************************/  
   ecritureOkKo1 : async function (nombre_ok_ko, table,date_export,mois1,callback) {
+    if(nombre_ok_ko.ok==null && nombre_ok_ko.ko==null || nombre_ok_ko.ok==null && nombre_ok_ko.ko==undefined)
+    {
+     console.log('ok' + nombre_ok_ko.ok);
+     console.log('ko' + nombre_ok_ko.ko);
+     return callback(null, "KO");
+    }
+    else{
     const Excel = require('exceljs');
     const newWorkbook = new Excel.Workbook();
     try{
@@ -843,9 +859,19 @@ module.exports = {
       console.log("Une erreur s'est produite");
       Reportinghtp.deleteToutHtp(table,3,callback);
     }
+
+  }
+
     },
   /***********************************************************/  
   ecritureOkKo11 : async function (nombre_ok_ko, table,date_export,mois1,callback) {
+    if(nombre_ok_ko.ok==null && nombre_ok_ko.ko==null || nombre_ok_ko.ok==null && nombre_ok_ko.ko==undefined)
+    {
+     console.log('ok' + nombre_ok_ko.ok);
+     console.log('ko' + nombre_ok_ko.ko);
+     return callback(null, "KO");
+    }
+    else{
     const Excel = require('exceljs');
     const newWorkbook = new Excel.Workbook();
     try{
@@ -921,10 +947,19 @@ module.exports = {
       console.log("Une erreur s'est produite");
       Reportinghtp.deleteToutHtp(table,3,callback);
     }
+  }
+
     },
   /***********************************************************/  
   //FONCTION POUR REMPLIR LE FICHIER EXCEL INOVCOM 2
   ecritureOkKo2 : async function (nombre_ok_ko, table,date_export,mois1,callback) {
+    if(nombre_ok_ko.ok==null && nombre_ok_ko.ko==null || nombre_ok_ko.ok==null && nombre_ok_ko.ko==undefined)
+    {
+     console.log('ok' + nombre_ok_ko.ok);
+     console.log('ko' + nombre_ok_ko.ko);
+     return callback(null, "KO");
+    }
+    else{
     const Excel = require('exceljs');
     const newWorkbook = new Excel.Workbook();
     try{
@@ -1002,9 +1037,18 @@ module.exports = {
       console.log("Une erreur s'est produite");
       Reportinghtp.deleteToutHtp(table,3,callback);
     }
+
+  } 
     },
   /**********************************************************/
   ecritureOkKo21 : async function (nombre_ok_ko, table,date_export,mois1,callback) {
+    if(nombre_ok_ko.ok==null && nombre_ok_ko.ko==null || nombre_ok_ko.ok==null && nombre_ok_ko.ko==undefined)
+    {
+     console.log('ok' + nombre_ok_ko.ok);
+     console.log('ko' + nombre_ok_ko.ko);
+     return callback(null, "KO");
+    }
+    else{
     const Excel = require('exceljs');
     const newWorkbook = new Excel.Workbook();
 
@@ -1066,11 +1110,23 @@ module.exports = {
             console.log("Une erreur s'est produite");
             Reportinghtp.deleteToutHtp(table,3,callback);
           }
+
+        }
+
+
+
   },
 
   /**********************************************************/
  
   ecritureOkKo22 : async function (nombre_ok_ko, table,date_export,mois1,callback) {
+    if(nombre_ok_ko.ok==null && nombre_ok_ko.ko==null || nombre_ok_ko.ok==null && nombre_ok_ko.ko==undefined)
+    {
+     console.log('ok' + nombre_ok_ko.ok);
+     console.log('ko' + nombre_ok_ko.ko);
+     return callback(null, "KO");
+    }
+    else{
     const Excel = require('exceljs');
     const newWorkbook = new Excel.Workbook();
     try{
@@ -1130,10 +1186,21 @@ module.exports = {
       console.log("Une erreur s'est produite");
       Reportinghtp.deleteToutHtp(table,3,callback);
     }
+
+  }
+
+
   },
 
   /**********************************************************/
   ecritureOkKo23 : async function (nombre_ok_ko, table,date_export,mois1,callback) {
+    if(nombre_ok_ko.ok==null && nombre_ok_ko.ko==null || nombre_ok_ko.ok==null && nombre_ok_ko.ko==undefined)
+    {
+     console.log('ok' + nombre_ok_ko.ok);
+     console.log('ko' + nombre_ok_ko.ko);
+     return callback(null, "KO");
+    }
+    else{
     const Excel = require('exceljs');
     const newWorkbook = new Excel.Workbook();
     try{
@@ -1192,11 +1259,22 @@ module.exports = {
       console.log("Une erreur s'est produite");
       Reportinghtp.deleteToutHtp(table,3,callback);
     }
+
+  }
+
+
     },
   
   /**********************************************************/
   //FONCTION POUR REMPLIR LE FICHIER EXCEL INOVCOM 3
   ecritureOkKo3 : async function (nombre_ok_ko, table,date_export,mois1,callback) {
+    if(nombre_ok_ko.ok==null && nombre_ok_ko.ko==null || nombre_ok_ko.ok==null && nombre_ok_ko.ko==undefined)
+    {
+     console.log('ok' + nombre_ok_ko.ok);
+     console.log('ko' + nombre_ok_ko.ko);
+     return callback(null, "KO");
+    }
+    else{
     const Excel = require('exceljs');
     const newWorkbook = new Excel.Workbook();
     try{
@@ -1277,9 +1355,20 @@ module.exports = {
       console.log("Une erreur s'est produite");
       Reportinghtp.deleteToutHtp(table,3,callback);
     }
+
+
+  }
+
     },
   /**********************************************************/
   ecritureOkKo31 : async function (nombre_ok_ko, table,date_export,mois1,callback) {
+    if(nombre_ok_ko.ok==null && nombre_ok_ko.ko==null || nombre_ok_ko.ok==null && nombre_ok_ko.ko==undefined)
+    {
+     console.log('ok' + nombre_ok_ko.ok);
+     console.log('ko' + nombre_ok_ko.ko);
+     return callback(null, "KO");
+    }
+    else{
     const Excel = require('exceljs');
     const newWorkbook = new Excel.Workbook();
     try{
@@ -1356,10 +1445,20 @@ module.exports = {
       console.log("Une erreur s'est produite");
       Reportinghtp.deleteToutHtp(table,3,callback);
     }
+
+  }
+
     },
   /**********************************************************/
   //FONCTION POUR REMPLIR LE FICHIER EXCEL INOVCOM 4
   ecritureOkKo4 : async function (nombre_ok_ko, table,date_export,mois1,callback) {
+    if(nombre_ok_ko.ok==null && nombre_ok_ko.ko==null || nombre_ok_ko.ok==null && nombre_ok_ko.ko==undefined)
+    {
+     console.log('ok' + nombre_ok_ko.ok);
+     console.log('ko' + nombre_ok_ko.ko);
+     return callback(null, "KO");
+    }
+    else{
     const Excel = require('exceljs');
     const newWorkbook = new Excel.Workbook();
     try{
@@ -1433,10 +1532,21 @@ module.exports = {
       console.log("Une erreur s'est produite");
       Reportinghtp.deleteToutHtp(table,3,callback);
     }
+
+  }
+
+
     },
   /**********************************************************/
   //FONCTION POUR REMPLIR LE FICHIER EXCEL INOVCOM 4
   ecritureOkKo4etat : async function (nombre_ok_ko, table,date_export,mois1,callback) {
+    if(nombre_ok_ko.ok==null && nombre_ok_ko.ko==null || nombre_ok_ko.ok==null && nombre_ok_ko.ko==undefined)
+    {
+     console.log('ok' + nombre_ok_ko.ok);
+     console.log('ko' + nombre_ok_ko.ko);
+     return callback(null, "KO");
+    }
+    else{
     const Excel = require('exceljs');
     const newWorkbook = new Excel.Workbook();
     try{
@@ -1510,10 +1620,20 @@ module.exports = {
       console.log("Une erreur s'est produite");
       Reportinghtp.deleteToutHtp(table,3,callback);
     }
+  }  
+  
+  
     },
   /**********************************************************/
   //FONCTION POUR REMPLIR LE FICHIER EXCEL INOVCOM 4
   ecritureOkKo4pack : async function (nombre_ok_ko, table,date_export,mois1,callback) {
+    if(nombre_ok_ko.ok==null && nombre_ok_ko.ko==null || nombre_ok_ko.ok==null && nombre_ok_ko.ko==undefined)
+    {
+     console.log('ok' + nombre_ok_ko.ok);
+     console.log('ko' + nombre_ok_ko.ko);
+     return callback(null, "KO");
+    }
+    else{
     const Excel = require('exceljs');
     const newWorkbook = new Excel.Workbook();
     try{
@@ -1587,10 +1707,22 @@ module.exports = {
       console.log("Une erreur s'est produite");
       Reportinghtp.deleteToutHtp(table,3,callback);
     }
+  }
+
+
+
+
     },
   /**********************************************************/
   //FONCTION POUR REMPLIR LE FICHIER EXCEL INOVCOM 5
   ecritureOkKo5 : async function (nombre_ok_ko, table,date_export,mois1,callback) {
+    if(nombre_ok_ko.ok==null && nombre_ok_ko.ko==null || nombre_ok_ko.ok==null && nombre_ok_ko.ko==undefined)
+    {
+     console.log('ok' + nombre_ok_ko.ok);
+     console.log('ko' + nombre_ok_ko.ko);
+     return callback(null, "KO");
+    }
+    else{
     const Excel = require('exceljs');
     const newWorkbook = new Excel.Workbook();
     try{
@@ -1664,10 +1796,22 @@ module.exports = {
       console.log("Une erreur s'est produite");
       Reportinghtp.deleteToutHtp(table,3,callback);
     }
+  }
+
+
+
+
     },
   /**********************************************************/
   //FONCTION POUR REMPLIR LE FICHIER EXCEL INOVCOM 6
   ecritureOkKo6 : async function (nombre_ok_ko, table,date_export,mois1,callback) {
+    if(nombre_ok_ko.ok==null && nombre_ok_ko.ko==null || nombre_ok_ko.ok==null && nombre_ok_ko.ko==undefined)
+    {
+     console.log('ok' + nombre_ok_ko.ok);
+     console.log('ko' + nombre_ok_ko.ko);
+     return callback(null, "KO");
+    }
+    else{
     const Excel = require('exceljs');
     const newWorkbook = new Excel.Workbook();
     try{
@@ -1741,10 +1885,21 @@ module.exports = {
       console.log("Une erreur s'est produite");
       Reportinghtp.deleteToutHtp(table,3,callback);
     }
+  }
+
+
+
     },
   /**********************************************************/
   //FONCTION POUR REMPLIR LE FICHIER EXCEL INOVCOM 7
   ecritureOkKo7 : async function (nombre_ok_ko, table,date_export,mois1,callback) {
+    if(nombre_ok_ko.ok==null && nombre_ok_ko.ko==null || nombre_ok_ko.ok==null && nombre_ok_ko.ko==undefined)
+    {
+     console.log('ok' + nombre_ok_ko.ok);
+     console.log('ko' + nombre_ok_ko.ko);
+     return callback(null, "KO");
+    }
+    else{
     const Excel = require('exceljs');
     const newWorkbook = new Excel.Workbook();
     try{
@@ -1818,9 +1973,20 @@ module.exports = {
       console.log("Une erreur s'est produite");
       Reportinghtp.deleteToutHtp(table,3,callback);
     }
+  }
+
+
+
     },
   /**********************************************************/
   ecritureOkKo7bis : async function (nombre_ok_ko, table,date_export,mois1,callback) {
+    if(nombre_ok_ko.ok==null && nombre_ok_ko.ko==null || nombre_ok_ko.ok==null && nombre_ok_ko.ko==undefined)
+    {
+     console.log('ok' + nombre_ok_ko.ok);
+     console.log('ko' + nombre_ok_ko.ko);
+     return callback(null, "KO");
+    }
+    else{
     const Excel = require('exceljs');
     const newWorkbook = new Excel.Workbook();
     try{
@@ -1894,10 +2060,20 @@ module.exports = {
       console.log("Une erreur s'est produite");
       Reportinghtp.deleteToutHtp(table,3,callback);
     }
+  }
+
+
     },
   /**********************************************************/
   //FONCTION POUR REMPLIR LE FICHIER EXCEL INOVCOM 8
   ecritureOkKo8 : async function (nombre_ok_ko, table,date_export,mois1,callback) {
+    if(nombre_ok_ko.ok==null && nombre_ok_ko.ko==null || nombre_ok_ko.ok==null && nombre_ok_ko.ko==undefined)
+    {
+     console.log('ok' + nombre_ok_ko.ok);
+     console.log('ko' + nombre_ok_ko.ko);
+     return callback(null, "KO");
+    }
+    else{
     const Excel = require('exceljs');
     const newWorkbook = new Excel.Workbook();
     try{
@@ -1971,9 +2147,19 @@ module.exports = {
       console.log("Une erreur s'est produite");
       Reportinghtp.deleteToutHtp(table,3,callback);
     }
+  }
+
+
     },
   /**********************************************************/
   ecritureOkKo81 : async function (nombre_ok_ko, table,date_export,mois1,callback) {
+    if(nombre_ok_ko.ok==null && nombre_ok_ko.ko==null || nombre_ok_ko.ok==null && nombre_ok_ko.ko==undefined)
+    {
+     console.log('ok' + nombre_ok_ko.ok);
+     console.log('ko' + nombre_ok_ko.ko);
+     return callback(null, "KO");
+    }
+    else{
     const Excel = require('exceljs');
     const newWorkbook = new Excel.Workbook();
     try{
@@ -2047,10 +2233,21 @@ module.exports = {
       console.log("Une erreur s'est produite");
       Reportinghtp.deleteToutHtp(table,3,callback);
     }
+  }
+
+
+
     },
   /**********************************************************/
   //FONCTION POUR REMPLIR LE FICHIER EXCEL INOVCOM 9
   ecritureOkKo9 : async function (nombre_ok_ko, table,date_export,mois1,callback) {
+    if(nombre_ok_ko.ok==null && nombre_ok_ko.ko==null || nombre_ok_ko.ok==null && nombre_ok_ko.ko==undefined)
+    {
+     console.log('ok' + nombre_ok_ko.ok);
+     console.log('ko' + nombre_ok_ko.ko);
+     return callback(null, "KO");
+    }
+    else{
     const Excel = require('exceljs');
     const newWorkbook = new Excel.Workbook();
     try{
@@ -2127,10 +2324,21 @@ module.exports = {
       console.log("Une erreur s'est produite");
       Reportinghtp.deleteToutHtp(table,3,callback);
     }
+  }
+
+
+
     },
    /**********************************************************/
  
    ecritureOkKofll11 : async function (nombre_ok_ko, table,date_export,mois1,callback) {
+    if(nombre_ok_ko.ok==null && nombre_ok_ko.ko==null || nombre_ok_ko.ok==null && nombre_ok_ko.ko==undefined)
+    {
+     console.log('ok' + nombre_ok_ko.ok);
+     console.log('ko' + nombre_ok_ko.ko);
+     return callback(null, "KO");
+    }
+    else{
     const Excel = require('exceljs');
     const newWorkbook = new Excel.Workbook();
     try{
@@ -2190,10 +2398,21 @@ module.exports = {
       console.log("Une erreur s'est produite");
       Reportinghtp.deleteToutHtp(table,3,callback);
     }
+  }
+
+
+
   },
 
   /**********************************************************/
   ecritureOkKofll11cbtp : async function (nombre_ok_ko, table,date_export,mois1,callback) {
+    if(nombre_ok_ko.ok==null && nombre_ok_ko.ko==null || nombre_ok_ko.ok==null && nombre_ok_ko.ko==undefined)
+    {
+     console.log('ok' + nombre_ok_ko.ok);
+     console.log('ko' + nombre_ok_ko.ko);
+     return callback(null, "KO");
+    }
+    else{
     const Excel = require('exceljs');
     const newWorkbook = new Excel.Workbook();
     try{
@@ -2253,10 +2472,20 @@ module.exports = {
       console.log("Une erreur s'est produite");
       Reportinghtp.deleteToutHtp(table,3,callback);
     }
+  }
+
+
   },
 
   /**********************************************************/
   ecritureOkKofll11sante : async function (nombre_ok_ko, table,date_export,mois1,callback) {
+    if(nombre_ok_ko.ok==null && nombre_ok_ko.ko==null || nombre_ok_ko.ok==null && nombre_ok_ko.ko==undefined)
+    {
+     console.log('ok' + nombre_ok_ko.ok);
+     console.log('ko' + nombre_ok_ko.ko);
+     return callback(null, "KO");
+    }
+    else{
     const Excel = require('exceljs');
     const newWorkbook = new Excel.Workbook();
     try{
@@ -2312,9 +2541,20 @@ module.exports = {
       console.log("Une erreur s'est produite");
       Reportinghtp.deleteToutHtp(table,3,callback);
     }
+
+  }
+
+
     },
    /**********************************************************/
   ecritureOkKofll12 : async function (nombre_ok_ko, table,date_export,mois1,callback) {
+    if(nombre_ok_ko.ok==null && nombre_ok_ko.ko==null || nombre_ok_ko.ok==null && nombre_ok_ko.ko==undefined)
+    {
+     console.log('ok' + nombre_ok_ko.ok);
+     console.log('ko' + nombre_ok_ko.ko);
+     return callback(null, "KO");
+    }
+    else{
     const Excel = require('exceljs');
     const newWorkbook = new Excel.Workbook();
     try{
@@ -2373,9 +2613,19 @@ module.exports = {
       console.log("Une erreur s'est produite");
       Reportinghtp.deleteToutHtp(table,3,callback);
     }
+  }
+
+
     },
   /**********************************************************/
   ecritureOkKofll12retours : async function (nombre_ok_ko, table,date_export,mois1,callback) {
+    if(nombre_ok_ko.ok==null && nombre_ok_ko.ko==null || nombre_ok_ko.ok==null && nombre_ok_ko.ko==undefined)
+    {
+     console.log('ok' + nombre_ok_ko.ok);
+     console.log('ko' + nombre_ok_ko.ko);
+     return callback(null, "KO");
+    }
+    else{
     const Excel = require('exceljs');
     const newWorkbook = new Excel.Workbook();
     try{
@@ -2433,6 +2683,10 @@ module.exports = {
       console.log("Une erreur s'est produite");
       Reportinghtp.deleteToutHtp(table,3,callback);
     }
+
+  }
+
+
     },
    /**********************************************************/
   //CONFIGURATION DU FICHIER INI
