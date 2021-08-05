@@ -47,10 +47,9 @@ module.exports = {
     //res.view('reporting/exportErica')
   },
   rechercheColonne : async function (req, res) {
-    const fs = require('fs');
+    /*const fs = require('fs');
       try {
-        await fs.promises.open('/dev/prod/00-TOUS/TestReporting/REPORTING HTP  Type.xlsx', 'r+');
-
+        await fs.promises.open('/dev/prod/00-TOUS/TestReporting/REPORTING HTP  Type.xlsx', 'r+');*/
         var datetest = req.param("date",0);
         var annee = datetest.substr(0, 4);
         var mois = datetest.substr(5, 2);
@@ -173,7 +172,7 @@ module.exports = {
               
           })
         })
-       } catch (error) {
+      /* } catch (error) {
         if (error.code === 'EBUSY'){
           console.log('file is busy');
           return res.view('Tpstpc/erreur');
@@ -182,7 +181,7 @@ module.exports = {
         {
           throw error;
         }
-      }
+      }*/
    
   },
 };
