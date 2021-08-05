@@ -166,7 +166,7 @@ module.exports = {
                 console.log("true zn");
                 res.view('reporting/erera');
               }
-              if(resultExcel[0]=='OK')
+              if(resultExcel[0]=='OK' || resultExcel[1]=='OK' || resultExcel[2]=='OK' || resultExcel[3]=='OK' || resultExcel[4]=='OK' || resultExcel[5]=='OK'  )
               {
                 res.view('reporting/succes');
               };
