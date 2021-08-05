@@ -10,13 +10,34 @@ const ReportingInovcom = require('../models/ReportingInovcom');
 module.exports = {
     accueil1 : async function(req,res)
     {
-      fs.open('D:/Reporting/Reporting/REPORTING INDU Type.xlsx','r+', function(err,data) {
+      const fs = require('fs');
+      /*fs.open('D:/Reporting/Reporting/REPORTING INDU Type.xlsx','r+', function(err,data) {
         if (err.code === 'EBUSY'){
           console.log('file is busy');
         } else {
           console.log('fichier fermé');
         }
-      });
+      });*/
+     /* try {
+        await fs.promises.open('D:/Reporting/Reporting/REPORTING INDU Type.xlsx', 'r+');
+      } catch (error) {
+        if (error.code === 'EBUSY'){
+          console.log('file is busy');
+        } else {
+          return res.view('Inovcom/accueil1');
+        }
+      }*/
+      try {
+        const fileHandle = await fs.promises.open('D:/Reporting/Reporting/REPORTING INDU Type.xlsx', fs.constants.O_RDONLY | 0x10000000);
+     
+       fileHandle.close();
+     } catch (error) {
+       if (error.code === 'EBUSY'){
+         console.log('file is busy');
+       } else {
+        return res.view('Inovcom/accueil1');
+       }
+     }
       //return res.view('Inovcom/accueil1');
     },
     //CIBLAGE DU FICHIER EXCEL DANS LE SERVEUR
