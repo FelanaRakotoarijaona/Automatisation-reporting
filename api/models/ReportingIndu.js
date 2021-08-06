@@ -2341,7 +2341,7 @@ countOkKoSumko : function (table, callback) {
     function (callback) {
       ReportingIndu.query(sql, function(err, res){
         if (err) return res.badRequest(err);
-        callback(null, resKo.rows[0].sum);
+        callback(null, res.rows[0].sum);
         // if (err) {
         //   console.log(err);
         //   //return null;
@@ -2722,7 +2722,9 @@ ecritureOkKo : async function (nombre_ok_ko, table,date_export,mois1,callback) {
         colDate2 = parseInt(colNumber);
         var man = newworksheet.getRow(3);
         var f = man.getCell(colDate2).value;
-        if(f == iniValue.ok)
+        // if(f == iniValue.ok)
+        var getko_ini = man.getCell(colDate2).address;
+      if(getko_ini == iniValue.ko+3 && f == iniValue.ok)
         {
           collonne = parseInt(colNumber);
         }
@@ -2805,7 +2807,12 @@ ecritureOkKo : async function (nombre_ok_ko, table,date_export,mois1,callback) {
         //var col = newworksheet.getColumn(colDate1);
         var man = newworksheet.getRow(3);
         var f = man.getCell(colDate1).value;
-        if(f == iniValue.ok)
+        // if(f == iniValue.ok)
+        var getko_ini = man.getCell(colDate1).address;
+      if(getko_ini == iniValue.ko+3 && f == iniValue.ok)
+      {
+        collonne = parseInt(colNumber);
+      }
         {
           colonnne = parseInt(colNumber);
         }
@@ -2821,7 +2828,12 @@ ecritureOkKo : async function (nombre_ok_ko, table,date_export,mois1,callback) {
         colDate2 = parseInt(colNumber);
         var man = newworksheet.getRow(3);
         var f = man.getCell(colDate2).value;
-        if(f == iniValue.ok)
+        // if(f == iniValue.ok)
+        var getko_ini = man.getCell(colDate2).address;
+      if(getko_ini == iniValue.ko+3 && f == iniValue.ok)
+      {
+        collonne = parseInt(colNumber);
+      }
         {
           collonne = parseInt(colNumber);
         }
