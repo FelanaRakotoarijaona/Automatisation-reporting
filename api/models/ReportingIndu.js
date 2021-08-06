@@ -2341,7 +2341,7 @@ countOkKoSumko : function (table, callback) {
     function (callback) {
       ReportingIndu.query(sql, function(err, res){
         if (err) return res.badRequest(err);
-        callback(null, resKo.rows[0].sum);
+        callback(null, res.rows[0].sum);
         // if (err) {
         //   console.log(err);
         //   //return null;
