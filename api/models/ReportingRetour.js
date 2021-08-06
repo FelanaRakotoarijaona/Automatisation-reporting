@@ -311,7 +311,62 @@ module.exports = {
       workbook.xlsx.readFile(trameflux[nb])
         .then(function() {
             var newworksheet = workbook.getWorksheet(feuil[nb]);
-            var row = newworksheet.getRow(1);
+            if(newworksheet)
+            {
+              var row = newworksheet.getRow(1);
+              var a;
+              var bi = 'FIN DE TRAITEMENT';
+              const regex = new RegExp(bi,'i');
+              var bi1 = '[a-z]';
+              const regex1 = new RegExp(bi1,'i');
+              row.eachCell(function(cell, colNumber) {
+               // console.log(cell.text);
+                
+                if(regex.test(cell.text))
+                {
+                  a = parseInt(colNumber);
+                }
+              });
+              console.log(a+ 'val');
+              var tab = 0;
+              if(a!=undefined)
+              {
+                var col = newworksheet.getColumn(a);
+                console.log('col' + col);
+                col.eachCell(function(cell, rowNumber) {
+                  if(regex1.test(cell.text))
+                  {
+                    tab = tab +1;
+                    console.log(cell.text);
+                  }
+                });
+               
+              }
+              else
+              {
+                console.log("Nom de colonne non trouvé");
+              }
+              console.log(tab + 'nb');
+              var resultat = parseInt(tab) - 1;
+              console.log(resultat + 'res');
+              //var nb = [resultat];
+              var sql = "insert into "+table[nb]+" (nb) values ('"+resultat+"') ";
+                ReportingInovcom.getDatastore().sendNativeQuery(sql, function(err,res){
+                  if (err) { 
+                    console.log("Une erreur ve ok?");
+                    //return callback(err);
+                  }
+                  else
+                  {
+                    console.log(sql);
+                    return callback(null, true);
+                  };
+                                      });
+            }
+            else
+            {
+              var newworksheet = workbook.getWorksheet(1);
+              var row = newworksheet.getRow(1);
             var a;
             var bi = 'FIN DE TRAITEMENT';
             const regex = new RegExp(bi,'i');
@@ -360,6 +415,8 @@ module.exports = {
                   return callback(null, true);
                 };
                                     });
+            }
+            
                 });
     }
     catch
