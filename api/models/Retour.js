@@ -1010,9 +1010,9 @@
        numeroColonneOk = iniValue.suivi_saisie_trhospi.ok;
        numeroColonneKo = iniValue.suivi_saisie_trhospi.ko;
      }
-     if(table == "trtramepecdentaire"){
-       numeroColonneOk = iniValue.suivi_saisie_trtramepecdentaire.ok;
-       numeroColonneKo = iniValue.suivi_saisie_trtramepecdentaire.ko;
+     if(table == "trpecdentaire"){
+       numeroColonneOk = iniValue.suivi_saisie_trpecdentaire.ok;
+       numeroColonneKo = iniValue.suivi_saisie_trpecdentaire.ko;
      }
      // if(table == "retouralmgto9"){
      //   numeroColonneOk = iniValue.suivi_saisie_retouralmgto9.ok;
@@ -1026,10 +1026,10 @@
        numeroColonneOk = iniValue.suivi_saisie_trldralmerys.ok;
        numeroColonneKo = iniValue.suivi_saisie_trldralmerys.ko;
      }
-     // if(table == "retouralmftp1"){
-     //   numeroColonneOk = iniValue.suivi_saisie_retouralmftp1.ok;
-     //   numeroColonneKo = iniValue.suivi_saisie_retouralmftp1.ko;
-     // }
+     if(table == "traaotd"){
+       numeroColonneOk = iniValue.suivi_saisie_traaotd.ok;
+       numeroColonneKo = iniValue.suivi_saisie_traaotd.ko;
+     }
      if(table == "trretourotdn2"){
        numeroColonneOk = iniValue.suivi_saisie_trretourotdn2.ok;
        numeroColonneKo = iniValue.suivi_saisie_trretourotdn2.ko;

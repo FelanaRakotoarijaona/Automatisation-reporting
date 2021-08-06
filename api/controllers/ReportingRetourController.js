@@ -518,20 +518,20 @@ module.exports = {
         Retour.countOkKoSum("trhospi",callback);
       },
       function (callback) {
-        Retour.countOkKoSum("trtramepecdentaire",callback);
+        Retour.countOkKoSum("trpecdentaire",callback);
       },
-      // function (callback) {
-      //   Retour.countOkKoSum("retouralmgto9",callback);
-      // },
+      function (callback) {
+        Retour.countOkKoSum("trpecoptique",callback);
+      },
       function (callback) {
         Retour.countOkKoSum("trpecaudio",callback);
       },
       // function (callback) {
       //   Retour.countOkKoSum("trldralmerys",callback);
       // },
-    //  function (callback) {
-    //     Retour.countOkKoSum("retouralmftp1",callback);
-    //   },
+     function (callback) {
+        Retour.countOkKoSum("traaotd",callback);
+      },
       // function (callback) {
       //   Retour.countOkKoSum("trretourotdn2",callback);
       // },
@@ -606,7 +606,7 @@ module.exports = {
 
       async.series([
         function (callback) {
-          Retour.ecritureOkKo(result[0],"trhospimulti",date_export,mois1,callback);
+          Retour.ecritureOkKo8(result[0],"trhospimulti",date_export,mois1,callback);
         },
        function (callback) {
           Retour.ecritureOkKo2(result[1],"trstcdentaire",date_export,mois1,callback);
@@ -639,20 +639,20 @@ module.exports = {
           Retour.ecritureOkKo3(result[8],"trhospi",date_export,mois1,callback);
         },
         function (callback) {
-          Retour.ecritureOkKo3(result[9],"trtramepecdentaire",date_export,mois1,callback);
+          Retour.ecritureOkKo3(result[9],"trpecdentaire",date_export,mois1,callback);
         },
-        // function (callback) {
-        //   Retour.ecritureOkKo3(result[12],"retouralmgto9",date_export,mois1,callback);
-        // },
         function (callback) {
-          Retour.ecritureOkKo3(result[10],"trpecaudio",date_export,mois1,callback);
+          Retour.ecritureOkKo3(result[10],"trpecoptique",date_export,mois1,callback);
+        },
+        function (callback) {
+          Retour.ecritureOkKo3(result[11],"trpecaudio",date_export,mois1,callback);
         },
         // function (callback) {
         //   Retour.ecritureOkKo3(result[11],"trldralmerys",date_export,mois1,callback);
         // },
-      //  function (callback) {
-      //     Retour.ecritureOkKo4(result[12],"retouralmftp1",date_export,mois1,callback);
-      //   },
+       function (callback) {
+          Retour.ecritureOkKo4(result[12],"traaotd",date_export,mois1,callback);
+        },
         // function (callback) {
         //   Retour.ecritureOkKo4(result[12],"trretourotdn2",date_export,mois1,callback);
         // },
@@ -1049,7 +1049,7 @@ rechercheColonnetest : function (req, res) {
 
     async.series([
       function (callback) {
-        Retour.ecritureOkKo3(result[0],"trse",date_export,mois1,callback);
+        Retour.ecritureOkKo8(result[0],"trse",date_export,mois1,callback);
       },
      function (callback) {
         Retour.ecritureOkKo4(result[1],"trretourotdn2cbtp",date_export,mois1,callback);
