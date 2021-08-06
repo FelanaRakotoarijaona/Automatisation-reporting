@@ -23,7 +23,7 @@ module.exports = {
       var tab = 0;
       for(var i=0;i<sheetd.length;i++)
       {
-        var mc1 = feuil[nb];
+        var mc1 = '^'+feuil[nb]+'$';
         const regex = new RegExp(mc1,'i');
         if(regex.test(sheetd[i]))
         {
