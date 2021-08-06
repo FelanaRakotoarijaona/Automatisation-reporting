@@ -1014,10 +1014,10 @@
        numeroColonneOk = iniValue.suivi_saisie_trpecdentaire.ok;
        numeroColonneKo = iniValue.suivi_saisie_trpecdentaire.ko;
      }
-     // if(table == "retouralmgto9"){
-     //   numeroColonneOk = iniValue.suivi_saisie_retouralmgto9.ok;
-     //   numeroColonneKo = iniValue.suivi_saisie_retouralmgto9.ko;
-     // }
+     if(table == "trpecoptique"){
+       numeroColonneOk = iniValue.suivi_saisie_trpecoptique.ok;
+       numeroColonneKo = iniValue.suivi_saisie_trpecoptique.ko;
+     }
     if(table == "trpecaudio"){
        numeroColonneOk = iniValue.suivi_saisie_trpecaudio.ok;
        numeroColonneKo = iniValue.suivi_saisie_trpecaudio.ko;
