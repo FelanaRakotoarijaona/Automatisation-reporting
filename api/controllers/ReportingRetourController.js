@@ -863,7 +863,7 @@ rechercheColonne_suivant : function (req, res) {
    else if(resultExcel[0]=='OK' || resultExcel[1]== 'OK' || resultExcel[2]== 'OK'  || resultExcel[3]== 'OK' || resultExcel[4]== 'OK' || resultExcel[5]== 'OK' || resultExcel[6]== 'OK'    )
    {
      // res.redirect('/exportRetour/'+date_export+'/x')
-     res.view('Retour/succes');
+     res.view('Retour/accueilRecherchefichier');
    }
    else
    {
