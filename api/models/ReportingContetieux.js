@@ -24,8 +24,8 @@ module.exports = {
     async.series([
       function (callback) {
         ReportingContetieux.query(sql, function(err, res){
-          // if (err) return res.badRequest(err);
-          // // callback(null, res.rows[0].ok);
+          if (err) return res.badRequest(err);
+          callback(null, res.rows[0].sum);
           // console.log(res.rows[0].nb);
           // if(res.rows[0].nb != undefined){
           //   callback(null, res.rows[0].nb);
@@ -33,23 +33,24 @@ module.exports = {
           // else{
           //   return res.rows[0].nb = 0;
           // }
-          if (err) {
-            console.log(err);
-            //return null;
-          }
-          else
-          {
-            if(res.rows[0])
-            {
-              console.log('ok');
-              callback(null, res.rows[0].sum);
-            }
-            else
-            {
-              console.log("null");
-              callback(null, 0);
-            }
-          }
+          /**********************/
+          // if (err) {
+          //   console.log(err);
+          //   //return null;
+          // }
+          // else
+          // {
+          //   if(res.rows[0])
+          //   {
+          //     console.log('ok');
+          //     callback(null, res.rows[0].sum);
+          //   }
+          //   else
+          //   {
+          //     console.log("null");
+          //     callback(null, 0);
+          //   }
+          // }
           
         });
       },
@@ -85,8 +86,8 @@ module.exports = {
     async.series([
       function (callback) {
         Retour.query(sql, function(err, res){
-          // if (err) return res.badRequest(err);
-          // // callback(null, res.rows[0].ok);
+          if (err) return res.badRequest(err);
+          callback(null, res.rows[0].sum);
           // console.log(res.rows[0].sum);
           // if(res.rows[0].sum != undefined){
           //   callback(null, res.rows[0].sum);
@@ -94,23 +95,24 @@ module.exports = {
           // else{
           //   return res.rows[0].sum = 0;
           // }
-          if (err) {
-            console.log(err);
-            //return null;
-          }
-          else
-          {
-            if(res.rows[0])
-            {
-              console.log('ok');
-              callback(null, res.rows[0].sum);
-            }
-            else
-            {
-              console.log("null");
-              callback(null, 0);
-            }
-          }
+          /******************************/
+          // if (err) {
+          //   console.log(err);
+          //   //return null;
+          // }
+          // else
+          // {
+          //   if(res.rows[0])
+          //   {
+          //     console.log('ok');
+          //     callback(null, res.rows[0].sum);
+          //   }
+          //   else
+          //   {
+          //     console.log("null");
+          //     callback(null, 0);
+          //   }
+          // }
           
         });
       },
@@ -145,59 +147,59 @@ module.exports = {
     async.series([
       function (callback) {
         ReportingContetieux.query(sqlOk, function(err, res){
-          // if (err) return res.badRequest(err);
-          // callback(null, res.rows[0].sum);
-          if (err) {
-            console.log(err);
-            //return null;
-          }
-          else
-          {
-            if(res.rows[0])
-            {
-              console.log('ok');
-              if(res.rows[0].sum == null){
-                callback(null, 0);
-              }
-              else{
-                callback(null, res.rows[0].sum);
-              }
+          if (err) return res.badRequest(err);
+          callback(null, res.rows[0].sum);
+          // if (err) {
+          //   console.log(err);
+          //   //return null;
+          // }
+          // else
+          // {
+          //   if(res.rows[0])
+          //   {
+          //     console.log('ok');
+          //     if(res.rows[0].sum == null){
+          //       callback(null, 0);
+          //     }
+          //     else{
+          //       callback(null, res.rows[0].sum);
+          //     }
               
-            }
-            else
-            {
-              console.log("null");
-              callback(null, 0);
-            }
-          }
+          //   }
+          //   else
+          //   {
+          //     console.log("null");
+          //     callback(null, 0);
+          //   }
+          // }
         });
       },
       function (callback) {
         ReportingContetieux.query(sqlKo, function(err, resKo){
-          // if (err) return res.badRequest(err);
-          // callback(null, resKo.rows[0].sum);
-          if (err) {
-            console.log(err);
-            //return null;
-          }
-          else
-          {
-            if(resKo.rows[0])
-            {
-              console.log('ok');
-              if(resKo.rows[0].sum == null){
-                callback(null, 0);
-              }
-              else{
-                callback(null, resKo.rows[0].sum);
-              }
-            }
-            else
-            {
-              console.log("null");
-              callback(null, 0);
-            }
-          }
+          if (err) return res.badRequest(err);
+          callback(null, resKo.rows[0].sum);
+          // if (err) {
+          //   console.log(err);
+          //   //return null;
+          // }
+          // else
+          // {
+          //   if(resKo.rows[0])
+          //   {
+          //     console.log('ok');
+          //     if(resKo.rows[0].sum == null){
+          //       callback(null, 0);
+          //     }
+          //     else{
+          //       callback(null, resKo.rows[0].sum);
+          //     }
+          //   }
+          //   else
+          //   {
+          //     console.log("null");
+          //     callback(null, 0);
+          //   }
+          // }
         });
       },
     ],function(err,result){

@@ -2015,48 +2015,48 @@ deleteFromChemin : function (table,callback) {
   async.series([
     function (callback) {
       ReportingIndu.query(sqlOk, function(err, res){
-        // if (err) return res.badRequest(err);
-        // callback(null, res.rows[0].nbok);
-        if (err) {
-          console.log(err);
-          //return null;
-        }
-        else
-        {
-          if(res.rows[0])
-          {
-            console.log('ok');
-            callback(null, res.rows[0].nbok);
-          }
-          else
-          {
-            console.log("null");
-            callback(null, 0);
-          }
-        }
+        if (err) return res.badRequest(err);
+        callback(null, res.rows[0].nbok);
+        // if (err) {
+        //   console.log(err);
+        //   //return null;
+        // }
+        // else
+        // {
+        //   if(res.rows[0])
+        //   {
+        //     console.log('ok');
+        //     callback(null, res.rows[0].nbok);
+        //   }
+        //   else
+        //   {
+        //     console.log("null");
+        //     callback(null, 0);
+        //   }
+        // }
       });
     },
     function (callback) {
       ReportingIndu.query(sqlKo, function(err, resKo){
-        // if (err) return res.badRequest(err);
-        // callback(null, resKo.rows[0].nbko);
-        if (err) {
-          console.log(err);
-          //return null;
-        }
-        else
-        {
-          if(resKo.rows[0])
-          {
-            console.log('ok');
-            callback(null, resKo.rows[0].nbko);
-          }
-          else
-          {
-            console.log("null");
-            callback(null, 0);
-          }
-        }
+        if (err) return res.badRequest(err);
+        callback(null, resKo.rows[0].nbko);
+        // if (err) {
+        //   console.log(err);
+        //   //return null;
+        // }
+        // else
+        // {
+        //   if(resKo.rows[0])
+        //   {
+        //     console.log('ok');
+        //     callback(null, resKo.rows[0].nbko);
+        //   }
+        //   else
+        //   {
+        //     console.log("null");
+        //     callback(null, 0);
+        //   }
+        // }
       });
     },
   ],function(err,result){
@@ -2080,59 +2080,59 @@ countOkKoDoubleSum : function (table, callback) {
   async.series([
     function (callback) {
       ReportingIndu.query(sqlOk, function(err, res){
-        // if (err) return res.badRequest(err);
-        // callback(null, res.rows[0].sum);
-        if (err) {
-          console.log(err);
-          //return null;
-        }
-        else
-        {
-          if(res.rows[0])
-          {
-            console.log('ok');
-            if(res.rows[0].sum == null){
-              callback(null, 0);
-            }
-            else{
-              callback(null, res.rows[0].sum);
-            }
+        if (err) return res.badRequest(err);
+        callback(null, res.rows[0].sum);
+        // if (err) {
+        //   console.log(err);
+        //   //return null;
+        // }
+        // else
+        // {
+        //   if(res.rows[0])
+        //   {
+        //     console.log('ok');
+        //     if(res.rows[0].sum == null){
+        //       callback(null, 0);
+        //     }
+        //     else{
+        //       callback(null, res.rows[0].sum);
+        //     }
             
-          }
-          else
-          {
-            console.log("null");
-            callback(null, 0);
-          }
-        }
+        //   }
+        //   else
+        //   {
+        //     console.log("null");
+        //     callback(null, 0);
+        //   }
+        // }
       });
     },
     function (callback) {
       ReportingIndu.query(sqlKo, function(err, resKo){
-        // if (err) return res.badRequest(err);
-        // callback(null, resKo.rows[0].sum);
-        if (err) {
-          console.log(err);
-          //return null;
-        }
-        else
-        {
-          if(resKo.rows[0])
-          {
-            console.log('ok');
-            if(resKo.rows[0].sum == null){
-              callback(null, 0);
-            }
-            else{
-              callback(null, resKo.rows[0].sum);
-            }
-          }
-          else
-          {
-            console.log("null");
-            callback(null, 0);
-          }
-        }
+        if (err) return res.badRequest(err);
+        callback(null, resKo.rows[0].sum);
+        // if (err) {
+        //   console.log(err);
+        //   //return null;
+        // }
+        // else
+        // {
+        //   if(resKo.rows[0])
+        //   {
+        //     console.log('ok');
+        //     if(resKo.rows[0].sum == null){
+        //       callback(null, 0);
+        //     }
+        //     else{
+        //       callback(null, resKo.rows[0].sum);
+        //     }
+        //   }
+        //   else
+        //   {
+        //     console.log("null");
+        //     callback(null, 0);
+        //   }
+        // }
       });
     },
   ],function(err,result){
@@ -2156,59 +2156,59 @@ countOkKoDoubleSumcbtp : function (table, callback) {
   async.series([
     function (callback) {
       ReportingIndu.query(sqlOk, function(err, res){
-        // if (err) return res.badRequest(err);
-        // callback(null, res.rows[0].sum);
-        if (err) {
-          console.log(err);
-          //return null;
-        }
-        else
-        {
-          if(res.rows[0])
-          {
-            console.log('ok');
-            if(res.rows[0].sum == null){
-              callback(null, 0);
-            }
-            else{
-              callback(null, res.rows[0].sum);
-            }
+        if (err) return res.badRequest(err);
+        callback(null, res.rows[0].sum);
+        // if (err) {
+        //   console.log(err);
+        //   //return null;
+        // }
+        // else
+        // {
+        //   if(res.rows[0])
+        //   {
+        //     console.log('ok');
+        //     if(res.rows[0].sum == null){
+        //       callback(null, 0);
+        //     }
+        //     else{
+        //       callback(null, res.rows[0].sum);
+        //     }
             
-          }
-          else
-          {
-            console.log("null");
-            callback(null, 0);
-          }
-        }
+        //   }
+        //   else
+        //   {
+        //     console.log("null");
+        //     callback(null, 0);
+        //   }
+        // }
       });
     },
     function (callback) {
       ReportingIndu.query(sqlKo, function(err, resKo){
-        // if (err) return res.badRequest(err);
-        // callback(null, resKo.rows[0].sum);
-        if (err) {
-          console.log(err);
-          //return null;
-        }
-        else
-        {
-          if(resKo.rows[0])
-          {
-            console.log('ok');
-            if(resKo.rows[0].sum == null){
-              callback(null, 0);
-            }
-            else{
-              callback(null, resKo.rows[0].sum);
-            }
-          }
-          else
-          {
-            console.log("null");
-            callback(null, 0);
-          }
-        }
+        if (err) return res.badRequest(err);
+        callback(null, resKo.rows[0].sum);
+        // if (err) {
+        //   console.log(err);
+        //   //return null;
+        // }
+        // else
+        // {
+        //   if(resKo.rows[0])
+        //   {
+        //     console.log('ok');
+        //     if(resKo.rows[0].sum == null){
+        //       callback(null, 0);
+        //     }
+        //     else{
+        //       callback(null, resKo.rows[0].sum);
+        //     }
+        //   }
+        //   else
+        //   {
+        //     console.log("null");
+        //     callback(null, 0);
+        //   }
+        // }
       });
     },
   ],function(err,result){
@@ -2231,25 +2231,25 @@ countOkKo : function (table, callback) {
   async.series([
     function (callback) {
       ReportingInovcomExport.query(sqlOk, function(err, res){
-        // if (err) return res.badRequest(err);
-        // callback(null, res.rows[0].nbok);
-        if (err) {
-          console.log(err);
-          //return null;
-        }
-        else
-        {
-          if(res.rows[0])
-          {
-            console.log('ok');
-            callback(null, res.rows[0].nbok);
-          }
-          else
-          {
-            console.log("null");
-            callback(null, 0);
-          }
-        }
+        if (err) return res.badRequest(err);
+        callback(null, res.rows[0].nbok);
+        // if (err) {
+        //   console.log(err);
+        //   //return null;
+        // }
+        // else
+        // {
+        //   if(res.rows[0])
+        //   {
+        //     console.log('ok');
+        //     callback(null, res.rows[0].nbok);
+        //   }
+        //   else
+        //   {
+        //     console.log("null");
+        //     callback(null, 0);
+        //   }
+        // }
       });
      },
     // function (callback) {
@@ -2281,26 +2281,27 @@ countOkKoSum : function (table, callback) {
   async.series([
     function (callback) {
       ReportingIndu.query(sql, function(err, res){
-        // if (err) return res.badRequest(err);
-        // // callback(null, res.rows[0].ok);
+        if (err) return res.badRequest(err);
+        callback(null, res.rows[0].sum);
         // console.log(res.rows[0].sum);
-        if (err) {
-          console.log(err);
-          //return null;
-        }
-        else
-        {
-          if(res.rows[0])
-          {
-            console.log('ok');
-            callback(null, res.rows[0].sum);
-          }
-          else
-          {
-            console.log("null");
-            callback(null, 0);
-          }
-        }
+        // if (err) {
+        //   console.log(err);
+        //   //return null;
+        // }
+        // else
+        // {
+        //   if(res.rows[0])
+        //   {
+        //     console.log('ok');
+        //     callback(null, res.rows[0].sum);
+        //   }
+        //   else
+        //   {
+        //     console.log("null");
+        //     callback(null, 0);
+        //   }
+        // }
+        /**************************/
         // if(res.rows[0].sum != undefined){
         //   callback(null, res.rows[0].sum);
         // }
@@ -2342,23 +2343,25 @@ countOkKoSumko : function (table, callback) {
   async.series([
     function (callback) {
       ReportingIndu.query(sql, function(err, res){
-        if (err) {
-          console.log(err);
-          //return null;
-        }
-        else
-        {
-          if(res.rows[0])
-          {
-            console.log('ok');
-            callback(null, res.rows[0].sum);
-          }
-          else
-          {
-            console.log("null");
-            callback(null, 0);
-          }
-        }
+        if (err) return res.badRequest(err);
+        callback(null, resKo.rows[0].sum);
+        // if (err) {
+        //   console.log(err);
+        //   //return null;
+        // }
+        // else
+        // {
+        //   if(res.rows[0])
+        //   {
+        //     console.log('ok');
+        //     callback(null, res.rows[0].sum);
+        //   }
+        //   else
+        //   {
+        //     console.log("null");
+        //     callback(null, 0);
+        //   }
+        // }
         
       });
     },
@@ -2395,48 +2398,48 @@ countOkKoIndu2 : function (table, callback) {
   async.series([
     function (callback) {
       ReportingIndu.query(sqlOk, function(err, res){
-        // if (err) return res.badRequest(err);
-        // callback(null, res.rows[0].nbok);
-        if (err) {
-          console.log(err);
-          //return null;
-        }
-        else
-        {
-          if(res.rows[0])
-          {
-            console.log('ok');
-            callback(null, res.rows[0].sum);
-          }
-          else
-          {
-            console.log("null");
-            callback(null, 0);
-          }
-        }
+        if (err) return res.badRequest(err);
+        callback(null, res.rows[0].sum);
+        // if (err) {
+        //   console.log(err);
+        //   //return null;
+        // }
+        // else
+        // {
+        //   if(res.rows[0])
+        //   {
+        //     console.log('ok');
+        //     callback(null, res.rows[0].sum);
+        //   }
+        //   else
+        //   {
+        //     console.log("null");
+        //     callback(null, 0);
+        //   }
+        // }
       });
     },
     function (callback) {
       ReportingIndu.query(sqlKo, function(err, resKo){
-        // if (err) return res.badRequest(err);
-        // callback(null, resKo.rows[0].nbko);
-        if (err) {
-          console.log(err);
-          //return null;
-        }
-        else
-        {
-          if(resKo.rows[0])
-          {
-            console.log('ok');
-            callback(null, resKo.rows[0].sum);
-          }
-          else
-          {
-            console.log("null");
-            callback(null, 0);
-          }
-        }
+        if (err) return res.badRequest(err);
+        callback(null, resKo.rows[0].sum);
+        // if (err) {
+        //   console.log(err);
+        //   //return null;
+        // }
+        // else
+        // {
+        //   if(resKo.rows[0])
+        //   {
+        //     console.log('ok');
+        //     callback(null, resKo.rows[0].sum);
+        //   }
+        //   else
+        //   {
+        //     console.log("null");
+        //     callback(null, 0);
+        //   }
+        // }
       });
     },
   ],function(err,result){
@@ -2462,26 +2465,27 @@ countOkKoIndu3 : function (table, callback) {
   async.series([
     function (callback) {
       ReportingIndu.query(sql, function(err, res){
-        // if (err) return res.badRequest(err);
-        // // callback(null, res.rows[0].ok);
+        if (err) return res.badRequest(err);
+        callback(null, res.rows[0].sum);
         // console.log(res.rows[0].sum);
-        if (err) {
-          console.log(err);
-          //return null;
-        }
-        else
-        {
-          if(res.rows[0])
-          {
-            console.log('ok');
-            callback(null, res.rows[0].sum);
-          }
-          else
-          {
-            console.log("null");
-            callback(null, 0);
-          }
-        }
+        // if (err) {
+        //   console.log(err);
+        //   //return null;
+        // }
+        // else
+        // {
+        //   if(res.rows[0])
+        //   {
+        //     console.log('ok');
+        //     callback(null, res.rows[0].sum);
+        //   }
+        //   else
+        //   {
+        //     console.log("null");
+        //     callback(null, 0);
+        //   }
+        // }
+        /**************************/
         // if(res.rows[0].sum != undefined){
         //   callback(null, res.rows[0].sum);
         // }
@@ -2536,25 +2540,25 @@ countOkKoContest : function (table, callback) {
   async.series([
     function (callback) {
       ReportingIndu.query(sqlOk, function(err, res){
-        // if (err) return res.badRequest(err);
-        // callback(null, res.rows[0].count);
-        if (err) {
-          console.log(err);
-          //return null;
-        }
-        else
-        {
-          if(res.rows[0])
-          {
-            console.log('ok');
-            callback(null, res.rows[0].count);
-          }
-          else
-          {
-            console.log("null");
-            callback(null, 0);
-          }
-        }
+        if (err) return res.badRequest(err);
+        callback(null, res.rows[0].count);
+        // if (err) {
+        //   console.log(err);
+        //   //return null;
+        // }
+        // else
+        // {
+        //   if(res.rows[0])
+        //   {
+        //     console.log('ok');
+        //     callback(null, res.rows[0].count);
+        //   }
+        //   else
+        //   {
+        //     console.log("null");
+        //     callback(null, 0);
+        //   }
+        // }
       });
     },
     // function (callback) {

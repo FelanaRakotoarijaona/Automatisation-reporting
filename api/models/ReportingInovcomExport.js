@@ -23,25 +23,25 @@ module.exports = {
     async.series([
       function (callback) {
         ReportingInovcomExport.query(sqlOk, function(err, res){
-          // if (err) return res.badRequest(err);
-          // callback(null, res.rows[0].nbok);
-          if (err) {
-            console.log(err);
-            //return null;
-          }
-          else
-          {
-            if(res.rows[0])
-            {
-              console.log('ok');
-              callback(null, res.rows[0].sum);
-            }
-            else
-            {
-              console.log("null");
-              callback(null, 0);
-            }
-          }
+          if (err) return res.badRequest(err);
+          callback(null, res.rows[0].sum);
+          // if (err) {
+          //   console.log(err);
+          //   //return null;
+          // }
+          // else
+          // {
+          //   if(res.rows[0])
+          //   {
+          //     console.log('ok');
+          //     callback(null, res.rows[0].sum);
+          //   }
+          //   else
+          //   {
+          //     console.log("null");
+          //     callback(null, 0);
+          //   }
+          // }
         });
       },
       // function (callback) {
@@ -71,25 +71,25 @@ module.exports = {
     async.series([
       function (callback) {
         ReportingInovcomExport.query(sqlOk, function(err, res){
-          // if (err) return res.badRequest(err);
-          // callback(null, res.rows[0].nbok);
-          if (err) {
-            console.log(err);
-            //return null;
-          }
-          else
-          {
-            if(res.rows[0])
-            {
-              console.log('ok');
-              callback(null, res.rows[0].sum);
-            }
-            else
-            {
-              console.log("null");
-              callback(null, 0);
-            }
-          }
+          if (err) return res.badRequest(err);
+          callback(null, res.rows[0].sum);
+          // if (err) {
+          //   console.log(err);
+          //   //return null;
+          // }
+          // else
+          // {
+          //   if(res.rows[0])
+          //   {
+          //     console.log('ok');
+          //     callback(null, res.rows[0].sum);
+          //   }
+          //   else
+          //   {
+          //     console.log("null");
+          //     callback(null, 0);
+          //   }
+          // }
         });
       },
       // function (callback) {
@@ -125,25 +125,25 @@ module.exports = {
       // },
       function (callback) {
         ReportingInovcomExport.query(sqlKo, function(err, resKo){
-          // if (err) return res.badRequest(err);
-          // callback(null, resKo.rows[0].nbko);
-          if (err) {
-            console.log(err);
-            //return null;
-          }
-          else
-          {
-            if(resKo.rows[0])
-            {
-              console.log('ok');
-              callback(null, resKo.rows[0].sum);
-            }
-            else
-            {
-              console.log("null");
-              callback(null, 0);
-            }
-          }
+          if (err) return res.badRequest(err);
+          callback(null, resKo.rows[0].sum);
+          // if (err) {
+          //   console.log(err);
+          //   //return null;
+          // }
+          // else
+          // {
+          //   if(resKo.rows[0])
+          //   {
+          //     console.log('ok');
+          //     callback(null, resKo.rows[0].sum);
+          //   }
+          //   else
+          //   {
+          //     console.log("null");
+          //     callback(null, 0);
+          //   }
+          // }
         });
       },
     ],function(err,result){
@@ -168,48 +168,48 @@ module.exports = {
     async.series([
       function (callback) {
         ReportingInovcomExport.query(sqlOk, function(err, res){
-          // if (err) return res.badRequest(err);
-          // callback(null, res.rows[0].nbok);
-          if (err) {
-            console.log(err);
-            //return null;
-          }
-          else
-          {
-            if(res.rows[0])
-            {
-              console.log('ok');
-              callback(null, res.rows[0].sum);
-            }
-            else
-            {
-              console.log("null");
-              callback(null, 0);
-            }
-          }  
+          if (err) return res.badRequest(err);
+          callback(null, res.rows[0].sum);
+          // if (err) {
+          //   console.log(err);
+          //   //return null;
+          // }
+          // else
+          // {
+          //   if(res.rows[0])
+          //   {
+          //     console.log('ok');
+          //     callback(null, res.rows[0].sum);
+          //   }
+          //   else
+          //   {
+          //     console.log("null");
+          //     callback(null, 0);
+          //   }
+          // }  
         });
       },
       function (callback) {
         ReportingInovcomExport.query(sqlKo, function(err, resKo){
-          // if (err) return res.badRequest(err);
-          // callback(null, resKo.rows[0].nbko);
-          if (err) {
-            console.log(err);
-            //return null;
-          }
-          else
-          {
-            if(resKo.rows[0])
-            {
-              console.log('ok');
-              callback(null, resKo.rows[0].sum);
-            }
-            else
-            {
-              console.log("null");
-              callback(null, 0);
-            }
-          }
+          if (err) return res.badRequest(err);
+          callback(null, resKo.rows[0].sum);
+          // if (err) {
+          //   console.log(err);
+          //   //return null;
+          // }
+          // else
+          // {
+          //   if(resKo.rows[0])
+          //   {
+          //     console.log('ok');
+          //     callback(null, resKo.rows[0].sum);
+          //   }
+          //   else
+          //   {
+          //     console.log("null");
+          //     callback(null, 0);
+          //   }
+          // }
         });
       },
     ],function(err,result){
@@ -233,25 +233,25 @@ module.exports = {
     async.series([
       function (callback) {
         ReportingInovcomExport.query(sqlOk, function(err, res){
-          // if (err) return res.badRequest(err);
-          // callback(null, res.rows[0].nbrokrib);
-          if (err) {
-            console.log(err);
-            //return null;
-          }
-          else
-          {
-            if(res.rows[0])
-            {
-              console.log('ok');
-              callback(null, res.rows[0].sum);
-            }
-            else
-            {
-              console.log("null");
-              callback(null, 0);
-            }
-          }
+          if (err) return res.badRequest(err);
+          callback(null, res.rows[0].sum);
+          // if (err) {
+          //   console.log(err);
+          //   //return null;
+          // }
+          // else
+          // {
+          //   if(res.rows[0])
+          //   {
+          //     console.log('ok');
+          //     callback(null, res.rows[0].sum);
+          //   }
+          //   else
+          //   {
+          //     console.log("null");
+          //     callback(null, 0);
+          //   }
+          // }
         });
        },
       // function (callback) {
@@ -282,48 +282,48 @@ module.exports = {
     async.series([
       function (callback) {
         ReportingInovcomExport.query(sqlOk, function(err, res){
-          // if (err) return res.badRequest(err);
-          // callback(null, res.rows[0].nbok);
-          if (err) {
-            console.log(err);
-            //return null;
-          }
-          else
-          {
-            if(res.rows[0])
-            {
-              console.log('ok');
-              callback(null, res.rows[0].sum);
-            }
-            else
-            {
-              console.log("null");
-              callback(null, 0);
-            }
-          }
+          if (err) return res.badRequest(err);
+          callback(null, res.rows[0].sum);
+          // if (err) {
+          //   console.log(err);
+          //   //return null;
+          // }
+          // else
+          // {
+          //   if(res.rows[0])
+          //   {
+          //     console.log('ok');
+          //     callback(null, res.rows[0].sum);
+          //   }
+          //   else
+          //   {
+          //     console.log("null");
+          //     callback(null, 0);
+          //   }
+          // }
         });
       },
       function (callback) {
         ReportingInovcomExport.query(sqlKo, function(err, resKo){
-          // if (err) return res.badRequest(err);
-          // callback(null, resKo.rows[0].nbko);
-          if (err) {
-            console.log(err);
-            //return null;
-          }
-          else
-          {
-            if(resKo.rows[0])
-            {
-              console.log('ok');
-              callback(null, resKo.rows[0].sum);
-            }
-            else
-            {
-              console.log("null");
-              callback(null, 0);
-            }
-          }
+          if (err) return res.badRequest(err);
+          callback(null, resKo.rows[0].sum);
+          // if (err) {
+          //   console.log(err);
+          //   //return null;
+          // }
+          // else
+          // {
+          //   if(resKo.rows[0])
+          //   {
+          //     console.log('ok');
+          //     callback(null, resKo.rows[0].sum);
+          //   }
+          //   else
+          //   {
+          //     console.log("null");
+          //     callback(null, 0);
+          //   }
+          // }
         });
       },
     ],function(err,result){
@@ -347,44 +347,48 @@ module.exports = {
     async.series([
       function (callback) {
         ReportingInovcomExport.query(sqlOk, function(err, res){
-          if (err) {
-            console.log(err);
-            //return null;
-          }
-          else
-          {
-            if(res.rows[0])
-            {
-              console.log('ok');
-              callback(null, res.rows[0].sum);
-            }
-            else
-            {
-              console.log("null");
-              callback(null, 0);
-            }
-          }
+          if (err) return res.badRequest(err);
+          callback(null, res.rows[0].sum);
+          // if (err) {
+          //   console.log(err);
+          //   //return null;
+          // }
+          // else
+          // {
+          //   if(res.rows[0])
+          //   {
+          //     console.log('ok');
+          //     callback(null, res.rows[0].sum);
+          //   }
+          //   else
+          //   {
+          //     console.log("null");
+          //     callback(null, 0);
+          //   }
+          // }
         });
       },
       function (callback) {
         ReportingInovcomExport.query(sqlKo, function(err, resKo){
-          if (err) {
-            console.log(err);
-            //return null;
-          }
-          else
-          {
-            if(resKo.rows[0])
-            {
-              console.log('ok');
-              callback(null, resKo.rows[0].sum);
-            }
-            else
-            {
-              console.log("null");
-              callback(null, 0);
-            }
-          }
+          if (err) return res.badRequest(err);
+          callback(null, resKo.rows[0].sum);
+          // if (err) {
+          //   console.log(err);
+          //   //return null;
+          // }
+          // else
+          // {
+          //   if(resKo.rows[0])
+          //   {
+          //     console.log('ok');
+          //     callback(null, resKo.rows[0].sum);
+          //   }
+          //   else
+          //   {
+          //     console.log("null");
+          //     callback(null, 0);
+          //   }
+          // }
         });
       },
     ],function(err,result){
@@ -408,48 +412,48 @@ module.exports = {
     async.series([
       function (callback) {
         ReportingInovcomExport.query(sqlOk, function(err, res){
-          // if (err) return res.badRequest(err);
-          // callback(null, res.rows[0].sum);
-          if (err) {
-            console.log(err);
-            //return null;
-          }
-          else
-          {
-            if(res.rows[0])
-            {
-              console.log('ok');
-              callback(null, res.rows[0].sum);
-            }
-            else
-            {
-              console.log("null");
-              callback(null, 0);
-            }
-          }
+          if (err) return res.badRequest(err);
+          callback(null, res.rows[0].sum);
+          // if (err) {
+          //   console.log(err);
+          //   //return null;
+          // }
+          // else
+          // {
+          //   if(res.rows[0])
+          //   {
+          //     console.log('ok');
+          //     callback(null, res.rows[0].sum);
+          //   }
+          //   else
+          //   {
+          //     console.log("null");
+          //     callback(null, 0);
+          //   }
+          // }
         });
       },
       function (callback) {
         ReportingInovcomExport.query(sqlKo, function(err, resKo){
-          // if (err) return res.badRequest(err);
-          // callback(null, resKo.rows[0].sum);
-          if (err) {
-            console.log(err);
-            //return null;
-          }
-          else
-          {
-            if(resKo.rows[0])
-            {
-              console.log('ok');
-              callback(null, resKo.rows[0].sum);
-            }
-            else
-            {
-              console.log("null");
-              callback(null, 0);
-            }
-          }
+          if (err) return res.badRequest(err);
+          callback(null, resKo.rows[0].sum);
+          // if (err) {
+          //   console.log(err);
+          //   //return null;
+          // }
+          // else
+          // {
+          //   if(resKo.rows[0])
+          //   {
+          //     console.log('ok');
+          //     callback(null, resKo.rows[0].sum);
+          //   }
+          //   else
+          //   {
+          //     console.log("null");
+          //     callback(null, 0);
+          //   }
+          // }
         });
       },
     ],function(err,result){
@@ -472,25 +476,25 @@ module.exports = {
     async.series([
       function (callback) {
         ReportingInovcomExport.query(sqlOk, function(err, res){
-          // if (err) return res.badRequest(err);
-          // callback(null, res.rows[0].sum);
-          if (err) {
-            console.log(err);
-            //return null;
-          }
-          else
-          {
-            if(res.rows[0])
-            {
-              console.log('ok');
-              callback(null, res.rows[0].sum);
-            }
-            else
-            {
-              console.log("null");
-              callback(null, 0);
-            }
-          }
+          if (err) return res.badRequest(err);
+          callback(null, res.rows[0].sum);
+          // if (err) {
+          //   console.log(err);
+          //   //return null;
+          // }
+          // else
+          // {
+          //   if(res.rows[0])
+          //   {
+          //     console.log('ok');
+          //     callback(null, res.rows[0].sum);
+          //   }
+          //   else
+          //   {
+          //     console.log("null");
+          //     callback(null, 0);
+          //   }
+          // }
         });
       },
       // function (callback) {
@@ -520,25 +524,25 @@ module.exports = {
     async.series([
       function (callback) {
         ReportingInovcomExport.query(sqlOk, function(err, res){
-          // if (err) return res.badRequest(err);
-          // callback(null, res.rows[0].okko);
-          if (err) {
-            console.log(err);
-            //return null;
-          }
-          else
-          {
-            if(res.rows[0])
-            {
-              console.log('ok');
-              callback(null, res.rows[0].sum);
-            }
-            else
-            {
-              console.log("null");
-              callback(null, 0);
-            }
-          }
+          if (err) return res.badRequest(err);
+          callback(null, res.rows[0].sum);
+          // if (err) {
+          //   console.log(err);
+          //   //return null;
+          // }
+          // else
+          // {
+          //   if(res.rows[0])
+          //   {
+          //     console.log('ok');
+          //     callback(null, res.rows[0].sum);
+          //   }
+          //   else
+          //   {
+          //     console.log("null");
+          //     callback(null, 0);
+          //   }
+          // }
         });
       },
       // function (callback) {
