@@ -2333,13 +2333,10 @@ countOkKoSum : function (table, callback) {
 /*****************************************************************************************/
 countOkKoSumko : function (table, callback) {
   const Excel = require('exceljs');
-  // var sqlOk ="select count(okko) as ok from "+table+" where okko='OK'"; //trameFlux
-  // var sqlKo ="select count(okko) as ko from "+table+" where okko='KO'";
+
   var sql ="select sum(nbko::integer) from "+table; 
  
   console.log(sql);
-  // console.log(sqlOk);
-  // console.log(sqlKo);
   async.series([
     function (callback) {
       ReportingIndu.query(sql, function(err, res){

@@ -713,17 +713,21 @@ module.exports = {
       
       ],function(err,resultExcel){
      console.log(resultExcel[0]);
-          if(resultExcel[0]==true)
-          {
-            console.log("true zn");
-            res.view('Retour/erera');
-          }
-          if(resultExcel[0]=='OK')
-          {
-            // res.redirect('/exportRetour/'+date_export+'/x')
-            // res.view('Retour/succes');
-            res.view('Retour/exportretoursuivant', {date : datetest});
-          }
+     if(err)
+     {
+       console.log("Une erreur s'est prod");
+       res.view('Retour/erera');
+     }
+     else if(resultExcel[0]=='OK' || resultExcel[1]== 'OK' || resultExcel[2]== 'OK'  || resultExcel[3]== 'OK' || resultExcel[4]== 'OK' || resultExcel[5]== 'OK' || resultExcel[6]== 'OK' || resultExcel[7]== 'OK' || resultExcel[8]== 'OK' || resultExcel[9]== 'OK' || resultExcel[10]=='OK')
+     {
+       // res.redirect('/exportRetour/'+date_export+'/x')
+       // res.view('Retour/succes');
+       res.view('Retour/exportretoursuivant', {date : datetest});
+     }
+     else
+     {
+      res.view('Retour/erera');
+     }
 
           
         
@@ -851,20 +855,20 @@ rechercheColonne_suivant : function (req, res) {
     
     ],function(err,resultExcel){
    console.log(resultExcel[0]);
-        if(resultExcel[0]==true)
-        {
-          console.log("true zn");
-          res.view('Retour/erera');
-        }
-        if(resultExcel[0]=='OK')
-        {
-          // res.redirect('/exportRetour/'+date_export+'/x')
-          res.view('Retour/succes');
-        }
-
-        
-      
-      
+   if(err)
+   {
+     console.log("Une erreur s'est prod");
+     res.view('Retour/erera');
+   }
+   else if(resultExcel[0]=='OK' || resultExcel[1]== 'OK' || resultExcel[2]== 'OK'  || resultExcel[3]== 'OK' || resultExcel[4]== 'OK' || resultExcel[5]== 'OK' || resultExcel[6]== 'OK'    )
+   {
+     // res.redirect('/exportRetour/'+date_export+'/x')
+     res.view('Retour/succes');
+   }
+   else
+   {
+    res.view('Retour/erera');
+   }
     })
   })
 },
@@ -1066,22 +1070,21 @@ rechercheColonnetest : function (req, res) {
   
     
     ],function(err,resultExcel){
-   console.log(resultExcel[0]);
-        if(resultExcel[0]==true)
-        {
-          console.log("true zn");
-          res.view('Retour/erera');
-        }
-        if(resultExcel[0]=='OK')
-        {
-          // res.redirect('/exportRetour/'+date_export+'/x')
-          res.view('Retour/succes');
-          // res.view('Retour/exportretoursuivant', {date : datetest});
-        }
-
-        
-      
-      
+      if(err)
+      {
+        console.log("Une erreur s'est prod");
+        res.view('Retour/erera');
+      }
+      else if(resultExcel[0]=='OK' || resultExcel[1]== 'OK' || resultExcel[2]== 'OK'  || resultExcel[3]== 'OK' || resultExcel[4]== 'OK' )
+      {
+        // res.redirect('/exportRetour/'+date_export+'/x')
+        res.view('Retour/succes');
+        // res.view('Retour/exportretoursuivant', {date : datetest});
+      }
+      else
+      {
+        res.view('Retour/erera');
+      }
     })
   })
 },
