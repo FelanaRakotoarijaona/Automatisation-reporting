@@ -254,6 +254,7 @@ module.exports.routes = {
   //type2
   '/accueilInovcomtype2' : 'ReportingInovcomController.accueil1type2',
   '/essaiInovcomtype2' : 'ReportingInovcomController.Essaiitype2',
+  '/reportinginovcomtype2' : 'ReportingInovcomController.essaiExceltype2',
   
    //type4
    '/accueilInovcomtype4' : 'ReportingInovcomController.accueil1type4',
