@@ -853,7 +853,7 @@ rechercheColonne : function (req, res) {
           console.log("true zn");
           res.view('reporting/erera');
         }
-        if(resultExcel[0]=='OK')
+        if(resultExcel[0]=='OK' || resultExcel[1]== 'OK' || resultExcel[2]== 'OK'  || resultExcel[3]== 'OK' || resultExcel[4]== 'OK' || resultExcel[5]== 'OK' || resultExcel[6]== 'OK' || resultExcel[7]== 'OK' || resultExcel[8]== 'OK' || resultExcel[9]== 'OK' || resultExcel[10]== 'OK' || resultExcel[11]== 'OK' || resultExcel[12]== 'OK' || resultExcel[13]== 'OK'   )
         {
           // res.redirect('/exportRetour/'+date_export+'/x')
           // res.view('reporting/succes');
@@ -994,7 +994,7 @@ rechercheColonneindusuivant : function (req, res) {
           console.log("true zn");
           res.view('reporting/erera');
         }
-        if(resultExcel[0]=='OK')
+        if(resultExcel[0]=='OK' || resultExcel[1]== 'OK' || resultExcel[2]== 'OK'  || resultExcel[3]== 'OK' || resultExcel[4]== 'OK' || resultExcel[5]== 'OK' || resultExcel[6]== 'OK' || resultExcel[7]== 'OK'  )
         {
           // res.redirect('/exportRetour/'+date_export+'/x')
           res.view('reporting/succes');
@@ -1094,7 +1094,7 @@ rechercheColonne2 : function (req, res) {
           console.log("true zn");
           res.view('Contentieux/erera');
         }
-        if(resultExcel[0]=='OK')
+        if(resultExcel[0]=='OK' || resultExcel[1]=='OK')
         {
           // res.redirect('/exportRetour/'+date_export+'/x')
           res.view('Contentieux/succes');
@@ -1235,15 +1235,11 @@ rechercheColonne3 : function (req, res) {
           console.log("true zn");
           res.view('Contentieux/erera');
         }
-        if(resultExcel[0]=='OK')
+        if(resultExcel[0]=='OK' || resultExcel[1]== 'OK' || resultExcel[2]== 'OK'  || resultExcel[3]== 'OK' || resultExcel[4]== 'OK' || resultExcel[5]== 'OK' || resultExcel[6]== 'OK' || resultExcel[7]== 'OK'  )
         {
           // res.redirect('/exportRetour/'+date_export+'/x')
           res.view('Contentieux/succes');
         }
-
-        
-      
-      
     })
   })
 },
