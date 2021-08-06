@@ -22,27 +22,34 @@
     // console.log(sqlKo);
     async.series([
       function (callback) {
-        Retour.query(sql, function(err, res){          
-          if (err) {
-            console.log(err);
-            //return null;
-          }
-          else
-          {
-            if(res.rows[0])
-            {
-              console.log('ok');
-              callback(null, res.rows[0].nb);
-            }
-            else
-            {
-              console.log("null");
-              callback(null, 0);
-            }
-          }
-                   
+        Retour.getDatastore().sendNativeQuery(sql, function(err, res){
+          if (err) return res.badRequest(err);
+          callback(null, res.rows[0].nb);
+          
         });
       },
+      // function (callback) {
+      //   Retour.query(sql, function(err, res){          
+      //     if (err) {
+      //       console.log(err);
+      //       //return null;
+      //     }
+      //     else
+      //     {
+      //       if(res.rows[0])
+      //       {
+      //         console.log('ok');
+      //         callback(null, res.rows[0].nb);
+      //       }
+      //       else
+      //       {
+      //         console.log("null");
+      //         callback(null, 0);
+      //       }
+      //     }
+                   
+      //   });
+      // },
       // function (callback) {
       //   Retour.query(sqlKo, function(err, resKo){
       //     if (err) return res.badRequest(err);
@@ -69,34 +76,41 @@
     console.log(sql);
     async.series([
       function (callback) {
-        Retour.query(sql, function(err, res){
-          if (err) {
-            console.log(err);
-          }
-          else
-          {
-            if(res.rows[0])
-            {
-              console.log('ok');
-              if(res.rows[0].sum==null)
-              {
-                callback(null, 0);
-              }
-              else
-              {
-                callback(null, res.rows[0].sum);
-              }
-              
-            }
-            else
-            {
-              console.log("null");
-              callback(null, 0);
-            }
-          }
+        Retour.getDatastore().sendNativeQuery(sql, function(err, res){
+          if (err) return res.badRequest(err);
+          callback(null, res.rows[0].sum);
           
         });
       },
+      // function (callback) {
+      //   Retour.query(sql, function(err, res){
+      //     if (err) {
+      //       console.log(err);
+      //     }
+      //     else
+      //     {
+      //       if(res.rows[0])
+      //       {
+      //         console.log('ok');
+      //         if(res.rows[0].sum==null)
+      //         {
+      //           callback(null, 0);
+      //         }
+      //         else
+      //         {
+      //           callback(null, res.rows[0].sum);
+      //         }
+              
+      //       }
+      //       else
+      //       {
+      //         console.log("null");
+      //         callback(null, 0);
+      //       }
+      //     }
+          
+      //   });
+      // },
     ],function(err,result){
       if(err) return res.badRequest(err);
       console.log("Count OK ==> " + result[0]);
