@@ -1330,12 +1330,11 @@ module.exports = {
           {
             var m = 'a';
           }
-       
-      }
-      console.log('date');
-
+      };
+      console.log('tonga eto v');
    if(col!=undefined && col2!=undefined)
     {
+      console.log('tonga eto v o');
       var debutligne = numeroligne + 1;
       for(var a=debutligne;a<=range.e.r;a++)
         {
