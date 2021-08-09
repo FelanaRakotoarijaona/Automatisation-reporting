@@ -1329,13 +1329,12 @@ module.exports = {
           else
           {
             var m = 'a';
-          }
+          };
       };
       console.log('tonga eto v');
    if(col!=undefined && col2!=undefined)
     {
       console.log('tonga eto v o');
-      var debutligne = numeroligne + 1;
       for(var a=debutligne;a<=range.e.r;a++)
         {
           var address_of_cell = {c:col, r:a};
