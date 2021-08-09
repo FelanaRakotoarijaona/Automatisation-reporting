@@ -1311,7 +1311,7 @@ module.exports = {
         var max = date2;
         console.log("colonne"+col + 'g' + col2);
         var debutligne = numeroligne + 1;
-        for(var a=debutligne;a<=range.e.r;a++)
+        /*for(var a=debutligne;a<=range.e.r;a++)
         {
           var address_of_cell = {c:col, r:a};
           var cell_ref = XLSX.utils.encode_cell(address_of_cell);
@@ -1324,9 +1324,9 @@ module.exports = {
             {
               max = desired_value1;
             };*/
-            console.log(desired_value1 + 'max');
+            /*console.log(desired_value1 + 'max');
         };
-        console.log('tonga eto v');
+        console.log('tonga eto v');*/
   /* if(col!=undefined && col2!=undefined)
     {
       console.log('tonga eto v o');
