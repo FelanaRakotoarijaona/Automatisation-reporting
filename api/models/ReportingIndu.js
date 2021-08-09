@@ -1320,7 +1320,8 @@ module.exports = {
             var desired_value1 = (desired_cell ? desired_cell.w : undefined);
             var today = new Date(desired_value1);
             var date1=dateFormat(today,"shortDate");
-            if(max<date1)
+            console.log(date1);
+            if(date2<date1)
             {
               max = desired_value1;
             }
