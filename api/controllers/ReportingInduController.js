@@ -355,6 +355,7 @@ module.exports = {
     {
       return res.view('Indu/accueil');
     },
+
     //REQUETE BASE DE DONNEE (donnéee des chemins du serveur)
     EssaiExcel : function(req,res)
     {
@@ -362,7 +363,7 @@ module.exports = {
       var datetest = req.param("date",0);
       var today = new Date(datetest);
       var tomorrow = new Date(today);
-      var f = tomorrow.setDate(today.getDate()- 1);
+      var f = tomorrow.setDate(today.getDate()- 10);
       var date2=dateFormat(f,"shortDate");
       var date3 =dateFormat(today,"shortDate");
       console.log(date3 + 'dattte');
