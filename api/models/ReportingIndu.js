@@ -1349,7 +1349,7 @@ module.exports = {
             /*console.log(desired_value1 + 'max');
         };
         console.log('tonga eto v');*/
-  /* if(col!=undefined && col2!=undefined)
+    if(col!=undefined && col2!=undefined)
     {
       console.log('tonga eto v o');
       for(var a=debutligne;a<=range.e.r;a++)
@@ -1384,7 +1384,7 @@ module.exports = {
       console.log('Colonne non trouvé');
     };
     
-   var nb= 0;*/
+   var nb= 0;
   
     console.log("nombreeeeebr"+ nbr + 'et' + nbrko);
     var tab = [nbr,nbrko];
