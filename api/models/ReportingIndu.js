@@ -1307,9 +1307,27 @@ module.exports = {
           col2=ra;
         };
       };
+      var max = '01/07/2021';
       console.log("colonne"+col + 'g' + col2);
+      for(var a=debutligne;a<=range.e.r;a++)
+      {
+        var address_of_cell = {c:col, r:a};
+        var cell_ref = XLSX.utils.encode_cell(address_of_cell);
+        var desired_cell = sheet[cell_ref];
+        var desired_value1 = (desired_cell ? desired_cell.w : undefined);
 
-   if(col!=undefined && col2!=undefined)
+        if(max<=desired_value1)
+        {
+          max = desired_value1;
+        }
+        else
+        {
+          var t = 0;
+        }
+      }
+      console.log(max + 'date');
+
+  /* if(col!=undefined && col2!=undefined)
     {
       var debutligne = numeroligne + 1;
       for(var a=debutligne;a<=range.e.r;a++)
@@ -1342,7 +1360,7 @@ module.exports = {
     else
     {
       console.log('Colonne non trouvé');
-    };
+    };*/
     
     var nb= 0;
   
