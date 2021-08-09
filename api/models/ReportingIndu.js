@@ -503,7 +503,7 @@ module.exports = {
           var tab = [];
           tab = ReportingIndu.lectureEtInsertion9(trameflux,feuil,cellule,table,cellule2,nb,numligne,date2,callback);
           console.log(tab);
-         var sql = "insert into "+table[nbe]+" (nbok,nbko) values ('"+tab[0]+"','"+tab[1]+"') ";
+          var sql = "insert into "+table[nbe]+" (nbok,nbko) values ('"+tab[0]+"','"+tab[1]+"') ";
                      ReportingInovcom.getDatastore().sendNativeQuery(sql, function(err,res){
                         if (err) { 
                           console.log("Une erreur ve insertion hoe?");
@@ -1318,15 +1318,13 @@ module.exports = {
           var desired_cell = sheet[cell_ref];
           var desired_value1 = (desired_cell ? desired_cell.w : undefined);
           var today = new Date(desired_value1);
-        
           var date1=dateFormat(today,"shortDate");
-          //console.log(desired_value1 + 'val');
           
-            if(date1>date2)
+            /*if(date1>=date2)
             {
               max = desired_value1;
-            };
-            console.log(max + 'max');
+            };*/
+            console.log(desired_value1 + 'max');
         };
         console.log('tonga eto v');
   /* if(col!=undefined && col2!=undefined)
