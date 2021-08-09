@@ -1321,15 +1321,15 @@ module.exports = {
             console.log(desired_value1);
             /*var today = new Date(desired_value1);
             var date1=dateFormat(today,"shortDate");
-            console.log(date1);
-            if(date2<date1)
+            console.log(date1);*/
+            if(date2<desired_value1)
             {
               max = desired_value1;
             }
             else
             {
               var a = 'b';
-            };*/
+            };
 
           };
           console.log('max0'+ max);
