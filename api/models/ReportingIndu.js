@@ -1319,10 +1319,10 @@ module.exports = {
             var desired_cell = sheet[cell_ref];
             var desired_value1 = (desired_cell ? desired_cell.w : undefined);
             console.log(desired_value1);
-            /*var today = new Date(desired_value1);
+            var today = new Date(desired_value1);
             var date1=dateFormat(today,"shortDate");
-            console.log(date1);*/
-            if(date2<desired_value1)
+            console.log(date1);
+            if(date2<date1)
             {
               max = desired_value1;
             }
