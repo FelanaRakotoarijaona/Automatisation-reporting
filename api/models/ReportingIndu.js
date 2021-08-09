@@ -1318,7 +1318,8 @@ module.exports = {
             var cell_ref = XLSX.utils.encode_cell(address_of_cell);
             var desired_cell = sheet[cell_ref];
             var desired_value1 = (desired_cell ? desired_cell.w : undefined);
-            var today = new Date(desired_value1);
+            console.log(desired_value1);
+            /*var today = new Date(desired_value1);
             var date1=dateFormat(today,"shortDate");
             console.log(date1);
             if(date2<date1)
@@ -1328,7 +1329,7 @@ module.exports = {
             else
             {
               var a = 'b';
-            };
+            };*/
 
           };
           console.log('max0'+ max);
