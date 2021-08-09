@@ -1332,7 +1332,7 @@ module.exports = {
           }
        
       }
-      console.log(max + 'date');
+      console.log('date');
 
    if(col!=undefined && col2!=undefined)
     {
