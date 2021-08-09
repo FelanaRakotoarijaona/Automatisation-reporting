@@ -1328,7 +1328,7 @@ module.exports = {
             }
             else
             {
-              var a = 'b';
+              var n = 'b';
             };
 
           };
