@@ -1307,7 +1307,7 @@ module.exports = {
           col2=ra;
         };
       };
-      var max = '01/07/2021';
+      var max = '1/7/21';
       console.log("colonne"+col + 'g' + col2);
       var debutligne = numeroligne + 1;
       for(var a=debutligne;a<=range.e.r;a++)
@@ -1655,8 +1655,6 @@ deleteFromChemin : function (table,callback) {
       if(c=='vrai')
       {
         console.log(nomcolonne[nb]);
-        /*var nomCol = nomcolonne[nb].replace("'", "''"); 
-        var nomCol2 = nomcolonne2[nb].replace("'", "''"); */
         var p = a.replace("'", "''"); 
         fs.readdir(a, (err, files) => {
           console.log(a);
