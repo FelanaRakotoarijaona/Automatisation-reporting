@@ -1251,7 +1251,7 @@ module.exports = {
     console.log("erreur absolu haaha");
   };
   },
-  lectureEtInsertion9:async function(trameflux,feuil,cellule,table,cellule2,nb,numligne,date2,callback){
+  lectureEtInsertion9:function(trameflux,feuil,cellule,table,cellule2,nb,numligne,date2,callback){
     XLSX = require('xlsx');
   var workbook = XLSX.readFile(trameflux[nb]);
   var numerofeuille = parseInt(feuil);
@@ -1318,8 +1318,9 @@ module.exports = {
             var cell_ref = XLSX.utils.encode_cell(address_of_cell);
             var desired_cell = sheet[cell_ref];
             var desired_value1 = (desired_cell ? desired_cell.w : undefined);
-
-            if(max<desired_value1)
+            var today = new Date(desired_value1);
+            var date1=dateFormat(today,"shortDate");
+            if(max<date1)
             {
               max = desired_value1;
             }
