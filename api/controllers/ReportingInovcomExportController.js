@@ -1471,8 +1471,14 @@ rechercheColonne11: function (req, res) {
       ReportingInovcomExport.countok("inovspeaudio",callback);
     },
     function (callback) {
-      ReportingInovcomExport.countok("santeclairaudio",callback);
+      ReportingInovcomExport.countok("inovtpscbtp",callback);
     },
+    function (callback) {
+      ReportingInovcomExport.countok("inovsecbtp",callback);
+    },
+   /* function (callback) {
+      ReportingInovcomExport.countok("santeclairaudio",callback);
+    },*/
   ],function(err,result){
     if(err) return res.badRequest(err);
     console.log("Count OK fll_11 0 ==> " + result[0].ok);
@@ -1501,8 +1507,14 @@ rechercheColonne11: function (req, res) {
         ReportingInovcomExport.ecritureOkKofll11(result[5],"inovspeaudio",date_export,mois1,callback);
       },
       function (callback) {
-        ReportingInovcomExport.ecritureOkKofll11sante(result[6],"santeclairaudio",date_export,mois1,callback);
+        ReportingInovcomExport.ecritureOkKofll11cbtp(result[6],"inovtpscbtp",date_export,mois1,callback);
       },
+      function (callback) {
+        ReportingInovcomExport.ecritureOkKofll11cbtp(result[7],"inovsecbtp",date_export,mois1,callback);
+      },
+      /*function (callback) {
+        ReportingInovcomExport.ecritureOkKofll11sante(result[6],"santeclairaudio",date_export,mois1,callback);
+      },*/
     ],function(err,resultExcel){
         console.log('**************');
         console.log(resultExcel);
@@ -1581,17 +1593,16 @@ rechercheColonne11cbtp: function (req, res) {
   console.log("RECHERCHE COLONNE");
   async.series([
     function (callback) {
-      ReportingInovcomExport.countok("inovtpscbtp",callback);
+      ReportingExcel.countok("santeclairaudio",callback);
     },
-    function (callback) {
+   /* function (callback) {
       ReportingInovcomExport.countok("inovsecbtp",callback);
-    },
+    },*/
   ],function(err,result){
     if(err) return res.badRequest(err);
     console.log("Count OK fll_11cbtp 0 ==> " + result[0].ok);
     console.log("Count OK fll_11cbtp 1 ==> " + result[1].ok);
     async.series([
-     
       function (callback) {
         ReportingInovcomExport.ecritureOkKofll11cbtp(result[0],"inovtpscbtp",date_export,mois1,callback);
       },
