@@ -1308,7 +1308,7 @@ module.exports = {
         };
       };
       
-      var max = '1/7/21';
+      var max = date2;
       console.log("colonne"+col + 'g' + col2);
       var debutligne = numeroligne + 1;
       for(var a=debutligne;a<=range.e.r;a++)
@@ -1318,7 +1318,15 @@ module.exports = {
         var desired_cell = sheet[cell_ref];
         var desired_value1 = (desired_cell ? desired_cell.w : undefined);
         console.log(desired_value1 + 'val');
-        max = desired_value1;
+        if(desired_value1>max)
+        {
+          max = desired_value1;
+        }
+        else
+        {
+          var m = 'a';
+        }
+       
       }
       console.log(max + 'date');
 

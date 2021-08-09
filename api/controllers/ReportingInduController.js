@@ -362,7 +362,7 @@ module.exports = {
       var datetest = req.param("date",0);
       var today = new Date(datetest);
       var tomorrow = new Date(today);
-      var f = tomorrow.setDate(today.getDate()- 1);
+      var f = '30/06/2021';
       var date2=dateFormat(f,"shortDate");
       var date3 =dateFormat(today,"shortDate");
       console.log(date3 + 'dattte');
