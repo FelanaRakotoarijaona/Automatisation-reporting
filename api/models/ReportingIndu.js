@@ -1307,7 +1307,8 @@ module.exports = {
           col2=ra;
         };
       };
-      var max = '1/7/21';
+      var today = '1/7/21';
+      var max = new Date(today);
       console.log("colonne"+col + 'g' + col2);
       var debutligne = numeroligne + 1;
       for(var a=debutligne;a<=range.e.r;a++)
@@ -1316,7 +1317,7 @@ module.exports = {
         var cell_ref = XLSX.utils.encode_cell(address_of_cell);
         var desired_cell = sheet[cell_ref];
         var desired_value1 = (desired_cell ? desired_cell.w : undefined);
-        //console.log(desired_value1 + 'val');
+        console.log(desired_value1 + 'val');
         if(max<=desired_value1)
         {
           max = desired_value1;
