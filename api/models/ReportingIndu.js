@@ -1316,7 +1316,7 @@ module.exports = {
         var cell_ref = XLSX.utils.encode_cell(address_of_cell);
         var desired_cell = sheet[cell_ref];
         var desired_value1 = (desired_cell ? desired_cell.w : undefined);
-        console.log(desired_value1 + 'val');
+        //console.log(desired_value1 + 'val');
         if(max<=desired_value1)
         {
           max = desired_value1;
@@ -1328,7 +1328,7 @@ module.exports = {
       }
       console.log(max + 'date');
 
-  /* if(col!=undefined && col2!=undefined)
+   if(col!=undefined && col2!=undefined)
     {
       var debutligne = numeroligne + 1;
       for(var a=debutligne;a<=range.e.r;a++)
@@ -1343,11 +1343,11 @@ module.exports = {
           var desired_cell2 = sheet[cell_ref2];
           var desired_value2 = (desired_cell2 ? desired_cell2.v : undefined);
 
-          if(desired_value1==date2 && (desired_value2=="OUI" || desired_value2=='oui'))
+          if(desired_value1==max && (desired_value2=="OUI" || desired_value2=='oui'))
           {
             nbr=nbr + 1;
           }
-          else if(desired_value1==date2 && (desired_value2=="NON" || desired_value2=='non'))
+          else if(desired_value1==max && (desired_value2=="NON" || desired_value2=='non'))
           {
             nbrko=nbrko + 1;
           }
@@ -1361,12 +1361,12 @@ module.exports = {
     else
     {
       console.log('Colonne non trouvé');
-    };*/
+    };
     
-   /* var nb= 0;
+   var nb= 0;
   
     console.log("nombreeeeebr"+ nbr + 'et' + nbrko);
-    var tab = [nbr,nbrko];*/
+    var tab = [nbr,nbrko];
     return tab;
   }
   catch
