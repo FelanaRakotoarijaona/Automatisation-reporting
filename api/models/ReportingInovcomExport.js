@@ -35,7 +35,7 @@ module.exports = {
          ligneDate1 = parseInt(rowNumber);
          var line = newworksheet.getRow(ligneDate1);
          var f = line.getCell(3).value;
-         var mc1 = "SANTECLAIR";
+         var mc1 = "^"+"SANTECLAIR"+"$";
          const regex = new RegExp(mc1,'i');
          if(regex.test(f))
          {
