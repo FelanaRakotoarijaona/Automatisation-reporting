@@ -1322,7 +1322,7 @@ module.exports = {
         var date1=dateFormat(today,"shortDate");
         console.log(desired_value1 + 'val');
         console.log(max + 'max');
-          if(max>date1)
+          if(date1<date2)
           {
             max = desired_value1;
           }
