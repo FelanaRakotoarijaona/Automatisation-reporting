@@ -1274,65 +1274,62 @@ module.exports = {
           {
            var am = 1;
           }
-        }
-    const sheet = workbook.Sheets[workbook.SheetNames[numerofeuille]];
-    var range = XLSX.utils.decode_range(sheet['!ref']);
-    var col;
-    var col2=13; 
-    var nbe = parseInt(nb);
-    for(var ra=0;ra<=range.e.c;ra++)
-      {
-        var address_of_cell = {c:ra, r:numeroligne};
-        var cell_ref = XLSX.utils.encode_cell(address_of_cell);
-        var desired_cell = sheet[cell_ref];
-        var desired_value = (desired_cell ? desired_cell.v : undefined);
-        var ko = cellule[nb];
-        const regex1 = new RegExp(ko,'i');
-        if(regex1.test(desired_value))
-        {
-          col=ra;
         };
-      };
+      const sheet = workbook.Sheets[workbook.SheetNames[numerofeuille]];
+      var range = XLSX.utils.decode_range(sheet['!ref']);
+      var col;
+      var col2=13; 
+      var nbe = parseInt(nb);
       for(var ra=0;ra<=range.e.c;ra++)
-      {
-        var address_of_cell = {c:ra, r:numeroligne};
-        var cell_ref = XLSX.utils.encode_cell(address_of_cell);
-        var desired_cell = sheet[cell_ref];
-        var desired_value = (desired_cell ? desired_cell.v : undefined);
-        var ok = cellule2[nb];
-        console.log(desired_value);
-        const regex1 = new RegExp(ok,'i');
-        if(regex1.test(desired_value))
         {
-          col2=ra;
-        };
-      };
-      var dateFormat = require("dateformat");
-      var max = date2;
-      console.log("colonne"+col + 'g' + col2);
-      var debutligne = numeroligne + 1;
-      for(var a=debutligne;a<=range.e.r;a++)
-      {
-        var address_of_cell = {c:col, r:a};
-        var cell_ref = XLSX.utils.encode_cell(address_of_cell);
-        var desired_cell = sheet[cell_ref];
-        var desired_value1 = (desired_cell ? desired_cell.w : undefined);
-        var today = new Date(desired_value1);
-       
-        var date1=dateFormat(today,"shortDate");
-        console.log(desired_value1 + 'val');
-        console.log(max + 'max');
-          if(date1>date2)
+          var address_of_cell = {c:ra, r:numeroligne};
+          var cell_ref = XLSX.utils.encode_cell(address_of_cell);
+          var desired_cell = sheet[cell_ref];
+          var desired_value = (desired_cell ? desired_cell.v : undefined);
+          var ko = cellule[nb];
+          const regex1 = new RegExp(ko,'i');
+          if(regex1.test(desired_value))
           {
-            max = desired_value1;
-          }
-          else
-          {
-            var m = 'a';
+            col=ra;
           };
-      };
-      console.log('tonga eto v');
-   if(col!=undefined && col2!=undefined)
+        };
+        for(var ra=0;ra<=range.e.c;ra++)
+        {
+          var address_of_cell = {c:ra, r:numeroligne};
+          var cell_ref = XLSX.utils.encode_cell(address_of_cell);
+          var desired_cell = sheet[cell_ref];
+          var desired_value = (desired_cell ? desired_cell.v : undefined);
+          var ok = cellule2[nb];
+          console.log(desired_value);
+          const regex1 = new RegExp(ok,'i');
+          if(regex1.test(desired_value))
+          {
+            col2=ra;
+          };
+        };
+        var dateFormat = require("dateformat");
+        var max = date2;
+        console.log("colonne"+col + 'g' + col2);
+        var debutligne = numeroligne + 1;
+        for(var a=debutligne;a<=range.e.r;a++)
+        {
+          var address_of_cell = {c:col, r:a};
+          var cell_ref = XLSX.utils.encode_cell(address_of_cell);
+          var desired_cell = sheet[cell_ref];
+          var desired_value1 = (desired_cell ? desired_cell.w : undefined);
+          var today = new Date(desired_value1);
+        
+          var date1=dateFormat(today,"shortDate");
+          //console.log(desired_value1 + 'val');
+          
+            if(date1>date2)
+            {
+              max = desired_value1;
+            };
+            console.log(max + 'max');
+        };
+        console.log('tonga eto v');
+  /* if(col!=undefined && col2!=undefined)
     {
       console.log('tonga eto v o');
       for(var a=debutligne;a<=range.e.r;a++)
@@ -1367,7 +1364,7 @@ module.exports = {
       console.log('Colonne non trouvé');
     };
     
-   var nb= 0;
+   var nb= 0;*/
   
     console.log("nombreeeeebr"+ nbr + 'et' + nbrko);
     var tab = [nbr,nbrko];

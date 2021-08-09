@@ -139,8 +139,8 @@ module.exports = {
        var rowm = newworksheet.getRow(1);
        var colonnne;
        var colDate1;
-       numeroLigne.getCell('BG').value = nombre_ok_ko.ok;
-       numeroLigne.getCell('DI').value = nombre_ok_ko.ko;
+       numeroLigne.getCell('DI').value = nombre_ok_ko.ok;
+       numeroLigne.getCell('BG').value = nombre_ok_ko.ko;
    
        
        await newWorkbook.xlsx.writeFile(path_reporting);
