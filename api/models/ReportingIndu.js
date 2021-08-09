@@ -1734,7 +1734,7 @@ deleteFromChemin : function (table,callback) {
 
                    //re=re.replace("'", "''");
                    console.log('ato'+re);
-                   var sql = "insert into "+nomBase+" (chemin,nomtable,numligne,numfeuile,colonnecible,colonnecible2) values ('"+re+"','"+nomtable[nb]+"','"+numligne[nb]+"','"+numfeuille[nb]+"','"+nomcolonne[nb]+"','"+nnomcolonne2[nb]+"') ";
+                   var sql = "insert into "+nomBase+" (chemin,nomtable,numligne,numfeuile,colonnecible,colonnecible2) values ('"+re+"','"+nomtable[nb]+"','"+numligne[nb]+"','"+numfeuille[nb]+"','"+nomcolonne[nb]+"','"+nomcolonne2[nb]+"') ";
                     ReportingInovcom.getDatastore().sendNativeQuery(sql, function(err,res){
                       if (err) { 
                         console.log(err);
