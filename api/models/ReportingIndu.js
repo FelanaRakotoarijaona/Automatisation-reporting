@@ -1315,17 +1315,17 @@ module.exports = {
         var cell_ref = XLSX.utils.encode_cell(address_of_cell);
         var desired_cell = sheet[cell_ref];
         var desired_value1 = (desired_cell ? desired_cell.w : undefined);
-
-        if(max<=desired_value1)
+        console.log(desired_value1 + 'val');
+        /*if(max<=desired_value1)
         {
           max = desired_value1;
         }
         else
         {
           var t = 0;
-        }
+        }*/
       }
-      console.log(max + 'date');
+      //console.log(max + 'date');
 
   /* if(col!=undefined && col2!=undefined)
     {
@@ -1362,13 +1362,11 @@ module.exports = {
       console.log('Colonne non trouvé');
     };*/
     
-    var nb= 0;
+   /* var nb= 0;
   
     console.log("nombreeeeebr"+ nbr + 'et' + nbrko);
-    var tab = [nbr,nbrko];
+    var tab = [nbr,nbrko];*/
     return tab;
-    /*var tab = [nbr,nbrko,nbrokrib];
-    return tab;*/
   }
   catch
   {
