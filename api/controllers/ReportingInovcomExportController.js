@@ -1595,6 +1595,12 @@ rechercheColonne11cbtp: function (req, res) {
     function (callback) {
       ReportingExcel.countOkKo("santeclairaudio",callback);
     },
+    function (callback) {
+      ReportingExcel.countOkKo("inovgestionillisible",callback);
+    },
+    function (callback) {
+      ReportingExcel.countOkKo("inovetatdesreste",callback);
+    },
    /* function (callback) {
       ReportingInovcomExport.countok("inovsecbtp",callback);
     },*/
@@ -1604,11 +1610,15 @@ rechercheColonne11cbtp: function (req, res) {
     //console.log("Count OK fll_11cbtp 1 ==> " + result[1].ok);
     async.series([
       function (callback) {
-        ReportingInovcomExport.ecritureOkKoNouveau(result[0],"santeclairaudio",date_export,mois1,callback);
+        ReportingInovcomExport.ecritureOkKoSanteclair(result[0],"santeclairaudio",date_export,mois1,callback);
       },
-      /*function (callback) {
-        ReportingInovcomExport.ecritureOkKofll11cbtp(result[1],"inovsecbtp",date_export,mois1,callback);
-      },*/
+      function (callback) {
+        ReportingInovcomExport.ecritureOkKoIllisible(result[1],"inovgestionillisible",date_export,mois1,callback);
+      },
+      function (callback) {
+        ReportingInovcomExport.ecritureOkKoEtatReste(result[2],"inovetatdesreste",date_export,mois1,callback);
+      },
+      
     ],function(err,resultExcel){
         console.log('**************');
         console.log(resultExcel);

@@ -11,7 +11,7 @@ const path_reporting = '/dev/prod/00-TOUS/TestReporting/REPORTING INOVCOM Type.x
 module.exports = {
   attributes: {
   },
-  ecritureOkKoNouveau : async function (nombre_ok_ko, table,date_export,mois1,callback) {
+  ecritureOkKoSanteclair : async function (nombre_ok_ko, table,date_export,mois1,callback) {
     if(nombre_ok_ko.ok==null && nombre_ok_ko.ko==null)
     {
      console.log('ok' + nombre_ok_ko.ok);
@@ -98,6 +98,123 @@ module.exports = {
    
     
      },
+     ecritureOkKoEtatReste : async function (nombre_ok_ko, table,date_export,mois1,callback) {
+      if(nombre_ok_ko.ok==null && nombre_ok_ko.ko==null)
+      {
+       console.log('ok' + nombre_ok_ko.ok);
+       console.log('ko' + nombre_ok_ko.ko);
+       return callback(null, "KO");
+      }
+      else
+      {
+       const Excel = require('exceljs');
+       const newWorkbook = new Excel.Workbook();
+       try{
+         await newWorkbook.xlsx.readFile(path_reporting);
+       const newworksheet = newWorkbook.getWorksheet(mois1);
+       var colonneDate = newworksheet.getColumn('A');
+       var ligneDate1;
+       var ligneDate;
+       colonneDate.eachCell(function(cell, rowNumber) {
+         var dateExcel = ReportingExcel.convertDate(cell.text);
+         if(dateExcel==date_export)
+         {
+           ligneDate1 = parseInt(rowNumber);
+           var line = newworksheet.getRow(ligneDate1);
+           var f = line.getCell(3).value;
+           var mc1 = "reste";
+           const regex = new RegExp(mc1,'i');
+           if(regex.test(f))
+           {
+             ligneDate = parseInt(rowNumber);
+           }
+         }
+       });
+       var rowDate = newworksheet.getRow(ligneDate);
+       var numeroLigne = rowDate;
+       var iniValue = ReportingExcel.getIniValue(table);
+       
+       var a5;
+   
+       var rowm = newworksheet.getRow(1);
+       var colonnne;
+       var colDate1;
+       numeroLigne.getCell('BG').value = nombre_ok_ko.ok;
+       numeroLigne.getCell('DI').value = nombre_ok_ko.ko;
+   
+       
+       await newWorkbook.xlsx.writeFile(path_reporting);
+       sails.log("Ecriture OK KO terminé"); 
+       return callback(null, "OK");
+     
+       }
+       catch
+       {
+         console.log("Une erreur s'est produite");
+         Reportinghtp.deleteToutHtp(table,3,callback);
+       }
+      }
+     
+      
+       },
+       ecritureOkKoIllisible : async function (nombre_ok_ko, table,date_export,mois1,callback) {
+        if(nombre_ok_ko.ok==null && nombre_ok_ko.ko==null)
+        {
+         console.log('ok' + nombre_ok_ko.ok);
+         console.log('ko' + nombre_ok_ko.ko);
+         return callback(null, "KO");
+        }
+        else
+        {
+         const Excel = require('exceljs');
+         const newWorkbook = new Excel.Workbook();
+         try{
+           await newWorkbook.xlsx.readFile(path_reporting);
+         const newworksheet = newWorkbook.getWorksheet(mois1);
+         var colonneDate = newworksheet.getColumn('A');
+         var ligneDate1;
+         var ligneDate;
+         colonneDate.eachCell(function(cell, rowNumber) {
+           var dateExcel = ReportingExcel.convertDate(cell.text);
+           if(dateExcel==date_export)
+           {
+             ligneDate1 = parseInt(rowNumber);
+             var line = newworksheet.getRow(ligneDate1);
+             var f = line.getCell(3).value;
+             var mc1 = "^"+"ALMERYS"+"$";
+             const regex = new RegExp(mc1,'i');
+             if(regex.test(f))
+             {
+               ligneDate = parseInt(rowNumber);
+             }
+           }
+         });
+         var rowDate = newworksheet.getRow(ligneDate);
+         var numeroLigne = rowDate;
+         
+         var a5;
+     
+         var rowm = newworksheet.getRow(1);
+         var colonnne;
+         var colDate1;
+         numeroLigne.getCell('FC').value = nombre_ok_ko.ok;
+         numeroLigne.getCell('DA').value = nombre_ok_ko.ko;
+     
+         
+         await newWorkbook.xlsx.writeFile(path_reporting);
+         sails.log("Ecriture OK KO terminé"); 
+         return callback(null, "OK");
+       
+         }
+         catch
+         {
+           console.log("Une erreur s'est produite");
+           Reportinghtp.deleteToutHtp(table,3,callback);
+         }
+        }
+       
+        
+         },
   // Récuperer nombre okko
   countok : function (table, callback) {
     const Excel = require('exceljs');
