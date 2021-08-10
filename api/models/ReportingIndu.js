@@ -33,7 +33,7 @@ module.exports = {
               {
                  //re = a+'\\'+file;
                  re = a+'/'+file;
-                 var sql = "insert into cheminindu3 (chemin,nomtable,numligne,numfeuile,colonnecible,colonnecible2) values ('"+re+"','"+nomTable+"','"+numLigne+"','"+numFeuille+"','"+nomColonne+"','"+colonnecible2+"') ";
+                 var sql = "insert into cheminindu3 (chemin,nomtable,numligne,numfeuile,colonnecible,colonnecible2) values ('"+re+"','"+nomTable+"','"+numLigne+"','"+numFeuille+"','"+nomColonne+"','"+colonnecible2[nb]+"') ";
                  Reportinghtp.getDatastore().sendNativeQuery(sql, function(err,res){
                   if (err) { 
                     console.log("Une erreur ve?");
@@ -51,7 +51,7 @@ module.exports = {
                var sql = "insert into chemintsisy (typologiedelademande) values ('"+re+"') ";
                Reportinghtp.getDatastore().sendNativeQuery(sql, function(err,res){
                 if (err) { 
-                  console.log("Une erreur ve? import 1"+err);
+                  console.log("Une erreur ve? import 1");
                   //return callback(err);
                  }
                 else
