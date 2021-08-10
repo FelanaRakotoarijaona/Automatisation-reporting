@@ -54,7 +54,7 @@ module.exports = {
                   console.log("Une erreur ve? import 1"+err);
                   //return callback(err);
                  }
-                elses
+                else
                 {
                   console.log(sql);
                   return callback(null, true);
