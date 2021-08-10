@@ -1251,7 +1251,7 @@ module.exports = {
     console.log("erreur absolu haaha");
   };
   },
-  lectureEtInsertion9:async function(trameflux,feuil,cellule,table,cellule2,nb,numligne,date2,callback){
+  lectureEtInsertion9:function(trameflux,feuil,cellule,table,cellule2,nb,numligne,date2,callback){
     XLSX = require('xlsx');
   var workbook = XLSX.readFile(trameflux[nb]);
   var numerofeuille = parseInt(feuil);
