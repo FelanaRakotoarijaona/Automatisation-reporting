@@ -1341,6 +1341,7 @@ module.exports = {
         var cell_ref22 = XLSX.utils.encode_cell(address_of_cell22);
         var desired_cell22 = sheet[cell_ref22];
         var desired_value22 = (desired_cell22 ? desired_cell22.w : undefined);
+        console.log(desired_value22+ 'valll');
     if(col!=undefined && col2!=undefined)
     {
       console.log('tonga eto v o');
