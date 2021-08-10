@@ -117,7 +117,7 @@ module.exports = {
           });
         });
   },
-  // Accueeil import
+  // Accueil import
   accueilImportRetour : function(req,res)
   {
     return res.view('Retour/accueilImport');
@@ -819,6 +819,9 @@ rechercheColonne_suivant : function (req, res) {
     function (callback) {
       Retour.countOkKoSum("trldrcbtp",callback);
     },
+    function (callback) {
+      Retour.countOkKoSum("trfactoptique",callback);
+    },
   ],function(err,result){
     if(err) return res.badRequest(err);
     console.log("Count OK 0==> " + result[0].ok);
@@ -828,6 +831,7 @@ rechercheColonne_suivant : function (req, res) {
     console.log("Count OK 4==> " + result[4].ok);
     console.log("Count OK 5==> " + result[5].ok );
     console.log("Count OK 6==> " + result[6].ok );
+    console.log("Count OK 6==> " + result[7].ok );
 
     async.series([
 
@@ -852,6 +856,9 @@ rechercheColonne_suivant : function (req, res) {
       function (callback) {
         Retour.ecritureOkKo6(result[6],"trldrcbtp",date_export,mois1,callback);
       },
+      function (callback) {
+        Retour.ecritureOkKoFactOptique(result[7],"trfactoptique",date_export,mois1,callback);
+      },
     
     ],function(err,resultExcel){
    console.log(resultExcel[0]);
@@ -860,10 +867,10 @@ rechercheColonne_suivant : function (req, res) {
      console.log("Une erreur s'est prod");
      res.view('Retour/erera');
    }
-   else if(resultExcel[0]=='OK' || resultExcel[1]== 'OK' || resultExcel[2]== 'OK'  || resultExcel[3]== 'OK' || resultExcel[4]== 'OK' || resultExcel[5]== 'OK' || resultExcel[6]== 'OK'    )
+   else if(resultExcel[0]=='OK' || resultExcel[1]== 'OK' || resultExcel[2]== 'OK'  || resultExcel[3]== 'OK' || resultExcel[4]== 'OK' || resultExcel[5]== 'OK' || resultExcel[6]== 'OK'  || resultExcel[7]== 'OK'  )
    {
      // res.redirect('/exportRetour/'+date_export+'/x')
-     res.view('Retour/succes');
+     res.view('Retour/accueilRecherchefichier');
    }
    else
    {

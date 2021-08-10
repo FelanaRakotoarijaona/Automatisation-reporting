@@ -503,7 +503,7 @@ module.exports = {
           var tab = [];
           tab = ReportingIndu.lectureEtInsertion9(trameflux,feuil,cellule,table,cellule2,nb,numligne,date2,callback);
           console.log(tab);
-         var sql = "insert into "+table[nbe]+" (nbok,nbko) values ('"+tab[0]+"','"+tab[1]+"') ";
+          var sql = "insert into "+table[nbe]+" (nbok,nbko) values ('"+tab[0]+"','"+tab[1]+"') ";
                      ReportingInovcom.getDatastore().sendNativeQuery(sql, function(err,res){
                         if (err) { 
                           console.log("Une erreur ve insertion hoe?");
@@ -1274,44 +1274,84 @@ module.exports = {
           {
            var am = 1;
           }
-        }
-    const sheet = workbook.Sheets[workbook.SheetNames[numerofeuille]];
-    var range = XLSX.utils.decode_range(sheet['!ref']);
-    var col;
-    var col2=13; 
-    var nbe = parseInt(nb);
-    for(var ra=0;ra<=range.e.c;ra++)
-      {
-        var address_of_cell = {c:ra, r:numeroligne};
-        var cell_ref = XLSX.utils.encode_cell(address_of_cell);
-        var desired_cell = sheet[cell_ref];
-        var desired_value = (desired_cell ? desired_cell.v : undefined);
-        var ko = cellule[nb];
-        const regex1 = new RegExp(ko,'i');
-        if(regex1.test(desired_value))
-        {
-          col=ra;
         };
-      };
+      const sheet = workbook.Sheets[workbook.SheetNames[numerofeuille]];
+      var range = XLSX.utils.decode_range(sheet['!ref']);
+      var col;
+      var col2=13; 
+      var nbe = parseInt(nb);
       for(var ra=0;ra<=range.e.c;ra++)
-      {
-        var address_of_cell = {c:ra, r:numeroligne};
-        var cell_ref = XLSX.utils.encode_cell(address_of_cell);
-        var desired_cell = sheet[cell_ref];
-        var desired_value = (desired_cell ? desired_cell.v : undefined);
-        var ok = cellule2[nb];
-        console.log(desired_value);
-        const regex1 = new RegExp(ok,'i');
-        if(regex1.test(desired_value))
         {
-          col2=ra;
+          var address_of_cell = {c:ra, r:numeroligne};
+          var cell_ref = XLSX.utils.encode_cell(address_of_cell);
+          var desired_cell = sheet[cell_ref];
+          var desired_value = (desired_cell ? desired_cell.v : undefined);
+          var ko = cellule[nb];
+          const regex1 = new RegExp(ko,'i');
+          if(regex1.test(desired_value))
+          {
+            col=ra;
+          };
         };
-      };
-      console.log("colonne"+col + 'g' + col2);
+        for(var ra=0;ra<=range.e.c;ra++)
+        {
+          var address_of_cell = {c:ra, r:numeroligne};
+          var cell_ref = XLSX.utils.encode_cell(address_of_cell);
+          var desired_cell = sheet[cell_ref];
+          var desired_value = (desired_cell ? desired_cell.v : undefined);
+          var ok = cellule2[nb];
+          console.log(desired_value);
+          const regex1 = new RegExp(ok,'i');
+          if(regex1.test(desired_value))
+          {
+            col2=ra;
+          };
+        };
+        var dateFormat = require("dateformat");
+        var max = date2;
+        console.log("colonne"+col + 'g' + col2);
+        var debutligne = numeroligne + 1;
+        console.log('tonga eto v o');
+        for(var a=debutligne;a<=range.e.r;a++)
+          {
+            var address_of_cell = {c:col, r:a};
+            var cell_ref = XLSX.utils.encode_cell(address_of_cell);
+            var desired_cell = sheet[cell_ref];
+            var desired_value1 = (desired_cell ? desired_cell.w : undefined);
+            console.log(desired_value1);
+            var today = new Date(desired_value1);
+            var date1=dateFormat(today,"shortDate");
+            console.log(date1);
+            if(date2<date1)
+            {
+              max = desired_value1;
+            }
+            else
+            {
+              var n = 'b';
+            };
 
-   if(col!=undefined && col2!=undefined)
+          };
+          console.log('max0'+ max);
+        /*for(var a=debutligne;a<=range.e.r;a++)
+        {
+          var address_of_cell = {c:col, r:a};
+          var cell_ref = XLSX.utils.encode_cell(address_of_cell);
+          var desired_cell = sheet[cell_ref];
+          var desired_value1 = (desired_cell ? desired_cell.w : undefined);
+          var today = new Date(desired_value1);
+          var date1=dateFormat(today,"shortDate");
+          
+            /*if(date1>=date2)
+            {
+              max = desired_value1;
+            };*/
+            /*console.log(desired_value1 + 'max');
+        };
+        console.log('tonga eto v');*/
+    if(col!=undefined && col2!=undefined)
     {
-      var debutligne = numeroligne + 1;
+      console.log('tonga eto v o');
       for(var a=debutligne;a<=range.e.r;a++)
         {
           var address_of_cell = {c:col, r:a};
@@ -1324,11 +1364,11 @@ module.exports = {
           var desired_cell2 = sheet[cell_ref2];
           var desired_value2 = (desired_cell2 ? desired_cell2.v : undefined);
 
-          if(desired_value1==date2 && (desired_value2=="OUI" || desired_value2=='oui'))
+          if(desired_value1==max && (desired_value2=="OUI" || desired_value2=='oui'))
           {
             nbr=nbr + 1;
           }
-          else if(desired_value1==date2 && (desired_value2=="NON" || desired_value2=='non'))
+          else if(desired_value1==max && (desired_value2=="NON" || desired_value2=='non'))
           {
             nbrko=nbrko + 1;
           }
@@ -1344,13 +1384,11 @@ module.exports = {
       console.log('Colonne non trouvé');
     };
     
-    var nb= 0;
+   var nb= 0;
   
     console.log("nombreeeeebr"+ nbr + 'et' + nbrko);
     var tab = [nbr,nbrko];
     return tab;
-    /*var tab = [nbr,nbrko,nbrokrib];
-    return tab;*/
   }
   catch
   {
@@ -1638,8 +1676,6 @@ deleteFromChemin : function (table,callback) {
       if(c=='vrai')
       {
         console.log(nomcolonne[nb]);
-        /*var nomCol = nomcolonne[nb].replace("'", "''"); 
-        var nomCol2 = nomcolonne2[nb].replace("'", "''"); */
         var p = a.replace("'", "''"); 
         fs.readdir(a, (err, files) => {
           console.log(a);
@@ -1717,7 +1753,7 @@ deleteFromChemin : function (table,callback) {
 
                    //re=re.replace("'", "''");
                    console.log('ato'+re);
-                   var sql = "insert into "+nomBase+" (chemin,nomtable,numligne,numfeuile,colonnecible,colonnecible2) values ('"+re+"','"+nomtable[nb]+"','"+numligne[nb]+"','"+numfeuille[nb]+"','"+nomcolonne[nb]+"','"+nnomcolonne2[nb]+"') ";
+                   var sql = "insert into "+nomBase+" (chemin,nomtable,numligne,numfeuile,colonnecible,colonnecible2) values ('"+re+"','"+nomtable[nb]+"','"+numligne[nb]+"','"+numfeuille[nb]+"','"+nomcolonne[nb]+"','"+nomcolonne2[nb]+"') ";
                     ReportingInovcom.getDatastore().sendNativeQuery(sql, function(err,res){
                       if (err) { 
                         console.log(err);

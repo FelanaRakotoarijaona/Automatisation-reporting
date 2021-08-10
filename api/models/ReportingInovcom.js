@@ -480,7 +480,7 @@
     tab = ReportingInovcom.lectureEtInsertionSanteclairAudio(trameflux,feuil,cellule,table,cellule2,nb,numligne,callback);
     var nbe= parseInt(nb);
     console.log(tab);
-    var sql = "insert into "+table[nb]+" (typologiedelademande,okko) values ('"+tab[0]+"','"+tab[1]+"')";
+    var sql = "insert into "+table[nb]+" (nbok,nbko) values ('"+tab[0]+"','"+tab[1]+"')";
     ReportingInovcom.getDatastore().sendNativeQuery(sql, function(err,res){
       if (err) { 
         console.log("Une erreur ve ok?");
@@ -500,7 +500,7 @@
     tab = ReportingInovcom.lectureEtInsertionGestionIllisible(trameflux,feuil,cellule,table,cellule2,nb,numligne,callback);
     var nbe= parseInt(nb);
     console.log(tab);
-    var sql = "insert into "+table[nb]+"  (typologiedelademande,okko) values ('"+tab[0]+"','"+tab[1]+"')";
+    var sql = "insert into "+table[nb]+"  (nbok,nbko) values ('"+tab[0]+"','"+tab[1]+"')";
     ReportingInovcom.getDatastore().sendNativeQuery(sql, function(err,res){
       if (err) { 
         console.log("Une erreur ve ok?");
@@ -520,7 +520,7 @@
     tab = ReportingInovcom.lectureEtInsertionEtatdesRestes(trameflux,feuil,cellule,table,cellule2,nb,numligne,callback);
     var nbe= parseInt(nb);
     console.log(tab);
-    var sql = "insert into "+table[nbe]+" (typologiedelademande,okko) values ('"+tab[0]+"','"+tab[1]+"')";
+    var sql = "insert into "+table[nbe]+" (nbok,nbko) values ('"+tab[0]+"','"+tab[1]+"')";
     ReportingInovcom.getDatastore().sendNativeQuery(sql, function(err,res){
       if (err) { 
         console.log("Une erreur ve ok?");

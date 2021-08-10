@@ -33,8 +33,9 @@ module.exports = {
         else
         {
           var m ='n'; 
-        }
+        };
       }
+      console.log('tabi'+tab);
       const sheet = workbook.Sheets[workbook.SheetNames[tab]];
       var range = XLSX.utils.decode_range(sheet['!ref']);
       var col = 0;
