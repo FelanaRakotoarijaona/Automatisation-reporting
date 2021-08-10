@@ -456,7 +456,7 @@ module.exports = {
         };
         
       }
-      else if(table[nbe]=="indusansnotif")
+      else if(table[nbe]=="indusansnotif" || table[nbe]=="indusansnotifcbtp")
       {
         console.log('type7');
           var tab = [];
