@@ -1745,10 +1745,9 @@ deleteFromChemin : function (table,callback) {
                                           }); 
           });
       }
-      else if(d=='vrai')
+     /* else if(d=='vrai')
       {
-        /*var nomCol = nomcolonne[nb].replace("'", "''"); 
-        var nomCol2 = nomcolonne2[nb].replace("'", "''"); */
+        
         var p = a1.replace("'", "''"); 
         fs.readdir(a1, (err, files) => {
           console.log(a1);
@@ -1802,13 +1801,20 @@ deleteFromChemin : function (table,callback) {
             
                                           }); 
           });
-      }
+      }*/
       else
       {
         var sql = "insert into chemintsisy (typologiedelademande) values ('k') ";
         ReportingInovcom.getDatastore().sendNativeQuery(sql, function(err,res){
-          if(err) return console.log(err);
-          else return callback(null, true);        
+          if (err) { 
+            console.log("Une erreur ve? import 1");
+            //return callback(err);
+           }
+          else
+          {
+            console.log(sql);
+            return callback(null, true);
+          };      
                               });   
       };
     },
