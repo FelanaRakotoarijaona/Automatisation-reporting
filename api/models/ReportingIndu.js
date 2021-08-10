@@ -2943,9 +2943,6 @@ ecritureOkKo : async function (nombre_ok_ko, table,date_export,mois1,callback) {
         // if(f == iniValue.ok)
         var getko_ini = man.getCell(colDate1).address;
       if(getko_ini == iniValue.ko+3 && f == iniValue.ok)
-      {
-        collonne = parseInt(colNumber);
-      }
         {
           colonnne = parseInt(colNumber);
         }
@@ -2964,9 +2961,6 @@ ecritureOkKo : async function (nombre_ok_ko, table,date_export,mois1,callback) {
         // if(f == iniValue.ok)
         var getko_ini = man.getCell(colDate2).address;
       if(getko_ini == iniValue.ko+3 && f == iniValue.ok)
-      {
-        collonne = parseInt(colNumber);
-      }
         {
           collonne = parseInt(colNumber);
         }
