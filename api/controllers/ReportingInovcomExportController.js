@@ -245,7 +245,7 @@ module.exports = {
       
     },
     /******************************************************************************/
-    rechercheColonne2: function (req, res) {
+    rechercheColonne2: async function (req, res) {
       const fs = require('fs');
       try {
         await fs.promises.open('/dev/prod/00-TOUS/TestReporting/REPORTING INOVCOM Type.xlsx', 'r+');
