@@ -2189,7 +2189,7 @@ countOkKoDoubleSum : function (table, callback) {
     },
   ],function(err,result){
     if(err) return res.badRequest(err);
-    console.log("Count OK ==> " + result[0]);
+    console.log("Count inducheque ==> " + result[0]);
     console.log("Count KO ==> " + result[1]);
     var okko = {};
     okko.ok = result[0];
@@ -2892,6 +2892,7 @@ ecritureOkKo : async function (nombre_ok_ko, table,date_export,mois1,callback) {
       }
     });
     console.log(" Colnumber2"+collonne);
+    console.log('************************nombre_ok_ko_ok: '+nombre_ok_ko.ok);
     numeroLigne.getCell(colonnne).value = nombre_ok_ko.ok;
     numeroLigne.getCell(collonne).value = nombre_ok_ko.ko;
     await newWorkbook.xlsx.writeFile(path_reporting);
