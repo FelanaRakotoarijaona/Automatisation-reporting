@@ -2783,13 +2783,13 @@ ecritureOkKo : async function (nombre_ok_ko, table,date_export,mois1,callback) {
     },
     /***************************************************************/
   ecritureOkKoDouble : async function (nombre_ok_ko, table,date_export,mois1,callback) {
-    if(nombre_ok_ko.ok==null && nombre_ok_ko.ko==null || nombre_ok_ko.ok==null && nombre_ok_ko.ko==undefined)
-    {
-     console.log('ok' + nombre_ok_ko.ok);
-     console.log('ko' + nombre_ok_ko.ko);
-     return callback(null, "KO");
-    }
-    else{
+    // if(nombre_ok_ko.ok==null && nombre_ok_ko.ko==null || nombre_ok_ko.ok==null && nombre_ok_ko.ko==undefined)
+    // {
+    //  console.log('ok' + nombre_ok_ko.ok);
+    //  console.log('ko' + nombre_ok_ko.ko);
+    //  return callback(null, "KO");
+    // }
+    // else{
     const Excel = require('exceljs');
     const cmd=require('node-cmd');
     const newWorkbook = new Excel.Workbook();
@@ -2881,7 +2881,7 @@ ecritureOkKo : async function (nombre_ok_ko, table,date_export,mois1,callback) {
       console.log("Une erreur s'est produite");
       Reportinghtp.deleteToutHtp(table,3,callback);
     }
-  }
+  //}
 
 
     },
