@@ -2940,13 +2940,11 @@ ecritureOkKo : async function (nombre_ok_ko, table,date_export,mois1,callback) {
         //var col = newworksheet.getColumn(colDate1);
         var man = newworksheet.getRow(3);
         var f = man.getCell(colDate1).value;
-        // if(f == iniValue.ok)
-        var getko_ini = man.getCell(colDate1).address;
-      if(getko_ini == iniValue.ko+3 && f == iniValue.ok)
+        if(f == iniValue.ok)
         {
           colonnne = parseInt(colNumber);
         }
-        }
+      }
     });
     console.log(" Colnumber"+colonnne);
   
