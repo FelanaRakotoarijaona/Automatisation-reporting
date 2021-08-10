@@ -36,7 +36,7 @@ module.exports = {
                  var sql = "insert into cheminindu3 (chemin,nomtable,numligne,numfeuile,colonnecible,colonnecible2) values ('"+re+"','"+nomTable+"','"+numLigne+"','"+numFeuille+"','"+nomColonne+"','"+colonnecible2+"') ";
                  Reportinghtp.getDatastore().sendNativeQuery(sql, function(err,res){
                   if (err) { 
-                    console.log("Une erreur ve? import 1");
+                    console.log("Une erreur ve?"+ err);
                     //return callback(err);
                    }
                   else

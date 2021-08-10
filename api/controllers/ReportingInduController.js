@@ -32,7 +32,7 @@ module.exports = {
     var option2 = [];
     var cheminp = [];
     var MotCle= [];
-    var r = [0,1];
+    var r = [0,1,2,3,4,5,6,7];
     var nomBase = "cheminindu3";
     //workbook.xlsx.readFile('ReportingIndu.xlsx')
     workbook.xlsx.readFile('ReportingInduserveur.xlsx')
