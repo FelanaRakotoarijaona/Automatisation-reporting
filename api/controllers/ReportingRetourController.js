@@ -1063,7 +1063,7 @@ rechercheColonnetest : function (req, res) {
         Retour.ecritureOkKo8(result[0],"trse",date_export,mois1,callback);
       },
      function (callback) {
-        Retour.ecritureOkKo4(result[1],"trretourotdn2cbtp",date_export,mois1,callback);
+        Retour.ecritureOkKo9(result[1],"trretourotdn2cbtp",date_export,mois1,callback);
       },
       function (callback) {
         Retour.ecritureOkKo5(result[2],"trautoqueryannulation",date_export,mois1,callback);
