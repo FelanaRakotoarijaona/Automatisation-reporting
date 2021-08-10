@@ -34,24 +34,25 @@ module.exports = {
                 {
                    //re = a+'\\'+file;
                    re = a+'/'+file;
-                   var sql = "insert into cheminindu3 (chemin,nomtable,numligne,numfeuile,colonnecible,colonnecible2) values ('"+re+"','"+nomTable+"','"+numLigne+"','"+numFeuille+"','"+nomColonne+"','"+colonnecible2[nb]+"') ";
-                   Reportinghtp.getDatastore().sendNativeQuery(sql, function(err,res){
-                    if (err) { 
-                      console.log("Une erreur ve?");
-                      //return callback(err);
-                     }
-                    else
-                    {
-                      console.log(sql);
-                      return callback(null, true);
-                    };
-                });
+                  
                 }
                 else
                 {
                   console.log('fichier non trouvé');
                 }
             });
+            var sql = "insert into cheminindu3 (chemin,nomtable,numligne,numfeuile,colonnecible,colonnecible2) values ('"+re+"','"+nomTable+"','"+numLigne+"','"+numFeuille+"','"+nomColonne+"','"+colonnecible2[nb]+"') ";
+            Reportinghtp.getDatastore().sendNativeQuery(sql, function(err,res){
+             if (err) { 
+               console.log("Une erreur ve?");
+               //return callback(err);
+              }
+             else
+             {
+               console.log(sql);
+               return callback(null, true);
+             };
+         });
           });
       }
       catch
