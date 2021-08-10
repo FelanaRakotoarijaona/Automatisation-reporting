@@ -1327,7 +1327,7 @@ module.exports = {
             if(maxi <= parseInt(desired_value1))
             {
               maxi = parseInt(desired_value1);
-             max = parseint(a);
+              max = parseInt(a);
             }
             else
             {
