@@ -1337,27 +1337,10 @@ module.exports = {
           };
           console.log('max0'+ maxi);
 
-       /* var address_of_cell22 = {c:col, r:max};
+        var address_of_cell22 = {c:col, r:maxi};
         var cell_ref22 = XLSX.utils.encode_cell(address_of_cell22);
         var desired_cell22 = sheet[cell_ref22];
         var desired_value22 = (desired_cell22 ? desired_cell22.w : undefined);
-        /*for(var a=debutligne;a<=range.e.r;a++)
-        {
-          var address_of_cell = {c:col, r:a};
-          var cell_ref = XLSX.utils.encode_cell(address_of_cell);
-          var desired_cell = sheet[cell_ref];
-          var desired_value1 = (desired_cell ? desired_cell.w : undefined);
-          var today = new Date(desired_value1);
-          var date1=dateFormat(today,"shortDate");
-          
-            /*if(date1>=date2)
-            {
-              max = desired_value1;
-            };*/
-            /*console.log(desired_value1 + 'max');
-        };
-        console.log('tonga eto v');*/
-       /* console.log('valeur'+ desired_value22);
     if(col!=undefined && col2!=undefined)
     {
       console.log('tonga eto v o');
@@ -1397,7 +1380,7 @@ module.exports = {
   
     console.log("nombreeeeebr"+ nbr + 'et' + nbrko);
     var tab = [nbr,nbrko];
-    return tab;*/
+    return tab;
   }
   catch
   {
