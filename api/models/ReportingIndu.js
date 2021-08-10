@@ -11,6 +11,81 @@ module.exports = {
 
   attributes: {
   },
+  importEssaitype3: function (table,table2,date,option,nb,nomtable,numligne,numfeuille,nomcolonne,colonnecible2,callback) {
+    const fs = require('fs');
+    var re  = 'a';
+    var tab = [];
+    var a = table[0]+date+table2[nb];
+    var b = option[nb];
+    var nomTable = nomtable[nb];
+    var numLigne= numligne[nb];
+    var numFeuille = numfeuille[nb];
+    var nomColonne = nomcolonne[nb];
+    var c = Reportinghtp.existenceFichier(a);
+    console.log(c);
+    if(c=='vrai')
+    {
+      fs.readdir(a, (err, files) => {
+        console.log(a);
+            files.forEach(file => {
+              const regex = new RegExp(b,'i');
+              if(regex.test(file))
+              {
+                 //re = a+'\\'+file;
+                 re = a+'/'+file;
+                 var sql = "insert into cheminindu3 (chemin,nomtable,numligne,numfeuile,colonnecible,colonnecible2) values ('"+re+"','"+nomTable+"','"+numLigne+"','"+numFeuille+"','"+nomColonne+"','"+colonnecible2+"') ";
+                 Reportinghtp.getDatastore().sendNativeQuery(sql, function(err,res){
+                  if (err) { 
+                    console.log("Une erreur ve?");
+                    //return callback(err);
+                   }
+                  else
+                  {
+                    console.log(sql);
+                    return callback(null, true);
+                  };
+              });
+              }
+              else
+              {
+               var sql = "insert into chemintsisy (typologiedelademande) values ('"+re+"') ";
+               Reportinghtp.getDatastore().sendNativeQuery(sql, function(err,res){
+                if (err) { 
+                  console.log("Une erreur ve? import 1"+err);
+                  //return callback(err);
+                 }
+                else
+                {
+                  console.log(sql);
+                  return callback(null,'KO');
+                };
+                 
+              });
+              }
+             
+             
+          });
+          
+         
+        });
+    }
+    else
+    {
+      var sql = "insert into chemintsisy(typologiedelademande) values ('k') ";
+      Reportinghtp.getDatastore().sendNativeQuery(sql, function(err,res){
+        if (err) { 
+          console.log("Une erreur ve? import 1");
+          //return callback(err);
+         }
+        else
+        {
+          console.log(sql);
+          return callback(null, true);
+        };
+         
+    });
+    }   
+  },
   lectureEtInsertiontype3:function(trameflux,feuil,cellule,table,cellule2,nb,numligne,callback){
     XLSX = require('xlsx');
     var workbook = XLSX.readFile(trameflux[nb],

@@ -32,7 +32,7 @@ module.exports = {
     var option2 = [];
     var cheminp = [];
     var MotCle= [];
-    var r = [0,1];
+    var r = [0,1,2,3,4,5,6,7];
     var nomBase = "cheminindu3";
     //workbook.xlsx.readFile('ReportingIndu.xlsx')
     workbook.xlsx.readFile('ReportingInduserveur.xlsx')
@@ -90,7 +90,7 @@ module.exports = {
                       ReportingInovcom.delete(nomtable,lot,cb);
                     },
                     function(cb){
-                      ReportingIndu.importEssai(table,cheminp,date,MotCle,lot,nomtable,numligne,numfeuille,nomcolonne,nomcolonne2,nomBase,chem2,option2,cb);
+                      ReportingIndu.importEssaitype3(table,cheminp,date,MotCle,lot,nomtable,numligne,numfeuille,nomcolonne,nomcolonne2,cb);
                     },
                   ],function(erroned, lotValues){
                     if(erroned) return res.badRequest(erroned);
