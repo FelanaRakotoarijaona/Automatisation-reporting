@@ -1324,7 +1324,7 @@ module.exports = {
             var desired_value1 = (desired_cell ? desired_cell.v : undefined);
             var maxi = 0;
             console.log(desired_value1);
-            if(maxi > parseInt(desired_value1))
+            if(maxi <= parseInt(desired_value1))
             {
               maxi = parseInt(desired_value1);
              // max = parseint(a);
