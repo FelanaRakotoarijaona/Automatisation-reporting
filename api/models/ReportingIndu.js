@@ -1310,7 +1310,7 @@ module.exports = {
         var address_of_cell2 = {c:col, r:3};
         var cell_ref2 = XLSX.utils.encode_cell(address_of_cell2);
         var desired_cell2 = sheet[cell_ref2];
-        var desired_value21 = (desired_cell2 ? desired_cell2.w : undefined);
+        var desired_value21 = (desired_cell2 ? desired_cell2.v : undefined);
         /*var dateFormat = require("dateformat");*/
         var max = desired_value21;
         console.log("colonne"+col + 'g' + col2);
@@ -1321,14 +1321,14 @@ module.exports = {
             var address_of_cell = {c:col, r:a};
             var cell_ref = XLSX.utils.encode_cell(address_of_cell);
             var desired_cell = sheet[cell_ref];
-            var desired_value1 = (desired_cell ? desired_cell.w : undefined);
+            var desired_value1 = (desired_cell ? desired_cell.v : undefined);
             console.log(desired_value1);
             /*var today = new Date(desired_value1);
             var date1=dateFormat(today,"shortDate");
             console.log(date1);*/
             if(max<desired_value1)
             {
-              max = desired_value1;
+              max = a;
             }
             else
             {
@@ -1337,6 +1337,11 @@ module.exports = {
 
           };
           console.log('max0'+ max);
+
+        var address_of_cell22 = {c:col, r:max};
+        var cell_ref22 = XLSX.utils.encode_cell(address_of_cell22);
+        var desired_cell22 = sheet[cell_ref22];
+        var desired_value22 = (desired_cell22 ? desired_cell22.v : undefined);
         /*for(var a=debutligne;a<=range.e.r;a++)
         {
           var address_of_cell = {c:col, r:a};
@@ -1368,11 +1373,11 @@ module.exports = {
           var desired_cell2 = sheet[cell_ref2];
           var desired_value2 = (desired_cell2 ? desired_cell2.v : undefined);
 
-          if(desired_value1==max && (desired_value2=="OUI" || desired_value2=='oui'))
+          if(desired_value1==desired_value22 && (desired_value2=="OUI" || desired_value2=='oui'))
           {
             nbr=nbr + 1;
           }
-          else if(desired_value1==max && (desired_value2=="NON" || desired_value2=='non'))
+          else if(desired_value1==desired_value22 && (desired_value2=="NON" || desired_value2=='non'))
           {
             nbrko=nbrko + 1;
           }
