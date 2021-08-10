@@ -1251,7 +1251,7 @@ module.exports = {
     console.log("erreur absolu haaha");
   };
   },
-  lectureEtInsertion9:async function(trameflux,feuil,cellule,table,cellule2,nb,numligne,date2,callback){
+  lectureEtInsertion9:function(trameflux,feuil,cellule,table,cellule2,nb,numligne,date2,callback){
     XLSX = require('xlsx');
   var workbook = XLSX.readFile(trameflux[nb]);
   var numerofeuille = parseInt(feuil);
@@ -1307,12 +1307,12 @@ module.exports = {
             col2=ra;
           };
         };
-        var address_of_cell2 = {c:col, r:3};
+        /*var address_of_cell2 = {c:col, r:3};
         var cell_ref2 = XLSX.utils.encode_cell(address_of_cell2);
         var desired_cell2 = sheet[cell_ref2];
         var desired_value21 = (desired_cell2 ? desired_cell2.v : undefined);
         /*var dateFormat = require("dateformat");*/
-        var max = desired_value21;
+        var max = 0;
         console.log("colonne"+col + 'g' + col2);
         var debutligne = numeroligne + 1;
         console.log('tonga eto v o');
@@ -1322,13 +1322,12 @@ module.exports = {
             var cell_ref = XLSX.utils.encode_cell(address_of_cell);
             var desired_cell = sheet[cell_ref];
             var desired_value1 = (desired_cell ? desired_cell.v : undefined);
+            var maxi = 0;
             console.log(desired_value1);
-            /*var today = new Date(desired_value1);
-            var date1=dateFormat(today,"shortDate");
-            console.log(date1);*/
-            if(max<desired_value1)
+            if(maxi < parseInt(desired_value1))
             {
-              max = a;
+              maxi = parseInt(desired_value1);
+             // max = parseint(a);
             }
             else
             {
@@ -1336,12 +1335,12 @@ module.exports = {
             };
 
           };
-          console.log('max0'+ max);
+          console.log('max0'+ maxi);
 
-        var address_of_cell22 = {c:col, r:max};
+       /* var address_of_cell22 = {c:col, r:max};
         var cell_ref22 = XLSX.utils.encode_cell(address_of_cell22);
         var desired_cell22 = sheet[cell_ref22];
-        var desired_value22 = (desired_cell22 ? desired_cell22.v : undefined);
+        var desired_value22 = (desired_cell22 ? desired_cell22.w : undefined);
         /*for(var a=debutligne;a<=range.e.r;a++)
         {
           var address_of_cell = {c:col, r:a};
@@ -1358,6 +1357,7 @@ module.exports = {
             /*console.log(desired_value1 + 'max');
         };
         console.log('tonga eto v');*/
+       /* console.log('valeur'+ desired_value22);
     if(col!=undefined && col2!=undefined)
     {
       console.log('tonga eto v o');
@@ -1397,7 +1397,7 @@ module.exports = {
   
     console.log("nombreeeeebr"+ nbr + 'et' + nbrko);
     var tab = [nbr,nbrko];
-    return tab;
+    return tab;*/
   }
   catch
   {
