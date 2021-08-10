@@ -36,7 +36,7 @@ module.exports = {
                  var sql = "insert into cheminindu3 (chemin,nomtable,numligne,numfeuile,colonnecible,colonnecible2) values ('"+re+"','"+nomTable+"','"+numLigne+"','"+numFeuille+"','"+nomColonne+"','"+colonnecible2+"') ";
                  Reportinghtp.getDatastore().sendNativeQuery(sql, function(err,res){
                   if (err) { 
-                    console.log("Une erreur ve?"+ err);
+                    console.log("Une erreur ve?");
                     //return callback(err);
                    }
                   else
@@ -44,24 +44,23 @@ module.exports = {
                     console.log(sql);
                     return callback(null, true);
                   };
-                   
               });
-             }
+              }
               else
               {
                var sql = "insert into chemintsisy (typologiedelademande) values ('"+re+"') ";
                Reportinghtp.getDatastore().sendNativeQuery(sql, function(err,res){
                 if (err) { 
-                  console.log("Une erreur ve? import 1");
+                  console.log("Une erreur ve? import 1"+err);
                   //return callback(err);
                  }
-                else
+                elses
                 {
                   console.log(sql);
                   return callback(null, true);
                 };
                  
-            });
+              });
               }
              
              
