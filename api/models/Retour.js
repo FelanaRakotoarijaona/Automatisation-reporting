@@ -954,6 +954,82 @@
 
 
       },
+         /***************************************************************/
+    ecritureOkKo9 : async function (nombre_ok_ko, table,date_export,mois1,callback) {
+      if(nombre_ok_ko.ok==null && nombre_ok_ko.ko==null || nombre_ok_ko.ok==null && nombre_ok_ko.ko==undefined)
+      {
+       console.log('ok' + nombre_ok_ko.ok);
+       console.log('ko' + nombre_ok_ko.ko);
+       return callback(null, "KO");
+      }
+      else{
+      const Excel = require('exceljs');
+      const cmd=require('node-cmd');
+      const newWorkbook = new Excel.Workbook();
+      
+      try{
+      
+              
+        await newWorkbook.xlsx.readFile(path_reporting);
+      const newworksheet = newWorkbook.getWorksheet(mois1);
+      var colonneDate = newworksheet.getColumn('A');
+      var ligneDate1;
+      var ligneDate;
+      colonneDate.eachCell(function(cell, rowNumber) {
+        var dateExcel = Retour.convertDate(cell.text);
+        if(dateExcel==date_export)
+        {
+          ligneDate1 = parseInt(rowNumber);
+          var line = newworksheet.getRow(ligneDate1);
+          var f = line.getCell(3).value;
+          //console.log();
+          if(f == "retour Almerys Cbtp FTP")
+          {
+            ligneDate = parseInt(rowNumber);
+          }
+        }
+      });
+      console.log("LIGNE DATE ===> "+ ligneDate);
+      var rowDate = newworksheet.getRow(ligneDate);
+      var numeroLigne = rowDate;
+      var iniValue = Retour.getIniValue(table);
+      
+      var a5;
+  
+      var rowm = newworksheet.getRow(1);
+        
+      var collonne;
+      var colDate2;
+      rowm.eachCell(function(cell, colNumber) {
+        if(cell.value == 'DOCUMENTS TRAITES NON SAISIS (RETOURS)')
+        {
+          colDate2 = parseInt(colNumber);
+          var man = newworksheet.getRow(3);
+          var f = man.getCell(colDate2).value;
+          var getko_ini = man.getCell(colDate2).address;
+          // console.log(getko_ini);
+          if(getko_ini == iniValue.ko+3 && f == iniValue.ok)
+          {
+            collonne = parseInt(colNumber);
+          }
+        }
+      });
+      console.log(" Colnumber2"+collonne);
+      numeroLigne.getCell(collonne).value = nombre_ok_ko.ok;
+      await newWorkbook.xlsx.writeFile(path_reporting);
+      sails.log("Ecriture OK KO terminé"); 
+      return callback(null, "OK");
+    
+      }
+      catch
+      {
+        console.log("Une erreur s'est produite");
+        Reportinghtp.deleteToutHtp(table,3,callback);
+      }
+    }
+
+
+      },
       /****************************************************************/
    getConfigIni : function() {
      const fs = require('fs');
