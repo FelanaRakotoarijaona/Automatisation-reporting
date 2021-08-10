@@ -24,50 +24,42 @@ module.exports = {
     console.log(c);
     if(c=='vrai')
     {
-      fs.readdir(a, (err, files) => {
-        console.log(a);
-            files.forEach(file => {
-              const regex = new RegExp(b,'i');
-              if(regex.test(file))
-              {
-                 //re = a+'\\'+file;
-                 re = a+'/'+file;
-                 var sql = "insert into cheminindu3 (chemin,nomtable,numligne,numfeuile,colonnecible,colonnecible2) values ('"+re+"','"+nomTable+"','"+numLigne+"','"+numFeuille+"','"+nomColonne+"','"+colonnecible2[nb]+"') ";
-                 Reportinghtp.getDatastore().sendNativeQuery(sql, function(err,res){
-                  if (err) { 
-                    console.log("Une erreur ve?");
-                    //return callback(err);
-                   }
-                  else
-                  {
-                    console.log(sql);
-                    return callback(null, true);
-                  };
-              });
-              }
-              else
-              {
-               /*var sql = "insert into chemintsisy (typologiedelademande) values ('"+re+"') ";
-               Reportinghtp.getDatastore().sendNativeQuery(sql, function(err,res){
-                if (err) { 
-                  console.log("Une erreur ve? import 1");
-                  //return callback(err);
-                 }
+      try
+      {
+        fs.readdir(a, (err, files) => {
+          console.log(a);
+              files.forEach(file => {
+                const regex = new RegExp(b,'i');
+                if(regex.test(file))
+                {
+                   //re = a+'\\'+file;
+                   re = a+'/'+file;
+                   var sql = "insert into cheminindu3 (chemin,nomtable,numligne,numfeuile,colonnecible,colonnecible2) values ('"+re+"','"+nomTable+"','"+numLigne+"','"+numFeuille+"','"+nomColonne+"','"+colonnecible2[nb]+"') ";
+                   Reportinghtp.getDatastore().sendNativeQuery(sql, function(err,res){
+                    if (err) { 
+                      console.log("Une erreur ve?");
+                      //return callback(err);
+                     }
+                    else
+                    {
+                      console.log(sql);
+                      return callback(null, true);
+                    };
+                });
+                }
                 else
                 {
-                  console.log(sql);*/
                   console.log('fichier non trouvé');
-                  return callback(null,'KO');
-               /* };
-                 
-              });*/
-              }
-             
-             
+                }
+            });
           });
-          
-         
-        });
+      }
+      catch
+      {
+        console.log('Aucune fichier trouvé');
+        return callback(null,'KO');
+      }
+     
     }
     else
     {
