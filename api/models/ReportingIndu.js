@@ -57,7 +57,7 @@ module.exports = {
                 else
                 {
                   console.log(sql);
-                  return callback(null, true);
+                  return callback(null,'KO');
                 };
                  
               });
