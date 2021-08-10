@@ -55,7 +55,11 @@ module.exports = {
                  return callback(null, true);
                };
            });
-            };
+            }
+            else
+            {
+              return callback(null,'KO');
+            }
             
             
           });
