@@ -14,7 +14,6 @@ module.exports = {
   importEssaitype3: function (table,table2,date,option,nb,nomtable,numligne,numfeuille,nomcolonne,colonnecible2,callback) {
     const fs = require('fs');
     var re  = 'a';
-    var tab = [];
     var a = table[0]+date+table2[nb];
     var b = option[nb];
     var nomTable = nomtable[nb];
@@ -48,7 +47,7 @@ module.exports = {
               }
               else
               {
-               var sql = "insert into chemintsisy (typologiedelademande) values ('"+re+"') ";
+               /*var sql = "insert into chemintsisy (typologiedelademande) values ('"+re+"') ";
                Reportinghtp.getDatastore().sendNativeQuery(sql, function(err,res){
                 if (err) { 
                   console.log("Une erreur ve? import 1");
@@ -56,11 +55,12 @@ module.exports = {
                  }
                 else
                 {
-                  console.log(sql);
+                  console.log(sql);*/
+                  console.log('fichier non trouvé');
                   return callback(null,'KO');
-                };
+               /* };
                  
-              });
+              });*/
               }
              
              
@@ -71,7 +71,8 @@ module.exports = {
     }
     else
     {
-      var sql = "insert into chemintsisy(typologiedelademande) values ('k') ";
+      return callback(null,'KO');
+      /*var sql = "insert into chemintsisy(typologiedelademande) values ('k') ";
       Reportinghtp.getDatastore().sendNativeQuery(sql, function(err,res){
         if (err) { 
           console.log("Une erreur ve? import 1");
@@ -83,7 +84,7 @@ module.exports = {
           return callback(null, true);
         };
          
-    });
+    });*/
     }   
   },
   lectureEtInsertiontype3:function(trameflux,feuil,cellule,table,cellule2,nb,numligne,callback){
