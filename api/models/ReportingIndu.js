@@ -2131,7 +2131,7 @@ deleteFromChemin : function (table,callback) {
 countOkKoDoubleSum : function (table, callback) {
   const Excel = require('exceljs');
   var sqlOk ="select sum(nbok::integer) from "+table; 
-  var sqlKo ="select sum(nbko::integer) from  "+table;
+  var sqlKo ="select sum(nbko::integer) from "+table;
  
   console.log(sqlOk);
   console.log(sqlKo);
@@ -2898,9 +2898,8 @@ ecritureOkKo : async function (nombre_ok_ko, table,date_export,mois1,callback) {
       }
     });
     console.log(" Colnumber2"+collonne);
-    console.log('************************nombre_ok_ko_ok: '+nombre_ok_ko.ok);
-    numeroLigne.getCell(colonnne).value = nombre_ok_ko.ok;
-    numeroLigne.getCell(collonne).value = nombre_ok_ko.ko;
+    numeroLigne.getCell(colonnne).value = 1421;
+    numeroLigne.getCell(collonne).value = 1421;
     await newWorkbook.xlsx.writeFile(path_reporting);
     sails.log("Ecriture OK KO terminé"); 
     return callback(null, "OK");
