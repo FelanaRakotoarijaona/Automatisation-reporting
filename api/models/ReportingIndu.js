@@ -1327,7 +1327,7 @@ module.exports = {
             if(maxi <= parseInt(desired_value1))
             {
               maxi = parseInt(desired_value1);
-             // max = parseint(a);
+             max = parseint(a);
             }
             else
             {
@@ -1337,7 +1337,7 @@ module.exports = {
           };
           console.log('max0'+ maxi);
 
-        var address_of_cell22 = {c:col, r:maxi};
+        var address_of_cell22 = {c:col, r:max};
         var cell_ref22 = XLSX.utils.encode_cell(address_of_cell22);
         var desired_cell22 = sheet[cell_ref22];
         var desired_value22 = (desired_cell22 ? desired_cell22.w : undefined);
