@@ -28,7 +28,7 @@ module.exports = {
       fs.readdir(a, (err, files) => {
         console.log(a);
             files.forEach(file => {
-              const regex = new RegExp(b+'*');
+              const regex = new RegExp(b,'i');
               if(regex.test(file))
               {
                  //re = a+'\\'+file;
