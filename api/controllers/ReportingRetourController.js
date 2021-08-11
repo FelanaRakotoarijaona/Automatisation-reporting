@@ -833,7 +833,7 @@ rechercheColonne_suivant : function (req, res) {
     console.log("Count OK 4==> " + result[4].ok);
     console.log("Count OK 5==> " + result[5].ok );
     console.log("Count OK 6==> " + result[6].ok );
-    console.log("Count OK 6==> " + result[7].ok );
+    // console.log("Count OK 6==> " + result[7].ok );
 
     async.series([
 
