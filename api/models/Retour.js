@@ -1331,14 +1331,14 @@
      //   numeroColonneOk = iniValue.suivi_saisie_retourpublipostage4.ok;
      //   numeroColonneKo = iniValue.suivi_saisie_retourpublipostage4.ko;
      // }
-     // if(table == "retourpublipostage5"){
-     //   numeroColonneOk = iniValue.suivi_saisie_retourpublipostage5.ok;
-     //   numeroColonneKo = iniValue.suivi_saisie_retourpublipostage5.ko;
-     // }
-     // if(table == "retourpublipostage6"){
-     //   numeroColonneOk = iniValue.suivi_saisie_retourpublipostage6.ok;
-     //   numeroColonneKo = iniValue.suivi_saisie_retourpublipostage6.ko;
-     // }
+     if(table == "trreclamdentaire"){
+       numeroColonneOk = iniValue.trreclamdentaire.ok;
+       numeroColonneKo = iniValue.trreclamdentaire.ko;
+     }
+     if(table == "trffactureaudio"){
+       numeroColonneOk = iniValue.trffactureaudio.ok;
+       numeroColonneKo = iniValue.trffactureaudio.ko;
+     }
      if(table == "trldrcbtp"){
       numeroColonneOk = iniValue.suivi_saisie_trldrcbtp.ok;
       numeroColonneKo = iniValue.suivi_saisie_trldrcbtp.ko;
