@@ -21,47 +21,52 @@ module.exports = {
     var numFeuille = numfeuille[nb];
     var nomColonne = nomcolonne[nb];
     var c = Reportinghtp.existenceFichier(a);
+    var tab = [];
     console.log(c);
     if(c=='vrai')
     {
       try
       {
         fs.readdir(a, (err, files) => {
-          if(err)
-          {
-            console.log('Aucune fichier trouvé');
-            return callback(null,'KO');
-          }
-          else
-          {
-                  files.forEach(file => {
-                
-                  const regex = new RegExp(b,'i');
-                  if(regex.test(file))
-                  {
-                     re = a+'/'+file;
-                     var sql = "insert into cheminindu3 (chemin,nomtable,numligne,numfeuile,colonnecible,colonnecible2) values ('"+re+"','"+nomTable+"','"+numLigne+"','"+numFeuille+"','"+nomColonne+"','"+colonnecible2[nb]+"') ";
-                      Reportinghtp.getDatastore().sendNativeQuery(sql, function(err,res){
-                      if (err) { 
-                        console.log("Une erreur ve?");
-                        //return callback(err);
-                        }
-                      else
-                      {
-                        console.log(sql);
-                        return callback(null, true);
-                      };
-                    });
+          console.log(a);
+              files.forEach(file => {
+                const regex = new RegExp(b,'i');
+                if(regex.test(file))
+                {
+                   re = a+'/'+file;
+                   tab.push(re);
+                   
+                }
+                else
+                {
+                  console.log('fichier non trouvé');
+                }
+            });
+            if(re!='a')
+            {
+              for(var i=0;i<tab.length;i++)
+              {
+                var sql = "insert into cheminindu3 (chemin,nomtable,numligne,numfeuile,colonnecible,colonnecible2) values ('"+tab[i]+"','"+nomTable+"','"+numLigne+"','"+numFeuille+"','"+nomColonne+"','"+colonnecible2[nb]+"') ";
+                Reportinghtp.getDatastore().sendNativeQuery(sql, function(err,res){
+                 if (err) { 
+                   console.log("Une erreur ve?");
+                   //return callback(err);
                   }
-                  else
-                  {
-                   console.log('colonne non trouvé');
-                  }
-                });
-
-          }
-                
-               
+                 else
+                 {
+                   console.log(sql);
+                   return callback(null, true);
+                 };
+             });
+              }
+              
+            }
+            else
+            {
+              return callback(null,'KO');
+            }
+            
+            
           });
       }
       catch
@@ -74,6 +79,19 @@ module.exports = {
     else
     {
       return callback(null,'KO');
+      /*var sql = "insert into chemintsisy(typologiedelademande) values ('k') ";
+      Reportinghtp.getDatastore().sendNativeQuery(sql, function(err,res){
+        if (err) { 
+          console.log("Une erreur ve? import 1");
+          //return callback(err);
+         }
+        else
+        {
+          console.log(sql);
+          return callback(null, true);
+        };
+         
+    });*/
     }   
   },
   lectureEtInsertiontype3:function(trameflux,feuil,cellule,table,cellule2,nb,numligne,callback){
