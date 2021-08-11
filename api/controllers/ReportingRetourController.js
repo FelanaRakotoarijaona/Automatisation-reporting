@@ -809,7 +809,7 @@ rechercheColonne_suivant : function (req, res) {
     },
     function (callback) {
       Retour.countOkKoSum("trindunoehtp",callback);
-    // },
+    },
     // function (callback) {
     //   Retour.countOkKoSum("trcentredesoin",callback);
     // },
