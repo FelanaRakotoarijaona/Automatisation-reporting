@@ -824,6 +824,12 @@ rechercheColonne_suivant : function (req, res) {
     function (callback) {
       Retour.countOkKoSum("trfactoptique",callback);
     },
+    function (callback) {
+      Retour.countOkKoSum("trffactureaudio",callback);
+    },
+    function (callback) {
+      Retour.countOkKoSum("trreclamdentaire",callback);
+    },
   ],function(err,result){
     if(err) return res.badRequest(err);
     console.log("Count OK 0==> " + result[0].ok);
@@ -860,6 +866,12 @@ rechercheColonne_suivant : function (req, res) {
       },
       function (callback) {
         Retour.ecritureOkKoFactOptique(result[6],"trfactoptique",date_export,mois1,callback);
+      },
+      function (callback) {
+        Retour.ecritureOkKo10(result[7],"trffactureaudio",date_export,mois1,callback);
+      },
+      function (callback) {
+        Retour.ecritureOkKo10(result[8],"trreclamdentaire",date_export,mois1,callback);
       },
     
     ],function(err,resultExcel){

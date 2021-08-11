@@ -129,7 +129,7 @@ try{
 
    workbook.xlsx.readFile(path_reporting)
         .then(function() {
-            var worksheet = workbook.getWorksheet(1);
+            var worksheet = workbook.getWorksheet(mois1);
             var colonneDate = worksheet.getColumn('A');
             var ligneDate1;
             var ligneDate;
@@ -204,7 +204,7 @@ catch
   
           
     await newWorkbook.xlsx.readFile(path_reporting);
-  const newworksheet = newWorkbook.getWorksheet(1);
+  const newworksheet = newWorkbook.getWorksheet(mois1);
   var colonneDate = newworksheet.getColumn('A');
   var ligneDate1;
   var ligneDate;
@@ -272,7 +272,7 @@ ecrituredata16facM : async function (nombre_ok_ko, table,date_export,mois1,callb
   
           
     await newWorkbook.xlsx.readFile(path_reporting);
-  const newworksheet = newWorkbook.getWorksheet(1);
+  const newworksheet = newWorkbook.getWorksheet(mois1);
   var colonneDate = newworksheet.getColumn('A');
   var ligneDate1;
   var ligneDate;
@@ -339,7 +339,7 @@ ecrituredata16facM : async function (nombre_ok_ko, table,date_export,mois1,callb
   
           
     await newWorkbook.xlsx.readFile(path_reporting);
-  const newworksheet = newWorkbook.getWorksheet(1);
+  const newworksheet = newWorkbook.getWorksheet(mois1);
   var colonneDate = newworksheet.getColumn('A');
   var ligneDate1;
   var ligneDate;
@@ -407,7 +407,7 @@ ecrituredata16facM : async function (nombre_ok_ko, table,date_export,mois1,callb
   
           
     await newWorkbook.xlsx.readFile(path_reporting);
-  const newworksheet = newWorkbook.getWorksheet(1);
+  const newworksheet = newWorkbook.getWorksheet(mois1);
   var colonneDate = newworksheet.getColumn('A');
   var ligneDate1;
   var ligneDate;
@@ -474,7 +474,7 @@ ecrituredata16facM : async function (nombre_ok_ko, table,date_export,mois1,callb
   
           
     await newWorkbook.xlsx.readFile(path_reporting);
-  const newworksheet = newWorkbook.getWorksheet(1);
+  const newworksheet = newWorkbook.getWorksheet(mois1);
   var colonneDate = newworksheet.getColumn('A');
   var ligneDate1;
   var ligneDate;
@@ -541,7 +541,7 @@ ecrituredata16facM : async function (nombre_ok_ko, table,date_export,mois1,callb
   
           
     await newWorkbook.xlsx.readFile(path_reporting);
-  const newworksheet = newWorkbook.getWorksheet(1);
+  const newworksheet = newWorkbook.getWorksheet(mois1);
   var colonneDate = newworksheet.getColumn('A');
   var ligneDate1;
   var ligneDate;
@@ -608,7 +608,7 @@ ecrituredata16facM : async function (nombre_ok_ko, table,date_export,mois1,callb
   
           
     await newWorkbook.xlsx.readFile(path_reporting);
-  const newworksheet = newWorkbook.getWorksheet(1);
+  const newworksheet = newWorkbook.getWorksheet(mois1);
   var colonneDate = newworksheet.getColumn('A');
   var ligneDate1;
   var ligneDate;
@@ -675,7 +675,7 @@ ecrituredata16facM : async function (nombre_ok_ko, table,date_export,mois1,callb
     
             
       await newWorkbook.xlsx.readFile(path_reporting);
-    const newworksheet = newWorkbook.getWorksheet(1);
+    const newworksheet = newWorkbook.getWorksheet(mois1);
     var colonneDate = newworksheet.getColumn('A');
     var ligneDate1;
     var ligneDate;
@@ -742,7 +742,7 @@ ecrituredata16facM : async function (nombre_ok_ko, table,date_export,mois1,callb
     
             
       await newWorkbook.xlsx.readFile(path_reporting);
-    const newworksheet = newWorkbook.getWorksheet(1);
+    const newworksheet = newWorkbook.getWorksheet(mois1);
     var colonneDate = newworksheet.getColumn('A');
     var ligneDate1;
     var ligneDate;
@@ -809,7 +809,7 @@ ecrituredata16facM : async function (nombre_ok_ko, table,date_export,mois1,callb
     
             
       await newWorkbook.xlsx.readFile(path_reporting);
-    const newworksheet = newWorkbook.getWorksheet(1);
+    const newworksheet = newWorkbook.getWorksheet(mois1);
     var colonneDate = newworksheet.getColumn('A');
     var ligneDate1;
     var ligneDate;
@@ -877,7 +877,7 @@ ecrituredata16facM : async function (nombre_ok_ko, table,date_export,mois1,callb
   
           
     await newWorkbook.xlsx.readFile(path_reporting);
-  const newworksheet = newWorkbook.getWorksheet(1);
+  const newworksheet = newWorkbook.getWorksheet(mois1);
   var colonneDate = newworksheet.getColumn('A');
   var ligneDate1;
   var ligneDate;
@@ -945,7 +945,7 @@ ecrituredatafinpfacM : async function (nombre_ok_ko, table,date_export,mois1,cal
   
           
     await newWorkbook.xlsx.readFile(path_reporting);
-  const newworksheet = newWorkbook.getWorksheet(1);
+  const newworksheet = newWorkbook.getWorksheet(mois1);
   var colonneDate = newworksheet.getColumn('A');
   var ligneDate1;
   var ligneDate;
@@ -1012,7 +1012,7 @@ ecrituredatafinpfacM : async function (nombre_ok_ko, table,date_export,mois1,cal
   
           
     await newWorkbook.xlsx.readFile(path_reporting);
-  const newworksheet = newWorkbook.getWorksheet(1);
+  const newworksheet = newWorkbook.getWorksheet(mois1);
   var colonneDate = newworksheet.getColumn('A');
   var ligneDate1;
   var ligneDate;
@@ -1080,7 +1080,7 @@ ecrituredatafinpfacM : async function (nombre_ok_ko, table,date_export,mois1,cal
   
           
     await newWorkbook.xlsx.readFile(path_reporting);
-  const newworksheet = newWorkbook.getWorksheet(1);
+  const newworksheet = newWorkbook.getWorksheet(mois1);
   var colonneDate = newworksheet.getColumn('A');
   var ligneDate1;
   var ligneDate;
@@ -1147,7 +1147,7 @@ ecrituredatafinpfacM : async function (nombre_ok_ko, table,date_export,mois1,cal
   
           
     await newWorkbook.xlsx.readFile(path_reporting);
-  const newworksheet = newWorkbook.getWorksheet(1);
+  const newworksheet = newWorkbook.getWorksheet(mois1);
   var colonneDate = newworksheet.getColumn('A');
   var ligneDate1;
   var ligneDate;
@@ -1213,7 +1213,7 @@ ecrituredatafinpfacM : async function (nombre_ok_ko, table,date_export,mois1,cal
   
           
     await newWorkbook.xlsx.readFile(path_reporting);
-  const newworksheet = newWorkbook.getWorksheet(1);
+  const newworksheet = newWorkbook.getWorksheet(mois1);
   var colonneDate = newworksheet.getColumn('A');
   var ligneDate1;
   var ligneDate;
@@ -1279,7 +1279,7 @@ ecrituredatafinpfacM : async function (nombre_ok_ko, table,date_export,mois1,cal
   
           
     await newWorkbook.xlsx.readFile(path_reporting);
-  const newworksheet = newWorkbook.getWorksheet(1);
+  const newworksheet = newWorkbook.getWorksheet(mois1);
   var colonneDate = newworksheet.getColumn('A');
   var ligneDate1;
   var ligneDate;
@@ -1345,7 +1345,7 @@ ecrituredatafinpfacM : async function (nombre_ok_ko, table,date_export,mois1,cal
   
           
     await newWorkbook.xlsx.readFile(path_reporting);
-  const newworksheet = newWorkbook.getWorksheet(1);
+  const newworksheet = newWorkbook.getWorksheet(mois1);
   var colonneDate = newworksheet.getColumn('A');
   var ligneDate1;
   var ligneDate;
@@ -1411,7 +1411,7 @@ ecrituredatafinpfacM : async function (nombre_ok_ko, table,date_export,mois1,cal
   
           
     await newWorkbook.xlsx.readFile(path_reporting);
-  const newworksheet = newWorkbook.getWorksheet(1);
+  const newworksheet = newWorkbook.getWorksheet(mois1);
   var colonneDate = newworksheet.getColumn('A');
   var ligneDate1;
   var ligneDate;
@@ -1477,7 +1477,7 @@ ecrituredatafinpfacM : async function (nombre_ok_ko, table,date_export,mois1,cal
   
           
     await newWorkbook.xlsx.readFile(path_reporting);
-  const newworksheet = newWorkbook.getWorksheet(1);
+  const newworksheet = newWorkbook.getWorksheet(mois1);
   var colonneDate = newworksheet.getColumn('A');
   var ligneDate1;
   var ligneDate;
@@ -1544,7 +1544,7 @@ ecrituredataj2tri : async function (nombre_ok_ko, table,date_export,mois1,callba
   
           
     await newWorkbook.xlsx.readFile(path_reporting);
-  const newworksheet = newWorkbook.getWorksheet(1);
+  const newworksheet = newWorkbook.getWorksheet(mois1);
   var colonneDate = newworksheet.getColumn('A');
   var ligneDate1;
   var ligneDate;
@@ -1611,7 +1611,7 @@ ecrituredataj2facM : async function (nombre_ok_ko, table,date_export,mois1,callb
   
           
     await newWorkbook.xlsx.readFile(path_reporting);
-  const newworksheet = newWorkbook.getWorksheet(1);
+  const newworksheet = newWorkbook.getWorksheet(mois1);
   var colonneDate = newworksheet.getColumn('A');
   var ligneDate1;
   var ligneDate;
@@ -1677,7 +1677,7 @@ ecrituredataj2facM : async function (nombre_ok_ko, table,date_export,mois1,callb
   
           
     await newWorkbook.xlsx.readFile(path_reporting);
-  const newworksheet = newWorkbook.getWorksheet(1);
+  const newworksheet = newWorkbook.getWorksheet(mois1);
   var colonneDate = newworksheet.getColumn('A');
   var ligneDate1;
   var ligneDate;
@@ -1744,7 +1744,7 @@ ecrituredataj2facM : async function (nombre_ok_ko, table,date_export,mois1,callb
   
           
     await newWorkbook.xlsx.readFile(path_reporting);
-  const newworksheet = newWorkbook.getWorksheet(1);
+  const newworksheet = newWorkbook.getWorksheet(mois1);
   var colonneDate = newworksheet.getColumn('A');
   var ligneDate1;
   var ligneDate;
@@ -1810,7 +1810,7 @@ ecrituredataj2facM : async function (nombre_ok_ko, table,date_export,mois1,callb
   
           
     await newWorkbook.xlsx.readFile(path_reporting);
-  const newworksheet = newWorkbook.getWorksheet(1);
+  const newworksheet = newWorkbook.getWorksheet(mois1);
   var colonneDate = newworksheet.getColumn('A');
   var ligneDate1;
   var ligneDate;
@@ -1876,7 +1876,7 @@ ecrituredataj2facM : async function (nombre_ok_ko, table,date_export,mois1,callb
   
           
     await newWorkbook.xlsx.readFile(path_reporting);
-  const newworksheet = newWorkbook.getWorksheet(1);
+  const newworksheet = newWorkbook.getWorksheet(mois1);
   var colonneDate = newworksheet.getColumn('A');
   var ligneDate1;
   var ligneDate;
@@ -1942,7 +1942,7 @@ ecrituredataj2facM : async function (nombre_ok_ko, table,date_export,mois1,callb
   
           
     await newWorkbook.xlsx.readFile(path_reporting);
-  const newworksheet = newWorkbook.getWorksheet(1);
+  const newworksheet = newWorkbook.getWorksheet(mois1);
   var colonneDate = newworksheet.getColumn('A');
   var ligneDate1;
   var ligneDate;
@@ -2008,7 +2008,7 @@ ecrituredataj2facM : async function (nombre_ok_ko, table,date_export,mois1,callb
   
           
     await newWorkbook.xlsx.readFile(path_reporting);
-  const newworksheet = newWorkbook.getWorksheet(1);
+  const newworksheet = newWorkbook.getWorksheet(mois1);
   var colonneDate = newworksheet.getColumn('A');
   var ligneDate1;
   var ligneDate;
@@ -2074,7 +2074,7 @@ ecrituredataj2facM : async function (nombre_ok_ko, table,date_export,mois1,callb
   
           
     await newWorkbook.xlsx.readFile(path_reporting);
-  const newworksheet = newWorkbook.getWorksheet(1);
+  const newworksheet = newWorkbook.getWorksheet(mois1);
   var colonneDate = newworksheet.getColumn('A');
   var ligneDate1;
   var ligneDate;
@@ -2140,7 +2140,7 @@ ecrituredataj2facM : async function (nombre_ok_ko, table,date_export,mois1,callb
   
           
     await newWorkbook.xlsx.readFile(path_reporting);
-  const newworksheet = newWorkbook.getWorksheet(1);
+  const newworksheet = newWorkbook.getWorksheet(mois1);
   var colonneDate = newworksheet.getColumn('A');
   var ligneDate1;
   var ligneDate;
@@ -2208,7 +2208,7 @@ ecrituredataj5tri : async function (nombre_ok_ko, table,date_export,mois1,callba
   
           
     await newWorkbook.xlsx.readFile(path_reporting);
-  const newworksheet = newWorkbook.getWorksheet(1);
+  const newworksheet = newWorkbook.getWorksheet(mois1);
   var colonneDate = newworksheet.getColumn('A');
   var ligneDate1;
   var ligneDate;
@@ -2275,7 +2275,7 @@ ecrituredataj5facM : async function (nombre_ok_ko, table,date_export,mois1,callb
   
           
     await newWorkbook.xlsx.readFile(path_reporting);
-  const newworksheet = newWorkbook.getWorksheet(1);
+  const newworksheet = newWorkbook.getWorksheet(mois1);
   var colonneDate = newworksheet.getColumn('A');
   var ligneDate1;
   var ligneDate;
@@ -2341,7 +2341,7 @@ ecrituredataj5facM : async function (nombre_ok_ko, table,date_export,mois1,callb
   
           
     await newWorkbook.xlsx.readFile(path_reporting);
-  const newworksheet = newWorkbook.getWorksheet(1);
+  const newworksheet = newWorkbook.getWorksheet(mois1);
   var colonneDate = newworksheet.getColumn('A');
   var ligneDate1;
   var ligneDate;
@@ -2408,7 +2408,7 @@ ecrituredataj5facM : async function (nombre_ok_ko, table,date_export,mois1,callb
   
           
     await newWorkbook.xlsx.readFile(path_reporting);
-  const newworksheet = newWorkbook.getWorksheet(1);
+  const newworksheet = newWorkbook.getWorksheet(mois1);
   var colonneDate = newworksheet.getColumn('A');
   var ligneDate1;
   var ligneDate;
@@ -2474,7 +2474,7 @@ ecrituredataj5facM : async function (nombre_ok_ko, table,date_export,mois1,callb
   
           
     await newWorkbook.xlsx.readFile(path_reporting);
-  const newworksheet = newWorkbook.getWorksheet(1);
+  const newworksheet = newWorkbook.getWorksheet(mois1);
   var colonneDate = newworksheet.getColumn('A');
   var ligneDate1;
   var ligneDate;
@@ -2540,7 +2540,7 @@ ecrituredataj5facM : async function (nombre_ok_ko, table,date_export,mois1,callb
   
           
     await newWorkbook.xlsx.readFile(path_reporting);
-  const newworksheet = newWorkbook.getWorksheet(1);
+  const newworksheet = newWorkbook.getWorksheet(mois1);
   var colonneDate = newworksheet.getColumn('A');
   var ligneDate1;
   var ligneDate;
@@ -2606,7 +2606,7 @@ ecrituredataj5facM : async function (nombre_ok_ko, table,date_export,mois1,callb
   
           
     await newWorkbook.xlsx.readFile(path_reporting);
-  const newworksheet = newWorkbook.getWorksheet(1);
+  const newworksheet = newWorkbook.getWorksheet(mois1);
   var colonneDate = newworksheet.getColumn('A');
   var ligneDate1;
   var ligneDate;
@@ -2672,7 +2672,7 @@ ecrituredataj5facM : async function (nombre_ok_ko, table,date_export,mois1,callb
   
           
     await newWorkbook.xlsx.readFile(path_reporting);
-  const newworksheet = newWorkbook.getWorksheet(1);
+  const newworksheet = newWorkbook.getWorksheet(mois1);
   var colonneDate = newworksheet.getColumn('A');
   var ligneDate1;
   var ligneDate;
@@ -2738,7 +2738,7 @@ ecrituredataj5facM : async function (nombre_ok_ko, table,date_export,mois1,callb
   
           
     await newWorkbook.xlsx.readFile(path_reporting);
-  const newworksheet = newWorkbook.getWorksheet(1);
+  const newworksheet = newWorkbook.getWorksheet(mois1);
   var colonneDate = newworksheet.getColumn('A');
   var ligneDate1;
   var ligneDate;
@@ -2804,7 +2804,7 @@ ecrituredataj5facM : async function (nombre_ok_ko, table,date_export,mois1,callb
   
           
     await newWorkbook.xlsx.readFile(path_reporting);
-  const newworksheet = newWorkbook.getWorksheet(1);
+  const newworksheet = newWorkbook.getWorksheet(mois1);
   var colonneDate = newworksheet.getColumn('A');
   var ligneDate1;
   var ligneDate;
@@ -2871,7 +2871,7 @@ ecrituredatastock16tri : async function (nombre_ok_ko, table,date_export,mois1,c
   
           
     await newWorkbook.xlsx.readFile(path_reporting);
-  const newworksheet = newWorkbook.getWorksheet(1);
+  const newworksheet = newWorkbook.getWorksheet(mois1);
   var colonneDate = newworksheet.getColumn('A');
   var ligneDate1;
   var ligneDate;
@@ -2937,7 +2937,7 @@ ecrituredatastock16facM : async function (nombre_ok_ko, table,date_export,mois1,
   
           
     await newWorkbook.xlsx.readFile(path_reporting);
-  const newworksheet = newWorkbook.getWorksheet(1);
+  const newworksheet = newWorkbook.getWorksheet(mois1);
   var colonneDate = newworksheet.getColumn('A');
   var ligneDate1;
   var ligneDate;
@@ -3003,7 +3003,7 @@ ecrituredatastock16devi : async function (nombre_ok_ko, table,date_export,mois1,
   
           
     await newWorkbook.xlsx.readFile(path_reporting);
-  const newworksheet = newWorkbook.getWorksheet(1);
+  const newworksheet = newWorkbook.getWorksheet(mois1);
   var colonneDate = newworksheet.getColumn('A');
   var ligneDate1;
   var ligneDate;
@@ -3069,7 +3069,7 @@ ecrituredatastock16sales : async function (nombre_ok_ko, table,date_export,mois1
   
           
     await newWorkbook.xlsx.readFile(path_reporting);
-  const newworksheet = newWorkbook.getWorksheet(1);
+  const newworksheet = newWorkbook.getWorksheet(mois1);
   var colonneDate = newworksheet.getColumn('A');
   var ligneDate1;
   var ligneDate;
@@ -3135,7 +3135,7 @@ ecrituredatastock16flux : async function (nombre_ok_ko, table,date_export,mois1,
   
           
     await newWorkbook.xlsx.readFile(path_reporting);
-  const newworksheet = newWorkbook.getWorksheet(1);
+  const newworksheet = newWorkbook.getWorksheet(mois1);
   var colonneDate = newworksheet.getColumn('A');
   var ligneDate1;
   var ligneDate;
@@ -3201,7 +3201,7 @@ ecrituredatastock16rejet : async function (nombre_ok_ko, table,date_export,mois1
   
           
     await newWorkbook.xlsx.readFile(path_reporting);
-  const newworksheet = newWorkbook.getWorksheet(1);
+  const newworksheet = newWorkbook.getWorksheet(mois1);
   var colonneDate = newworksheet.getColumn('A');
   var ligneDate1;
   var ligneDate;
@@ -3268,7 +3268,7 @@ ecrituredatastock16cotlamie : async function (nombre_ok_ko, table,date_export,mo
   
           
     await newWorkbook.xlsx.readFile(path_reporting);
-  const newworksheet = newWorkbook.getWorksheet(1);
+  const newworksheet = newWorkbook.getWorksheet(mois1);
   var colonneDate = newworksheet.getColumn('A');
   var ligneDate1;
   var ligneDate;
@@ -3335,7 +3335,7 @@ ecrituredatastock16cotlamie : async function (nombre_ok_ko, table,date_export,mo
   
           
     await newWorkbook.xlsx.readFile(path_reporting);
-  const newworksheet = newWorkbook.getWorksheet(1);
+  const newworksheet = newWorkbook.getWorksheet(mois1);
   var colonneDate = newworksheet.getColumn('A');
   var ligneDate1;
   var ligneDate;
@@ -3402,7 +3402,7 @@ ecrituredatastock16cotlamie : async function (nombre_ok_ko, table,date_export,mo
     
             
       await newWorkbook.xlsx.readFile(path_reporting);
-    const newworksheet = newWorkbook.getWorksheet(1);
+    const newworksheet = newWorkbook.getWorksheet(mois1);
     var colonneDate = newworksheet.getColumn('A');
     var ligneDate1;
     var ligneDate;
@@ -3469,7 +3469,7 @@ ecrituredatastock16cotlamie : async function (nombre_ok_ko, table,date_export,mo
     
             
       await newWorkbook.xlsx.readFile(path_reporting);
-    const newworksheet = newWorkbook.getWorksheet(1);
+    const newworksheet = newWorkbook.getWorksheet(mois1);
     var colonneDate = newworksheet.getColumn('A');
     var ligneDate1;
     var ligneDate;
@@ -3536,7 +3536,7 @@ ecrituredatastocktottri : async function (nombre_ok_ko, table,date_export,mois1,
   
           
     await newWorkbook.xlsx.readFile(path_reporting);
-  const newworksheet = newWorkbook.getWorksheet(1);
+  const newworksheet = newWorkbook.getWorksheet(mois1);
   var colonneDate = newworksheet.getColumn('A');
   var ligneDate1;
   var ligneDate;
@@ -3602,7 +3602,7 @@ ecrituredatastocktotfacM : async function (nombre_ok_ko, table,date_export,mois1
   
           
     await newWorkbook.xlsx.readFile(path_reporting);
-  const newworksheet = newWorkbook.getWorksheet(1);
+  const newworksheet = newWorkbook.getWorksheet(mois1);
   var colonneDate = newworksheet.getColumn('A');
   var ligneDate1;
   var ligneDate;
@@ -3668,7 +3668,7 @@ ecrituredatastocktotdevi : async function (nombre_ok_ko, table,date_export,mois1
   
           
     await newWorkbook.xlsx.readFile(path_reporting);
-  const newworksheet = newWorkbook.getWorksheet(1);
+  const newworksheet = newWorkbook.getWorksheet(mois1);
   var colonneDate = newworksheet.getColumn('A');
   var ligneDate1;
   var ligneDate;
@@ -3734,7 +3734,7 @@ ecrituredatastocktotsales : async function (nombre_ok_ko, table,date_export,mois
   
           
     await newWorkbook.xlsx.readFile(path_reporting);
-  const newworksheet = newWorkbook.getWorksheet(1);
+  const newworksheet = newWorkbook.getWorksheet(mois1);
   var colonneDate = newworksheet.getColumn('A');
   var ligneDate1;
   var ligneDate;
@@ -3800,7 +3800,7 @@ ecrituredatastocktotflux : async function (nombre_ok_ko, table,date_export,mois1
   
           
     await newWorkbook.xlsx.readFile(path_reporting);
-  const newworksheet = newWorkbook.getWorksheet(1);
+  const newworksheet = newWorkbook.getWorksheet(mois1);
   var colonneDate = newworksheet.getColumn('A');
   var ligneDate1;
   var ligneDate;
@@ -3866,7 +3866,7 @@ ecrituredatastocktotrejet : async function (nombre_ok_ko, table,date_export,mois
   
           
     await newWorkbook.xlsx.readFile(path_reporting);
-  const newworksheet = newWorkbook.getWorksheet(1);
+  const newworksheet = newWorkbook.getWorksheet(mois1);
   var colonneDate = newworksheet.getColumn('A');
   var ligneDate1;
   var ligneDate;
@@ -3933,7 +3933,7 @@ ecrituredatastocktotcotlamie : async function (nombre_ok_ko, table,date_export,m
   
           
     await newWorkbook.xlsx.readFile(path_reporting);
-  const newworksheet = newWorkbook.getWorksheet(1);
+  const newworksheet = newWorkbook.getWorksheet(mois1);
   var colonneDate = newworksheet.getColumn('A');
   var ligneDate1;
   var ligneDate;
@@ -4000,7 +4000,7 @@ ecrituredatastocktotcotlamie : async function (nombre_ok_ko, table,date_export,m
   
           
     await newWorkbook.xlsx.readFile(path_reporting);
-  const newworksheet = newWorkbook.getWorksheet(1);
+  const newworksheet = newWorkbook.getWorksheet(mois1);
   var colonneDate = newworksheet.getColumn('A');
   var ligneDate1;
   var ligneDate;
@@ -4067,7 +4067,7 @@ ecrituredatastocktotcotlamie : async function (nombre_ok_ko, table,date_export,m
     
             
       await newWorkbook.xlsx.readFile(path_reporting);
-    const newworksheet = newWorkbook.getWorksheet(1);
+    const newworksheet = newWorkbook.getWorksheet(mois1);
     var colonneDate = newworksheet.getColumn('A');
     var ligneDate1;
     var ligneDate;
@@ -4134,7 +4134,7 @@ ecrituredatastocktotcotlamie : async function (nombre_ok_ko, table,date_export,m
     
             
       await newWorkbook.xlsx.readFile(path_reporting);
-    const newworksheet = newWorkbook.getWorksheet(1);
+    const newworksheet = newWorkbook.getWorksheet(mois1);
     var colonneDate = newworksheet.getColumn('A');
     var ligneDate1;
     var ligneDate;
@@ -4201,7 +4201,7 @@ ecrituredatastocktotcotlamie : async function (nombre_ok_ko, table,date_export,m
     
             
       await newWorkbook.xlsx.readFile(path_reporting);
-    const newworksheet = newWorkbook.getWorksheet(1);
+    const newworksheet = newWorkbook.getWorksheet(mois1);
     var colonneDate = newworksheet.getColumn('A');
     var ligneDate1;
     var ligneDate;
@@ -4261,7 +4261,7 @@ ecrituredataetpfacM : async function (nombre_ok_ko, table,date_export,mois1,call
   
           
     await newWorkbook.xlsx.readFile(path_reporting);
-  const newworksheet = newWorkbook.getWorksheet(1);
+  const newworksheet = newWorkbook.getWorksheet(mois1);
   var colonneDate = newworksheet.getColumn('A');
   var ligneDate1;
   var ligneDate;
@@ -4321,7 +4321,7 @@ ecrituredataetpdevi : async function (nombre_ok_ko, table,date_export,mois1,call
   
           
     await newWorkbook.xlsx.readFile(path_reporting);
-  const newworksheet = newWorkbook.getWorksheet(1);
+  const newworksheet = newWorkbook.getWorksheet(mois1);
   var colonneDate = newworksheet.getColumn('A');
   var ligneDate1;
   var ligneDate;
@@ -4380,7 +4380,7 @@ ecrituredataetpfaclamie : async function (nombre_ok_ko, table,date_export,mois1,
   
           
     await newWorkbook.xlsx.readFile(path_reporting);
-  const newworksheet = newWorkbook.getWorksheet(1);
+  const newworksheet = newWorkbook.getWorksheet(mois1);
   var colonneDate = newworksheet.getColumn('A');
   var ligneDate1;
   var ligneDate;
@@ -4439,7 +4439,7 @@ ecrituredataetpcotlamie : async function (nombre_ok_ko, table,date_export,mois1,
   
           
     await newWorkbook.xlsx.readFile(path_reporting);
-  const newworksheet = newWorkbook.getWorksheet(1);
+  const newworksheet = newWorkbook.getWorksheet(mois1);
   var colonneDate = newworksheet.getColumn('A');
   var ligneDate1;
   var ligneDate;
@@ -4499,7 +4499,7 @@ ecrituredatastocknontjtri : async function (nombre_ok_ko, table,date_export,mois
   
           
     await newWorkbook.xlsx.readFile(path_reporting);
-  const newworksheet = newWorkbook.getWorksheet(1);
+  const newworksheet = newWorkbook.getWorksheet(mois1);
   var colonneDate = newworksheet.getColumn('A');
   var ligneDate1;
   var ligneDate;
@@ -4565,7 +4565,7 @@ ecrituredatastocknontjfacM : async function (nombre_ok_ko, table,date_export,moi
   
           
     await newWorkbook.xlsx.readFile(path_reporting);
-  const newworksheet = newWorkbook.getWorksheet(1);
+  const newworksheet = newWorkbook.getWorksheet(mois1);
   var colonneDate = newworksheet.getColumn('A');
   var ligneDate1;
   var ligneDate;
@@ -4631,7 +4631,7 @@ ecrituredatastocknontjdevi : async function (nombre_ok_ko, table,date_export,moi
   
           
     await newWorkbook.xlsx.readFile(path_reporting);
-  const newworksheet = newWorkbook.getWorksheet(1);
+  const newworksheet = newWorkbook.getWorksheet(mois1);
   var colonneDate = newworksheet.getColumn('A');
   var ligneDate1;
   var ligneDate;
@@ -4697,7 +4697,7 @@ ecrituredatastocknontjsales : async function (nombre_ok_ko, table,date_export,mo
   
           
     await newWorkbook.xlsx.readFile(path_reporting);
-  const newworksheet = newWorkbook.getWorksheet(1);
+  const newworksheet = newWorkbook.getWorksheet(mois1);
   var colonneDate = newworksheet.getColumn('A');
   var ligneDate1;
   var ligneDate;
@@ -4763,7 +4763,7 @@ ecrituredatastocknontjflux : async function (nombre_ok_ko, table,date_export,moi
   
           
     await newWorkbook.xlsx.readFile(path_reporting);
-  const newworksheet = newWorkbook.getWorksheet(1);
+  const newworksheet = newWorkbook.getWorksheet(mois1);
   var colonneDate = newworksheet.getColumn('A');
   var ligneDate1;
   var ligneDate;
@@ -4829,7 +4829,7 @@ ecrituredatastocknontjrejet : async function (nombre_ok_ko, table,date_export,mo
   
           
     await newWorkbook.xlsx.readFile(path_reporting);
-  const newworksheet = newWorkbook.getWorksheet(1);
+  const newworksheet = newWorkbook.getWorksheet(mois1);
   var colonneDate = newworksheet.getColumn('A');
   var ligneDate1;
   var ligneDate;
@@ -4896,7 +4896,7 @@ ecrituredatastocknontjcotlamie : async function (nombre_ok_ko, table,date_export
   
           
     await newWorkbook.xlsx.readFile(path_reporting);
-  const newworksheet = newWorkbook.getWorksheet(1);
+  const newworksheet = newWorkbook.getWorksheet(mois1);
   var colonneDate = newworksheet.getColumn('A');
   var ligneDate1;
   var ligneDate;
@@ -4963,7 +4963,7 @@ ecrituredatastocknontjcotlamie : async function (nombre_ok_ko, table,date_export
   
           
     await newWorkbook.xlsx.readFile(path_reporting);
-  const newworksheet = newWorkbook.getWorksheet(1);
+  const newworksheet = newWorkbook.getWorksheet(mois1);
   var colonneDate = newworksheet.getColumn('A');
   var ligneDate1;
   var ligneDate;
@@ -5030,7 +5030,7 @@ ecrituredatastocknontjcotlamie : async function (nombre_ok_ko, table,date_export
     
             
       await newWorkbook.xlsx.readFile(path_reporting);
-    const newworksheet = newWorkbook.getWorksheet(1);
+    const newworksheet = newWorkbook.getWorksheet(mois1);
     var colonneDate = newworksheet.getColumn('A');
     var ligneDate1;
     var ligneDate;
@@ -5097,7 +5097,7 @@ ecrituredatastocknontjcotlamie : async function (nombre_ok_ko, table,date_export
     
             
       await newWorkbook.xlsx.readFile(path_reporting);
-    const newworksheet = newWorkbook.getWorksheet(1);
+    const newworksheet = newWorkbook.getWorksheet(mois1);
     var colonneDate = newworksheet.getColumn('A');
     var ligneDate1;
     var ligneDate;
@@ -5164,7 +5164,7 @@ ecrituredatastocknontj1tri : async function (nombre_ok_ko, table,date_export,moi
   
           
     await newWorkbook.xlsx.readFile(path_reporting);
-  const newworksheet = newWorkbook.getWorksheet(1);
+  const newworksheet = newWorkbook.getWorksheet(mois1);
   var colonneDate = newworksheet.getColumn('A');
   var ligneDate1;
   var ligneDate;
@@ -5230,7 +5230,7 @@ ecrituredatastocknontj1facM : async function (nombre_ok_ko, table,date_export,mo
   
           
     await newWorkbook.xlsx.readFile(path_reporting);
-  const newworksheet = newWorkbook.getWorksheet(1);
+  const newworksheet = newWorkbook.getWorksheet(mois1);
   var colonneDate = newworksheet.getColumn('A');
   var ligneDate1;
   var ligneDate;
@@ -5296,7 +5296,7 @@ ecrituredatastocknontj1devi : async function (nombre_ok_ko, table,date_export,mo
   
           
     await newWorkbook.xlsx.readFile(path_reporting);
-  const newworksheet = newWorkbook.getWorksheet(1);
+  const newworksheet = newWorkbook.getWorksheet(mois1);
   var colonneDate = newworksheet.getColumn('A');
   var ligneDate1;
   var ligneDate;
@@ -5362,7 +5362,7 @@ ecrituredatastocknontj1sales : async function (nombre_ok_ko, table,date_export,m
   
           
     await newWorkbook.xlsx.readFile(path_reporting);
-  const newworksheet = newWorkbook.getWorksheet(1);
+  const newworksheet = newWorkbook.getWorksheet(mois1);
   var colonneDate = newworksheet.getColumn('A');
   var ligneDate1;
   var ligneDate;
@@ -5428,7 +5428,7 @@ ecrituredatastocknontj1flux : async function (nombre_ok_ko, table,date_export,mo
   
           
     await newWorkbook.xlsx.readFile(path_reporting);
-  const newworksheet = newWorkbook.getWorksheet(1);
+  const newworksheet = newWorkbook.getWorksheet(mois1);
   var colonneDate = newworksheet.getColumn('A');
   var ligneDate1;
   var ligneDate;
@@ -5494,7 +5494,7 @@ ecrituredatastocknontj1rejet : async function (nombre_ok_ko, table,date_export,m
   
           
     await newWorkbook.xlsx.readFile(path_reporting);
-  const newworksheet = newWorkbook.getWorksheet(1);
+  const newworksheet = newWorkbook.getWorksheet(mois1);
   var colonneDate = newworksheet.getColumn('A');
   var ligneDate1;
   var ligneDate;
@@ -5561,7 +5561,7 @@ ecrituredatastocknontj1cotlamie : async function (nombre_ok_ko, table,date_expor
   
           
     await newWorkbook.xlsx.readFile(path_reporting);
-  const newworksheet = newWorkbook.getWorksheet(1);
+  const newworksheet = newWorkbook.getWorksheet(mois1);
   var colonneDate = newworksheet.getColumn('A');
   var ligneDate1;
   var ligneDate;
@@ -5628,7 +5628,7 @@ ecrituredatastocknontj1cotlamie : async function (nombre_ok_ko, table,date_expor
   
           
     await newWorkbook.xlsx.readFile(path_reporting);
-  const newworksheet = newWorkbook.getWorksheet(1);
+  const newworksheet = newWorkbook.getWorksheet(mois1);
   var colonneDate = newworksheet.getColumn('A');
   var ligneDate1;
   var ligneDate;
@@ -5695,7 +5695,7 @@ ecrituredatastocknontj1cotlamie : async function (nombre_ok_ko, table,date_expor
     
             
       await newWorkbook.xlsx.readFile(path_reporting);
-    const newworksheet = newWorkbook.getWorksheet(1);
+    const newworksheet = newWorkbook.getWorksheet(mois1);
     var colonneDate = newworksheet.getColumn('A');
     var ligneDate1;
     var ligneDate;
@@ -5762,7 +5762,7 @@ ecrituredatastocknontj1cotlamie : async function (nombre_ok_ko, table,date_expor
     
             
       await newWorkbook.xlsx.readFile(path_reporting);
-    const newworksheet = newWorkbook.getWorksheet(1);
+    const newworksheet = newWorkbook.getWorksheet(mois1);
     var colonneDate = newworksheet.getColumn('A');
     var ligneDate1;
     var ligneDate;
@@ -5829,7 +5829,7 @@ ecrituredatastocknontj2tri : async function (nombre_ok_ko, table,date_export,moi
   
           
     await newWorkbook.xlsx.readFile(path_reporting);
-  const newworksheet = newWorkbook.getWorksheet(1);
+  const newworksheet = newWorkbook.getWorksheet(mois1);
   var colonneDate = newworksheet.getColumn('A');
   var ligneDate1;
   var ligneDate;
@@ -5895,7 +5895,7 @@ ecrituredatastocknontj2facM : async function (nombre_ok_ko, table,date_export,mo
   
           
     await newWorkbook.xlsx.readFile(path_reporting);
-  const newworksheet = newWorkbook.getWorksheet(1);
+  const newworksheet = newWorkbook.getWorksheet(mois1);
   var colonneDate = newworksheet.getColumn('A');
   var ligneDate1;
   var ligneDate;
@@ -5961,7 +5961,7 @@ ecrituredatastocknontj2devi : async function (nombre_ok_ko, table,date_export,mo
   
           
     await newWorkbook.xlsx.readFile(path_reporting);
-  const newworksheet = newWorkbook.getWorksheet(1);
+  const newworksheet = newWorkbook.getWorksheet(mois1);
   var colonneDate = newworksheet.getColumn('A');
   var ligneDate1;
   var ligneDate;
@@ -6027,7 +6027,7 @@ ecrituredatastocknontj2sales : async function (nombre_ok_ko, table,date_export,m
   
           
     await newWorkbook.xlsx.readFile(path_reporting);
-  const newworksheet = newWorkbook.getWorksheet(1);
+  const newworksheet = newWorkbook.getWorksheet(mois1);
   var colonneDate = newworksheet.getColumn('A');
   var ligneDate1;
   var ligneDate;
@@ -6093,7 +6093,7 @@ ecrituredatastocknontj2flux : async function (nombre_ok_ko, table,date_export,mo
   
           
     await newWorkbook.xlsx.readFile(path_reporting);
-  const newworksheet = newWorkbook.getWorksheet(1);
+  const newworksheet = newWorkbook.getWorksheet(mois1);
   var colonneDate = newworksheet.getColumn('A');
   var ligneDate1;
   var ligneDate;
@@ -6159,7 +6159,7 @@ ecrituredatastocknontj2rejet : async function (nombre_ok_ko, table,date_export,m
   
           
     await newWorkbook.xlsx.readFile(path_reporting);
-  const newworksheet = newWorkbook.getWorksheet(1);
+  const newworksheet = newWorkbook.getWorksheet(mois1);
   var colonneDate = newworksheet.getColumn('A');
   var ligneDate1;
   var ligneDate;
@@ -6226,7 +6226,7 @@ ecrituredatastocknontj2cotlamie : async function (nombre_ok_ko, table,date_expor
   
           
     await newWorkbook.xlsx.readFile(path_reporting);
-  const newworksheet = newWorkbook.getWorksheet(1);
+  const newworksheet = newWorkbook.getWorksheet(mois1);
   var colonneDate = newworksheet.getColumn('A');
   var ligneDate1;
   var ligneDate;
@@ -6293,7 +6293,7 @@ ecrituredatastocknontj2cotlamie : async function (nombre_ok_ko, table,date_expor
   
           
     await newWorkbook.xlsx.readFile(path_reporting);
-  const newworksheet = newWorkbook.getWorksheet(1);
+  const newworksheet = newWorkbook.getWorksheet(mois1);
   var colonneDate = newworksheet.getColumn('A');
   var ligneDate1;
   var ligneDate;
@@ -6360,7 +6360,7 @@ ecrituredatastocknontj2cotlamie : async function (nombre_ok_ko, table,date_expor
     
             
       await newWorkbook.xlsx.readFile(path_reporting);
-    const newworksheet = newWorkbook.getWorksheet(1);
+    const newworksheet = newWorkbook.getWorksheet(mois1);
     var colonneDate = newworksheet.getColumn('A');
     var ligneDate1;
     var ligneDate;
@@ -6427,7 +6427,7 @@ ecrituredatastocknontj2cotlamie : async function (nombre_ok_ko, table,date_expor
     
             
       await newWorkbook.xlsx.readFile(path_reporting);
-    const newworksheet = newWorkbook.getWorksheet(1);
+    const newworksheet = newWorkbook.getWorksheet(mois1);
     var colonneDate = newworksheet.getColumn('A');
     var ligneDate1;
     var ligneDate;
@@ -6494,7 +6494,7 @@ ecrituredatastocknontj5tri : async function (nombre_ok_ko, table,date_export,moi
   
           
     await newWorkbook.xlsx.readFile(path_reporting);
-  const newworksheet = newWorkbook.getWorksheet(1);
+  const newworksheet = newWorkbook.getWorksheet(mois1);
   var colonneDate = newworksheet.getColumn('A');
   var ligneDate1;
   var ligneDate;
@@ -6560,7 +6560,7 @@ ecrituredatastocknontj5facM : async function (nombre_ok_ko, table,date_export,mo
   
           
     await newWorkbook.xlsx.readFile(path_reporting);
-  const newworksheet = newWorkbook.getWorksheet(1);
+  const newworksheet = newWorkbook.getWorksheet(mois1);
   var colonneDate = newworksheet.getColumn('A');
   var ligneDate1;
   var ligneDate;
@@ -6626,7 +6626,7 @@ ecrituredatastocknontj5devi : async function (nombre_ok_ko, table,date_export,mo
   
           
     await newWorkbook.xlsx.readFile(path_reporting);
-  const newworksheet = newWorkbook.getWorksheet(1);
+  const newworksheet = newWorkbook.getWorksheet(mois1);
   var colonneDate = newworksheet.getColumn('A');
   var ligneDate1;
   var ligneDate;
@@ -6692,7 +6692,7 @@ ecrituredatastocknontj5sales : async function (nombre_ok_ko, table,date_export,m
   
           
     await newWorkbook.xlsx.readFile(path_reporting);
-  const newworksheet = newWorkbook.getWorksheet(1);
+  const newworksheet = newWorkbook.getWorksheet(mois1);
   var colonneDate = newworksheet.getColumn('A');
   var ligneDate1;
   var ligneDate;
@@ -6758,7 +6758,7 @@ ecrituredatastocknontj5flux : async function (nombre_ok_ko, table,date_export,mo
   
           
     await newWorkbook.xlsx.readFile(path_reporting);
-  const newworksheet = newWorkbook.getWorksheet(1);
+  const newworksheet = newWorkbook.getWorksheet(mois1);
   var colonneDate = newworksheet.getColumn('A');
   var ligneDate1;
   var ligneDate;
@@ -6824,7 +6824,7 @@ ecrituredatastocknontj5rejet : async function (nombre_ok_ko, table,date_export,m
   
           
     await newWorkbook.xlsx.readFile(path_reporting);
-  const newworksheet = newWorkbook.getWorksheet(1);
+  const newworksheet = newWorkbook.getWorksheet(mois1);
   var colonneDate = newworksheet.getColumn('A');
   var ligneDate1;
   var ligneDate;
@@ -6891,7 +6891,7 @@ ecrituredatastocknontj5cotlamie : async function (nombre_ok_ko, table,date_expor
   
           
     await newWorkbook.xlsx.readFile(path_reporting);
-  const newworksheet = newWorkbook.getWorksheet(1);
+  const newworksheet = newWorkbook.getWorksheet(mois1);
   var colonneDate = newworksheet.getColumn('A');
   var ligneDate1;
   var ligneDate;
@@ -6958,7 +6958,7 @@ ecrituredatastocknontj5cotlamie : async function (nombre_ok_ko, table,date_expor
   
           
     await newWorkbook.xlsx.readFile(path_reporting);
-  const newworksheet = newWorkbook.getWorksheet(1);
+  const newworksheet = newWorkbook.getWorksheet(mois1);
   var colonneDate = newworksheet.getColumn('A');
   var ligneDate1;
   var ligneDate;
@@ -7025,7 +7025,7 @@ ecrituredatastocknontj5cotlamie : async function (nombre_ok_ko, table,date_expor
     
             
       await newWorkbook.xlsx.readFile(path_reporting);
-    const newworksheet = newWorkbook.getWorksheet(1);
+    const newworksheet = newWorkbook.getWorksheet(mois1);
     var colonneDate = newworksheet.getColumn('A');
     var ligneDate1;
     var ligneDate;
@@ -7092,7 +7092,7 @@ ecrituredatastocknontj5cotlamie : async function (nombre_ok_ko, table,date_expor
     
             
       await newWorkbook.xlsx.readFile(path_reporting);
-    const newworksheet = newWorkbook.getWorksheet(1);
+    const newworksheet = newWorkbook.getWorksheet(mois1);
     var colonneDate = newworksheet.getColumn('A');
     var ligneDate1;
     var ligneDate;
