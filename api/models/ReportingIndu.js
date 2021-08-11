@@ -27,10 +27,14 @@ module.exports = {
       try
       {
         fs.readdir(a, (err, files) => {
-          console.log(a);
-          if(files)
-                {
-              files.forEach(file => {
+          if(err)
+          {
+            console.log('Aucune fichier trouvé');
+            return callback(null,'KO');
+          }
+          else
+          {
+                  files.forEach(file => {
                 
                   const regex = new RegExp(b,'i');
                   if(regex.test(file))
@@ -55,12 +59,8 @@ module.exports = {
                   }
                 });
 
-                }
-                else
-                {
-                  console.log('Aucune fichier trouvé');
-                  return callback(null,'KO');
-                }
+          }
+                
                
           });
       }
@@ -74,19 +74,6 @@ module.exports = {
     else
     {
       return callback(null,'KO');
-      /*var sql = "insert into chemintsisy(typologiedelademande) values ('k') ";
-      Reportinghtp.getDatastore().sendNativeQuery(sql, function(err,res){
-        if (err) { 
-          console.log("Une erreur ve? import 1");
-          //return callback(err);
-         }
-        else
-        {
-          console.log(sql);
-          return callback(null, true);
-        };
-         
-    });*/
     }   
   },
   lectureEtInsertiontype3:function(trameflux,feuil,cellule,table,cellule2,nb,numligne,callback){
