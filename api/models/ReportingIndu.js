@@ -29,38 +29,36 @@ module.exports = {
         fs.readdir(a, (err, files) => {
           console.log(a);
               files.forEach(file => {
-                const regex = new RegExp(b,'i');
-                if(regex.test(file))
+                if(file)
                 {
-                   re = a+'/'+file;
-                   var sql = "insert into cheminindu3 (chemin,nomtable,numligne,numfeuile,colonnecible,colonnecible2) values ('"+re+"','"+nomTable+"','"+numLigne+"','"+numFeuille+"','"+nomColonne+"','"+colonnecible2[nb]+"') ";
-                    Reportinghtp.getDatastore().sendNativeQuery(sql, function(err,res){
-                    if (err) { 
-                      console.log("Une erreur ve?");
-                      //return callback(err);
-                      }
-                    else
-                    {
-                      console.log(sql);
-                      return callback(null, true);
-                    };
-                  });
+                  const regex = new RegExp(b,'i');
+                  if(regex.test(file))
+                  {
+                     re = a+'/'+file;
+                     var sql = "insert into cheminindu3 (chemin,nomtable,numligne,numfeuile,colonnecible,colonnecible2) values ('"+re+"','"+nomTable+"','"+numLigne+"','"+numFeuille+"','"+nomColonne+"','"+colonnecible2[nb]+"') ";
+                      Reportinghtp.getDatastore().sendNativeQuery(sql, function(err,res){
+                      if (err) { 
+                        console.log("Une erreur ve?");
+                        //return callback(err);
+                        }
+                      else
+                      {
+                        console.log(sql);
+                        return callback(null, true);
+                      };
+                    });
+                  }
+                  else
+                  {
+                   console.log('colonne non trouvé');
+                  }
                 }
                 else
                 {
-                  var sql = "INSERT INTO chemintsisy(typologiedelademande) VALUES ('a);";
-                  Reportinghtp.getDatastore().sendNativeQuery(sql, function(err,res){
-                   if (err) { 
-                     console.log("Une erreur ve?");
-                     //return callback(err);
-                    }
-                   else
-                   {
-                     console.log(sql);
-                     return callback(null, true);
-                   };
-               });
+                  console.log('Aucune fichier trouvé');
+                  return callback(null,'KO');
                 }
+               
             });
           });
       }
