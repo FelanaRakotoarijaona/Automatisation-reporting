@@ -316,13 +316,11 @@ module.exports = {
             {
               var row = newworksheet.getRow(1);
               var a;
-              var bi = 'FIN DE TRAITEMENT';
+              var bi = 'Analyse';
               const regex = new RegExp(bi,'i');
               var bi1 = '[a-z]';
               const regex1 = new RegExp(bi1,'i');
               row.eachCell(function(cell, colNumber) {
-               // console.log(cell.text);
-                
                 if(regex.test(cell.text))
                 {
                   a = parseInt(colNumber);
@@ -368,33 +366,33 @@ module.exports = {
             {
               var newworksheet = workbook.getWorksheet(1);
               var row = newworksheet.getRow(1);
-            var a;
-            var bi = 'FIN DE TRAITEMENT';
-            const regex = new RegExp(bi,'i');
-            var bi1 = '[a-z]';
-            const regex1 = new RegExp(bi1,'i');
-            row.eachCell(function(cell, colNumber) {
-             // console.log(cell.text);
-              
-              if(regex.test(cell.text))
-              {
-                a = parseInt(colNumber);
-              }
-            });
-            console.log(a+ 'val');
-            var tab = 0;
-            if(a!=undefined)
-            {
-              var col = newworksheet.getColumn(a);
-              console.log('col' + col);
-              col.eachCell(function(cell, rowNumber) {
-                if(regex1.test(cell.text))
+              var a;
+              var bi = 'Analyse';
+              const regex = new RegExp(bi,'i');
+              var bi1 = '[a-z]';
+              const regex1 = new RegExp(bi1,'i');
+              row.eachCell(function(cell, colNumber) {
+              // console.log(cell.text);
+                
+                if(regex.test(cell.text))
                 {
-                  tab = tab +1;
-                  console.log(cell.text);
+                  a = parseInt(colNumber);
                 }
               });
-             
+              console.log(a+ 'val');
+              var tab = 0;
+              if(a!=undefined)
+              {
+                var col = newworksheet.getColumn(a);
+                console.log('col' + col);
+                col.eachCell(function(cell, rowNumber) {
+                  if(regex1.test(cell.text))
+                  {
+                    tab = tab +1;
+                    console.log(cell.text);
+                  }
+                });
+              
             }
             else
             {
@@ -416,7 +414,7 @@ module.exports = {
                   return callback(null, true);
                 };
                                     });
-            }
+             }
             
                 });
     }
