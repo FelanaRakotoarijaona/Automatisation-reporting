@@ -2264,7 +2264,7 @@ countOkKoDoubleSum : function (table, callback) {
     },
   ],function(err,result){
     if(err) return res.badRequest(err);
-    console.log("Count inducheque ==> " + result[0]);
+    console.log("Count KO ==> " + result[0]);
     console.log("Count KO ==> " + result[1]);
     var okko = {};
     okko.ok = result[0];
@@ -3034,7 +3034,7 @@ ecritureOkKo : async function (nombre_ok_ko, table,date_export,mois1,callback) {
           {
             colonnne = parseInt(colNumber);
           }
-          }
+         }
       });
       console.log(" Colnumber"+colonnne);
     
@@ -3740,6 +3740,10 @@ ecritureOkKo : async function (nombre_ok_ko, table,date_export,mois1,callback) {
     if(table == "indusansnotif"){
       numeroColonneOk = iniValue.indusansnotif.ok;
       numeroColonneKo = iniValue.indusansnotif.ko;
+    }
+    if(table == "indusansnotifcbtp"){
+      numeroColonneOk = iniValue.indusansnotifcbtp.ok;
+      numeroColonneKo = iniValue.indusansnotifcbtp.ko;
     }
    if(table == "indutiers"){
       numeroColonneOk = iniValue.indutiers.ok;
