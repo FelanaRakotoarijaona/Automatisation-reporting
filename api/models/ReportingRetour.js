@@ -448,7 +448,7 @@ module.exports = {
               var motcle2 = 'Filename';
               const regex = new RegExp(bi,'i');
               const regex2 = new RegExp(motcle2,'i');
-              var bi1 = '[a-z]';
+              var bi1 = '[a-z1-9]';
               const regex1 = new RegExp(bi1,'i');
               row.eachCell(function(cell, colNumber) {
                 if(regex.test(cell.text) || regex2.test(cell.text))
@@ -501,7 +501,7 @@ module.exports = {
               var motcle2 = 'Filename';
               const regex = new RegExp(bi,'i');
               const regex2 = new RegExp(motcle2,'i');
-              var bi1 = '[a-z]';
+              var bi1 = '[a-z1-9]';
               const regex1 = new RegExp(bi1,'i');
               row.eachCell(function(cell, colNumber) {
                 if(regex.test(cell.text) || regex2.test(cell.text))
