@@ -334,7 +334,7 @@ module.exports = {
       var chem2 = [];
       var option2 = [];
       var nomBase = "cheminretourvrai";
-      var r = [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14];
+      var r = [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16];
       workbook.xlsx.readFile('ReportingRetourServeur.xlsx')
           .then(function() {
             var newworksheet = workbook.getWorksheet('Feuil2');
@@ -387,7 +387,7 @@ module.exports = {
                         ReportingInovcom.delete(nomtable,lot,cb);
                       },
                       function(cb){
-                        ReportingRetour.importEssaitype4(table,cheminp,date,MotCle,lot,nomtable,numligne,numfeuille,nomcolonne,nomBase,chem2,option2,cb);
+                        ReportingInovcom.importEssaitype4(table,cheminp,date,MotCle,lot,nomtable,numligne,numfeuille,nomcolonne,nomBase,chem2,option2,cb);
                         },
                     ],function(erroned, lotValues){
                       if(erroned) return res.badRequest(erroned);

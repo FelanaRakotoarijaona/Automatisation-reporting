@@ -28,40 +28,40 @@ module.exports = {
       {
         fs.readdir(a, (err, files) => {
           console.log(a);
-              files.forEach(file => {
-                const regex = new RegExp(b,'i');
-                if(regex.test(file))
+          if(files)
                 {
-                   //re = a+'\\'+file;
-                   re = a+'/'+file;
-                  
+              files.forEach(file => {
+                
+                  const regex = new RegExp(b,'i');
+                  if(regex.test(file))
+                  {
+                     re = a+'/'+file;
+                     var sql = "insert into cheminindu3 (chemin,nomtable,numligne,numfeuile,colonnecible,colonnecible2) values ('"+re+"','"+nomTable+"','"+numLigne+"','"+numFeuille+"','"+nomColonne+"','"+colonnecible2[nb]+"') ";
+                      Reportinghtp.getDatastore().sendNativeQuery(sql, function(err,res){
+                      if (err) { 
+                        console.log("Une erreur ve?");
+                        //return callback(err);
+                        }
+                      else
+                      {
+                        console.log(sql);
+                        return callback(null, true);
+                      };
+                    });
+                  }
+                  else
+                  {
+                   console.log('colonne non trouvé');
+                  }
+                });
+
                 }
                 else
                 {
-                  console.log('fichier non trouvé');
+                  console.log('Aucune fichier trouvé');
+                  return callback(null,'KO');
                 }
-            });
-            if(re!='a')
-            {
-              var sql = "insert into cheminindu3 (chemin,nomtable,numligne,numfeuile,colonnecible,colonnecible2) values ('"+re+"','"+nomTable+"','"+numLigne+"','"+numFeuille+"','"+nomColonne+"','"+colonnecible2[nb]+"') ";
-              Reportinghtp.getDatastore().sendNativeQuery(sql, function(err,res){
-               if (err) { 
-                 console.log("Une erreur ve?");
-                 //return callback(err);
-                }
-               else
-               {
-                 console.log(sql);
-                 return callback(null, true);
-               };
-           });
-            }
-            else
-            {
-              return callback(null,'KO');
-            }
-            
-            
+               
           });
       }
       catch

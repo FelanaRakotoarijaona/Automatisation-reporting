@@ -445,11 +445,13 @@ module.exports = {
               var row = newworksheet.getRow(1);
               var a;
               var bi = 'Analyse';
+              var motcle2 = 'Filename';
               const regex = new RegExp(bi,'i');
-              var bi1 = '[a-z]';
+              const regex2 = new RegExp(motcle2,'i');
+              var bi1 = '[a-z1-9]';
               const regex1 = new RegExp(bi1,'i');
               row.eachCell(function(cell, colNumber) {
-                if(regex.test(cell.text))
+                if(regex.test(cell.text) || regex2.test(cell.text))
                 {
                   a = parseInt(colNumber);
                 }
@@ -496,13 +498,13 @@ module.exports = {
               var row = newworksheet.getRow(1);
               var a;
               var bi = 'Analyse';
+              var motcle2 = 'Filename';
               const regex = new RegExp(bi,'i');
-              var bi1 = '[a-z]';
+              const regex2 = new RegExp(motcle2,'i');
+              var bi1 = '[a-z1-9]';
               const regex1 = new RegExp(bi1,'i');
               row.eachCell(function(cell, colNumber) {
-              // console.log(cell.text);
-                
-                if(regex.test(cell.text))
+                if(regex.test(cell.text) || regex2.test(cell.text))
                 {
                   a = parseInt(colNumber);
                 }
