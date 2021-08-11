@@ -1140,7 +1140,7 @@
           var line = newworksheet.getRow(ligneDate1);
           var f = line.getCell(3).value;
           // console.log(f);
-          if(f == "Publispostage")
+          if(f == "Publispostage" || f == "Publispostage ")
           {
             ligneDate = parseInt(rowNumber);
           }
