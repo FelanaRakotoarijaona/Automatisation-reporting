@@ -125,6 +125,9 @@ module.exports = {
   ecrituredata16tri1 : function (nombre_ok_ko, table,date_export,mois1,callback) {
     const Excel = require('exceljs');
     var workbook = new Excel.Workbook(); 
+    console.log('*******************');
+    console.log(mois1);
+    console.log('*******************');
 try{
 
    workbook.xlsx.readFile(path_reporting)
@@ -199,10 +202,12 @@ catch
   const Excel = require('exceljs');
   const cmd=require('node-cmd');
   const newWorkbook = new Excel.Workbook();
-  
+  console.log('*******************');
+  console.log(mois1);
+  console.log('*******************');
   try{
   
-          
+        console.log('test export jusque la');
     await newWorkbook.xlsx.readFile(path_reporting);
   const newworksheet = newWorkbook.getWorksheet(mois1);
   var colonneDate = newworksheet.getColumn('A');
