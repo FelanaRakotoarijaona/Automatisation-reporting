@@ -1158,173 +1158,173 @@ insertcheminengagementhtp_1 : function(req,res)
         console.log("Count OK 1==> " + result[0].ok);
         async.series([
           function (callback) {
-            Engagementhtp.ecrituredata16tri(result[0],"htptri16",date_export,feuille,callback);
+            Engagementhtp.ecrituredata16tri(result[0],"htptri16",date_export,mois1,callback);
           },
           function (callback) {
-            Engagementhtp.ecrituredata16facM(result[1],"htpfacmg16",date_export,feuille,callback);
+            Engagementhtp.ecrituredata16facM(result[1],"htpfacmg16",date_export,mois1,callback);
           },
           function (callback) {
-            Engagementhtp.ecrituredata16devi(result[2],"htpdevi16",date_export,feuille,callback);
+            Engagementhtp.ecrituredata16devi(result[2],"htpdevi16",date_export,mois1,callback);
           },
           function (callback) {
-            Engagementhtp.ecrituredata16sales(result[3],"htpsales16",date_export,feuille,callback);
+            Engagementhtp.ecrituredata16sales(result[3],"htpsales16",date_export,mois1,callback);
           },
           function (callback) {
-            Engagementhtp.ecrituredata16flux(result[4],"htpflux16",date_export,feuille,callback);
+            Engagementhtp.ecrituredata16flux(result[4],"htpflux16",date_export,mois1,callback);
           },
           function (callback) {
-              Engagementhtp.ecrituredata16rejet(result[5],"htprejet16",date_export,feuille,callback);
+              Engagementhtp.ecrituredata16rejet(result[5],"htprejet16",date_export,mois1,callback);
             },
           function (callback) {
-          Engagementhtp.ecrituredata16cotlamie(result[6],"htpcotlamie16",date_export,feuille,callback);
+          Engagementhtp.ecrituredata16cotlamie(result[6],"htpcotlamie16",date_export,mois1,callback);
           },
           function (callback) {
-              Engagementhtp.ecrituredatafinptri(result[7],"htptrifin",date_export,feuille,callback);
-            },
-            function (callback) {
-              Engagementhtp.ecrituredatafinpfacM(result[8],"htpfacmgfin",date_export,feuille,callback);
+              Engagementhtp.ecrituredatafinptri(result[7],"htptrifin",date_export,mois1,callback);
             },
             function (callback) {
-              Engagementhtp.ecrituredatafinpdevi(result[9],"htpdevifin",date_export,feuille,callback);
+              Engagementhtp.ecrituredatafinpfacM(result[8],"htpfacmgfin",date_export,mois1,callback);
             },
             function (callback) {
-              Engagementhtp.ecrituredatafinpsales(result[10],"htpsalesfin",date_export,feuille,callback);
+              Engagementhtp.ecrituredatafinpdevi(result[9],"htpdevifin",date_export,mois1,callback);
             },
             function (callback) {
-              Engagementhtp.ecrituredatafinpflux(result[11],"htpfluxfin",date_export,feuille,callback);
+              Engagementhtp.ecrituredatafinpsales(result[10],"htpsalesfin",date_export,mois1,callback);
             },
             function (callback) {
-                Engagementhtp.ecrituredatafinprejet(result[12],"htprejetfin",date_export,feuille,callback);
+              Engagementhtp.ecrituredatafinpflux(result[11],"htpfluxfin",date_export,mois1,callback);
+            },
+            function (callback) {
+                Engagementhtp.ecrituredatafinprejet(result[12],"htprejetfin",date_export,mois1,callback);
               },
             function (callback) {
-            Engagementhtp.ecrituredatafinpcotlamie(result[13],"htpcotlamiefin",date_export,feuille,callback);
+            Engagementhtp.ecrituredatafinpcotlamie(result[13],"htpcotlamiefin",date_export,mois1,callback);
             },
             function (callback) {
-              Engagementhtp.ecrituredata16cotite(result[14],"htpcotite16",date_export,feuille,callback);
+              Engagementhtp.ecrituredata16cotite(result[14],"htpcotite16",date_export,mois1,callback);
             },
             function (callback) {
-              Engagementhtp.ecrituredatafinpcotite(result[15],"htpcotitefin",date_export,feuille,callback);
+              Engagementhtp.ecrituredatafinpcotite(result[15],"htpcotitefin",date_export,mois1,callback);
             },
             function (callback) {
-              Engagementhtp.ecrituredata16faclamie(result[16],"htpfaclamie16",date_export,feuille,callback);
+              Engagementhtp.ecrituredata16faclamie(result[16],"htpfaclamie16",date_export,mois1,callback);
             },
             function (callback) {
-              Engagementhtp.ecrituredata16acs(result[17],"htpacs16",date_export,feuille,callback);
+              Engagementhtp.ecrituredata16acs(result[17],"htpacs16",date_export,mois1,callback);
             },
             function (callback) {
-              Engagementhtp.ecrituredatafinpfaclamie(result[18],"htpfaclamiefin",date_export,feuille,callback);
+              Engagementhtp.ecrituredatafinpfaclamie(result[18],"htpfaclamiefin",date_export,mois1,callback);
             },
             function (callback) {
-              Engagementhtp.ecrituredatafinpacs(result[19],"htpacsfin",date_export,feuille,callback);
+              Engagementhtp.ecrituredatafinpacs(result[19],"htpacsfin",date_export,mois1,callback);
             },
         /**********************************************************************************************/
          // function (callback) {
-                  //   Engagementhtp.ecrituredataj2tri(result[0],"htptrij2",date_export,feuille,callback);
+                  //   Engagementhtp.ecrituredataj2tri(result[0],"htptrij2",date_export,mois1,callback);
                   // },
                   function (callback) {
-                    Engagementhtp.ecrituredataj2facM(result[20],"htpfacmgj2",date_export,feuille,callback);
+                    Engagementhtp.ecrituredataj2facM(result[20],"htpfacmgj2",date_export,mois1,callback);
                   },
                   function (callback) {
-                    Engagementhtp.ecrituredataj2devi(result[21],"htpdevij2",date_export,feuille,callback);
+                    Engagementhtp.ecrituredataj2devi(result[21],"htpdevij2",date_export,mois1,callback);
                   },
                   function (callback) {
-                    Engagementhtp.ecrituredataj2sales(result[22],"htpsales16",date_export,feuille,callback);//htpsalesj2
+                    Engagementhtp.ecrituredataj2sales(result[22],"htpsales16",date_export,mois1,callback);//htpsalesj2
                   },
                   function (callback) {
-                    Engagementhtp.ecrituredataj2flux(result[23],"htpflux16",date_export,feuille,callback);
+                    Engagementhtp.ecrituredataj2flux(result[23],"htpflux16",date_export,mois1,callback);
                   },
                   function (callback) {
-                      Engagementhtp.ecrituredataj2rejet(result[24],"htprejet16",date_export,feuille,callback);
+                      Engagementhtp.ecrituredataj2rejet(result[24],"htprejet16",date_export,mois1,callback);
                     },
                   function (callback) {
-                      Engagementhtp.ecrituredataj2cotlamie(result[25],"htpcotlamiej2",date_export,feuille,callback);
+                      Engagementhtp.ecrituredataj2cotlamie(result[25],"htpcotlamiej2",date_export,mois1,callback);
                   },
                   // function (callback) {
-                  //     Engagementhtp.ecrituredataj5tri(result[7],"htptrij5",date_export,feuille,callback);
+                  //     Engagementhtp.ecrituredataj5tri(result[7],"htptrij5",date_export,mois1,callback);
                   // },
                   function (callback) {
-                      Engagementhtp.ecrituredataj5facM(result[26],"htpfacmgj5",date_export,feuille,callback);
+                      Engagementhtp.ecrituredataj5facM(result[26],"htpfacmgj5",date_export,mois1,callback);
                   },
                   function (callback) {
-                      Engagementhtp.ecrituredataj5devi(result[27],"htpdevij5",date_export,feuille,callback);
+                      Engagementhtp.ecrituredataj5devi(result[27],"htpdevij5",date_export,mois1,callback);
                   },
                   function (callback) {
-                      Engagementhtp.ecrituredataj5sales(result[28],"htpsales16",date_export,feuille,callback);//htpsalesj5
+                      Engagementhtp.ecrituredataj5sales(result[28],"htpsales16",date_export,mois1,callback);//htpsalesj5
                   },
                   function (callback) {
-                      Engagementhtp.ecrituredataj5flux(result[29],"htpflux16",date_export,feuille,callback);
+                      Engagementhtp.ecrituredataj5flux(result[29],"htpflux16",date_export,mois1,callback);
                   },
                   function (callback) {
-                      Engagementhtp.ecrituredataj5rejet(result[30],"htprejet16",date_export,feuille,callback);
+                      Engagementhtp.ecrituredataj5rejet(result[30],"htprejet16",date_export,mois1,callback);
                   },
                   function (callback) {
-                      Engagementhtp.ecrituredataj5cotlamie(result[31],"htpcotlamiej5",date_export,feuille,callback);
+                      Engagementhtp.ecrituredataj5cotlamie(result[31],"htpcotlamiej5",date_export,mois1,callback);
                   },
                   function (callback) {
-                      Engagementhtp.ecrituredataj2cotite(result[32],"htpcotite16",date_export,feuille,callback);
+                      Engagementhtp.ecrituredataj2cotite(result[32],"htpcotite16",date_export,mois1,callback);
                   },
                   function (callback) {
-                      Engagementhtp.ecrituredataj5cotite(result[33],"htpcotite16",date_export,feuille,callback);
+                      Engagementhtp.ecrituredataj5cotite(result[33],"htpcotite16",date_export,mois1,callback);
                     },
                     function (callback) {
-                      Engagementhtp.ecrituredataj2faclamie(result[34],"htpfaclamiej2",date_export,feuille,callback);
+                      Engagementhtp.ecrituredataj2faclamie(result[34],"htpfaclamiej2",date_export,mois1,callback);
                     },
                   function (callback) {
-                    Engagementhtp.ecrituredataj2acs(result[35],"htpacsj2",date_export,feuille,callback);
+                    Engagementhtp.ecrituredataj2acs(result[35],"htpacsj2",date_export,mois1,callback);
                   },
                   function (callback) {
-                    Engagementhtp.ecrituredataj5faclamie(result[36],"htpfaclamiej5",date_export,feuille,callback);
+                    Engagementhtp.ecrituredataj5faclamie(result[36],"htpfaclamiej5",date_export,mois1,callback);
                   },
                 function (callback) {
-                    Engagementhtp.ecrituredataj5acs(result[37],"htpacsj5",date_export,feuille,callback);
+                    Engagementhtp.ecrituredataj5acs(result[37],"htpacsj5",date_export,mois1,callback);
                   },
                 /**************************************************************************************************/
                 function (callback) {
-                  Engagementhtp.ecrituredataetptri(result[38],"htptrietp",date_export,feuille,callback);
+                  Engagementhtp.ecrituredataetptri(result[38],"htptrietp",date_export,mois1,callback);
                 },
                 function (callback) {
-                  Engagementhtp.ecrituredataetpfacM(result[39],"htpfacmgetp",date_export,feuille,callback);
+                  Engagementhtp.ecrituredataetpfacM(result[39],"htpfacmgetp",date_export,mois1,callback);
                 },
                 function (callback) {
-                  Engagementhtp.ecrituredataetpdevi(result[40],"htpdevietp",date_export,feuille,callback);
+                  Engagementhtp.ecrituredataetpdevi(result[40],"htpdevietp",date_export,mois1,callback);
                 },
                 function (callback) {
-                  Engagementhtp.ecrituredataetpfaclamie(result[41],"htpfaclamieetp",date_export,feuille,callback);
+                  Engagementhtp.ecrituredataetpfaclamie(result[41],"htpfaclamieetp",date_export,mois1,callback);
                 },
                 function (callback) {
-                  Engagementhtp.ecrituredataetpcotlamie(result[42],"htpcotlamieetp",date_export,feuille,callback);
+                  Engagementhtp.ecrituredataetpcotlamie(result[42],"htpcotlamieetp",date_export,mois1,callback);
                 },
                 /*********************************************************************************************/
 
                 function (callback) {
-                  Engagementhtp.ecrituredatastock16tri(result[43],"htptristock",date_export,feuille,callback);
+                  Engagementhtp.ecrituredatastock16tri(result[43],"htptristock",date_export,mois1,callback);
                 },
                 function (callback) {
-                  Engagementhtp.ecrituredatastock16facM(result[44],"htpfacmgstocktot",date_export,feuille,callback);
+                  Engagementhtp.ecrituredatastock16facM(result[44],"htpfacmgstocktot",date_export,mois1,callback);
                 },
                 function (callback) {
-                  Engagementhtp.ecrituredatastock16devi(result[45],"htpdevistocktot",date_export,feuille,callback);
+                  Engagementhtp.ecrituredatastock16devi(result[45],"htpdevistocktot",date_export,mois1,callback);
                 },
                 function (callback) {
-                  Engagementhtp.ecrituredatastock16sales(result[46],"htpsalesstocktot",date_export,feuille,callback);
+                  Engagementhtp.ecrituredatastock16sales(result[46],"htpsalesstocktot",date_export,mois1,callback);
                 },
                 function (callback) {
-                  Engagementhtp.ecrituredatastock16flux(result[47],"htpfluxstock",date_export,feuille,callback);
+                  Engagementhtp.ecrituredatastock16flux(result[47],"htpfluxstock",date_export,mois1,callback);
                 },
                 function (callback) {
-                    Engagementhtp.ecrituredatastock16rejet(result[48],"htprejetstock",date_export,feuille,callback);
+                    Engagementhtp.ecrituredatastock16rejet(result[48],"htprejetstock",date_export,mois1,callback);
                   },
                 function (callback) {
-                    Engagementhtp.ecrituredatastock16cotlamie(result[49],"htpcotlamiestock",date_export,feuille,callback);
+                    Engagementhtp.ecrituredatastock16cotlamie(result[49],"htpcotlamiestock",date_export,mois1,callback);
                 },
                 function (callback) {
-                    Engagementhtp.ecrituredatastock16cotite(result[50],"htpcotitestock",date_export,feuille,callback);
+                    Engagementhtp.ecrituredatastock16cotite(result[50],"htpcotitestock",date_export,mois1,callback);
                 },
                 function (callback) {
-                    Engagementhtp.ecrituredatastock16faclamie(result[51],"htpfaclamiestock",date_export,feuille,callback);
+                    Engagementhtp.ecrituredatastock16faclamie(result[51],"htpfaclamiestock",date_export,mois1,callback);
                 },
                 function (callback) {
-                    Engagementhtp.ecrituredatastock16acs(result[52],"htpacsstock",date_export,feuille,callback);
+                    Engagementhtp.ecrituredatastock16acs(result[52],"htpacsstock",date_export,mois1,callback);
                 },
 
 
@@ -1569,159 +1569,159 @@ exporthtpengagementsuivant_1 : function (req, res) {
     console.log("Count OK 1==> " + result[0].ok);
     async.series([
       function (callback) {
-        Engagementhtp.ecrituredatastocknontjtri(result[0],"htptritnontj",date_export,feuille,callback);
+        Engagementhtp.ecrituredatastocknontjtri(result[0],"htptritnontj",date_export,mois1,callback);
       },
       function (callback) {
-        Engagementhtp.ecrituredatastocknontjfacM(result[1],"htpfacmgtnontj",date_export,feuille,callback);
+        Engagementhtp.ecrituredatastocknontjfacM(result[1],"htpfacmgtnontj",date_export,mois1,callback);
       },
       function (callback) {
-        Engagementhtp.ecrituredatastocknontjdevi(result[2],"htpdevitnontj",date_export,feuille,callback);
+        Engagementhtp.ecrituredatastocknontjdevi(result[2],"htpdevitnontj",date_export,mois1,callback);
       },
       function (callback) {
-        Engagementhtp.ecrituredatastocknontjsales(result[3],"htpsalestnontj",date_export,feuille,callback);
+        Engagementhtp.ecrituredatastocknontjsales(result[3],"htpsalestnontj",date_export,mois1,callback);
       },
       function (callback) {
-        Engagementhtp.ecrituredatastocknontjflux(result[4],"htpfluxtnontj",date_export,feuille,callback);
+        Engagementhtp.ecrituredatastocknontjflux(result[4],"htpfluxtnontj",date_export,mois1,callback);
       },
       function (callback) {
-          Engagementhtp.ecrituredatastocknontjrejet(result[5],"htprejettnontj",date_export,feuille,callback);
+          Engagementhtp.ecrituredatastocknontjrejet(result[5],"htprejettnontj",date_export,mois1,callback);
         },
       function (callback) {
-          Engagementhtp.ecrituredatastocknontjcotlamie(result[6],"htpcotlamietnontj",date_export,feuille,callback);
+          Engagementhtp.ecrituredatastocknontjcotlamie(result[6],"htpcotlamietnontj",date_export,mois1,callback);
       },
       function (callback) {
-          Engagementhtp.ecrituredatastocknontjcotite(result[7],"htpcotitetnontj",date_export,feuille,callback);
+          Engagementhtp.ecrituredatastocknontjcotite(result[7],"htpcotitetnontj",date_export,mois1,callback);
       },
       function (callback) {
-          Engagementhtp.ecrituredatastocknontjfaclamie(result[8],"htpfaclamietnontj",date_export,feuille,callback);
+          Engagementhtp.ecrituredatastocknontjfaclamie(result[8],"htpfaclamietnontj",date_export,mois1,callback);
       },
       function (callback) {
-          Engagementhtp.ecrituredatastocknontjacs(result[9],"htpacstnontj",date_export,feuille,callback);
+          Engagementhtp.ecrituredatastocknontjacs(result[9],"htpacstnontj",date_export,mois1,callback);
       },
       /*********************************************************/
       function (callback) {
-        Engagementhtp.ecrituredatastocknontj1tri(result[10],"htptritnontj1",date_export,feuille,callback);
+        Engagementhtp.ecrituredatastocknontj1tri(result[10],"htptritnontj1",date_export,mois1,callback);
       },
       function (callback) {
-        Engagementhtp.ecrituredatastocknontj1facM(result[11],"htpfacmgtnontj1",date_export,feuille,callback);
+        Engagementhtp.ecrituredatastocknontj1facM(result[11],"htpfacmgtnontj1",date_export,mois1,callback);
       },
       function (callback) {
-        Engagementhtp.ecrituredatastocknontj1devi(result[12],"htpdevitnontj1",date_export,feuille,callback);
+        Engagementhtp.ecrituredatastocknontj1devi(result[12],"htpdevitnontj1",date_export,mois1,callback);
       },
       function (callback) {
-        Engagementhtp.ecrituredatastocknontj1sales(result[13],"htpsalestnontj1",date_export,feuille,callback);
+        Engagementhtp.ecrituredatastocknontj1sales(result[13],"htpsalestnontj1",date_export,mois1,callback);
       },
       function (callback) {
-        Engagementhtp.ecrituredatastocknontj1flux(result[14],"htpfluxtnontj1",date_export,feuille,callback);
+        Engagementhtp.ecrituredatastocknontj1flux(result[14],"htpfluxtnontj1",date_export,mois1,callback);
       },
       function (callback) {
-          Engagementhtp.ecrituredatastocknontj1rejet(result[15],"htprejettnontj1",date_export,feuille,callback);
+          Engagementhtp.ecrituredatastocknontj1rejet(result[15],"htprejettnontj1",date_export,mois1,callback);
         },
       function (callback) {
-          Engagementhtp.ecrituredatastocknontj1cotlamie(result[16],"htpcotlamietnontj1",date_export,feuille,callback);
+          Engagementhtp.ecrituredatastocknontj1cotlamie(result[16],"htpcotlamietnontj1",date_export,mois1,callback);
       },
       function (callback) {
-          Engagementhtp.ecrituredatastocknontj1cotite(result[17],"htpcotitetnontj1",date_export,feuille,callback);
+          Engagementhtp.ecrituredatastocknontj1cotite(result[17],"htpcotitetnontj1",date_export,mois1,callback);
       },
       function (callback) {
-          Engagementhtp.ecrituredatastocknontj1faclamie(result[18],"htpfaclamietnontj1",date_export,feuille,callback);
+          Engagementhtp.ecrituredatastocknontj1faclamie(result[18],"htpfaclamietnontj1",date_export,mois1,callback);
       },
       function (callback) {
-          Engagementhtp.ecrituredatastocknontj1acs(result[19],"htpacstnontj1",date_export,feuille,callback);
+          Engagementhtp.ecrituredatastocknontj1acs(result[19],"htpacstnontj1",date_export,mois1,callback);
       },
       /*******************************************************************************************************/
       function (callback) {
-        Engagementhtp.ecrituredatastocknontj2tri(result[20],"htptritnontj2",date_export,feuille,callback);
+        Engagementhtp.ecrituredatastocknontj2tri(result[20],"htptritnontj2",date_export,mois1,callback);
       },
       function (callback) {
-        Engagementhtp.ecrituredatastocknontj2facM(result[21],"htpfacmgtnontj2",date_export,feuille,callback);
+        Engagementhtp.ecrituredatastocknontj2facM(result[21],"htpfacmgtnontj2",date_export,mois1,callback);
       },
       function (callback) {
-        Engagementhtp.ecrituredatastocknontj2devi(result[22],"htpdevitnontj2",date_export,feuille,callback);
+        Engagementhtp.ecrituredatastocknontj2devi(result[22],"htpdevitnontj2",date_export,mois1,callback);
       },
       function (callback) {
-        Engagementhtp.ecrituredatastocknontj2sales(result[23],"htpsalestnontj2",date_export,feuille,callback);
+        Engagementhtp.ecrituredatastocknontj2sales(result[23],"htpsalestnontj2",date_export,mois1,callback);
       },
       function (callback) {
-        Engagementhtp.ecrituredatastocknontj2flux(result[24],"htpfluxtnontj2",date_export,feuille,callback);
+        Engagementhtp.ecrituredatastocknontj2flux(result[24],"htpfluxtnontj2",date_export,mois1,callback);
       },
       function (callback) {
-          Engagementhtp.ecrituredatastocknontj2rejet(result[25],"htprejettnontj2",date_export,feuille,callback);
+          Engagementhtp.ecrituredatastocknontj2rejet(result[25],"htprejettnontj2",date_export,mois1,callback);
         },
       function (callback) {
-          Engagementhtp.ecrituredatastocknontj2cotlamie(result[26],"htpcotlamietnontj2",date_export,feuille,callback);
+          Engagementhtp.ecrituredatastocknontj2cotlamie(result[26],"htpcotlamietnontj2",date_export,mois1,callback);
       },
       function (callback) {
-          Engagementhtp.ecrituredatastocknontj2cotite(result[27],"htpcotitetnontj2",date_export,feuille,callback);
+          Engagementhtp.ecrituredatastocknontj2cotite(result[27],"htpcotitetnontj2",date_export,mois1,callback);
       },
       function (callback) {
-          Engagementhtp.ecrituredatastocknontj2faclamie(result[28],"htpfaclamietnontj2",date_export,feuille,callback);
+          Engagementhtp.ecrituredatastocknontj2faclamie(result[28],"htpfaclamietnontj2",date_export,mois1,callback);
       },
       function (callback) {
-          Engagementhtp.ecrituredatastocknontj2acs(result[29],"htpacstnontj2",date_export,feuille,callback);
+          Engagementhtp.ecrituredatastocknontj2acs(result[29],"htpacstnontj2",date_export,mois1,callback);
       },
       /*********************************************************/
       function (callback) {
-        Engagementhtp.ecrituredatastocknontj5tri(result[30],"htptritnontj5",date_export,feuille,callback);
+        Engagementhtp.ecrituredatastocknontj5tri(result[30],"htptritnontj5",date_export,mois1,callback);
       },
       function (callback) {
-        Engagementhtp.ecrituredatastocknontj5facM(result[31],"htpfacmgtnontj5",date_export,feuille,callback);
+        Engagementhtp.ecrituredatastocknontj5facM(result[31],"htpfacmgtnontj5",date_export,mois1,callback);
       },
       function (callback) {
-        Engagementhtp.ecrituredatastocknontj5devi(result[32],"htpdevitnontj5",date_export,feuille,callback);
+        Engagementhtp.ecrituredatastocknontj5devi(result[32],"htpdevitnontj5",date_export,mois1,callback);
       },
       function (callback) {
-        Engagementhtp.ecrituredatastocknontj5sales(result[33],"htpsalestnontj5",date_export,feuille,callback);
+        Engagementhtp.ecrituredatastocknontj5sales(result[33],"htpsalestnontj5",date_export,mois1,callback);
       },
       function (callback) {
-        Engagementhtp.ecrituredatastocknontj5flux(result[34],"htpfluxtnontj5",date_export,feuille,callback);
+        Engagementhtp.ecrituredatastocknontj5flux(result[34],"htpfluxtnontj5",date_export,mois1,callback);
       },
       function (callback) {
-          Engagementhtp.ecrituredatastocknontj5rejet(result[35],"htprejettnontj5",date_export,feuille,callback);
+          Engagementhtp.ecrituredatastocknontj5rejet(result[35],"htprejettnontj5",date_export,mois1,callback);
         },
       function (callback) {
-          Engagementhtp.ecrituredatastocknontj5cotlamie(result[36],"htpcotlamietnontj5",date_export,feuille,callback);
+          Engagementhtp.ecrituredatastocknontj5cotlamie(result[36],"htpcotlamietnontj5",date_export,mois1,callback);
       },
       function (callback) {
-          Engagementhtp.ecrituredatastocknontj5cotite(result[37],"htpcotitetnontj5",date_export,feuille,callback);
+          Engagementhtp.ecrituredatastocknontj5cotite(result[37],"htpcotitetnontj5",date_export,mois1,callback);
       },
       function (callback) {
-          Engagementhtp.ecrituredatastocknontj5faclamie(result[38],"htpfaclamietnontj5",date_export,feuille,callback);
+          Engagementhtp.ecrituredatastocknontj5faclamie(result[38],"htpfaclamietnontj5",date_export,mois1,callback);
       },
       function (callback) {
-          Engagementhtp.ecrituredatastocknontj5acs(result[39],"htpacstnontj5",date_export,feuille,callback);
+          Engagementhtp.ecrituredatastocknontj5acs(result[39],"htpacstnontj5",date_export,mois1,callback);
       },
       /********************************************************************************************************/
 
       function (callback) {
-        Engagementhtp.ecrituredatastocktottri(result[40],"htptristocktot",date_export,feuille,callback);
+        Engagementhtp.ecrituredatastocktottri(result[40],"htptristocktot",date_export,mois1,callback);
       },
       function (callback) {
-        Engagementhtp.ecrituredatastocktotfacM(result[41],"htpfacmgstocktot",date_export,feuille,callback);
+        Engagementhtp.ecrituredatastocktotfacM(result[41],"htpfacmgstocktot",date_export,mois1,callback);
       },
       function (callback) {
-        Engagementhtp.ecrituredatastocktotdevi(result[42],"htpdevistocktot",date_export,feuille,callback);
+        Engagementhtp.ecrituredatastocktotdevi(result[42],"htpdevistocktot",date_export,mois1,callback);
       },
       function (callback) {
-        Engagementhtp.ecrituredatastocktotsales(result[43],"htpsalesstocktot",date_export,feuille,callback);
+        Engagementhtp.ecrituredatastocktotsales(result[43],"htpsalesstocktot",date_export,mois1,callback);
       },
       function (callback) {
-        Engagementhtp.ecrituredatastocktotflux(result[44],"htpfluxstocktot",date_export,feuille,callback);
+        Engagementhtp.ecrituredatastocktotflux(result[44],"htpfluxstocktot",date_export,mois1,callback);
       },
       function (callback) {
-          Engagementhtp.ecrituredatastocktotrejet(result[45],"htprejetstocktot",date_export,feuille,callback);
+          Engagementhtp.ecrituredatastocktotrejet(result[45],"htprejetstocktot",date_export,mois1,callback);
         },
       function (callback) {
-          Engagementhtp.ecrituredatastocktotcotlamie(result[46],"htpcotlamiestocktot",date_export,feuille,callback);
+          Engagementhtp.ecrituredatastocktotcotlamie(result[46],"htpcotlamiestocktot",date_export,mois1,callback);
       },
       function (callback) {
-          Engagementhtp.ecrituredatastocktotcotite(result[47],"htpcotitestocktot",date_export,feuille,callback);
+          Engagementhtp.ecrituredatastocktotcotite(result[47],"htpcotitestocktot",date_export,mois1,callback);
       },
       function (callback) {
-          Engagementhtp.ecrituredatastocktotfaclamie(result[48],"htpfaclamiestocktot",date_export,feuille,callback);
+          Engagementhtp.ecrituredatastocktotfaclamie(result[48],"htpfaclamiestocktot",date_export,mois1,callback);
       },
       function (callback) {
-          Engagementhtp.ecrituredatastocktotacs(result[49],"htpacsstocktot",date_export,feuille,callback);
+          Engagementhtp.ecrituredatastocktotacs(result[49],"htpacsstocktot",date_export,mois1,callback);
       },
 
     ],function(err,resultExcel){
