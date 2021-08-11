@@ -1275,10 +1275,10 @@ module.exports = {
                     var line = newworksheet.getRow(ligneDate1);
                     var f = line.getCell(3).value;
                     // console.log(f);
-                    // var a = "SANTECLAIR";
-                    // const regex = new RegExp(a,'i');
+                    var ai = "SANTECLAIR";
+                    const regex = new RegExp(ai,'i');
                     // if(regex.test(f) == true)
-                    if(f == "SANTECLAIR" || f == "SANTECLAIR ")
+                    if(regex.test(f))
                     {
                       ligneDate = parseInt(rowNumber);
                     }
@@ -1425,7 +1425,9 @@ module.exports = {
         ligneDate1 = parseInt(rowNumber);
         var line = newworksheet.getRow(ligneDate1);
         var f = line.getCell(3).value;
-        if(f == "PUBLIPOSTAGE" || f == "PUBLIPOSTAGE ")
+        var ai = "PUBLIPOSTAGE";
+        const regex = new RegExp(ai,'i');
+        if(regex.test(f))
         {
           ligneDate = parseInt(rowNumber);
         }
