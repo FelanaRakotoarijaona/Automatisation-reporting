@@ -3594,7 +3594,7 @@ ecritureOkKo : async function (nombre_ok_ko, table,date_export,mois1,callback) {
       var collonne;
       var colDate2;
       rowm.eachCell(function(cell, colNumber) {
-        if(cell.value == 'DOCUMENTS TRAITES NON SAISIS (RETOURS)')
+        if(cell.value == 'DOCUMENTS SAISIS')
         {
           colDate2 = parseInt(colNumber);
           var man = newworksheet.getRow(3);

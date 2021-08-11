@@ -618,7 +618,7 @@ module.exports = {
           Retour.ecritureOkKo2(result[3],"trstcaudio",date_export,mois1,callback);
         },
       function (callback) {
-          Retour.ecritureOkKo3(result[4],"trretourfacttiers",date_export,mois1,callback);
+          Retour.ecritureOkKo10(result[4],"trretourfacttiers",date_export,mois1,callback);
         },
         // function (callback) {
         //    Retour.ecritureOkKo3(result[5],"retouralmgto2",date_export,mois1,callback);
@@ -810,9 +810,9 @@ rechercheColonne_suivant : function (req, res) {
     function (callback) {
       Retour.countOkKoSum("trindunoehtp",callback);
     },
-    function (callback) {
-      Retour.countOkKoSum("trcentredesoin",callback);
-    },
+    // function (callback) {
+    //   Retour.countOkKoSum("trcentredesoin",callback);
+    // },
     function (callback) {
       Retour.countOkKoSum("trhospimulti",callback);
     },
@@ -847,17 +847,17 @@ rechercheColonne_suivant : function (req, res) {
       function (callback) {
         Retour.ecritureOkKo5(result[3],"trindunoehtp",date_export,mois1,callback);
       },
+      // function (callback) {
+      //   Retour.ecritureOkKo7(result[4],"trcentredesoin",date_export,mois1,callback);
+      // },
       function (callback) {
-        Retour.ecritureOkKo7(result[4],"trcentredesoin",date_export,mois1,callback);
+        Retour.ecritureOkKo8(result[4],"trhospimulti",date_export,mois1,callback);
       },
       function (callback) {
-        Retour.ecritureOkKo8(result[5],"trhospimulti",date_export,mois1,callback);
+        Retour.ecritureOkKo6(result[5],"trldrcbtp",date_export,mois1,callback);
       },
       function (callback) {
-        Retour.ecritureOkKo6(result[6],"trldrcbtp",date_export,mois1,callback);
-      },
-      function (callback) {
-        Retour.ecritureOkKoFactOptique(result[7],"trfactoptique",date_export,mois1,callback);
+        Retour.ecritureOkKoFactOptique(result[6],"trfactoptique",date_export,mois1,callback);
       },
     
     ],function(err,resultExcel){
@@ -867,7 +867,7 @@ rechercheColonne_suivant : function (req, res) {
      console.log("Une erreur s'est prod");
      res.view('Retour/erera');
    }
-   else if(resultExcel[0]=='OK' || resultExcel[1]== 'OK' || resultExcel[2]== 'OK'  || resultExcel[3]== 'OK' || resultExcel[4]== 'OK' || resultExcel[5]== 'OK' || resultExcel[6]== 'OK'  || resultExcel[7]== 'OK'  )
+   else if(resultExcel[0]=='OK' || resultExcel[1]== 'OK' || resultExcel[2]== 'OK'  || resultExcel[3]== 'OK' || resultExcel[4]== 'OK' || resultExcel[5]== 'OK' || resultExcel[6]== 'OK' )
    {
      // res.redirect('/exportRetour/'+date_export+'/x')
      res.view('Retour/accueilRecherchefichier');
