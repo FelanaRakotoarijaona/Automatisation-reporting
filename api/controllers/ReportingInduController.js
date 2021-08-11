@@ -789,6 +789,9 @@ rechercheColonne : function (req, res) {
     function (callback) {
       ReportingIndu.countOkKoSumko("induaudio",callback);
     },
+    function (callback) {
+      ReportingIndu.countOkKoDoubleSum("indusansnotifcbtp",callback);
+    },
 
   ],function(err,result){
     if(err) return res.badRequest(err);
@@ -851,6 +854,9 @@ rechercheColonne : function (req, res) {
       },
       function (callback) {
         ReportingIndu.ecritureOkKoalm(result[14],"induaudio",date_export,mois1,callback);
+      },
+      function (callback) {
+        ReportingIndu.ecritureOkKoDoublecbtp(result[15],"indusansnotifcbtp",date_export,mois1,callback);
       },
       
     ],function(err,resultExcel){
