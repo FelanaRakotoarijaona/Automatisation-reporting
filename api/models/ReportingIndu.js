@@ -28,9 +28,10 @@ module.exports = {
       {
         fs.readdir(a, (err, files) => {
           console.log(a);
-              files.forEach(file => {
-                if(file)
+          if(files)
                 {
+              files.forEach(file => {
+                
                   const regex = new RegExp(b,'i');
                   if(regex.test(file))
                   {
@@ -52,6 +53,8 @@ module.exports = {
                   {
                    console.log('colonne non trouvé');
                   }
+                });
+
                 }
                 else
                 {
@@ -59,7 +62,6 @@ module.exports = {
                   return callback(null,'KO');
                 }
                
-            });
           });
       }
       catch
