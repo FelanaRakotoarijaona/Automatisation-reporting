@@ -5,7 +5,7 @@
  * @docs        :: https://sailsjs.com/docs/concepts/models-and-orm/models
  */
 //CHEMIN CIBLER DANS LE SERVEUR (emplacement de l'excel dans le serveur)
- const path_reporting = '/dev/prod/00-TOUS/TestReporting/REPORTING CONTENTIEUX type.xlsx';
+ const path_reporting = '/dev/prod/00-TOUS/07-REPORTING/REPORTING CONTENTIEUX.xlsx';
 // const path_reporting = 'D:/Reporting/Reporting/REPORTING CONTENTIEUX type.xlsx';
 // const path_reporting = 'D:/LDR8_1421_nouv/PROJET_FELANA/REPORTING CONTENTIEUX type.xlsx';
 
