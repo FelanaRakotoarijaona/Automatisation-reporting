@@ -3016,7 +3016,7 @@ ecritureOkKo : async function (nombre_ok_ko, table,date_export,mois1,callback) {
           ligneDate1 = parseInt(rowNumber);
           var line = newworksheet.getRow(ligneDate1);
           var f = line.getCell(3).value;
-          var motcle = 'almerys'
+          var motcle = 'almerys';
           const regex = new RegExp(motcle,'i');
           if(regex.test(f))
           {
@@ -3034,14 +3034,17 @@ ecritureOkKo : async function (nombre_ok_ko, table,date_export,mois1,callback) {
       var rowm = newworksheet.getRow(1);
       var colonnne;
       var colDate1;
-     /* rowm.eachCell(function(cell, colNumber) {
-        if(cell.value == 'DOCUMENTS SAISIS')
+      rowm.eachCell(function(cell, colNumber) {
+        if(cell.value == 'DOCUMENTS TRAITES NON SAISIS (RETOURS)')
         {
           colDate1 = parseInt(colNumber);
           //var col = newworksheet.getColumn(colDate1);
           var man = newworksheet.getRow(3);
+          
           var f = man.getCell(colDate1).value;
-          if(f == iniValue.ok)
+          var motcle = 'Entrain';
+          const regex = new RegExp(motcle,'i');
+          if(regex.test(f))
           {
             colonnne = parseInt(colNumber);
           }
@@ -3064,10 +3067,10 @@ ecritureOkKo : async function (nombre_ok_ko, table,date_export,mois1,callback) {
             collonne = parseInt(colNumber);
           }
         }
-      });*/
+      });
       console.log(" Colnumber2"+collonne);
-      numeroLigne.getCell('CP').value = nombre_ok_ko.ok;
-      numeroLigne.getCell('CQ').value = nombre_ok_ko.ko;
+      numeroLigne.getCell(colonnne).value = nombre_ok_ko.ok;
+      numeroLigne.getCell(collonne).value = nombre_ok_ko.ko;
       await newWorkbook.xlsx.writeFile(path_reporting);
       sails.log("Ecriture OK KO terminé"); 
       return callback(null, "OK");
