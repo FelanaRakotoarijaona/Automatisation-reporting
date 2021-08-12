@@ -812,6 +812,9 @@ rechercheColonne : function (req, res) {
     console.log("Count OK 11 ==> " + result[11].ok + " / " + result[11].ko);
     console.log("Count OK 12 ==> " + result[12].ok + " / " + result[12].ko);
     console.log("Count OK 13 ==> " + result[13].ok + " / " + result[13].ko);
+    console.log("Count OK 14 ==> " + result[14].ok + " / " + result[14].ko);
+    console.log("Count OK 15 ==> " + result[15].ok + " / " + result[15].ko);
+    console.log("Count OK 16 ==> " + result[16].ok + " / " + result[16].ko);
     async.series([
       function (callback) {
         ReportingIndu.ecritureOkKoDouble(result[0],"induse",date_export,mois1,callback);
@@ -862,7 +865,7 @@ rechercheColonne : function (req, res) {
         ReportingIndu.ecritureOkKoDoublecbtp(result[15],"indusansnotifcbtp",date_export,mois1,callback);
       },
       function (callback) {
-        ReportingIndu.ecritureOkKoDoubleInduentrain1(result[15],"induentrainavant",date_export,mois1,callback);
+        ReportingIndu.ecritureOkKoDoubleInduentrain1(result[16],"induentrainavant",date_export,mois1,callback);
       },
       
     ],function(err,resultExcel){
