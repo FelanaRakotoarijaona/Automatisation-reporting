@@ -53,7 +53,7 @@ module.exports = {
               {
                 for(var i=0;i<tab.length;i++)
                 {
-                  var sql = "insert into "+nomBase+" (chemin,nomtable,numligne,numfeuile,colonnecible) values ('"+re[i]+"','"+nomTable+"','"+numLigne+"','"+numFeuille+"','"+nomColonne+"') ";
+                  var sql = "insert into "+nomBase+" (chemin,nomtable,numligne,numfeuile,colonnecible) values ('"+tab[i]+"','"+nomTable+"','"+numLigne+"','"+numFeuille+"','"+nomColonne+"') ";
                   ReportingInovcom.getDatastore().sendNativeQuery(sql, function(err,res){
                     if (err) { 
                       console.log('une erreur');
