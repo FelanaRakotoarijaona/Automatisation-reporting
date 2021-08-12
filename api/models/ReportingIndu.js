@@ -3016,7 +3016,7 @@ ecritureOkKo : async function (nombre_ok_ko, table,date_export,mois1,callback) {
           ligneDate1 = parseInt(rowNumber);
           var line = newworksheet.getRow(ligneDate1);
           var f = line.getCell(3).value;
-          var motcle = 'almerys';
+          var motcle = 'almerys'
           const regex = new RegExp(motcle,'i');
           if(regex.test(f))
           {
@@ -3035,16 +3035,13 @@ ecritureOkKo : async function (nombre_ok_ko, table,date_export,mois1,callback) {
       var colonnne;
       var colDate1;
       rowm.eachCell(function(cell, colNumber) {
-        if(cell.value == 'DOCUMENTS TRAITES NON SAISIS (RETOURS)')
+        if(cell.value == 'DOCUMENTS SAISIS')
         {
           colDate1 = parseInt(colNumber);
           //var col = newworksheet.getColumn(colDate1);
           var man = newworksheet.getRow(3);
-          
           var f = man.getCell(colDate1).value;
-          var motcle = 'Entrain';
-          const regex = new RegExp(motcle,'i');
-          if(regex.test(f))
+          if(f == iniValue.ok)
           {
             colonnne = parseInt(colNumber);
           }
