@@ -784,13 +784,16 @@ rechercheColonne : function (req, res) {
       ReportingIndu.countOkKoSum("induinterialeaudio",callback);
     },
     function (callback) {
-      ReportingIndu.countOkKoDoubleSum("induentrain",callback);
+      ReportingIndu.countOkKoSumko("induentrain",callback);
     },
     function (callback) {
       ReportingIndu.countOkKoSumko("induaudio",callback);
     },
     function (callback) {
       ReportingIndu.countOkKoDoubleSum("indusansnotifcbtp",callback);
+    },
+    function (callback) {
+      ReportingIndu.countOkKoSum("induentrain",callback);
     },
 
   ],function(err,result){
@@ -850,13 +853,16 @@ rechercheColonne : function (req, res) {
         ReportingIndu.ecritureOkKo(result[12],"induinterialeaudio",date_export,mois1,callback);
       },
       function (callback) {
-        ReportingIndu.ecritureOkKoDoubleInduentrain(result[13],"induentrain",date_export,mois1,callback);
+        ReportingIndu.ecritureOkKoDoubleInduentrain1(result[13],"induentrain",date_export,mois1,callback);
       },
       function (callback) {
         ReportingIndu.ecritureOkKoalm(result[14],"induaudio",date_export,mois1,callback);
       },
       function (callback) {
         ReportingIndu.ecritureOkKoDoublecbtp(result[15],"indusansnotifcbtp",date_export,mois1,callback);
+      },
+      function (callback) {
+        ReportingIndu.ecritureOkKoDoubleInduentrain1(result[15],"induentrainavant",date_export,mois1,callback);
       },
       
     ],function(err,resultExcel){

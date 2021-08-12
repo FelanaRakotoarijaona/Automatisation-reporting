@@ -2989,7 +2989,7 @@ ecritureOkKo : async function (nombre_ok_ko, table,date_export,mois1,callback) {
 
     },
     /****************************************************************************/
-    ecritureOkKoDoubleInduentrain : async function (nombre_ok_ko, table,date_export,mois1,callback) {
+    ecritureOkKoDoubleInduentrain1 : async function (nombre_ok_ko, table,date_export,mois1,callback) {
     if(nombre_ok_ko.ok==null && nombre_ok_ko.ko==null || nombre_ok_ko.ok==null && nombre_ok_ko.ko==undefined)
     {
      console.log('ok' + nombre_ok_ko.ok);
@@ -3034,28 +3034,28 @@ ecritureOkKo : async function (nombre_ok_ko, table,date_export,mois1,callback) {
     var a5;
   
     var rowm = newworksheet.getRow(1);
-    var colonnne;
-    var colDate1;
-    rowm.eachCell(function(cell, colNumber) {
-      if(cell.value == 'DOCUMENTS TRAITES NON SAISIS (RETOURS)')
-      {
-        colDate1 = parseInt(colNumber);
-        //var col = newworksheet.getColumn(colDate1);
-        var man = newworksheet.getRow(3);
-        var f = man.getCell(colDate1).value;
-        // console.log(f);
-        // console.log('**********************************************');
-        // console.log(iniValue.ok);
-        var getko_ini1 = man.getCell(colDate1).address;    
-        // console.log('//////////////////'+getko_ini1+'//////////////////////');    
-        //  if(getko_ini1 == iniValue.ko+3 && f == iniValue.ok)
-      if(f =='Entrain' && getko_ini1 == iniValue.ko+3)
-        {
-          colonnne = parseInt(colNumber);
-        }
-      }
-    });
-    console.log(" Colnumber"+colonnne);
+    // var colonnne;
+    // var colDate1;
+    // rowm.eachCell(function(cell, colNumber) {
+    //   if(cell.value == 'DOCUMENTS TRAITES NON SAISIS (RETOURS)')
+    //   {
+    //     colDate1 = parseInt(colNumber);
+    //     //var col = newworksheet.getColumn(colDate1);
+    //     var man = newworksheet.getRow(3);
+    //     var f = man.getCell(colDate1).value;
+    //     // console.log(f);
+    //     // console.log('**********************************************');
+    //     // console.log(iniValue.ok);
+    //     var getko_ini1 = man.getCell(colDate1).address;    
+    //     // console.log('//////////////////'+getko_ini1+'//////////////////////');    
+    //     //  if(getko_ini1 == iniValue.ko+3 && f == iniValue.ok)
+    //   if(f =='Entrain' && getko_ini1 == iniValue.ko+3)
+    //     {
+    //       colonnne = parseInt(colNumber);
+    //     }
+    //   }
+    // });
+    // console.log(" Colnumber"+colonnne);
   
     var collonne;
     var colDate2;
@@ -3074,8 +3074,8 @@ ecritureOkKo : async function (nombre_ok_ko, table,date_export,mois1,callback) {
       }
     });
     console.log(" Colnumber2"+collonne);
-    numeroLigne.getCell(colonnne).value = nombre_ok_ko.ok;
-    numeroLigne.getCell(collonne).value = nombre_ok_ko.ko;
+    // numeroLigne.getCell(colonnne).value = nombre_ok_ko.ok;
+    numeroLigne.getCell(collonne).value = nombre_ok_ko.ok;
     await newWorkbook.xlsx.writeFile(path_reporting);
     sails.log("Ecriture OK KO terminé"); 
     return callback(null, "OK");
@@ -4066,6 +4066,10 @@ ecritureOkKo : async function (nombre_ok_ko, table,date_export,mois1,callback) {
     if(table == "induentrain"){
       numeroColonneOk = iniValue.induentrain.ok;
       numeroColonneKo = iniValue.induentrain.ko;
+    }
+    if(table == "induentrain"){
+      numeroColonneOk = iniValue.induentrainavant.ok;
+      numeroColonneKo = iniValue.induentrainavant.ko;
     }
     // if(table == ""){
     //   numeroColonneOk = iniValue..ok;
