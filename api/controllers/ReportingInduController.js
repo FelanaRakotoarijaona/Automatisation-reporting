@@ -784,7 +784,7 @@ rechercheColonne : function (req, res) {
       ReportingIndu.countOkKoSum("induinterialeaudio",callback);
     },
     function (callback) {
-      ReportingIndu.countOkKoDoubleSum("induentrain",callback);
+      ReportingIndu.countOkKoSumko("induentrain",callback);
     },
     function (callback) {
       ReportingIndu.countOkKoSumko("induaudio",callback);
@@ -792,6 +792,7 @@ rechercheColonne : function (req, res) {
     function (callback) {
       ReportingIndu.countOkKoDoubleSum("indusansnotifcbtp",callback);
     },
+
 
   ],function(err,result){
     if(err) return res.badRequest(err);
@@ -809,6 +810,9 @@ rechercheColonne : function (req, res) {
     console.log("Count OK 11 ==> " + result[11].ok + " / " + result[11].ko);
     console.log("Count OK 12 ==> " + result[12].ok + " / " + result[12].ko);
     console.log("Count OK 13 ==> " + result[13].ok + " / " + result[13].ko);
+    console.log("Count OK 14 ==> " + result[14].ok + " / " + result[14].ko);
+    console.log("Count OK 15 ==> " + result[15].ok + " / " + result[15].ko);
+   
     async.series([
       function (callback) {
         ReportingIndu.ecritureOkKoDouble(result[0],"induse",date_export,mois1,callback);
@@ -850,7 +854,7 @@ rechercheColonne : function (req, res) {
         ReportingIndu.ecritureOkKo(result[12],"induinterialeaudio",date_export,mois1,callback);
       },
       function (callback) {
-        ReportingIndu.ecritureOkKoDoubleInduentrain(result[13],"induentrain",date_export,mois1,callback);
+        ReportingIndu.ecritureOkKoDoubleInduentrain1(result[13],"induentrain",date_export,mois1,callback);
       },
       function (callback) {
         ReportingIndu.ecritureOkKoalm(result[14],"induaudio",date_export,mois1,callback);
@@ -858,6 +862,7 @@ rechercheColonne : function (req, res) {
       function (callback) {
         ReportingIndu.ecritureOkKoDoublecbtp(result[15],"indusansnotifcbtp",date_export,mois1,callback);
       },
+
       
     ],function(err,resultExcel){
    console.log(resultExcel[0]);
@@ -866,7 +871,7 @@ rechercheColonne : function (req, res) {
           console.log("true zn");
           res.view('reporting/erera');
         }
-        if(resultExcel[0]=='OK' || resultExcel[1]== 'OK' || resultExcel[2]== 'OK'  || resultExcel[3]== 'OK' || resultExcel[4]== 'OK' || resultExcel[5]== 'OK' || resultExcel[6]== 'OK' || resultExcel[7]== 'OK' || resultExcel[8]== 'OK' || resultExcel[9]== 'OK' || resultExcel[10]== 'OK' || resultExcel[11]== 'OK' || resultExcel[12]== 'OK' || resultExcel[13]== 'OK'   || resultExcel[14]== 'OK' )
+        if(resultExcel[0]=='OK' || resultExcel[1]== 'OK' || resultExcel[2]== 'OK'  || resultExcel[3]== 'OK' || resultExcel[4]== 'OK' || resultExcel[5]== 'OK' || resultExcel[6]== 'OK' || resultExcel[7]== 'OK' || resultExcel[8]== 'OK' || resultExcel[9]== 'OK' || resultExcel[10]== 'OK' || resultExcel[11]== 'OK' || resultExcel[12]== 'OK' || resultExcel[13]== 'OK'   || resultExcel[14]== 'OK' || resultExcel[15]== 'OK')
         {
           // res.redirect('/exportRetour/'+date_export+'/x')
           // res.view('reporting/succes');
@@ -965,6 +970,9 @@ rechercheColonneindusuivant : function (req, res) {
     function (callback) {
       ReportingIndu.countOkKoSumko("indufactstc",callback);
     },
+    function (callback) {
+      ReportingIndu.countOkKoSum("induentrain",callback);
+    },
   ],function(err,result){
     if(err) return res.badRequest(err);
     console.log("Count OK 0 ==> " + result[0].ok + " / " + result[0].ko);
@@ -1000,6 +1008,9 @@ rechercheColonneindusuivant : function (req, res) {
       function (callback) {
         ReportingIndu.ecritureOkKoSantesaisis(result[7],"indufactstcazur",date_export,mois1,callback);
       },
+      function (callback) {
+        ReportingIndu.ecritureOkKoDoubleInduentrain1(result[8],"induentrainavant",date_export,mois1,callback);
+      },
     ],function(err,resultExcel){
    console.log(resultExcel[0]);
         if(resultExcel[0]==true)
@@ -1007,7 +1018,7 @@ rechercheColonneindusuivant : function (req, res) {
           console.log("true zn");
           res.view('reporting/erera');
         }
-        if(resultExcel[0]=='OK' || resultExcel[1]== 'OK' || resultExcel[2]== 'OK'  || resultExcel[3]== 'OK' || resultExcel[4]== 'OK' || resultExcel[5]== 'OK' || resultExcel[6]== 'OK' || resultExcel[7]== 'OK'  )
+        if(resultExcel[0]=='OK' || resultExcel[1]== 'OK' || resultExcel[2]== 'OK'  || resultExcel[3]== 'OK' || resultExcel[4]== 'OK' || resultExcel[5]== 'OK' || resultExcel[6]== 'OK' || resultExcel[7]== 'OK'  || resultExcel[8]== 'OK')
         {
           // res.redirect('/exportRetour/'+date_export+'/x')
           res.view('reporting/succes');
