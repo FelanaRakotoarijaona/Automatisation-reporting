@@ -364,7 +364,7 @@
             var address_of_cell2 = {c:colDateLiq, r:a};
             var cell_ref2 = XLSX.utils.encode_cell(address_of_cell2);
             var desired_cell2 = sheet[cell_ref2];
-            var desired_value2 = (desired_cell2 ? desired_cell2.d : undefined);
+            var desired_value2 = (desired_cell2 ? desired_cell2.v : undefined);
 
 
             var ok = 'Facture réglée';
