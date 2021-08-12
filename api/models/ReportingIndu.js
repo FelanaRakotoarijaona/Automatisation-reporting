@@ -3043,13 +3043,13 @@ ecritureOkKo : async function (nombre_ok_ko, table,date_export,mois1,callback) {
         //var col = newworksheet.getColumn(colDate1);
         var man = newworksheet.getRow(3);
         var f = man.getCell(colDate1).value;
-        console.log(f);
-        console.log('**********************************************');
-        console.log(iniValue.ok);
+        // console.log(f);
+        // console.log('**********************************************');
+        // console.log(iniValue.ok);
         var getko_ini1 = man.getCell(colDate1).address;    
-        console.log('//////////////////'+getko_ini1+'//////////////////////');    
+        // console.log('//////////////////'+getko_ini1+'//////////////////////');    
         //  if(getko_ini1 == iniValue.ko+3 && f == iniValue.ok)
-      if(f == iniValue.ok)
+      if(f =='Entrain' && getko_ini1 == iniValue.ko+3)
         {
           colonnne = parseInt(colNumber);
         }
