@@ -3131,7 +3131,7 @@ ecritureOkKo : async function (nombre_ok_ko, table,date_export,mois1,callback) {
       var rowm = newworksheet.getRow(1);
       var colonnne;
       var colDate1;
-     /* rowm.eachCell(function(cell, colNumber) {
+      rowm.eachCell(function(cell, colNumber) {
         if(cell.value == 'DOCUMENTS SAISIS')
         {
           colDate1 = parseInt(colNumber);
@@ -3161,10 +3161,10 @@ ecritureOkKo : async function (nombre_ok_ko, table,date_export,mois1,callback) {
             collonne = parseInt(colNumber);
           }
         }
-      });*/
+      });
       console.log(" Colnumber2"+collonne);
-      numeroLigne.getCell('CP').value = nombre_ok_ko.ok;
-      numeroLigne.getCell('CQ').value = nombre_ok_ko.ko;
+      numeroLigne.getCell(colonnne).value = nombre_ok_ko.ok;
+      numeroLigne.getCell(collonne).value = nombre_ok_ko.ko;
       await newWorkbook.xlsx.writeFile(path_reporting);
       sails.log("Ecriture OK KO terminé"); 
       return callback(null, "OK");
