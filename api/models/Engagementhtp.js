@@ -7939,7 +7939,7 @@ importengagementhtp_1 : function (trameflux,feuil,cellule,table,cellule2,nb,numl
                 };
               };
           }
-          if(table[nb]=='htpfacmg16' || table[nb]=='htpfacmgfin' || table[nb]=='htpfacmgstocktot')
+          if(table[nb]=='htpfacmg16' || table[nb]=='htpfacmgfin' || table[nb]=='htpfacmgstocktot' || table[nb]=='htpfacmgj2' || table[nb]=='htpfacmgj5')
           {
             var nbr = 0;
             for(var a=0;a<=range.e.r;a++)
@@ -7956,7 +7956,7 @@ importengagementhtp_1 : function (trameflux,feuil,cellule,table,cellule2,nb,numl
                 };
               };
           }
-          if(table[nb]=='htpdevi16' || table[nb]=='htpdevifin' || table[nb]=='htpdevistocktot')
+          if(table[nb]=='htpdevi16' || table[nb]=='htpdevifin' || table[nb]=='htpdevij2' || table[nb]=='htpdevij5' || table[nb]=='htpdevistocktot')
           {
             var nbr = 0;
             for(var a=0;a<=range.e.r;a++)
@@ -7974,7 +7974,7 @@ importengagementhtp_1 : function (trameflux,feuil,cellule,table,cellule2,nb,numl
               };
           }
 
-          if(table[nb]=='htpdevij2' || table[nb]=='htpdevitnontj2')
+          if(table[nb]=='htpdevitnontj2')//htpdevij2
           {
             var nbr = 0;
             for(var ra=2;ra<=range.e.r;ra++)
@@ -8000,7 +8000,7 @@ importengagementhtp_1 : function (trameflux,feuil,cellule,table,cellule2,nb,numl
               }
             };
           }
-          if(table[nb]=='htpdevij5' || table[nb]=='htpdevitnontj5')
+          if(table[nb]=='htpdevitnontj5')//htpdevij5
           {
             var nbr = 0;
             for(var ra=2;ra<=range.e.r;ra++)
@@ -8026,7 +8026,7 @@ importengagementhtp_1 : function (trameflux,feuil,cellule,table,cellule2,nb,numl
               }
             };
           }
-          if(table[nb]=='htpfacmgj2' || table[nb]=='htpfacmgtnontj2')
+          if(table[nb]=='htpfacmgtnontj2')//htpfacmgj2
           {
             var nbr = 0;
             for(var ra=2;ra<=range.e.r;ra++)
@@ -8052,7 +8052,7 @@ importengagementhtp_1 : function (trameflux,feuil,cellule,table,cellule2,nb,numl
               }
             };
           }
-          if(table[nb]=='htpfacmgj5' || table[nb]=='htpfacmgtnontj5')
+          if(table[nb]=='htpfacmgtnontj5')//htpfacmgj5
           {
             var nbr = 0;
             for(var ra=2;ra<=range.e.r;ra++)
