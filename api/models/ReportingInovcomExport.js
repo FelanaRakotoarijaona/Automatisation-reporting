@@ -80,8 +80,8 @@ module.exports = {
        }
      });
      console.log(" Colnumber2 "+collonne);*/
-     numeroLigne.getCell('BP').value = nombre_ok_ko.ok;
-     numeroLigne.getCell('DR').value = nombre_ok_ko.ko;
+     numeroLigne.getCell('BP').value = parseInt(nombre_ok_ko.ok);
+     numeroLigne.getCell('DR').value = parseInt(nombre_ok_ko.ko);
  
      
      await newWorkbook.xlsx.writeFile(path_reporting);
@@ -139,8 +139,8 @@ module.exports = {
        var rowm = newworksheet.getRow(1);
        var colonnne;
        var colDate1;
-       numeroLigne.getCell('DI').value = nombre_ok_ko.ok;
-       numeroLigne.getCell('BG').value = nombre_ok_ko.ko;
+       numeroLigne.getCell('DI').value = parseInt(nombre_ok_ko.ok);
+       numeroLigne.getCell('BG').value = parseInt(nombre_ok_ko.ko);
    
        
        await newWorkbook.xlsx.writeFile(path_reporting);
@@ -197,8 +197,8 @@ module.exports = {
          var rowm = newworksheet.getRow(1);
          var colonnne;
          var colDate1;
-         numeroLigne.getCell('DA').value = nombre_ok_ko.ok;
-         numeroLigne.getCell('FC').value = nombre_ok_ko.ko;
+         numeroLigne.getCell('DA').value = parseInt(nombre_ok_ko.ok);
+         numeroLigne.getCell('FC').value = parseInt(nombre_ok_ko.ko);
      
          
          await newWorkbook.xlsx.writeFile(path_reporting);
@@ -968,8 +968,8 @@ module.exports = {
       }
     });
     console.log(" Colnumber2"+collonne);
-    numeroLigne.getCell(colonnne).value = nombre_ok_ko.ok;
-    numeroLigne.getCell(collonne).value = nombre_ok_ko.ko;
+    numeroLigne.getCell(colonnne).value = parseInt(nombre_ok_ko.ok);
+    numeroLigne.getCell(collonne).value = parseInt(nombre_ok_ko.ko);
     await newWorkbook.xlsx.writeFile(path_reporting);
     sails.log("Ecriture OK KO terminé"); 
     return callback(null, "OK");
@@ -1055,8 +1055,8 @@ module.exports = {
     //   }
     // });
     // console.log(" Colnumber2"+collonne);
-    numeroLigne.getCell(colonnne).value = nombre_ok_ko.ok;
-    // numeroLigne.getCell(collonne).value = nombre_ok_ko.ko;
+    numeroLigne.getCell(colonnne).value = parseInt(nombre_ok_ko.ok);
+    // numeroLigne.getCell(collonne).value = parseInt(nombre_ok_ko.ko);
     await newWorkbook.xlsx.writeFile(path_reporting);
     sails.log("Ecriture OK KO terminé"); 
     return callback(null, "OK");
@@ -1143,8 +1143,8 @@ module.exports = {
     //   }
     // });
     // console.log(" Colnumber2"+collonne);
-    // numeroLigne.getCell(colonnne).value = nombre_ok_ko.ok;
-    numeroLigne.getCell(colonnne).value = nombre_ok_ko.ko;
+    // numeroLigne.getCell(colonnne).value = parseInt(nombre_ok_ko.ok);
+    numeroLigne.getCell(colonnne).value = parseInt(nombre_ok_ko.ko);
     await newWorkbook.xlsx.writeFile(path_reporting);
     sails.log("Ecriture OK KO terminé"); 
     return callback(null, "OK");
@@ -1233,8 +1233,8 @@ module.exports = {
       }
     });
     console.log(" Colnumber2"+collonne);*/
-    numeroLigne.getCell(colonnne).value = nombre_ok_ko.ok;
-    //numeroLigne.getCell(collonne).value = nombre_ok_ko.ko;
+    numeroLigne.getCell(colonnne).value = parseInt(nombre_ok_ko.ok);
+    //numeroLigne.getCell(collonne).value = parseInt(nombre_ok_ko.ko);
     await newWorkbook.xlsx.writeFile(path_reporting);
     sails.log("Ecriture OK KO terminé"); 
     return callback(null, "OK");
@@ -1308,7 +1308,7 @@ module.exports = {
                   }
               });
               console.log(" Colnumber "+colonnne);
-              numeroLigne.getCell(colonnne).value = nombre_ok_ko.ok;
+              numeroLigne.getCell(colonnne).value = parseInt(nombre_ok_ko.ok);
               await newWorkbook.xlsx.writeFile(path_reporting);
               sails.log("Ecriture OK KO terminé"); 
               return callback(null, "OK");
@@ -1384,7 +1384,7 @@ module.exports = {
           }
       });
     console.log(" Colnumber"+colonnne);
-    numeroLigne.getCell(colonnne).value = nombre_ok_ko.ok;
+    numeroLigne.getCell(colonnne).value = parseInt(nombre_ok_ko.ok);
     await newWorkbook.xlsx.writeFile(path_reporting);
     sails.log("Ecriture OK KO terminé"); 
     return callback(null, "OK");
@@ -1459,7 +1459,7 @@ module.exports = {
         }
     });
     console.log(" Colnumber"+colonnne);
-    numeroLigne.getCell(colonnne).value = nombre_ok_ko.ok;
+    numeroLigne.getCell(colonnne).value = parseInt(nombre_ok_ko.ok);
     await newWorkbook.xlsx.writeFile(path_reporting);
     sails.log("Ecriture OK KO terminé"); 
     return callback(null, "OK");
@@ -1554,8 +1554,8 @@ module.exports = {
       }
     });
     console.log(" Colnumber2"+collonne);*/
-    numeroLigne.getCell(colonnne).value = nombre_ok_ko.ok;
-    // numeroLigne.getCell(collonne).value = nombre_ok_ko.ko;
+    numeroLigne.getCell(colonnne).value = parseInt(nombre_ok_ko.ok);
+    // numeroLigne.getCell(collonne).value = parseInt(nombre_ok_ko.ko);
     await newWorkbook.xlsx.writeFile(path_reporting);
     sails.log("Ecriture OK KO terminé"); 
     return callback(null, "OK");
@@ -1644,8 +1644,8 @@ module.exports = {
       }
     });
     console.log(" Colnumber2"+collonne);
-    // numeroLigne.getCell(colonnne).value = nombre_ok_ko.ok;
-    numeroLigne.getCell(collonne).value = nombre_ok_ko.ok;
+    // numeroLigne.getCell(colonnne).value = parseInt(nombre_ok_ko.ok);
+    numeroLigne.getCell(collonne).value = parseInt(nombre_ok_ko.ok);
     await newWorkbook.xlsx.writeFile(path_reporting);
     sails.log("Ecriture OK KO terminé"); 
     return callback(null, "OK");
@@ -1731,8 +1731,8 @@ module.exports = {
       }
     });
     console.log(" Colnumber2"+collonne);
-    numeroLigne.getCell(colonnne).value = nombre_ok_ko.ok;
-    numeroLigne.getCell(collonne).value = nombre_ok_ko.ko;
+    numeroLigne.getCell(colonnne).value = parseInt(nombre_ok_ko.ok);
+    numeroLigne.getCell(collonne).value = parseInt(nombre_ok_ko.ko);
     await newWorkbook.xlsx.writeFile(path_reporting);
     sails.log("Ecriture OK KO terminé"); 
     return callback(null, "OK");
@@ -1819,8 +1819,8 @@ module.exports = {
       }
     });
     console.log(" Colnumber2"+collonne);
-    numeroLigne.getCell(colonnne).value = nombre_ok_ko.ok;
-    numeroLigne.getCell(collonne).value = nombre_ok_ko.ko;
+    numeroLigne.getCell(colonnne).value = parseInt(nombre_ok_ko.ok);
+    numeroLigne.getCell(collonne).value = parseInt(nombre_ok_ko.ko);
     await newWorkbook.xlsx.writeFile(path_reporting);
     sails.log("Ecriture OK KO terminé"); 
     return callback(null, "OK");
@@ -1906,8 +1906,8 @@ module.exports = {
       }
     });
     console.log(" Colnumber2"+collonne);
-    numeroLigne.getCell(colonnne).value = nombre_ok_ko.ok;
-    numeroLigne.getCell(collonne).value = nombre_ok_ko.ko;
+    numeroLigne.getCell(colonnne).value = parseInt(nombre_ok_ko.ok);
+    numeroLigne.getCell(collonne).value = parseInt(nombre_ok_ko.ko);
     await newWorkbook.xlsx.writeFile(path_reporting);
     sails.log("Ecriture OK KO terminé"); 
     return callback(null, "OK");
@@ -1995,8 +1995,8 @@ module.exports = {
       }
     });
     console.log(" Colnumber2"+collonne);
-    numeroLigne.getCell(colonnne).value = nombre_ok_ko.ok;
-    numeroLigne.getCell(collonne).value = nombre_ok_ko.ko;
+    numeroLigne.getCell(colonnne).value = parseInt(nombre_ok_ko.ok);
+    numeroLigne.getCell(collonne).value = parseInt(nombre_ok_ko.ko);
     await newWorkbook.xlsx.writeFile(path_reporting);
     sails.log("Ecriture OK KO terminé"); 
     return callback(null, "OK");
@@ -2084,8 +2084,8 @@ module.exports = {
       }
     });
     console.log(" Colnumber2"+collonne);
-    numeroLigne.getCell(colonnne).value = nombre_ok_ko.ok;
-    numeroLigne.getCell(collonne).value = nombre_ok_ko.ko;
+    numeroLigne.getCell(colonnne).value = parseInt(nombre_ok_ko.ok);
+    numeroLigne.getCell(collonne).value = parseInt(nombre_ok_ko.ko);
     await newWorkbook.xlsx.writeFile(path_reporting);
     sails.log("Ecriture OK KO terminé"); 
     return callback(null, "OK");
@@ -2172,8 +2172,8 @@ module.exports = {
       }
     });
     console.log(" Colnumber2"+collonne);
-    numeroLigne.getCell(colonnne).value = nombre_ok_ko.ok;
-    numeroLigne.getCell(collonne).value = nombre_ok_ko.ko;
+    numeroLigne.getCell(colonnne).value = parseInt(nombre_ok_ko.ok);
+    numeroLigne.getCell(collonne).value = parseInt(nombre_ok_ko.ko);
     await newWorkbook.xlsx.writeFile(path_reporting);
     sails.log("Ecriture OK KO terminé"); 
     return callback(null, "OK");
@@ -2259,8 +2259,8 @@ module.exports = {
       }
     });
     console.log(" Colnumber2"+collonne);
-    numeroLigne.getCell(collonne).value = nombre_ok_ko.ok;
-    numeroLigne.getCell(colonnne).value = nombre_ok_ko.ko;
+    numeroLigne.getCell(collonne).value = parseInt(nombre_ok_ko.ok);
+    numeroLigne.getCell(colonnne).value = parseInt(nombre_ok_ko.ko);
     await newWorkbook.xlsx.writeFile(path_reporting);
     sails.log("Ecriture OK KO terminé"); 
     return callback(null, "OK");
@@ -2346,8 +2346,8 @@ module.exports = {
       }
     });
     console.log(" Colnumber2"+collonne);
-    // numeroLigne.getCell(colonnne).value = nombre_ok_ko.ok;
-    numeroLigne.getCell(collonne).value = nombre_ok_ko.ok;
+    // numeroLigne.getCell(colonnne).value = parseInt(nombre_ok_ko.ok);
+    numeroLigne.getCell(collonne).value = parseInt(nombre_ok_ko.ok);
     await newWorkbook.xlsx.writeFile(path_reporting);
     sails.log("Ecriture OK KO terminé"); 
     return callback(null, "OK");
@@ -2432,8 +2432,8 @@ module.exports = {
       }
     });
     console.log(" Colnumber2"+collonne);
-    // numeroLigne.getCell(colonnne).value = nombre_ok_ko.ok;
-    numeroLigne.getCell(collonne).value = nombre_ok_ko.ok;
+    // numeroLigne.getCell(colonnne).value = parseInt(nombre_ok_ko.ok);
+    numeroLigne.getCell(collonne).value = parseInt(nombre_ok_ko.ok);
     await newWorkbook.xlsx.writeFile(path_reporting);
     sails.log("Ecriture OK KO terminé"); 
     return callback(null, "OK");
@@ -2523,8 +2523,8 @@ module.exports = {
       }
     });
     console.log(" Colnumber2"+collonne);
-    // numeroLigne.getCell(colonnne).value = nombre_ok_ko.ok;
-    numeroLigne.getCell(collonne).value = nombre_ok_ko.ok;
+    // numeroLigne.getCell(colonnne).value = parseInt(nombre_ok_ko.ok);
+    numeroLigne.getCell(collonne).value = parseInt(nombre_ok_ko.ok);
     await newWorkbook.xlsx.writeFile(path_reporting);
     sails.log("Ecriture OK KO terminé"); 
     return callback(null, "OK");
@@ -2598,7 +2598,7 @@ module.exports = {
           }
       });
     console.log(" Colnumber"+colonnne);
-    numeroLigne.getCell(colonnne).value = nombre_ok_ko.ok;
+    numeroLigne.getCell(colonnne).value = parseInt(nombre_ok_ko.ok);
     await newWorkbook.xlsx.writeFile(path_reporting);
     sails.log("Ecriture OK KO terminé"); 
     return callback(null, "OK");
@@ -2672,7 +2672,7 @@ module.exports = {
           }
       });
     console.log(" Colnumber"+colonnne);
-    numeroLigne.getCell(colonnne).value = nombre_ok_ko.ok;
+    numeroLigne.getCell(colonnne).value = parseInt(nombre_ok_ko.ok);
     await newWorkbook.xlsx.writeFile(path_reporting);
     sails.log("Ecriture OK KO terminé"); 
     return callback(null, "OK");
@@ -2741,7 +2741,7 @@ module.exports = {
         }
     });
     console.log(" Colnumber"+colonnne);
-    numeroLigne.getCell(colonnne).value = nombre_ok_ko.ok;
+    numeroLigne.getCell(colonnne).value = parseInt(nombre_ok_ko.ok);
     await newWorkbook.xlsx.writeFile(path_reporting);
     sails.log("Ecriture OK KO terminé"); 
     return callback(null, "OK");
@@ -2813,7 +2813,7 @@ module.exports = {
         }
     });
     console.log(" Colnumber"+colonnne);
-    numeroLigne.getCell(colonnne).value = nombre_ok_ko.ok;
+    numeroLigne.getCell(colonnne).value = parseInt(nombre_ok_ko.ok);
     await newWorkbook.xlsx.writeFile(path_reporting);
     sails.log("Ecriture OK KO terminé"); 
     return callback(null, "OK");
@@ -2883,7 +2883,7 @@ module.exports = {
         }
     });
     console.log(" Colnumber"+colonnne);
-    numeroLigne.getCell(colonnne).value = nombre_ok_ko.ok;
+    numeroLigne.getCell(colonnne).value = parseInt(nombre_ok_ko.ok);
     await newWorkbook.xlsx.writeFile(path_reporting);
     sails.log("Ecriture OK KO terminé"); 
     return callback(null, "OK");
