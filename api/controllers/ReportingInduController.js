@@ -865,7 +865,7 @@ rechercheColonne : function (req, res) {
         ReportingIndu.ecritureOkKoDoublecbtp(result[15],"indusansnotifcbtp",date_export,mois1,callback);
       },
       function (callback) {
-        ReportingIndu.ecritureOkKoDoubleInduentrain1(result[16],"induentrainavant",date_export,mois1,callback);
+        ReportingIndu.ecritureOkKoDoubleInduentrain2(result[16],"induentrainavant",date_export,mois1,callback);
       },
       
     ],function(err,resultExcel){
