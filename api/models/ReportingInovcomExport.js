@@ -1275,10 +1275,11 @@ module.exports = {
                     var line = newworksheet.getRow(ligneDate1);
                     var f = line.getCell(3).value;
                     // console.log(f);
-                    var ai = "SANTECLAIR";
-                    const regex = new RegExp(ai,'i');
-                    // if(regex.test(f) == true)
-                    if(regex.test(f))
+                    // var ai = "SANTECLAIR";
+                    // const regex = new RegExp(ai,'i');
+                    // // if(regex.test(f) == true)
+                    // if(regex.test(f))
+                    if(f == "SANTECLAIR" || f == "SANTECLAIR ")
                     {
                       ligneDate = parseInt(rowNumber);
                     }
