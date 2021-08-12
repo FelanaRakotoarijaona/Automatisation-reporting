@@ -359,7 +359,7 @@
             var address_of_cell1 = {c:colDateTrait, r:a};
             var cell_ref1 = XLSX.utils.encode_cell(address_of_cell1);
             var desired_cell1 = sheet[cell_ref1];
-            var desired_value1 = (desired_cell1 ? desired_cell1.d : undefined);
+            var desired_value1 = (desired_cell1 ? desired_cell1.v : undefined);
 
             var address_of_cell2 = {c:colDateLiq, r:a};
             var cell_ref2 = XLSX.utils.encode_cell(address_of_cell2);
