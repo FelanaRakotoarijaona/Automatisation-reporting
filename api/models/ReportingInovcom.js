@@ -2866,122 +2866,69 @@ lectureEtInsertiontype4v2:function(trameflux,feuil,cellule,table,cellule2,nb,num
   var numFeuille = numfeuille[nb];
   var nomColonne = nomcolonne[nb];
   var c = ReportingInovcom.existenceFichier(a);
-  var a1 = table[0]+date+chemin[nb];
   var b2 = option2[nb];
-  var d = ReportingInovcom.existenceFichier(a1);
+  var tab = [];
   console.log(c);
   if(c=='vrai')
   {
-    fs.readdir(a, (err, files) => {
-      console.log(a);
-          files.forEach(file => {
-            var m1 = '.xlsx|.xls|.xlsm|.xlsb$';
-            var m2 = '^[^~]';
-            const regex = new RegExp(b,'i');
-            const regex1 = new RegExp(m1,'i');
-            const regex2 = new RegExp(m2);
-            const regex4 = new RegExp(b2,'i');
-            if((regex.test(file)  || regex4.test(file)) && regex1.test(file) && regex2.test(file))
+    try
+    {
+      fs.readdir(a, (err, files) => {
+        console.log(a);
+            files.forEach(file => {
+              var m1 = '.xlsx|.xls|.xlsm|.xlsb$';
+              var m2 = '^[^~]';
+              const regex = new RegExp(b,'i');
+              const regex1 = new RegExp(m1,'i');
+              const regex2 = new RegExp(m2);
+              const regex4 = new RegExp(b2,'i');
+              if((regex.test(file)  || regex4.test(file)) && regex1.test(file) && regex2.test(file))
+              {
+                 //re = a+'\\'+file;
+                 re = a+'/'+file;
+                 tab.push(re);
+              } 
+              else
+              {
+                console.log('fichier non trouvé');
+              }
+            });
+            if(re!='a')
             {
-               //re = a+'\\'+file;
-               re = a+'/'+file;
-               var sql = "insert into "+nomBase+" (chemin,nomtable,numligne,numfeuile,colonnecible) values ('"+re+"','"+nomTable+"','"+numLigne+"','"+numFeuille+"','"+nomColonne+"') ";
-               ReportingInovcom.getDatastore().sendNativeQuery(sql, function(err,res){
-                if (err) { 
-                  console.log('une erreur');
-                  //return callback(err);
-                 }
-                else
-                {
-                  console.log(sql);
-                  return callback(null, true);
-                };          
-                                     }) ;    
-            } 
+              for(var i=0;i<tab.length;i++)
+              {
+                var sql = "insert into "+nomBase+" (chemin,nomtable,numligne,numfeuile,colonnecible) values ('"+re[i]+"','"+nomTable+"','"+numLigne+"','"+numFeuille+"','"+nomColonne+"') ";
+                ReportingInovcom.getDatastore().sendNativeQuery(sql, function(err,res){
+                  if (err) { 
+                    console.log('une erreur');
+                    //return callback(err);
+                  }
+                  else
+                  {
+                    console.log(sql);
+                    return callback(null, true);
+                  };          
+                                      }) ;  
+                }
+            }
             else
             {
-             var sql = "delete from chemintsisy ";
-               ReportingInovcom.getDatastore().sendNativeQuery(sql, function(err,res){
-                if (err) { 
-                  console.log("Une erreur ve? import 1");
-                  //return callback(err);
-                 }
-                else
-                {
-                  console.log(sql);
-                  return callback(null, true);
-                };       
-                                     }) ;
-            };
-           
-           
-        });
-      });
+              return callback(null,'KO');
+            }
+          })
+    }
+    catch
+    {
+      console.log('Aucune fichier trouvé');
+        return callback(null,'KO');
+    }
   }
-  else if(d=='vrai')
-  {
-    fs.readdir(a1, (err, files) => {
-      console.log(a1);
-          files.forEach(file => {
-            var m1 = '.xlsx|.xls|.xlsm|.xlsb$';
-            var m2 = '^[^~]';
-            const regex = new RegExp(b,'i');
-            const regex1 = new RegExp(m1,'i');
-            const regex2 = new RegExp(m2);
-            const regex4 = new RegExp(b2,'i');
-            if((regex.test(file)  || regex4.test(file)) && regex1.test(file) && regex2.test(file))
-            {
-               //re = a1+'\\'+file;
-               re = a+'/'+file;
-               var sql = "insert into "+nomBase+" (chemin,nomtable,numligne,numfeuile,colonnecible) values ('"+re+"','"+nomTable+"','"+numLigne+"','"+numFeuille+"','"+nomColonne+"') ";
-               ReportingInovcom.getDatastore().sendNativeQuery(sql, function(err,res){
-                if (err) { 
-                  console.log("Une erreur ve? import 4");
-                  //return callback(err);
-                 }
-                else
-                {
-                  console.log(sql);
-                  return callback(null, true);
-                };          
-                                     }) ;    
-            } 
-            else
-            {
-             var sql = "delete from chemintsisy ";
-               ReportingInovcom.getDatastore().sendNativeQuery(sql, function(err,res){
-                if (err) { 
-                  console.log("Une erreur ve? import 1");
-                  //return callback(err);
-                 }
-                else
-                {
-                  console.log(sql);
-                  return callback(null, true);
-                };       
-                                     }) ;
-            };
-           
-           
-        });
-      });
  
-  }
   else
   {
-    var sql = "insert into chemintsisy(typologiedelademande) values ('k') ";
-    ReportingInovcom.getDatastore().sendNativeQuery(sql, function(err,res){
-      if (err) { 
-        console.log("Une erreur ve? import 1");
-        //return callback(err);
-       }
-      else
-      {
-        console.log(sql);
-        return callback(null, true);
-      };
-                          }) ;  
-  };   
+    console.log('Chemin faux');
+    return callback(null,'KO');
+  }
 },
   
  importEssaitype5: function (table,table2,date,option,nb,chem2,option2,callback) {

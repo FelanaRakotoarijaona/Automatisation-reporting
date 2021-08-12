@@ -12,6 +12,80 @@
 module.exports = {
   attributes: {
   },
+  importEssaitype4: function (table,table2,date,option,nb,nomtable,numligne,numfeuille,nomcolonne,nomBase,chemin,option2,callback) {
+    const fs = require('fs');
+    var re  = 'a';
+    var a = table[0]+date+table2[nb];
+    var b = option[nb];
+    var nomTable = nomtable[nb];
+    var numLigne= numligne[nb];
+    var numFeuille = numfeuille[nb];
+    var nomColonne = nomcolonne[nb];
+    var c = ReportingInovcom.existenceFichier(a);
+    var b2 = option2[nb];
+    var tab = [];
+    console.log(c);
+    if(c=='vrai')
+    {
+      try
+      {
+        fs.readdir(a, (err, files) => {
+          console.log(a);
+              files.forEach(file => {
+                var m1 = '.xlsx|.xls|.xlsm|.xlsb$';
+                var m2 = '^[^~]';
+                const regex = new RegExp(b,'i');
+                const regex1 = new RegExp(m1,'i');
+                const regex2 = new RegExp(m2);
+                const regex4 = new RegExp(b2,'i');
+                if((regex.test(file)  || regex4.test(file)) && regex1.test(file) && regex2.test(file))
+                {
+                   //re = a+'\\'+file;
+                   re = a+'/'+file;
+                   tab.push(re);
+                } 
+                else
+                {
+                  console.log('fichier non trouvé');
+                }
+              });
+              if(re!='a')
+              {
+                for(var i=0;i<tab.length;i++)
+                {
+                  var sql = "insert into "+nomBase+" (chemin,nomtable,numligne,numfeuile,colonnecible) values ('"+re[i]+"','"+nomTable+"','"+numLigne+"','"+numFeuille+"','"+nomColonne+"') ";
+                  ReportingInovcom.getDatastore().sendNativeQuery(sql, function(err,res){
+                    if (err) { 
+                      console.log('une erreur');
+                      //return callback(err);
+                    }
+                    else
+                    {
+                      console.log(sql);
+                      return callback(null, true);
+                    };          
+                                        }) ;  
+                  }
+              }
+              else
+              {
+                return callback(null,'KO');
+              }
+            })
+      }
+      catch
+      {
+        console.log('Aucune fichier trouvé');
+          return callback(null,'KO');
+      }
+    }
+   
+    else
+    {
+      console.log('Chemin faux');
+      return callback(null,'KO');
+    }
+  },
   // REQUETE POUR RECUPERER NB OK SEULEMENT 
   countOkKo : function (table, callback) {
     const Excel = require('exceljs');
