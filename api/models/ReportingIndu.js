@@ -1360,7 +1360,11 @@ module.exports = {
   },
   lectureEtInsertion9:function(trameflux,feuil,cellule,table,cellule2,nb,numligne,date2,callback){
     XLSX = require('xlsx');
-  var workbook = XLSX.readFile(trameflux[nb]);
+ // var workbook = XLSX.readFile(trameflux[nb]);
+  var workbook = XLSX.readFile(trameflux[nb],
+    {
+      cellDates: true
+    });
   var numerofeuille = parseInt(feuil);
   var numeroligne = parseInt(numligne[nb]);
   try{
@@ -1414,11 +1418,11 @@ module.exports = {
             col2=ra;
           };
         };
-        /*var address_of_cell2 = {c:col, r:3};
-        var cell_ref2 = XLSX.utils.encode_cell(address_of_cell2);
-        var desired_cell2 = sheet[cell_ref2];
-        var desired_value21 = (desired_cell2 ? desired_cell2.v : undefined);
-        /*var dateFormat = require("dateformat");*/
+        var address_of_cell4 = {c:col, r:2};
+        var cell_ref4 = XLSX.utils.encode_cell(address_of_cell4);
+        var desired_cell4 = sheet[cell_ref4];
+        var desired_value4 = (desired_cell4 ? desired_cell4.v : undefined);
+        var maxi = desired_value4;
         var max = 0;
         console.log("colonne"+col + 'g' + col2);
         var debutligne = numeroligne + 1;
@@ -1429,11 +1433,11 @@ module.exports = {
             var cell_ref = XLSX.utils.encode_cell(address_of_cell);
             var desired_cell = sheet[cell_ref];
             var desired_value1 = (desired_cell ? desired_cell.v : undefined);
-            var maxi = 0;
+            
             console.log(desired_value1);
-            if(maxi <= parseInt(desired_value1))
+            if(maxi <= desired_value1)
             {
-              maxi = parseInt(desired_value1);
+              maxi = desired_value1;
               max = parseInt(a);
             }
             else
