@@ -850,7 +850,7 @@ rechercheColonne : function (req, res) {
         ReportingIndu.ecritureOkKo(result[12],"induinterialeaudio",date_export,mois1,callback);
       },
       function (callback) {
-        ReportingIndu.ecritureOkKoDouble(result[13],"induentrain",date_export,mois1,callback);
+        ReportingIndu.ecritureOkKoDoubleInduentrain(result[13],"induentrain",date_export,mois1,callback);
       },
       function (callback) {
         ReportingIndu.ecritureOkKoalm(result[14],"induaudio",date_export,mois1,callback);
