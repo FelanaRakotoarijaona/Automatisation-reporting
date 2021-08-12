@@ -425,8 +425,8 @@ module.exports = {
                                         }
                                         else
                                         {
-                                          // return res.view('Inovcom/exportsuivantinovcom2', {date: datetest});
-                                          res.view('Contentieux/succes');
+                                          return res.view('Inovcom/exportsuivantinovcom2', {date: datetest});
+                                          // res.view('Contentieux/succes');
                                         }
                                       });
                                     }
@@ -588,8 +588,8 @@ module.exports = {
                           }
                           else
                           {
-                            // return res.view('Inovcom/exportsuivantinovcom2', {date: datetest});
-                            res.view('Contentieux/succes');
+                            return res.view('Inovcom/exportsuivantinovcom3', {date: datetest});
+                            // res.view('Contentieux/succes');
                           }
                         });
                       }
