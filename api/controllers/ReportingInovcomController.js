@@ -1981,7 +1981,7 @@ module.exports = {
       var MotCle= [];
       var chem2 = [];
       var option2 = [];
-      var r = [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14];
+      var r = [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17];
       var nomBase = "chemininovcomtype11";
       //workbook.xlsx.readFile('Inovcom.xlsx')
       workbook.xlsx.readFile('Inovcomserveur.xlsx')

@@ -6,7 +6,6 @@
  */
 
 const Garantie = require('../models/Garantie');
-
 module.exports = {
   //routes vers la page de recherche du fichier
     accueilGarantie : async function(req,res)

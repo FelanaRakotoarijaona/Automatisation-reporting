@@ -366,8 +366,8 @@
 
             var ok = 'Facture réglée';
             const regex = new RegExp(ok,'i');
-            //console.log(desired_value1 + '<' + desired_value2);
-            if(regex.test(desired_value) && desired_value2>desired_value1)
+            console.log(desired_value1 + '<' + desired_value2);
+            if(regex.test(desired_value) && desired_value2 >= desired_value1)
             {
               nbr=nbr + 1;
             }
@@ -494,7 +494,7 @@
       };
                           });
     }
-    else if(table[nb]=="inovgestionillisible")
+    else if(table[nb]=="inovgestionillisible" || table[nb]=="inovgestionillisiblecbtp"  )
     {
     var tab = [];
     tab = ReportingInovcom.lectureEtInsertionGestionIllisible(trameflux,feuil,cellule,table,cellule2,nb,numligne,callback);
