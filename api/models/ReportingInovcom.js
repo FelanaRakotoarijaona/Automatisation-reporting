@@ -288,7 +288,10 @@
   },
   lectureEtInsertionEtatdesRestes:function(trameflux,feuil,cellule,table,cellule2,nb,numligne,callback){
     XLSX = require('xlsx');
-    var workbook = XLSX.readFile(trameflux[nb]);
+    var workbook = XLSX.readFile(trameflux[nb],
+      {
+        cellDates: true
+      });
     var numerofeuille = feuil[nb];
     var numeroligne = parseInt(numligne[nb]);
     try{
