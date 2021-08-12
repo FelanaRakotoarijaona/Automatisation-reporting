@@ -4169,7 +4169,7 @@ ecritureOkKo : async function (nombre_ok_ko, table,date_export,mois1,callback) {
       numeroColonneOk = iniValue.induentrain.ok;
       numeroColonneKo = iniValue.induentrain.ko;
     }
-    if(table == "induentrain"){
+    if(table == "induentrainavant"){
       numeroColonneOk = iniValue.induentrainavant.ok;
       numeroColonneKo = iniValue.induentrainavant.ko;
     }
