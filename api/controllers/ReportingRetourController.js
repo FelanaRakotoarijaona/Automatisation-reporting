@@ -12,7 +12,7 @@ module.exports = {
   {
     return res.view('Retour/accueilRecherchefichier');
   },
-  rechercheFichier : function(req,res)
+  rechercheFichier :async function(req,res)
   {
     var Excel = require('exceljs');
     var workbook = new Excel.Workbook();

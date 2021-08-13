@@ -210,8 +210,8 @@ module.exports = {
       }
     });
     console.log(" Colnumber2 "+collonne);
-    numeroLigne.getCell(colonnne).value = nombre_ok_ko.ok;
-    numeroLigne.getCell(collonne).value = nombre_ok_ko.ko;
+    numeroLigne.getCell(colonnne).value = parseInt(nombre_ok_ko.ok);
+    numeroLigne.getCell(collonne).value = parseInt(nombre_ok_ko.ko);
 
     
     await newWorkbook.xlsx.writeFile(path_reporting);
