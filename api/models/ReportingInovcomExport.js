@@ -151,6 +151,7 @@ module.exports = {
      
       
        },
+       /****************************************************/
        ecritureOkKoIllisible : async function (nombre_ok_ko, table,date_export,mois1,callback) {
         if(nombre_ok_ko.ok==null && nombre_ok_ko.ko==null)
         {
@@ -209,8 +210,8 @@ module.exports = {
        
         
          },
-  
-         ecritureOkKoIllisiblecbtp : async function (nombre_ok_ko, table,date_export,mois1,callback) {
+  /**********************************************************************/
+         ecritureOkKoIllisiblecbtp__ : async function (nombre_ok_ko, table,date_export,mois1,callback) {
           if(nombre_ok_ko.ok==null && nombre_ok_ko.ko==null)
           {
            console.log('ok' + nombre_ok_ko.ok);
@@ -234,7 +235,7 @@ module.exports = {
                ligneDate1 = parseInt(rowNumber);
                var line = newworksheet.getRow(ligneDate1);
                var f = line.getCell(3).value;
-               var mc1 = "CBTP";
+               var mc1 = "Pack Spé. CBTP";
                const regex = new RegExp(mc1,'i');
                if(regex.test(f))
                {
@@ -2952,6 +2953,94 @@ module.exports = {
 
 
     },
+     /***********************************************************/  
+     ecritureOkKoIllisiblecbtp : async function (nombre_ok_ko, table,date_export,mois1,callback) {
+    if(nombre_ok_ko.ok==null && nombre_ok_ko.ko==null || nombre_ok_ko.ok==null && nombre_ok_ko.ko==undefined)
+    {
+     console.log('ok' + nombre_ok_ko.ok);
+     console.log('ko' + nombre_ok_ko.ko);
+     return callback(null, "KO");
+    }
+    else{
+    const Excel = require('exceljs');
+    const newWorkbook = new Excel.Workbook();
+    try{
+    await newWorkbook.xlsx.readFile(path_reporting);
+    const newworksheet = newWorkbook.getWorksheet(mois1);
+    var colonneDate = newworksheet.getColumn('A');
+    var ligneDate1;
+    var ligneDate;
+    colonneDate.eachCell(function(cell, rowNumber) {
+      var dateExcel = ReportingInovcomExport.convertDate(cell.text);
+      if(dateExcel==date_export)
+      {
+        ligneDate1 = parseInt(rowNumber);
+        var line = newworksheet.getRow(ligneDate1);
+        var f = line.getCell(3).value;
+        //console.log();
+        if(f == "Pack Spé. CBTP")
+        {
+          ligneDate = parseInt(rowNumber);
+        }
+      }
+    });
+    console.log("LIGNE DATE ===> "+ ligneDate);
+    var rowDate = newworksheet.getRow(ligneDate);
+    var numeroLigne = rowDate;
+    var iniValue = ReportingInovcomExport.getIniValue(table);
+    
+    var a5;
+
+    var rowm = newworksheet.getRow(1);
+    var colonnne;
+    var colDate1;
+    rowm.eachCell(function(cell, colNumber) {
+      if(cell.value == 'DOCUMENTS ENVOYES')
+      {
+        colDate1 = parseInt(colNumber);
+        //var col = newworksheet.getColumn(colDate1);
+        var man = newworksheet.getRow(3);
+        var f = man.getCell(colDate1).value;
+        //console.log();
+        //console.log(iniValue.ok);
+        if(f == iniValue.ok)
+        {
+          colonnne = parseInt(colNumber);
+        }
+        }
+    });
+    console.log(" Colnumber"+colonnne);
+    var collonne;
+    var colDate2;
+    rowm.eachCell(function(cell, colNumber) {
+      if(cell.value == 'DOCUMENTS SAISIS')
+      {
+        colDate2 = parseInt(colNumber);
+        var man = newworksheet.getRow(3);
+        var f = man.getCell(colDate2).value;
+        if(f == iniValue.ok)
+        {
+          collonne = parseInt(colNumber);
+        }
+      }
+    });
+    console.log(" Colnumber2"+collonne);
+    numeroLigne.getCell(colonnne).value = parseInt(nombre_ok_ko.ok);
+    numeroLigne.getCell(collonne).value = parseInt(nombre_ok_ko.ko);
+    await newWorkbook.xlsx.writeFile(path_reporting);
+    sails.log("Ecriture OK KO terminé"); 
+    return callback(null, "OK");
+  
+    }
+    catch
+    {
+      console.log("Une erreur s'est produite");
+      Reportinghtp.deleteToutHtp(table,3,callback);
+    }
+
+  }
+
+    },
    /**********************************************************/
   //CONFIGURATION DU FICHIER INI
   getConfigIni : function() {
@@ -3119,6 +3208,10 @@ module.exports = {
     if(table == "inovgestionillisible"){
       numeroColonneOk = iniValue.inovgestionillisible.ok;
       numeroColonneKo = iniValue.inovgestionillisible.ko;
+    }
+    if(table == "inovgestionillisiblecbtp"){
+      numeroColonneOk = iniValue.inovgestionillisiblecbtp.ok;
+      numeroColonneKo = iniValue.inovgestionillisiblecbtp.ko;
     }
     if(table == "inovtpsalmerys"){
       numeroColonneOk = iniValue.inovtpsalmerys.ok;

@@ -2190,7 +2190,7 @@ rechercheColonne11cbtp: function (req, res) {
         ReportingInovcomExport.ecritureOkKoEtatReste(result[2],"inovetatdesreste",date_export,mois1,callback);
       },
       function (callback) {
-        ReportingInovcomExport.ecritureOkKoIllisiblecbtp(result[3],"inovgestionillisible",date_export,mois1,callback);
+        ReportingInovcomExport.ecritureOkKoIllisiblecbtp(result[3],"inovgestionillisiblecbtp",date_export,mois1,callback);
       },
     ],function(err,resultExcel){
         console.log('**************');

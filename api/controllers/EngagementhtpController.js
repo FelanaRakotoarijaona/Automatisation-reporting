@@ -1001,7 +1001,7 @@ insertcheminengagementhtp_1 : function(req,res)
           Engagementhtp.recupdata("htprejet16",callback);
         },
         function (callback) {
-          Engagementhtp.recupdata("htpcotlamie16",callback);
+          Engagementhtp.recupdatasum("htpcotlamie16",callback);
         },
         function (callback) {
           Engagementhtp.recupdata("htptrifin",callback);
