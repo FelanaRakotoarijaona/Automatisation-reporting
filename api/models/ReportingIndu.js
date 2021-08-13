@@ -1314,7 +1314,7 @@ module.exports = {
         };
       };
     console.log(colb);
-   if(colb!=undefined )
+   if(colb!=undefined)
     {
       var debutligne = numeroligne + 1;
       for(var a=debutligne;a<=range.e.r;a++)

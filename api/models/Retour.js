@@ -6,7 +6,7 @@
  */
 //  const path_reporting = 'D:/Reporting/Reporting/REPORTING RETOUR.xlsx';
  //const path_reporting = 'D:/LDR8_1421_nouv/PROJET_FELANA/REPORTING RETOUR Type.xlsx';
- const path_reporting = '/dev/prod/00-TOUS/TestReporting/REPORTING RETOUR Type.xlsx';
+ const path_reporting = '/dev/prod/00-TOUS/07-REPORTING/REPORTING RETOUR Type.xlsx';
  module.exports = {
   attributes: {
   },
