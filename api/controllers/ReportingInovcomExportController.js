@@ -2169,6 +2169,9 @@ rechercheColonne11cbtp: function (req, res) {
     function (callback) {
       ReportingExcel.countOkKo("inovetatdesreste",callback);
     },
+    function (callback) {
+      ReportingExcel.countOkKo("inovgestionillisiblecbtp",callback);
+    },
    /* function (callback) {
       ReportingInovcomExport.countok("inovsecbtp",callback);
     },*/
@@ -2186,7 +2189,9 @@ rechercheColonne11cbtp: function (req, res) {
       function (callback) {
         ReportingInovcomExport.ecritureOkKoEtatReste(result[2],"inovetatdesreste",date_export,mois1,callback);
       },
-      
+      function (callback) {
+        ReportingInovcomExport.ecritureOkKoIllisiblecbtp(result[3],"inovgestionillisible",date_export,mois1,callback);
+      },
     ],function(err,resultExcel){
         console.log('**************');
         console.log(resultExcel);
