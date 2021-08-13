@@ -28,12 +28,6 @@
           var desired_cell = sheet[cell_ref];
           var desired_value = (desired_cell ? desired_cell.v : undefined);
 
-          /*// identification de la tache : le isaina
-          var address_of_cell1 = {c:7, r:ra};
-          var cell_ref1 = XLSX.utils.encode_cell(address_of_cell1);
-          var desired_cell1 = sheet[cell_ref1];
-          var desired_value1 = (desired_cell1 ? desired_cell1.v : undefined);*/
-
           //etat de la tache
           var address_of_cell2 = {c:0, r:ra};
           var cell_ref2 = XLSX.utils.encode_cell(address_of_cell2);
@@ -50,15 +44,13 @@
           var desired_cell4 = sheet[cell_ref4];
           var desired_value4 = (desired_cell4 ? desired_cell4.v : undefined);
 
-          //date de maturite5
-         
-
           var b = 'SDM';
           const regex = new RegExp(b,'i');
 
           if((regex2.test(desired_value2) || regex3.test(desired_value2)) && desired_value4==undefined && regex.test(desired_value) )
           {
-            var date = 20210610;
+            console.log('dv' + desired_value);
+            /*var date = 20210610;
             for(var i=0;i<=range.e.r;i++)
             {
               var address_of_cell5 = {c:5, r:i};
@@ -71,73 +63,8 @@
               {
                 date = desired_value5;
               }
-            }
-            /*if(desired_value4!=undefined)
-            {
-              var j = 1;
-            }
-            else
-            {
-              var b = traitement[nb];
-              const regex = new RegExp(b,'i');
-              if(regex.test(desired_value) )ii
-              {
-              
-                var c = motcle1[nb];
-                var c1 = motcle2[nb];
-                var c2 = motcle3[nb];
-                var c5 = ast[nb];
-                const regex21 = new RegExp(c1,'i');
-                const regex31 = new RegExp(c2,'i');
-                const regex1 = new RegExp(c,'i');
-                const regex41 = new RegExp(c5,'i');
-            
-                if(motcle4[nb]=='a')
-                {
-                  if(regex1.test(desired_value) || regex21.test(desired_value) || regex31.test(desired_value) || regex41.test(desired_value)) 
-                  {
-                    var a = '1';
-                  }
-                  else
-                  {
-                    if(desired_value1!=undefined)
-                    {
-                      somme=somme+1;
-                    }
-                    else
-                    {
-                      var p = 0;
-                    }
-                  
-                  };
-                }
-                else if(motcle4[nb]=='b')
-                {
-                  somme=somme+1;
-                }
-                else
-                {
-                  var c4 = motcle4[nb];
-                  const regex4 = new RegExp(c4,'i');
-                  if(regex1.test(desired_value) || regex21.test(desired_value) || regex31.test(desired_value) || regex4.test(desired_value) || regex41.test(desired_value)) 
-                  {
-                    var a = '1';
-                  }
-                  else
-                  {
-                    if(desired_value1!=undefined)
-                    {
-                      somme=somme+1;
-                    }
-                    else
-                    {
-                      var p = 0;
-                    }
-                  
-                  };
-                }
-              }
             }*/
+            
           }
             else
             {
