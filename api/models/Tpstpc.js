@@ -70,7 +70,8 @@
                 const regex31 = new RegExp(c2,'i');
                 const regex1 = new RegExp(c,'i');
                 const regex41 = new RegExp(c5,'i');
-             
+                console.log(desired_value1+ 'date');
+                somme=somme+1;
                 /*if(motcle4[nb]=='a')
                 {
                   if(regex1.test(desired_value) || regex21.test(desired_value) || regex31.test(desired_value) || regex41.test(desired_value) ) 
@@ -96,7 +97,7 @@
                 }
                 else
                 {*/
-                  var c4 = motcle4[nb];
+                 /* var c4 = motcle4[nb];
                   const regex4 = new RegExp(c4,'i');
                   if(regex1.test(desired_value) || regex21.test(desired_value) || regex31.test(desired_value) || regex4.test(desired_value) || regex41.test(desired_value)) 
                   {
@@ -114,9 +115,9 @@
                       var p = 0;
                     }
                   
-                  //};
+                  //};*/
                 }
-              }
+              /*}*/
             }
           }
             else
@@ -139,6 +140,7 @@
                         }
                        
                                             });
+                                          
     }
     catch
     {
