@@ -1774,15 +1774,18 @@ deleteFromChemin : function (table,callback) {
       var b = option[nb];
       var b2 = option2[nb];
       console.log(b);
+      var tab = [];
       var c = ReportingInovcom.existenceFichier(a);
       var d = ReportingInovcom.existenceFichier(a1);
       console.log(c);
       if(c=='vrai')
       {
-        console.log(nomcolonne[nb]);
-        var p = a.replace("'", "''"); 
-        fs.readdir(a, (err, files) => {
-          console.log(a);
+        try
+        {
+          console.log(nomcolonne[nb]);
+          var p = a.replace("'", "''"); 
+          fs.readdir(a, (err, files) => {
+            console.log(a);
               files.forEach(file => {
                 var m1 = '.xlsx|.xls|.xlsm|.xlsb$';
                 var m2 = '^[^~]';
@@ -1795,11 +1798,20 @@ deleteFromChemin : function (table,callback) {
                 {
                   console.log(file);
                    var file1 = file.replace("'", "''");
-                   //re = p + '\\' + file1;
                    re = p + '/' + file1;
-                   //re=re.replace("'", "''");
                    console.log('ato'+re);
-                   var sql = "insert into "+nomBase+" (chemin,nomtable,numligne,numfeuile,colonnecible,colonnecible2) values ('"+re+"','"+nomtable[nb]+"','"+numligne[nb]+"','"+numfeuille[nb]+"','"+nomcolonne[nb]+"','"+nomcolonne2[nb]+"') ";
+                   tab.push(re);
+                }
+                else 
+                {
+                  console.log('fichier non trouvé');
+                };
+                });
+                if(re!='a')
+                {
+                  for(var i=0;i<tab.length;i++)
+                  {
+                    var sql = "insert into "+nomBase+" (chemin,nomtable,numligne,numfeuile,colonnecible,colonnecible2) values ('"+tab[i]+"','"+nomtable[nb]+"','"+numligne[nb]+"','"+numfeuille[nb]+"','"+nomcolonne[nb]+"','"+nomcolonne2[nb]+"') ";
                     ReportingInovcom.getDatastore().sendNativeQuery(sql, function(err,res){
                       if (err) { 
                         console.log(err);
@@ -1810,26 +1822,20 @@ deleteFromChemin : function (table,callback) {
                         return callback(null,true);
                       };           
                  }); 
+                  }
                 }
-                else 
+                else
                 {
-                  var sql = "insert into chemintsisy (typologiedelademande) values ('"+re+"') ";
-                  Reportinghtp.getDatastore().sendNativeQuery(sql, function(err,res){
-                   if (err) { 
-                     console.log("Une erreur ve? import 1");
-                     //return callback(err);
-                    }
-                   else
-                   {
-                     console.log(sql);
-                     return callback(null, true);
-                   };
-                    
-               });
-                 };
-            
-                                          }); 
-          });
+                  return callback(null,'KO');
+                }
+              })   
+        }
+        catch
+        {
+          console.log('Aucune fichier trouvé');
+          return callback(null,'KO');
+        }
+        
       }
      /* else if(d=='vrai')
       {
@@ -1904,185 +1910,6 @@ deleteFromChemin : function (table,callback) {
                               });   
       };
     },
-   /* importEssai: function (table,table2,date,option,nb,nomtable,numligne,numfeuille,nomcolonne,nomcolonne2,nomBase,chemin,option2,callback) {
-      const fs = require('fs');
-      var re  = 'a';
-      var tab = [];
-      var a = table[0]+date+table2[nb];
-      var a1 = table[0]+date+chemin[nb];
-      var b = option[nb];
-      var b2 = option2[nb];
-      console.log(b);
-      var c = ReportingInovcom.existenceFichier(a);
-      var d = ReportingInovcom.existenceFichier(a1);
-      console.log(c);
-      if(c=='vrai')
-      {
-        var nomCol = nomcolonne[nb]; 
-        var nomCol2 = nomcolonne2[nb]; 
-        var p = a;
-        //var p = a.replace("'", "''"); 
-        fs.readdir(a, (err, files) => {
-          console.log(a);
-              files.forEach(file => {
-                var m1 = '.xlsx|.xls|.xlsm|.xlsb$';
-                var m2 = '^[^~]';
-                const regex1 = new RegExp(m1,'i');
-                const regex2 = new RegExp(m2);
-                const regex = new RegExp(b,'i');
-                const regex4 = new RegExp(b2,'i');
-                console.log(b);
-                if((regex.test(file) || regex4.test(file))  && regex1.test(file) && regex2.test(file))
-                {
-                  console.log(file);
-                   var file1 = file.replace("'", "''");
-                   //re = p + '\\' + file1;
-                   re = p + '/' + file1;
-                   //re=re.replace("'", "''");
-                   console.log('ato'+re);
-                   var sql = "insert into "+nomBase+" (chemin,nomtable,numligne,numfeuile,colonnecible,colonnecible2) values ('"+re+"','"+nomtable[nb]+"','"+numligne[nb]+"','"+numfeuille[nb]+"','"+nomCol+"','"+nomCol2+"') ";
-                    ReportingInovcom.getDatastore().sendNativeQuery(sql, function(err,res){
-                      if (err) { 
-                        console.log(err);
-                        //console.log('une erreur trouvé');
-                        //return callback(err);
-                       }
-                      else
-                      {
-                        console.log(sql);
-                        return callback(null, true);
-                      };           
-                 }); 
-                }
-                else 
-                {
-                  var sql = "insert into chemintsisy (typologiedelademande) values ('"+re+"') ";
-                  Reportinghtp.getDatastore().sendNativeQuery(sql, function(err,res){
-                   if (err) { 
-                     console.log("Une erreur ve? import 1");
-                     //return callback(err);
-                    }
-                   else
-                   {
-                     console.log(sql);
-                     return callback(null, true);
-                   };
-                    
-               });
-                 };
-            
-                                          }); 
-          });
-      }
-      else if(d=='vrai')
-      {
-        var nomCol = nomcolonne[nb]; 
-        var nomCol2 = nomcolonne2[nb]; 
-        var p = a1;
-        //var p = a1.replace("'", "''"); 
-        fs.readdir(a1, (err, files) => {
-          console.log(a1);
-              files.forEach(file => {
-                var m1 = '.xlsx|.xls|.xlsm|.xlsb$';
-                var m2 = '^[^~]';
-                const regex1 = new RegExp(m1,'i');
-                const regex2 = new RegExp(m2);
-                const regex = new RegExp(b,'i');
-                const regex4 = new RegExp(b2,'i');
-                console.log(b);
-                if((regex.test(file) || regex4.test(file)) && regex1.test(file) && regex2.test(file))
-                {
-                  console.log(file);
-                   var file1 = file.replace("'", "''");
-                   //re = p + '\\' + file1;
-                   re = p + '/' + file1;
-                   //re=re.replace("'", "''");
-                   //re=re.replace("'", "''");
-                   console.log('ato'+re);
-                   var sql = "insert into "+nomBase+" (chemin,nomtable,numligne,numfeuile,colonnecible,colonnecible2) values ('"+re+"','"+nomtable[nb]+"','"+numligne[nb]+"','"+numfeuille[nb]+"','"+nomCol+"','"+nomCol2+"') ";
-                    ReportingInovcom.getDatastore().sendNativeQuery(sql, function(err,res){
-                      if (err) { 
-                        //console.log(err);
-                        console.log('une erreur trouvé');
-                        //return callback(err);
-                       }
-                      else
-                      {
-                        console.log(sql);
-                        return callback(null, true);
-                      };           
-                 }); 
-                }
-                else 
-                {
-                  var sql = "insert into chemintsisy (typologiedelademande) values ('"+re+"') ";
-                  Reportinghtp.getDatastore().sendNativeQuery(sql, function(err,res){
-                   if (err) { 
-                     console.log("Une erreur ve? import 1");
-                     //return callback(err);
-                    }
-                   else
-                   {
-                     console.log(sql);
-                     return callback(null, true);
-                   };
-                    
-               });
-                 };
-            
-                                          }); 
-          });
-      }
-      else
-      {
-        var sql = "insert into chemintsisy (typologiedelademande) values ('k') ";
-        ReportingInovcom.getDatastore().sendNativeQuery(sql, function(err,res){
-          if(err) return console.log(err);
-          else return callback(null, true);        
-                              });   
-      };
-    },
-   /* importEssai: function (table,table2,date,option,nb,callback) {
-       const fs = require('fs');
-      var re  = 'a';
-      var tab = [];
-      var a = table[0]+date+table2[nb];
-      var b = option[nb];
-      var c = ReportingIndu.existenceFichier(a);
-      console.log(c);
-      if(c=='vrai')
-      {
-        fs.readdir(a, (err, files) => {
-          console.log(a);
-              files.forEach(file => {
-                const regex = new RegExp(b+'*');
-          var m1 = '.xlsx|.xls|.xlsm|.xlsb$';
-          var m2 = '^[^~]';
-          const regex1 = new RegExp(m1,'i');
-          const regex2 = new RegExp(m2);
-          if(regex.test(file) && regex1.test(file) && regex2.test(file))
-                {
-                   re = file;
-                   console.log(re);  
-                } 
-            });
-            var sql = "insert into cheminindu (typologiedelademande) values ('"+re+"') ";
-                    ReportingIndu.getDatastore().sendNativeQuery(sql, function(err,res){
-                      if(err) return console.log(err);
-                      else return callback(null, true);        
-                                          })  
-            console.log('ato anatiny'+re);
-          });
-      }
-      else
-      {
-        var sql = "insert into cheminindu (typologiedelademande) values ('k') ";
-        ReportingIndu.getDatastore().sendNativeQuery(sql, function(err,res){
-          if(err) return console.log(err);
-          else return callback(null, true);        
-                              })   
-      }   
-    },*/
     deleteToutHtp : function (table,nb,callback) {
       var sql = "delete from "+table+" ";
       ReportingIndu.getDatastore().sendNativeQuery(sql, function(err, res){

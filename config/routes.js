@@ -113,6 +113,9 @@ module.exports.routes = {
     
   
    //route tps-tpc
+   '/accueiltacheplusancienne' : 'TpstpcController.accueiltacheplusancienne',
+   '/traitementTachePlusAncienne' : 'TpstpcController.traitementtacheplusancienne',
+
    '/accueilecritureDate' : 'TpstpcController.accueilecritureDate',
    '/ecritureDate' : 'TpstpcController.ecritureDate',
 
