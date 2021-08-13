@@ -4004,6 +4004,10 @@ ecritureOkKo : async function (nombre_ok_ko, table,date_export,mois1,callback) {
       numeroColonneOk = iniValue.induentrainavant.ok;
       numeroColonneKo = iniValue.induentrainavant.ko;
     }
+    if(table == "induvalidation"){
+      numeroColonneOk = iniValue.induvalidation.ok;
+      numeroColonneKo = iniValue.induvalidation.ko;
+    }
     // if(table == ""){
     //   numeroColonneOk = iniValue..ok;
     //   numeroColonneKo = iniValue..ko;
