@@ -21,7 +21,7 @@
           else
           {
             nc1 = nc1.rows;  
-            console.log('nc1'+nc1[0].chemin);
+            
             console.log('nc1'+nc1[1].chemin);
             var chemintpssuiviprod23h =nc1[1].chemin;
          var dateFormat = require("dateformat");
