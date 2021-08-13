@@ -211,7 +211,7 @@ module.exports = {
         
          },
   /**********************************************************************/
-         ecritureOkKoIllisiblecbtp__ : async function (nombre_ok_ko, table,date_export,mois1,callback) {
+         ecritureOkKoIllisiblecbtp : async function (nombre_ok_ko, table,date_export,mois1,callback) {
           if(nombre_ok_ko.ok==null && nombre_ok_ko.ko==null)
           {
            console.log('ok' + nombre_ok_ko.ok);
@@ -235,7 +235,7 @@ module.exports = {
                ligneDate1 = parseInt(rowNumber);
                var line = newworksheet.getRow(ligneDate1);
                var f = line.getCell(3).value;
-               var mc1 = "Pack Spé. CBTP";
+               var mc1 = "CBTP";
                const regex = new RegExp(mc1,'i');
                if(regex.test(f))
                {
@@ -2954,7 +2954,7 @@ module.exports = {
 
     },
      /***********************************************************/  
-     ecritureOkKoIllisiblecbtp : async function (nombre_ok_ko, table,date_export,mois1,callback) {
+     ecritureOkKoIllisiblecbtp__ : async function (nombre_ok_ko, table,date_export,mois1,callback) {
     if(nombre_ok_ko.ok==null && nombre_ok_ko.ko==null || nombre_ok_ko.ok==null && nombre_ok_ko.ko==undefined)
     {
      console.log('ok' + nombre_ok_ko.ok);
@@ -3209,10 +3209,10 @@ module.exports = {
       numeroColonneOk = iniValue.inovgestionillisible.ok;
       numeroColonneKo = iniValue.inovgestionillisible.ko;
     }
-    if(table == "inovgestionillisiblecbtp"){
-      numeroColonneOk = iniValue.inovgestionillisiblecbtp.ok;
-      numeroColonneKo = iniValue.inovgestionillisiblecbtp.ko;
-    }
+    // if(table == "inovgestionillisiblecbtp"){
+    //   numeroColonneOk = iniValue.inovgestionillisiblecbtp.ok;
+    //   numeroColonneKo = iniValue.inovgestionillisiblecbtp.ko;
+    // }
     if(table == "inovtpsalmerys"){
       numeroColonneOk = iniValue.inovtpsalmerys.ok;
       numeroColonneKo = iniValue.inovtpsalmerys.ko;
