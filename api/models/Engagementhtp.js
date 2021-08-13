@@ -625,7 +625,8 @@ ecrituredata16facM : async function (nombre_ok_ko, table,date_export,mois1,callb
       var line = newworksheet.getRow(ligneDate1);
       var f = line.getCell(4).value;
       // console.log(f);
-      if(f == "Contrat Cot LAMIE")
+      // if(f == "Contrat Cot LAMIE")//Contrat Cot ITE et MGAS
+      if(f == "Contrat Cot ITE et MGAS")
       {
         ligneDate = parseInt(rowNumber);
       }
@@ -643,14 +644,16 @@ ecrituredata16facM : async function (nombre_ok_ko, table,date_export,mois1,callb
   var collonne;
   var colDate2;
   rowm.eachCell(function(cell, colNumber) {
-    if(cell.value == 'TACHES TRAITEES ' || cell.value == 'TACHES TRAITEES')
+    // if(cell.value == 'TACHES TRAITEES ' || cell.value == 'TACHES TRAITEES')//ENTRANTS
+    if(cell.value == 'ENTRANTS ' || cell.value == 'ENTRANTS')
     {
       colDate2 = parseInt(colNumber);
       var man = newworksheet.getRow(3);
       var f = man.getCell(colDate2).value;
       // var getko_ini = man.getCell(colDate2).address;
       // console.log(getko_ini);
-      if(f == "16H")
+      // if(f == "16H")//Entrants J-1 16h01 à J 16h00
+      if(f == "Entrants J-1 16h01 à J 16h00")
       {
         collonne = parseInt(colNumber);
       }

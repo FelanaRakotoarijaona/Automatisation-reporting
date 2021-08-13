@@ -1197,7 +1197,7 @@ insertcheminengagementhtp_1 : function(req,res)
                 Engagementhtp.ecrituredatafinprejet(result[12],"htprejetfin",date_export,mois1,callback);
               },
             function (callback) {
-            Engagementhtp.ecrituredatafinpcotlamie(result[13],"htpcotlamiefin",date_export,mois1,callback);
+            Engagementhtp.ecrituredata16cotlamie(result[13],"htpcotlamiefin",date_export,mois1,callback);//ecrituredatafinpcotlamie
             },
             function (callback) {
               Engagementhtp.ecrituredata16cotite(result[14],"htpcotite16",date_export,mois1,callback);
@@ -1237,7 +1237,7 @@ insertcheminengagementhtp_1 : function(req,res)
                       Engagementhtp.ecrituredataj2rejet(result[24],"htprejet16",date_export,mois1,callback);
                     },
                   function (callback) {
-                      Engagementhtp.ecrituredataj2cotlamie(result[25],"htpcotlamiej2",date_export,mois1,callback);
+                      Engagementhtp.ecrituredata16cotlamie(result[25],"htpcotlamiej2",date_export,mois1,callback);//ecrituredataj2cotlamie
                   },
                   // function (callback) {
                   //     Engagementhtp.ecrituredataj5tri(result[7],"htptrij5",date_export,mois1,callback);
@@ -1258,7 +1258,7 @@ insertcheminengagementhtp_1 : function(req,res)
                       Engagementhtp.ecrituredataj5rejet(result[30],"htprejet16",date_export,mois1,callback);
                   },
                   function (callback) {
-                      Engagementhtp.ecrituredataj5cotlamie(result[31],"htpcotlamiej5",date_export,mois1,callback);
+                      Engagementhtp.ecrituredata16cotlamie(result[31],"htpcotlamiej5",date_export,mois1,callback);//ecrituredataj5cotlamie
                   },
                   function (callback) {
                       Engagementhtp.ecrituredataj2cotite(result[32],"htpcotite16",date_export,mois1,callback);
