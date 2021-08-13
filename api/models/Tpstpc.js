@@ -53,7 +53,7 @@
           //date de maturite5
          
 
-          var b = 'Soins Externes';
+          var b = 'SDM';
           const regex = new RegExp(b,'i');
 
           if((regex2.test(desired_value2) || regex3.test(desired_value2)) && desired_value4==undefined && regex.test(desired_value) )
@@ -65,7 +65,7 @@
               var cell_ref5 = XLSX.utils.encode_cell(address_of_cell5);
               var desired_cell5 = sheet[cell_ref5];
               var desired_value5 = (desired_cell5 ? desired_cell5.v : undefined);
-
+              console.log(desired_value5+ 'daty');
               var date1 = parseInt(desired_value5);
               if(date1<date)
               {
