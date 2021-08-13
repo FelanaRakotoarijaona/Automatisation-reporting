@@ -16,17 +16,22 @@
     var trameflux= chemin;
     var workbook = XLSX.readFile(trameflux);
     try{
-      //console.log(ast[nb]);
       const sheet = workbook.Sheets[workbook.SheetNames[1]];
       var range = XLSX.utils.decode_range(sheet['!ref']);
       var somme = 0;
-        for(var ra=0;ra<=range.e.r;ra++)
+      for(var ra=0;ra<=range.e.r;ra++)
         {
           //nature de tache
           var address_of_cell = {c:2, r:ra};
           var cell_ref = XLSX.utils.encode_cell(address_of_cell);
           var desired_cell = sheet[cell_ref];
           var desired_value = (desired_cell ? desired_cell.v : undefined);
+
+          // identification de la tache : le isaina
+          var address_of_cell1 = {c:5, r:ra};
+          var cell_ref1 = XLSX.utils.encode_cell(address_of_cell1);
+          var desired_cell1 = sheet[cell_ref1];
+          var desired_value1 = (desired_cell1 ? desired_cell1.v : undefined);
 
           //etat de la tache
           var address_of_cell2 = {c:0, r:ra};
@@ -44,35 +49,84 @@
           var desired_cell4 = sheet[cell_ref4];
           var desired_value4 = (desired_cell4 ? desired_cell4.v : undefined);
 
-          var b = 'SDM';
-          const regex = new RegExp(b,'i');
-
-          if((regex2.test(desired_value2) || regex3.test(desired_value2)) && desired_value4==undefined && regex.test(desired_value) )
+          if(regex2.test(desired_value2) || regex3.test(desired_value2) )
           {
-            console.log('dv' + desired_value);
-            /*var date = 20210610;
-            for(var i=0;i<=range.e.r;i++)
+            if(desired_value4!=undefined)
             {
-              var address_of_cell5 = {c:5, r:i};
-              var cell_ref5 = XLSX.utils.encode_cell(address_of_cell5);
-              var desired_cell5 = sheet[cell_ref5];
-              var desired_value5 = (desired_cell5 ? desired_cell5.v : undefined);
-              console.log(desired_value5+ 'daty');
-              var date1 = parseInt(desired_value5);
-              if(date1<date)
+              var j = 1;
+            }
+            else
+            {
+              var b = traitement[nb];
+              const regex = new RegExp(b,'i');
+              if(regex.test(desired_value) )
               {
-                date = desired_value5;
+              
+                var c = motcle1[nb];
+                var c1 = motcle2[nb];
+                var c2 = motcle3[nb];
+                var c5 = ast[nb];
+                const regex21 = new RegExp(c1,'i');
+                const regex31 = new RegExp(c2,'i');
+                const regex1 = new RegExp(c,'i');
+                const regex41 = new RegExp(c5,'i');
+             
+                /*if(motcle4[nb]=='a')
+                {
+                  if(regex1.test(desired_value) || regex21.test(desired_value) || regex31.test(desired_value) || regex41.test(desired_value) ) 
+                  {
+                    var a = '1';
+                  }
+                  else
+                  {
+                    if(desired_value1!=undefined)
+                    {
+                      somme=somme+1;
+                    }
+                    else
+                    {
+                      var p = 0;
+                    }
+                  
+                  };
+                }
+                else if(motcle4[nb]=='b')
+                {
+                  somme=somme+1;
+                }
+                else
+                {*/
+                  var c4 = motcle4[nb];
+                  const regex4 = new RegExp(c4,'i');
+                  if(regex1.test(desired_value) || regex21.test(desired_value) || regex31.test(desired_value) || regex4.test(desired_value) || regex41.test(desired_value)) 
+                  {
+                    var a = '1';
+                  }
+                  else
+                  {
+                    if(desired_value1!=undefined)
+                    {
+                      console.log(desired_value1+ 'date');
+                      somme=somme+1;
+                    }
+                    else
+                    {
+                      var p = 0;
+                    }
+                  
+                  //};
+                }
               }
-            }*/
-            
+            }
           }
             else
             {
               var r= 'a';
             }
+
             }
-            console.log('résultat' + date);
-            /*var sql = "insert into "+table[nb]+" (bonj) values ("+somme+") ";
+            console.log(somme);
+            var sql = "insert into "+table[nb]+" (stock16h ) values ("+somme+") ";
                       Reportinghtp.getDatastore().sendNativeQuery(sql, function(err,res){
                         if (err) { 
                           console.log(err);
@@ -83,9 +137,8 @@
                           console.log(sql);
                           return callback(null, true);
                         }
-                      
-                                            });   */               
-        
+                       
+                                            });
     }
     catch
     {

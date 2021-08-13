@@ -43,7 +43,7 @@
          var mcle3 = [];
          var mcle4 = [];
          var table = [];
-         var r = [0,1,2];
+         var r = [0];
          workbook.xlsx.readFile('tps16h.xlsx')
            .then(function() {
              var newworksheet = workbook.getWorksheet('Feuil2');
