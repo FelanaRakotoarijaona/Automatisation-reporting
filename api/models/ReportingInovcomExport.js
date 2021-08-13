@@ -133,16 +133,10 @@ module.exports = {
        var rowDate = newworksheet.getRow(ligneDate);
        var numeroLigne = rowDate;
        var iniValue = ReportingExcel.getIniValue(table);
-       
        var a5;
-   
        var rowm = newworksheet.getRow(1);
-       var colonnne;
-       var colDate1;
        numeroLigne.getCell('BG').value = parseInt(nombre_ok_ko.ok);
        numeroLigne.getCell('DI').value = parseInt(nombre_ok_ko.ko);
-   
-       
        await newWorkbook.xlsx.writeFile(path_reporting);
        sails.log("Ecriture OK KO terminé"); 
        return callback(null, "OK");

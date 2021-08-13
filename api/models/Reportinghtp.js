@@ -325,63 +325,64 @@ importEssai: function (table,table2,date,option,nb,nomtable,numligne,numfeuille,
     var re  = 'a';
     var tab = [];
     var a = table[0]+date+table2[nb];
-    //var a ='\\\\10.128.1.2\\almerys-out\\Retour_Easytech_20210512\\TRAITEMENT_RETOUR_OTD_N2\\' ;
     var b = option[nb];
-    //var b = 'OTD_ALMERYS SATD';
-    //var c = 'vrai';
-    //console.log(a);
     var nomTable = nomtable;
     var numLigne= numligne;
     var numFeuille = numfeuille;
     var nomColonne = nomcolonne;
     var c = Reportinghtp.existenceFichier(a);
+    var tab = [];
     console.log(c);
     if(c=='vrai')
     {
-      fs.readdir(a, (err, files) => {
-        console.log(a);
-            files.forEach(file => {
-              const regex = new RegExp(b+'*');
-              if(regex.test(file))
-              {
-                 //re = a+'\\'+file;
-                 re = a+'/'+file;
-                 var sql = "insert into cheminhtp (chemin,nomtable,numligne,numfeuile,colonnecible,colonnecible2) values ('"+re+"','"+nomTable+"','"+numLigne+"','"+numFeuille+"','"+nomColonne+"','"+colonnecible2+"') ";
-                 Reportinghtp.getDatastore().sendNativeQuery(sql, function(err,res){
-                  if (err) { 
-                    console.log("Une erreur ve? import 1");
-                    //return callback(err);
-                   }
-                  else
-                  {
-                    console.log(sql);
-                    return callback(null, true);
-                  };
-                   
-              });
-             }
-              else
-              {
-               var sql = "insert into chemintsisy (typologiedelademande) values ('"+re+"') ";
-               Reportinghtp.getDatastore().sendNativeQuery(sql, function(err,res){
-                if (err) { 
-                  console.log("Une erreur ve? import 1");
-                  //return callback(err);
-                 }
+      try
+      {
+        fs.readdir(a, (err, files) => {
+          console.log(a);
+              files.forEach(file => {
+                const regex = new RegExp(b+'*');
+                if(regex.test(file))
+                {
+                   //re = a+'\\'+file;
+                   re = a+'/'+file;
+                   tab.push(re);
+                }
                 else
                 {
-                  console.log(sql);
-                  return callback(null, true);
-                };
-                 
+                 console.log('fichier non trouvé');
+                }
             });
+            if(re!='a')
+            {
+              for(var i=0;i<tab.length;i++)
+              {
+                var sql = "insert into cheminhtp (chemin,nomtable,numligne,numfeuile,colonnecible,colonnecible2) values ('"+tab[i]+"','"+nomTable+"','"+numLigne+"','"+numFeuille+"','"+nomColonne+"','"+colonnecible2+"') ";
+                   Reportinghtp.getDatastore().sendNativeQuery(sql, function(err,res){
+                    if (err) { 
+                      console.log("Une erreur ve? import 1");
+                      //return callback(err);
+                     }
+                    else
+                    {
+                      console.log(sql);
+                      return callback(null, true);
+                    };
+                     
+                    });
               }
-             
-             
-          });
-          
-         
-        });
+            }
+            else
+            {
+              return callback(null,'KO');
+            }
+          })
+      }
+      catch
+      {
+        console.log('Aucune fichier trouvé');
+        return callback(null,'KO');
+      }
+      
     }
     else
     {
@@ -405,61 +406,60 @@ importEssai: function (table,table2,date,option,nb,nomtable,numligne,numfeuille,
     var re  = 'a';
     var tab = [];
     var a = table[0]+date+table2[nb];
-    //var a ='\\\\10.128.1.2\\almerys-out\\Retour_Easytech_20210512\\TRAITEMENT_RETOUR_OTD_N2\\' ;
     var b = option[nb];
-    //var b = 'OTD_ALMERYS SATD';
-    //var c = 'vrai';
-    //console.log(a);
     var nomTable = nomtable;
     var numLigne= numligne;
     var numFeuille = numfeuille;
     var nomColonne = nomcolonne;
     var c = Reportinghtp.existenceFichier(a);
+    var tab = [];
     console.log(c);
     if(c=='vrai')
     {
-      fs.readdir(a, (err, files) => {
-        console.log(a);
-            files.forEach(file => {
-              const regex = new RegExp(b+'*');
-              if(regex.test(file))
+      try
+      {
+        fs.readdir(a, (err, files) => {
+          console.log(a);
+              files.forEach(file => {
+                const regex = new RegExp(b+'*');
+                if(regex.test(file))
+                {
+                   re = a+'/'+file; 
+                   tab.push(re);  
+                } 
+                else
+                {
+                  console.log('fichier non trouvé');
+                }
+              });
+              if(re!='a')
               {
-                 re = a+'/'+file;  
-                 var sql = "insert into cheminhtp2 (chemin,nomtable,numligne,numfeuile,colonnecible,colonnecible2) values ('"+re+"','"+nomTable+"','"+numLigne+"','"+numFeuille+"','"+nomColonne+"','"+colonnecible2+"') ";
-                 Reportinghtp.getDatastore().sendNativeQuery(sql, function(err,res){
-                  if (err) { 
-                    console.log("Une erreur ve? import 1");
-                    //return callback(err);
-                   }
-                  else
-                  {
-                    console.log(sql);
-                    return callback(null, true);
-                  };        
-                                       }) ;
-                   
-              } 
+                for(var i=0;i<tab.length;i++)
+                {
+                  var sql = "insert into cheminhtp2 (chemin,nomtable,numligne,numfeuile,colonnecible,colonnecible2) values ('"+tab[i]+"','"+nomTable+"','"+numLigne+"','"+numFeuille+"','"+nomColonne+"','"+colonnecible2+"') ";
+                   Reportinghtp.getDatastore().sendNativeQuery(sql, function(err,res){
+                    if (err) { 
+                      console.log("Une erreur ve? import 1");
+                     }
+                    else
+                    {
+                      console.log(sql);
+                      return callback(null, true);
+                    };        
+                                         })
+                }
+              }
               else
               {
-               var sql = "insert into chemintsisy (typologiedelademande) values ('"+re+"') ";
-                 Reportinghtp.getDatastore().sendNativeQuery(sql, function(err,res){
-                  if (err) { 
-                    console.log("Une erreur ve? import 1");
-                    //return callback(err);
-                   }
-                  else
-                  {
-                    console.log(sql);
-                    return callback(null, true);
-                  };     
-                                       });
+                return callback(null,'KO');
               }
-             
-             
-          });
-          
-         
-        });
+            })
+      }
+      catch
+      {
+        console.log('Aucune fichier trouvé');
+        return callback(null,'KO');
+      }
     }
     else
     {
