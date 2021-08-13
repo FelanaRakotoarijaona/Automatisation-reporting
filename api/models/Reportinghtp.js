@@ -101,16 +101,16 @@ module.exports = {
             var cell_ref2 = XLSX.utils.encode_cell(address_of_cell2);
             var desired_cell2 = sheet[cell_ref2];
             var desired_value2 = (desired_cell2 ? desired_cell2.v : undefined);
-            if(desired_value1=='OK' && ( desired_value2=='Adhésion' ||desired_value2=='Espace adhérent'|| desired_value2=="Ajout d'Ayant droit" || desired_value2=='Autres' || desired_value2=='Carte TP' || desired_value2=='Cotisations' || desired_value2=='MAJ N1' || desired_value2=='Demande attestation' || desired_value2=='MAJ Régime / Caisse' || desired_value2=='MAJ RIB' || desired_value2=='Modification formule' || desired_value2=='Prestations' || desired_value2=='Prévoyance'  ) )
+            if(desired_value1=='OK' && ( desired_value2!='Résiliation'))//='Adhésion' ||desired_value2=='Espace adhérent'|| desired_value2=="Ajout d'Ayant droit" || desired_value2=='Autres' || desired_value2=='Carte TP' || desired_value2=='Cotisations' || desired_value2=='MAJ N1' || desired_value2=='Demande attestation' || desired_value2=='MAJ Régime / Caisse' || desired_value2=='MAJ RIB' || desired_value2=='Modification formule' || desired_value2=='Prestations' || desired_value2=='Prévoyance'  ) )
             {
 
               nbr=nbr + 1;
             }
-            if(desired_value1=='KO' && ( desired_value2=='Adhésion' ||desired_value2=='Espace adhérent' || desired_value2=="Ajout d'Ayant droit" || desired_value2=='Autres' || desired_value2=='Carte TP' || desired_value2=='Cotisations' || desired_value2=='MAJ N1' || desired_value2=='Demande attestation' || desired_value2=='MAJ Régime / Caisse' || desired_value2=='MAJ RIB' || desired_value2=='Modification formule' || desired_value2=='Prestations' || desired_value2=='Prévoyance'  ))
+            if(desired_value1=='KO' && ( desired_value2=='Résiliation'))//'Adhésion' ||desired_value2=='Espace adhérent' || desired_value2=="Ajout d'Ayant droit" || desired_value2=='Autres' || desired_value2=='Carte TP' || desired_value2=='Cotisations' || desired_value2=='MAJ N1' || desired_value2=='Demande attestation' || desired_value2=='MAJ Régime / Caisse' || desired_value2=='MAJ RIB' || desired_value2=='Modification formule' || desired_value2=='Prestations' || desired_value2=='Prévoyance'  ))
             {
               nbrko=nbrko + 1;
             }
-            if(desired_value1=='OK' && ( desired_value2=='Résiliation') )
+            if(desired_value1=='OK' && ( desired_value2=='Résiliation'))
             {
 
               nbrokresiliation=nbrokresiliation + 1;
