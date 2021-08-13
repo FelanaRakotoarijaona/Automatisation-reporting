@@ -7939,7 +7939,7 @@ importengagementhtp_1 : function (trameflux,feuil,cellule,table,cellule2,nb,numl
                 };
               };
           }
-          if(table[nb]=='htpfacmg16' || table[nb]=='htpfacmgfin' || table[nb]=='htpfacmgstocktot' || table[nb]=='htpfacmgj2' || table[nb]=='htpfacmgj5')
+          if(table[nb]=='htpfacmg16' || table[nb]=='htpfacmgfin' || table[nb]=='htpfacmgj2' || table[nb]=='htpfacmgj5')//htpfacmgstocktot
           {
             var nbr = 0;
             for(var a=0;a<=range.e.r;a++)
@@ -7956,7 +7956,7 @@ importengagementhtp_1 : function (trameflux,feuil,cellule,table,cellule2,nb,numl
                 };
               };
           }
-          if(table[nb]=='htpdevi16' || table[nb]=='htpdevifin' || table[nb]=='htpdevij2' || table[nb]=='htpdevij5' || table[nb]=='htpdevistocktot')
+          if(table[nb]=='htpdevi16' || table[nb]=='htpdevifin' || table[nb]=='htpdevij2' || table[nb]=='htpdevij5')//htpdevistocktot
           {
             var nbr = 0;
             for(var a=0;a<=range.e.r;a++)
@@ -8078,7 +8078,7 @@ importengagementhtp_1 : function (trameflux,feuil,cellule,table,cellule2,nb,numl
               }
             };
           }
-          if(table[nb]=='htpfacmgtnontj')
+          if(table[nb]=='htpfacmgtnontj' || table[nb]=='htpfacmgstocktot')
           {
             var nbr = 0;
               for(var ra=2;ra<=range.e.r;ra++)
@@ -8131,7 +8131,7 @@ importengagementhtp_1 : function (trameflux,feuil,cellule,table,cellule2,nb,numl
           };
             
         }
-            if(table[nb]=='htpdevitnontj')
+            if(table[nb]=='htpdevitnontj' || table[nb]=='htpdevistocktot')
             {
               var nbr = 0;
                 for(var ra=2;ra<=range.e.r;ra++)
