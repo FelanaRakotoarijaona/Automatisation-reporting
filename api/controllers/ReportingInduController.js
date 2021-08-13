@@ -1100,6 +1100,9 @@ rechercheColonne2 : function (req, res) {
     function (callback) {
       ReportingIndu.countOkKoIndu2("indurelevedecomptecbtp",callback);
     },
+    function (callback) {
+      ReportingIndu.countOkKoIndu2("induvalidation",callback);
+    },
   ],function(err,result){
     if(err) return res.badRequest(err);
     console.log("Count OK 0==> " + result[0].ok + " / " + result[0].ko);
@@ -1110,6 +1113,9 @@ rechercheColonne2 : function (req, res) {
       },
       function (callback) {
         ReportingIndu.ecritureOkKoIndu2cbtp(result[1],"indurelevedecomptecbtp",date_export,mois1,callback);
+      },
+      function (callback) {
+        ReportingIndu.ecritureOkKoIndu2(result[2],"induvalidation",date_export,mois1,callback);
       },
     ],function(err,resultExcel){
    console.log(resultExcel[0]);
@@ -1217,6 +1223,7 @@ rechercheColonne3 : function (req, res) {
     function (callback) {
       ReportingIndu.countOkKoIndu3("indufraudeeole15j",callback);
     },
+ 
   ],function(err,result){
     if(err) return res.badRequest(err);
     console.log("Count OK 0==> " + result[0].ok);
@@ -1252,6 +1259,7 @@ rechercheColonne3 : function (req, res) {
       function (callback) {
         ReportingIndu.ecritureOkKoIndu3(result[7],"indufraudeeole15j",date_export,mois1,callback);
       },
+  
     ],function(err,resultExcel){
    console.log(resultExcel[0]);
         if(resultExcel[0]==true)
