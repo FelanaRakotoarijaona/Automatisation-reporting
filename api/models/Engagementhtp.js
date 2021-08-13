@@ -8270,7 +8270,7 @@ importengagementhtpligne : function (trameflux,feuil,cellule,table,cellule2,nb,n
           var col=0;
           var nbe = parseInt(nb);
           // if(col!=undefined)
-          if(table[nb]=='htpflux16' || table[nb]=='htpfluxfin' || table[nb]=='htprejet16' || table[nb]=='htpcotlamie16' || table[nb]=='htpcotlamiefin' || table[nb]=='htprejetfin' || table[nb]=='htpcotite16' || table[nb]=='htpcotitefin')
+          if(table[nb]=='htpflux16' || table[nb]=='htpfluxfin' || table[nb]=='htprejet16' || table[nb]=='htpcotlamie16' || table[nb]=='htpcotlamiefin' || table[nb]=='htprejetfin' || table[nb]=='htpcotite16' || table[nb]=='htpcotitefin' || table[nb]=='htpcotlamiej2' || table[nb]=='htpcotlamiej5')
           {
             var debutligne = numeroligne + 1;
             for(var a=debutligne;a<=range.e.r;a++)
@@ -8285,42 +8285,42 @@ importengagementhtpligne : function (trameflux,feuil,cellule,table,cellule2,nb,n
                 }
               }; 
           }
-          if(table[nb]=='htpcotlamiej2' || table[nb]=='htpcotlamiej5')
-          {
-            var nbr = 0;
-            var debutligne = numeroligne + 1;
-            for(var a=debutligne;a<=range.e.r;a++)
-              {
+          // if(table[nb]=='htpcotlamiej2' || table[nb]=='htpcotlamiej5')
+          // {
+          //   var nbr = 0;
+          //   var debutligne = numeroligne + 1;
+          //   for(var a=debutligne;a<=range.e.r;a++)
+          //     {
                
-                var address_of_cell1 = {c:2, r:a};
-                var cell_ref1 = XLSX.utils.encode_cell(address_of_cell1);
-                var desired_cell1 = sheet[cell_ref1];
-                var desired_value1 = (desired_cell1 ? desired_cell1.v : undefined);
+          //       var address_of_cell1 = {c:2, r:a};
+          //       var cell_ref1 = XLSX.utils.encode_cell(address_of_cell1);
+          //       var desired_cell1 = sheet[cell_ref1];
+          //       var desired_value1 = (desired_cell1 ? desired_cell1.v : undefined);
           
-                var test = Engagementhtp.convertionexceldate(desired_value1);
-                var y = test.getFullYear();
-                var m = test.getMonth()+1;
-                var d = test.getDate();
+          //       var test = Engagementhtp.convertionexceldate(desired_value1);
+          //       var y = test.getFullYear();
+          //       var m = test.getMonth()+1;
+          //       var d = test.getDate();
 
-                if (d < 10) {
-                  d = '0' + d;
-                }
-                if (m < 10) {
-                  m = '0' + m;
-                }
+          //       if (d < 10) {
+          //         d = '0' + d;
+          //       }
+          //       if (m < 10) {
+          //         m = '0' + m;
+          //       }
 
-                var datetime = y+''+m+''+d;
-                // console.log(datetime);
+          //       var datetime = y+''+m+''+d;
+          //       // console.log(datetime);
 
-                var conv = parseInt(date);
-                var j2 = conv - 2;
+          //       var conv = parseInt(date);
+          //       var j2 = conv - 2;
                 
-                  if(datetime<=j2)
-                 {
-                    nbr=nbr + 1;  
-                 }
-              }; 
-          }
+          //         if(datetime<=j2)
+          //        {
+          //           nbr=nbr + 1;  
+          //        }
+          //     }; 
+          // }
 
 
           else
