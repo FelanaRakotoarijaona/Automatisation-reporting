@@ -1031,13 +1031,13 @@ insertcheminengagementhtp_1 : function(req,res)
           Engagementhtp.recupdatasum("htpcotitefin",callback);
         },
         function (callback) {
-          Engagementhtp.recupdata("htpfaclamie16",callback);
+          Engagementhtp.recupdatasum("htpfaclamie16",callback);
         },
         function (callback) {
           Engagementhtp.recupdata("htpacs16",callback);
         },
         function (callback) {
-          Engagementhtp.recupdata("htpfaclamiefin",callback);
+          Engagementhtp.recupdatasum("htpfaclamiefin",callback);
         },
         function (callback) {
           Engagementhtp.recupdata("htpacsfin",callback);
@@ -1062,7 +1062,7 @@ insertcheminengagementhtp_1 : function(req,res)
             Engagementhtp.recupdata("htprejet16",callback);//htprejetj2
           },
           function (callback) {
-            Engagementhtp.recupdata("htpcotlamiej2",callback);
+            Engagementhtp.recupdatasum("htpcotlamiej2",callback);
           },
           // function (callback) {
           //   Engagementhtp.recupdata("htptrij5",callback);
